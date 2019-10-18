@@ -27,9 +27,11 @@ _omówienie poszczególnych modułów i dotychczasowych postępów_
 Do tego momentu wykonane :
  - moduł główny,
  - obróbka danych testowych.
+ 
 Do tego momentu prawie ukończone:
 - implememtacja algorytmu lasów decyzyjnych,
 - rozdział pracy dotyczący lasów decyzyjnych.
+
 Następne w kolejności do wykonania :
 - implementacja KNN.
 
@@ -40,9 +42,11 @@ _omówienie modułu implementującego las decyzyjny , omówienie rozdziału na t
 Do tego momentu wykonane :
 - moduł lasów decyzyjnych,
 - rozdział omawiający lasy decyzyjne.
+
 Do tego momentu prawie ukończone:
 - implememtacja algorytmu KNN,
 - rozdział pracy dotyczący algorytmu KNN.
+
 Następne w kolejności do wykonania :
 - implementacja SVM,
 - rozdział dotyczący SVM.
@@ -54,11 +58,13 @@ _omówienie modułu implementującego KNN , omówienie rozdziału na temat KNN_
 Do tego momentu wykonane :
 - moduł KNN,
 - rozdział omawiający algorytm KNN.
+
 Do tego momentu prawie ukończone:
 - testy,
 - rozdział pracy dotyczący prówniania algorytmów,
 - moduł odpowiedzialny za porównanie działania algorytmów,
 - moduł odpowiedzialny za prezentacje wyników.
+
 Następne w kolejności do wykonania :
 - strona prezentująca rezultaty i pozwalająca na wykorzytanie programu,
 - poprawki do pisemnej części pracy.
