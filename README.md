@@ -23,6 +23,7 @@ kresów porównujących algorytmy oraz odpowiedzi na zadany problem
 **08.11 - prezentacja dotychczasowych rezultatów**
 
 _omówienie poszczególnych modułów i dotychczasowych postępów_
+
 Do tego momentu wykonane :
  - moduł główny,
  - obróbka danych testowych.
