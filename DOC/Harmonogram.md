@@ -62,7 +62,7 @@ Następne w kolejności do wykonania :
 - strona prezentująca rezultaty i pozwalająca na wykorzytanie programu,
 - poprawki do pisemnej części pracy.
 
-**31****.01 - konsultacje dotczące treści pracy**
+**31.01 - konsultacje dotczące treści pracy**
 
 _ogólne podsumowanie_
 
