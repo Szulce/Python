@@ -43,9 +43,6 @@ W pracy opisano następujące algorytmu uczenia nadzorowanego:
 - metoda wektorów nośnych (ang. _support vector machines_, SVM)
 - k-najbliższych sąsiadów (ang. _k-neares neighbours_, KNN)  
 
-<!-- wybór cech (ang. _feature selection_)
-- naiwny klasyfikator Bayers'a(ang. _naive Bayers_)
--->
 Praktyczna część pracy napisana została w języku Python z wykorzystaniem scikit-learn, obsługującym wiele algorytmów maszynowego uczenia się w tym uczenia nadzorowanego i docelowo wybranych algorytmów przedstawionych w teoretycznej części pracy.  
 
 
@@ -124,89 +121,6 @@ W celu przewidzenia wartości dla nowych danych, należy odnaleść K najbliższ
 Dla lekarza wartością dodatnią jest wykrycie zależności które decyzują o uznaniu lub zaprzeczeniu występowania choroby. Zastosowanie algorytmu KNN może nie tylko  zakwalifikować osoby chorujące na serce, ale również ułatwić swoją graficzną reprezentacją wpływ cech na ostateczny osąd próbki.  
 
 
-
-<!--## Feature Selection
-Klasy w module sklearn.feature_selection można wykorzystać do wyboru funkcji / zmniejszenia wymiarów w zestawach próbek, aby poprawić wyniki dokładności estymatorów lub zwiększyć ich wydajność w bardzo wielowymiarowych zestawach danych.
-
-Wybór funkcji jest konieczny dla procesu uczenia maszynowego, ponieważ czasami nieistotne cechy wpływają na wydajność klasyfikacyjną klasyfikatora uczenia maszynowego. Wybór funkcji poprawia dokładność klasyfikacji i skraca czas wykonania modelu. Do wyboru funkcji w naszym systemie wykorzystaliśmy trzy dobrze znane algorytmy FS i algorytmy te wybierają ważne cechy.
-
-(1) Algorytm wyboru funkcji zwolnienia. Relief to algorytm wyboru funkcji [21], który przypisuje wagi do wszystkich funkcji w zbiorze danych, a wagi te mogą być aktualizowane z upływem czasu. Ważne cechy docelowe mają dużą wartość wagową, a pozostałe cechy mają niewielką wagę. Relief wykorzystuje te same techniki co w K-NN, które określają wagi cech (patrz Algorytm 1) [22]
-Wybór funkcji
-Wybór funkcji ma na celu zmniejszenie liczby funkcji predykcyjnych
-zastosowane w modelu podczas poprawy lub bez obniżania wydajności. Duża liczba funkcji powoduje kilka problemów. Pierwszym problemem jest koszt obliczeń.
-Gdy liczba funkcji jest wysoka, czas obliczeń i przestrzeń dramatycznie wzrosną. Problem staje się trudny do rozwiązania w przypadku niektórych prostych algorytmów indukcyjnych.
-Kolejnym problemem jest uogólnienie wydajności predykcyjnej. Złożoność wzrasta wraz z liczbą funkcji, a wysoka złożoność może powodować nadmierne dopasowanie
-ponieważ zbyt wiele funkcji może być zbędnych lub wprowadzających w błąd. Ponadto duży
-liczba funkcji wymaga dużej ilości miejsca i może zwiększyć koszt danych
-kolekcja.
-Przykładem wyboru cech jest obszar selekcji genów. Chcemy wiedzieć
-jakie geny odnoszą się do różnych stanów zdrowia. Wyrażenia genowe to zmienne, których rozmiar
-może wynosić od 6000 do 60000, zarówno dla zdrowych, jak i chorych pacjentów [47]. Funkcja
-wybór może zmniejszyć liczbę zmiennych do kilku tysięcy.
-John i in. [59] sklasyfikował techniki wyboru cech jako filtr lub opakowanie
-modele. Model filtru jest etapem wstępnego przetwarzania metod indukcyjnych. Funkcja
-ranking jest przykładem filtrowania. W rankingu funkcji używamy funkcji niezależnej
-metody indukcyjnej do uszeregowania obiektów na podstawie wyników. Na przykład funkcje mogą
-być uszeregowane według współczynników korelacji Pearsona, R (i) = √ cov (Xi, Y)
-var (Xi) var (Y)
-, gdzie X jest
-zestaw zmiennych, Y jest etykietą klasy, a i wskazuje zmienną będącą przedmiotem zainteresowania. Możemy
-zbuduj także kilka klasyfikatorów z jedną zmienną i klasyfikatory rang (cechy) na podstawie
-poziomy błędów.W opakowaniach metoda indukcji jest stosowana w procedurze wyboru funkcji.
-Przykładami opakowań są selekcja do przodu i eliminacja do tyłu [59]. Oba są
-chciwe metody wyszukiwania w przestrzeni możliwych podzbiorów funkcji. W wybieraniu do przodu
-zaczynamy od pustego zestawu dla modelu i dodajemy najbardziej obiecującą funkcję do
-12
-model w każdej iteracji. W eliminacji wstecznej zaczynamy od modelu pełnego wszystkiego
-funkcje i wyeliminuj najmniej obiecującą funkcję w każdej iteracji. Inne przykłady
-opakowań obejmuje stosowanie heurystycznych metod wyszukiwania, takich jak algorytmy genetyczne, do
-znajdź najbardziej obiecujący podzbiór funkcji [96].
-Inna grupa technik wyboru cech wykorzystuje metody osadzone [47]. Podobnie jak w przypadku opakowań, w grę wchodzi model predykcji; nie musimy jednak przekwalifikowywać się
-z każdym podzbiorem funkcji, ponieważ cel uczenia się jest zmieniany, aby wyraźnie uwzględniać koszt włączenia funkcji. Przykładem jest analiza wrażliwości. Używamy
-wielkość zmiany funkcji kosztu spowodowanej usunięciem funkcji (ustawienie
-waga do zera), aby uszeregować cechy.
-Bezpośrednia optymalizacja celu należy do rodziny metod osadzonych. Optymalizacja konstrukcji modelu obejmuje bezpośrednio wybór funkcji. Na przykład,
-konstrukcja modelu [14, 81] obejmuje optymalizację funkcji straty i regulizatora. Regularizator jest normą 11, która może zmusić podzbiór wagi do zera. The
-funkcją celu jest
-### Teoria 
-
-### Znane podejścia do danych medycznych
-### Zastosowanie do mojego modelu
-## Naywe Bayers
-Klasyfikatory stosowane w eksperymentach
-
-Naiwny Bayesian
-
-Jest to klasyfikator probabilistyczny oparty na twierdzeniu Baye'a określonym przez wcześniejsze prawdopodobieństwa jego węzłów głównych. Twierdzenie Bayesa podano w równaniu 1, a stałą normalizacyjną podano w równaniu 2. Okazało się, że jest to algorytm optymalny pod względem minimalizacji błędu uogólnionego. Może obsługiwać uczenie maszynowe oparte na statystyce dla wektorów cech  i przypisywać etykietę wektora cech na podstawie maksymalnego prawdopodobieństwa wśród dostępnych klas {X X 1 , X 2 , ..., X M }. Oznacza to, że funkcja „y” należy do klasy X i , gdy prawdopodobieństwo tylne jest maksymalne, tjMax. Problem klasyfikacji bayesowskiej można sformułować na podstawie prawdopodobieństw a-tylnych, które przypisują etykietę klasy ω i do próbki X, która jest maksymalna. Problem klasyfikacji bayesowskiej można sformułować na podstawie prawdopodobieństw a-tylnych, które przypisują etykietę klasy ω i do próbki X , która jest maksymalna.
-
-
-
-Stosowanie zasady Bayesa z wzajemną wyłącznością w odniesieniu do chorób i warunkowej niezależności w ustaleniach jest znane jako Naiwne podejście bayesowskie. Jest to klasyfikator probabilistyczny oparty na twierdzeniu Bayesa z silnymi założeniami niezależności między cechami. Naiwny klasyfikator bayesowski pomimo swojej prostoty, zaskakująco dobrze spisuje się i często przewyższa w złożonej klasyfikacji. Simple Naïve Bayesian można wdrożyć, podłączając następującą główną formułę Bayesa:
-
-P ( X 1 , X 2 ,…, X n | Y ) = P ( X 1 | Y ) P ( X 2 | Y )… P ( X n | Y ) (3)
-
-Wspomniana wyżej sieć bayesowska Naïve tworzy model matematyczny, który służy do modelowania skomplikowanych relacji losowych zmiennych atrybutów choroby i wyniku decyzji. Algorytm wykorzystuje wzór do obliczenia prawdopodobieństwa warunkowego w odniesieniu do wartości atrybutów stanu chorobowego i wartości atrybutu decyzyjnego. Na podstawie wcześniejszej wiedzy algorytm klasyfikuje atrybut decyzyjny na przypisane etykiety, a zatem dla każdego atrybutu zmiennej obliczane jest wsparcie warunkowe. 15
-### Teoria 
-Naiwne metody Bayesa to zbiór nadzorowanych algorytmów uczenia się opartych na zastosowaniu twierdzenia Bayesa z „naiwnym” założeniem warunkowej niezależności między każdą parą cech, biorąc pod uwagę wartość zmiennej klasy. Twierdzenie Bayesa podaje następującą zależność, przy danej zmiennej klasy i zależny wektor cech  przez ,:
-
-Używając naiwnego warunkowego założenia niezależności, załóż, że
-
-dla wszystkich , relacja ta jest uproszczona
-
-Od  jest stały biorąc pod uwagę dane wejściowe, możemy użyć następującej reguły klasyfikacji:
-
-i możemy użyć oszacowania Maximum A Posteriori (MAP) do oszacowania  i ; ten pierwszy to względna częstotliwość klasy w zestawie treningowym.
-
-Różne naiwne klasyfikatory Bayesa różnią się głównie założeniami dotyczącymi dystrybucji .
-
-Pomimo pozornie zbyt uproszczonych założeń, naiwni klasyfikatorzy Bayesa działali całkiem dobrze w wielu rzeczywistych sytuacjach, przy słynnej klasyfikacji dokumentów i filtrowaniu spamu. Wymagają niewielkiej ilości danych treningowych do oszacowania niezbędnych parametrów. (Z teoretycznych powodów, dla których naiwny Bayes działa dobrze i na jakich typach danych działa, zobacz odniesienia poniżej).
-
-Naiwni uczniowie i klasyfikatorzy Bayesa mogą być niezwykle szybcy w porównaniu do bardziej wyrafinowanych metod. Oddzielenie klasowych rozkładów cech warunkowych oznacza, że ​​każdy rozkład można niezależnie oszacować jako rozkład jednowymiarowy. To z kolei pomaga złagodzić problemy wynikające z przekleństwa wymiarowości.
-
-Z drugiej strony, chociaż naiwny Bayes jest znany jako porządny klasyfikator, wiadomo, że jest złym estymatorem, więc wyników prawdopodobieństwa predict_probanie należy brać zbyt poważnie.
-### Znane podejścia do danych medycznych
-### Zastosowanie do mojego modelu
--->
 ## Zestawienie efektywności działania algorytmów
 
 Konfrontacja technik ucznia maszynowego zaleznie od zestawu danch będzie dawała odmienne wyniki ze względu na ich predyspozycje do zajmowania się odpowiednimi zbiorami danych.  
@@ -226,30 +140,8 @@ Określenie stopnia, w jakim skonstruowany model z powodzeniem realizuje wyznacz
 
 Po wyborze hiperparametru następuje segmentacjia danych na K jendakowej wielkości zestawów. Wykonywanych jest k iteracji, w każdej z nich na k-1 kolekcjach model jest trenowany, a na pozostałej jednej weryfikowany. Procedura efektywnie pomaga ocenić poprawność działania modelu i zastosowanego algorytmu.
 
-[^schemat_wzorowany]:Schemat wzorowany na http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1526288453/index3_souoaz.png
-<!--
-Począwszy od klasyfikatora Naive Bayes, trening jest dość łatwy
-klasyfikator w małym zestawie danych, jeśli istnieje duża stronniczość i
-niska wariancja daje przewagę nad klasyfikatorem
-niska stronniczość i duża wariancja, np. KNN, ponieważ później
-klasyfikator będzie miał problem z nadmiernym dopasowaniem. Trening trwa
-mały zestaw danych wynika z tego powodu, że rozmawia bardzo szybko
-potrzebujemy mniej danych treningowych, a także mniej czasu treningowego, ale tak jak my
-wszyscy wiedzą, że każda moneta ma dwie strony, jeśli rozpocznie się rozmiar danych
-rośnie szansa na błąd asymptotyczny gdzie
-Algorytm o niskiej stronniczości i niskiej wariancji jest potężny
-wystarczająco, aby uniknąć tego rodzaju problemu
-Wadą algorytmu Naïve Bayes jest to, że nie może
-nauczyć się interakcji między funkcjami. Z drugiej strony jeśli
-rozważając model regresji logistycznej zadbaj o pokrewne
-cecha inna niż naiwne Bayes. Regresja logistyczna będzie
-zapewniają również pewne matematyczne podejście probabilistyczne, ale jeśli typ danych jest nieliniowy, model regresji logistycznej zawodzi
-dostarczyć dowolne wyjście. Dlatego wymaga wielu funkcji
-modulacja przed załadowaniem zestawu danych do modelu, który całkiem
-dokuczanie. Ale jest całkiem przyjazny dla użytkownika, aby zaktualizować tryb, jeśli
-funkcja w zestawie danych typu liniowego, nawet jeśli nowe wiersze i
-kolumna przybywa z czasem. tzn. że działa całkiem dobrze
-z zestawem danych online i zestawem danych czasowych.-->
+[^schemat_wzorowany]:Na podstwie materiałów opublikowanych na [https://www.datacamp.com](http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1526288453/index3_souoaz.png)
+
 
 ## Model Danych 
 ### Omówienie danych
@@ -265,19 +157,13 @@ The preprocessing of data is necessary for efficient representation of data and 
 #### Implementacja algorytmu 1: Losowe lasy decyzyjne
 #### Implementacja algorytmu 2: Metoda wektorów nośnych
 #### Implementacj algorytmu 3: K najbliższych sąsiadów
-<!--   
-#### Implementacj algorytmu 4
-#### Implementacj algorytmu 5
- -->
+
 
 ## Wnioski i walidacja rozwiązania
 ### Algorytm 1:Resultaty wnioski: Losowe lasy decyzyjne
 ### Algorytm 2: Rezultaty wnioski: Metoda wektorów nośnych
 ### Algorytm 3 : Rezultaty wnioski: K najbliższych sąsiadów
-<!-- 
-### Algorytm 4 : Rezultaty wnioski
-### Algorytm 5 : Rezultaty wnioski
--->
+
 ### Porównianie algorytmów : złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu
 
 ### Podsumowanie i opisanie wpływu danych na model
