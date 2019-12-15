@@ -23,12 +23,12 @@ def main():
         # uczenie lasy
         # -> konfiguracje (uzupełnianie danych - > średnia zera ,
         #               usuównaie woerszy,mode -> różne feature brane zza ważniejsze, ilość wywołań ,hiperparametry )
-        df.run()
+        # df.run()
         # testowanie
         # uczenie knn
-        kn.run()
+        # kn.run()
         # uczenie svm
-        sv.run()
+        # sv.run()
         # wizualizacja wyników
 
         # porównianie danych

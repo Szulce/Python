@@ -131,7 +131,8 @@ features_used = ['age',  # 3
                  'thal',  # 51
                  'num',  # 58
                  ]
-
+# 63.0 ,   1.0,  1.0,  145.0, 233.0, 1.0, 2.0,150.0,0.0,2.3,3.0,0.0,6.0,0
+# 63 lat , men, angina, mmHG, chol, sugar,
 load_files = []
 data_frame = []
 

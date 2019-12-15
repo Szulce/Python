@@ -168,6 +168,13 @@ The preprocessing of data is necessary for efficient representation of data and 
 
 ### Podsumowanie i opisanie wpływu danych na model
 
+
+O:
+
+Repozytorium uczenia maszynowego UCI to zbiór baz danych, teorii domen i generatorów danych, które są używane przez społeczność uczących się maszyn do analizy empirycznej algorytmów uczenia maszynowego. Archiwum zostało utworzone jako archiwum ftp w 1987 roku przez Davida Aha i innych doktorantów UC Irvine. Od tego czasu jest szeroko stosowany przez studentów, nauczycieli i naukowców na całym świecie jako główne źródło zestawów danych uczenia maszynowego. Wskazując na wpływ archiwum, cytowano go ponad 1000 razy, co czyni go jednym ze 100 najczęściej cytowanych „artykułów” we wszystkich dziedzinach informatyki. Obecna wersja strony została zaprojektowana w 2007 roku przez Arthura Asuncion i Davida Newmana, a ten projekt jest realizowany we współpracy z Rexa.infona University of Massachusetts Amherst. Z wdzięcznością doceniamy wsparcie finansowe od National Science Foundation.
+
+Wiele osób zasługuje na podziękowania za sukces repozytorium. Najważniejsi z nich to dawcy i twórcy baz danych i generatorów danych. Specjalne podziękowania należą się również byłym bibliotekarzom z repozytorium: Davidowi Aha, Patrickowi Murphy, Christopherowi Merzowi, Eamonn Keogh, Cathy Blake, Sethowi Hettichowi i Davidowi Newmanowi.
+
 ## Bibliografia
 ## Spis ilustracji
 ## Spis tabel
