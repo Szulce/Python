@@ -1,6 +1,7 @@
 import autosklearn.classification
 import sklearn.model_selection
 import sklearn.metrics
+from autosklearn.estimators import AutoSklearnClassifier
 from pandas import read_csv
 from numpy import set_printoptions
 from sklearn.model_selection import train_test_split
@@ -9,6 +10,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 
 from DataManagement import DataConversion
+import numpy as np
 
 x = None
 y = None
@@ -23,18 +25,15 @@ def data_prepare():
     y = DataConversion.data_frame[:, 13]
 
 
-import numpy as np
-
-
 def run_1():
     data_prepare()
-    x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(
+    x_train, x_test, y_train, y_test = train_test_split(
         x,
         y,
         test_size=prediction_test_size, random_state=seed)
-    auto_model = autosklearn.classification.AutoSklearnClassifier()
-    auto_model.fit(np.asanyarray(range(0, 10)).reshape(-1, 1),
-                   np.asanyarray([0, 0, 0, 0, 0, 1, 1, 1, 1, 1]).reshape(-1, 1))
+    auto_model = AutoSklearnClassifier(n_jobs=-1)
+    print(x)
+    auto_model.fit(x_train, y_train)
     # prediction = auto_model.predict(x_test)
     print("fit end")
     # DataConversion.savePrediction(prediction, 'AUTO')
@@ -51,8 +50,11 @@ def run_2():
                                      random_state=seed,
                                      max_features='log2',
                                      n_jobs=-1, verbose=1)
-    model_2 = SVC()
-    model_3 = KNeighborsClassifier()
+    model_2 = SVC(random_state=seed, verbose=1)
+    model_3 = KNeighborsClassifier(n_estimators=10000,
+                                   random_state=seed,
+                                   max_features='log2',
+                                   n_jobs=-1, verbose=1)
 
     model_1.fit(x_train, y_train)
     result_1 = model_1.score(x_test, y_test)
