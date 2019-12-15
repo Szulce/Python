@@ -57,7 +57,7 @@ html, body {
 }
 
 #fixed{
-	background:url(image0.png) no-repeat center center fixed;
+	background:url(img/image0.png) no-repeat center center fixed;
 	display: table;
 	height: 60%;
 	position: relative;
