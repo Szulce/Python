@@ -1,0 +1,18 @@
+{
+    "id": 0,
+   "age": 15,
+    "sex": 0,
+    "cp": 1,
+    "trestbps": 150,
+    "chol": 0,
+    "fbs": 1,
+    "restecg": 1,
+    "thalach": 0,
+    "exang": 2,
+    "oldpeak": 0,
+    "slope": 0,
+    "ca": 3 ,
+    "thal":"N"
+
+}
+

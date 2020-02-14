@@ -7,9 +7,13 @@ app = Flask(__name__)
 def main():
     if request.method == 'POST':
         filledForm = request.form #to chce wysaś do serwera
-        return redirect(url_for('index'))
+        return redirect(url_for('index_2'))
 
-    return render_template("index.html")
+    return render_template("index_1.html")
+
+@app.route('/json-data')
+def jsonData():
+    return 'Todo...'
 
 
 if __name__ == '__main__':
