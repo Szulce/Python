@@ -1,6 +1,6 @@
 # Harmonongram spotkań i ramowy plan realizacji
 
-**18.10 - spotkanie w sprawie postępów pracy i harmonogramu**
+**21.02 - spotkanie w sprawie postępów pracy i harmonogramu**
 
 _generowanie dokumentu, bibliografia 1 rozdziału  , moduły projektu , omówienie realizacji (implementacja algorytmów, strona prezentująca rezultaty)_
 
@@ -20,7 +20,7 @@ Moduły projektu:
  - result - moduł odpowiedzialny za prezentację wyników w postaci wy
 kresów porównujących algorytmy oraz odpowiedzi na zadany problem
 
-**08.11 - prezentacja dotychczasowych rezultatów**
+**08.3 - prezentacja dotychczasowych rezultatów**
 
 _omówienie poszczególnych modułów i dotychczasowych postępów_
 Do tego momentu wykonane :
@@ -32,7 +32,7 @@ Do tego momentu prawie ukończone:
 Następne w kolejności do wykonania :
 - implementacja KNN.
 
-**06.12 - prezentacja dotychczasowych rezultatów**
+**16.03 - prezentacja dotychczasowych rezultatów**
 
 _omówienie modułu implementującego las decyzyjny , omówienie rozdziału na temat lasów decyzyjnych_
 
@@ -46,7 +46,7 @@ Następne w kolejności do wykonania :
 - implementacja SVM,
 - rozdział dotyczący SVM.
 
-**17.01 - prezentacja dotychczasowych rezaultatów**
+**05.04 - prezentacja dotychczasowych rezaultatów**
 
 _omówienie modułu implementującego KNN , omówienie rozdziału na temat KNN_
 
@@ -62,7 +62,7 @@ Następne w kolejności do wykonania :
 - strona prezentująca rezultaty i pozwalająca na wykorzytanie programu,
 - poprawki do pisemnej części pracy.
 
-**31.01 - konsultacje dotczące treści pracy**
+**18.04 - konsultacje dotczące treści pracy**
 
 _ogólne podsumowanie_
 

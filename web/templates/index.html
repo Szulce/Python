@@ -1,3 +1,6 @@
+{% extends 'base.html'%}
+
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +57,16 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3">
-					<img src="../static/img2.png">
+  					<canvas id="myChart"></canvas>
+  					<canvas id="lineChart"></canvas>
+  					<canvas id="radarChart"></canvas>
+  					<canvas id="barChart"></canvas>
+  					<canvas id="horizontalBar"></canvas>
+  					<canvas id="polarChart"></canvas>
+  					<canvas id="pieChart"></canvas>
+  					<canvas id="doughnutChart"></canvas>
+  					<canvas id="bubbleChart"></canvas>
+  					<canvas id="scatterChart"></canvas>
 				</div>
 				<div class="col-sm-8 text-center">
 					<h2>Wypełnij formularz</h2>
@@ -892,3 +904,4 @@
 
 </body>
 </html>
+{% endblock content %}

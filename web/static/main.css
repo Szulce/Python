@@ -25,7 +25,7 @@ html, body {
 }
 
 #home {
-	background: transparent url(img/image7.png) no-repeat center center fixed;
+	background: transparent url(image7.png) no-repeat center center fixed;
 	opacity: 0.75;
 	display: table;
 	height: 100%;
@@ -57,7 +57,7 @@ html, body {
 }
 
 #fixed{
-	background:url(img/image0.png) no-repeat center center fixed;
+	background:url(image0.png) no-repeat center center fixed;
 	display: table;
 	height: 60%;
 	position: relative;
