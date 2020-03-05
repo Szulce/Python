@@ -179,7 +179,26 @@ read()
 # 3. University Hospital, Basel, Switzerland: Matthias Pfisterer, M.D.
 # 4. V.A. Medical Center, Long Beach and Cleveland Clinic Foundation:Robert Detrano, M.D., Ph.D.
 
-def savePrediction(prediction, algorithm):
+def savePredictionToJson(prediction, algorithm):
+    if algorithm == 'AUTO':
+        with open('DataManagement/results/Auto.json', 'w') as json_f:
+            json.dump(prediction, json_f)
+        json_f.close()
+    elif algorithm == 'TREE':
+        with open('DataManagement/results/Tree.json', 'w') as json_f:
+            json.dump(prediction, json_f)
+        json_f.close()
+    elif algorithm == 'SVM':
+        with open('DataManagement/results/Svm.json', 'w') as json_f:
+            json.dump(prediction, json_f)
+        json_f.close()
+    elif algorithm == 'KNN':
+        with open('DataManagement/results/Knn.json', 'w') as json_f:
+            json.dump(prediction, json_f)
+        json_f.close()
+
+
+def savePredictionWithPicke(prediction, algorithm):
     if algorithm == 'AUTO':
         with open('DataManagement/results/Auto.json', 'w') as json_f:
             json.dump(prediction, json_f)
@@ -225,3 +244,7 @@ def readPrediction(algorithm):
                 all_predictions.append(p)
         json_f.close()
     return all_predictions
+
+
+def getModel():
+    return "Model"

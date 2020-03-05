@@ -1,0 +1,830 @@
+{% extends 'base.html'%}
+
+{% block head %}
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/formSend_14.js') }}"></script>
+
+{% endblock %}
+
+{% block content %}
+<div class="padding" id="fill-in-form">
+    <div class="container">
+        <div class="row">
+            <div class="text-center">
+                <h2 class="lang" key="fill-in-form">Wypełnij formularz</h2>
+                <form name="form" id="form" method="post">
+<!--                    <div id="carouselExampleIndicators" class="carousel slide" data-wrap="false">-->
+<!--                        <ol class="carousel-indicators btn-primary">-->
+<!--                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>-->
+<!--                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>-->
+<!--                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
+<!--                        </ol>-->
+<!--                        <div class="carousel-inner" role="listbox">-->
+<!--                            <div class="carousel-item active">-->
+<!--                                <div class="d-block img-fluid" alt="First slide">-->
+                                    <div class="form-group row">
+                                        <label for="inputAge" class="col-sm-3 col-form-label lang" key="age">Wiek</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputAge" placeholder="Wiek">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputSex" class="col-sm-3 col-form-label lang" key="sex">Pleć</label>
+                                        <div class="col-sm-9">
+                                            <select class="custom-select" id="inputSex">
+                                                <option selected value="-1" key="no-select">Brak</option>
+                                                <option value="1" key="woman">Kobieta</option>
+                                                <option value="0" key="man">Mężczyzna</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputChestPain" class="col-sm-3 col-form-label lang">Typ bólu w klatce
+                                            piersiowej</label>
+                                        <div class="col-sm-9">
+                                            <select class="custom-select" id="inputChestPain">
+                                                <option selected value="-1" class="lang" key="">Brak</option>
+                                                <option value="1" class="lang">Typowa dławica piersi</option>
+                                                <option value="2" class="lang">Atypowa dławica piersi</option>
+                                                <option value="3" class="lang">Ból bezdławicowy</option>
+                                                <option value="4" class="lang">Bezobjawowy</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputBloodPressure" class="col-sm-3 col-form-label lang">Spoczynkowe
+                                            Ciśnienie
+                                            Krwi</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" id="inputBloodPressure"
+                                                   placeholder="0">
+                                        </div>
+                                        <label class="col-sm-2 col-form-label">mm Hg</label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputBloodChol" class="col-sm-3 col-form-label lang">Cholesterol w
+                                            surowicy</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" id="inputBloodChol" placeholder="0">
+                                        </div>
+                                        <label class="col-sm-2 col-form-label">mg/dli</label>
+                                    </div>
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="carousel-item">-->
+<!--                                <div class="d-block img-fluid" alt="Second slide">-->
+                                    <fieldset class="form-group">
+                                        <div class="row">
+                                            <legend class="col-form-label col-sm-3 pt-0 lang">Cukier we krwi na czczo
+                                            </legend>
+                                            <div class="col-sm-9">
+                                                <div class="form-check checbox-left">
+                                                    <input class="form-check-input" type="radio" name="gridRadiosSugar"
+                                                           value="1">
+                                                    <label class="form-check-label lang">
+                                                        Powyżej 120 mg/dl
+                                                    </label>
+                                                </div>
+                                                <div class="form-check checbox-left">
+                                                    <input class="form-check-input" type="radio" name="gridRadiosSugar"
+                                                           value="0">
+                                                    <label class="form-check-label lang">
+                                                        Poniżej bądź równe 120 mg/dl
+                                                    </label>
+                                                </div>
+                                                <div class="form-check checbox-left">
+                                                    <input class="form-check-input" type="radio" name="gridRadiosSugar"
+                                                           value="-1">
+                                                    <label class="form-check-label lang">
+                                                        Brak pomiaru
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <div class="row">
+                                            <legend class="col-form-label col-sm-3 pt-0 lang">Spoczynkowe wyniki
+                                                elektrokardiograficzne
+                                            </legend>
+                                            <div class="col-sm-9">
+                                                <div class="form-check checbox-left">
+                                                    <input class="form-check-input" type="radio"
+                                                           name="gridRadiosRestEcg"
+                                                           id="gridRadiosRestEcg1" value="0">
+                                                    <label class="form-check-label lang"for="gridRadiosRestEcg1">
+                                                        Normalne
+                                                    </label>
+                                                </div>
+                                                <div class="form-check checbox-left">
+                                                    <input class="form-check-input" type="radio"
+                                                           name="gridRadiosRestEcg"
+                                                           id="gridRadiosRestEcg2" value="1">
+                                                    <label class="form-check-label lang" for="gridRadiosRestEcg2">
+                                                        Z nieprawidłowościami fali ST-T (odwrócenie fali T i / lub
+                                                        podniesienie lub
+                                                        obniżenie ST> 0,05 mV)
+                                                    </label>
+                                                </div>
+                                                <div class="form-check checbox-left">
+                                                    <input class="form-check-input" type="radio"
+                                                           name="gridRadiosRestEcg"
+                                                           id="gridRadiosRestEcg3" value="2">
+                                                    <label class="form-check-label lang" for="gridRadiosRestEcg3">
+                                                        Wykazujący prawdopodobny lub wyraźny przerost lewej komory serca
+                                                        według
+                                                        kryteriów Estesa
+                                                    </label>
+                                                </div>
+                                                <div class="form-check checbox-left">
+                                                    <input class="form-check-input" type="radio"
+                                                           name="gridRadiosRestEcg"
+                                                           id="gridRadiosRestEcg4" value="-1">
+                                                    <label class="form-check-label lang" for="gridRadiosRestEcg4">
+                                                        Brak pomiaru
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <div class="form-group row">
+                                        <label for="inputThall" class="col-sm-5 col-form-label lang">Status serca pobrany z
+                                            testu
+                                            Thallium </label>
+                                        <div class="col-sm-4">
+                                            <select class="custom-select" id="inputThall" name="inputThall">
+                                                <option selected value="-1" class="lang">Brak pomiaru</option>
+                                                <option value="N" class="lang">Normalny</option>
+                                                <option value="FD" class="lang">Wada stała</option>
+                                                <option value="RD" class="lang">Wada odwracalna</option>
+                                            </select>
+                                        </div>
+                                    </div>
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="carousel-item">-->
+<!--                                <div class="d-block img-fluid" alt="Third slide">-->
+                                    <div class="form-group row">
+                                        <label for="inputHeartRate" class="col-sm-3 col-form-label lang">Maksymalnie
+                                            osięgnięte tętno</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" id="inputHeartRate"
+                                                   name="inputHeartRate"
+                                                   placeholder="0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-4 lang">Dławica piersiowa wywołana wysiłkiem fizycznym</div>
+                                        <div class="col-sm-8">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio"
+                                                       name="gridCheckInducedAngina"
+                                                       id="gridCheckInducedAngina2" value="1">
+                                                <label class="form-check-label lang" for="gridCheckInducedAngina2">
+                                                    Tak
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio"
+                                                       name="gridCheckInducedAngina"
+                                                       id="gridCheckInducedAngina3" value="0">
+                                                <label class="form-check-label lang" for="gridCheckInducedAngina3">
+                                                    Nie
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio"
+                                                       name="gridCheckInducedAngina"
+                                                       id="gridCheckInducedAngina1" value="-1">
+                                                <label class="form-check-label lang" for="gridCheckInducedAngina1">
+                                                    Brak pomiaru
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card bg-light mb-3">
+                                        <div class="card-header lang">Odcinek ST</div>
+                                        <div class="card-body">
+                                            <div class="form-group row">
+                                                <div class="col-sm-4"
+                                                     title="Określenie fragmentu zapisu elektrokardiograficznego">
+                                                    Depresja wywołana ćwiczeniami w stosunku do odpoczynku
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio"
+                                                               name="gridCheckOldpeek"
+                                                               id="gridCheckOldpeek1" value="1">
+                                                        <label class="form-check-label" for="gridCheckOldpeek1">
+                                                            Tak
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio"
+                                                               name="gridCheckOldpeek"
+                                                               id="gridCheckOldpeek2" value="0">
+                                                        <label class="form-check-label lang"for="gridCheckOldpeek2">
+                                                            Nie
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio"
+                                                               name="gridCheckOldpeek"
+                                                               id="gridCheckOldpeek3" value="-1">
+                                                        <label class="form-check-label lang" for="gridCheckOldpeek3">
+                                                            Brak pomiaru
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-4 lang"
+                                                     title="Określenie fragmentu zapisu elektrokardiograficznego">
+                                                    Nachylenie szczytu odcinka ST
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="gridSlope"
+                                                               id="gridSlope1" value="1">
+                                                        <label class="form-check-label lang" for="gridSlope1">
+                                                            Wznoszący
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="gridSlope"
+                                                               id="gridSlope2" value="2">
+                                                        <label class="form-check-label lang" for="gridSlope2">
+                                                            Płaski
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="gridSlope"
+                                                               id="gridSlope3" value="3">
+                                                        <label class="form-check-label lang" for="gridSlope3">
+                                                            Opadający
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="gridSlope4"
+                                                               id="gridSlope4" value="-1">
+                                                        <label class="form-check-label lang" for="gridSlope4">
+                                                            Brak pomiaru
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputFluo" class="col-sm-5 col-form-label lang">Liczba głównych naczyń
+                                            zabarwionych
+                                            metodą Fluoroskopii</label>
+                                        <div class="col-sm-4">
+                                            <select class="custom-select" id="inputFluo" name="inputFluo">
+                                                <option selected value="-1" class="lang">Brak pomiaru</option>
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"-->
+<!--                       data-slide="prev">-->
+<!--                        <span class="btn btn-primary carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--                        <span class="btn btn-primary  sr-only">Previous</span>-->
+<!--                    </a>-->
+<!--                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"-->
+<!--                       data-slide="next">-->
+<!--                        <span class="btn btn-primary carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--                        <span class="btn btn-primary  sr-only">Next</span>-->
+<!--                    </a>-->
+
+                    <button data-toggle="collapse" data-target="#extended-formula" type="button"
+                            class="btn btn-primary btn-align lang">Rozszerzony formularz
+                    </button>
+
+                    <div id="extended-formula" class="collapse">
+                        <div class="card bg-light mb-3">
+                            <div class="card-header lang">Ból w klatce piersiowej</div>
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <div class="col-sm-4 lang">Lokalizacja bólu w klatce piersiowej</div>
+                                    <div class="col-sm-8">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridPainLoc"
+                                                   id="gridpainloc1" value="1">
+                                            <label class="form-check-label lang"for="gridpainloc1">
+                                                Zastępczy
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridPainLoc"
+                                                   id="gridpainloc2" value="0">
+                                            <label class="form-check-label lang" for="gridpainloc2">
+                                                Inny
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridPainLoc"
+                                                   id="gridpainloc3" value="-1">
+                                            <label class="form-check-label lang" for="gridpainloc3">
+                                                Brak pomiaru
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4 lang">Ból spowodowany wysiłkiem</div>
+                                    <div class="col-sm-8">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridPainEx"
+                                                   id="gridPainEx1" value="1">
+                                            <label class="form-check-label lang" for="gridPainEx1">
+                                                Tak
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridPainEx"
+                                                   id="gridPainEx2" value="0">
+                                            <label class="form-check-label lang" for="gridPainEx2">
+                                                Nie
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridPainEx"
+                                                   id="gridPainEx3" value="-1">
+                                            <label class="form-check-label lang" for="gridPainEx3">
+                                                Brak danych
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-4 lang">Ból ustaje po odpoczynku</div>
+                                    <div class="col-sm-8">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridPainRelRest"
+                                                   id="gridPainRelRest1" value="1">
+                                            <label class="form-check-label lang" for="gridPainRelRest1">
+                                                Tak
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridPainRelRest"
+                                                   id="gridPainRelRest2" value="0">
+                                            <label class="form-check-label lang" for="gridPainRelRest2">
+                                                Nie
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridPainRelRest"
+                                                   id="gridPainRelRest3" value="-1">
+                                            <label class="form-check-label lang"for="gridPainRelRest3">
+                                                Brak danych
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card bg-light mb-3">
+                            <div class="card-header lang">Nałóg Nikotynowy</div>
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="inputSmoke" class="col-sm-5 col-form-label lang">Palacz </label>
+                                    <div class="col-sm-4">
+                                        <select class="custom-select" id="inputSmoke" name="inputSmoke">
+                                            <option selected value="-1" class="lang">Brak danych</option>
+                                            <option value="1" class="lang">Tak</option>
+                                            <option value="0" class="lang">Nie</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputCigs" class="col-sm-5 col-form-label lang">Papierosów dziennie</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="inputCigs"  name="inputCigs"
+                                               placeholder="0">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputCigsYears" class="col-sm-5 col-form-label lang">Liczba lat jako
+                                        palacz</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="inputCigsYears"
+                                               name="inputCigsYears" placeholder="0">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-4 lang">Historia cukrzycy</div>
+                            <div class="col-sm-8">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gridDiab" id="gridDiab1"
+                                           value="1">
+                                    <label class="form-check-label lang" for="gridDiab1">
+                                        Tak
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gridDiab" id="gridDiab2"
+                                           value="0">
+                                    <label class="form-check-label lang" for="gridDiab2">
+                                        Brak historii
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gridDiab" id="gridDiab3"
+                                           value="-1">
+                                    <label class="form-check-label lang" for="gridDiab3">
+                                        Brak danych
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-4 lang" >Wywiad rodzinny w kierunku choroby wieńcowej</div>
+                            <div class="col-sm-8">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gridFamDiab" id="gridFamDiab1"
+                                           value="1">
+                                    <label class="form-check-label lang" for="gridFamDiab1">
+                                        Tak
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gridFamDiab" id="gridFamDiab2"
+                                           value="0">
+                                    <label class="form-check-label lang" for="gridFamDiab2">
+                                        Brak historii
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gridFamDiab" id="gridFamDiab3"
+                                           value="-1">
+                                    <label class="form-check-label lang" for="gridFamDiab3">
+                                        Brak danych
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-light mb-4">
+                            <div class="card-header lang">Badanie EKG</div>
+                            <div class="card-body">
+
+                                <div class="form-group row">
+                                    <div class="col-sm-5">Naparstnica stosowana podczas wysiłku EKG</div>
+                                    <div class="col-sm-7">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridDig" id="griddig1"
+                                                   value="1">
+                                            <label class="form-check-label lang" for="griddig1">
+                                                Tak
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridDig" id="griddig0"
+                                                   value="0">
+                                            <label class="form-check-label lang" for="griddig0">
+                                                Nie
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridDig" id="griddig2"
+                                                   value="-1">
+                                            <label class="form-check-label lang" for="griddig2">
+                                                Brak danych
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-5 lang">Beta-bloker stosowany podczas EKG wysiłkowego</div>
+                                    <div class="col-sm-7">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridProp" id="gridprop1"
+                                                   value="1">
+                                            <label class="form-check-label lang" for="gridprop1">
+                                                Tak
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridProp" id="gridprop0"
+                                                   value="0">
+                                            <label class="form-check-label lang" for="gridprop0">
+                                                Nie
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridProp" id="gridprop2"
+                                                   value="-1">
+                                            <label class="form-check-label lang" for="gridprop2">
+                                                Brak danych
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-5 lang">Azotany wykorzystywane podczas wysiłku EKG</div>
+                                    <div class="col-sm-7">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridNitr" id="gridnitr1"
+                                                   value="1">
+                                            <label class="form-check-label lang" for="gridnitr1">
+                                                Tak
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridNitr" id="gridnitr0"
+                                                   value="0">
+                                            <label class="form-check-label lang" for="gridnitr0">
+                                                Nie
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridNitr" id="gridnitr2"
+                                                   value="-1">
+                                            <label class="form-check-label lang" for="gridnitr2">
+                                                Brak danych
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-5 lang">Bloker kanału wapniowego stosowany podczas wysiłku EKG</div>
+                                    <div class="col-sm-7">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridPro" id="gridpro1"
+                                                   value="1">
+                                            <label class="form-check-label lang" for="gridpro1">
+                                                Tak
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridPro" id="gridpro0"
+                                                   value="0">
+                                            <label class="form-check-label lang" for="gridpro0">
+                                                Nie
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridPro" id="gridpro2"
+                                                   value="-1">
+                                            <label class="form-check-label lang" for="gridpro2">
+                                                Brak danych
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-5 lang">Lek moczopędny stosowany podczas EKG</div>
+                                    <div class="col-sm-7">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridDiuretic"
+                                                   id="griddiuretic1" value="1">
+                                            <label class="form-check-label lang" for="griddiuretic1">
+                                                Tak
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridDiuretic"
+                                                   id="griddiuretic0" value="0">
+                                            <label class="form-check-label lang" for="griddiuretic0">
+                                                Nie
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="gridDiuretic"
+                                                   id="griddiuretic2" value="-1">
+                                            <label class="form-check-label lang" for="griddiuretic2">
+                                                Brak danych
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputProto" class="col-sm-5 col-form-label lang">Protokół ćwiczeń</label>
+                                    <div class="col-sm-4">
+                                        <select class="custom-select" id="inputProto">
+                                            <option selected value="-1" class="lang">Brak pomiaru</option>
+                                            <option value="1">Bruce</option>
+                                            <option value="2">Kottus</option>
+                                            <option value="3">McHenry</option>
+                                            <option value="4" class="lang" >szybki Balke</option>
+                                            <option value="5">Balke</option>
+                                            <option value="6">Noughton</option>
+                                            <option value="7" class="lang">rower 150 kpa min / min</option>
+                                            <option value="8"class="lang">rower 125 kpa min / min</option>
+                                            <option value="9"class="lang">rower 100 kpa min/min</option>
+                                            <option value="10" class="lang">rower 75 kpa min/min</option>
+                                            <option value="11"class="lang">rower 50 kpa min / min</option>
+                                            <option value="12" class="lang">ramię ergometru???ergometr na ramiona???</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputThaldur" class="col-sm-5 col-form-label lang">Czas trwania testu
+                                        wysiłkowego </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="inputThaldur" placeholder="0">
+                                    </div>
+                                    <label for="inputThaldur" class="col-sm-2 col-form-label">min</label>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputThalTime" class="col-sm-5 col-form-label lang">Czas w którym odnotowano
+                                        depresję pomiaru ST </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="inputThalTime" placeholder="0">
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputMets" class="col-sm-5 col-form-label lang">Osiągnięty dystans </label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="inputMets" placeholder="0">
+                                    </div>
+                                    <label for="inputMets" class="col-sm-2 col-form-label">m</label>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="inputThalRest" class="col-sm-5 col-form-label lang">Tętno spoczynkowe</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="inputThalRest" placeholder="0">
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputTpeakBps" class="col-sm-7 col-form-label lang">Szczytowe ciśnienie
+                                        tętnicze (pierwsza z 2 części)</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="inputTpeakBps" placeholder="0">
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputTpeakBpd" class="col-sm-7 col-form-label lang">Szczytowe ciśnienie
+                                        ćwiczeń (druga z 2 części)</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="inputTpeakBpd" placeholder="0">
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputTrestBpd" class="col-sm-7 col-form-label lang">Spoczynkowe ciśnienie
+                                        krwi</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="inputTrestBpd" placeholder="0">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4">Xhypo</div>
+                                <div class="col-sm-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gridXhypo" id="gridxhypo1"
+                                               value="1">
+                                        <label class="form-check-label lang" for="gridxhypo1">
+                                            Tak
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gridXhypo" id="gridxhypo2"
+                                               value="0">
+                                        <label class="form-check-label lang" for="gridxhypo2">
+                                            Nie
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gridXhypo" id="gridxhypo3"
+                                               value="-1">
+                                        <label class="form-check-label lang" for="gridxhypo3">
+                                            Brak danych
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="inputRldv5" class="col-sm-7 col-form-label lang">Wysokość w spoczynku</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputRldv5" placeholder="0">
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputRldv5e"  class="col-sm-7 col-form-label lang">Wysokość w szczycie
+                                    ćwiczeń </label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputRldv5e" placeholder="0">
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputRestef" class="col-sm-7 col-form-label lang">Reszta frakcji wyrzutowej
+                                    raidonuclid (sp)</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputRestef" placeholder="0">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="inputRestwm" class="col-sm-7 col-form-label lang">Nieprawidłowość ruchu ściany
+                                    spoczynkowej (sp?)</label>
+                                <div class="col-sm-4">
+                                    <select class="custom-select" id="inputRestwm">
+                                        <option selected value="-1" class="lang">Brak pomiaru</option>
+                                        <option value="0" class="lang">Brak</option>
+                                        <option value="1" class="lang">Łagodny lub umiarkowany</option>
+                                        <option value="2" class="lang">Umiarkowany lub ciężki</option>
+                                        <option value="3" class="lang">Akineza lub dyskmem</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputExeref" class="col-sm-7 col-form-label lang">Ćwiczenie frakcja wyrzutowa
+                                    radinalid (sp?)</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputExeref" placeholder="0">
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputExerwm" class="col-sm-7 col-form-label lang">Ruch ściany ruchowej
+                                    (sp?)</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" id="inputExerwm" placeholder="0">
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <a href=# id=process_form style="decoration:none;">
+                                <button id="submitButton" name="submitButton"
+                                        class=" btn btn-outline-primary btn-lg btn-block lang">Dokonaj
+                                    predykcji
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="padding" id="positive-result" style="display:none;">
+    <div class="jumbotron alert-success">
+        <h1 class="display-3 lang">Wynik pozytywny</h1>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%"
+                 aria-valuenow="4" aria-valuemin="0" aria-valuemax="5"></div>
+        </div>
+        <p class="lead lang">Predykcja dla prowadzonych danych wynosi :<strong>
+            <div id="result-positive-value"></div>
+        </strong></p>
+        <hr class="my-4">
+        <p class="lang">Wyniki sklasyfikowane jako <i>1, 2, 3, 4</i> oznaczają predykcję <u>o braku występowania</u> chorób serca u
+            pacjenta</p>
+        <p class="lead">
+            <a class="btn-warning  btn lang" href="#" role="button" onclick="window.location.reload();">Powrót</a>
+        </p>
+    </div>
+</div>
+
+<div class="padding" id="negative-result" style="display:none;">
+    <div class="jumbotron alert-danger">
+        <h1 class="display-3 lang">Wynik negatywny</h1>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%"
+                 aria-valuenow="4" aria-valuemin="0" aria-valuemax="5"></div>
+        </div>
+        <p class="lead lang">Predykcja dla prowadzonych danych wynosi :<strong>
+            <div id="result-negative-value"></div>
+        </strong></p>
+        <hr class="my-4">
+        <p class="lang">Wyniki sklasyfikowane jako <i>0</i> oznaczają predykcję <u>o występowaniu</u> chorób serca u pacjenata</p>
+        <p class="lead">
+            <a class="btn-warning  btn" href="#" role="button" onclick="window.location.reload();">Powrót</a>
+        </p>
+    </div>
+</div>
+
+
+{% endblock content %}
