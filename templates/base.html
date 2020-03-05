@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>Wykrywanie występowanie chorób serca, wykorzystanie uczenia maszynowego nadzorowanego</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -9,7 +10,7 @@
     <meta name="viewport" content="with=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../static/main.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -20,7 +21,7 @@
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- jQuery Popper Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -30,14 +31,30 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
-	{% block head %}{% endblock %}
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Hind+Siliguri|Montserrat&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/translate_1.js') }}"></script>
+    {% block head %}{% endblock %}
 </head>
+
 <body>
 <nav class="navbar navbar-default navbar-fixed-top navbar-dark navbar-left" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
                 <img src="../static/image1.png" class="icon-small">
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-primary active">
+                        <input type="none" name="options" id="english" autocomplete="off" checked class="translate"> Eng
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="button" name="options" id="polski" autocomplete="off" class="translate"> Pl
+                    </label>
+                </div>
             </a>
             <!-- <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse-main">
                  <span class="navbar-toggler-icon"></span>
@@ -50,9 +67,9 @@
                 <li><a href="#">Formularz</a></li>
                 <li><a href="#">Rezultat</a></li>
                 <li><a href="#">Szszegóły</a></li>
-            </ul>
-        </div> -->
+            </ul>-->
         </div>
+    </div>
 </nav>
 
 {% block content %}{% endblock %}
@@ -60,12 +77,12 @@
 <footer class="container-fluid text-center">
     <div class="row">
         <div class="col-sm-4">
-            <h3>kontakt</h3>
+            <h3 class="lang" key="contact">kontakt</h3>
             <br>
-            <h4>Dane kontaktowe</h4>
+            <h4 class="lang" key="conctact-data">Dane kontaktowe</h4>
         </div>
         <div class="col-sm-4">
-            <h3>ZNAJDZ NA</h3>
+            <h3 class="lang" kye="find">ZNAJDZ NA</h3>
             <a href="#" class="fa fa-facebook"></a>
             <a href="#" class="fa fa-twitter"></a>
             <a href="#" class="fa fa-google"></a>
@@ -73,7 +90,7 @@
             <a href="#" class="fa fa-youtube"></a>
         </div>
         <div class="col-sm-4">
-            <img src="/static/image1.png" class="icon">
+            <img src="/static/image2.png" class="icon">
         </div>
     </div>
 </footer>
