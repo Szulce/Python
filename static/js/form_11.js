@@ -1,5 +1,33 @@
+
 	$(function() {
 			  $('a#process_form').bind('click', function() {
+
+                jQuery.validator.setDefaults({
+                  highlight: function(element) {
+                jQuery(element).closest('.form-control').addClass('is-invalid');
+                },
+                  unhighlight: function(element) {
+                jQuery(element).closest('.form-control').removeClass('is-invalid');
+                },
+                errorElement: 'span',
+                errorClass: 'invalid-feedback lang',
+                 errorPlacement: function(error, element) {
+//                if(element.parent('.input-group').length) {
+//                    error.insertAfter(element.parent());
+//                } else {
+//                    error.insertAfter(element);
+//                }
+                 }
+
+                    });
+
+
+
+                var validator = $( "#form" ).validate();
+                var isValid=validator.form();
+
+                if(isValid){
+
 				$.getJSON('/submit_action',  {
                     id : 1,//todo
                     age : $('#inputAge').val(),
@@ -61,6 +89,7 @@
 				});
 			$("html").animate({ scrollTop: 0 }, "slow");
 				return false;
+				}
 			  });
 
 			});
@@ -74,19 +103,4 @@ function computePNCADEN(gridValuesArray){
     });
     return sum;
 };
-
-$( "#form" ).validate({
-rules:{
-  inputAge: {
-      required: true,
-       minlength: 2
-    }
-  }
-  messages:{
-    inputAge: {
-      required: "We need your email address to contact you",
-      minlength: jQuery.validator.format("At least {0} characters required!")
-     }
-  }
-});
 

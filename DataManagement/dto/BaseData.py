@@ -17,6 +17,12 @@ class BaseData:
         self.ca = form.get('ca')
         self.thal = form.get('thal')
 
+        # for key, value in form.items():
+        #     setattr(self, key, value)
+        #
+        # for key in self.keys():
+        #     getattr(self, key)
+
     def toString(self):
         """"Prints all class attributes values"""
         print(self)
