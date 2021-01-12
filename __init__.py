@@ -10,12 +10,12 @@ app = Flask(__name__)
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('/pageNotFound.html', error='Page Not Found 404'), 404
+    return render_template('/error.html', error='Page Not Found 404'), 404
 
 
 @app.errorhandler(400)
 def page_not_found(error):
-    return render_template('/pageNotFound.html', error='Bad Request 400'), 400
+    return render_template('/error.html', error='Bad Request 400'), 400
 
 
 @app.route("/", methods=['POST', 'GET'])
@@ -33,7 +33,7 @@ def submitAction():
     # return render_template("/answerPage.html", answer=filledForm)
     # render_template("/answerPage.html", answer=filledForm)
     print(result)
-    return "45"
+    return "55"
 
 
 @app.route('/jsonDataSend', methods=['POST'])

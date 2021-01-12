@@ -37,7 +37,7 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Bungee|Hind+Siliguri|Montserrat&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="{{ url_for('static', filename='js/translate_1.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/translate_26.js') }}"></script>
     {% block head %}{% endblock %}
 </head>
 
@@ -48,12 +48,8 @@
             <a class="navbar-brand" href="#">
                 <img src="../static/image1.png" class="icon-small">
                 <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-primary active">
-                        <input type="none" name="options" id="english" autocomplete="off" checked class="translate"> Eng
-                    </label>
-                    <label class="btn btn-primary">
-                        <input type="button" name="options" id="polski" autocomplete="off" class="translate"> Pl
-                    </label>
+                    <button  name="options" id="english" autocomplete="off" checked class="translate btn btn-primary active"> ENG</button>
+                    <button  name="options" id="polski" autocomplete="off" class="translate btn btn-primary"> PL</button>
                 </div>
             </a>
             <!-- <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse-main">
