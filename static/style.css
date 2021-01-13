@@ -5,6 +5,10 @@ html, body {
     //background:url(background.jpg);
     //font-family: 'Montserrat', sans-serif;
     //font-family: 'Hind Siliguri', sans-serif
+
+    a:hover {
+	text-decoration: none!important;
+}
 }
 
 .navbar {
@@ -77,9 +81,17 @@ footer {
 }
 
 .fa {
-	padding: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top:2px;
+	padding-bottom:2px;
 	font-size: 25px;
 	color: #000000;
+}
+
+.linked:hover {
+	text-decoration: none!important;
+	text-color: #e25822;
 }
 
 .fa:hover {
@@ -91,8 +103,20 @@ footer {
 	max-width: 200px;
 }
 
+.icon-doctor{
+	padding-top: 20px;
+}
+
 .icon-small {
 	max-height: 50px;
+}
+
+.icon::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
 }
 
 @media (max-width: 768px){

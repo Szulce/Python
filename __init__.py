@@ -20,7 +20,9 @@ def page_not_found(error):
 
 @app.route("/", methods=['POST', 'GET'])
 def main():
-    return render_template("/form.html")
+    # return render_template("/form.html")
+    return render_template("/index.html")
+
 
 
 @app.route('/submit_action', methods=['GET'])
