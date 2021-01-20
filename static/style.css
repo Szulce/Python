@@ -48,6 +48,11 @@ html, body {
 	text-align: center;
 	vertical-align:middle;
 	color: #000000;
+	 text-shadow: -4px 1px 4px  #f8f9fa, 5px -1px 6px #f8f9fa;
+}
+
+.non-blurred{
+    text-shadow: none;
 }
 
 .landing-text h1{

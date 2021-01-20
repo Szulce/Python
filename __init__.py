@@ -24,6 +24,20 @@ def main():
     return render_template("/index.html")
 
 
+@app.route("/form", methods=['POST', 'GET'])
+def fill_in():
+    return render_template("/form.html")
+
+
+@app.route("/algorithm", methods=['POST', 'GET'])
+def algorithm():
+    return render_template("/algorithm.html")
+
+
+@app.route("/statistic", methods=['POST', 'GET'])
+def statistic():
+    return render_template("/statistic.html")
+
 
 @app.route('/submit_action', methods=['GET'])
 def submitAction():
