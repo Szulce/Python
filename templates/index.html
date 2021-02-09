@@ -21,8 +21,9 @@
                 <img src="/static/img5.png" class="img-responsive">
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <h4><a href=form class="btn btn-info btn-lg non-blurred">Sprawdz statystyki</a></h4>
-                <p> Dane statystyczne na temat danych testowych oraz uzyskanych wyników, zawierają rozłożenie danych dla:</p>
+                <h4><a href=statistic class="btn btn-info btn-lg non-blurred">Sprawdz statystyki</a></h4>
+                <p> Dane statystyczne na temat danych testowych oraz uzyskanych wyników, zawierają rozłożenie danych
+                    dla:</p>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">cecha1</li>
                     <li class="list-group-item">cecha2</li>
@@ -37,19 +38,45 @@
 
 
 <div id="fixed">
-
 </div>
 
 <div class="padding">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <h4>OPIS</h4>
-                <p> work in progress</p>
-                <p>work still in progress</p>
+                <h4><a href=algorithm class="btn btn-info btn-lg non-blurred">Algorytmy</a></h4>
+                <h5>Poznaj modele wykorzystane do wykonania predykcji</h5>
+                <p>oraz ich procentową dokładność wykorzystaną w procesie</p>
+
             </div>
             <div class="col-sm-6">
-                <img src="/static/img5.png">
+                <div id="carouselAlgorithms" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselAlgorithms" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselAlgorithms" data-slide-to="1"></li>
+                        <li data-target="#carouselAlgorithms" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href=algorithmKNN> <img class="d-block w-100" src="/static/KNN.png" alt="First slide"></a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href=algorithmSVM> <img class="d-block w-100" src="/static/SVM.png" alt="Second slide">  </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href=algorithmRF><img class="d-block w-100" src="/static/RF.png" alt="Third slide"></a>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselAlgorithms" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselAlgorithms" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
             </div>
 
         </div>
