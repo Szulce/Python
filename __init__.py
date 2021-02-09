@@ -31,7 +31,22 @@ def fill_in():
 
 @app.route("/algorithm", methods=['POST', 'GET'])
 def algorithm():
-    return render_template("/algorithm.html")
+    return render_template("/algorithm.html", model='ALL')
+
+
+@app.route("/algorithmKNN", methods=['POST', 'GET'])
+def algorithm():
+    return render_template("/algorithm.html", model='KNN')
+
+
+@app.route("/algorithmSVM", methods=['POST', 'GET'])
+def algorithm():
+    return render_template("/algorithm.html", model='SVM')
+
+
+@app.route("/algorithmRF", methods=['POST', 'GET'])
+def algorithm():
+    return render_template("/algorithm.html", model='RF')
 
 
 @app.route("/statistic", methods=['POST', 'GET'])
