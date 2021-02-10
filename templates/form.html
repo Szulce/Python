@@ -14,26 +14,17 @@
             <div class="text-center">
                 <h2 class="lang" key="fill-in-form">Wypełnij formularz</h2>
                 <form name="form" id="form" method="post" class="needs-validation" novalidate>
-                    <!--                    <div id="carouselExampleIndicators" class="carousel slide" data-wrap="false">-->
-                    <!--                        <ol class="carousel-indicators btn-primary">-->
-                    <!--                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>-->
-                    <!--                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>-->
-                    <!--                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
-                    <!--                        </ol>-->
-                    <!--                        <div class="carousel-inner" role="listbox">-->
-                    <!--                            <div class="carousel-item active">-->
-                    <!--                                <div class="d-block img-fluid" alt="First slide">-->
                     <div class="form-group row">
                         <label for="inputAge" class="col-sm-3 col-form-label lang " key="age">Wiek</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control " id="inputAge" placeholder="1" min="1" max="200"
                                    number="true">
-                           <div class="invalid-feedback lang" key="field-validation">Wprowadź poprawną wartość.
+                            <div class="invalid-feedback lang" key="field-validation">Wprowadź poprawną wartość.
                             </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputSex" class="col-sm-3 col-form-label lang" key="sex">Pleć</label>
+                        <label for="inputSex" class="col-sm-3 col-form-label lang" key="sex">Płeć</label>
                         <div class="col-sm-9">
                             <select class="custom-select" id="inputSex">
                                 <option selected value="-1" class="lang" key="no-select">Brak</option>
@@ -64,10 +55,14 @@
                             <input type="text" class="form-control" id="inputBloodPressure" min="0" max="1000000000"
                                    digits="true"
                                    placeholder="0">
-                           <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                            <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
                             </div>
                         </div>
                         <label class="col-sm-2 col-form-label">mm Hg</label>
+                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip"
+                                data-placement="right" title="Nadciśnienie tętnicze to wartości ≥140/90 mmHg">
+                            ?
+                        </button>
                     </div>
                     <div class="form-group row">
                         <label for="inputBloodChol" class="col-sm-3 col-form-label lang" key="blood-chol">Cholesterol w
@@ -75,18 +70,18 @@
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="inputBloodChol" placeholder="0" min="0"
                                    max="1000000000" digits="true">
-                           <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                            <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
                             </div>
                         </div>
                         <div class="invalid-feedback">
                             Please provide a valid value.
                         </div>
-                        <label class="col-sm-2 col-form-label">mg/dli</label>
+                        <label class="col-sm-2 col-form-label">mg/dl</label>
+                        <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip"
+                                data-placement="right" title="Należy wykonać badanie lipidogramu, norma to poziom cholesterolu całkowitego mniej niż 190mg/dl (5 mmol/l) ">
+                            ?
+                        </button>
                     </div>
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                            <div class="carousel-item">-->
-                    <!--                                <div class="d-block img-fluid" alt="Second slide">-->
                     <fieldset class="form-group">
                         <div class="row">
                             <legend class="col-form-label col-sm-3 pt-0 lang" key="sugar">Cukier we krwi na czczo
@@ -174,10 +169,6 @@
                             </select>
                         </div>
                     </div>
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                            <div class="carousel-item">-->
-                    <!--                                <div class="d-block img-fluid" alt="Third slide">-->
                     <div class="form-group row">
                         <label for="inputHeartRate" class="col-sm-3 col-form-label lang" key="heart-rate">Maksymalnie
                             osięgnięte tętno</label>
@@ -186,7 +177,7 @@
                                    digits="true"
                                    name="inputHeartRate"
                                    placeholder="0">
-                           <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                            <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
                             </div>
                         </div>
                     </div>
@@ -307,25 +298,11 @@
                             </select>
                         </div>
                     </div>
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!--                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"-->
-                    <!--                       data-slide="prev">-->
-                    <!--                        <span class="btn btn-primary carousel-control-prev-icon" aria-hidden="true"></span>-->
-                    <!--                        <span class="btn btn-primary  sr-only">Previous</span>-->
-                    <!--                    </a>-->
-                    <!--                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"-->
-                    <!--                       data-slide="next">-->
-                    <!--                        <span class="btn btn-primary carousel-control-next-icon" aria-hidden="true"></span>-->
-                    <!--                        <span class="btn btn-primary  sr-only">Next</span>-->
-                    <!--                    </a>-->
 
                     <button data-toggle="collapse" data-target="#extended-formula" type="button"
                             class="btn btn-primary btn-align lang" key="extended-formula">Rozszerzony formularz
                     </button>
-
+                    </br>
                     <div id="extended-formula" class="collapse">
                         <div class="card bg-light mb-3">
                             <div class="card-header lang" key="chest-pain">Ból w klatce piersiowej</div>
@@ -437,8 +414,8 @@
                                         <input type="text" class="form-control" id="inputCigs" name="inputCigs" min="0"
                                                max="1000000000" digits="true"
                                                placeholder="0">
-                                       <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
-                            </div>
+                                        <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -449,8 +426,8 @@
                                         <input type="text" class="form-control" id="inputCigsYears" min="1"
                                                max="1000000000" digits="true"
                                                name="inputCigsYears" placeholder="0">
-                                       <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
-                            </div>
+                                        <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -685,8 +662,8 @@
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" id="inputThaldur" placeholder="0"
                                                min="0" max="1000000000" digits="true">
-                                       <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
-                            </div>
+                                        <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                                        </div>
                                     </div>
                                     <label for="inputThaldur" class="col-sm-2 col-form-label">min</label>
                                 </div>
@@ -697,8 +674,8 @@
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" id="inputThalTime" placeholder="0"
                                                min="0" max="1000000000" digits="true">
-                                       <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
-                            </div>
+                                        <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                                        </div>
                                     </div>
 
                                 </div>
@@ -708,8 +685,8 @@
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" id="inputMets" placeholder="0" min="0"
                                                max="1000000000" digits="true">
-                                       <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
-                            </div>
+                                        <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                                        </div>
                                     </div>
                                     <label for="inputMets" class="col-sm-2 col-form-label">m</label>
                                 </div>
@@ -720,8 +697,8 @@
                                     <div class="col-sm-3">
                                         <input type="text" class="form-control" id="inputThalRest" placeholder="0"
                                                min="0" max="1000000000" digits="true">
-                                       <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
-                            </div>
+                                        <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                                        </div>
                                     </div>
 
                                 </div>
@@ -732,8 +709,8 @@
                                     <div class="col-sm-2">
                                         <input type="text" class="form-control" id="inputTpeakBps" placeholder="0"
                                                min="0" max="1000000000" digits="true">
-                                       <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
-                            </div>
+                                        <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                                        </div>
                                     </div>
 
                                 </div>
@@ -744,8 +721,8 @@
                                     <div class="col-sm-2">
                                         <input type="text" class="form-control" id="inputTpeakBpd" placeholder="0"
                                                min="0" max="1000000000" digits="true">
-                                       <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
-                            </div>
+                                        <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                                        </div>
                                     </div>
 
                                 </div>
@@ -756,15 +733,15 @@
                                     <div class="col-sm-2">
                                         <input type="text" class="form-control" id="inputTrestBpd" placeholder="0"
                                                min="0" max="1000000000" digits="true">
-                                       <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
-                            </div>
+                                        <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                                        </div>
                                     </div>
 
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-sm-4">Xhypo</div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-7">Niedociśnienie wywołane wysiłkiem fizycznym</div>
+                                <div class="col-sm-3">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="gridXhypo" id="gridxhypo1"
                                                value="1">
@@ -795,8 +772,8 @@
                                 <div class="col-sm-2">
                                     <input type="text" class="form-control" id="inputRldv5" placeholder="0" min="0"
                                            max="1000000000" digits="true">
-                                   <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
-                            </div>
+                                    <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                                    </div>
                                 </div>
 
                             </div>
@@ -807,22 +784,26 @@
                                 <div class="col-sm-2">
                                     <input type="text" class="form-control" id="inputRldv5e" placeholder="0" min="0"
                                            max="1000000000" digits="true">
-                                   <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
-                            </div>
+                                    <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                                    </div>
                                 </div>
 
                             </div>
                             <div class="form-group row">
                                 <label for="inputRestef" class="col-sm-7 col-form-label lang" key="rest-ef">Reszta
                                     frakcji wyrzutowej
-                                    raidonuclid </label>
+                                    (raidonuclid) </label>
                                 <div class="col-sm-2">
                                     <input type="text" class="form-control" id="inputRestef" placeholder="0" min="0"
                                            max="1000000000" digits="true">
-                                   <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
-                            </div>
+                                    <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                                    </div>
                                 </div>
-
+                                 <button type="button" class="btn btn-secondary btn-sm" data-toggle="tooltip"
+                                data-placement="right" title="Reszta frakcji to stosunek objętości wyrzutowej serca do objętości końcoworozkurczowej komory serca
+">
+                            ?
+                        </button>
                             </div>
 
                             <div class="form-group row">
@@ -841,16 +822,14 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputExeref" class="col-sm-7 col-form-label lang" key="exe-ref">Ćwiczenie
-                                    frakcja wyrzutowa
-                                    radinalid </label>
+                                <label for="inputExeref" class="col-sm-7 col-form-label lang" key="exe-ref">Frakcja wyrzutowa
+                                    (radinalid) po ćwiczeniu</label>
                                 <div class="col-sm-2">
                                     <input type="text" class="form-control" id="inputExeref" placeholder="0" min="0"
                                            max="1000000000" digits="true">
-                                   <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
-                            </div>
+                                    <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                                    </div>
                                 </div>
-
                             </div>
                             <div class="form-group row">
                                 <label for="inputExerwm" class="col-sm-7 col-form-label lang" key="exer-wm">Ruch ściany
@@ -858,8 +837,8 @@
                                 <div class="col-sm-2">
                                     <input type="text" class="form-control" id="inputExerwm" placeholder="0" min="0"
                                            max="1000000000" digits="true">
-                                   <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
-                            </div>
+                                    <div class="invalid-feedback" key="field-validation">Wprowadź poprawną wartość.
+                                    </div>
                                 </div>
 
                             </div>
@@ -871,7 +850,7 @@
                         <div class="col-sm-12">
                             <a href=# id=process_form style="decoration:none;">
                                 <button id="submitButton" name="submitButton"
-                                        class=" btn btn-outline-primary btn-lg btn-block lang" key="predict">Dokonaj
+                                        class="btn btn-outline-primary btn-lg btn-block lang" key="predict">Dokonaj
                                     predykcji
                                 </button>
                             </a>
@@ -890,7 +869,7 @@
                  aria-valuenow="4" aria-valuemin="0" aria-valuemax="5"></div>
         </div>
         <p class="lead lang" key="result-equals">Predykcja dla prowadzonych danych wynosi :<strong>
-            <div id="result-positive-value"></div>
+        <div id="result-positive-value"></div>
         </strong></p>
         <hr class="my-4">
         <p><span class="lang" key="result-classification-1">Wyniki sklasyfikowane jako </span><i> 1, 2, 3, 4 </i>
@@ -911,7 +890,7 @@
                  aria-valuenow="4" aria-valuemin="0" aria-valuemax="5"></div>
         </div>
         <p class="lead lang" key="result-equals">Predykcja dla prowadzonych danych wynosi :<strong>
-            <div id="result-negative-value"></div>
+        <div id="result-negative-value"></div>
         </strong></p>
         <hr class="my-4">
         <p><span class="lang" key="result-classification-1">Wyniki sklasyfikowane jako </span><i> 0 </i>

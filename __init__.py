@@ -35,17 +35,17 @@ def algorithm():
 
 
 @app.route("/algorithmKNN", methods=['POST', 'GET'])
-def algorithm():
+def algorithmKNN():
     return render_template("/algorithm.html", model='KNN')
 
 
 @app.route("/algorithmSVM", methods=['POST', 'GET'])
-def algorithm():
+def algorithmSVM():
     return render_template("/algorithm.html", model='SVM')
 
 
 @app.route("/algorithmRF", methods=['POST', 'GET'])
-def algorithm():
+def algorithmRF():
     return render_template("/algorithm.html", model='RF')
 
 
