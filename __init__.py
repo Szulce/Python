@@ -4,6 +4,7 @@ from flask_bootstrap import Bootstrap
 from DataManagement.dto.BaseData import BaseData
 from DataManagement.dto.FullData import FullData
 import Main
+from Config.LogConfig import mainLogger as Log
 
 app = Flask(__name__)
 
@@ -20,7 +21,6 @@ def page_not_found(error):
 
 @app.route("/", methods=['POST', 'GET'])
 def main():
-    # return render_template("/form.html")
     return render_template("/index.html")
 
 
@@ -57,14 +57,11 @@ def statistic():
 @app.route('/submit_action', methods=['GET'])
 def submitAction():
     filled_form = request.args
-    print(filled_form)
-    base_json = BaseData(filled_form)
-    full_json = FullData(filled_form)
-    result = Main.predictBasedOnUserInput(base_json, full_json)
-    # return render_template("/answerPage.html", answer=filledForm)
-    # render_template("/answerPage.html", answer=filledForm)
+    Log.debug(filled_form)
+    result = Main.predictBasedOnUserInput(BaseData(filled_form), FullData(filled_form))
     print(result)
-    return "55"
+    Log.info(result)
+    return result
 
 
 @app.route('/jsonDataSend', methods=['POST'])
