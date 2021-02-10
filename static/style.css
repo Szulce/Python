@@ -174,3 +174,27 @@ footer {
 .nav-hover-background:hover{
  background: #0062CC;
 }
+
+.card-left-nav{
+    margin-left:10%;
+    margin-top:5%
+}
+
+.card-down-nav{
+    padding-left:10%;
+    padding-bottom:5%;
+    margin-top:2%;
+}
+
+.card-right-nav{
+    margin-right:10%;
+    padding-bottom:5%;
+    margin-top:2%;
+}
+
+.card-img-resize
+{
+     max-width: 500px;
+     height: auto;
+     margin:10px;
+}
