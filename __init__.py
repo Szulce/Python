@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, jsonify
 from flask_bootstrap import Bootstrap
-
 from DataManagement.dto.BaseData import BaseData
 from DataManagement.dto.FullData import FullData
 import Main
@@ -20,7 +19,7 @@ def page_not_found(error):
 
 @app.route("/", methods=['POST', 'GET'])
 def main():
-    return render_template("/form.html")
+    return render_template("/index.html")
 
 
 @app.route('/submit_action', methods=['GET'])
