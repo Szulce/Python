@@ -7,7 +7,9 @@ import pandas
 import numpy as np
 import sklearn
 from pandas.plotting import scatter_matrix
-from sklearn.preprocessing import Imputer
+#from sklearn.preprocessing import Imputer
+from sklearn.impute import SimpleImputer
+
 
 features_all = ['id',  # patient identification number
                 'ccf',  # social security number (I replaced this with a dummy value of 0)
@@ -154,7 +156,8 @@ def read():
     # plot_view.show()
 
     data_frame = pandas.DataFrame(data_frame, columns=features_used)
-    imputed = Imputer(strategy="mean", missing_values=numpy.NaN)
+    # imputed = SimpleImputer(missing_values=np.nan, strategy='mean')
+    imputed = SimpleImputer(strategy="mean", missing_values=numpy.NaN)
     imputed = imputed.fit(data_frame)
     data_frame = imputed.transform(data_frame)
     # data_frame = data_frame.reshape(920, 14)

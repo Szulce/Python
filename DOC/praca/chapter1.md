@@ -143,7 +143,15 @@ Po wyborze hiperparametru następuje segmentacjia danych na K jendakowej wielko�
 [^schemat_wzorowany]:Na podstwie materiałów opublikowanych na [https://www.datacamp.com](http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1526288453/index3_souoaz.png)
 
 
+
 ## Model Danych 
+### Wykorzystywane biblioteki w projekcie
+#### Python
+#### Flaks Templates
+#### SkitLearn
+#### Matplotlib
+#### Pandas
+#### pozostałe
 ### Omówienie danych
  <!--
 The “Cleveland heart disease dataset 2016” is used by various researchers [13] and can be accessed from online data mining repository of the University of California, Irvine. This dataset was used in this research study for designing machine-learning-based system for heart disease diagnosis. The Cleveland heart disease dataset has a sample size of 303 patients, 76 features, and some missing values. During the analysis, 6 samples were removed due to missing values in feature columns and leftover samples size is 297 with 13 more appropriate independent input features, and target output label was extracted and used for diagnosing the heart disease. The target output label has two classes in order to represent a heart patient or a normal subject. Thus, the extracted dataset is of 29713 features matrix. The complete information and description of 297 instances of 13 features of the dataset is given in Table 1.-->
