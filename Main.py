@@ -1,5 +1,6 @@
-from Algorithms import AutoModel as au
-import pickle
+import PredictionManagment
+from PredictionManagment import AutoModel as Au
+import DataManagement.Dto.Result.FullResultObject as FullResult
 import DataManagement.DataConversion
 
 PREDICTION_ESTABLISHED = True
@@ -13,7 +14,7 @@ def main():
     # dc.readPrediction('ALL')
     # uczenie atosklearn
     # au.run_1()
-    au.run_2()
+    Au.run_2()
     # uczenie lasy
     # -> konfiguracje (uzupełnianie danych - > średnia zera ,
     #               usuównaie woerszy,mode -> różne feature brane zza ważniejsze, ilość wywołań ,hiperparametry )
@@ -36,10 +37,9 @@ def main():
 
 
 def predictBasedOnUserInput(base_data, full_data):
-    model = DataManagement.DataConversion.getModel()
-    base_result = "4"  # model.predict(base_data)
-    full_result = "5"  # model.predict(full_data)
-    return tuple([base_result, full_result])
+    base_result = PredictionManagment.predictBaseData(base_data)
+    full_result = PredictionManagment.predictFullData(full_data)
+    return FullResult.FullResultObject(base_result, full_result).toJson()
 
 
 if __name__ == '__main__':
