@@ -2,8 +2,7 @@
 from sklearn.feature_selection import SelectKBest
 from sklearn.model_selection import cross_validate
 from sklearn.ensemble import RandomForestClassifier
-import pickle
-from DataManagement import DataConversion
+from ComparativeSupervisedTeaching.DataManagement import DataConversion
 
 x = None
 y = None
