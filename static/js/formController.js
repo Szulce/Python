@@ -75,12 +75,14 @@
                     exerwm : $('#inputExerwm').val(),
                     thal : $('#inputThall').val()
 			}
-			, function(data) {
-			console.error(data);
+			, function(dataObject) {
+            console.debug(dataObject.toString());
+            console.info(JSON.parse(JSON.stringify(dataObject)));
+            console.error(dataObject.results_base);
 			$('#fill-in-form').hide();
-			$('#result-positive-value').text(data).show();
-			$('#result-negative-value').text(data).show();
-			if (data=="55") {
+			$('#result-positive-value').text(dataObject).show();
+			$('#result-negative-value').text(dataObject).show();
+			if (dataObject.results_base.percentageKNN >50%) {
 				$('#positive-result').show();
 			}
 			else {

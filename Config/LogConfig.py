@@ -5,3 +5,5 @@ logging.basicConfig(filename="Config/LogFIles/UMNWWCHS.log",
                     filemode='w')
 mainLogger = logging.getLogger('MainLogger')
 mainLogger.setLevel(logging.DEBUG)
+
+# todo arch.

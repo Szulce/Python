@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 from flask_bootstrap import Bootstrap
 
-from DataManagement.dto.BaseData import BaseData
-from DataManagement.dto.FullData import FullData
+from DataManagement.Dto.Data.BaseData import BaseData
+from DataManagement.Dto.Data.FullData import FullData
 import Main
 from Config.LogConfig import mainLogger as Log
 
@@ -59,9 +59,9 @@ def submitAction():
     filled_form = request.args
     Log.debug(filled_form)
     result = Main.predictBasedOnUserInput(BaseData(filled_form), FullData(filled_form))
-    print(result)
     Log.info(result)
     return result
+    # return render_template("/form.html", data=result)
 
 
 @app.route('/jsonDataSend', methods=['POST'])

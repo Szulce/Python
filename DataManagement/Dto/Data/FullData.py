@@ -2,7 +2,6 @@ class FullData:
     """"Class defines of object to store all possible features used in process of learning"""
 
     def __init__(self, form):
-        print(form)
         self.id = form.get('id')
         self.age = form.get('age')
         self.sex = form.get('sex')
