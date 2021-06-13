@@ -1,6 +1,5 @@
-from Algorithms import AutoModel as au
-import pickle
-import DataManagement.DataConversion
+from ComparativeSupervisedTeaching.Algorithms import AutoModel as au
+import ComparativeSupervisedTeaching.DataManagement.DataConversion
 
 PREDICTION_ESTABLISHED = True
 
@@ -36,7 +35,7 @@ def main():
 
 
 def predictBasedOnUserInput(base_data, full_data):
-    model = DataManagement.DataConversion.getModel()
+    model = ComparativeSupervisedTeaching.DataManagement.DataConversion.getModel()
     base_result = "4"  # model.predict(base_data)
     full_result = "5"  # model.predict(full_data)
     return tuple([base_result, full_result])

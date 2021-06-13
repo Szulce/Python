@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 from flask_bootstrap import Bootstrap
-from DataManagement.dto.BaseData import BaseData
-from DataManagement.dto.FullData import FullData
-import Main
+from ComparativeSupervisedTeaching.DataManagement import BaseData
+from ComparativeSupervisedTeaching.DataManagement.dto.FullData import FullData
+from ComparativeSupervisedTeaching import Main
 
 app = Flask(__name__)
 
