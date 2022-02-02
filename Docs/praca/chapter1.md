@@ -89,6 +89,8 @@ Podział osób na kategorie cierpiące na choroby sercowo-naczyniwe oraz zdrowe,
 
   
 
+//todo Machine leraning flow
+
 
 ## Wybrane algorytmy uczenia maszynowego nadzorowanego
 
@@ -193,6 +195,7 @@ technlologiczny do powszechnego wykorztsania algorytmów uczenia maszynowego i i
 #### Pandas
 #### pozostałe
 ### Omówienie danych
+
  <!--
 The “Cleveland heart disease dataset 2016” is used by various researchers [13] and can be accessed from online Data mining repository of the University of California, Irvine. This dataset was used in this research study for designing machine-learning-based system for heart disease diagnosis. The Cleveland heart disease dataset has a sample size of 303 patients, 76 features, and some missing values. During the analysis, 6 samples were removed due to missing values in feature columns and leftover samples size is 297 with 13 more appropriate independent input features, and target output label was extracted and used for diagnosing the heart disease. The target output label has two classes in order to represent a heart patient or a normal subject. Thus, the extracted dataset is of 29713 features matrix. The complete information and description of 297 instances of 13 features of the dataset is given in Table 1.-->
 ### Budowa modelu zależna od danych
@@ -200,8 +203,39 @@ The “Cleveland heart disease dataset 2016” is used by various researchers [1
 <!--
 2.2.1. Data Preprocessing
 The preprocessing of Data is necessary for efficient representation of Data and machine learning classifier which should be trained and tested in an effective manner. Preprocessing techniques such as removing of missing values, standard scalar, and MinMax Scalar have been applied to the dataset for effective use in the classifiers. The standard scalar ensures that every feature has the mean 0 and variance 1, bringing all features to the same coefficient. Similarly, in MinMax Scalar shifts the Data such that all features are between 0 and 1. The missing values feature row is just deleted from the dataset. All these Data preprocessing techniques were used in this research.-->
-### Budowa modelu 
-#### Metody optymalizacji
+
+Dane już przeprocesowane
+
+Handling Null Values : Imputacja 
+strategystr, default=’mean’
+The imputation strategy.
+
+If “mean”, then replace missing values using the mean along each column. Can only be used with numeric data.
+
+If “median”, then replace missing values using the median along each column. Can only be used with numeric data.
+
+If “most_frequent”, then replace missing using the most frequent value along each column. Can be used with strings or numeric data. If there is more than one such value, only the smallest is returned.
+
+If “constant”, then replace missing values with fill_value. Can be used with strings or numeric data.
+Standardization -already made
+Handling Categorical Variables -already made
+One-Hot Encoding
+Multicollinearity
+
+### Budowa modelu  
+Train Test Split
+train/test splitting techniques, exploiting three different Python libraries:
+
+scikit-learn
+pandas
+numPy
+
+Feature Scaling
+Why Should we Use Feature Scaling?
+The first question we need to address – why do we need to scale the variables in our dataset? Some machine learning algorithms are sensitive to feature scaling while others are virtually invariant to it. Let me explain that in more detail.
+Training and Predictions
+Evaluating the Algorithm
+#### Metody optymalizacji - to chyba do wywalenia
 #### Implementacja algorytmu 1: Losowe lasy decyzyjne
 #### Implementacja algorytmu 2: Metoda wektorów nośnych
 #### Implementacj algorytmu 3: K najbliższych sąsiadów
@@ -215,6 +249,8 @@ The preprocessing of Data is necessary for efficient representation of Data and 
 ### Porównianie algorytmów : złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu
 
 ### Podsumowanie i opisanie wpływu danych na model
+
+porównanie do dnych statystycznych
 
  # todo variants of user data preparatrio
             ## preparation all -> all test

@@ -167,3 +167,22 @@ https://flask.palletsprojects.com/en/2.0.x/quickstart/
 https://machinelearningmastery.com/save-load-machine-learning-models-python-scikit-learn/
 https://joblib.readthedocs.io/en/latest/
 https://www.kaggle.com/prmohanty/python-how-to-save-and-load-ml-models
+
+
+# https://machinelearningmastery.com/machine-learning-in-python-step-by-step/
+
+# Citation Request:
+
+# The authors of the databases have requested that any publications resulting from the use of the Data include the names of the principal investigator responsible for the Data collection at each institution. They would be:
+# 1. Hungarian Institute of Cardiology. Budapest: Andras Janosi, M.D.
+# 2. University Hospital, Zurich, Switzerland: William Steinbrunn, M.D.
+# 3. University Hospital, Basel, Switzerland: Matthias Pfisterer, M.D.
+# 4. V.A. Medical Center, Long Beach and Cleveland Clinic Foundation:Robert Detrano, M.D., Ph.D.
+
+
+https://towardsdatascience.com/introduction-to-data-preprocessing-in-machine-learning-a9fa83a5dc9d
+https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html
+https://stackabuse.com/k-nearest-neighbors-algorithm-in-python-and-scikit-learn/
+https://dev.to/alod83/3-different-approaches-for-traintest-splitting-of-a-pandas-dataframe-31p0
+https://pub.towardsai.net/3-different-approaches-for-train-test-splitting-of-a-pandas-dataframe-d5e544a5316
+https://www.analyticsvidhya.com/blog/2020/04/feature-scaling-machine-learning-normalization-standardization/
