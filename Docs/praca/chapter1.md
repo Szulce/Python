@@ -52,8 +52,23 @@ Biblioteka opiera się o Numerical Python, zestaw narzędzi do obliczeń na maci
 Do przygotowania danych wykorzystano zestaw narzędzi Pandas, ułatwiający tworzenie struktur danych i ich analizę.
 W celu wizualizacji wyników w postaci wykresów zastosowano Matplotlib.  
 
- 
+// joblib do storage 
+Let's Reflect back on Joblib approach :
 
+PROs of Joblib :
+
+1) the Joblib library offers a bit simpler workflow compared to Pickle.
+
+2) While Pickle requires a file object to be passed as an argument, Joblib works with both file objects and string filenames.
+
+3) In case our model contains large arrays of data, each array will be stored in a separate file, but the save and restore procedure will remain the same.
+
+4) Joblib also allows different compression methods, such as 'zlib', 'gzip', 'bz2', and different levels of compression
+
+FLASK dla strony 
+ - 
+//todo opis maszyn , taktowanie procesora (czy to może mieć wpływ - opis działania biliotek ) 
+//todo wymienić obrazki wykresów na te które zostały utworzone na podstawie działania algorytmu
 # Wprowadzenie teoretyczne 
 
 
@@ -143,6 +158,31 @@ Po wyborze hiperparametru następuje segmentacjia danych na K jendakowej wielko�
 [^schemat_wzorowany]:Na podstwie materiałów opublikowanych na [https://www.datacamp.com](http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1526288453/index3_souoaz.png)
 
 
+## Opis praktycznej częsci projektu
+Moduły projektu:
+ - algorithms:
+   - decisionForest - implepmentacja algorytmu
+   - KNN  - implepmentacja algorytmu
+   - SVM  - implepmentacja algorytmu
+ - data - moduł odpowiada za wczytywanie i obróbkę danych testowych, oraz danych dostarczonych finalnie do weryfikacji modelu
+ - doc - praca oraz wszytkie dokumenty
+ - result - moduł odpowiedzialny za prezentację wyników w postaci wy
+kresów porównujących algorytmy oraz odpowiedzi na zadany problem
+
+// todo 
+dodać porównanie i wyższość w zastosowaniu dla modeli uczonych bez nadzoru 
+//todo dodć opis maszyny plus ewentualne zastosowanie google cloiud
+//todo dodać wykresy 
+//opis praktycznej części podrasować
+
+// rozdział dotyczący słownictwa wykorzystywanego podczas pisania pracy tłumaczenia i wykorzystywane powszechnie w pub;ikacjach naukowaych angielskie sposoby interpretowania i opisyeania
+to możliwe że zbyt abstrakcyjne i do wywalenie - pytanie do promotora czy dodawać taki zapychacz z dziedziny filozofii
+// rozwój działu listeratury w zakresie wykorzystania technologi uczenia maszynowego od fantastyki do realiów jakie są obecnie granice nie do przekroczenia , 
+dlaczego mylnie orientowanie jest założenie sztucznej inteligencji z potencjałem inteligencji ludzkiej
+// rodził dotyczący hisorii sposobów opisywania algorytmów którtki briref na temat zmian oraz celów realizaowanych przez programy 
+// podejście naturalistyczne czerpani inspiracji do tworzenia nowych założeń i wykorzytstywanie czynników popychających postęp
+technlologiczny do powszechnego wykorztsania algorytmów uczenia maszynowego i ich kommercjalny potencjał oraz zagrożenia.
+
 
 ## Model Danych 
 ### Wykorzystywane biblioteki w projekcie
@@ -154,12 +194,12 @@ Po wyborze hiperparametru następuje segmentacjia danych na K jendakowej wielko�
 #### pozostałe
 ### Omówienie danych
  <!--
-The “Cleveland heart disease dataset 2016” is used by various researchers [13] and can be accessed from online data mining repository of the University of California, Irvine. This dataset was used in this research study for designing machine-learning-based system for heart disease diagnosis. The Cleveland heart disease dataset has a sample size of 303 patients, 76 features, and some missing values. During the analysis, 6 samples were removed due to missing values in feature columns and leftover samples size is 297 with 13 more appropriate independent input features, and target output label was extracted and used for diagnosing the heart disease. The target output label has two classes in order to represent a heart patient or a normal subject. Thus, the extracted dataset is of 29713 features matrix. The complete information and description of 297 instances of 13 features of the dataset is given in Table 1.-->
+The “Cleveland heart disease dataset 2016” is used by various researchers [13] and can be accessed from online Data mining repository of the University of California, Irvine. This dataset was used in this research study for designing machine-learning-based system for heart disease diagnosis. The Cleveland heart disease dataset has a sample size of 303 patients, 76 features, and some missing values. During the analysis, 6 samples were removed due to missing values in feature columns and leftover samples size is 297 with 13 more appropriate independent input features, and target output label was extracted and used for diagnosing the heart disease. The target output label has two classes in order to represent a heart patient or a normal subject. Thus, the extracted dataset is of 29713 features matrix. The complete information and description of 297 instances of 13 features of the dataset is given in Table 1.-->
 ### Budowa modelu zależna od danych
 ### Obróbka danych 
 <!--
 2.2.1. Data Preprocessing
-The preprocessing of data is necessary for efficient representation of data and machine learning classifier which should be trained and tested in an effective manner. Preprocessing techniques such as removing of missing values, standard scalar, and MinMax Scalar have been applied to the dataset for effective use in the classifiers. The standard scalar ensures that every feature has the mean 0 and variance 1, bringing all features to the same coefficient. Similarly, in MinMax Scalar shifts the data such that all features are between 0 and 1. The missing values feature row is just deleted from the dataset. All these data preprocessing techniques were used in this research.-->
+The preprocessing of Data is necessary for efficient representation of Data and machine learning classifier which should be trained and tested in an effective manner. Preprocessing techniques such as removing of missing values, standard scalar, and MinMax Scalar have been applied to the dataset for effective use in the classifiers. The standard scalar ensures that every feature has the mean 0 and variance 1, bringing all features to the same coefficient. Similarly, in MinMax Scalar shifts the Data such that all features are between 0 and 1. The missing values feature row is just deleted from the dataset. All these Data preprocessing techniques were used in this research.-->
 ### Budowa modelu 
 #### Metody optymalizacji
 #### Implementacja algorytmu 1: Losowe lasy decyzyjne
@@ -175,6 +215,16 @@ The preprocessing of data is necessary for efficient representation of data and 
 ### Porównianie algorytmów : złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu
 
 ### Podsumowanie i opisanie wpływu danych na model
+
+ # todo variants of user data preparatrio
+            ## preparation all -> all test
+            ## preparation best for best 
+            ## best from other to best in another  -> result and reasons for data anlayse
+            ## fast not best - why is it faster 
+            ## 
+    # todo prediction
+    # todo percentage na true false
+
 
 
 O:
