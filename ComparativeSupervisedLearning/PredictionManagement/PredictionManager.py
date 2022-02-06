@@ -27,7 +27,7 @@ def predict_full_data(full_data):
 
 
 def predict(data):
-     result_array = []
+    result_array = []
     scores_array = []
     for model_type in Rs.MODELS:
         result, scores = run(model_type, data)
