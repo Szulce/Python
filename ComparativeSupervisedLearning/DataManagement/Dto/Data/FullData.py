@@ -1,3 +1,6 @@
+import pandas
+import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
+
 class FullData:
     """"Class defines of object to store all possible features used in process of learning"""
 
@@ -53,3 +56,7 @@ class FullData:
     def to_string(self):
         """"Prints all class attributes values"""
         print(self)
+
+    def to_data_frame(self):
+        """" Converts to dataFrame """
+        return pandas.DataFrame(self, columns=Rs.features_all)

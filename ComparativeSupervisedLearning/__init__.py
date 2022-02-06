@@ -1,12 +1,12 @@
-import Config.LogConfig as LogConfig
 from flask import Flask, render_template, request, jsonify
 from flask_bootstrap import Bootstrap
-from DataManagement.Dto.Data.BaseData import BaseData
-from DataManagement.Dto.Data.FullData import FullData
 import Main
+from ComparativeSupervisedLearning.DataManagement.Dto.Data.BaseData import BaseData
+from ComparativeSupervisedLearning.DataManagement.Dto.Data.FullData import FullData
 from Config.LogConfig import mainLogger as Log
 
 app = Flask(__name__)
+
 
 @app.errorhandler(404)
 def page_not_found(error):
@@ -74,4 +74,3 @@ if __name__ == '__main__':
     Bootstrap(app)
     Log.info("Start Flask application")
     app.run(debug=True, host="0.0.0.0", port=80)
-

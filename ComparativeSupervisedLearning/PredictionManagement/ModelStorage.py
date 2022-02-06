@@ -3,9 +3,8 @@ import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
 import joblib
 import os
 
-
 def save_model(model, name, model_type):
-    filename = Rs.MODULE_DIRECTORY_PATH + model_type + Rs.SAV_DIR + name + '.sav'
+    filename = os.getcwd() + Rs.PREDICTION_MANAGEMENT_ + model_type + Rs.SAV_DIR + name + '.sav'
     joblib.dump(model, filename)
 
 
@@ -25,8 +24,9 @@ def load_best_models_for_each_algorithm():
 
 def load_all_models_for_type(model_type):
     loaded_models = []
-    for filename in os.listdir(Rs.MODULE_DIRECTORY_PATH + model_type + Rs.SAV_DIR):
-        next_model = joblib.load(filename)
+    path = os.getcwd() + Rs.PREDICTION_MANAGEMENT_ + model_type + Rs.SAV_DIR
+    for filename in os.listdir(path):
+        next_model = joblib.load(str(path) + Rs.SLESH + str(filename))
         loaded_models.append(next_model)
     Log.debug("Loaded Models count:" + str(len(loaded_models)))
     return loaded_models

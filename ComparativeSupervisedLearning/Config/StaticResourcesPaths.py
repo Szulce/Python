@@ -2,6 +2,7 @@ import numpy
 from sklearn.impute import SimpleImputer
 
 # LogConfig
+PREDICTION_MANAGEMENT_ = '/PredictionManagement/'
 NUMPY = "Numpy"
 PANDAS = "Pandas"
 SCIKIT_LEARN = "Scikit-learn"
@@ -10,16 +11,16 @@ LOG_FILES_DIRECTORY = 'Config/LogFiles'
 LOG_FILE_NAME = "UMNWWCHS.log"
 
 # Model Storage
-RF___SAV = "RF_1.sav"
+RF___SAV = "Rf1.sav"
 RF_TYPE_DIRECTORY = "/Rf"
 
-SVN___SAV = "SVN_1.sav"
+SVN___SAV = "Svn1.sav"
 SVN_TYPE_DIRECTORY = "/Svn"
 
-KNN___SAV = "KNN_1.sav"
+KNN___SAV = "Knn1.sav"
 KNN_TYPE_DIRECTORY = "/Knn"
 
-MODULE_DIRECTORY_PATH = 'ComparativeSupervisedLearning/PredictionManagement/'
+MODULE_DIRECTORY_PATH = 'ComparativeSupervisedLearning%s' % PREDICTION_MANAGEMENT_
 
 SAV_DIR = "/Sav/"
 
@@ -32,6 +33,8 @@ MODEL_TYPE_SVN = "Svn"
 MODEL_TYPE_RF = "Rf"
 
 MODELS = [MODEL_TYPE_KNN, MODEL_TYPE_SVN, MODEL_TYPE_RF]
+
+SLESH = "\\"
 
 # Data Conversion
 
@@ -161,13 +164,25 @@ features_used = ['age',  # 3
 # 63.0 ,   1.0,  1.0,  145.0, 233.0, 1.0, 2.0,150.0,0.0,2.3,3.0,0.0,6.0,0
 # 63 lat , men, angina, mmHG, chol, sugar,
 
-# Data Conversion PreProcessing
-imputed_mean = SimpleImputer(strategy="mean", missing_values=numpy.NaN)
-imputed_median = SimpleImputer(strategy="median", missing_values=numpy.NaN)
-imputed_most_frequent = SimpleImputer(strategy="most_frequent", missing_values=numpy.NaN)
-imputed_most_constant = SimpleImputer(strategy="constant", missing_values=numpy.NaN)
+features_used_categorical = [
+    'slope',  # 41
+    'ca',  # 44
+    'thal',  # 51
+]
 
-IMPUTERS_LIST = [imputed_mean, imputed_median, imputed_most_constant, imputed_most_frequent]
+# Data Conversion PreProcessing
+imputed_mean = SimpleImputer(strategy="mean", missing_values=numpy.NaN, fill_value=-1)
+                             # , add_indicator=True)
+imputed_median = SimpleImputer(strategy="median", missing_values=numpy.NaN, fill_value=-1)
+                               # , add_indicator=True)
+imputed_most_frequent = SimpleImputer(strategy="most_frequent", missing_values=numpy.NaN, fill_value=-1)
+imputed_most_constant = SimpleImputer(strategy="constant", missing_values=numpy.NaN, fill_value=-1)
+
+IMPUTERS_LIST = [
+    # imputed_mean, imputed_median,
+    imputed_most_constant
+    # , imputed_most_frequent
+    ]
 
 # Data Conversion split data
 SPLIT_METHODS = [SCIKIT_LEARN, PANDAS, NUMPY]
@@ -178,4 +193,5 @@ PANDAS_random_state = 1
 NUMPY_mask = 0.8
 
 # knn
-N_NEIGHBORS = 7
+N_NEIGHBORS_SIZE = 14
+N_NEIGHBORS = "n_neighbors"

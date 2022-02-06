@@ -79,8 +79,9 @@
             var parsedDataObject = JSON.parse(JSON.stringify(dataObject));
             console.info(parsedDataObject);
 			$('#fill-in-form').hide();
-			$('#result-positive-value').text(dataObject).show();
-			$('#result-negative-value').text(dataObject).show();
+			$('#result-positive-value').text(dataObject.results_base_information_text).show();
+			$('#result-negative-value').text(dataObject.results_base_information_text).show();
+			$('#accuracy-value').text(dataObject.results_base_accuracy_text).show();
 			if(parsedDataObject.applyExtended){
 			if(parsedDataObject.results_full.percentageKNN
 			|| parsedDataObject.results_full.percentageSVM
@@ -124,3 +125,27 @@ function applyExtended(){
 console.error(document.getElementById("applyExtended").value);
 document.getElementById("applyExtended").value = ! document.getElementById("applyExtended").value;
 }
+
+
+function createChart(){
+      new Chart(document.getElementById("myCanvas"), {
+          type: 'bar',
+          data: {
+            labels: algorithm,
+            datasets: [
+              {
+                label: "Percentage od accuracy",
+                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
+                data: value
+              }
+            ]
+          },
+          options: {
+            legend: { display: false },
+            title: {
+              display: true,
+              text: 'Accuracy'
+            }
+          }
+      });
+      }
