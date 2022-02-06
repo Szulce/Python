@@ -4,11 +4,15 @@ import json
 class AllAlgorithmsResult:
     """"Class defines of object to store results of all PredictionManagement"""
 
-    def __init__(self, results_knn, results_svm, results_rf):
+    def __init__(self, results, scores):
         # todo percentage na true false
-        self.percentageKNN = results_knn.percentage
-        self.percentageSVM = results_svm.percentage
-        self.percentageRF = results_rf.percentage
+        print(results)
+        self.percentageKNN = results[0][0][0][0]
+        self.percentageSVM = results[1][0][0][0]
+        self.percentageRF = results[2][0][0][0]
+        self.scoreKNN = scores[0][0]
+        self.scoreSVM = scores[1][0]
+        self.scoreRF = scores[2][0]
 
     def to_string(self):
         print(self)
