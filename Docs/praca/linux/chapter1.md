@@ -1,4 +1,4 @@
-**Wykrywanie występowanie chorób serca, wykorzystanie uczenia maszynowego nadzorowanego na podstawie zbioru danych dotyczących chorób układu krążenia z repozytorium  UCI** {.unnumbered}
+**Wykrywanie występowanie chorób serca,porównanie algorytów uczenia maszynowego nadzorowanego na podstawie zbioru danych dotyczących chorób układu krążenia z repozytorium  UCI** {.unnumbered}
 ========
 
 **Wstęp** {.unnumbered}
@@ -113,6 +113,169 @@ Podział osób na kategorie cierpiące na choroby sercowo-naczyniwe oraz zdrowe,
 
 //todo Machine leraning flow
 
+   5 KOMENTARZY
+Przepływ pracy uczenia maszynowego (część 1)
+Do tej pory planuję napisać serię postów wyjaśniających podstawowy przepływ pracy Machine Learning (w większości nadzorowany). W tym poście moim celem jest zaproponowanie widoku z lotu ptaka, ponieważ w kolejnych postach zajmę się szczegółami, wyjaśniając szczegółowo każdy z elementów. Decyduję się napisać tę serię z dwóch powodów; pierwszym powodem jest samokształcenie - zebranie wszystkich moich kawałków po okresie badań teoretycznych i praktyki przemysłowej - drugim jest przedstawienie naiwnego przewodnika dla początkujących i entuzjastów.
+
+Poniżej mamy przegląd proponowanego przepływu pracy. Posiadamy kod koloru wskazujący podstawy. Każde pudełko ma tonację od  ŻÓŁTEJ do CZERWONEJ . Im żółtsze pole, tym bardziej ten komponent opiera się na bazie wiedzy Statystyka. Gdy pole zmienia kolor na czerwony [staje się ciemniejszy], składnik w większym stopniu zależy od bazy wiedzy Machine Learning. Mówiąc to, sugeruję również, że bez dobrego zrozumienia statystyk nie jesteśmy w stanie zbudować wygodnego potoku uczenia maszynowego. Na marginesie, schemat ten jest zmieniany przez postmodernizm algorytmów Representation Learning i poruszę to w kolejnych wpisach.
+
+
+
+ 
+
+Przejdźmy przez schemat. Zaczynamy od surowych danych (dokumenty, obrazy, nagrania dźwiękowe itp.), z których musimy wydobyć reprezentację cech. Wyodrębnianie cech jest konieczne w celu przekształcenia każdego z surowych danych do postaci znormalizowanej (na przykład reprezentacja Bag Of Words konwertuje każdy dokument o różnej długości na reprezentację wektorową o tej samej długości), którą algorytm ML jest w stanie zrozumieć.
+
+Następnym krokiem jest Sanity-Check , który zapewnia jakość i wygodę wartości funkcji. Uważam, że ten krok jest ignorowany przez każdy z kursów ML, a także przez samą społeczność. Jednak wszelkie błędy na tym etapie są tak istotne, ponieważ są zbyt trudne do zrealizowania. Na przykład robisz wszystko dobrze, ale Twoja ostateczna dokładność przewidywania jest bardzo niska w porównaniu z oczekiwaniem. Debugujesz cały potok w kółko, ale nic nie wydaje się wadliwe. Następnie po wielu godzinach zdałeś sobie sprawę z wartości Null w 2965. wektorze cech. Tak, spieprzyłeś! :). Jestem pewien, że jeśli masz jakieś doświadczenie w tej dziedzinie, cierpiałeś z powodu czegoś takiego samego lub przynajmniej podobnego.
+
+Później; musimy podzielić nasz zbiór danych na zestawy pociągowe, walidacyjne i przetrzymywane. Ten krok jest powiązany z twoimi metodami na etapach szkolenia i oceny modelu. Na przykład, jeśli oczekujesz użycia sieci neuronowej w części szkolenia modelu i walidacji krzyżowej podczas oceny, najlepszym wyborem może być trenowanie, walidacja, wstrzymywany podział. Użyj danych pociągu z walidacją krzyżową K-fold do trenowania i optymalizacji hiperparametrów, a następnie potwierdź ostateczny model z danymi walidacyjnymi. Użyj zestawu wstrzymanego na ostatnim etapie do ostatecznej kwantyzacji wydajności.
+
+Przetwarzanie wstępne funkcji to kolejny blok związany z modelem ML. Na tym etapie przekształcamy dane pociągu na akceptowalne skale docelowego algorytmu ML. Na przykład SVM wymaga ogólnie skalowania średnia=0, std=1. Jeśli zapomnisz o wstępnym przetwarzaniu swoich danych, prawdopodobnie zobaczysz bardzo niezręczne zachowanie algorytmu ML. Być może zbieżność trwa zbyt długo lub wagi modeli mogą oscylować w bardzo interesującym zakresie wartości. Co więcej, nie zapomnij zastosować kolejnego sprawdzenia poprawności do wartości cech również po przetworzeniu wstępnym. Na przykład bardzo często dzielimy wartości przez 0 w celu normalizacji . Oczywiście wynikiem jest Null .
+
+Trening modelek  to najfajniejsza część. Masz kilka algorytmów czekających na zastosowanie. Niestety, to tylko 5% twojej praktycznej pracy nad ogólnym przepływem pracy. Jednak z punktu widzenia realizacji jest to zdecydowanie najbardziej czasochłonny krok. Jednym z typowych błędów na tym etapie jest użycie losowego zestawu algorytmów bez żadnego uzasadnienia. Niemniej jednak jest to jak szukanie igły w stogu siana. Aby algorytm był poprawny, powinniśmy najpierw zbadać nasz problem. Wybór funkcji straty, algorytm uczenia się, człon regulujący i całe inne parametry są całkowicie specyficzne dla problemu. Więcej wyjaśnię w kolejnych postach… Szkolenie modelek obejmuje optymalizację hiperparametrów i pierwsze wglądy w dane oraz jakość poprzednich kroków. Załóżmy na przykład, że do wyboru parametrów stosujesz wyszukiwanie według siatki z walidacją krzyżową K-fold i obserwujesz bardzo różne wyniki dla każdego foldu dla każdej innej wartości kandydującej. Jest to wczesny wskaźnik niewystarczających danych uczących lub niewłaściwej reprezentacji cech. Następnie musisz powtórzyć zgodnie z sugestią.
+
+Ocena modelu  mierzy jakość ostatnio wytrenowanego modelu w zestawie walidacyjnym, który nie został dotknięty na żadnym z poprzednich kroków. Najpierw wstępnie przetwarzamy to również za pomocą tej samej metody stosowanej do trenowania danych, a następnie zasilamy nasz model. Ten krok jest definiowany przez wybór miary jakości (ROC, RMNS, F-Score) podobno takiej samej jak miary używanej do szkolenia. Pamiętaj, że różne miary dają różne informacje na temat Twojego modelu.
+
+Nie wyrzucaj wyszkolonych modeli. Załóżmy, że wytrenowałeś 5 różnych sieci NN z małymi różnicami w wydajności, a następnie zestawiłeś  je ze średnim, maksymalnym lub dowolnym innym schematem głosowania. Jeśli spojrzysz na zwycięzców Kaggle, większość z nich to zespoły składające się z NN, SVM lub Random-Forests. Używają nawet biednych modeli w zespole. Dzieje się tak, ponieważ ensemble oznacza lepszą wydajność uogólniania, nieco w zależności od schematu zespołu. Są tu pewne ograniczenia. Rozważ oczekiwania dotyczące czasu wykonywania ostatecznego modelu. Gdy zwiększasz rozmiar swojego zespołu, wzrastają również potrzeby obliczeniowe i pamięciowe. Mówimy tutaj o kompromisie między skalowalnością a dokładnością . Być może najlepszym tego przykładem jest 1 milion dolarów Netflix Challengegdzie Netflix nie zaimplementował algorytmu zwycięzcy z powodu problemów ze skalowalnością.
+
+Teraz jesteśmy na ostatnim etapie. Po tym wyłączysz komputer lub nie. Zmierz wydajność swojego ostatecznego modelu (zestawu modeli) za pomocą trzymanego zestawu. Nie zapomnij o wstępnym przetworzeniu, podobnie jak zestaw walidacji i pociągu. Jest to najważniejszy krok wskazujący rzeczywiste osiągi Twojego ostatecznego modelu. Jeśli Twoje miary różnią się tak bardzo od danych walidacji, oznacza to, że Twój schemat zespołu nie działa i musisz go zmienić. Jednak upewnij się, że wcześniej nie ma nic złego, a wszystkie modele zespołowe są bardzo wygodne ze wszystkich możliwych perspektyw. W przeciwnym razie słaba wydajność na tym etapie stawia cię w bardzo niebezpiecznej sytuacji, z wieloma różnymi kombinacjami wad w zależności od dowolnego modelu w twoim zespole na dowolnym etapie.
+
+Na razie to jest to. Próbowałem wyjaśnić proponowany przeze mnie przepływ pracy w ML niewielką ilością niuansów. Zamierzam szczegółowo wyjaśnić każdy z tych kroków od góry do dołu za pomocą nowych postów, które będą publikowane co tydzień (przynajmniej taki jest plan). Co ważniejsze, zostaw komentarz do tego posta, aby zmienić jego kształt i przedyskutować pomysły . Nie wahaj się uderzyć mnie w twarz błędami.
+
+Kiedy zaczynasz z zupełnie nowym pomysłem na projekt uczenia maszynowego. Przede wszystkim pobierasz zbiór danych. Następnie wykonaj pewne przetwarzanie wstępne — prawdopodobnie wieloetapowe, ponieważ zadanie jest skomplikowane. Następnie tworzysz kilka modeli, niektóre z nich działają lepiej, a inne gorzej.
+Oczekuje się, że model uczenia maszynowego zapewni rozwiązanie problemu. Mając na uwadze, że rozwiązanie jest dokładne i wydajne. Musimy zbudować system, który współdziała z prawdziwymi ludźmi. Projekty uczenia maszynowego różnią się w zależności od danego problemu, ale ich ogólna struktura pozostaje taka sama.
+Projekt uczenia maszynowego może składać się z następujących procesów:
+1) Zdefiniowanie problemu
+2) Gromadzenie danych
+3) Wstępne przetwarzanie danych
+4) Szkolenie modelu
+5) Ocena modelu
+6) Dokonywanie prognoz
+Ocena problemu -:
+Zanim zaczniesz myśleć o tym, jak rozwiązać problem z ML, poświęć trochę czasu na przemyślenie problemu, który próbujemy rozwiązać. Czy problem jest dobrze zdefiniowany, najlepsze możliwe rozwiązanie, poziom dokładności wystarczający dla problemu i wiele innych pytań.
+Zbieranie danych:
+Ten krok jest bardzo ważny, ponieważ jakość i ilość gromadzonych danych bezpośrednio określi, jak dokładny może być nasz model predykcyjny. Istnieje wiele źródeł pozyskiwania danych, takich jak — Kaggle, UCI Machine Learning Repsitory, data.gov.in.
+Wstępne przetwarzanie danych:
+Polega to na skalowaniu i normalizacji danych. Jeśli w danych występują jakieś brakujące wartości, należy zająć się nimi poprzez obliczenie średniej, mediany lub trybu cechy i zastąpienie jej brakami lub upuszczenie wierszy.
+Dane mogą zawierać niepotrzebne kolumny, takie jak numer SSN, który jest unikalny dla każdego użytkownika, więc możemy je usunąć, jeśli nie jest to wymagane w naszej analizie.
+Po wstępnym przetworzeniu podziel dane na 2 części - Dane treningowe i Dane testowe. Model będzie szkolony na danych szkoleniowych i oceniany na danych szkoleniowych.
+Szkolenie Modelki:
+Opracowanie modelu, który radzi sobie lepiej niż punkt odniesienia. Celem treningu jest jak najczęstsze udzielenie odpowiedzi na pytanie lub poprawne prognozowanie. Każda iteracja procesu jest etapem szkolenia.
+Ocena modelu:
+Po przeszkoleniu modelu nadszedł czas, abyśmy sprawdzili, jak dobry jest. Dane testowe są teraz wprowadzane do modelu w celu dokonania prognoz i obliczenia dokładności. Ma to być reprezentatywne dla tego, jak model może zachowywać się w prawdziwym świecie.
+Prognozowanie:
+Do testowania modelu wykorzystuje się dane zestawu testowego, które do tego momentu nie były dostępne w modelu; lepsze przybliżenie tego, jak model będzie się zachowywał w świecie rzeczywistym.
+
+Przepływ pracy w ML
+Aby opracować i zarządzać modelem gotowym do produkcji, musisz przejść przez następujące etapy:
+
+Pozyskuj i przygotuj swoje dane.
+
+Rozwiń swój model.
+
+Wytrenuj model ML na swoich danych:
+
+Model pociągu
+Oceń dokładność modelu
+Dostosuj hiperparametry
+Wdróż wytrenowany model.
+
+Wysyłaj żądania prognoz do swojego modelu:
+
+Prognozy online
+Przewidywanie partii
+Monitoruj na bieżąco prognozy.
+
+Zarządzaj swoimi modelami i wersjami modeli.
+
+Te etapy są iteracyjne. Być może będziesz musiał dokonać ponownej oceny i wrócić do poprzedniego kroku w dowolnym momencie procesu.
+
+Pozostała część tej strony szczegółowo omawia poszczególne etapy.
+
+Zanim zaczniesz , oceń problem
+Zanim zaczniesz myśleć o tym, jak rozwiązać problem z ML, poświęć trochę czasu na przemyślenie problemu, który próbujesz rozwiązać. Zadaj sobie następujące pytania:
+
+Masz dobrze zdefiniowany problem do rozwiązania?
+Przy użyciu ML do rozpoznawania wzorców w danych można zastosować wiele różnych podejść. Ważne jest, aby zdefiniować informacje, które próbujesz wydobyć z modelu i dlaczego potrzebujesz tych informacji.
+
+Czy ML jest najlepszym rozwiązaniem problemu?
+Nadzorowana ML (styl ML opisany w tej dokumentacji) jest dobrze dopasowany do pewnych rodzajów problemów.
+
+Powinieneś rozważyć użycie ML dla swojego problemu tylko wtedy, gdy masz dostęp do sporego zestawu danych, z którego możesz trenować swój model. Nie ma absolutnych informacji o tym, ile danych wystarczy. Każda funkcja (atrybut danych), którą włączysz do swojego modelu, zwiększa liczbę wystąpień (rekordów danych), których potrzebujesz, aby prawidłowo wytrenować model. Zapoznaj się ze sprawdzonymi metodami ML, aby uzyskać wskazówki dotyczące inżynierii funkcji.
+
+Należy również uwzględnić podział zestawu danych na trzy podzbiory: jeden do uczenia, jeden do oceny (lub walidacji) i jeden do testowania.
+
+Zbadaj alternatywy, które mogą zapewnić łatwiejszy i bardziej konkretny sposób rozwiązania problemu.
+
+Jak zmierzyć sukces modelki?
+Jednym z największych wyzwań związanych z tworzeniem modelu ML jest wiedza, kiedy faza rozwoju modelu jest zakończona. Kuszące jest dalsze udoskonalanie modelu w nieskończoność, wydobywając coraz mniejsze ulepszenia dokładności. Powinieneś wiedzieć, co oznacza sukces, zanim zaczniesz proces. Rozważ poziom dokładności, który jest wystarczający dla Twoich potrzeb. Rozważ konsekwencje odpowiedniego poziomu błędu.
+
+Pozyskaj i przygotuj swoje dane
+Musisz mieć dostęp do dużego zestawu danych szkoleniowych, który zawiera atrybut (nazywany funkcją w ML), który chcesz móc wywnioskować (przewidywać) na podstawie innych funkcji.
+
+Załóżmy na przykład, że chcesz, aby Twój model przewidywał cenę sprzedaży domu. Zacznij od dużego zestawu danych opisujących charakterystykę domów na danym terenie, w tym cenę sprzedaży każdego domu.
+
+Analiza danych
+Po uzyskaniu danych musisz je przeanalizować i zrozumieć oraz przygotować je jako dane wejściowe do procesu szkoleniowego. Na przykład może być konieczne wykonanie następujących czynności:
+
+Połącz dane z wielu źródeł i zracjonalizuj je w jeden zestaw danych.
+Wizualizuj dane, aby wyszukać trendy.
+Użyj języków i narzędzi zorientowanych na dane, aby znaleźć wzorce w danych.
+Zidentyfikuj funkcje w swoich danych. Funkcje stanowią podzbiór atrybutów danych używanych w modelu.
+Wyczyść dane, aby znaleźć wszelkie anomalne wartości spowodowane błędami we wprowadzaniu danych lub pomiarach.
+Wstępne przetwarzanie danych
+Na etapie przetwarzania wstępnego przekształcasz prawidłowe, czyste dane do formatu, który najlepiej odpowiada potrzebom Twojego modelu. Oto kilka przykładów wstępnego przetwarzania danych:
+
+Normalizacja danych liczbowych do wspólnej skali.
+Stosowanie reguł formatowania do danych. Na przykład usunięcie znaczników HTML z funkcji tekstowej.
+Zmniejszenie nadmiarowości danych dzięki uproszczeniu. Na przykład przekształcenie funkcji tekstowej w torbę reprezentacji słów .
+Reprezentowanie tekstu liczbowo. Na przykład przypisanie wartości do każdej możliwej wartości w elemencie kategorycznym.
+Przypisywanie wartości kluczy do instancji danych.
+Obsługa Google Cloud do eksploracji i przygotowania danych
+TensorFlow ma kilka bibliotek przetwarzania wstępnego, których można używać z AI Platform. Na przykład tf.transform .
+
+Możesz wdrażać i udostępniać potoki scikit-learn w AI Platform, aby stosować wbudowane transformacje do trenowania i prognozowania online. Stosowanie przekształceń niestandardowych jest w wersji beta.
+
+Możesz wdrożyć niestandardową procedurę przewidywania (beta), aby upewnić się, że AI Platform wstępnie przetworzy dane wejściowe w czasie przewidywania w taki sam sposób, w jaki dane zostały wstępnie przetworzone podczas uczenia.
+
+Ponadto rozważ następujące usługi Google Cloud:
+
+Notatniki zarządzane przez użytkowników Vertex AI Workbench to instancje obrazów maszyn wirtualnych z głębokim uczeniem, które są wstępnie zapakowane w notatniki JupyterLab i zoptymalizowane pod kątem zadań z zakresu głębokiego uczenia się z zakresu analizy danych, od przygotowania i eksploracji danych po szybkie tworzenie prototypów.
+
+BigQuery to w pełni zarządzana usługa hurtowni danych, która umożliwia analizę ad hoc danych w czasie rzeczywistym za pomocą standardowego SQL.
+
+Dataproc to w pełni zarządzana usługa w chmurze do uruchamiania klastrów Apache Spark i Apache Hadoop .
+
+Dataflow to w pełni zarządzana usługa do przekształcania i wzbogacania danych w trybie strumieniowym (w czasie rzeczywistym) i wsadowym (historycznym) z równą niezawodnością i wyrazistością.
+
+Dataprep to inteligentna, bezserwerowa usługa danych do wizualnego eksplorowania, czyszczenia i przygotowywania ustrukturyzowanych i nieustrukturyzowanych danych.
+
+Zakoduj swój model
+Rozwijaj swój model, korzystając z ustalonych technik ML lub definiując nowe operacje i podejścia.
+
+Rozpocznij naukę, korzystając z przewodnika wprowadzającego TensorFlow . Możesz również postępować zgodnie z dokumentacją scikit-learn lub dokumentacją XGBoost, aby utworzyć swój model. Następnie sprawdź kilka przykładów kodu zaprojektowanych do pracy z AI Platform .
+
+Trenuj , oceniaj i dostosowuj swój model
+AI Platform zapewnia usługi potrzebne do trenowania i oceny Twojego modelu w chmurze. Ponadto AI Platform oferuje funkcję dostrajania hiperparametrów w celu optymalizacji procesu szkolenia.
+
+Podczas trenowania modelu podajesz mu dane, dla których znasz już wartość docelowego atrybutu danych (funkcji). Uruchamiasz model, aby przewidzieć te wartości docelowe dla danych treningowych, dzięki czemu model może dostosować swoje ustawienia, aby lepiej dopasować dane, a tym samym dokładniej przewidywać wartość docelową.
+
+Podobnie, oceniając wytrenowany model, podajesz mu dane zawierające wartości docelowe. Porównujesz wyniki prognoz modelu z rzeczywistymi wartościami danych oceny i używasz technik statystycznych odpowiednich dla modelu, aby ocenić jego sukces.
+
+Model można również dostroić, zmieniając operacje lub ustawienia używane do kontrolowania procesu uczenia, takie jak liczba kroków uczenia do uruchomienia. Ta technika jest znana jako dostrajanie hiperparametrów .
+
+Ważne: Tworzenie modelu to proces eksperymentowania i stopniowego dostosowywania. Powinieneś spodziewać się dużo czasu na dopracowywanie i modyfikowanie swojego modelu, aby uzyskać najlepsze wyniki. Bardzo ważne jest, aby ustalić próg sukcesu dla swojego modelu przed rozpoczęciem, aby wiedzieć, kiedy przestać udoskonalać model. Zapoznaj się z najlepszymi praktykami ML, aby uzyskać wskazówki dotyczące iteracji modelu.
+Testowanie Twojego modelu
+Podczas uczenia stosujesz model do znanych danych, aby dostosować ustawienia w celu poprawy wyników. Gdy wyniki są wystarczająco dobre dla potrzeb aplikacji, należy wdrożyć model w dowolnym systemie używanym przez aplikację i przetestować go.
+
+Aby przetestować swój model, przepuszczaj przez niego dane w kontekście jak najbardziej zbliżonym do końcowej aplikacji i infrastruktury produkcyjnej.
+
+Użyj innego zestawu danych niż te używane do szkolenia i oceny. W idealnym przypadku za każdym razem, gdy przeprowadzasz test, powinieneś używać oddzielnego zestawu danych, aby Twój model był testowany z danymi, których nigdy wcześniej nie przetwarzał.
+
+Możesz także chcieć utworzyć różne zestawy danych testowych w zależności od charakteru modelu. Na przykład możesz użyć różnych zestawów danych dla określonych lokalizacji lub punktów w czasie lub możesz podzielić instancje, aby naśladować różne dane demograficzne.
+
+Podczas procesu testowania wprowadzasz korekty parametrów i hiperparametrów modelu na podstawie wyników testów. Możesz odkryć problemy w modelu lub w jego interakcji z resztą aplikacji.
+
+Hostuj swój model w chmur
 
 // opis repozytorium 
 
