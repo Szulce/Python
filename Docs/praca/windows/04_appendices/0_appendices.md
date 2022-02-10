@@ -1,5 +1,0 @@
-
-\appendix
-\chapter*{Appendices}
-
-
