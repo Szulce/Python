@@ -1,6 +1,6 @@
 Abstrakt {.unnumbered}
 =======
-
+[TODO]
 Abstrakt pl
 
 Abstract {.unnumbered}

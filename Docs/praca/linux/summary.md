@@ -1,3 +1,3 @@
 Podsumowanie
 ============
-Treść podsumowania
+ [TODO]
