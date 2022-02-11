@@ -1,9 +1,7 @@
 # Harmonongram spotkań i ramowy plan realizacji
 
--generowanie dokumentu
-- bibilografie poprawić
-- spis obrazków
-- _______________________7.
+
+
 
 - - rozdział pracy dotyczący prówniania algorytmów,
 - pisemne opracowanie i dodanie na stronie
@@ -16,6 +14,18 @@
 - - poprawki do pisemnej części pracy.
 
 _______________________________________9.00
+
+// todo 
+dodać porównanie i wyższość w zastosowaniu dla modeli uczonych bez nadzoru 
+//todo dodć opis maszyny plus ewentualne zastosowanie google cloiud
+//todo dodać wykresy 
+//opis praktycznej części podrasować
+
+// rozwój działu listeratury w zakresie wykorzystania technologi uczenia maszynowego od fantastyki do realiów jakie są obecnie granice nie do przekroczenia , 
+dlaczego mylnie orientowanie jest założenie sztucznej inteligencji z potencjałem inteligencji ludzkiej
+// rodził dotyczący hisorii sposobów opisywania algorytmów którtki briref na temat zmian oraz celów realizaowanych przez programy 
+// podejście naturalistyczne czerpani inspiracji do tworzenia nowych założeń i wykorzytstywanie czynników popychających postęp
+technlologiczny do powszechnego wykorztsania algorytmów uczenia maszynowego i ich kommercjalny potencjał oraz zagrożenia.
 
 
 
@@ -52,6 +62,10 @@ _  , moduły projektu , omówienie realizacji (implementacja algorytmów, strona
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 -------- Po konsultacjach z promotorem 11.02
+- bibilografie poprawić
+skalowanie  obrazów
+ spis obrazków
+spiswykresów
 - ustalenie porawek do wprowadzenia w pracy,
 - prezentacja praktycznej części projektu.
 - - testy,
