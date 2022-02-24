@@ -3,6 +3,7 @@ import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
 import joblib
 import os
 
+
 def save_model(model, name, model_type):
     filename = os.getcwd() + Rs.PREDICTION_MANAGEMENT_ + model_type + Rs.SAV_DIR + name + '.sav'
     joblib.dump(model, filename)

@@ -1,36 +1,4 @@
-2022-02-11 03:22:16,456 - INFO - Start Flask application
-2022-02-11 03:22:16,466 - WARNING -  * Debugger is active!2022-02-11 06:17:49,890 - DEBUG - Archive logs on application exit
-2022-02-11 06:17:49,907 - DEBUG - created Zip file
-2022-02-11 06:17:49,912 - DEBUG - Archive logs on application exit
-2022-02-11 06:17:49,912 - DEBUG - created Zip file
-- INFO -  * Running on http://192.168.0.39:80/ (Press CTRL+C to quit)
-2022-02-11 03:22:28,691 - DEBUG - ImmutableMultiDict([('applyExtended', ''), ('age', '15'), ('sex', '-1'), ('pncaden', '0'), ('cp', '-1'), ('trestbps', ''), ('htn', '-1'), ('chol', ''), ('smoke', '-1'), ('cigs', ''), ('years', ''), ('proto', '-1'), ('thaldur', ''), ('thaltime', ''), ('met', ''), ('thalach', ''), ('thalrest', ''), ('tpeakbps', ''), ('tpeakbpd', ''), ('trestbpd', ''), ('rldv5', ''), ('rldv5e', ''), ('ca', '-1'), ('restef', ''), ('restwm', '-1'), ('exeref', ''), ('exerwm', ''), ('thal', '-1')])
-2022-02-11 03:22:28,692 - DEBUG - Processing ...
-2022-02-11 03:22:28,695 - DEBUG - Loaded Models count:1
-2022-02-11 03:22:28,877 - DEBUG - Loaded Models count:1
-2022-02-11 03:22:29,384 - DEBUG - Loaded Models count:1
-2022-02-11 03:22:29,512 - INFO - {
-    "results_base": {
-        "percentageKNN": 1.0,
-        "percentageSVM": 0.49767590029152875,
-        "percentageRF": 1.0,
-        "scoreKNN": [
-            0.9242973781747943
-        ],
-        "scoreSVM": [
-            0.9891749862975493
-        ],
-        "scoreRF": [
-            0.35865132583796583
-        ]
-    },
-    "results_base_information_text": " Wynik : \nKNN : 1.0 \nSVM : 1.0 \nRF : 1.0",
-    "results_base_accuracy_text": "Dok\u0142adno\u015b\u0107: \nKNN : [0.9242973781747943] \nSVM : [0.9242973781747943] \nRF : [0.35865132583796583]",
-    "results_full": {},
-    "apply_extended": ""
-}
-2022-02-11 03:22:29,513 - INFO - 127.0.0.1 - - [11/Feb/2022 03:22:29] "GET /submit_action?applyExtended=&age=15&sex=-1&pncaden=0&cp=-1&trestbps=&htn=-1&chol=&smoke=-1&cigs=&years=&proto=-1&thaldur=&thaltime=&met=&thalach=&thalrest=&tpeakbps=&tpeakbpd=&trestbpd=&rldv5=&rldv5e=&ca=-1&restef=&restwm=-1&exeref=&exerwm=&thal=-1 HTTP/1.1" 200 -
-2022-02-11 06:17:48,215 - DEBUG - Archive logs on application exit
-2022-02-11 06:17:48,250 - DEBUG - created Zip file
-2022-02-11 06:17:48,256 - DEBUG - Archive logs on application exit
-2022-02-11 06:17:48,256 - DEBUG - created Zip file
+2022-02-24 08:04:42,844 - DEBUG - Archive logs on application exit
+2022-02-24 08:04:42,845 - DEBUG - created Zip file
+2022-02-24 08:04:42,846 - DEBUG - Archive logs on application exit
+2022-02-24 08:04:42,847 - DEBUG - created Zip file
