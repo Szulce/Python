@@ -1,4 +1,9 @@
 import json
+
+from numpy import nanmean
+from sklearn import preprocessing
+from sklearn.preprocessing import StandardScaler
+
 from ComparativeSupervisedLearning.Config.LogConfig import mainLogger as Log
 import pandas
 
@@ -38,37 +43,60 @@ def handling_null_values(data_frame):
     for imputed in Rs.IMPUTERS_LIST:
         imputed.fit(data_frame)
         handled = imputed.transform(data_frame)
-        # print(handled)
         if list(handled[0]).count('missing_value') > 0:
             for index in range(len(handled[0])):
                 if handled[0][index] == 'missing_value':
                     handled[0][index] = -1
         data_array.append(handled)
-    # print(data_array)
     return data_array
 
 
 def handling_categorical_variables(data):
-    slices = pandas.Series(data[::])
-    return pandas.get_dummies(slices)
+    handled = []
+    for data_set in data:
+        data_frame = pandas.DataFrame(data_set,columns=Rs.features_used)
+        data_frame.reindex(Rs.features_used, axis=1)
+        handled.append(pandas.get_dummies(data=data_frame, drop_first=True))
+    return handled
 
 
-def encoding_o_h(data):
-    # not necessary but if used  drop first
-    # print(data)
-    return data
+def normalization(data):
+    scaled_array = []
+    for data_iter in data:
+        scaled = preprocessing.MinMaxScaler().fit_transform(data_iter.values)
+        scaled_array.append(pandas.DataFrame(scaled))
+    return scaled_array
+
+
+def standarization(data):
+    strand_array = []
+    for data_iter in data:
+        # temp_x = pandas.DataFrame(data_iter, columns=Rs.features_used)
+        # for iterator in Rs.features_used_numerical:
+        #     StandardScaler().fit_transform(temp_x[[iterator]])
+        # strand_array.append(pandas.DataFrame(nanmean(temp_x, axis=0)))
+
+        for iterator in Rs.features_used_numerical:
+            StandardScaler().fit_transform(pandas.DataFrame(data_iter, columns=Rs.features_used)[[iterator]])
+        strand_array.append(data_iter)
+
+    return strand_array
 
 
 def prepare_data():
     unprepared_data = concat_data(load_data_from_files())
-    return encoding_o_h(handling_null_values(unprepared_data))
+    unprepared_data.drop_duplicates(keep='first')
+    return standarization(
+        normalization(
+            handling_categorical_variables(
+                handling_null_values(unprepared_data))))
 
 
 def prepare_user_input_data(input):
     loaded_files = load_data_from_files()
     loaded_files.append(input)
     unprepared_data = concat_data(loaded_files)
-    return encoding_o_h(handling_null_values(unprepared_data))
+    return handling_null_values(unprepared_data)
 
 
 def save_prediction_to_json(prediction, algorithm):

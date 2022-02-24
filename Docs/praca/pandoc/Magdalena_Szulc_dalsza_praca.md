@@ -875,6 +875,9 @@ Po wyborze hiperparametru nastÄ™puje segmentacjia danych na K jendakowej wielkoÅ
 - @article{https://www.kaggle.com/prmohanty/python-how-to-save-and-load-ml-models}
 - @article{https://machinelearningmastery.com/machine-learning-in-python-step-by-step/}
 - @article{https://dobrebadania.pl/zmienna-dyskretna-ang-discrete-variable/#:~:text=Zmienna%20dyskretna%20to%20ka%C5%BCda%20cecha,zaw%C3%B3d%2C%20miejsce%20zamieszkania%2C%20wykszta%C5%82cenie.}
+- https://towardsdatascience.com/data-normalization-in-machine-learning-395fdec69d02
+- https://www.ritchieng.com/machine-learning-efficiently-search-tuning-param/
+- https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
 - @article{
  Citation Request:
 

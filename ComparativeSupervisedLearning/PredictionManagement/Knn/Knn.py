@@ -4,55 +4,62 @@ from sklearn.exceptions import NotFittedError
 from sklearn.metrics import mean_squared_error, accuracy_score
 import seaborn as sns
 from sklearn.ensemble import BaggingRegressor
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import GridSearchCV, cross_val_score
 import ComparativeSupervisedLearning.PredictionManagement.ModelStorage as Ms
 import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
 from sklearn.neighbors import KNeighborsRegressor
 
 
-def create_train_save_model(x_train, x_test, y_train, y_test):
-    iteration = 1
-    rmse = []
-    accuracy = []
-    knn = KNeighborsRegressor(n_neighbors=7)
-    # model fitting and measuring RMSE
-    for i in range(len(x_train)):
-        # fit
-        knn.fit(x_train[i], y_train)
-        # predict
-        pred = knn.predict(x_test[i])
-        # RMSE
-        rmse.append(numpy.sqrt(mean_squared_error(y_test, pred)))
-        # accuracy.append(accuracy_score(y_test, pred) * 100)
+# todo del
+def print_grid_scores(grid):
+    print('Parameters')
+    print(grid.grid_scores_[0].parameters)
 
-    # visualizing the result
-    df_knn = pandas.DataFrame({'RMSE': rmse}, index=['Original', 'Normalized', 'Standardized'])
-    # parameters = {Rs.N_NEIGHBORS: range(1, Rs.N_NEIGHBORS_SIZE)}
-    # gridsearch = GridSearchCV(KNeighborsRegressor(), parameters)
-    # for i in range(len(x_train)):
-    #     gridsearch.fit(x_train[i], y_train)
+    # Array of 10 accuracy scores during 10-fold cv using the parameters
+    print('')
+    print('CV Validation Score')
+    print(grid.grid_scores_[0].cv_validation_scores)
 
-    # best_k = gridsearch.best_params_[Rs.N_NEIGHBORS]
+    # Mean of the 10 scores
+    print('')
+    print('Mean Validation Score')
+    print(grid.grid_scores_[0].mean_validation_score)
 
-    # best_knn = KNeighborsRegressor(n_neighbors=best_k)
-    # bagging_model = BaggingRegressor(best_knn, n_estimators=100)
-    # for i in range(len(x_train)):
-        # test_preds_grid = bagging_model.predict(x_train[i])
-        # mean = mean_squared_error(y_test, test_preds_grid)
+    # create a list of the mean scores only
+    # list comprehension to loop through grid.grid_scores
+    grid_mean_scores = [result.mean_validation_score for result in grid.grid_scores_]
+    print(grid_mean_scores)
 
-        # best_knn.fit(x_train[i], y_train)
-        # prediction = best_knn.predict(x_train[i])
-        # print(y_test)
-        # print(prediction)
-        # mean = mean_squared_error(y_test, prediction)
-    #     rmse.append(numpy.sqrt(mean))
-    # df_knn = pandas.DataFrame({'RMSE': rmse}, index=['Original', 'Normalized', 'Standardized'])
-    # print(df_knn)
-    # cmap = sns.cubehelix_palette(as_cmap=True)
-    # f, ax = plt.subplots()
-    # points = ax.scatter(X_test[:, 0], X_test[:, 1], c=test_preds, s=50, cmap=cmap)
-    # f.colorbar(points)
-    # plt.show()
+    # examine the best model
 
-    Ms.save_model(knn, Rs.MODEL_TYPE_KNN + str(iteration), Rs.MODEL_TYPE_KNN)
-    iteration += 1
+    # Single best score achieved across all params (k)
+    print(grid.best_score_)
+
+    # Dictionary containing the parameters (k) used to generate that score
+    print(grid.best_params_)
+
+    # Actual model object fit with those best parameters
+    # Shows default parameters that we did not specify
+    print(grid.best_estimator_)
+
+
+def save_grid_scores(grid):
+    pass
+# todo generate images ,save imges ,  load images on webside for grid scores
+# todo make charts and save compare results fro different imputors
+
+
+def create_train_save_model(data):
+    neighbours_range = list(range(1, Rs.N_NEIGHBORS_SIZE))
+    param_grid = dict(n_neighbors=neighbours_range)
+    grid = GridSearchCV(KNeighborsRegressor(), param_grid, cv=Rs.KNN_GRID_SPLITER, scoring='accuracy')
+    x = data.iloc[:, :-1]
+    y = data.iloc[:, -1]
+    grid.fit(x, y)
+    # print_grid_scores(grid)
+    best_params = grid.best_params_
+    best_knn = KNeighborsRegressor(n_neighbors=best_params['n_neighbors'])
+    Ms.save_model(best_knn, Rs.MODEL_TYPE_KNN + str(1), Rs.MODEL_TYPE_KNN)
+    Ms.save_model(grid, Rs.MODEL_TYPE_KNN + str(2), Rs.MODEL_TYPE_KNN)
+    save_grid_scores(grid)
+

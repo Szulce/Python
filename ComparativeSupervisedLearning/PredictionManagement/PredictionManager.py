@@ -3,6 +3,7 @@ import pandas
 
 from ComparativeSupervisedLearning.DataManagement.Dto.Result.AllAlgorithmsResult import AllAlgorithmsResult
 from ComparativeSupervisedLearning.DataManagement.Dto.Result.SingleAlgorithmResult import SingleAlgorithmResult
+from ComparativeSupervisedLearning.PredictionManagement.Auto import Auto
 from ComparativeSupervisedLearning.PredictionManagement.Knn import Knn
 from ComparativeSupervisedLearning.PredictionManagement.Svn import Svn
 from ComparativeSupervisedLearning.PredictionManagement.Rf import Rf
@@ -10,6 +11,7 @@ import ComparativeSupervisedLearning.PredictionManagement.ModelStorage as Ms
 import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
 import ComparativeSupervisedLearning.DataManagement.DataConversion as Dc
 from sklearn.model_selection import train_test_split
+
 # measuring RMSE score
 from sklearn.metrics import mean_squared_error, accuracy_score
 from sklearn.preprocessing import MinMaxScaler
@@ -36,9 +38,24 @@ def predict(data):
     return AllAlgorithmsResult(result_array, scores_array)
 
 
+def printDataSet(train_x, test_x, y_train, y_test):
+    print("x:")
+    print(train_x)
+    print("x test:")
+    print(test_x)
+    print("y:")
+    print(y_train)
+    print("y test:")
+    print(y_test)
+
+
 def train_algorithms():
-    for model_type in Rs.MODELS:
-        train(model_type)
+    prepared = Dc.prepare_data()
+    for data_sample in Dc.prepare_data():
+        x_train, x_test, y_train, y_test = split_data_for_learning_process(data_sample)
+        for model_type in Rs.MODELS:
+            train(model_type, x_train, x_test, y_train, y_test, data_sample)
+    print("end")
 
 
 def prepare_data_presentation(result, model_pre, score):
@@ -103,35 +120,22 @@ def run(model_type, data):
     return compare_multiple_results(results, scores)
 
 
-def split_depending_on_method(data_sample, split_method):
+def split_data_for_learning_process(data_sample):
     data_sample = pandas.DataFrame(data_sample, columns=Rs.features_used)
-    x_cols = data_sample.iloc[:, :-1]
+    x_col = data_sample.iloc[:, :-1]
     y_col = data_sample.iloc[:, -1]
-    # if split_method == Rs.SCIKIT_LEARN or split_method == Rs.PANDAS:
-    return train_test_split(x_cols, y_col, test_size=Rs.SCIKIT_test_size, random_state=Rs.SCIKIT_random_state)
-    # elif split_method == Rs.PANDAS:
-    #     dataframe_train = data_sample.sample(frac=Rs.PANDAS_frac, random_state=Rs.PANDAS_random_state)
-    #     dataframe_test = data_sample.drop(dataframe_train.index)
-    #     return dataframe_train[x_cols], dataframe_test[x_cols], dataframe_train[y_col], dataframe_test[
-    #         y_col]
-    # elif split_method == Rs.NUMPY:
-    #     mask = numpy.random.rand(len(data_sample)) < Rs.NUMPY_mask
-    #     dataframe_train = data_sample[mask]
-    #     dataframe_test = data_sample[~mask]
-    #     return dataframe_train[x_cols], dataframe_test[x_cols], dataframe_train[y_col], dataframe_test[
-    #         y_col].random.rand()
+    return train_test_split(x_col, y_col, test_size=Rs.SCIKIT_test_size, random_state=Rs.SCIKIT_random_state)
 
 
-def train(model_type):
-    for data_sample in Dc.prepare_data():
-        for split_method in Rs.SPLIT_METHODS:
-            train_x, test_x, y_train, y_test = data_preprocessing(data_sample, split_method)
-            if model_type == Rs.MODEL_TYPE_KNN:
-                Knn.create_train_save_model(train_x, test_x, y_train, y_test)
-            elif model_type == Rs.MODEL_TYPE_SVN:
-                Svn.create_train_save_model(train_x, test_x, y_train, y_test)
-            elif model_type == Rs.MODEL_TYPE_RF:
-                Rf.create_train_save_model(train_x, test_x, y_train, y_test)
+def train(model_type, train_x, test_x, y_train, y_test, data_sample):
+    if model_type == Rs.MODEL_TYPE_KNN:
+        Knn.create_train_save_model(data_sample)
+    # elif model_type == Rs.MODEL_TYPE_SVN:
+    #     Svn.create_train_save_model(train_x, test_x, y_train, y_test)
+    # elif model_type == Rs.MODEL_TYPE_RF:
+    #     Rf.create_train_save_model(train_x, test_x, y_train, y_test)
+    # elif model_type == Rs.MODEL_TYPE_AUTO:
+    #     Auto.create_train_save_model(train_x, test_x, y_train, y_test)
 
 
 def user_data_preprocessing(data_sample):
@@ -142,11 +146,6 @@ def user_data_preprocessing(data_sample):
         train_x, test_x, y_train, y_test = prediction_data_preprocessing(data_sample)
         samples.append([train_x, test_x, y_train, y_test])
     return samples, Dc.handling_null_values(user_input)
-
-
-def data_preprocessing(data_sample, split_method):
-    x_train, x_test, y_train, y_test = split_depending_on_method(data_sample, split_method)
-    return data_prepare(x_test, x_train, y_test, y_train)
 
 
 def prediction_data_preprocessing(data_sample):
@@ -163,25 +162,6 @@ def user_input_data_preprocessing(data_sample):
     return [data_sample, norm, stand]
 
 
-def data_prepare(x_test, x_train, y_test, y_train):
-    x_test_norm, x_train_norm = normalization(x_test, x_train)
-    x_test_stand, x_train_stand = standarization(x_test, x_train)
-    train_x = [x_train, x_train_norm, x_train_stand]
-    test_x = [x_test, x_test_norm, x_test_stand]
-    return train_x, test_x, y_train, y_test
-
-
-def standarization(x_test, x_train):
-    temp_x_train = x_train.loc[:, :].copy()
-    temp_x_test = x_test.loc[:, :].copy()
-    for iterator in ['age', 'trestbps', 'chol', 'restecg', 'thalach', 'oldpeak', 'slope', 'ca', 'thal']:
-        scale = StandardScaler().fit(x_train[[iterator]])
-        temp_x_train[iterator] = scale.transform(x_train[[iterator]])
-        temp_x_test[iterator] = scale.transform(x_test[[iterator]])
-
-    return temp_x_test, temp_x_train
-
-
 def standarization_user_input(data):
     for iterator in ['age', 'trestbps', 'chol', 'restecg', 'thalach', 'oldpeak', 'slope', 'ca', 'thal']:
         scale = StandardScaler().fit(data[[iterator]])
@@ -195,7 +175,6 @@ def standarization_user_input(data):
     #     dataset[iterator] = scale.transform(dataset[[iterator]])
     # return dataset
 
-
 # standardised = []
 # for dataset in data:
 #     for iterator in ['age', 'trestbps', 'chol', 'restecg', 'thalach', 'oldpeak', 'slope', 'ca', 'thal']:
@@ -204,26 +183,3 @@ def standarization_user_input(data):
 #         dataset[iterator] = scale.transform(dataset[[iterator]])
 #     standardised.append(dataset)
 # return standardised
-
-
-def normalization(x_test, x_train):
-    norm = MinMaxScaler().fit(x_train)
-    print(norm.transform(x_train))
-    return norm.transform(x_test), norm.transform(x_train)
-
-
-def normalization_user_input(data):
-    norm = MinMaxScaler().fit(data)
-    print(norm.transform(data))
-    return norm.transform(data)
-
-    # normalised = []
-    # for dataset in data:
-    # data_frame = pandas.DataFrame(data[0].reshape(1, -1), columns=Rs.features_used)
-    # print(data_frame)
-    # norm = MinMaxScaler().fit(data_frame)
-    # print(norm.transform(data_frame))
-    # return norm.transform(data_frame)
-    #   normalised.append(norm.transform(data_frame))
-    # print(normalised)
-    # return normalised
