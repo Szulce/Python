@@ -1,9 +1,8 @@
-import numpy
 import pandas
 import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
-import ComparativeSupervisedLearning.DataManagement.DataConversion as Dc
-import itertools
+import pandas
 
+import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
 
 
 class BaseData:
@@ -13,17 +12,17 @@ class BaseData:
         if form.get('age') != '':
             self.age = form.get('age')
         else:
-            self.age = numpy.NaN
+            self.age = -1
         self.sex = form.get('sex')
         self.cp = form.get('cp')
         if form.get('trestbps') != '':
             self.trestbps = form.get('trestbps')
         else:
-            self.trestbps = numpy.NaN
+            self.trestbps = -1
         if form.get('chol') != '':
             self.chol = form.get('chol')
         else:
-            self.chol = numpy.NaN
+            self.chol = -1
         if form.get('fbs') is not None:
             self.fbs = form.get('fbs')
         else:
@@ -35,7 +34,7 @@ class BaseData:
         if form.get('thalach') != '':
             self.thalach = form.get('thalach')
         else:
-            self.thalach = numpy.NaN
+            self.thalach = -1
         if form.get('exang') is not None:
             self.exang = form.get('exang')
         else:
@@ -58,7 +57,6 @@ class BaseData:
             self.thal = 4
         else:
             self.thal = form.get('thal')
-        self.num = 0
 
     def to_string(self):
         """"Prints all class attributes values"""
@@ -67,11 +65,10 @@ class BaseData:
     def to_data_frame(self):
         """" Converts to dataFrame """
         list_enumerated = {'age': [self.age], 'sex': [self.sex], 'cp': [self.cp], 'trestbps': [self.trestbps],
-                           'chol': [self.chol], 'fbs': [self.fbs], 'resteg': [self.restecg], 'thalach': [self.thalach],
+                           'chol': [self.chol], 'fbs': [self.fbs], 'restecg': [self.restecg], 'thalach': [self.thalach],
                            'exang': [self.exang], 'oldpeak': [self.oldpeak],
-                           'slope': [self.slope], 'ca': [self.ca], 'thal': [self.thal], 'num': [self.num]}
-        corrected_df = pandas.DataFrame(list_enumerated, columns=Rs.features_used)
+                           'slope': [self.slope], 'ca': [self.ca], 'thal': [self.thal]}
+        corrected_df = pandas.DataFrame(list_enumerated, columns=Rs.features_prediction)
         return corrected_df
-        # return Dc.handling_null_values(corrected_df)
 
 

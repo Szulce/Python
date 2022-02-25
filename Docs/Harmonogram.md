@@ -1,16 +1,15 @@
 # Harmonongram spotkań i ramowy plan realizacji
 
-----czwartek
-uczenie / predykcja
 
-//todo poprawne przejście dla 2 algorytmu
-- - implememtacja algorytmu KNN,
-- - moduł lasów decyzyjnych,
-- - implementacja SVM,
-- autosklearn
-- - działanie na pojedyńczym algorytmie zgodne z flow
-- działanie logiczne (wyniki)
-- 
+
+//todo poprawne przejście dla  algorytmu
+- - implememtacja algorytmu KNN, uczenie / predykcja
+- - moduł lasów decyzyjnych uczenie / predykcja
+- - implementacja SVM uczenie / predykcja
+- autosklearn uczenie / predykcja 
+- porównannie
+- zwrócenie wyników
+- wygenerowanie wykresów
 - - przerobić działanie dla każdego algorytmu zgodnie z flowchartem _ osobny dla lasów i osobny dla drzew
 - wprowadzenie róźnych parametryzacji 
 - wprowadzenie róźnych wersji przygotowania danych 
@@ -29,7 +28,6 @@ uczenie / predykcja
 - strona projektu strona prezentująca rezultaty - uzupełnic danymi i wykresami
 //opis praktycznej części podrasować
 - - testy,
-------------piątek
 - strona prezentująca rezultaty i pozwalająca na wykorzytanie programu,
 - błąd z zastosowaniem rozszerzenia
 - -usunąc rozszerzenie formularza ponieważ nie jest wykorzystywane 
