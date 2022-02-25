@@ -18,8 +18,11 @@ RF_TYPE_DIRECTORY = "/Rf"
 SVN___SAV = "Svn1.sav"
 SVN_TYPE_DIRECTORY = "/Svn"
 
-KNN___SAV = "Auto1.sav"
+KNN___SAV = "Knn1.sav"
 KNN_TYPE_DIRECTORY = "/Knn"
+
+AUTO___SAV = "Auto1.sav"
+AUTO_TYPE_DIRECTORY = "/Auto"
 
 MODULE_DIRECTORY_PATH = 'ComparativeSupervisedLearning%s' % PREDICTION_MANAGEMENT_
 
@@ -165,6 +168,21 @@ features_used = ['age',  # 3
                  ]
 # 63.0 ,   1.0,  1.0,  145.0, 233.0, 1.0, 2.0,150.0,0.0,2.3,3.0,0.0,6.0,0
 # 63 lat , men, angina, mmHG, chol, sugar,
+
+features_prediction = ['age',  # 3
+                 'sex',  # 4
+                 'cp',  # 9
+                 'trestbps',  # 10
+                 'chol',  # 12
+                 'fbs',  # 16
+                 'restecg',  # 19
+                 'thalach',  # 32
+                 'exang',  # 38
+                 'oldpeak',  # 40
+                 'slope',  # 41
+                 'ca',  # 44
+                 'thal',  # 51
+                                  ]
 
 features_used_categorical = [
     'slope',  # 41

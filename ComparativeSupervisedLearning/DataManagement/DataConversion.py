@@ -41,22 +41,19 @@ def concat_data(load_files):
 def handling_null_values(data_frame):
     data_array = []
     for imputed in Rs.IMPUTERS_LIST:
-        imputed.fit(data_frame)
-        handled = imputed.transform(data_frame)
-        if list(handled[0]).count('missing_value') > 0:
-            for index in range(len(handled[0])):
-                if handled[0][index] == 'missing_value':
-                    handled[0][index] = -1
-        data_array.append(handled)
+        data_array.append(imputed.fit_transform(data_frame))
     return data_array
 
 
-def handling_categorical_variables(data):
+def handling_categorical_variables(data, training):
     handled = []
+    columns = Rs.features_prediction
+    if training:
+        columns = Rs.features_used
     for data_set in data:
-        data_frame = pandas.DataFrame(data_set,columns=Rs.features_used)
+        data_frame = pandas.DataFrame(data_set, columns=columns)
         data_frame.reindex(Rs.features_used, axis=1)
-        handled.append(pandas.get_dummies(data=data_frame, drop_first=True))
+        handled.append(pandas.get_dummies(data=data_frame, drop_first=training))
     return handled
 
 
@@ -68,16 +65,15 @@ def normalization(data):
     return scaled_array
 
 
-def standarization(data):
+def standarization(data, training):
     strand_array = []
+    columns = Rs.features_prediction
+    if training:
+        columns = Rs.features_used
     for data_iter in data:
-        # temp_x = pandas.DataFrame(data_iter, columns=Rs.features_used)
-        # for iterator in Rs.features_used_numerical:
-        #     StandardScaler().fit_transform(temp_x[[iterator]])
-        # strand_array.append(pandas.DataFrame(nanmean(temp_x, axis=0)))
-
+        temp = pandas.DataFrame(data_iter, columns=columns)
         for iterator in Rs.features_used_numerical:
-            StandardScaler().fit_transform(pandas.DataFrame(data_iter, columns=Rs.features_used)[[iterator]])
+            StandardScaler().fit_transform(temp[[iterator]])
         strand_array.append(data_iter)
 
     return strand_array
@@ -85,18 +81,15 @@ def standarization(data):
 
 def prepare_data():
     unprepared_data = concat_data(load_data_from_files())
+    return data_preprocessing(unprepared_data, True)
+
+
+def data_preprocessing(unprepared_data, training):
     unprepared_data.drop_duplicates(keep='first')
-    return standarization(
-        normalization(
-            handling_categorical_variables(
-                handling_null_values(unprepared_data))))
-
-
-def prepare_user_input_data(input):
-    loaded_files = load_data_from_files()
-    loaded_files.append(input)
-    unprepared_data = concat_data(loaded_files)
-    return handling_null_values(unprepared_data)
+    return normalization(
+        handling_categorical_variables(
+            standarization(
+                handling_null_values(unprepared_data), training), training))
 
 
 def save_prediction_to_json(prediction, algorithm):

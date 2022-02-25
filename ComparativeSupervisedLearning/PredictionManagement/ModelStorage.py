@@ -31,3 +31,7 @@ def load_all_models_for_type(model_type):
         loaded_models.append(next_model)
     Log.debug("Loaded Models count:" + str(len(loaded_models)))
     return loaded_models
+
+
+def load_accuracy_score(prediction_model):
+    return 50.0 # todo
