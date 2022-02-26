@@ -1,65 +1,56 @@
 # Harmonongram spotkań i ramowy plan realizacji
 
-
-
 //todo poprawne przejście dla  algorytmu
-- - implememtacja algorytmu KNN, uczenie / predykcja
-- - moduł lasów decyzyjnych uczenie / predykcja
 - - implementacja SVM uczenie / predykcja
-- autosklearn uczenie / predykcja 
-- porównannie
+- - moduł lasów decyzyjnych uczenie / predykcja
+- wprowadznie modułu generującego wykresy 
+- - - moduł odpowiedzialny za porównanie działania algorytmów -wykresy,porównanie szybkości
 - zwrócenie wyników
 - wygenerowanie wykresów
-- - przerobić działanie dla każdego algorytmu zgodnie z flowchartem _ osobny dla lasów i osobny dla drzew
-- wprowadzenie róźnych parametryzacji 
-- wprowadzenie róźnych wersji przygotowania danych 
-- wprowadznie modułu generującego wykresy 
-
-//todo poprawne przejście dla wszytkich algorytmów
-- 
-// porównanie
-- - moduł odpowiedzialny za porównanie działania algorytmów -wykresy,porównanie szybkości
+- wprowadzenie róźnych parametryzacji
 - moduł odpowiedzialny za prezentacje wyników.
 - prezentacja wyników w postaci wykresów
-//todo dodać wykresy
-//todo wykresy na stronie
-// strone
-- 
-- strona projektu strona prezentująca rezultaty - uzupełnic danymi i wykresami
-//opis praktycznej części podrasować
-- - testy,
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++12:30
 - strona prezentująca rezultaty i pozwalająca na wykorzytanie programu,
-- błąd z zastosowaniem rozszerzenia
-- -usunąc rozszerzenie formularza ponieważ nie jest wykorzystywane 
+- strona projektu strona prezentująca rezultaty - uzupełnic danymi i wykresami
+-predyckja dla użytkownika (pasek dla każdego typu algorytmu)
 - strona omawiająca dane
 - -poprawki strony prezentującej rezultaty
 - brak rozszerzonej części formularza
-- predyckja dla użytkownika (pasek dla każdego typu algorytmu)
+- (- błąd z zastosowaniem rozszerzenia
+- -usunąc rozszerzenie formularza ponieważ nie jest wykorzystywane )
 - zakładka omawiająca projekt i prezentująca ogólne rezultaty wykresy i porównania na stronie
-- spis treści abstrakt , linki do obrazków biliografia, spis używanej terminologii
-
---------sobota
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++15:00
 _  , moduły projektu , omówienie realizacji (implementacja algorytmów, strona prezentująca rezultaty)_
 - - - export  --uniwersalny modul exportowany jako biblioteka do porównywania algorytmów niezależnie od danych
--
+- 
 , bibliografia w postaci linków
 - - predykcja na podstawie najlepszych 5 lub 3 kombinacji 
 - kolenme imparatory
 - wygenerowanie wykresów
 - wykres na głowną skrone z danymi
-
+-opis praktycznej części podrasować
 
 ------------niedziela
+todo
+- autosklearn uczenie / predykcja
+- -porządek w projekcie
+- testy,
+- prezentacja praktycznej części projektu.
+- po 17:
+- - spis treści abstrakt , linki do obrazków biliografia, spis używanej terminologii
 - bibilografie poprawić
 skalowanie  obrazów
  spis obrazków
 spiswykresów
--porządek w projekcie
-- prezentacja praktycznej części projektu.
+po 22 : praca
+
 =========================================================================
-
+-rozdział o autosklarealr
 -rozważenie dodania bazy danych żeby nie trzyac tego w pamimęci i ciągle nie zaglądac do plików 
-
+- dopisać różnice między klasyfikacją a regresją 
+- dodać coś z matematycznego punktu widzenia 
 --------------------------------------------
 - - rozdział pracy dotyczący prówniania algorytmów,
 - pisemne opracowanie i dodanie na stronie

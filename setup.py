@@ -12,6 +12,6 @@ setup(
     zip_safe=False,
     packages=find_packages(exclude=('Tests', 'Docs')),
     install_requires=[
-        'flask', 'scikit-learn'
+        'flask', 'scikit-learn', 'auto-sklearn'
     ],
 )

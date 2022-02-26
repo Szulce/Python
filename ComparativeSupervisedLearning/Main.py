@@ -1,6 +1,5 @@
-from ComparativeSupervisedLearning.PredictionManagement import PredictionManager
-from ComparativeSupervisedLearning.PredictionManagement import AutoModel as Au
 from ComparativeSupervisedLearning.DataManagement.Dto.Result.FullResultObject import FullResultObject
+from ComparativeSupervisedLearning.PredictionManagement import PredictionManager
 
 
 def predict_based_on_user_input(base_data, full_data):

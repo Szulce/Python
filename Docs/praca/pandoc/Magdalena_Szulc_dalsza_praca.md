@@ -878,6 +878,8 @@ Po wyborze hiperparametru nastÄ™puje segmentacjia danych na K jendakowej wielkoÅ
 - https://towardsdatascience.com/data-normalization-in-machine-learning-395fdec69d02
 - https://www.ritchieng.com/machine-learning-efficiently-search-tuning-param/
 - https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
+- https://www.vebuso.com/2020/03/svm-hyperparameter-tuning-using-gridsearchcv/
+- https://www.geeksforgeeks.org/svm-hyperparameter-tuning-using-gridsearchcv-ml/
 - @article{
  Citation Request:
 

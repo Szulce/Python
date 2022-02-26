@@ -102,7 +102,7 @@ def save_prediction_to_json(prediction, algorithm):
             json.dump(prediction, json_f)
         json_f.close()
     elif algorithm == 'SVM':
-        with open('DataManagement/JsonResult/Svn.json', 'w') as json_f:
+        with open('DataManagement/JsonResult/Svm.json', 'w') as json_f:
             json.dump(prediction, json_f)
         json_f.close()
     elif algorithm == 'KNN':
@@ -121,7 +121,7 @@ def save_prediction(prediction, algorithm):
             json.dump(prediction, json_f)
         json_f.close()
     elif algorithm == 'SVM':
-        with open('DataManagement/JsonResult/Svn.json', 'w') as json_f:
+        with open('DataManagement/JsonResult/Svm.json', 'w') as json_f:
             json.dump(prediction, json_f)
         json_f.close()
     elif algorithm == 'KNN':
@@ -145,7 +145,7 @@ def read_prediction(algorithm):
                 all_predictions.append(p)
         json_f.close()
     if algorithm == 'SVM' or algorithm == 'ALL':
-        with open('DataManagement/JsonResult/Svn.json', 'r') as json_f:
+        with open('DataManagement/JsonResult/Svm.json', 'r') as json_f:
             prediction = json.load(json_f)
             for p in prediction:
                 all_predictions.append(p)

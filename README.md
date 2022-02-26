@@ -3,6 +3,7 @@
 pip install --upgrade pip
 pip install pytest coverage
 pip install joblib
+pip3 install auto-sklearn
 
 ##Python
 md dla kodu 

@@ -34,4 +34,12 @@ def load_all_models_for_type(model_type):
 
 
 def load_accuracy_score(prediction_model):
-    return 50.0 # todo
+    return 50.0  # todo
+
+
+def save_grid_scores(grid, model_type):
+    save_model(grid, model_type + str(1), model_type)
+
+    #save best params   best_params = grid.best_params_
+# todo generate images ,save imgaes ,  load images on webside for grid scores
+# todo make charts and save compare results fro different imputors
