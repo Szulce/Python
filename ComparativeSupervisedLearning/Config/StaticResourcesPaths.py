@@ -1,4 +1,5 @@
 import numpy
+import scipy
 from sklearn.impute import SimpleImputer
 
 # LogConfig
@@ -15,8 +16,8 @@ LOG_FILE_NAME = "UMNWWCHS.log"
 RF___SAV = "Rf1.sav"
 RF_TYPE_DIRECTORY = "/Rf"
 
-SVN___SAV = "Svn1.sav"
-SVN_TYPE_DIRECTORY = "/Svn"
+SVM___SAV = "Svm1.sav"
+SVM_TYPE_DIRECTORY = "/Svm"
 
 KNN___SAV = "Knn1.sav"
 KNN_TYPE_DIRECTORY = "/Knn"
@@ -29,15 +30,15 @@ MODULE_DIRECTORY_PATH = 'ComparativeSupervisedLearning%s' % PREDICTION_MANAGEMEN
 SAV_DIR = "/Sav/"
 
 KNN_FULL_PATH_SAV = MODULE_DIRECTORY_PATH + KNN_TYPE_DIRECTORY + SAV_DIR + KNN___SAV
-SVN_FULL_PATH_SAV = MODULE_DIRECTORY_PATH + SVN_TYPE_DIRECTORY + SAV_DIR + SVN___SAV
+SVN_FULL_PATH_SAV = MODULE_DIRECTORY_PATH + SVM_TYPE_DIRECTORY + SAV_DIR + SVM___SAV
 RF_FULL_PATH_SAV = MODULE_DIRECTORY_PATH + RF_TYPE_DIRECTORY + SAV_DIR + RF___SAV
 
 MODEL_TYPE_KNN = "Knn"
-MODEL_TYPE_SVN = "Svn"
+MODEL_TYPE_SVM = "Svm"
 MODEL_TYPE_RF = "Rf"
 MODEL_TYPE_AUTO = "Auto"
 
-MODELS = [MODEL_TYPE_KNN, MODEL_TYPE_SVN, MODEL_TYPE_RF, MODEL_TYPE_AUTO]
+MODELS = [MODEL_TYPE_KNN, MODEL_TYPE_SVM, MODEL_TYPE_RF, MODEL_TYPE_AUTO]
 
 SLESH = "\\"
 
@@ -170,19 +171,19 @@ features_used = ['age',  # 3
 # 63 lat , men, angina, mmHG, chol, sugar,
 
 features_prediction = ['age',  # 3
-                 'sex',  # 4
-                 'cp',  # 9
-                 'trestbps',  # 10
-                 'chol',  # 12
-                 'fbs',  # 16
-                 'restecg',  # 19
-                 'thalach',  # 32
-                 'exang',  # 38
-                 'oldpeak',  # 40
-                 'slope',  # 41
-                 'ca',  # 44
-                 'thal',  # 51
-                                  ]
+                       'sex',  # 4
+                       'cp',  # 9
+                       'trestbps',  # 10
+                       'chol',  # 12
+                       'fbs',  # 16
+                       'restecg',  # 19
+                       'thalach',  # 32
+                       'exang',  # 38
+                       'oldpeak',  # 40
+                       'slope',  # 41
+                       'ca',  # 44
+                       'thal',  # 51
+                       ]
 
 features_used_categorical = [
     'slope',  # 41
@@ -218,3 +219,12 @@ NUMPY_mask = 0.8
 N_NEIGHBORS_SIZE = 14
 N_NEIGHBORS = "n_neighbors"
 KNN_GRID_SPLITER = 7
+
+# svm
+SVM_C = [0.1, 1, 10, 100]
+SVM_GAMMA = [1, 0.1, 0.01, 0.001]
+SVM_KERNEL = ['rbf', 'poly', 'sigmoid']  # kernels = ['Polynomial', 'RBF', 'Sigmoid','Linear']
+
+# rf
+RF_MAX_DEPTH = [7, 8, 9, 10, 11, 12, 13]
+RF_RANDOM_STATE = [0, 2, 4, 7, 10, 13, 17, 21, 25, 27]
