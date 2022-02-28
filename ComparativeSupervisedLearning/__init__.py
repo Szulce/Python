@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 from flask_bootstrap import Bootstrap
 import Main
-from ComparativeSupervisedLearning.DataManagement.Dto.Data.BaseData import BaseData
-from ComparativeSupervisedLearning.DataManagement.Dto.Data.FullData import FullData
+from ComparativeSupervisedLearning.Data.Dto.In.BaseData import BaseData
+from ComparativeSupervisedLearning.Data.Dto.In.FullData import FullData
 from Config.LogConfig import mainLogger as Log
 
 app = Flask(__name__)
@@ -59,6 +59,13 @@ def submit_action():
     Log.debug(filled_form)
     Log.debug("Processing ...")
     result = Main.predict_based_on_user_input(BaseData(filled_form), FullData(filled_form))
+    Log.info(result)
+    return result
+
+
+@app.route('/get_data_elaboration', methods=['GET'])
+def get_data_elaboration():
+    result = Main.render_data_info()
     Log.info(result)
     return result
 

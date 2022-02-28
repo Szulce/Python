@@ -4,6 +4,15 @@ pip install --upgrade pip
 pip install pytest coverage
 pip install joblib
 pip3 install auto-sklearn
+pip install -U jsonpickle
+
+Solution 3: time.clock replace with time.time
+Just Find C:\Users\ssc\anaconda3\envs\.. this folder.
+select compat.py file and Open.
+search for time.clock in compat.py
+Then replace time.clock with time.time
+and save it.
+Now your error should be solved.
 
 ##Python
 md dla kodu 

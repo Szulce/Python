@@ -879,6 +879,7 @@ Po wyborze hiperparametru nastÄ™puje segmentacjia danych na K jendakowej wielkoÅ
 - https://www.ritchieng.com/machine-learning-efficiently-search-tuning-param/
 - https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
 - https://www.vebuso.com/2020/03/svm-hyperparameter-tuning-using-gridsearchcv/
+- http://jsonpickle.github.io/#jsonpickle-usage
 - https://www.geeksforgeeks.org/svm-hyperparameter-tuning-using-gridsearchcv-ml/
 - @article{
  Citation Request:

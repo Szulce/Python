@@ -299,9 +299,9 @@
                         </div>
                     </div>
 
-                    <button data-toggle="collapse" data-target="#extended-formula" type="button"
-                            class="btn btn-primary btn-align lang" key="extended-formula" onclick="applyExtended()" >Rozszerzony formularz
-                    </button>
+<!--                    <button data-toggle="collapse" data-target="#extended-formula" type="button"-->
+<!--                            class="btn btn-primary btn-align lang" key="extended-formula" onclick="applyExtended()" >Rozszerzony formularz-->
+<!--                    </button>-->
                     <hidden id="applyExtended"value="false"></hidden>
                     </br>
                     <div id="extended-formula" class="collapse">
@@ -869,11 +869,63 @@
             <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%"
                  aria-valuenow="4" aria-valuemin="0" aria-valuemax="5"></div>
         </div>
-        <p class="lead lang" key="result-equals">Predykcja dla prowadzonych danych wynosi :<strong>
-        <div id="result-positive-value"></div>
-        <div id="accuracy-positive-value"></div>
-        <canvas id="myChart" width="400" height="400"></canvas>
-        </strong></p>
+        <p class="lead lang" key="result-equals">Predykcja dla prowadzonych danych wynosi :</p>
+               </br>
+        <strong>K -Najbliższych sąsiadów </strong>
+            </br>
+         <span> Wynik dla danych utorzonych z modelu który puste wartości zastępuje</span>
+            <ul>
+            <li> średnią wartością dla danej kolumny </li><div id="accuracy-positive-imputed_mean_knn"></div>
+            <li> medianą wartości dla danej kolumny  </li><div id="accuracy-positive-imputed_median_knn"></div>
+            <li> stałą wartością dla danej kolumny </li><div id="accuracy-postive-imputed_most_constant_knn"></div>
+            <li> najczęstrzą wartością dla danej kolumny </li><div id="accuracy-positive-imputed_most_frequent_knn"></div>
+        </ul>
+
+        <span> Parametry najwydajniejszego modelu </span>
+           <div id="result-positive-value-knn"></div>
+
+         <span> Dokładność modelu </span>
+          <div id="accuracy-positive-value-knn"></div>
+
+
+          <div id="accuracy-positive-plot-knn" width="400" height="400"></div>
+
+         <strong>Maszyna wektorów nośnych </strong>
+        </br>
+         <span> Wynik dla danych utorzonych z modelu który puste wartości zastępuje  </span>
+            <ul>
+            <li> średnią wartością dla danej kolumny </li><div id="accuracy-positive-imputed_mean_svm"></div>
+            <li> medianą wartości dla danej kolumny  </li><div id="accuracy-positive-imputed_median_svm"></div>
+            <li> stałą wartością dla danej kolumny </li><div id="accuracy-postive-imputed_most_constant_svm"></div>
+            <li> najczęstrzą wartością dla danej kolumny </li><div id="accuracy-positive-imputed_most_frequent_svm"></div>
+        </ul>
+
+        <span> Parametry najwydajniejszego modelu  </span>
+          <div id="result-positive-value-svm"></div>
+
+         <span> Dokładność modelu</span>
+          <div id="accuracy-positive-value-svm"></div>
+
+        <div id="accuracy-positive-plot-svm" width="400" height="400"></div>
+
+         <strong>Las losowy </strong>
+        </br>
+         <span> Wynik dla danych utorzonych z modelu który puste wartości zastępuje </span>
+            <ul>
+            <li> średnią wartością dla danej kolumny </li><div id="accuracy-positive-imputed_mean_rf"></div>
+            <li> medianą wartości dla danej kolumny  </li><div id="accuracy-positive-imputed_median_rf"></div>
+            <li> stałą wartością dla danej kolumny </li><div id="accuracy-postive-imputed_most_constant_rf"></div>
+            <li> najczęstrzą wartością dla danej kolumny </li><div id="accuracy-positive-imputed_most_frequent_rf"></div>
+        </ul>
+
+        <span> Parametry najwydajniejszego modelu </span>
+           <div id="result-positive-value-rf"></div>
+
+         <span> Dokładność modelu    </span>
+          <div id="accuracy-positive-value-rf"></div>
+
+        <div id="accuracy-positive-plot-rf" width="400" height="400"></div>
+
         <hr class="my-4">
         <p><span class="lang" key="result-classification-1">Wyniki sklasyfikowane jako </span><i> 1, 2, 3, 4 </i>
             <span class="lang" key="result-classification-2">oznaczają predykcję </span>
@@ -892,11 +944,54 @@
             <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%"
                  aria-valuenow="4" aria-valuemin="0" aria-valuemax="5"></div>
         </div>
-        <p class="lead lang" key="result-equals">Predykcja dla prowadzonych danych wynosi :<strong>
-        <div id="result-negative-value"></div>
-        <div id="accuracy-negative-value"></div>
-        <canvas id="myChart" width="400" height="400"></canvas>
-        </strong></p>
+        <p class="lead lang" key="result-equals">Predykcja dla prowadzonych danych wynosi :</p>
+            </br>
+       <strong>K -Najbliższych sąsiadów </strong>
+            </br>
+         <span> Wynik dla danych utorzonych z modelu który puste wartości zastępuje</span>
+            <ul>
+            <li> średnią wartością dla danej kolumny </li><div id="accuracy-negative-imputed_mean_knn"></div>
+            <li> medianą wartości dla danej kolumny  </li><div id="accuracy-negative-imputed_median_knn"></div>
+            <li> stałą wartością dla danej kolumny </li><div id="accuracy-negative-imputed_most_constant_knn"></div>
+            <li> najczęstrzą wartością dla danej kolumny </li><div id="accuracy-negative-imputed_most_frequent_knn"></div>
+        </ul>
+        <span> Parametry najwydajniejszego modelu </span>
+           <div id="result-negative-value-knn"></div>
+
+         <span> Dokładność modelu  </span>
+          <div id="accuracy-negative-value-knn"></div>
+
+         <strong>Maszyna wektorów nośnych </strong>
+        </br>
+        <span> Wynik dla danych utorzonych z modelu który puste wartości zastępuje</span>
+            <ul>
+            <li> średnią wartością dla danej kolumny </li><div id="accuracy-negative-imputed_mean_svm"></div>
+            <li> medianą wartości dla danej kolumny  </li><div id="accuracy-negative-imputed_median_svm"></div>
+            <li> stałą wartością dla danej kolumny </li><div id="accuracy-negative-imputed_most_constant_svm"></div>
+            <li> najczęstrzą wartością dla danej kolumny </li><div id="accuracy-negative-imputed_most_frequent_svm"></div>
+        </ul>
+        <span> Parametry najwydajniejszego modelu </span>
+           <div id="result-negative-value-svm"></div>
+
+         <span> Dokładność modelu  </span>
+          <div id="accuracy-negative-value-svm"></div>
+
+         <strong>Las losowy </strong>
+        </br>
+        <span> Wynik dla danych utorzonych z modelu który puste wartości zastępuje</span>
+            <ul>
+            <li> średnią wartością dla danej kolumny </li><div id="accuracy-negative-imputed_mean_rf"></div>
+            <li> medianą wartości dla danej kolumny  </li><div id="accuracy-negative-imputed_median_rf"></div>
+            <li> stałą wartością dla danej kolumny </li><div id="accuracy-negative-imputed_most_constant_rf"></div>
+            <li> najczęstrzą wartością dla danej kolumny </li><div id="accuracy-negative-imputed_most_frequent_rf"></div>
+        </ul>
+
+        <span> Parametry najwydajniejszego modelu </span>
+           <div id="result-negative-value-rf"></div>
+
+         <span> Dokładność modelu  </span>
+          <div id="accuracy-negative-value-rf"></div>
+
         <hr class="my-4">
         <p><span class="lang" key="result-classification-1">Wyniki sklasyfikowane jako </span><i> 0 </i>
             <span class="lang" key="result-classification-2">oznaczają predykcję </span>

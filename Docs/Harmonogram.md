@@ -1,56 +1,48 @@
-# Harmonongram spotkań i ramowy plan realizacji
+# plan realizacji
 
-//todo poprawne przejście dla  algorytmu
-- - implementacja SVM uczenie / predykcja
-- - moduł lasów decyzyjnych uczenie / predykcja
-- wprowadznie modułu generującego wykresy 
-- - - moduł odpowiedzialny za porównanie działania algorytmów -wykresy,porównanie szybkości
-- zwrócenie wyników
-- wygenerowanie wykresów
-- wprowadzenie róźnych parametryzacji
-- moduł odpowiedzialny za prezentacje wyników.
-- prezentacja wyników w postaci wykresów
+4:00
+-wykresy dla uczenia i parametryzacji:
+  - wykresy dla algorytmu knn
+  - wykresy dla agorytmu SVM
+  - wykresy dla algorytmu RF
+5:00
+ - moduł odpowiedzialny za porównanie działania algorytmów -wykresy,porównanie szybkości
+ 6:00
+- wykresy dla strony wyników: 
+- SINGLE ALGORITHM RESULT
+- ALL ALGOTHM RESULT
+- COMPARATION ALGORITHM RESULT
+  - wykresy dla algorytmu knn
+  - wykresy dla agorytmu SVM
+  - wykresy dla algorytmu RF
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++12:30
-- strona prezentująca rezultaty i pozwalająca na wykorzytanie programu,
+7:00
 - strona projektu strona prezentująca rezultaty - uzupełnic danymi i wykresami
--predyckja dla użytkownika (pasek dla każdego typu algorytmu)
-- strona omawiająca dane
-- -poprawki strony prezentującej rezultaty
-- brak rozszerzonej części formularza
-- (- błąd z zastosowaniem rozszerzenia
-- -usunąc rozszerzenie formularza ponieważ nie jest wykorzystywane )
-- zakładka omawiająca projekt i prezentująca ogólne rezultaty wykresy i porównania na stronie
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++15:00
-_  , moduły projektu , omówienie realizacji (implementacja algorytmów, strona prezentująca rezultaty)_
-- - - export  --uniwersalny modul exportowany jako biblioteka do porównywania algorytmów niezależnie od danych
-- 
-, bibliografia w postaci linków
-- - predykcja na podstawie najlepszych 5 lub 3 kombinacji 
-- kolenme imparatory
-- wygenerowanie wykresów
-- wykres na głowną skrone z danymi
--opis praktycznej części podrasować
+-dostrojenie parametrów na wyższą dokładność
 
-------------niedziela
-todo
-- autosklearn uczenie / predykcja
-- -porządek w projekcie
+
+========================================================================
 - testy,
+- praca
+- - autosklearn uczenie / predykcja
+- -porządek w projekcie
+- brak rozszerzonej części formularza
+
+- tlumaczenie na jezyk angielski 
+- wyczyścić projekt do zera 
 - prezentacja praktycznej części projektu.
-- po 17:
-- - spis treści abstrakt , linki do obrazków biliografia, spis używanej terminologii
+
+- spis treści abstrakt , linki do obrazków biliografia, spis używanej terminologii
 - bibilografie poprawić
 skalowanie  obrazów
  spis obrazków
 spiswykresów
-po 22 : praca
-
-=========================================================================
+- -opis praktycznej części podrasować
 -rozdział o autosklarealr
 -rozważenie dodania bazy danych żeby nie trzyac tego w pamimęci i ciągle nie zaglądac do plików 
 - dopisać różnice między klasyfikacją a regresją 
 - dodać coś z matematycznego punktu widzenia 
+- -jsonpicle dopisać
 --------------------------------------------
 - - rozdział pracy dotyczący prówniania algorytmów,
 - pisemne opracowanie i dodanie na stronie
