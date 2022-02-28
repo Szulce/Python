@@ -3,7 +3,7 @@ import scipy
 from sklearn.impute import SimpleImputer
 
 # LogConfig
-PREDICTION_MANAGEMENT_ = '/PredictionManagement/'
+PREDICTION_MANAGEMENT_ = '/Management/Prediction/'
 NUMPY = "Numpy"
 PANDAS = "Pandas"
 K_FOLD = "K-fold"
@@ -38,11 +38,11 @@ MODEL_TYPE_SVM = "Svm"
 MODEL_TYPE_RF = "Rf"
 MODEL_TYPE_AUTO = "Auto"
 
-MODELS = [MODEL_TYPE_KNN, MODEL_TYPE_SVM, MODEL_TYPE_RF, MODEL_TYPE_AUTO]
+MODELS = [MODEL_TYPE_KNN, MODEL_TYPE_SVM, MODEL_TYPE_RF]  # , MODEL_TYPE_AUTO]
 
 SLESH = "\\"
 
-# Data Conversion
+# In Conversion
 
 
 features_all = ['id',  # patient identification number
@@ -193,7 +193,7 @@ features_used_categorical = [
 
 features_used_numerical = ['age', 'trestbps', 'chol', 'restecg', 'thalach', 'oldpeak', 'slope', 'ca', 'thal']
 
-# Data Conversion PreProcessing
+# In Conversion PreProcessing
 imputed_mean = SimpleImputer(strategy="mean", missing_values=numpy.NaN, fill_value=-1)
 # , add_indicator=True)
 imputed_median = SimpleImputer(strategy="median", missing_values=numpy.NaN, fill_value=-1)
@@ -207,7 +207,7 @@ IMPUTERS_LIST = [
     , imputed_most_frequent
 ]
 
-# Data Conversion split data
+# In Conversion split data
 SPLIT_METHODS = [SCIKIT_LEARN, NUMPY, K_FOLD]
 SCIKIT_test_size = 0.1
 SCIKIT_random_state = 53
@@ -228,3 +228,12 @@ SVM_KERNEL = ['rbf', 'poly', 'sigmoid']  # kernels = ['Polynomial', 'RBF', 'Sigm
 # rf
 RF_MAX_DEPTH = [7, 8, 9, 10, 11, 12, 13]
 RF_RANDOM_STATE = [0, 2, 4, 7, 10, 13, 17, 21, 25, 27]
+
+
+#results
+
+RF_ = ' \nRF : \n'
+
+SVM_ = ' \nSVM : \n'
+
+KNN_ = ' \nKNN : \n'

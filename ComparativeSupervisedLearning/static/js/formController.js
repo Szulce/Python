@@ -76,32 +76,73 @@
                     thal : $('#inputThall').val()
 			}
 			, function(dataObject) {
+
             var parsedDataObject = JSON.parse(JSON.stringify(dataObject));
-            console.info(parsedDataObject);
+
 			$('#fill-in-form').hide();
-			$('#result-positive-value').text(dataObject.results_base_information_text).show();
-			$('#result-negative-value').text(dataObject.results_base_information_text).show();
-			$('#accuracy-value').text(dataObject.results_base_accuracy_text).show();
-			if(parsedDataObject.applyExtended){
-			if(parsedDataObject.results_full.percentageKNN
-			|| parsedDataObject.results_full.percentageSVM
-			|| parsedDataObject.results_full.percentageRF
-			) {
-			$('#positive-result').show();
-			}
-			else {
-				$('#negative-result').show();
-			}
-			}else{
-			if (parsedDataObject.results_base.percentageKNN
-			&& parsedDataObject.results_base.percentageSVM
-			&& parsedDataObject.results_base.percentageRF){
+			$('#result-positive-value-knn').html(dataObject.results_base_information_text_knn).show();
+			$('#result-negative-value-knn').html(dataObject.results_base_information_text_knn).show();
+    		$('#accuracy-negative-value-knn').html(dataObject.results_base_accuracy_text_knn).show();
+    		$('#accuracy-positive-value-knn').html(dataObject.results_base_accuracy_text_knn).show();
+    		$('#result-positive-value-svm').html(dataObject.results_base_information_text_svm).show();
+			$('#result-negative-value-svm').html(dataObject.results_base_information_text_svm).show();
+    		$('#accuracy-negative-value-svm').html(dataObject.results_base_accuracy_text_svm).show();
+    		$('#accuracy-positive-value-svm').html(dataObject.results_base_accuracy_text_svm).show();
+    		$('#result-positive-value-rf').html(dataObject.results_base_information_text_rf).show();
+			$('#result-negative-value-rf').html(dataObject.results_base_information_text_rf).show();
+    		$('#accuracy-negative-value-rf').html(dataObject.results_base_accuracy_text_rf).show();
+    		$('#accuracy-positive-value-rf').html(dataObject.results_base_accuracy_text_rf).show();
+
+    		$('#accuracy-positive-plot-knn').html(dataObject.results_base_knn_plot).show();
+    		$('#accuracy-positive-plot-svm').html(dataObject.results_base_svm_plot).show();
+    		$('#accuracy-positive-plot-rf').html(dataObject.results_base_rf_plot).show();
+
+    		$('#accuracy-positive-imputed_mean_knn').html(dataObject.accuracy_imputed_mean_knn).show();
+    		$('#accuracy-positive-imputed_median_knn').html(dataObject.accuracy_imputed_median_knn).show();
+    		$('#accuracy-postive-imputed_most_constant_knn').html(dataObject.accuracy_imputed_most_constant_knn).show();
+    		$('#accuracy-positive-imputed_most_frequent_knn').html(dataObject.accuracy_imputed_most_frequent_knn).show();
+    		$('#accuracy-negative-imputed_mean_knn').html(dataObject.accuracy_imputed_mean_knn).show();
+    		$('#accuracy-negative-imputed_median_knn').html(dataObject.accuracy_imputed_median_knn).show();
+    		$('#accuracy-negaive-imputed_most_constant_knn').html(dataObject.accuracy_imputed_most_constant_knn).show();
+    		$('#accuracy-negative-imputed_most_frequent_knn').html(dataObject.accuracy_imputed_most_frequent_knn).show();
+
+    		$('#accuracy-positive-imputed_mean_svm').html(dataObject.accuracy_imputed_mean_svm).show();
+    		$('#accuracy-positive-imputed_median_svm').html(dataObject.accuracy_imputed_median_svm).show();
+    		$('#accuracy-postive-imputed_most_constant_svm').html(dataObject.accuracy_imputed_most_constant_svm).show();
+    		$('#accuracy-positive-imputed_most_frequent_svm').html(dataObject.accuracy_imputed_most_frequent_svm).show();
+    		$('#accuracy-negative-imputed_mean_svm').html(dataObject.accuracy_imputed_mean_svm).show();
+    		$('#accuracy-negative-imputed_median_svm').html(dataObject.accuracy_imputed_median_svm).show();
+    		$('#accuracy-negaive-imputed_most_constant_svm').html(dataObject.accuracy_imputed_most_constant_svm).show();
+    		$('#accuracy-negative-imputed_most_frequent_svm').html(dataObject.accuracy_imputed_most_frequent_svm).show();
+
+    		$('#accuracy-positive-imputed_mean_rf').html(dataObject.accuracy_imputed_mean_rf).show();
+    		$('#accuracy-positive-imputed_median_rf').html(dataObject.accuracy_imputed_median_rf).show();
+    		$('#accuracy-postive-imputed_most_constant_rf').html(dataObject.accuracy_imputed_most_constant_rf).show();
+    		$('#accuracy-positive-imputed_most_frequent_rf').html(dataObject.accuracy_imputed_most_frequent_rf).show();
+    		$('#accuracy-negative-imputed_mean_rf').html(dataObject.accuracy_imputed_mean_rf).show();
+    		$('#accuracy-negative-imputed_median_rf').html(dataObject.accuracy_imputed_median_rf).show();
+    		$('#accuracy-negaive-imputed_most_constant_rf').html(dataObject.accuracy_imputed_most_constant_rf).show();
+    		$('#accuracy-negative-imputed_most_frequent_rf').html(dataObject.accuracy_imputed_most_frequent_rf).show();
+
+//			if(parsedDataObject.applyExtended){
+//			if(parsedDataObject.results_full.percentageK
+//			|| parsedDataObject.results_full.percentageSVM
+//			|| parsedDataObject.results_full.percentageRF
+//			) {
+//			$('#positive-result').show();
+//			}
+//			else {
+//				$('#negative-result').show();
+//			}
+//			}else{
+
+			if (dataObject.results_base_positive_negative){
 				$('#positive-result').show();
 			}
 			else {
 				$('#negative-result').show();
 			}
-			}
+//			}
 				});
 			$("html").animate({ scrollTop: 0 }, "slow");
 				return false;
@@ -109,6 +150,7 @@
 			  });
 
 			});
+
 
 function computePNCADEN(gridValuesArray){
     var sum = 0;

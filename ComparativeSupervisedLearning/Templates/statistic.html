@@ -3,42 +3,161 @@
 {% block head %}
 
 
-<!--<script type="text/javascript" src="{{ url_for('static', filename='js/formController.js') }}"></script>-->
+<script type="text/javascript" src="{{ url_for('static', filename='js/dataStat.js') }}"></script>
 
 {% endblock %}
 
 {% block content %}
-
 <div class="padding">
     <div class="container">
+        <h1> Omówienie wykorzystannych danych </h1>
+        <h3>dataset pochodzi z repozytorium uczenia maszynowego UCI</h3>
         <div class="row">
-            <div class="col-sm-3">
-                <canvas id="myChart"></canvas>
-                <canvas id="lineChart"></canvas>
-                <canvas id="radarChart"></canvas>
-                <canvas id="barChart"></canvas>
-                <canvas id="horizontalBar"></canvas>
-                <canvas id="polarChart"></canvas>
-                <canvas id="pieChart"></canvas>
-                <canvas id="doughnutChart"></canvas>
-                <canvas id="bubbleChart"></canvas>
-                <canvas id="scatterChart"></canvas>
+            <div class=" card card_left_nav col-sm-6 border-info">
+                    <div class="card-header bg-transparent border-info">Informacje o atrybucie zestawu danych
+                        dotyczących chorób serca
+                    </div>
+                    <div class="card-body text-info">
+                        <h5 class="card-title">Lista atrybutów wykorzystanych w algorytmie</h5>
+                        <p class="card-text">
+                        <ol>
+                            <li>wiek</li>
+                            <li>płeć</li>
+                            <li>rodzaj bólu w klatce piersiowej</li>
+                            <li>spoczynkowe ciśnienie krwi</li>
+                            <li>cholesterol w surowicy w mg/dl</li>
+                            <li>poziom cukru we krwi na czczo > 120 mg/dl</li>
+                            <li>spoczynkowe wyniki elektrokardiograficzne</li>
+                            <li>osiągnięto maksymalne tętno</li>
+                            <li>dławica piersiowa wywołana wysiłkiem fizycznym</li>
+                            <li>obniżenie odcinka ST wywołane wysiłkiem fizycznym w stosunku do odpoczynku</li>
+                            <li>nachylenie szczytowego odcinka ST ćwiczenia</li>
+                            <li>liczba głównych naczyń pokolorowanych fluorozopią</li>
+                            <li>skan serca z talem lub test wysiłkowy</li>
+                            <li>stan (brak choroby serca/choroba serca)</li>
+                        </ol>
+                        </p>
+                    </div>
             </div>
+            <div class="card col-sm-6 ">
+                <div class="card-body">
+                    <h5 class="card-title">Wykaz chorób serca</h5>
+                    <p class="card-text">
+                        <span>Rozkład chorób serca w danych testowych</span>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated"
+                             role="progressbar" style="width: 44.67391304347826%"
+                             aria-valuenow="411" aria-valuemin="0" aria-valuemax="920">44.67%
+                        </div>
+                    </div>
+                    <div id="exhibit-heart-disease"></div>
+                    <br/>
+                    <span>Rozkład płci w danych testowych</span>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped " role="progressbar" style="width: 78.9130434%"
+                             aria-valuenow="726" aria-valuemin="0" aria-valuemax="920">78.91%
+                        </div>
+                    </div>
+                    <div id="gender-heart-disease"></div>
+                    <br/>
+                    <span>Rozkład chorób serca według płci</span>
+                    <br/>
+                    <span>Kobiety</span>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar"
+                             style="width: 25.77%"
+                             aria-valuenow="411" aria-valuemin="0" aria-valuemax="920">25.77%
+                        </div>
+                    </div>
 
-        </div>
-    </div>
-</div>
-
-
-<div class="padding" id="negative-result" style="display:none;">
-    <div class="container">
-        <div class="row">
-            <div class="form-group row">
-                <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary" onclick="answer=null;">Wróć</button>
+                    <span>Mężczyźni</span>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar"
+                             style="width: 63.2231%"
+                             aria-valuenow="411" aria-valuemin="0" aria-valuemax="920">63.22%
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="card-body">
+                        <a href=form class="btn btn-info btn-lg non-blurred">Wypełnij formularz </a>
+                    </div>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="row">
+         <div class="card card_left_nav col-sm-12">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <h5 class="card-title">Rozkład chorób serca według wieku</h5>
+                    <div id="age-healt-state"></div>
+                </li>
+                <li class="list-group-item">
+                    <h5 class="card-title">Rozkład chorób serca między kategoriami bólu w klatce piersiowejy</h5>
+                    <div id="gender-healt-state"></div>
+                </li>
+                <li class="list-group-item">
+                    <h5 class="card-title">Rozkład chorób serca dla spoczynkowego ciśnienia krwi</h5>
+                    <div id="healt-state-plot1"></div>
+                </li>
+                <li class="list-group-item">
+                    <h5 class="card-title">Rozkład chorób serca dla cholesterolu w surowicy w mg/dl</h5>
+                    <div id="healt-state-plot2"></div>
+                </li>
+                <li class="list-group-item">
+                    <h5 class="card-title">Rozkład chorób serca dla poziomu cukru we krwi na czczo > 120 mg/dl</h5>
+                    <div id="healt-state-plot3"></div>
+                </li>
+                <li class="list-group-item">
+                    <h5 class="card-title">Rozkład chorób serca dla spoczynkowym wyniku
+                        elektrokardiograficznego</h5>
+                    <div id="healt-state-plot4"></div>
+                </li>
+                <li class="list-group-item">
+                    <h5 class="card-title">Rozkład chorób serca dla osiągniętego maksymalnego tętna</h5>
+                    <div id="healt-state-plot5"></div>
+                </li>
+                <li class="list-group-item">
+                    <h5 class="card-title">Rozkład chorób serca dla dławicy piersiowej wywołanej wysiłkiem
+                        fizycznym</h5>
+                    <div id="healt-state-plot6"></div>
+                </li>
+            <li class="list-group-item">
+                <h5 class="card-title">Rozkład chorób serca dla obniżenia odcinka ST wywołane wysiłkiem
+                    fizycznym w stosunku do odpoczynku</h5>
+                <div id="healt-state-plot7"></div>
+            </li>
+            <li class="list-group-item">
+                <h5 class="card-title">Rozkład chorób serca dla nachylenie szczytowego odcinka ST ćwiczenia</h5>
+                <div id="healt-state-plot8"></div>
+            </li>
+            <li class="list-group-item">
+                <h5 class="card-title">Rozkład chorób serca dla liczby głównych naczyń pokolorowanych
+                    fluorozopią</h5>
+                <div id="healt-state-plot9"></div>
+            </li>
+            <li class="list-group-item">
+                <h5 class="card-title">Rozkład chorób serca dla skanu serca z talem lub test wysiłkowy</h5>
+                <div id="healt-state-plot10"></div>
+            </li>
+            </li>
+            </ul>
+            <div class="card-body">
+                <h5 class="card-title">Rozkład każdej cechy</h5>
+                <div id="distribution-heart-disease"></div>
+                <h5 class="card-title">Rozkład wybranych cech</h5>
+
+                     <div id="healt-state-plot11"></div>
+                <h5 class="card-title">Koleracja zależności danych</h5>
+                <div id="coleration-heart-disease"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
 {% endblock content %}
