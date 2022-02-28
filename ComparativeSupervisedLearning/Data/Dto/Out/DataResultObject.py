@@ -1,7 +1,4 @@
-import json
 import jsonpickle
-from collections import Counter
-import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
 
 
 class DataResultObject:
@@ -29,22 +26,3 @@ class DataResultObject:
 
     def to_json(self):
         return jsonpickle.encode(self)
-
-    # def __reduce__(self):
-    #     return (DataResultObject, (self.exhibit_heart_disease ,
-    #     self.exhibit_heart_disease_gender,
-    #     self.gender_heart_disease,
-    #     self.age_healt_state,
-    #     self.distribution_heart_disease ,
-    #     self.coleration_heart_disease,
-    #     self.gender_healt_state ,
-    #     self.healt_state_plot1 ,
-    #     self.healt_state_plot2 ,
-    #     self.healt_state_plot3 ,
-    #     self.healt_state_plot4 ,
-    #     self.healt_state_plot5 ,
-    #     self.healt_state_plot6 ,
-    #     self.healt_state_plot7 ,
-    #     self.healt_state_plot8 ,
-    #     self.healt_state_plot9 ,
-    #     self.healt_state_plot10 ))

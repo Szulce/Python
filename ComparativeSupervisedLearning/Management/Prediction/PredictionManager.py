@@ -1,4 +1,5 @@
 import pandas
+from matplotlib import pyplot as plt
 from sklearn.model_selection import train_test_split
 
 import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
@@ -40,8 +41,6 @@ def train_algorithms():
 
 def prepare_data_presentation(result, prediction_model, model_type):
     accuracy_score = Ms.load_accuracy_score(prediction_model)
-    print("The accuracy score achieved using  is: " + str(accuracy_score) + " %")
-    print("The result  is: " + str(result) + " %")
     # plot1 = Plot.plot_knn(model_type, prediction_model, result)
     plot1 = "tutaj wyjres"  # Plot.plot(model_type, prediction_model)#tod
     # plot1 = Plot.plotx()
@@ -65,11 +64,6 @@ def prepare_data_presentation(result, prediction_model, model_type):
     return SingleAlgorithmResult(plot1, accuracy_score, prediction_model, result)
 
 
-# generate images or charts
-# estimate scores and data to present
-# prepare reslt
-
-
 def simple_predict(model, data):
     processed_data = Dc.data_preprocessing(data.to_data_frame(), False)
     prediction = []
@@ -85,8 +79,23 @@ def predict_based_on_model(model, data, model_type):
 
 
 def compare_multiple_results(results):
-    # todo comapre algorithm results
     comparison = []
+    # KNN SVM
+    comparison.append(Plot.create_figure_two_models_text(results[0], results[1], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_SVM))
+    comparison.append(Plot.create_figure_two_models(results[0], results[1], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_SVM))
+    # KNN RF
+    comparison.append(Plot.create_figure_two_models_text(results[0], results[2], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_RF))
+    comparison.append(Plot.create_figure_two_models(results[0], results[2], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_RF))
+    # SVM RF
+    comparison.append(Plot.create_figure_two_models_text(results[1], results[2], Rs.MODEL_TYPE_SVM, Rs.MODEL_TYPE_RF))
+    comparison.append(Plot.create_figure_two_models(results[1], results[2], Rs.MODEL_TYPE_SVM, Rs.MODEL_TYPE_RF))
+    # ALL
+    plot_1, plot_2, ploy_3, ploy_4, ploy_5, tabledata = Plot.create_comparison_plots(results)
+    comparison.append(plot_1)
+    comparison.append(plot_2)
+    comparison.append(ploy_3)
+    comparison.append(ploy_4)
+    comparison.append(ploy_5)
     return comparison
 
 
@@ -107,12 +116,6 @@ def compare_multiple_results(results):
 def run(model_type, data):
     model = Ms.load_all_models_for_type(model_type)[0]
     return predict_based_on_model(model, data, model_type)
-
-    # models = Ms.load_all_models_for_type(model_type)
-    # final_results = []
-    # for model in models:
-    #     final_results.append(predict_based_on_model(model, data))
-    # return compare_multiple_results(final_results)
 
 
 def split_data_for_learning_process(data_sample):
@@ -149,7 +152,14 @@ def get_data_info():
     for subplot in print_hist:
         for plot in subplot:
             distribution = Plot.convert_plot_to_html(plot.figure)
-
-    # data_set.groupby(['gender', 'health_status'])['gender'].count()
     return exhibit, Plot.convert_counts_to_html(
         data_set['plec_tekst'].value_counts()), distribution, Plot.get_coleration(data_set), description
+
+
+def get_algorithm_info():
+    final_results = []
+    for model_type in Rs.MODELS:
+        for loaded_measures in Dc.read_prediction(model_type):
+            final_results.append(loaded_measures)
+    final_results.append(compare_multiple_results(final_results))
+    return final_results

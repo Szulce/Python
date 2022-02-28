@@ -2,7 +2,11 @@ import base64
 from io import BytesIO
 
 import numpy
+import pandas
 import seaborn as sns
+from sklearn import metrics
+from sklearn.metrics import roc_curve, precision_score, recall_score, explained_variance_score
+
 import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
 # Generate the figure **without using pyplot**.
 from matplotlib import pyplot as plt
@@ -150,14 +154,35 @@ def convert_plot_to_html(figure):
     return f"<img src='data:image/png;base64,{data}'/>"
 
 
-def plo2t(model):
-    X_test = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-    # test_preds = model.predict(X_test)
-    # cmap = sns.cubehelix_palette(as_cmap=True)
-    # f, ax = plt.subplots()
-    # points = ax.scatter(X_test[:, 0], X_test[:, 1], c=test_preds, s=50, cmap=cmap)
-    # f.colorbar(points)
-    # plt.show()
+def plot_true_values(y_test, y_predict):
+    a = plt.axes(aspect='equal')
+    plt.scatter(y_test, y_predict.flatten())
+    plt.xlabel('Wartości rzeczywiste ')
+    plt.ylabel('Prognozy ')
+    lims = [0, 920]
+    plt.xlim(lims)
+    plt.ylim(lims)
+    plot_values = plt.plot(lims, lims)
+    return convert_plot_to_html(plot_values[0].figure)
+
+
+def create_figure_two_models(results_0, results_1, name_1, name_2):
+    sum_result = [results_0[3], results_1[3]]
+    names = [name_1, name_2]
+    fig = plt.figure()
+    fig.suptitle('Porównanie Algorytmów')
+    ax = fig.add_subplot(111)
+    plt.boxplot(numpy.array(sum_result).astype(numpy.float))
+    # ax.set_xticklabels(names)
+    return convert_plot_to_html(fig)
+
+
+def plot_error_measures(y_test, y_predict):
+    error = y_predict.flatten() - y_test
+    plt.hist(error, bins=125)
+    plt.xlabel("Błąd prognozy")
+    plot_error = plt.ylabel("Zlicz")
+    return convert_plot_to_html(plot_error.figure)
 
 
 def convert_counts_to_html(counts):
@@ -201,3 +226,81 @@ def get_description(data_set):
             sns.pairplot(data, vars=['wiek', 'cholesterol', 'thal', 'oldpeak'], hue='stan_zdrowia').figure)
     ]
     return plot_list
+
+
+def create_measure_table(score, y_predict, y_test, y_train):
+    measures_table = []
+    r2_score = metrics.r2_score(y_test, y_predict)
+    mae = metrics.r2_score(y_test, y_predict)
+    mse = metrics.mean_squared_error(y_test, y_predict)
+    text1 = str('Precyzja : ') + str(score) + str('       Współczynnik determinacji (r2):') \
+            + str(r2_score) + str('      Średnia utrata regresji błędu bezwzględneg: ') + \
+            str(mae) + str('     Utrata regresji błędu średniokwadratowego') + \
+            str(mse)
+    measures_table.append(text1)
+    measures_table.append(plot_true_values(y_test, y_predict))
+    measures_table.append(plot_error_measures(y_test, y_predict))
+    measures_table.append(str(score))
+    measures_table.append(str(r2_score))
+    measures_table.append(str(explained_variance_score(y_test, y_predict)))
+    measures_table.append(str(mae))
+    measures_table.append(str(mse))
+    return measures_table
+
+
+def create_figure_two_models_text(param, param1, MODEL_TYPE_1, MODEL_TYPE_2):
+    return None
+
+
+def create_comparison_plots(results):
+    columns = []
+    compare = pandas.DataFrame(columns=columns)
+    grids = [results[0], results[1], results[2]]
+    row_index = 0
+    for model in Rs.MODELS:
+        # fp, tp, th = roc_curve(y_test, predicted)
+        compare.loc[row_index, 'Algorytmy'] = model
+        compare.loc[row_index, 'Precyzja'] = numpy.array(grids[row_index][3]).astype(numpy.float)
+        compare.loc[row_index, 'Współczynnik determinacji'] = numpy.array(grids[row_index][4]).astype(numpy.float)
+        compare.loc[row_index, 'Funkcja wyniku regresji wariancji'] = numpy.array(grids[row_index][5]).astype(numpy.float)
+        compare.loc[row_index, 'Średnia utrata regresji błędu bezwzględnego'] = numpy.array(grids[row_index][6]).astype(numpy.float)
+        compare.loc[row_index, 'Utrata regresji błędu średniokwadratowego'] = numpy.array(grids[row_index][7]).astype(numpy.float)
+
+        # compare.loc[row_index, 'Dokładność na danych testowych'] = model.score
+        # compare.loc[row_index, 'Precyzja'] = precision_score(y_test, predicted)
+        # compare.loc[row_index, 'Błąd'] = recall_score(y_test, predicted)
+        # MLA_compare.loc[row_index, 'AUC'] = auc(fp, tp)
+        row_index += 1
+
+    organised_data = compare.sort_values(by=['Precyzja'], ascending=False, inplace=True)
+
+    plt.subplots(figsize=(13, 5))
+    sns.barplot(x="Algorytmy", y="Precyzja", data=compare, palette='hot',
+                edgecolor=sns.color_palette('dark', 7))
+    plt.xticks(rotation=90)
+    plt.title('Porównanie precyzji algorytmów')
+    plot_1 = convert_plot_to_html(plt.figure())
+
+    plt.subplots(figsize=(13, 5))
+    sns.barplot(x="Algorytmy", y="Współczynnik determinacji", data=compare, palette='hot',
+                edgecolor=sns.color_palette('dark', 7))
+    plt.xticks(rotation=90)
+    plot_2 = convert_plot_to_html(plt.figure())
+
+    plt.subplots(figsize=(13, 5))
+    sns.barplot(x="Algorytmy", y="Funkcja wyniku regresji wariancji", data=compare, palette='hot', edgecolor=sns.color_palette('dark', 7))
+    plt.xticks(rotation=90)
+    plot_3 = convert_plot_to_html(plt.figure())
+
+    plt.subplots(figsize=(13, 5))
+    sns.barplot(x="Algorytmy", y="Średnia utrata regresji błędu bezwzględnego", data=compare, palette='hot',
+                edgecolor=sns.color_palette('dark', 7))
+    plt.xticks(rotation=90)
+    plot_4 = convert_plot_to_html(plt.figure())
+
+    plt.subplots(figsize=(13, 5))
+    sns.barplot(x="Algorytmy", y="Utrata regresji błędu średniokwadratowego", data=compare, palette='hot', edgecolor=sns.color_palette('dark', 7))
+    plt.xticks(rotation=90)
+    plot_5 = convert_plot_to_html(plt.figure())
+
+    return plot_1, plot_2, plot_3, plot_4, plot_5, organised_data

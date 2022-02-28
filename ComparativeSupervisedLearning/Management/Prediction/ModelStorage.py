@@ -1,7 +1,9 @@
-from ComparativeSupervisedLearning.Config.LogConfig import mainLogger as Log
-import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
-import joblib
 import os
+
+import joblib
+
+import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
+from ComparativeSupervisedLearning.Config.LogConfig import mainLogger as Log
 
 
 def save_model(model, name, model_type):
@@ -40,6 +42,4 @@ def load_accuracy_score(prediction_model):
 def save_grid_scores(grid, model_type):
     save_model(grid, model_type + str(1), model_type)
 
-    #save best params   best_params = grid.best_params_
-# todo generate images ,save imgaes ,  load images on webside for grid scores
-# todo make charts and save compare results fro different imputors
+

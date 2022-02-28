@@ -1,8 +1,11 @@
+from matplotlib import pyplot as plt
+from sklearn import metrics
 from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsRegressor
-
+import ComparativeSupervisedLearning.Data.DataConversion as Dc
 import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
+import ComparativeSupervisedLearning.Management.Elaboration.PlotGeneration.PlotGeneration as Plot
 
 
 # todo del
@@ -55,3 +58,6 @@ def create_train_save_model(train_x, test_x, y_train, y_test):
     grid.fit(train_x, y_train)
     grid.score(test_x, y_test)
     Ms.save_grid_scores(grid, Rs.MODEL_TYPE_KNN)
+    y_predict = grid.predict(test_x)
+    Dc.save_prediction_to_json(Plot.create_measure_table(grid.score(test_x, y_test), y_predict, y_test, y_train),
+                               Rs.MODEL_TYPE_KNN)
