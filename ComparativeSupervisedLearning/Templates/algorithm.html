@@ -12,16 +12,16 @@
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             {% if model == 'KNN' or model == 'ALL' %}
-            <a class="nav-link active"  data-toggle="tab" href="#knnAlgorithm" role="tab" aria-controls="knnAlgorithm"
+            <a class="nav-link active" data-toggle="tab" href="#knnAlgorithm" role="tab" aria-controls="knnAlgorithm"
                aria-selected="true">KNN</a>
             {% else %}
-            <a class="nav-link "  data-toggle="tab" href="#knnAlgorithm" role="tab" aria-controls="knnAlgorithm"
+            <a class="nav-link " data-toggle="tab" href="#knnAlgorithm" role="tab" aria-controls="knnAlgorithm"
                aria-selected="false">KNN</a>
             {% endif %}
         </li>
         <li class="nav-item">
             {% if model == 'SVM' %}
-            <a class="nav-link active"  data-toggle="tab" href="#svmAlgorithm" role="tab"
+            <a class="nav-link active" data-toggle="tab" href="#svmAlgorithm" role="tab"
                aria-controls="svmAlgorithm" aria-selected="true">SVM</a>
 
             {% else %}
@@ -31,31 +31,30 @@
         </li>
         <li class="nav-item">
             {% if model == 'RF' %}
-            <a class="nav-link active"  data-toggle="tab" href="#rfAlgorithm" role="tab"
+            <a class="nav-link active" data-toggle="tab" href="#rfAlgorithm" role="tab"
                aria-controls="rfAlgorithm" aria-selected="true">RF</a>
             {% else %}
-            <a class="nav-link"  data-toggle="tab" href="#rfAlgorithm" role="tab" aria-controls="rfAlgorithm"
+            <a class="nav-link" data-toggle="tab" href="#rfAlgorithm" role="tab" aria-controls="rfAlgorithm"
                aria-selected="false">RF</a>
 
             {% endif %}
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade   {% if model == 'KNN' or model == 'ALL' %} show active {% endif %} " id="knnAlgorithm" role="tabpanel" >
+        <div class="tab-pane fade   {% if model == 'KNN' or model == 'ALL' %} show active {% endif %} "
+             id="knnAlgorithm" role="tabpanel">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card card-left-nav">
                         <img class="card-img-top card-img-resize" src="/static/img/eng/KNN.png" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <h5 class="card-title">Algorytm K-najbliższych sąsiadów</h5>
+                            <p class="card-text">
+                                <div id="card_text_knn_1"></div>
+                            <div id="card_text_knn_1_1"></div>
+                            <div id="card_text_knn_1_2"></div>
+                            </p>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
                         <div class="card-body">
                             <a href=statistic class="card-link">Sprawdź dane statystyczne</a>
                             <a href=form class="card-link">Wypełnij formularz i sprawdź</a>
@@ -67,11 +66,9 @@
                         <div class="card-body">
                             <h5 class="card-title">Porównanie do innych algorytmów</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu wektorów nośnych</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <p class="card-text"> <div id="card_text_knn_2"></div></p>
                             <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu lasów losowych </h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <p class="card-text"> <div id="card_text_knn_3"></div></p>
                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmSVM class="card-link">SVM</a>
                             <a href=algorithmRF class="card-link">Random Forest</a>
@@ -81,50 +78,25 @@
                         <div class="card-header bg-transparent border-info">Porównanie w postaci wykresów</div>
                         <div class="card-body text-info">
                             <h5 class="card-title">Porównanie do algorytmu wektorów nośnych</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <p class="card-text"> <div id="card_text_knn_4"></div></p>
                             <h5 class="card-title">Porównanie do algorytmu lasów losowych</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-deck card-down-nav">
-                    <div class="card">
-                        <img class="card-img-top card-img-resize" src="/static/img/image2.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                                to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top card-img-resize" src="/static/img/image1.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                                content.</p>
+                            <p class="card-text"> <div id="card_text_knn_5"></div></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade  {% if model == 'SVM' %}show active {% endif %}" id="svmAlgorithm" role="tabpanel" >
+        <div class="tab-pane fade  {% if model == 'SVM' %}show active {% endif %}" id="svmAlgorithm" role="tabpanel">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card card-left-nav">
                         <img class="card-img-top card-img-resize" src="/static/img/eng/SVM.png" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <h5 class="card-title">Algorytm maszyny wektorów nośnych</h5>
+                            <p class="card-text"> <div id="card_text_svm_1"></div></p>
+                            <div id="card_text_svm_1_1"></div>
+                            <div id="card_text_svm_1_2"></div>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
                         <div class="card-body">
                             <a href=statistic class="card-link">Sprawdź dane statystyczne</a>
                             <a href=form class="card-link">Wypełnij formularz i sprawdź</a>
@@ -135,65 +107,41 @@
                     <div class="card card-right-nav">
                         <div class="card-body">
                             <h5 class="card-title">Porównanie do innych algorytmów</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu K najbliższych sąsiadów</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu K najbliższych
+                                sąsiadów</h6>
+                            <p class="card-text"><div id="card_text_svm_2"></div></p>
                             <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu lasów losowych </h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <p class="card-text"><div id="card_text_svm_3"></div></p>
                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmKNN class="card-link">KNN</a>
                             <a href=algorithmRF class="card-link">Random Forest</a>
                         </div>
                     </div>
                     <div class="card border-info mb-3 card-right-nav">
-                        <div class="card-header bg-transparent border-info">Header</div>
+                        <div class="card-header bg-transparent border-info">Porównanie w postaci wykresów</div>
                         <div class="card-body text-info">
-                            <h5 class="card-title">Success card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-deck card-down-nav">
-                    <div class="card">
-                        <img class="card-img-top card-img-resize" src="/static/img/image2.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                                to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top card-img-resize" src="/static/img/image1.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                                content.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <h5 class="card-title">Porównanie do algorytmu K najbliższych sąsiadów</h5>
+                            <p class="card-text"><div id="card_text_svm_4"></div></p>
+                            <h5 class="card-title">Porównanie do algorytmu lasów losowych</h5>
+                            <p class="card-text"><div id="card_text_svm_5"></div></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade {% if model == 'RF' %}show active {% endif %}" id="rfAlgorithm" role="tabpanel" >
+        <div class="tab-pane fade {% if model == 'RF' %}show active {% endif %}" id="rfAlgorithm" role="tabpanel">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card card-left-nav">
                         <img class="card-img-top card-img-resize" src="/static/img/eng/RF.png" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <h5 class="card-title">Algoryt lasów losowych</h5>
+                            <p class="card-text"><div id="card_text_rf_1"></div></p>
+                            <div id="card_text_rf_1_1"></div>
+                            <div id="card_text_rf_1_2"></div>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
                         <div class="card-body">
-                           <a href=statistic class="card-link">Sprawdź dane statystyczne</a>
+                            <a href=statistic class="card-link">Sprawdź dane statystyczne</a>
                             <a href=form class="card-link">Wypełnij formularz i sprawdź</a>
                         </div>
                     </div>
@@ -203,47 +151,42 @@
                         <div class="card-body">
                             <h5 class="card-title">Porównanie do innych algorytmów</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu wektorów nośnych</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu K najbliższych sąsiadów </h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
+                            <p class="card-text"><div id="card_text_rf_2"></div></p>
+                            <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu K najbliższych
+                                sąsiadów </h6>
+                            <p class="card-text">S<div id="card_text_rf_3"></div></p>
+                            <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmSVM class="card-link">SVM</a>
                             <a href=algorithmKNN class="card-link">KNN</a>
                         </div>
                     </div>
                     <div class="card border-info mb-3 card-right-nav">
-                        <div class="card-header bg-transparent border-info">Header</div>
+                        <div class="card-header bg-transparent border-info">Porównanie w postaci wykresów</div>
                         <div class="card-body text-info">
-                            <h5 class="card-title">Success card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <h5 class="card-title">Porównanie do algorytmu wektorów nośnych</h5>
+                            <p class="card-text"><div id="card_text_rf_4"></div></p>
+                            <h5 class="card-title">Porównanie do algorytmu K najbliższych sąsiadów</h5>
+                            <p class="card-text"><div id="card_text_rf_5"></div></p>
                         </div>
                     </div>
                 </div>
-                <div class="card-deck card-down-nav">
-                    <div class="card">
-                        <img class="card-img-top card-img-resize" src="/static/img/image2.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                                to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img class="card-img-top card-img-resize" src="/static/img/image1.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                                content.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
+              <div class="card-deck card-down-nav">
+                            <div class="card">
+                                <div id="card_plot_all_1"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Porównanie całościowe</h5>
+                                    <p class="card-text"><div id="card_plot_all_2"></div>
+                                    <p class="card-text"><div id="card_plot_all_3"></div>
+                                    <p class="card-text"><div id="card_plot_all_4"></div>
+                                    <p class="card-text"><div id="card_plot_all_5"></div>
+                                    <p class="card-text"><div id="card_plot_all_6"></div>
+                                    <p class="card-text"><div id="card_plot_all_7"></div>
+                                </div>
+                            </div>
+                        </div>
     </div>
 
 </div>

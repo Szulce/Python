@@ -70,6 +70,13 @@ def get_data_elaboration():
     return result
 
 
+@app.route('/get_algorithm_elaboration', methods=['GET'])
+def get_algorithm_elaboration():
+    result = Main.render_algorithms_info()
+    Log.info(result)
+    return result
+
+
 @app.route('/jsonDataSend', methods=['POST'])
 def json_data_send():
     data = request.get_json()

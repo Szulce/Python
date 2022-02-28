@@ -1,29 +1,17 @@
 # plan realizacji
 
-4:00
+
 -wykresy dla uczenia i parametryzacji:
-  - wykresy dla algorytmu knn
-  - wykresy dla agorytmu SVM
-  - wykresy dla algorytmu RF
-5:00
- - moduł odpowiedzialny za porównanie działania algorytmów -wykresy,porównanie szybkości
- 6:00
-- wykresy dla strony wyników: 
-- SINGLE ALGORITHM RESULT
-- ALL ALGOTHM RESULT
-- COMPARATION ALGORITHM RESULT
-  - wykresy dla algorytmu knn
-  - wykresy dla agorytmu SVM
-  - wykresy dla algorytmu RF
-
-7:00
-- strona projektu strona prezentująca rezultaty - uzupełnic danymi i wykresami
+ - moduł odpowiedzialny za porównanie działania algorytmów 
+ - -wykresy,
+ - strona projektu strona prezentująca rezultaty - uzupełnic danymi i wykresami
+13:30
 -dostrojenie parametrów na wyższą dokładność
-
 
 ========================================================================
 - testy,
 - praca
+- porównanie szybkości
 - - autosklearn uczenie / predykcja
 - -porządek w projekcie
 - brak rozszerzonej części formularza
