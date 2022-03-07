@@ -26,7 +26,7 @@ def predict_based_on_user_input(data):
     final_results = []
     for model_type in Rs.MODELS:
         final_results.append(run(model_type, data))
-    comparison = compare_multiple_results(final_results)
+    comparison = []  # compare_multiple_results(final_results)
     return AllAlgorithmsResult(final_results, comparison)
 
 
@@ -42,7 +42,7 @@ def train_algorithms():
 def prepare_data_presentation(result, prediction_model, model_type):
     accuracy_score = Ms.load_accuracy_score(prediction_model)
     # plot1 = Plot.plot_knn(model_type, prediction_model, result)
-    plot1 = "tutaj wyjres"  # Plot.plot(model_type, prediction_model)#tod
+    plot1 = []  # Plot.plot(model_type, prediction_model)#tod
     # plot1 = Plot.plotx()
     # cv_results_
     # score_samples(X)
@@ -132,8 +132,6 @@ def train(model_type, train_x, test_x, y_train, y_test):
         Svm.create_train_save_model(train_x, test_x, y_train, y_test)
     elif model_type == Rs.MODEL_TYPE_RF:
         Rf.create_train_save_model(train_x, test_x, y_train, y_test)
-    # elif model_type == Rs.MODEL_TYPE_AUTO:
-    #     Auto.create_train_save_model(train_x, test_x, y_train, y_test)
 
 
 def get_data_info():

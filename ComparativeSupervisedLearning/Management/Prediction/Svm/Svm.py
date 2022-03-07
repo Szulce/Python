@@ -9,7 +9,9 @@ import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
 
 
 def create_train_save_model(x_train, x_test, y_train, y_test):
-    param_grid = {'C': Rs.SVM_C, 'gamma': Rs.SVM_GAMMA, 'kernel': Rs.SVM_KERNEL}
+    param_grid = {'C': Rs.SVM_C, 'gamma': Rs.SVM_GAMMA, 'kernel': Rs.SVM_KERNEL, 'degree': Rs.SVM_DEGREE,
+                  'coef0': Rs.SVM_COE0FLOAT, 'epsilon': Rs.SVM_EPSILON, 'shrinking': Rs.SVM_SHRINKING,
+                  'cache_size': Rs.SVM_CACHE_SIZE}
     grid = GridSearchCV(SVR(), param_grid, refit=True, verbose=2)
     grid.fit(x_train, y_train)
     grid.score(x_test, y_test)
