@@ -149,13 +149,16 @@ def plot_knn(model_type, prediction_model, result):
 
 def convert_plot_to_html(figure):
     buf = BytesIO()
+    figure.set_size_inches(9.8, 8.8)
     figure.savefig(buf, format="png", dpi=40)
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return f"<img src='data:image/png;base64,{data}'/>"
 
 
 def plot_true_values(y_test, y_predict):
-    a = plt.axes(aspect='equal')
+    df = y_predict.flatten()
+    # a = plt.axes()
+    plt.rcParams["figure.figsize"] = (8, 5)
     plt.scatter(y_test, y_predict.flatten())
     plt.xlabel('Wartości rzeczywiste ')
     plt.ylabel('Prognozy ')
@@ -172,9 +175,10 @@ def create_figure_two_models(results_0, results_1, name_1, name_2):
     fig = plt.figure()
     fig.suptitle('Porównanie Algorytmów')
     ax = fig.add_subplot(111)
+    plt.rcParams["figure.figsize"] = (8, 5)
     plt.boxplot(numpy.array(sum_result).astype(numpy.float))
-    # ax.set_xticklabels(names)
-    return convert_plot_to_html(fig)
+    plt.xticks(ticks=numpy.array(sum_result).astype(numpy.float), labels=names, rotation=25, fontsize=5)
+    return convert_plot_to_html(plt.figure())
 
 
 def plot_error_measures(y_test, y_predict):
@@ -196,17 +200,25 @@ def get_coleration(data):
     return convert_plot_to_html(sns.heatmap(data.corr(), annot=True, cmap='coolwarm', linewidths=.5).figure)
 
 
+def get_legend_out_plot(plot_tmp):
+    legend = plot_tmp.get_position()
+    plot_tmp.set_position([legend.x0, legend.y0, legend.width * 0.85, legend.height])
+    plot_tmp.legend(loc='center right', bbox_to_anchor=(1.25, 0.5), ncol=1)
+    return plot_tmp
+
+
 def get_description(data_set):
     data = data_set.copy()
     plt.rcParams["figure.figsize"] = (15, 15)
-    age_plot = convert_plot_to_html(sns.distplot(data['wiek']).figure)
+    sns.set_context(rc={"font.size": 26, "axes.titlesize": 26, "axes.labelsize": 26})
+    age_plot = convert_plot_to_html(get_legend_out_plot(sns.distplot(data['wiek'])).figure)
     plt.rcParams["figure.figsize"] = (8, 5)
     thal_plot = convert_plot_to_html(sns.distplot(data['thalach']).figure)
     chol = convert_plot_to_html(sns.distplot(data['cholesterol']).figure)
-    pressure_plot = convert_plot_to_html(sns.distplot(data['cisnienie_krwi']).figure)
+    pressure_plot = get_log_scale_displot(data, 'cisnienie_krwi')
     exchang_plot = convert_plot_to_html(sns.countplot(data=data, x='exang', hue='stan_zdrowia').figure)
     plt.rcParams["figure.figsize"] = (4, 4)
-    old_peak_plot = convert_plot_to_html(sns.countplot(data=data, x='oldpeak', hue='stan_zdrowia').figure)
+    old_peak_plot = get_log_scale_countplot(data, 'oldpeak', 'stan_zdrowia')
     slope_plot = convert_plot_to_html(sns.countplot(data=data, x='slope', hue='stan_zdrowia').figure)
     plt.rcParams["figure.figsize"] = (5, 10)
     plot_list = [convert_plot_to_html(
@@ -226,6 +238,24 @@ def get_description(data_set):
             sns.pairplot(data, vars=['wiek', 'cholesterol', 'thal', 'oldpeak'], hue='stan_zdrowia').figure)
     ]
     return plot_list
+
+
+def set_actetic_params():
+    box = g.get_position()
+    g.set_position([box.x0, box.y0, box.width * 0.85, box.height])  # resize position
+    g.legend(loc='center right', bbox_to_anchor=(1.25, 0.5), ncol=1)
+
+
+def get_log_scale_displot(data, param):
+    plot_tmp1 = sns.distplot(data[param])
+    # plot_tmp1.set_yscale('log')
+    return convert_plot_to_html(plot_tmp1.figure)
+
+
+def get_log_scale_countplot(data, param_1, param_2):
+    plot_tmp1 = sns.countplot(data=data, x=param_1, hue=param_2)
+    # plot_tmp1.set_yscale('log')
+    return convert_plot_to_html(plot_tmp1.figure)
 
 
 def create_measure_table(score, y_predict, y_test, y_train):
@@ -260,11 +290,16 @@ def create_comparison_plots(results):
     for model in Rs.MODELS:
         # fp, tp, th = roc_curve(y_test, predicted)
         compare.loc[row_index, 'Algorytmy'] = model
-        compare.loc[row_index, 'Precyzja'] = numpy.array(grids[row_index][3]).astype(numpy.float)
-        compare.loc[row_index, 'Współczynnik determinacji'] = numpy.array(grids[row_index][4]).astype(numpy.float)
-        compare.loc[row_index, 'Funkcja wyniku regresji wariancji'] = numpy.array(grids[row_index][5]).astype(numpy.float)
-        compare.loc[row_index, 'Średnia utrata regresji błędu bezwzględnego'] = numpy.array(grids[row_index][6]).astype(numpy.float)
-        compare.loc[row_index, 'Utrata regresji błędu średniokwadratowego'] = numpy.array(grids[row_index][7]).astype(numpy.float)
+        compare.loc[row_index, 'Precyzja'] = round(abs(numpy.array(grids[row_index][3]).astype(numpy.float)), 2) * 100
+        compare.loc[row_index, 'Współczynnik determinacji'] = round(abs(
+            numpy.array(grids[row_index][4]).astype(numpy.float)), 2) * 100
+        compare.loc[row_index, 'Funkcja wyniku regresji wariancji'] = round(abs(numpy.array(grids[row_index][5]).astype(
+            numpy.float)), 2) * 100
+        compare.loc[row_index, 'Średnia utrata regresji błędu bezwzględnego'] = round(abs(
+            numpy.array(grids[row_index][6]).astype(numpy.float)), 2) * 100
+        compare.loc[row_index, 'Utrata regresji błędu średniokwadratowego'] = round(
+            abs(numpy.array(grids[row_index][7]).astype(
+                numpy.float)), 2) * 100
 
         # compare.loc[row_index, 'Dokładność na danych testowych'] = model.score
         # compare.loc[row_index, 'Precyzja'] = precision_score(y_test, predicted)
@@ -274,33 +309,27 @@ def create_comparison_plots(results):
 
     organised_data = compare.sort_values(by=['Precyzja'], ascending=False, inplace=True)
 
-    plt.subplots(figsize=(13, 5))
+    plt.subplots(figsize=(80, 50))
     sns.barplot(x="Algorytmy", y="Precyzja", data=compare, palette='hot',
                 edgecolor=sns.color_palette('dark', 7))
     plt.xticks(rotation=90)
     plt.title('Porównanie precyzji algorytmów')
     plot_1 = convert_plot_to_html(plt.figure())
 
-    plt.subplots(figsize=(13, 5))
     sns.barplot(x="Algorytmy", y="Współczynnik determinacji", data=compare, palette='hot',
                 edgecolor=sns.color_palette('dark', 7))
-    plt.xticks(rotation=90)
     plot_2 = convert_plot_to_html(plt.figure())
 
-    plt.subplots(figsize=(13, 5))
-    sns.barplot(x="Algorytmy", y="Funkcja wyniku regresji wariancji", data=compare, palette='hot', edgecolor=sns.color_palette('dark', 7))
-    plt.xticks(rotation=90)
+    sns.barplot(x="Algorytmy", y="Funkcja wyniku regresji wariancji", data=compare, palette='hot',
+                edgecolor=sns.color_palette('dark', 7))
     plot_3 = convert_plot_to_html(plt.figure())
 
-    plt.subplots(figsize=(13, 5))
     sns.barplot(x="Algorytmy", y="Średnia utrata regresji błędu bezwzględnego", data=compare, palette='hot',
                 edgecolor=sns.color_palette('dark', 7))
-    plt.xticks(rotation=90)
     plot_4 = convert_plot_to_html(plt.figure())
 
-    plt.subplots(figsize=(13, 5))
-    sns.barplot(x="Algorytmy", y="Utrata regresji błędu średniokwadratowego", data=compare, palette='hot', edgecolor=sns.color_palette('dark', 7))
-    plt.xticks(rotation=90)
+    sns.barplot(x="Algorytmy", y="Utrata regresji błędu średniokwadratowego", data=compare, palette='hot',
+                edgecolor=sns.color_palette('dark', 7))
     plot_5 = convert_plot_to_html(plt.figure())
 
     return plot_1, plot_2, plot_3, plot_4, plot_5, organised_data

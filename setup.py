@@ -10,8 +10,8 @@ setup(
     author='Magdalena Szulc',
     include_package_data=True,
     zip_safe=False,
-    packages=find_packages(exclude=('Tests', 'Docs')),
+    packages=find_packages(exclude='Docs'),
     install_requires=[
-        'flask', 'scikit-learn', 'auto-sklearn'
+        'scikit-learn', 'flask'
     ],
 )

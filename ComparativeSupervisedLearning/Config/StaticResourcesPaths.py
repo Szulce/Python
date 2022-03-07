@@ -219,18 +219,38 @@ NUMPY_mask = 0.8
 N_NEIGHBORS_SIZE = 14
 N_NEIGHBORS = "n_neighbors"
 KNN_GRID_SPLITER = 7
+KNN_WEIGHTS = ['uniform', 'distance']
+KNN_ALGORITHM = ['auto', 'ball_tree', 'kd_tree', 'brute']
+KNN_LEAF_SIZE = [1, 15, 17, 30, 40, 50, 70, 81, 100]  # leaf_size <= n_points <= 2 * leaf_size
+KNN_P_PARAM = [1, 1.5, 2, 2.5]
+KNN_METRIC = ['minkowski', 'chebyshev', 'seuclidean', 'mahalanobis', 'euclidean', 'manhattan',
+              'hamming', 'canberra', 'braycurtis', 'jaccard', 'matching', 'dice', 'kulsinski',
+              'rogerstanimoto', 'wminkowski', 'haversine'
+                                              'russellrao', 'sokalmichener', 'sokalsneath']
+KNN_METRIC_PARAMS = {'w': [numpy.array([2.0] * N_NEIGHBORS_SIZE)], 'p': KNN_P_PARAM}
 
 # svm
 SVM_C = [0.1, 1, 10, 100]
-SVM_GAMMA = [1, 0.1, 0.01, 0.001]
-SVM_KERNEL = ['rbf', 'poly', 'sigmoid']  # kernels = ['Polynomial', 'RBF', 'Sigmoid','Linear']
+SVM_GAMMA = ['scale', 'auto']
+SVM_KERNEL = ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed']  # kernels = ['Polynomial', 'RBF', 'Sigmoid','Linear']
+SVM_DEGREE = [1, 3, 5]
+SVM_COE0FLOAT = [0.0, 0.1, 0.3]
+SVM_EPSILON = [0.1, 0.25, 0.3]
+SVM_SHRINKING = [True, False]
+SVM_CACHE_SIZE = [200, 500]
 
 # rf
-RF_MAX_DEPTH = [7, 8, 9, 10, 11, 12, 13]
-RF_RANDOM_STATE = [0, 2, 4, 7, 10, 13, 17, 21, 25, 27]
-
-
-#results
+RF_MAX_DEPTH = [7, 10, 13]
+RF_RANDOM_STATE = [0, 2, 13, 27]
+RF_MAX_FEATURES = [None, 'auto', 'sqrt', 'log2']
+RF_CRITERION = ['squared_error', 'friedman_mse', 'absolute_error', 'poisson']
+RF_SPLITTER = ['best', 'random']
+RF_MIN_SAMPLES = [1, 2, 5]
+RF_MIN_SAMPLES_LEAF = [1, 2, 5]
+RF_MIN_WEIGHT_FRACTION_LEAF = [0.0, 0.1, 0.25]
+RF_MAX_LEAF_NODES = [None, 1]
+RF_MIN_IMPURITY_DECREASE = [0.0, 0.25]
+RF_CPP = [0.0, 0.25]
 
 RF_ = ' \nRF : \n'
 

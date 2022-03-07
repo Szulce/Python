@@ -9,7 +9,11 @@ import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
 
 
 def create_train_save_model(x_train, x_test, y_train, y_test):
-    param_grid = {'max_depth': Rs.RF_MAX_DEPTH, 'random_state': Rs.RF_RANDOM_STATE}
+    param_grid = {'max_depth': Rs.RF_MAX_DEPTH, 'random_state': Rs.RF_RANDOM_STATE, 'max_features': Rs.RF_MAX_FEATURES,
+                  'criterion': Rs.RF_CRITERION, 'splitter': Rs.RF_SPLITTER, 'min_samples_split': Rs.RF_MIN_SAMPLES,
+                  'min_samples_leaf': Rs.RF_MIN_SAMPLES_LEAF,
+                  'min_weight_fraction_leaf': Rs.RF_MIN_WEIGHT_FRACTION_LEAF, 'max_leaf_nodes': Rs.RF_MAX_LEAF_NODES,
+                  'min_impurity_decrease': Rs.RF_MIN_IMPURITY_DECREASE, 'ccp_alpha': Rs.RF_CPP}
     grid = GridSearchCV(DecisionTreeRegressor(), param_grid, refit=True, verbose=2)
     grid.fit(x_train, y_train)
     grid.score(x_test, y_test)

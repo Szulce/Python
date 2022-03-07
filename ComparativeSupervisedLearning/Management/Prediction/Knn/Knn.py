@@ -1,3 +1,4 @@
+import numpy
 from matplotlib import pyplot as plt
 from sklearn import metrics
 from sklearn.model_selection import GridSearchCV
@@ -53,8 +54,12 @@ def print_grid_scores(grid):
 # ‘neg_mean_absolute_percentage_error’
 
 def create_train_save_model(train_x, test_x, y_train, y_test):
-    param_grid = dict(n_neighbors=list(range(1, Rs.N_NEIGHBORS_SIZE)))
-    grid = GridSearchCV(KNeighborsRegressor(), param_grid, cv=Rs.KNN_GRID_SPLITER, scoring='max_error', verbose=2)
+    Rs.KNN_METRIC_PARAMS.pop('V', numpy.array(numpy.cov(train_x)))
+    param_grid = dict(n_neighbors=list(range(1, Rs.N_NEIGHBORS_SIZE)), weights=Rs.KNN_WEIGHTS,
+                      algorithm=Rs.KNN_ALGORITHM, leaf_size=Rs.KNN_LEAF_SIZE, p=Rs.KNN_P_PARAM, metric=Rs.KNN_METRIC
+                      # ,metric_params=numpy.array(Rs.KNN_METRIC_PARAMS)
+                      )
+    grid = GridSearchCV(KNeighborsRegressor(), param_grid, verbose=2)  # cv=Rs.KNN_GRID_SPLITER, scoring='max_error',
     grid.fit(train_x, y_train)
     grid.score(test_x, y_test)
     Ms.save_grid_scores(grid, Rs.MODEL_TYPE_KNN)

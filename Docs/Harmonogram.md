@@ -1,38 +1,87 @@
 # plan realizacji
 
+## Strona z danymi
+- rozmiar wykresów
+- 
+#POPRAWKI OD PROMOTORA:
+## Strona rezultatów
+- wskazać konkretny model wskazany do predykcji 
+- wskazać miejsce w danych testowych gdzie plasuje się przypadek
+- wskazać najlepszy model i wyniki 
+- dorobić linki to omówienia algorytmow i porównania
+- zmienic nazewnictwo na czułość i specyficzność
+- zamiast długich opisów i wyliczeń wykresy porównawcze
 
+
+
+- poprawić wyniki 
+- ZAPISAĆ VERBOSE Iwygenerować z tych danych wykres
+- grid spitter rówzna parametryzacja
+- rozmiar obrazów wykresów
+- dodać dla każdego param
+
+
+
+- sensowne wykresy
+- estetyczne i chronologiczne poukładanie na stronie
+- ważność cech oraz parametrów
+
+DO 4
+## Strona opisów algorytmów 
+##KNN
+###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
+-OCENA SZYBKOŚCI WYKONANIA
+-OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
+-OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
+ - które parametry mają i wpływ i dlaczego:
+   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
+   - LICZBY SĄSIADÓW
+##SVM
+###OCENA MODELI I UŻYTYCH PARAMETRÓW
+-OCENA SZYBKOŚCI WYKONANIA
+-OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
+-OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
+ - które parametry mają i wpływ i dlaczego
+##RF
+###OCENA MODELI I UŻYTYCH PARAMETRÓW
+-OCENA SZYBKOŚCI WYKONANIA
+-OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
+-OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
+ - które parametry mają i wpływ i dlaczego
+## ZAKŁADKA DO PORÓWANIA
+- PORÓWNANIE KAŻDY Z KAŻDYM
+
+DO 18
+
+
+POPRAWKI DO CZĘŚCI PRAKTYCZNEJ:
 -wykresy dla uczenia i parametryzacji:
  - moduł odpowiedzialny za porównanie działania algorytmów 
  - -wykresy,
  - strona projektu strona prezentująca rezultaty - uzupełnic danymi i wykresami
-13:30
 -dostrojenie parametrów na wyższą dokładność
+ porównanie szybkości
+ - - autosklearn uczenie / predykcja
+ - -porządek w projekcie
+ - tlumaczenie na jezyk angielski 
+ - wyczyścić projekt do zera 
 
-========================================================================
-- testy,
-- praca
-- porównanie szybkości
-- - autosklearn uczenie / predykcja
-- -porządek w projekcie
-- brak rozszerzonej części formularza
+DO 4
+POTEM NADGODZINY DO 7
+pOTEMA PRACA DO 9
+ 
 
-- tlumaczenie na jezyk angielski 
-- wyczyścić projekt do zera 
-- prezentacja praktycznej części projektu.
-
-- spis treści abstrakt , linki do obrazków biliografia, spis używanej terminologii
-- bibilografie poprawić
+____________________________TEORETYCZNA CZĘŚĆ
+ - spis treści abstrakt , linki do obrazków biliografia, spis używanej terminologii
+ - bibilografie poprawić
 skalowanie  obrazów
  spis obrazków
 spiswykresów
-- -opis praktycznej części podrasować
--rozdział o autosklarealr
--rozważenie dodania bazy danych żeby nie trzyac tego w pamimęci i ciągle nie zaglądac do plików 
-- dopisać różnice między klasyfikacją a regresją 
-- dodać coś z matematycznego punktu widzenia 
-- -jsonpicle dopisać
---------------------------------------------
-- - rozdział pracy dotyczący prówniania algorytmów,
+ - -opis praktycznej części podrasować
+ - dopisać różnice między klasyfikacją a regresją 
+ - dodać coś z matematycznego punktu widzenia 
+ - -jsonpicle dopisać
+- rozdział pracy dotyczący prówniania algorytmów,
 - pisemne opracowanie i dodanie na stronie
 - praca pisemna
 -  dane w Exelu i fotki do pracy
