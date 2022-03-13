@@ -1,4 +1,10 @@
-2022-03-13 16:57:46,041 - DEBUG - Archive logs on application exit
-2022-03-13 16:57:46,042 - DEBUG - created Zip file
-2022-03-13 16:57:46,044 - DEBUG - Archive logs on application exit
-2022-03-13 16:57:46,045 - DEBUG - created Zip file
+2022-03-13 18:14:45,438 - INFO - Start Flask application
+2022-03-13 18:14:45,451 - WARNING -  * Debugger is active!2022-03-13 18:14:54,276 - DEBUG - Archive logs on application exit
+2022-03-13 18:14:54,277 - DEBUG - created Zip file
+2022-03-13 18:14:54,278 - DEBUG - Archive logs on application exit
+2022-03-13 18:14:54,278 - DEBUG - created Zip file
+- INFO -  * Running on http://192.168.0.18:80/ (Press CTRL+C to quit)
+2022-03-13 18:14:53,888 - DEBUG - Archive logs on application exit
+2022-03-13 18:14:53,888 - DEBUG - created Zip file
+2022-03-13 18:14:53,889 - DEBUG - Archive logs on application exit
+2022-03-13 18:14:53,890 - DEBUG - created Zip file

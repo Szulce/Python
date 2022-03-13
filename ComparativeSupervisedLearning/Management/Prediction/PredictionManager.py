@@ -127,11 +127,12 @@ def split_data_for_learning_process(data_sample):
 
 
 def train(model_type, train_x, test_x, y_train, y_test):
-    if model_type == Rs.MODEL_TYPE_KNN:
-        Knn.create_train_save_model(train_x, test_x, y_train, y_test)
-    elif model_type == Rs.MODEL_TYPE_SVM:
-        Svm.create_train_save_model(train_x, test_x, y_train, y_test)
-    elif model_type == Rs.MODEL_TYPE_RF:
+    # if model_type == Rs.MODEL_TYPE_KNN:
+    #     Knn.create_train_save_model(train_x, test_x, y_train, y_test)
+    # elif model_type == Rs.MODEL_TYPE_SVM:
+    #     Svm.create_train_save_model(train_x, test_x, y_train, y_test)
+    # el
+    if model_type == Rs.MODEL_TYPE_RF:
         Rf.create_train_save_model(train_x, test_x, y_train, y_test)
 
 

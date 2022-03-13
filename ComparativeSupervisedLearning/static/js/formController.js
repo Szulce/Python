@@ -16,8 +16,6 @@
 
                     });
 
-
-
                 var validator = $( "#form" ).validate();
                 var isValid=validator.form();
                 if(isValid){
