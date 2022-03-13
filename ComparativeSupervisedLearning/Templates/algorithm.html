@@ -50,7 +50,21 @@
                         <div class="card-body">
                             <h5 class="card-title">Algorytm K-najbliższych sąsiadów</h5>
                             <p class="card-text">
-                                <div id="card_text_knn_1"></div>
+                                <span> Wynik dla danych utorzonych z modelu który puste wartości zastępuje</span>
+                            <ul>
+                                <li> średnią wartością dla danej kolumny</li>
+                                <div id="accuracy-positive-imputed_mean_knn"></div>
+                                <li> medianą wartości dla danej kolumny</li>
+                                <div id="accuracy-positive-imputed_median_knn"></div>
+                                <li> stałą wartością dla danej kolumny</li>
+                                <div id="accuracy-postive-imputed_most_constant_knn"></div>
+                                <li> najczęstrzą wartością dla danej kolumny</li>
+                                <div id="accuracy-positive-imputed_most_frequent_knn"></div>
+                            </ul>
+
+                            <span> Parametry najwydajniejszego modelu </span>
+                            <div id="result-positive-value-knn"></div>
+                            <div id="card_text_knn_1"></div>
                             <div id="card_text_knn_1_1"></div>
                             <div id="card_text_knn_1_2"></div>
                             </p>
@@ -66,9 +80,13 @@
                         <div class="card-body">
                             <h5 class="card-title">Porównanie do innych algorytmów</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu wektorów nośnych</h6>
-                            <p class="card-text"> <div id="card_text_knn_2"></div></p>
+                            <p class="card-text">
+                            <div id="card_text_knn_2"></div>
+                            </p>
                             <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu lasów losowych </h6>
-                            <p class="card-text"> <div id="card_text_knn_3"></div></p>
+                            <p class="card-text">
+                            <div id="card_text_knn_3"></div>
+                            </p>
                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmSVM class="card-link">SVM</a>
                             <a href=algorithmRF class="card-link">Random Forest</a>
@@ -78,9 +96,13 @@
                         <div class="card-header bg-transparent border-info">Porównanie w postaci wykresów</div>
                         <div class="card-body text-info">
                             <h5 class="card-title">Porównanie do algorytmu wektorów nośnych</h5>
-                            <p class="card-text"> <div id="card_text_knn_4"></div></p>
+                            <p class="card-text">
+                            <div id="card_text_knn_4"></div>
+                            </p>
                             <h5 class="card-title">Porównanie do algorytmu lasów losowych</h5>
-                            <p class="card-text"> <div id="card_text_knn_5"></div></p>
+                            <p class="card-text">
+                            <div id="card_text_knn_5"></div>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -93,7 +115,9 @@
                         <img class="card-img-top card-img-resize" src="/static/img/eng/SVM.png" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Algorytm maszyny wektorów nośnych</h5>
-                            <p class="card-text"> <div id="card_text_svm_1"></div></p>
+                            <p class="card-text">
+                            <div id="card_text_svm_1"></div>
+                            </p>
                             <div id="card_text_svm_1_1"></div>
                             <div id="card_text_svm_1_2"></div>
                         </div>
@@ -109,9 +133,13 @@
                             <h5 class="card-title">Porównanie do innych algorytmów</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu K najbliższych
                                 sąsiadów</h6>
-                            <p class="card-text"><div id="card_text_svm_2"></div></p>
+                            <p class="card-text">
+                            <div id="card_text_svm_2"></div>
+                            </p>
                             <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu lasów losowych </h6>
-                            <p class="card-text"><div id="card_text_svm_3"></div></p>
+                            <p class="card-text">
+                            <div id="card_text_svm_3"></div>
+                            </p>
                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmKNN class="card-link">KNN</a>
                             <a href=algorithmRF class="card-link">Random Forest</a>
@@ -121,9 +149,13 @@
                         <div class="card-header bg-transparent border-info">Porównanie w postaci wykresów</div>
                         <div class="card-body text-info">
                             <h5 class="card-title">Porównanie do algorytmu K najbliższych sąsiadów</h5>
-                            <p class="card-text"><div id="card_text_svm_4"></div></p>
+                            <p class="card-text">
+                            <div id="card_text_svm_4"></div>
+                            </p>
                             <h5 class="card-title">Porównanie do algorytmu lasów losowych</h5>
-                            <p class="card-text"><div id="card_text_svm_5"></div></p>
+                            <p class="card-text">
+                            <div id="card_text_svm_5"></div>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -136,7 +168,9 @@
                         <img class="card-img-top card-img-resize" src="/static/img/eng/RF.png" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Algoryt lasów losowych</h5>
-                            <p class="card-text"><div id="card_text_rf_1"></div></p>
+                            <p class="card-text">
+                            <div id="card_text_rf_1"></div>
+                            </p>
                             <div id="card_text_rf_1_1"></div>
                             <div id="card_text_rf_1_2"></div>
                         </div>
@@ -151,10 +185,14 @@
                         <div class="card-body">
                             <h5 class="card-title">Porównanie do innych algorytmów</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu wektorów nośnych</h6>
-                            <p class="card-text"><div id="card_text_rf_2"></div></p>
+                            <p class="card-text">
+                            <div id="card_text_rf_2"></div>
+                            </p>
                             <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu K najbliższych
                                 sąsiadów </h6>
-                            <p class="card-text">S<div id="card_text_rf_3"></div></p>
+                            <p class="card-text">S
+                            <div id="card_text_rf_3"></div>
+                            </p>
                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmSVM class="card-link">SVM</a>
                             <a href=algorithmKNN class="card-link">KNN</a>
@@ -164,29 +202,39 @@
                         <div class="card-header bg-transparent border-info">Porównanie w postaci wykresów</div>
                         <div class="card-body text-info">
                             <h5 class="card-title">Porównanie do algorytmu wektorów nośnych</h5>
-                            <p class="card-text"><div id="card_text_rf_4"></div></p>
+                            <p class="card-text">
+                            <div id="card_text_rf_4"></div>
+                            </p>
                             <h5 class="card-title">Porównanie do algorytmu K najbliższych sąsiadów</h5>
-                            <p class="card-text"><div id="card_text_rf_5"></div></p>
+                            <p class="card-text">
+                            <div id="card_text_rf_5"></div>
+                            </p>
                         </div>
                     </div>
                 </div>
 
             </div>
         </div>
-              <div class="card-deck card-down-nav">
-                            <div class="card">
-                                <div id="card_plot_all_1"></div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Porównanie całościowe</h5>
-                                    <p class="card-text"><div id="card_plot_all_2"></div>
-                                    <p class="card-text"><div id="card_plot_all_3"></div>
-                                    <p class="card-text"><div id="card_plot_all_4"></div>
-                                    <p class="card-text"><div id="card_plot_all_5"></div>
-                                    <p class="card-text"><div id="card_plot_all_6"></div>
-                                    <p class="card-text"><div id="card_plot_all_7"></div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="card-deck card-down-nav">
+            <div class="card">
+                <div id="card_plot_all_1"></div>
+                <div class="card-body">
+                    <h5 class="card-title">Porównanie całościowe</h5>
+                    <p class="card-text">
+                    <div id="card_plot_all_2"></div>
+                    <p class="card-text">
+                    <div id="card_plot_all_3"></div>
+                    <p class="card-text">
+                    <div id="card_plot_all_4"></div>
+                    <p class="card-text">
+                    <div id="card_plot_all_5"></div>
+                    <p class="card-text">
+                    <div id="card_plot_all_6"></div>
+                    <p class="card-text">
+                    <div id="card_plot_all_7"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

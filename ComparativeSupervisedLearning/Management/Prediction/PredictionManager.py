@@ -1,33 +1,25 @@
 import pandas
-from matplotlib import pyplot as plt
 from sklearn.model_selection import train_test_split
 
-import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
+import ComparativeSupervisedLearning.Config.StaticResources as Rs
 import ComparativeSupervisedLearning.Data.DataConversion as Dc
+import ComparativeSupervisedLearning.Management.Elaboration.PlotGeneration.PlotGeneration as Plot
+import ComparativeSupervisedLearning.Management.Prediction.ModelStorage
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
+from ComparativeSupervisedLearning.Data.Dto.Out.AlgotitmWebInfo import AlgorithmWebInfo
 from ComparativeSupervisedLearning.Data.Dto.Out.AllAlgorithmsResult import AllAlgorithmsResult
+from ComparativeSupervisedLearning.Data.Dto.Out.DataResultObject import DataResultObject
 from ComparativeSupervisedLearning.Data.Dto.Out.SingleAlgorithmResult import SingleAlgorithmResult
 from ComparativeSupervisedLearning.Management.Prediction.Knn import Knn
 from ComparativeSupervisedLearning.Management.Prediction.Rf import Rf
 from ComparativeSupervisedLearning.Management.Prediction.Svm import Svm
-import ComparativeSupervisedLearning.Management.Elaboration.PlotGeneration.PlotGeneration as Plot
-
-
-def predict_base_data(base_data):
-    return predict_based_on_user_input(base_data)
-
-
-def predict_full_data(full_data):
-    # return predict_based_on_user_input(full_data)
-    return AllAlgorithmsResult([], [])
 
 
 def predict_based_on_user_input(data):
     final_results = []
     for model_type in Rs.MODELS:
         final_results.append(run(model_type, data))
-    comparison = []  # compare_multiple_results(final_results)
-    return AllAlgorithmsResult(final_results, comparison)
+    return AllAlgorithmsResult(final_results)
 
 
 def train_algorithms():
@@ -37,6 +29,16 @@ def train_algorithms():
         for model_type in Rs.MODELS:
             train(model_type, x_train, x_test, y_train, y_test)
     print("END")
+
+
+def render_data_info():
+    exhibit, gender, distribution, coleration, data_info = get_data_info()
+    Ms.save_plots(DataResultObject(data_info, exhibit, gender, distribution, coleration).to_json(), Rs.DATA_INFO_PLOTS)
+
+
+def render_algorithms_info():
+    data = get_algorithm_info()
+    Ms.save_plots(AlgorithmWebInfo(data).to_json(), Rs.ALGORITHM_INFO_PLOTS)
 
 
 def prepare_data_presentation(result, prediction_model, model_type):
@@ -79,17 +81,16 @@ def predict_based_on_model(model, data, model_type):
 
 
 def compare_multiple_results(results):
-    comparison = []
-    # KNN SVM
-    comparison.append(Plot.create_figure_two_models_text(results[0], results[1], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_SVM))
-    comparison.append(Plot.create_figure_two_models(results[0], results[1], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_SVM))
-    # KNN RF
-    comparison.append(Plot.create_figure_two_models_text(results[0], results[2], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_RF))
-    comparison.append(Plot.create_figure_two_models(results[0], results[2], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_RF))
-    # SVM RF
-    comparison.append(Plot.create_figure_two_models_text(results[1], results[2], Rs.MODEL_TYPE_SVM, Rs.MODEL_TYPE_RF))
-    comparison.append(Plot.create_figure_two_models(results[1], results[2], Rs.MODEL_TYPE_SVM, Rs.MODEL_TYPE_RF))
-    # ALL
+    comparison = [
+        # KNN SVM
+        Plot.create_figure_two_models_text(results[0], results[1], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_SVM),
+        Plot.create_figure_two_models(results[0], results[1], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_SVM),
+        # KNN RF
+        Plot.create_figure_two_models_text(results[0], results[2], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_RF),
+        Plot.create_figure_two_models(results[0], results[2], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_RF),
+        # SVM RF
+        Plot.create_figure_two_models_text(results[1], results[2], Rs.MODEL_TYPE_SVM, Rs.MODEL_TYPE_RF),
+        Plot.create_figure_two_models(results[1], results[2], Rs.MODEL_TYPE_SVM, Rs.MODEL_TYPE_RF)]
     plot_1, plot_2, ploy_3, ploy_4, ploy_5, tabledata = Plot.create_comparison_plots(results)
     comparison.append(plot_1)
     comparison.append(plot_2)
@@ -157,7 +158,7 @@ def get_data_info():
 def get_algorithm_info():
     final_results = []
     for model_type in Rs.MODELS:
-        for loaded_measures in Dc.read_prediction(model_type):
+        for loaded_measures in ComparativeSupervisedLearning.Management.Prediction.ModelStorage.read_prediction(model_type):
             final_results.append(loaded_measures)
     final_results.append(compare_multiple_results(final_results))
     return final_results

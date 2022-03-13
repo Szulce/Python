@@ -2,7 +2,8 @@ import jsonpickle
 
 
 class AlgorithmWebInfo:
-    """"Class defines of object to return results in json format      """
+    """"Class defines of object to return results in json
+     format for page with information about all algorithms   """
 
     def __init__(self, info):
         self.card_text_knn_1 = info[0][0]
@@ -29,6 +30,22 @@ class AlgorithmWebInfo:
         self.card_plot_all_3 = info[3][5]
         self.card_plot_all_4 = info[3][6]
         self.card_plot_all_5 = info[3][7]
+
+        # self.accuracy_imputed_mean_knn = str(results_base.knn_results.result[0])
+        # self.accuracy_imputed_median_knn = str(results_base.knn_results.result[1])
+        # self.accuracy_imputed_most_constant_knn = str(results_base.knn_results.result[2])
+        # self.accuracy_imputed_most_frequent_knn = str(results_base.knn_results.result[3])
+        # self.accuracy_imputed_mean_svm = str(results_base.svm_results.result[0])
+        # self.accuracy_imputed_median_svm = str(results_base.svm_results.result[1])
+        # self.accuracy_imputed_most_constant_svm = str(results_base.svm_results.result[2])
+        # self.accuracy_imputed_most_frequent_svm = str(results_base.svm_results.result[3])
+        # self.accuracy_imputed_mean_rf = str(results_base.rf_results.result[0])
+        # self.accuracy_imputed_median_rf = str(results_base.rf_results.result[1])
+        # self.accuracy_imputed_most_constant_rf = str(results_base.rf_results.result[2])
+        # self.accuracy_imputed_most_frequent_rf = str(results_base.rf_results.result[3])
+        # self.results_base_information_text_knn = str(dict(Counter(results_base.knn_results.best_params)))
+        # self.results_base_information_text_svm = str(dict(Counter(results_base.svm_results.best_params)))
+        # self.results_base_information_text_rf = str(dict(Counter(results_base.svm_results.best_params)))
 
     def to_json(self):
         return jsonpickle.encode(self)

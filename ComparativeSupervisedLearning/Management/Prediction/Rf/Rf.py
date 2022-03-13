@@ -1,11 +1,12 @@
 from sklearn.model_selection import GridSearchCV
-# training a Decision Tree model
 from sklearn.tree import DecisionTreeRegressor
 
-import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
-import ComparativeSupervisedLearning.Data.DataConversion as Dc
+import ComparativeSupervisedLearning.Config.StaticResources as Rs
 import ComparativeSupervisedLearning.Management.Elaboration.PlotGeneration.PlotGeneration as Plot
+import ComparativeSupervisedLearning.Management.Prediction.ModelStorage
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
+
+"""" Random fores algorithm performance """
 
 
 def create_train_save_model(x_train, x_test, y_train, y_test):
@@ -19,8 +20,9 @@ def create_train_save_model(x_train, x_test, y_train, y_test):
     grid.score(x_test, y_test)
     Ms.save_grid_scores(grid, Rs.MODEL_TYPE_RF)
     y_predict = grid.predict(x_test)
-    Dc.save_prediction_to_json(Plot.create_measure_table(grid.score(x_test, y_test), y_predict, y_test, y_train),
-                               Rs.MODEL_TYPE_RF)
+    ComparativeSupervisedLearning.Management.Prediction.ModelStorage.save_prediction_to_json(
+        Plot.create_measure_table(grid.score(x_test, y_test), y_predict, y_test, y_train),
+        Rs.MODEL_TYPE_RF)
 
 #     print(rand_clf.score(x_test, y_test))
 #     0.9867256637168141
@@ -31,33 +33,6 @@ def create_train_save_model(x_train, x_test, y_train, y_test):
 #     f1 - score
 #     support
 #
-#
-# 0
-# 0.98
-# 0.99
-# 0.99
-# 100
-# 1
-# 0.99
-# 0.98
-# 0.99
-# 126
-#
-# accuracy
-# 0.99
-# 226
-# macro
-# avg
-# 0.99
-# 0.99
-# 0.99
-# 226
-# weighted
-# avg
-# 0.99
-# 0.99
-# 0.99
-# 226
 #
 # # confusion matrix
 # plot_confusion_matrix(rand_clf, x_test, y_test,
