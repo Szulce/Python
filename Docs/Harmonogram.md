@@ -5,24 +5,17 @@
 #obrazki zapisać nie generować
 #overfit
 #parametry obciąć do wyników
-
-
-#instrukcje instalacji napisac w readme
-
-#działanie aplikacji w jaki spoósb działa na zasadzie UML
-
-#uproszczona dokumantacje
-#w pracy nie umieszczać kodu źrodłowego
 #czas uczenia
+
+
+ - tlumaczenie na jezyk angielski 
+
 ## Strona rezultatów
 - wskazać miejsce w danych testowych gdzie plasuje się przypadek
-- wskazać najlepszy model i wyniki
+
 - zamiast długich opisów i wyliczeń wykresy porównawcze
 - poprawić wyniki 
 - ZAPISAĆ VERBOSE Iwygenerować z tych danych wykres
-- grid spitter rówzna parametryzacja
-- - dodać dla każdego param
-
 - sensowne wykresy
 - estetyczne i chronologiczne poukładanie na stronie
 - ważność cech oraz parametrów
@@ -64,7 +57,7 @@ POPRAWKI DO CZĘŚCI PRAKTYCZNEJ:
  porównanie szybkości
  - - autosklearn uczenie / predykcja
  - -porządek w projekcie
- - tlumaczenie na jezyk angielski 
+
  - wyczyścić projekt do zera 
 
 DO 4
@@ -72,12 +65,14 @@ POTEM NADGODZINY DO 7
 pOTEMA PRACA DO 9
  
 
-
+#instrukcje instalacji napisac w readme
+#uproszczona dokumantacje
 #ewentualnie testy jednostkowe
 #nagrać film działania aplikacj
 
 
 ____________________________TEORETYCZNA CZĘŚĆ
+#w pracy nie umieszczać kodu źrodłowego
  - spis treści abstrakt , linki do obrazków biliografia, spis używanej terminologii
  - bibilografie poprawić
 skalowanie  obrazów
