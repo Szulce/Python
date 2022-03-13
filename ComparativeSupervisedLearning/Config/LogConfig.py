@@ -1,10 +1,9 @@
+import atexit
 import logging
 import os
 from zipfile import ZipFile
-from os.path import basename
-import atexit
 
-import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
+import ComparativeSupervisedLearning.Config.StaticResources as Rs
 
 logging.basicConfig(filename=Rs.LOG_FILES_DIRECTORY + "/" + Rs.LOG_FILE_NAME,
                     format='%(asctime)s - %(levelname)s - %(message)s',

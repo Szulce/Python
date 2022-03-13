@@ -1,11 +1,12 @@
 from sklearn.model_selection import GridSearchCV
-# training a Decision Tree model
 from sklearn.svm import SVR
 
-import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
-import ComparativeSupervisedLearning.Data.DataConversion as Dc
+import ComparativeSupervisedLearning.Config.StaticResources as Rs
 import ComparativeSupervisedLearning.Management.Elaboration.PlotGeneration.PlotGeneration as Plot
+import ComparativeSupervisedLearning.Management.Prediction.ModelStorage
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
+
+"""" Support Vector Machines nearest neighbours algorithm performance """
 
 
 def create_train_save_model(x_train, x_test, y_train, y_test):
@@ -17,5 +18,6 @@ def create_train_save_model(x_train, x_test, y_train, y_test):
     grid.score(x_test, y_test)
     Ms.save_grid_scores(grid, Rs.MODEL_TYPE_SVM)
     y_predict = grid.predict(x_test)
-    Dc.save_prediction_to_json(Plot.create_measure_table(grid.score(x_test, y_test), y_predict, y_test, y_train),
-                               Rs.MODEL_TYPE_SVM)
+    ComparativeSupervisedLearning.Management.Prediction.ModelStorage.save_prediction_to_json(
+        Plot.create_measure_table(grid.score(x_test, y_test), y_predict, y_test, y_train),
+        Rs.MODEL_TYPE_SVM)

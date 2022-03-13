@@ -1,15 +1,10 @@
-import json
-
-from numpy import nanmean
+import pandas
 from sklearn import preprocessing
 from sklearn.preprocessing import StandardScaler
 
-from ComparativeSupervisedLearning.Config.LogConfig import mainLogger as Log
-import pandas
+import ComparativeSupervisedLearning.Config.StaticResources as Rs
 
-import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
-
-OUT_JSON_RESULT_ = 'C:/Users/User/PycharmProjects/Python/ComparativeSupervisedLearning/Data/Dto/Out/JsonResult/'
+"""" Load data for learning proces and preprocess data information """
 
 
 def load_data_from_files():
@@ -25,16 +20,6 @@ def load_data_from_files():
     return load_files
 
 
-# data_frame.PlotGeneration(kind='box', subplots=True, layout=(2, 2), sharex=False, sharey=False)
-# plot_view.show()
-
-# data_frame = data_frame.reshape(920, 14)
-# print(data_frame)
-# print(data_frame.shape)
-# print(data_frame.describe())
-
-# scatter_matrix(data_frame)
-# plot_view.show()
 def concat_data(load_files):
     data_frame = pandas.concat(load_files, axis=0, ignore_index=True)
     return pandas.DataFrame(data_frame, columns=Rs.features_used)
@@ -98,64 +83,3 @@ def data_preprocessing(unprepared_data, training):
                 handling_null_values(unprepared_data), training), training))
 
 
-def save_prediction_to_json(prediction, algorithm):
-    if algorithm == 'AUTO':
-        with open('/Data/Dto/Out/JsonResult/Auto.json', 'w') as json_f:
-            json.dump(prediction, json_f)
-        json_f.close()
-    elif algorithm == Rs.MODEL_TYPE_RF :
-        with open('%sTree.json' % OUT_JSON_RESULT_, 'w') as json_f:
-            json.dump(prediction, json_f)
-        json_f.close()
-    elif algorithm == Rs.MODEL_TYPE_SVM:
-        with open('%sSvm.json' % OUT_JSON_RESULT_, 'w') as json_f:
-            json.dump(prediction, json_f)
-        json_f.close()
-    elif algorithm == Rs.MODEL_TYPE_KNN:
-        with open('%sKnn.json' % OUT_JSON_RESULT_, 'w') as json_f:
-            json.dump(prediction, json_f)
-        json_f.close()
-
-
-# def save_prediction(prediction, algorithm):
-#     if algorithm == 'AUTO':
-#         with open('In/JsonResult/Auto.json', 'w') as json_f:
-#             json.dump(prediction, json_f)
-#         json_f.close()
-#     elif algorithm == 'TREE':
-#         with open('./Out/JsonResult/Tree.json', 'w') as json_f:
-#             json.dump(prediction, json_f)
-#         json_f.close()
-#     elif algorithm == 'SVM':
-#         with open('./Out/JsonResult/Svm.json', 'w') as json_f:
-#             json.dump(prediction, json_f)
-#         json_f.close()
-#     elif algorithm == 'KNN':
-#         with open('./Out/JsonResult/Knn.json', 'w') as json_f:
-#             json.dump(prediction, json_f)
-#         json_f.close()
-
-
-def read_prediction(algorithm):
-    all_predictions = []
-    if algorithm == 'AUTO' or algorithm == 'ALL':
-        with open('In/JsonResult/Auto.json', 'r') as json_f:
-            prediction = json.load(json_f)
-            all_predictions.append(prediction)
-        json_f.close()
-    if algorithm == Rs.MODEL_TYPE_RF or algorithm == 'ALL':
-        with open('%sTree.json' % OUT_JSON_RESULT_, 'r') as json_f:
-            prediction = json.load(json_f)
-            all_predictions.append(prediction)
-        json_f.close()
-    if algorithm == Rs.MODEL_TYPE_SVM or algorithm == 'ALL':
-        with open('%sSvm.json' % OUT_JSON_RESULT_, 'r') as json_f:
-            prediction = json.load(json_f)
-            all_predictions.append(prediction)
-        json_f.close()
-    if algorithm == Rs.MODEL_TYPE_KNN or algorithm == 'ALL':
-        with open('%sKnn.json' % OUT_JSON_RESULT_, 'r') as json_f:
-            prediction = json.load(json_f)
-            all_predictions.append(prediction)
-        json_f.close()
-    return all_predictions

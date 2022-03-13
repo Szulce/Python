@@ -2,7 +2,7 @@ import jsonpickle
 
 
 class DataResultObject:
-    """"Class defines of object to return results in json format      """
+    """"Class defines of object to return results in json format for data information page   """
 
     def __init__(self, plots, exhibit, gender, distribution, coleration):
         self.exhibit_heart_disease = exhibit[0]

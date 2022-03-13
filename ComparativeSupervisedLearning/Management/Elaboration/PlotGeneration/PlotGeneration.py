@@ -1,17 +1,14 @@
 import base64
 from io import BytesIO
-
 import numpy
 import pandas
 import seaborn as sns
-from sklearn import metrics
-from sklearn.metrics import roc_curve, precision_score, recall_score, explained_variance_score
-
-import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
-# Generate the figure **without using pyplot**.
 from matplotlib import pyplot as plt
-from matplotlib.figure import Figure
+from sklearn import metrics
+from sklearn.metrics import explained_variance_score
+import ComparativeSupervisedLearning.Config.StaticResources as Rs
 
+"""" Generation plots for data and algorithms comparison"""
 
 # def plotx():
 #     fig = Figure()
@@ -203,15 +200,15 @@ def get_coleration(data):
 def get_legend_out_plot(plot_tmp):
     legend = plot_tmp.get_position()
     plot_tmp.set_position([legend.x0, legend.y0, legend.width * 0.85, legend.height])
-    plot_tmp.legend(loc='center right', bbox_to_anchor=(1.25, 0.5), ncol=1)
+    plot_tmp.legend(loc='center right', bbox_to_anchor=(1.88, 0.5), ncol=1)
     return plot_tmp
 
 
 def get_description(data_set):
     data = data_set.copy()
     plt.rcParams["figure.figsize"] = (15, 15)
-    sns.set_context(rc={"font.size": 26, "axes.titlesize": 26, "axes.labelsize": 26})
-    age_plot = convert_plot_to_html(get_legend_out_plot(sns.distplot(data['wiek'])).figure)
+    sns.set_context(rc={"font.size": 15, "axes.titlesize": 15, "axes.labelsize": 15})
+    age_plot = convert_plot_to_html(sns.distplot(data['wiek']).figure)
     plt.rcParams["figure.figsize"] = (8, 5)
     thal_plot = convert_plot_to_html(sns.distplot(data['thalach']).figure)
     chol = convert_plot_to_html(sns.distplot(data['cholesterol']).figure)
@@ -221,29 +218,23 @@ def get_description(data_set):
     old_peak_plot = get_log_scale_countplot(data, 'oldpeak', 'stan_zdrowia')
     slope_plot = convert_plot_to_html(sns.countplot(data=data, x='slope', hue='stan_zdrowia').figure)
     plt.rcParams["figure.figsize"] = (5, 10)
-    plot_list = [convert_plot_to_html(
-        sns.countplot(data=data, x='bol_w_klatce_piersiowej', hue='stan_zdrowia').figure),
-        age_plot, pressure_plot, chol,
-        convert_plot_to_html(
-            sns.countplot(data=data, x='cukier', hue='stan_zdrowia').figure),
-        convert_plot_to_html(
-            sns.countplot(data=data, x='restecg', hue='stan_zdrowia').figure),
-        thal_plot, exchang_plot,
-        old_peak_plot, slope_plot,
-        convert_plot_to_html(
-            sns.countplot(data=data, x='ca', hue='stan_zdrowia').figure),
-        convert_plot_to_html(
-            sns.countplot(data=data, x='thal', hue='stan_zdrowia').figure),
-        convert_plot_to_html(
-            sns.pairplot(data, vars=['wiek', 'cholesterol', 'thal', 'oldpeak'], hue='stan_zdrowia').figure)
-    ]
+    plot_list = [convert_plot_to_html(get_legend_out_plot(
+        sns.countplot(data=data, x='bol_w_klatce_piersiowej', hue='stan_zdrowia')).figure),
+                 age_plot, pressure_plot, chol,
+                 convert_plot_to_html(get_legend_out_plot(
+                     sns.countplot(data=data, x='cukier', hue='stan_zdrowia')).figure),
+                 convert_plot_to_html(get_legend_out_plot(
+                     sns.countplot(data=data, x='restecg', hue='stan_zdrowia')).figure),
+                 thal_plot, exchang_plot,
+                 old_peak_plot, slope_plot,
+                 convert_plot_to_html(get_legend_out_plot(
+                     sns.countplot(data=data, x='ca', hue='stan_zdrowia')).figure),
+                 convert_plot_to_html(get_legend_out_plot(
+                     sns.countplot(data=data, x='thal', hue='stan_zdrowia')).figure),
+                 convert_plot_to_html(
+                     sns.pairplot(data, vars=['wiek', 'cholesterol', 'thal', 'oldpeak'], hue='stan_zdrowia').figure)
+                 ]
     return plot_list
-
-
-def set_actetic_params():
-    box = g.get_position()
-    g.set_position([box.x0, box.y0, box.width * 0.85, box.height])  # resize position
-    g.legend(loc='center right', bbox_to_anchor=(1.25, 0.5), ncol=1)
 
 
 def get_log_scale_displot(data, param):
@@ -253,7 +244,8 @@ def get_log_scale_displot(data, param):
 
 
 def get_log_scale_countplot(data, param_1, param_2):
-    plot_tmp1 = sns.countplot(data=data, x=param_1, hue=param_2)
+    with sns.plotting_context(None, font_scale=1, rc={"font.size": 8, "axes.titlesize": 8, "axes.labelsize": 5}):
+        plot_tmp1 = sns.countplot(data=data, x=param_1, hue=param_2)
     # plot_tmp1.set_yscale('log')
     return convert_plot_to_html(plot_tmp1.figure)
 
@@ -333,3 +325,9 @@ def create_comparison_plots(results):
     plot_5 = convert_plot_to_html(plt.figure())
 
     return plot_1, plot_2, plot_3, plot_4, plot_5, organised_data
+
+
+def generate_user_data_plot(base_data):
+    # convert_plot_to_html(
+    #     sns.pairplot(base_data, vars=['age', 'cholesterol', 'thal', 'oldpeak'], hue='stan_zdrowia').figure)
+    pass

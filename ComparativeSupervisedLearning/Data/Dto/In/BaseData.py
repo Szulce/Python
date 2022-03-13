@@ -1,8 +1,6 @@
 import pandas
-import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
-import pandas
 
-import ComparativeSupervisedLearning.Config.StaticResourcesPaths as Rs
+import ComparativeSupervisedLearning.Config.StaticResources as Rs
 
 
 class BaseData:

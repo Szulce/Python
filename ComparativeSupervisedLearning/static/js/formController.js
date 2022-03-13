@@ -12,11 +12,6 @@
                 errorElement: 'span',
                 errorClass: 'invalid-feedback lang',
                  errorPlacement: function(error, element) {
-//                if(element.parent('.input-group').length) {
-//                    error.insertAfter(element.parent());
-//                } else {
-//                    error.insertAfter(element);
-//                }
                  }
 
                     });
@@ -25,7 +20,6 @@
 
                 var validator = $( "#form" ).validate();
                 var isValid=validator.form();
-
                 if(isValid){
 
 				$.getJSON('/submit_action',  {
@@ -78,7 +72,7 @@
 			, function(dataObject) {
 
             var parsedDataObject = JSON.parse(JSON.stringify(dataObject));
-
+               console.error(parsedDataObject);
 			$('#fill-in-form').hide();
 			$('#result-positive-value-knn').html(dataObject.results_base_information_text_knn).show();
 			$('#result-negative-value-knn').html(dataObject.results_base_information_text_knn).show();
@@ -96,6 +90,7 @@
     		$('#accuracy-positive-plot-knn').html(dataObject.results_base_knn_plot).show();
     		$('#accuracy-positive-plot-svm').html(dataObject.results_base_svm_plot).show();
     		$('#accuracy-positive-plot-rf').html(dataObject.results_base_rf_plot).show();
+    		$('#user_data_plot').html(dataObject.user_data_plot).show();
 
     		$('#accuracy-positive-imputed_mean_knn').html(dataObject.accuracy_imputed_mean_knn).show();
     		$('#accuracy-positive-imputed_median_knn').html(dataObject.accuracy_imputed_median_knn).show();
@@ -124,17 +119,48 @@
     		$('#accuracy-negaive-imputed_most_constant_rf').html(dataObject.accuracy_imputed_most_constant_rf).show();
     		$('#accuracy-negative-imputed_most_frequent_rf').html(dataObject.accuracy_imputed_most_frequent_rf).show();
 
-//			if(parsedDataObject.applyExtended){
-//			if(parsedDataObject.results_full.percentageK
-//			|| parsedDataObject.results_full.percentageSVM
-//			|| parsedDataObject.results_full.percentageRF
-//			) {
-//			$('#positive-result').show();
-//			}
-//			else {
-//				$('#negative-result').show();
-//			}
-//			}else{
+            $('#progress_bar_knn_positive').width(dataObject.results_base_accuracy_text_knn)
+            $('#progress_bar_svn_positive').width(dataObject.results_base_accuracy_text_svm)
+            $('#progress_bar_rf_positive').width(dataObject.results_base_accuracy_text_rf)
+            $('#progress_bar_knn_negative').width(dataObject.results_base_accuracy_text_knn)
+            $('#progress_bar_svn_negative').width(dataObject.results_base_accuracy_text_svm)
+            $('#progress_bar_rf_negative').width(dataObject.results_base_accuracy_text_rf)
+
+            $('#result_knn_positive').width(dataObject.results_base_accuracy_text_knn)
+            $('#result_svn_positive').width(dataObject.results_base_accuracy_text_svm)
+            $('#result_rf_positive').width(dataObject.results_base_accuracy_text_rf)
+            $('#result_knn_negative').width(dataObject.results_base_accuracy_text_knn)
+            $('#result_svn_negative').width(dataObject.results_base_accuracy_text_svm)
+            $('#result_rf_negative').width(dataObject.results_base_accuracy_text_rf)
+
+            $('#progress_bar_knn_positive_sp').width(dataObject.results_base_knn_result)
+            $('#progress_bar_svn_positive_sp').width(dataObject.results_base_svm_result)
+            $('#progress_bar_rf_positive_sp').width(dataObject.results_base_rf_result)
+            $('#progress_bar_knn_negative_sp').width(dataObject.results_base_knn_result)
+            $('#progress_bar_svn_negative_sp').width(dataObject.results_base_svm_result)
+            $('#progress_bar_rf_negative_sp').width(dataObject.results_base_rf_result)
+
+
+            $('#progress_bar_knn_positive_1').text(dataObject.results_base_accuracy_text_knn)
+            $('#progress_bar_svn_positive_1').text(dataObject.results_base_accuracy_text_svm)
+            $('#progress_bar_rf_positive_1').text(dataObject.results_base_accuracy_text_rf)
+            $('#progress_bar_knn_negative_1').text(dataObject.results_base_accuracy_text_knn)
+            $('#progress_bar_svn_negative_1').text(dataObject.results_base_accuracy_text_svm)
+            $('#progress_bar_rf_negative_1').text(dataObject.results_base_accuracy_text_rf)
+
+            $('#result_knn_positive_1').text(dataObject.results_base_accuracy_text_knn)
+            $('#result_svn_positive_1').text(dataObject.results_base_accuracy_text_svm)
+            $('#result_rf_positive_1').text(dataObject.results_base_accuracy_text_rf)
+            $('#result_knn_negative_1').text(dataObject.results_base_accuracy_text_knn)
+            $('#result_svn_negative_1').text(dataObject.results_base_accuracy_text_svm)
+            $('#result_rf_negative_1').text(dataObject.results_base_accuracy_text_rf)
+
+            $('#progress_bar_knn_positive_1_sp').text(dataObject.results_base_knn_result)
+            $('#progress_bar_svn_positive_1_sp').text(dataObject.results_base_svm_result)
+            $('#progress_bar_rf_positive_1_sp').text(dataObject.results_base_rf_result)
+            $('#progress_bar_knn_negative_1_sp').text(dataObject.results_base_knn_result)
+            $('#progress_bar_svn_negative_1_sp').text(dataObject.results_base_svm_result)
+            $('#progress_bar_rf_negative_1_sp').text(dataObject.results_base_rf_result)
 
 			if (dataObject.results_base_positive_negative){
 				$('#positive-result').show();
@@ -142,7 +168,6 @@
 			else {
 				$('#negative-result').show();
 			}
-//			}
 				});
 			$("html").animate({ scrollTop: 0 }, "slow");
 				return false;
@@ -161,33 +186,3 @@ function computePNCADEN(gridValuesArray){
     });
     return sum;
 };
-
-function applyExtended(){
-//todo dlaczego zwraca pusta wartosc
-console.error(document.getElementById("applyExtended").value);
-document.getElementById("applyExtended").value = ! document.getElementById("applyExtended").value;
-}
-
-
-function createChart(){
-      new Chart(document.getElementById("myCanvas"), {
-          type: 'bar',
-          data: {
-            labels: algorithm,
-            datasets: [
-              {
-                label: "Percentage od accuracy",
-                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
-                data: value
-              }
-            ]
-          },
-          options: {
-            legend: { display: false },
-            title: {
-              display: true,
-              text: 'Accuracy'
-            }
-          }
-      });
-      }

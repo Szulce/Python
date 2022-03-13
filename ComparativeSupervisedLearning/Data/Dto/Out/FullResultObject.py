@@ -1,58 +1,33 @@
 import json
-from collections import Counter
-
-
-def get_final_answer(results_base):
-    answer = False
-    for result_iter in results_base.knn_results.result:
-        if result_iter < 1:
-            answer = True
-    for result_iter in results_base.svm_results.result:
-        if result_iter < 1:
-            answer = True
-    for result_iter in results_base.rf_results.result:
-        if result_iter < 1:
-            answer = True
-    return answer
 
 
 class FullResultObject:
-    """"Class defines of object to return results in json format
-        base_result = AllAlgorithmsResult contains objects of SingleAlgorithmsResult and ComparationResult
+    """"Class defines of object to return results in json format prepared for page  """
 
-        """
-
-    def __init__(self, results_base, full_result, apply_full):
+    def __init__(self, results_base, user_data_plot):
         self.results_base_positive_negative = get_final_answer(results_base)
 
-        self.results_base_information_text_knn = str(dict(Counter(results_base.knn_results.best_params)))
-        self.results_base_information_text_svm = str(dict(Counter(results_base.svm_results.best_params)))
-        self.results_base_information_text_rf = str(dict(Counter(results_base.svm_results.best_params)))
+        self.results_base_information_text_knn = get_result_as_text(results_base.knn_results.best_result.result)
+        self.results_base_information_text_svm = get_result_as_text(results_base.svm_results.best_result.result)
+        self.results_base_information_text_rf = get_result_as_text(results_base.rf_results.best_result.result)
         self.results_base_accuracy_text_knn = str(abs(results_base.knn_results.score * 100)) + "%"
         self.results_base_accuracy_text_svm = str(abs(results_base.svm_results.score * 100)) + "%"
         self.results_base_accuracy_text_rf = str(abs(results_base.rf_results.score * 100)) + "%"
 
         self.results_base_knn_plot = results_base.knn_results.plot1
-        self.accuracy_imputed_mean_knn = str(results_base.knn_results.result[0])
-        self.accuracy_imputed_median_knn = str(results_base.knn_results.result[1])
-        self.accuracy_imputed_most_constant_knn = str(results_base.knn_results.result[2])
-        self.accuracy_imputed_most_frequent_knn = str(results_base.knn_results.result[3])
-
         self.results_base_svm_plot = results_base.svm_results.plot1
-        self.accuracy_imputed_mean_svm = str(results_base.svm_results.result[0])
-        self.accuracy_imputed_median_svm = str(results_base.svm_results.result[1])
-        self.accuracy_imputed_most_constant_svm = str(results_base.svm_results.result[2])
-        self.accuracy_imputed_most_frequent_svm = str(results_base.svm_results.result[3])
-
         self.results_base_rf_plot = results_base.rf_results.plot1
-        self.accuracy_imputed_mean_rf = str(results_base.rf_results.result[0])
-        self.accuracy_imputed_median_rf = str(results_base.rf_results.result[1])
-        self.accuracy_imputed_most_constant_rf = str(results_base.rf_results.result[2])
-        self.accuracy_imputed_most_frequent_rf = str(results_base.rf_results.result[3])
+
+        self.user_data_plot = user_data_plot
+        # czułość
+        # self.results_base_knn_result = str(abs(results_base.knn_results.score * 100)) + "%"
+        # self.results_base_svm_result = str(abs(results_base.knn_results.score * 100)) + "%"
+        # self.results_base_rf_result  = str(abs(results_base.knn_results.score * 100)) + "%"
 
     def to_json(self):
         return json.dumps(self, default=lambda o: o.__dict__, indent=4)
         # return jsonpickle.encode(self)
+
 
 # self.base_result = results_base
 # if apply_full:
@@ -79,3 +54,23 @@ class FullResultObject:
 #        self.results_base_rf_results_accuracy_score = results_base.rf_results.accuracy_score
 #        # comparation
 #        self.base_result_comparison_results = results_base.comparison_results
+
+def get_final_answer(results_base):
+    answer = False
+    for result_iter in results_base.knn_results.result:
+        if result_iter < 1:
+            answer = True
+    for result_iter in results_base.svm_results.result:
+        if result_iter < 1:
+            answer = True
+    for result_iter in results_base.rf_results.result:
+        if result_iter < 1:
+            answer = True
+    return answer
+
+
+def get_result_as_text(best_result):
+    if best_result[0] < 1.0:
+        return "Pozytywny (wynik:" + str(best_result[0]) + ")"
+    else:
+        return "Negatywny (wynik:" + str(best_result[0]) + ")"

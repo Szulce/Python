@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, jsonify
 from flask_bootstrap import Bootstrap
+
 import Main
 from ComparativeSupervisedLearning.Data.Dto.In.BaseData import BaseData
-from ComparativeSupervisedLearning.Data.Dto.In.FullData import FullData
 from Config.LogConfig import mainLogger as Log
+
+"""" Manages request from website """
 
 app = Flask(__name__)
 
@@ -58,21 +60,21 @@ def submit_action():
     filled_form = request.args
     Log.debug(filled_form)
     Log.debug("Processing ...")
-    result = Main.predict_based_on_user_input(BaseData(filled_form), FullData(filled_form))
+    result = Main.predict_based_on_user_input(BaseData(filled_form))
     Log.info(result)
     return result
 
 
 @app.route('/get_data_elaboration', methods=['GET'])
 def get_data_elaboration():
-    result = Main.render_data_info()
+    result = Main.get_data_info_object()
     Log.info(result)
     return result
 
 
 @app.route('/get_algorithm_elaboration', methods=['GET'])
 def get_algorithm_elaboration():
-    result = Main.render_algorithms_info()
+    result = Main.get_algorithms_info_object()
     Log.info(result)
     return result
 

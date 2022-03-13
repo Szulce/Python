@@ -1,10 +1,11 @@
 
 $(document).ready(function(){
-
 				$.getJSON('/get_data_elaboration',  {}
 			, function(dataObject) {
 
             var parsedDataObject = JSON.parse(JSON.stringify(dataObject));
+             $('#card_data').removeClass('hidden_div')
+              $("#loader").remove();
 
 			$('#exhibit-heart-disease').html(dataObject.exhibit_heart_disease);
 			$('#gender-heart-disease').html(dataObject.gender_heart_disease);

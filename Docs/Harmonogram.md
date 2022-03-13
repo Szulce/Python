@@ -1,26 +1,27 @@
 # plan realizacji
 
-## Strona z danymi
-- rozmiar wykresów
-- 
+
 #POPRAWKI OD PROMOTORA:
+#obrazki zapisać nie generować
+#overfit
+#parametry obciąć do wyników
+
+
+#instrukcje instalacji napisac w readme
+
+#działanie aplikacji w jaki spoósb działa na zasadzie UML
+
+#uproszczona dokumantacje
+#w pracy nie umieszczać kodu źrodłowego
+#czas uczenia
 ## Strona rezultatów
-- wskazać konkretny model wskazany do predykcji 
 - wskazać miejsce w danych testowych gdzie plasuje się przypadek
-- wskazać najlepszy model i wyniki 
-- dorobić linki to omówienia algorytmow i porównania
-- zmienic nazewnictwo na czułość i specyficzność
+- wskazać najlepszy model i wyniki
 - zamiast długich opisów i wyliczeń wykresy porównawcze
-
-
-
 - poprawić wyniki 
 - ZAPISAĆ VERBOSE Iwygenerować z tych danych wykres
 - grid spitter rówzna parametryzacja
-- rozmiar obrazów wykresów
-- dodać dla każdego param
-
-
+- - dodać dla każdego param
 
 - sensowne wykresy
 - estetyczne i chronologiczne poukładanie na stronie
@@ -70,6 +71,11 @@ DO 4
 POTEM NADGODZINY DO 7
 pOTEMA PRACA DO 9
  
+
+
+#ewentualnie testy jednostkowe
+#nagrać film działania aplikacj
+
 
 ____________________________TEORETYCZNA CZĘŚĆ
  - spis treści abstrakt , linki do obrazków biliografia, spis używanej terminologii
