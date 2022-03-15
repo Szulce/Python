@@ -1,28 +1,11 @@
-# plan realizacji
+
+#overfit - dopisac klasyfikacje
 
 
-#POPRAWKI OD PROMOTORA:
-#obrazki zapisać nie generować
-#overfit
-#parametry obciąć do wyników
-#czas uczenia
-
-
- - tlumaczenie na jezyk angielski 
-
-## Strona rezultatów
-- wskazać miejsce w danych testowych gdzie plasuje się przypadek
-
-- zamiast długich opisów i wyliczeń wykresy porównawcze
-- poprawić wyniki 
-- ZAPISAĆ VERBOSE Iwygenerować z tych danych wykres
+- VERBOSE Iwygenerować z tych danych wykres
 - sensowne wykresy
-- estetyczne i chronologiczne poukładanie na stronie
 - ważność cech oraz parametrów
 
-DO 4
-## Strona opisów algorytmów 
-##KNN
 ###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
 -OCENA SZYBKOŚCI WYKONANIA
 -OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
@@ -30,41 +13,17 @@ DO 4
  - które parametry mają i wpływ i dlaczego:
    - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
    - LICZBY SĄSIADÓW
-##SVM
-###OCENA MODELI I UŻYTYCH PARAMETRÓW
--OCENA SZYBKOŚCI WYKONANIA
--OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
--OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
- - które parametry mają i wpływ i dlaczego
-##RF
-###OCENA MODELI I UŻYTYCH PARAMETRÓW
--OCENA SZYBKOŚCI WYKONANIA
--OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
--OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
  - które parametry mają i wpływ i dlaczego
 ## ZAKŁADKA DO PORÓWANIA
 - PORÓWNANIE KAŻDY Z KAŻDYM
-
-DO 18
-
-
 POPRAWKI DO CZĘŚCI PRAKTYCZNEJ:
 -wykresy dla uczenia i parametryzacji:
- - moduł odpowiedzialny za porównanie działania algorytmów 
- - -wykresy,
- - strona projektu strona prezentująca rezultaty - uzupełnic danymi i wykresami
--dostrojenie parametrów na wyższą dokładność
- porównanie szybkości
- - - autosklearn uczenie / predykcja
- - -porządek w projekcie
-
- - wyczyścić projekt do zera 
 
 DO 4
 POTEM NADGODZINY DO 7
 pOTEMA PRACA DO 9
  
-
+ - wyczyścić projekt do zera 
 #instrukcje instalacji napisac w readme
 #uproszczona dokumantacje
 #ewentualnie testy jednostkowe

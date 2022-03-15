@@ -6,6 +6,11 @@ $(document).ready(function(){
 
             var parsedDataObject = JSON.parse(JSON.stringify(dataObject));
 
+            $('#time_knn').html(dataObject.time_knn);
+            $('#time_svm').html(dataObject.time_knn);
+            $('#time_rf').html(dataObject.time_knn);
+
+
 			$('#card_text_knn_1').html(dataObject.card_text_knn_1);
 			$('#card_text_knn_1_1').html(dataObject.card_text_knn_1_1);
 			$('#card_text_knn_1_2').html(dataObject.card_text_knn_1_2);

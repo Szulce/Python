@@ -7,8 +7,10 @@ from matplotlib import pyplot as plt
 from sklearn import metrics
 from sklearn.metrics import explained_variance_score
 import ComparativeSupervisedLearning.Config.StaticResources as Rs
+import ComparativeSupervisedLearning.Data.DataConversion as Dc
 
 """" Generation plots for data and algorithms comparison"""
+
 
 # def plotx():
 #     fig = Figure()
@@ -218,39 +220,36 @@ def get_description(data_set):
     old_peak_plot = get_log_scale_countplot(data, 'oldpeak', 'stan_zdrowia')
     slope_plot = convert_plot_to_html(sns.countplot(data=data, x='slope', hue='stan_zdrowia').figure)
     plt.rcParams["figure.figsize"] = (5, 10)
-    plot_list = [convert_plot_to_html(get_legend_out_plot(
+    return [convert_plot_to_html(get_legend_out_plot(
         sns.countplot(data=data, x='bol_w_klatce_piersiowej', hue='stan_zdrowia')).figure),
-                 age_plot, pressure_plot, chol,
-                 convert_plot_to_html(get_legend_out_plot(
-                     sns.countplot(data=data, x='cukier', hue='stan_zdrowia')).figure),
-                 convert_plot_to_html(get_legend_out_plot(
-                     sns.countplot(data=data, x='restecg', hue='stan_zdrowia')).figure),
-                 thal_plot, exchang_plot,
-                 old_peak_plot, slope_plot,
-                 convert_plot_to_html(get_legend_out_plot(
-                     sns.countplot(data=data, x='ca', hue='stan_zdrowia')).figure),
-                 convert_plot_to_html(get_legend_out_plot(
-                     sns.countplot(data=data, x='thal', hue='stan_zdrowia')).figure),
-                 convert_plot_to_html(
-                     sns.pairplot(data, vars=['wiek', 'cholesterol', 'thal', 'oldpeak'], hue='stan_zdrowia').figure)
-                 ]
-    return plot_list
+            age_plot, pressure_plot, chol,
+            convert_plot_to_html(get_legend_out_plot(
+                sns.countplot(data=data, x='cukier', hue='stan_zdrowia')).figure),
+            convert_plot_to_html(get_legend_out_plot(
+                sns.countplot(data=data, x='restecg', hue='stan_zdrowia')).figure),
+            thal_plot, exchang_plot,
+            old_peak_plot, slope_plot,
+            convert_plot_to_html(get_legend_out_plot(
+                sns.countplot(data=data, x='ca', hue='stan_zdrowia')).figure),
+            convert_plot_to_html(get_legend_out_plot(
+                sns.countplot(data=data, x='thal', hue='stan_zdrowia')).figure),
+            convert_plot_to_html(
+                sns.pairplot(data, vars=['wiek', 'cholesterol', 'thal', 'oldpeak'], hue='stan_zdrowia').figure)
+            ]
 
 
 def get_log_scale_displot(data, param):
     plot_tmp1 = sns.distplot(data[param])
-    # plot_tmp1.set_yscale('log')
     return convert_plot_to_html(plot_tmp1.figure)
 
 
 def get_log_scale_countplot(data, param_1, param_2):
     with sns.plotting_context(None, font_scale=1, rc={"font.size": 8, "axes.titlesize": 8, "axes.labelsize": 5}):
         plot_tmp1 = sns.countplot(data=data, x=param_1, hue=param_2)
-    # plot_tmp1.set_yscale('log')
     return convert_plot_to_html(plot_tmp1.figure)
 
 
-def create_measure_table(score, y_predict, y_test, y_train):
+def create_measure_table(score, y_predict, y_test, y_train, exec_time):
     measures_table = []
     r2_score = metrics.r2_score(y_test, y_predict)
     mae = metrics.r2_score(y_test, y_predict)
@@ -267,6 +266,7 @@ def create_measure_table(score, y_predict, y_test, y_train):
     measures_table.append(str(explained_variance_score(y_test, y_predict)))
     measures_table.append(str(mae))
     measures_table.append(str(mse))
+    measures_table.append(str(exec_time))
     return measures_table
 
 
@@ -328,6 +328,28 @@ def create_comparison_plots(results):
 
 
 def generate_user_data_plot(base_data):
-    # convert_plot_to_html(
-    #     sns.pairplot(base_data, vars=['age', 'cholesterol', 'thal', 'oldpeak'], hue='stan_zdrowia').figure)
-    pass
+    sns.set_context(rc={"font.size": 20, "axes.titlesize": 20, "axes.labelsize": 15})
+    test_data = Dc.get_unprepared_data()
+    base_data_frame = base_data.to_data_frame()
+    concatenated = pandas.concat(
+        [test_data.assign(dataset='dane testowe'), base_data_frame.assign(dataset='wprowadzone dane')])
+    dots_size = 250
+    plot1 = convert_plot_to_html(
+        sns.scatterplot(x='age', y='chol', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
+    plt.clf()
+    plot2 = convert_plot_to_html(
+        sns.scatterplot(x='sex', y='restecg', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
+    plt.clf()
+    plot3 = convert_plot_to_html(
+        sns.scatterplot(x='cp', y='trestbps', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
+    plt.clf()
+    plot4 = convert_plot_to_html(
+        sns.scatterplot(x='fbs', y='exang', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
+    plt.clf()
+    plot5 = convert_plot_to_html(
+        sns.scatterplot(x='thalach', y='oldpeak', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
+    plt.clf()
+    plot6 = convert_plot_to_html(
+        sns.scatterplot(x='slope', y='ca', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
+    plt.clf()
+    return [plot1, plot2, plot3, plot4, plot5, plot6]

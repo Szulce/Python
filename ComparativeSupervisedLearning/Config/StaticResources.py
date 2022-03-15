@@ -4,8 +4,8 @@ from sklearn.impute import SimpleImputer
 """" Store static resources for example: paths, names of files, names of types   """
 
 # LogConfig
-PREDICTION_MANAGEMENT_ = '/Management/Prediction/'
-PREDICTION_ELABORATION_ = '/Management/Elaboration/PlotsGeneration/PlotsObjects/'
+PREDICTION_MANAGEMENT_ = '\Management\Prediction\\'
+PREDICTION_ELABORATION_ = '\Management\Elaboration\PlotGeneration\PlotsObjects\\'
 NUMPY = "Numpy"
 PANDAS = "Pandas"
 K_FOLD = "K-fold"
@@ -55,115 +55,7 @@ KNN_ = ' \nKNN : \n'
 
 OUT_JSON_RESULT_ = 'C:/Users/User/PycharmProjects/Python/ComparativeSupervisedLearning/Data/Dto/Out/JsonResult/'
 
-
 # In Conversion
-
-features_all = ['id',  # patient identification number
-                'ccf',  # social security number (I replaced this with a dummy value of 0)
-                'age',  # age in years
-                'sex',  # sex (1 = male; 0 = female)
-                'painloc',  # chest pain location (1 = substernal; 0 = otherwise)
-                'painexer',  # (1 = provoked by exertion; 0 = otherwise)
-                'relrest',  # (1 = relieved after rest; 0 = otherwise)
-                'pncaden',  # (sum of 5, 6, and 7)
-                'cp',  # chest pain type
-                # -- Value 1: typical angina
-                # -- Value 2: atypical angina
-                # -- Value 3: non-anginal pain
-                # -- Value 4: asymptomatic
-                'trestbps',  # resting blood pressure (in mm Hg on admission to the hospital)
-                'htn',
-                'chol',  # serum cholestoral in mg/dl
-                'smoke',  # I believe this is 1 = yes; 0 = no (is or is not a smoker)
-                'cigs',  # (cigarettes per day)
-                'years',  # (number of years as a smoker)
-                'fbs',  # (fasting blood sugar > 120 mg/dl) (1 = true; 0 = false)
-                'dm',  # (1 = history of diabetes; 0 = no such history)
-                'famhist',  # family history of coronary artery disease (1 = yes; 0 = no)
-                'restecg',  # resting electrocardiographic JsonResult
-                # -- Value 0: normal
-                # -- Value 1: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)
-                # -- Value 2: showing probable or definite left ventricular hypertrophy by Estes' criteria
-                'ekgmo',  # (month of exercise ECG reading)
-                'ekgday',  # (day of exercise ECG reading)
-                'ekgyr',  # (year of exercise ECG reading)
-                'dig',  # (digitalis used furing exercise ECG: 1 = yes; 0 = no)
-                'prop',  # (Beta blocker used during exercise ECG: 1 = yes; 0 = no)
-                'nitr',  # (nitrates used during exercise ECG: 1 = yes; 0 = no)
-                'pro',  # (calcium channel blocker used during exercise ECG: 1 = yes; 0 = no)
-                'diuretic',  # (diuretic used used during exercise ECG: 1 = yes; 0 = no)
-                'proto',  # exercise protocol
-                # 1 = Bruce
-                # 2 = Kottus
-                # 3 = McHenry
-                # 4 = fast Balke
-                # 5 = Balke
-                # 6 = Noughton
-                # 7 = bike 150 kpa min/min (Not sure if "kpa min/min" is what was written!)
-                # 8 = bike 125 kpa min/min
-                # 9 = bike 100 kpa min/min
-                # 10 = bike 75 kpa min/min
-                # 11 = bike 50 kpa min/min
-                # 12 = arm ergometer
-                'thaldur',  # duration of exercise test in minutes
-                'thaltime',  # time when ST measure depression was noted
-                'met',  # mets achieved
-                'thalach',  # maximum heart rate achieved
-                'thalrest',  # resting heart rate
-                'tpeakbps',  # peak exercise blood pressure (first of 2 parts)
-                'tpeakbpd',  # peak exercise blood pressure (second of 2 parts)
-                'dummy',  #
-                'trestbpd',  # resting blood pressure
-                'exang',  # exercise induced angina (1 = yes; 0 = no)
-                'xhypo',  # (1 = yes; 0 = no)
-                'oldpeak',  # = ST depression induced by exercise relative to rest
-                'slope',  # the slope of the peak exercise ST segment
-                # -- Value 1: upsloping
-                # -- Value 2: flat
-                # -- Value 3: downsloping
-                'rldv5',  # height at rest
-                'rldv5e',  # height at peak exercise
-                'ca',  # number of major vessels (0-3) colored by flourosopy
-                'restckm',  # irrelevant
-                'exerckm',  # irrelevant
-                'restef',  # rest raidonuclid (sp?) ejection fraction
-                'restwm',  # rest wall (sp?) motion abnormality
-                # 0 = none
-                # 1 = mild or moderate
-                # 2 = moderate or severe
-                # 3 = akinesis or dyskmem (sp?)
-                'exeref',  # exercise radinalid (sp?) ejection fraction
-                'exerwm',  # exercise wall (sp?) motion
-                'thal',  # 3 = normal; 6 = fixed defect; 7 = reversable defect
-                'thalsev',  # not used
-                'thalpul',  # not used
-                'earlobe',  # not used
-                'cmo',  # month of cardiac cath (sp?) (perhaps "call")
-                'cday',  # day of cardiac cath (sp?)
-                'cyr',  # year of cardiac cath (sp?)
-                'num',  # diagnosis of heart disease (angiographic disease status)
-                # -- Value 0: < 50% diameter narrowing
-                # -- Value 1: > 50% diameter narrowing
-                # (in any major vessel: attributes 59 through 68 are vessels)
-                'lmt',  #
-                'ladprox',  #
-                'laddist',  #
-                'diag',  #
-                'cxmain',  #
-                'ramus',  #
-                'om1',  #
-                'om2',  #
-                'rcaprox',  #
-                'rcadist',  #
-                'lvx1',  # not used
-                'lvx2',  # not used
-                'lvx3',  # not used
-                'lvx4',  # not used
-                'lvf',  # not used
-                'cathef',  # not used
-                'junk',  # not used
-                'name',  # last name of patient (I replaced this with the dummy string "name")
-                ]
 
 features_used = ['age',  # 3
                  'sex',  # 4
@@ -180,8 +72,6 @@ features_used = ['age',  # 3
                  'thal',  # 51
                  'num',  # 58
                  ]
-# 63.0 ,   1.0,  1.0,  145.0, 233.0, 1.0, 2.0,150.0,0.0,2.3,3.0,0.0,6.0,0
-# 63 lat , men, angina, mmHG, chol, sugar,
 
 features_prediction = ['age',  # 3
                        'sex',  # 4
@@ -208,9 +98,7 @@ features_used_numerical = ['age', 'trestbps', 'chol', 'restecg', 'thalach', 'old
 
 # In Conversion PreProcessing
 imputed_mean = SimpleImputer(strategy="mean", missing_values=numpy.NaN, fill_value=-1)
-# , add_indicator=True)
 imputed_median = SimpleImputer(strategy="median", missing_values=numpy.NaN, fill_value=-1)
-# , add_indicator=True)
 imputed_most_frequent = SimpleImputer(strategy="most_frequent", missing_values=numpy.NaN, fill_value=-1)
 imputed_most_constant = SimpleImputer(strategy="constant", missing_values=numpy.NaN, fill_value=-1)
 
@@ -233,13 +121,11 @@ N_NEIGHBORS_SIZE = 14
 N_NEIGHBORS = "n_neighbors"
 KNN_GRID_SPLITER = 7
 KNN_WEIGHTS = ['uniform', 'distance']
-KNN_ALGORITHM = ['auto', 'ball_tree', 'kd_tree', 'brute']
+KNN_ALGORITHM = ['auto',  'kd_tree', 'brute']
 KNN_LEAF_SIZE = [1, 15, 17, 30, 40, 50, 70, 81, 100]  # leaf_size <= n_points <= 2 * leaf_size
 KNN_P_PARAM = [1, 1.5, 2, 2.5]
-KNN_METRIC = ['minkowski', 'chebyshev', 'seuclidean', 'mahalanobis', 'euclidean', 'manhattan',
-              'hamming', 'canberra', 'braycurtis', 'jaccard', 'matching', 'dice', 'kulsinski',
-              'rogerstanimoto', 'wminkowski', 'haversine'
-                                              'russellrao', 'sokalmichener', 'sokalsneath']
+KNN_METRIC = ['minkowski', 'chebyshev', 'manhattan',
+              'hamming', 'canberra', 'braycurtis', 'jaccard', 'matching', 'dice', 'kulsinski', 'sokalmichener']
 KNN_METRIC_PARAMS = {'w': [numpy.array([2.0] * N_NEIGHBORS_SIZE)], 'p': KNN_P_PARAM}
 
 # svm
@@ -265,3 +151,4 @@ RF_MAX_LEAF_NODES = [None, 1]
 RF_MIN_IMPURITY_DECREASE = [0.0, 0.25]
 RF_CPP = [0.0, 0.25]
 
+CV = 15

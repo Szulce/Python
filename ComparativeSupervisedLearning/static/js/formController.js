@@ -19,7 +19,7 @@
                 var validator = $( "#form" ).validate();
                 var isValid=validator.form();
                 if(isValid){
-
+                $("#loader").removeClass('hidden_div')
 				$.getJSON('/submit_action',  {
                     applyExtended : $('#applyExtended').val(),
                     age : $('#inputAge').val(),
@@ -88,7 +88,19 @@
     		$('#accuracy-positive-plot-knn').html(dataObject.results_base_knn_plot).show();
     		$('#accuracy-positive-plot-svm').html(dataObject.results_base_svm_plot).show();
     		$('#accuracy-positive-plot-rf').html(dataObject.results_base_rf_plot).show();
-    		$('#user_data_plot').html(dataObject.user_data_plot).show();
+
+    		$('#user_data_plot1').html(dataObject.user_data_plot1).show();
+    		$('#user_data_plot2').html(dataObject.user_data_plot2).show();
+    		$('#user_data_plot3').html(dataObject.user_data_plot3).show();
+    		$('#user_data_plot4').html(dataObject.user_data_plot4).show();
+    		$('#user_data_plot9').html(dataObject.user_data_plot5).show();
+    		$('#user_data_plot10').html(dataObject.user_data_plot6).show();
+    		$('#user_data_plot5').html(dataObject.user_data_plot1).show();
+    		$('#user_data_plot6').html(dataObject.user_data_plot2).show();
+    		$('#user_data_plot7').html(dataObject.user_data_plot3).show();
+    		$('#user_data_plot8').html(dataObject.user_data_plot4).show();
+    		$('#user_data_plot11').html(dataObject.user_data_plot5).show();
+    		$('#user_data_plot12').html(dataObject.user_data_plot6).show();
 
     		$('#accuracy-positive-imputed_mean_knn').html(dataObject.accuracy_imputed_mean_knn).show();
     		$('#accuracy-positive-imputed_median_knn').html(dataObject.accuracy_imputed_median_knn).show();
@@ -159,6 +171,8 @@
             $('#progress_bar_knn_negative_1_sp').text(dataObject.results_base_knn_result)
             $('#progress_bar_svn_negative_1_sp').text(dataObject.results_base_svm_result)
             $('#progress_bar_rf_negative_1_sp').text(dataObject.results_base_rf_result)
+
+            $("#loader").remove();
 
 			if (dataObject.results_base_positive_negative){
 				$('#positive-result').show();
