@@ -1,6 +1,7 @@
 import atexit
 import logging
 import os
+import sys
 from zipfile import ZipFile
 
 import ComparativeSupervisedLearning.Config.StaticResources as Rs
@@ -10,6 +11,7 @@ logging.basicConfig(filename=Rs.LOG_FILES_DIRECTORY + "/" + Rs.LOG_FILE_NAME,
                     filemode='w')
 mainLogger = logging.getLogger('MainLogger')
 mainLogger.setLevel(logging.DEBUG)
+
 
 
 @atexit.register

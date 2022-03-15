@@ -1,6 +1,6 @@
 from sklearn.model_selection import GridSearchCV
 from sklearn.tree import DecisionTreeRegressor
-
+import time
 import ComparativeSupervisedLearning.Config.StaticResources as Rs
 import ComparativeSupervisedLearning.Management.Elaboration.PlotGeneration.PlotGeneration as Plot
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage
@@ -15,13 +15,16 @@ def create_train_save_model(x_train, x_test, y_train, y_test):
                   'min_samples_leaf': Rs.RF_MIN_SAMPLES_LEAF,
                   'min_weight_fraction_leaf': Rs.RF_MIN_WEIGHT_FRACTION_LEAF, 'max_leaf_nodes': Rs.RF_MAX_LEAF_NODES,
                   'min_impurity_decrease': Rs.RF_MIN_IMPURITY_DECREASE, 'ccp_alpha': Rs.RF_CPP}
-    grid = GridSearchCV(DecisionTreeRegressor(), param_grid, refit=True, verbose=2)
+    grid = GridSearchCV(DecisionTreeRegressor(), param_grid, refit=True, verbose=3,cv=Rs.CV)
+    start_time = time.time()
     grid.fit(x_train, y_train)
-    grid.score(x_test, y_test)
+    end_time = time.time()
+    exec_time = end_time - start_time
+    score = grid.score(x_test, y_test)
     Ms.save_grid_scores(grid, Rs.MODEL_TYPE_RF)
     y_predict = grid.predict(x_test)
     ComparativeSupervisedLearning.Management.Prediction.ModelStorage.save_prediction_to_json(
-        Plot.create_measure_table(grid.score(x_test, y_test), y_predict, y_test, y_train),
+        Plot.create_measure_table(score, y_predict, y_test, y_train, exec_time),
         Rs.MODEL_TYPE_RF)
 
 #     print(rand_clf.score(x_test, y_test))

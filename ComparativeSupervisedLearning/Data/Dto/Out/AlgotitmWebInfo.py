@@ -6,6 +6,11 @@ class AlgorithmWebInfo:
      format for page with information about all algorithms   """
 
     def __init__(self, info):
+
+        self.time_knn = info[0][8]
+        self.time_svm = info[1][8]
+        self.time_rf = info[2][8]
+
         self.card_text_knn_1 = info[0][0]
         self.card_text_knn_1_1 = info[0][1]
         self.card_text_knn_1_2 = info[0][2]

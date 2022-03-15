@@ -3,6 +3,7 @@ import ComparativeSupervisedLearning.Management.Elaboration.PlotGeneration.PlotG
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
 from ComparativeSupervisedLearning.Data.Dto.Out.FullResultObject import FullResultObject
 from ComparativeSupervisedLearning.Management.Prediction import PredictionManager
+import sys
 
 """" Manages main functions  """
 
@@ -14,14 +15,17 @@ def predict_based_on_user_input(base_data):
 
 
 def get_data_info_object():
-    Ms.load_plot_object(Rs.DATA_INFO_PLOTS)
+    return Ms.load_plot_object(Rs.DATA_INFO_PLOTS)
 
 
 def get_algorithms_info_object():
-    Ms.load_plot_object(Rs.ALGORITHM_INFO_PLOTS)
+    return Ms.load_plot_object(Rs.ALGORITHM_INFO_PLOTS)
 
 
 if __name__ == '__main__':
+    sys.stdout = open(Rs.LOG_FILES_DIRECTORY + "/" + Rs.LOG_FILE_NAME, 'w')
     PredictionManager.train_algorithms()
-    PredictionManager.render_data_info()
+    # use once no more need
+    # PredictionManager.render_data_info()
     PredictionManager.render_algorithms_info()
+    sys.stdout.close()

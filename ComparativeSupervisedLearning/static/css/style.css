@@ -212,6 +212,12 @@ footer {
     visibility: hidden;
 }
 
+.plot_size{
+    width:350px!important;
+    height:auto;
+    float:left;
+}
+
  /*Spinner Styles*/
 
     .loader {
