@@ -64,12 +64,6 @@
 
                             <span> Parametry najwydajniejszego modelu </span>
                             <div id="result-positive-value-knn"></div>
-                            <span>Czas uczenia</span>
-                            <div id="time_knn"></div>s
-                             <span>Czas uczenia</span>
-                            <div id="time_svm"></div>s
-                             <span>Czas uczenia</span>
-                            <div id="time_rf"></div>s
 
                             <div id="card_text_knn_1"></div>
                             <div id="card_text_knn_1_1"></div>
@@ -85,30 +79,31 @@
                 <div class="col-sm-6">
                     <div class="card card-right-nav">
                         <div class="card-body">
-                            <h5 class="card-title">Porównanie do innych algorytmów</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu wektorów nośnych</h6>
-                            <p class="card-text">
-                            <div id="card_text_knn_2"></div>
-                            </p>
-                            <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu lasów losowych </h6>
-                            <p class="card-text">
-                            <div id="card_text_knn_3"></div>
-                            </p>
+                            <h5 class="card-title">Porównanie najlepszych estymatorów</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">dla algorytmów KNN,SVM,Random forest</h6>
+                            <div id="best_estimator_plot_1_knn"></div>
                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmSVM class="card-link">SVM</a>
                             <a href=algorithmRF class="card-link">Random Forest</a>
                         </div>
                     </div>
                     <div class="card border-info mb-3 card-right-nav">
-                        <div class="card-header bg-transparent border-info">Porównanie w postaci wykresów</div>
+                        <div class="card-header bg-transparent border-info"><h5 class="card-title">Porównanie czasów wykonania </h5> </div>
                         <div class="card-body text-info">
-                            <h5 class="card-title">Porównanie do algorytmu wektorów nośnych</h5>
+                            <h5 class="card-title">Algorytm K najbliższych sąsiadów</h5>
                             <p class="card-text">
-                            <div id="card_text_knn_4"></div>
+                             <span>Czas uczenia w sekundach :</span>
+                            <div id="time_knn_1"></div>
                             </p>
-                            <h5 class="card-title">Porównanie do algorytmu lasów losowych</h5>
+                            <h5 class="card-title">Algorytm wektorów nośnych</h5>
                             <p class="card-text">
-                            <div id="card_text_knn_5"></div>
+                             <span>Czas uczenia w sekundach:</span>
+                            <div id="time_svm_1"></div>
+                            </p>
+                            <h5 class="card-title">Algorytm lasów losowych</h5>
+                            <p class="card-text">
+                            <span>Czas uczenia w sekundach:</span>
+                            <div id="time_rf_1"></div>
                             </p>
                         </div>
                     </div>
@@ -137,31 +132,32 @@
                 <div class="col-sm-6">
                     <div class="card card-right-nav">
                         <div class="card-body">
-                            <h5 class="card-title">Porównanie do innych algorytmów</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu K najbliższych
-                                sąsiadów</h6>
-                            <p class="card-text">
-                            <div id="card_text_svm_2"></div>
-                            </p>
-                            <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu lasów losowych </h6>
-                            <p class="card-text">
-                            <div id="card_text_svm_3"></div>
-                            </p>
+                            <h5 class="card-title">Porównanie najlepszych estymatorów</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">dla algorytmów KNN,SVM,Random forest</h6>
+                            <div id="best_estimator_plot_1_svm"></div>
                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmKNN class="card-link">KNN</a>
                             <a href=algorithmRF class="card-link">Random Forest</a>
                         </div>
                     </div>
                     <div class="card border-info mb-3 card-right-nav">
-                        <div class="card-header bg-transparent border-info">Porównanie w postaci wykresów</div>
+                        <div class="card-header bg-transparent border-info">
+                             <h5 class="card-title"><h5 class="card-title">Porównanie czasów wykonania </h5></div>
                         <div class="card-body text-info">
-                            <h5 class="card-title">Porównanie do algorytmu K najbliższych sąsiadów</h5>
+                            <h5 class="card-title">Algorytm K najbliższych sąsiadów</h5>
                             <p class="card-text">
-                            <div id="card_text_svm_4"></div>
+                             <span>Czas uczenia w sekundach:</span>
+                            <div id="time_knn_2"></div>
                             </p>
-                            <h5 class="card-title">Porównanie do algorytmu lasów losowych</h5>
+                            <h5 class="card-title">Algorytm wektorów nośnych</h5>
                             <p class="card-text">
-                            <div id="card_text_svm_5"></div>
+                             <span>Czas uczenia w sekundach:</span>
+                            <div id="time_svm_2"></div>
+                            </p>
+                            <h5 class="card-title">Algorytm lasów losowych</h5>
+                            <p class="card-text">
+                            <span>Czas uczenia w sekundach:</span>
+                            <div id="time_rf_2"></div>
                             </p>
                         </div>
                     </div>
@@ -190,31 +186,31 @@
                 <div class="col-sm-6">
                     <div class="card card-right-nav">
                         <div class="card-body">
-                            <h5 class="card-title">Porównanie do innych algorytmów</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu wektorów nośnych</h6>
-                            <p class="card-text">
-                            <div id="card_text_rf_2"></div>
-                            </p>
-                            <h6 class="card-subtitle mb-2 text-muted">Porównanie do algorytmu K najbliższych
-                                sąsiadów </h6>
-                            <p class="card-text">S
-                            <div id="card_text_rf_3"></div>
-                            </p>
+                            <h5 class="card-title">Porównanie najlepszych estymatorów</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">dla algorytmów KNN,SVM,Random forest</h6>
+                            <div id="best_estimator_plot_1_rf"></div>
                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmSVM class="card-link">SVM</a>
                             <a href=algorithmKNN class="card-link">KNN</a>
                         </div>
                     </div>
                     <div class="card border-info mb-3 card-right-nav">
-                        <div class="card-header bg-transparent border-info">Porównanie w postaci wykresów</div>
+                        <div class="card-header bg-transparent border-info">Porównanie czasów wykonania </div>
                         <div class="card-body text-info">
-                            <h5 class="card-title">Porównanie do algorytmu wektorów nośnych</h5>
+                            <h5 class="card-title">Algorytm K najbliższych sąsiadów</h5>
                             <p class="card-text">
-                            <div id="card_text_rf_4"></div>
+                             <span>Czas uczenia w sekundach:</span>
+                            <div id="time_knn_3"></div>
                             </p>
-                            <h5 class="card-title">Porównanie do algorytmu K najbliższych sąsiadów</h5>
+                            <h5 class="card-title">Algorytm wektorów nośnych</h5>
                             <p class="card-text">
-                            <div id="card_text_rf_5"></div>
+                             <span>Czas uczenia w sekundach:</span>
+                            <div id="time_svm_3"></div>
+                            </p>
+                            <h5 class="card-title">Algorytm lasów losowych</h5>
+                            <p class="card-text">
+                            <span>Czas uczenia w sekundach:</span>
+                            <div id="time_rf_3"></div>
                             </p>
                         </div>
                     </div>
@@ -228,17 +224,9 @@
                 <div class="card-body">
                     <h5 class="card-title">Porównanie całościowe</h5>
                     <p class="card-text">
-                    <div id="card_plot_all_2"></div>
-                    <p class="card-text">
-                    <div id="card_plot_all_3"></div>
-                    <p class="card-text">
-                    <div id="card_plot_all_4"></div>
-                    <p class="card-text">
-                    <div id="card_plot_all_5"></div>
-                    <p class="card-text">
-                    <div id="card_plot_all_6"></div>
-                    <p class="card-text">
-                    <div id="card_plot_all_7"></div>
+                    <div id="best_estimator_plot_2_knn"></div>
+                    <div id="best_estimator_plot_2_svm"></div>
+                    <div id="best_estimator_plot_2_rf"></div>
                 </div>
             </div>
         </div>

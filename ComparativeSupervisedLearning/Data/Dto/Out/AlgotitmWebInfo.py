@@ -11,6 +11,13 @@ class AlgorithmWebInfo:
         self.time_svm = info[1][8]
         self.time_rf = info[2][8]
 
+        self.best_estimator_plot_1_knn = info[4][0]
+        self.best_estimator_plot_2_knn = info[4][1]
+        self.best_estimator_plot_1_svm = info[4][2]
+        self.best_estimator_plot_2_svm = info[4][3]
+        self.best_estimator_plot_1_rf = info[4][4]
+        self.best_estimator_plot_2_rf = info[4][5]
+
         self.card_text_knn_1 = info[0][0]
         self.card_text_knn_1_1 = info[0][1]
         self.card_text_knn_1_2 = info[0][2]

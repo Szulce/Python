@@ -1,6 +1,7 @@
 import ComparativeSupervisedLearning.Config.StaticResources as Rs
 import ComparativeSupervisedLearning.Management.Elaboration.PlotGeneration.PlotGeneration as Plot
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
+from ComparativeSupervisedLearning.Data.Dto.Out.AlgotitmWebInfo import AlgorithmWebInfo
 from ComparativeSupervisedLearning.Data.Dto.Out.FullResultObject import FullResultObject
 from ComparativeSupervisedLearning.Management.Prediction import PredictionManager
 import sys
@@ -19,7 +20,9 @@ def get_data_info_object():
 
 
 def get_algorithms_info_object():
-    return Ms.load_plot_object(Rs.ALGORITHM_INFO_PLOTS)
+    data = PredictionManager.get_algorithm_info()
+    return AlgorithmWebInfo(data).to_json()
+    # return Ms.load_plot_object(Rs.ALGORITHM_INFO_PLOTS)
 
 
 if __name__ == '__main__':
