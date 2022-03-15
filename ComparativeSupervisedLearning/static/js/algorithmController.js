@@ -6,9 +6,24 @@ $(document).ready(function(){
 
             var parsedDataObject = JSON.parse(JSON.stringify(dataObject));
 
-            $('#time_knn').html(dataObject.time_knn);
-            $('#time_svm').html(dataObject.time_knn);
-            $('#time_rf').html(dataObject.time_knn);
+            $('#time_knn_1').html(dataObject.time_knn);
+            $('#time_svm_1').html(dataObject.time_svm);
+            $('#time_rf_1').html(dataObject.time_rf);
+            $('#time_knn_2').html(dataObject.time_knn);
+            $('#time_svm_2').html(dataObject.time_svm);
+            $('#time_rf_2').html(dataObject.time_rf);
+            $('#time_knn_3').html(dataObject.time_knn);
+            $('#time_svm_3').html(dataObject.time_svm);
+            $('#time_rf_3').html(dataObject.time_rf);
+
+            $('#best_estimator_plot_1_knn').html(dataObject.best_estimator_plot_1_knn).show();
+    		$('#best_estimator_plot_2_knn').html(dataObject.best_estimator_plot_2_knn).show();
+    		$('#best_estimator_plot_1_svm').html(dataObject.best_estimator_plot_1_svm).show();
+    		$('#best_estimator_plot_2_svm').html(dataObject.best_estimator_plot_2_svm).show();
+    		$('#best_estimator_plot_1_rf').html(dataObject.best_estimator_plot_1_rf).show();
+    		$('#best_estimator_plot_2_rf').html(dataObject.best_estimator_plot_2_rf).show();
+
+    		$('#best_estimator_plot_4').html(dataObject.best_estimator_plot_2).show();
 
 
 			$('#card_text_knn_1').html(dataObject.card_text_knn_1);

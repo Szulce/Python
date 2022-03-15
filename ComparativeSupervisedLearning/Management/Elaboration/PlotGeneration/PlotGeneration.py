@@ -8,6 +8,7 @@ from sklearn import metrics
 from sklearn.metrics import explained_variance_score
 import ComparativeSupervisedLearning.Config.StaticResources as Rs
 import ComparativeSupervisedLearning.Data.DataConversion as Dc
+import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
 
 """" Generation plots for data and algorithms comparison"""
 
@@ -347,9 +348,68 @@ def generate_user_data_plot(base_data):
         sns.scatterplot(x='fbs', y='exang', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
     plt.clf()
     plot5 = convert_plot_to_html(
-        sns.scatterplot(x='thalach', y='oldpeak', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
+        sns.scatterplot(x='thalach', y='oldpeak', hue='dataset', data=concatenated, style='dataset',
+                        s=dots_size).figure)
     plt.clf()
     plot6 = convert_plot_to_html(
         sns.scatterplot(x='slope', y='ca', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
     plt.clf()
     return [plot1, plot2, plot3, plot4, plot5, plot6]
+
+
+def best_estimator_compare():
+    ax = []
+    plt.clf()
+    for type_m in Rs.MODELS:
+        grid = Ms.load_grid_scores(type_m)
+        ax1 = get_algorithm_param_comp(grid, 'mean_test_score', 'std_test_score', 'rank_test_score',
+                                       'split0_test_score')
+        ax.append(ax1)
+        plt.clf()
+        ax2 = get_algorithm_param_comp(grid, 'mean_fit_time', 'std_fit_time', 'mean_score_time', 'std_score_time')
+        ax.append(ax2)
+
+    # concatenated_result = pandas.concat(
+    #     [results_knn.assign(algorytm='KNN'), results_svm.assign(algorytm='SVM'), results_fr.assign(algorytm='RF')])
+
+    return ax
+
+
+def get_algorithm_param_comp(grid, means_test_s, means_train_s, stds_test_s, stds_train_s):
+    masks = []
+    means_test = grid.cv_results_[str(means_test_s)]
+    stds_test = grid.cv_results_[str(means_train_s)]
+    means_train = grid.cv_results_[str(stds_test_s)]
+    stds_train = grid.cv_results_[str(stds_train_s)]
+
+    masks_names = list(grid.best_params_.keys())
+    for p_k, p_v in grid.best_params_.items():
+        masks.append(list(grid.cv_results_['param_' + p_k].data == p_v))
+    params = grid.param_grid
+    fig, ax = plt.subplots(1, len(params), sharex='none', sharey='all', figsize=(20, 5))
+    fig.suptitle('Wynik dla parametru')
+    fig.text(0.04, 0.5, 'Średni wynik', va='center', rotation='vertical')
+    for i, p in enumerate(masks_names):
+        if len(masks) > 1:
+            m = numpy.stack(masks[:i] + masks[i + 1:])
+            best_parms_mask = m.all(axis=0)
+            best_index = numpy.where(best_parms_mask)[0]
+            x = numpy.array(params[p])
+            y_1 = numpy.array(means_test[best_index])
+            e_1 = numpy.array(stds_test[best_index])
+            y_2 = numpy.array(means_train[best_index])
+            e_2 = numpy.array(stds_train[best_index])
+            ax[i].errorbar(x, y_1, e_1, linestyle='--', marker='o', label='test')
+            ax[i].errorbar(x, y_2, e_2, linestyle='-', marker='^', label='trening')
+            ax[i].set_xlabel(p.upper())
+
+    plt.legend()
+    return convert_plot_to_html(fig)
+
+
+def make_list(masks_names):
+    masks_names_list = list()
+    for dict in masks_names:
+        for kay in dict:
+            masks_names_list.append(kay)
+    return masks_names_list

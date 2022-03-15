@@ -4,7 +4,6 @@ from sklearn.model_selection import train_test_split
 import ComparativeSupervisedLearning.Config.StaticResources as Rs
 import ComparativeSupervisedLearning.Data.DataConversion as Dc
 import ComparativeSupervisedLearning.Management.Elaboration.PlotGeneration.PlotGeneration as Plot
-import ComparativeSupervisedLearning.Management.Prediction.ModelStorage
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
 from ComparativeSupervisedLearning.Data.Dto.Out.AlgotitmWebInfo import AlgorithmWebInfo
 from ComparativeSupervisedLearning.Data.Dto.Out.AllAlgorithmsResult import AllAlgorithmsResult
@@ -158,7 +157,8 @@ def get_data_info():
 def get_algorithm_info():
     final_results = []
     for model_type in Rs.MODELS:
-        for loaded_measures in ComparativeSupervisedLearning.Management.Prediction.ModelStorage.read_prediction(model_type):
+        for loaded_measures in Ms.read_prediction(model_type):
             final_results.append(loaded_measures)
     final_results.append(compare_multiple_results(final_results))
+    final_results.append(Plot.best_estimator_compare())
     return final_results

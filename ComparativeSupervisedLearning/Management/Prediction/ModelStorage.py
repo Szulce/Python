@@ -21,8 +21,9 @@ def load_plot_object(name):
     return loaded_object
 
 
-def load_model(name):
-    loaded_model = joblib.load(name)
+def load_model(name, model_type):
+    filename = os.getcwd() + Rs.PREDICTION_MANAGEMENT_ + model_type + Rs.SAV_DIR + name + '.sav'
+    loaded_model = joblib.load(filename)
     Log.debug("Loaded Model " + name)
     return loaded_model
 
@@ -51,6 +52,10 @@ def load_accuracy_score(prediction_model):
 
 def save_grid_scores(grid, model_type):
     save_model(grid, model_type + str(1), model_type)
+
+
+def load_grid_scores(model_type):
+    return load_model(model_type + str(1), model_type)
 
 
 def save_prediction_to_json(prediction, algorithm):
