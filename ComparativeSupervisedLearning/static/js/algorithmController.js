@@ -59,6 +59,29 @@ $(document).ready(function(){
 			$('#card_plot_all_7').html(dataObject.card_plot_all_7);
 
 
+			$('#accuracy-positive-imputed_mean_knn').html(dataObject.accuracy_imputed_mean_knn).show();
+    		$('#accuracy-positive-imputed_median_knn').html(dataObject.accuracy_imputed_median_knn).show();
+    		$('#accuracy-postive-imputed_most_constant_knn').html(dataObject.accuracy_imputed_most_constant_knn).show();
+    		$('#accuracy-positive-imputed_most_frequent_knn').html(dataObject.accuracy_imputed_most_frequent_knn).show();
+    		$('#accuracy-negative-imputed_mean_knn').html(dataObject.accuracy_imputed_mean_knn).show();
+    		$('#accuracy-negative-imputed_median_knn').html(dataObject.accuracy_imputed_median_knn).show();
+    		$('#accuracy-negaive-imputed_most_constant_knn').html(dataObject.accuracy_imputed_most_constant_knn).show();
+    		$('#accuracy-negative-imputed_most_frequent_knn').html(dataObject.accuracy_imputed_most_frequent_knn).show();
+
+
+            $('#result-positive-value-knn').html(dataObject.results_base_information_text_knn).show();
+			$('#result-negative-value-knn').html(dataObject.results_base_information_text_knn).show();
+    		$('#accuracy-negative-value-knn').html(dataObject.results_base_accuracy_text_knn).show();
+    		$('#accuracy-positive-value-knn').html(dataObject.results_base_accuracy_text_knn).show();
+    		$('#result-positive-value-svm').html(dataObject.results_base_information_text_svm).show();
+			$('#result-negative-value-svm').html(dataObject.results_base_information_text_svm).show();
+    		$('#accuracy-negative-value-svm').html(dataObject.results_base_accuracy_text_svm).show();
+    		$('#accuracy-positive-value-svm').html(dataObject.results_base_accuracy_text_svm).show();
+    		$('#result-positive-value-rf').html(dataObject.results_base_information_text_rf).show();
+			$('#result-negative-value-rf').html(dataObject.results_base_information_text_rf).show();
+    		$('#accuracy-negative-value-rf').html(dataObject.results_base_accuracy_text_rf).show();
+    		$('#accuracy-positive-value-rf').html(dataObject.results_base_accuracy_text_rf).show();
+
 				});
 
 });

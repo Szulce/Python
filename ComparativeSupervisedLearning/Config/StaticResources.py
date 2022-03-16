@@ -121,7 +121,7 @@ N_NEIGHBORS_SIZE = 14
 N_NEIGHBORS = "n_neighbors"
 KNN_GRID_SPLITER = 7
 KNN_WEIGHTS = ['uniform', 'distance']
-KNN_ALGORITHM = ['auto',  'kd_tree', 'brute']
+KNN_ALGORITHM = ['auto', 'kd_tree', 'brute']
 KNN_LEAF_SIZE = [1, 15, 17, 30, 40, 50, 70, 81, 100]  # leaf_size <= n_points <= 2 * leaf_size
 KNN_P_PARAM = [1, 1.5, 2, 2.5]
 KNN_METRIC = ['minkowski', 'chebyshev', 'manhattan',
@@ -142,12 +142,11 @@ SVM_CACHE_SIZE = [200, 500]
 RF_MAX_DEPTH = [7, 10, 13]
 RF_RANDOM_STATE = [0, 2, 13, 27]
 RF_MAX_FEATURES = [None, 'auto', 'sqrt', 'log2']
-RF_CRITERION = ['squared_error', 'friedman_mse', 'absolute_error', 'poisson']
+RF_CRITERION = ['friedman_mse', 'poisson']
 RF_SPLITTER = ['best', 'random']
-RF_MIN_SAMPLES = [1, 2, 5]
+RF_MIN_SAMPLES = [1.1, 2.0, 5.0]
 RF_MIN_SAMPLES_LEAF = [1, 2, 5]
 RF_MIN_WEIGHT_FRACTION_LEAF = [0.0, 0.1, 0.25]
-RF_MAX_LEAF_NODES = [None, 1]
 RF_MIN_IMPURITY_DECREASE = [0.0, 0.25]
 RF_CPP = [0.0, 0.25]
 

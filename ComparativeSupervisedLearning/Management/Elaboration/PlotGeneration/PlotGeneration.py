@@ -255,9 +255,9 @@ def create_measure_table(score, y_predict, y_test, y_train, exec_time):
     r2_score = metrics.r2_score(y_test, y_predict)
     mae = metrics.r2_score(y_test, y_predict)
     mse = metrics.mean_squared_error(y_test, y_predict)
-    text1 = str('Precyzja : ') + str(score) + str('       Współczynnik determinacji (r2):') \
-            + str(r2_score) + str('      Średnia utrata regresji błędu bezwzględneg: ') + \
-            str(mae) + str('     Utrata regresji błędu średniokwadratowego') + \
+    text1 = str('Precyzja : ') + str(score) + str('  |     Współczynnik determinacji (r2): ') \
+            + str(r2_score) + str('   |   Średnia utrata regresji błędu bezwzględneg: ') + \
+            str(mae) + str('  |   Utrata regresji błędu średniokwadratowego: ') + \
             str(mse)
     measures_table.append(text1)
     measures_table.append(plot_true_values(y_test, y_predict))
@@ -357,26 +357,25 @@ def generate_user_data_plot(base_data):
     return [plot1, plot2, plot3, plot4, plot5, plot6]
 
 
-def best_estimator_compare():
+def best_estimator_compare(iterator):
     ax = []
+    bp = []
     plt.clf()
     for type_m in Rs.MODELS:
-        grid = Ms.load_grid_scores(type_m)
+        grid = Ms.load_grid_scores(type_m, iterator)
+        bp.append(grid.best_params_)
         ax1 = get_algorithm_param_comp(grid, 'mean_test_score', 'std_test_score', 'rank_test_score',
                                        'split0_test_score')
         ax.append(ax1)
         plt.clf()
         ax2 = get_algorithm_param_comp(grid, 'mean_fit_time', 'std_fit_time', 'mean_score_time', 'std_score_time')
         ax.append(ax2)
-
-    # concatenated_result = pandas.concat(
-    #     [results_knn.assign(algorytm='KNN'), results_svm.assign(algorytm='SVM'), results_fr.assign(algorytm='RF')])
-
-    return ax
+    return ax, bp
 
 
 def get_algorithm_param_comp(grid, means_test_s, means_train_s, stds_test_s, stds_train_s):
     masks = []
+    plt.rcParams.update({'font.size': 22})
     means_test = grid.cv_results_[str(means_test_s)]
     stds_test = grid.cv_results_[str(means_train_s)]
     means_train = grid.cv_results_[str(stds_test_s)]
@@ -386,7 +385,7 @@ def get_algorithm_param_comp(grid, means_test_s, means_train_s, stds_test_s, std
     for p_k, p_v in grid.best_params_.items():
         masks.append(list(grid.cv_results_['param_' + p_k].data == p_v))
     params = grid.param_grid
-    fig, ax = plt.subplots(1, len(params), sharex='none', sharey='all', figsize=(20, 5))
+    fig, ax = plt.subplots(1, len(params), sharex='none', sharey='all', figsize=(80, 20))
     fig.suptitle('Wynik dla parametru')
     fig.text(0.04, 0.5, 'Średni wynik', va='center', rotation='vertical')
     for i, p in enumerate(masks_names):
@@ -403,13 +402,10 @@ def get_algorithm_param_comp(grid, means_test_s, means_train_s, stds_test_s, std
             ax[i].errorbar(x, y_2, e_2, linestyle='-', marker='^', label='trening')
             ax[i].set_xlabel(p.upper())
 
-    plt.legend()
-    return convert_plot_to_html(fig)
-
-
-def make_list(masks_names):
-    masks_names_list = list()
-    for dict in masks_names:
-        for kay in dict:
-            masks_names_list.append(kay)
-    return masks_names_list
+    if len(fig.axes) > 3:
+        fig.axes[2].xaxis.set_ticklabels([])
+    buf = BytesIO()
+    fig.set_size_inches(20, 10)
+    fig.savefig(buf, format="png", dpi=40)
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return f"<img src='data:image/png;base64,{data}'/>"

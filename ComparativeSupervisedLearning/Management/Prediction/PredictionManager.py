@@ -23,10 +23,12 @@ def predict_based_on_user_input(data):
 
 def train_algorithms():
     prepared = Dc.prepare_data()
+    iterator = 0
     for data_sample in prepared:
         x_train, x_test, y_train, y_test = split_data_for_learning_process(data_sample)
         for model_type in Rs.MODELS:
-            train(model_type, x_train, x_test, y_train, y_test)
+            train(model_type, x_train, x_test, y_train, y_test, iterator)
+    iterator += 1
     print("END")
 
 
@@ -82,10 +84,10 @@ def predict_based_on_model(model, data, model_type):
 def compare_multiple_results(results):
     comparison = [
         # KNN SVM
-        Plot.create_figure_two_models_text(results[0], results[1], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_SVM),
-        Plot.create_figure_two_models(results[0], results[1], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_SVM),
+        Plot.create_figure_two_models_text(results[0][0], results[1][0], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_SVM),
+        Plot.create_figure_two_models(results[0][0], results[1][0], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_SVM),
         # KNN RF
-        Plot.create_figure_two_models_text(results[0], results[2], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_RF),
+        Plot.create_figure_two_models_text(results[0][0], results[2], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_RF),
         Plot.create_figure_two_models(results[0], results[2], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_RF),
         # SVM RF
         Plot.create_figure_two_models_text(results[1], results[2], Rs.MODEL_TYPE_SVM, Rs.MODEL_TYPE_RF),
@@ -125,13 +127,14 @@ def split_data_for_learning_process(data_sample):
     return train_test_split(x_col, y_col, test_size=Rs.SCIKIT_test_size, random_state=Rs.SCIKIT_random_state)
 
 
-def train(model_type, train_x, test_x, y_train, y_test):
-    if model_type == Rs.MODEL_TYPE_KNN:
-        Knn.create_train_save_model(train_x, test_x, y_train, y_test)
-    elif model_type == Rs.MODEL_TYPE_SVM:
-        Svm.create_train_save_model(train_x, test_x, y_train, y_test)
-    elif model_type == Rs.MODEL_TYPE_RF:
-        Rf.create_train_save_model(train_x, test_x, y_train, y_test)
+def train(model_type, train_x, test_x, y_train, y_test, iterator):
+    # if model_type == Rs.MODEL_TYPE_KNN:
+    #     Knn.create_train_save_model(train_x, test_x, y_train, y_test, iterator)
+    # el
+    if model_type == Rs.MODEL_TYPE_SVM:
+        Svm.create_train_save_model(train_x, test_x, y_train, y_test,iterator)
+    # elif model_type == Rs.MODEL_TYPE_RF:
+    #     Rf.create_train_save_model(train_x, test_x, y_train, y_test, iterator)
 
 
 def get_data_info():
@@ -156,9 +159,14 @@ def get_data_info():
 
 def get_algorithm_info():
     final_results = []
-    for model_type in Rs.MODELS:
-        for loaded_measures in Ms.read_prediction(model_type):
-            final_results.append(loaded_measures)
-    final_results.append(compare_multiple_results(final_results))
-    final_results.append(Plot.best_estimator_compare())
+    for iterator in range(0, len(Rs.IMPUTERS_LIST)):
+        for model_type in Rs.MODELS:
+            model_result = []
+            for loaded_measures in Ms.read_prediction(model_type, iterator):
+                model_result.append(loaded_measures)
+            final_results.append(model_result)
+    # final_results.append(compare_multiple_results(final_results))
+    estimators, best_params = Plot.best_estimator_compare(iterator)
+    final_results.append(estimators)
+    final_results.append(best_params)
     return final_results
