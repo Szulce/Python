@@ -1,10 +1,12 @@
 
 #overfit - dopisac klasyfikacje
 
+rf parametry 
+svm parametry
+VERBOSE
 
-- VERBOSE Iwygenerować z tych danych wykres
-- sensowne wykresy
-- ważność cech oraz parametrów
+#praca nadrobić wszystko 
+#nadgodziny
 
 ###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
 -OCENA SZYBKOŚCI WYKONANIA
@@ -12,16 +14,8 @@
 -OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
  - które parametry mają i wpływ i dlaczego:
    - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
-   - LICZBY SĄSIADÓW
- - które parametry mają i wpływ i dlaczego
-## ZAKŁADKA DO PORÓWANIA
-- PORÓWNANIE KAŻDY Z KAŻDYM
-POPRAWKI DO CZĘŚCI PRAKTYCZNEJ:
--wykresy dla uczenia i parametryzacji:
 
-DO 4
-POTEM NADGODZINY DO 7
-pOTEMA PRACA DO 9
+    
  
  - wyczyścić projekt do zera 
 #instrukcje instalacji napisac w readme

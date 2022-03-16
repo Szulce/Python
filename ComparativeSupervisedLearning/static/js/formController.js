@@ -72,18 +72,7 @@
             var parsedDataObject = JSON.parse(JSON.stringify(dataObject));
                console.error(parsedDataObject);
 			$('#fill-in-form').hide();
-			$('#result-positive-value-knn').html(dataObject.results_base_information_text_knn).show();
-			$('#result-negative-value-knn').html(dataObject.results_base_information_text_knn).show();
-    		$('#accuracy-negative-value-knn').html(dataObject.results_base_accuracy_text_knn).show();
-    		$('#accuracy-positive-value-knn').html(dataObject.results_base_accuracy_text_knn).show();
-    		$('#result-positive-value-svm').html(dataObject.results_base_information_text_svm).show();
-			$('#result-negative-value-svm').html(dataObject.results_base_information_text_svm).show();
-    		$('#accuracy-negative-value-svm').html(dataObject.results_base_accuracy_text_svm).show();
-    		$('#accuracy-positive-value-svm').html(dataObject.results_base_accuracy_text_svm).show();
-    		$('#result-positive-value-rf').html(dataObject.results_base_information_text_rf).show();
-			$('#result-negative-value-rf').html(dataObject.results_base_information_text_rf).show();
-    		$('#accuracy-negative-value-rf').html(dataObject.results_base_accuracy_text_rf).show();
-    		$('#accuracy-positive-value-rf').html(dataObject.results_base_accuracy_text_rf).show();
+
 
     		$('#accuracy-positive-plot-knn').html(dataObject.results_base_knn_plot).show();
     		$('#accuracy-positive-plot-svm').html(dataObject.results_base_svm_plot).show();
@@ -102,14 +91,6 @@
     		$('#user_data_plot11').html(dataObject.user_data_plot5).show();
     		$('#user_data_plot12').html(dataObject.user_data_plot6).show();
 
-    		$('#accuracy-positive-imputed_mean_knn').html(dataObject.accuracy_imputed_mean_knn).show();
-    		$('#accuracy-positive-imputed_median_knn').html(dataObject.accuracy_imputed_median_knn).show();
-    		$('#accuracy-postive-imputed_most_constant_knn').html(dataObject.accuracy_imputed_most_constant_knn).show();
-    		$('#accuracy-positive-imputed_most_frequent_knn').html(dataObject.accuracy_imputed_most_frequent_knn).show();
-    		$('#accuracy-negative-imputed_mean_knn').html(dataObject.accuracy_imputed_mean_knn).show();
-    		$('#accuracy-negative-imputed_median_knn').html(dataObject.accuracy_imputed_median_knn).show();
-    		$('#accuracy-negaive-imputed_most_constant_knn').html(dataObject.accuracy_imputed_most_constant_knn).show();
-    		$('#accuracy-negative-imputed_most_frequent_knn').html(dataObject.accuracy_imputed_most_frequent_knn).show();
 
     		$('#accuracy-positive-imputed_mean_svm').html(dataObject.accuracy_imputed_mean_svm).show();
     		$('#accuracy-positive-imputed_median_svm').html(dataObject.accuracy_imputed_median_svm).show();

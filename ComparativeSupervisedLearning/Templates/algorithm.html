@@ -80,8 +80,9 @@
                     <div class="card card-right-nav">
                         <div class="card-body">
                             <h5 class="card-title">Porównanie najlepszych estymatorów</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">dla algorytmów KNN,SVM,Random forest</h6>
+                            <h6 class="card-subtitle mb-2 text-muted"> per parametr</h6>
                             <div id="best_estimator_plot_1_knn"></div>
+                            </br>
                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmSVM class="card-link">SVM</a>
                             <a href=algorithmRF class="card-link">Random Forest</a>
@@ -115,13 +116,28 @@
                 <div class="col-sm-6">
                     <div class="card card-left-nav">
                         <img class="card-img-top card-img-resize" src="/static/img/eng/SVM.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Algorytm maszyny wektorów nośnych</h5>
+                       <div class="card-body">
+                            <h5 class="card-title">Algorytm maszyny werktorów nośnch </h5>
                             <p class="card-text">
+                                <span> Wynik dla danych utorzonych z modelu który puste wartości zastępuje</span>
+                            <ul>
+                                <li> średnią wartością dla danej kolumny</li>
+                                <div id="accuracy-positive-imputed_mean_svm"></div>
+                                <li> medianą wartości dla danej kolumny</li>
+                                <div id="accuracy-positive-imputed_median_svm"></div>
+                                <li> stałą wartością dla danej kolumny</li>
+                                <div id="accuracy-postive-imputed_most_constant_svm"></div>
+                                <li> najczęstrzą wartością dla danej kolumny</li>
+                                <div id="accuracy-positive-imputed_most_frequent_svm"></div>
+                            </ul>
+
+                            <span> Parametry najwydajniejszego modelu </span>
+                            <div id="result-positive-value-svm"></div>
+
                             <div id="card_text_svm_1"></div>
-                            </p>
                             <div id="card_text_svm_1_1"></div>
                             <div id="card_text_svm_1_2"></div>
+                            </p>
                         </div>
                         <div class="card-body">
                             <a href=statistic class="card-link">Sprawdź dane statystyczne</a>
@@ -133,8 +149,9 @@
                     <div class="card card-right-nav">
                         <div class="card-body">
                             <h5 class="card-title">Porównanie najlepszych estymatorów</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">dla algorytmów KNN,SVM,Random forest</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">per parametr</h6>
                             <div id="best_estimator_plot_1_svm"></div>
+                             </br>
                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmKNN class="card-link">KNN</a>
                             <a href=algorithmRF class="card-link">Random Forest</a>
@@ -170,12 +187,27 @@
                     <div class="card card-left-nav">
                         <img class="card-img-top card-img-resize" src="/static/img/eng/RF.png" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Algoryt lasów losowych</h5>
+                            <h5 class="card-title">Algorytm Lasów losowych</h5>
                             <p class="card-text">
+                                <span> Wynik dla danych utorzonych z modelu który puste wartości zastępuje</span>
+                            <ul>
+                                <li> średnią wartością dla danej kolumny</li>
+                                <div id="accuracy-positive-imputed_mean_rf"></div>
+                                <li> medianą wartości dla danej kolumny</li>
+                                <div id="accuracy-positive-imputed_median_rf"></div>
+                                <li> stałą wartością dla danej kolumny</li>
+                                <div id="accuracy-postive-imputed_most_constant_rf"></div>
+                                <li> najczęstrzą wartością dla danej kolumny</li>
+                                <div id="accuracy-positive-imputed_most_frequent_rf"></div>
+                            </ul>
+
+                            <span> Parametry najwydajniejszego modelu </span>
+                            <div id="result-positive-value-rf"></div>
+
                             <div id="card_text_rf_1"></div>
-                            </p>
                             <div id="card_text_rf_1_1"></div>
                             <div id="card_text_rf_1_2"></div>
+                            </p>
                         </div>
                         <div class="card-body">
                             <a href=statistic class="card-link">Sprawdź dane statystyczne</a>
@@ -187,8 +219,9 @@
                     <div class="card card-right-nav">
                         <div class="card-body">
                             <h5 class="card-title">Porównanie najlepszych estymatorów</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">dla algorytmów KNN,SVM,Random forest</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">per parametr</h6>
                             <div id="best_estimator_plot_1_rf"></div>
+                             </br>
                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmSVM class="card-link">SVM</a>
                             <a href=algorithmKNN class="card-link">KNN</a>
@@ -218,15 +251,15 @@
 
             </div>
         </div>
-        <div class="card-deck card-down-nav">
+        <div class="">
             <div class="card">
-                <div id="card_plot_all_1"></div>
+<!--                <div id="card_plot_all_1"></div>-->
                 <div class="card-body">
                     <h5 class="card-title">Porównanie całościowe</h5>
                     <p class="card-text">
-                    <div id="best_estimator_plot_2_knn"></div>
-                    <div id="best_estimator_plot_2_svm"></div>
-                    <div id="best_estimator_plot_2_rf"></div>
+                    <div id="best_estimator_plot_2_knn" class="plot_size_al"></div>
+                    <div id="best_estimator_plot_2_svm" class="plot_size_al"></div>
+                    <div id="best_estimator_plot_2_rf"  class="plot_size_al"></div>
                 </div>
             </div>
         </div>

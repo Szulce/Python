@@ -50,43 +50,45 @@ def load_accuracy_score(prediction_model):
     return prediction_model
 
 
-def save_grid_scores(grid, model_type):
-    save_model(grid, model_type + str(1), model_type)
+def save_grid_scores(grid, model_type, iterator):
+    save_model(grid, model_type + str(iterator), model_type)
 
 
-def load_grid_scores(model_type):
-    return load_model(model_type + str(1), model_type)
+def load_grid_scores(model_type, iterator):
+    return load_model(model_type + str(iterator), model_type)
 
 
-def save_prediction_to_json(prediction, algorithm):
+def save_prediction_to_json(prediction, algorithm, iterator):
+    iterator += 1
     if algorithm == Rs.MODEL_TYPE_RF:
-        with open('%sTree.json' % Rs.OUT_JSON_RESULT_, 'w') as json_f:
+        with open('%sTree%s.json' % (Rs.OUT_JSON_RESULT_, str(iterator)), 'w') as json_f:
             json.dump(prediction, json_f)
         json_f.close()
     elif algorithm == Rs.MODEL_TYPE_SVM:
-        with open('%sSvm.json' % Rs.OUT_JSON_RESULT_, 'w') as json_f:
+        with open('%sSvm%s.json' % (Rs.OUT_JSON_RESULT_, str(iterator)), 'w') as json_f:
             json.dump(prediction, json_f)
         json_f.close()
     elif algorithm == Rs.MODEL_TYPE_KNN:
-        with open('%sKnn.json' % Rs.OUT_JSON_RESULT_, 'w') as json_f:
+        with open('%sKnn%s.json' % (Rs.OUT_JSON_RESULT_, str(iterator)), 'w') as json_f:
             json.dump(prediction, json_f)
         json_f.close()
 
 
-def read_prediction(algorithm):
+def read_prediction(algorithm, iterator):
+    iterator += 1
     all_predictions = []
     if algorithm == Rs.MODEL_TYPE_RF or algorithm == 'ALL':
-        with open('%sTree.json' % Rs.OUT_JSON_RESULT_, 'r') as json_f:
+        with open('%sTree%s.json' % (Rs.OUT_JSON_RESULT_, str(iterator)), 'r') as json_f:
             prediction = json.load(json_f)
             all_predictions.append(prediction)
         json_f.close()
     if algorithm == Rs.MODEL_TYPE_SVM or algorithm == 'ALL':
-        with open('%sSvm.json' % Rs.OUT_JSON_RESULT_, 'r') as json_f:
+        with open('%sSvm%s.json' % (Rs.OUT_JSON_RESULT_, str(iterator)), 'r') as json_f:
             prediction = json.load(json_f)
             all_predictions.append(prediction)
         json_f.close()
     if algorithm == Rs.MODEL_TYPE_KNN or algorithm == 'ALL':
-        with open('%sKnn.json' % Rs.OUT_JSON_RESULT_, 'r') as json_f:
+        with open('%sKnn%s.json' % (Rs.OUT_JSON_RESULT_, str(iterator)), 'r') as json_f:
             prediction = json.load(json_f)
             all_predictions.append(prediction)
         json_f.close()

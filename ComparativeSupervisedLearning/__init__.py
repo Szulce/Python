@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from flask_bootstrap import Bootstrap
+from matplotlib import pyplot as plt
 
 import Main
 from ComparativeSupervisedLearning.Data.Dto.In.BaseData import BaseData
@@ -89,4 +90,6 @@ def json_data_send():
 if __name__ == '__main__':
     Bootstrap(app)
     Log.info("Start Flask application")
+    plt.switch_backend('agg')
     app.run(debug=True, host="0.0.0.0", port=80)
+

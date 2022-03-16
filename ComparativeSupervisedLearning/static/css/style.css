@@ -218,6 +218,12 @@ footer {
     float:left;
 }
 
+.plot_size_al{
+    width:1100px!important;
+    height:auto;
+    float:left;
+}
+
  /*Spinner Styles*/
 
     .loader {
