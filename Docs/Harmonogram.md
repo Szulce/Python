@@ -80,6 +80,7 @@ _____________ogołne
 - poprawić rozdziały i uklłąd
 - - poprawić obrazki z drawi.io
 - wygenerować wykresy dla porównań
+
 [//]: # (- przerwa)
 -przypisy
 -strona tytułowa
