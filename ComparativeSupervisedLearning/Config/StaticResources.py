@@ -1,7 +1,7 @@
 import numpy
 from sklearn.impute import SimpleImputer
 
-"""" Store static resources for example: paths, names of files, names of types   """
+"""" Store Static resources for example: paths, names of files, names of types   """
 
 # LogConfig
 PREDICTION_MANAGEMENT_ = '\Management\Prediction\\'
@@ -121,7 +121,9 @@ N_NEIGHBORS_SIZE = 14
 N_NEIGHBORS = "n_neighbors"
 KNN_GRID_SPLITER = 7
 KNN_WEIGHTS = ['uniform', 'distance']
-KNN_ALGORITHM = ['auto', 'kd_tree', 'brute']
+KNN_ALGORITHM = ['auto', 'brute']
+                 # , 'kd_tree'
+
 KNN_LEAF_SIZE = [1, 15, 17, 30, 40, 50, 70, 81, 100]  # leaf_size <= n_points <= 2 * leaf_size
 KNN_P_PARAM = [1, 1.5, 2, 2.5]
 KNN_METRIC = ['minkowski', 'chebyshev', 'manhattan',
@@ -149,5 +151,5 @@ RF_MIN_SAMPLES_LEAF = [1, 2, 5]
 RF_MIN_WEIGHT_FRACTION_LEAF = [0.0, 0.1, 0.25]
 RF_MIN_IMPURITY_DECREASE = [0.0, 0.25]
 RF_CPP = [0.0, 0.25]
-
+RF_N_ESTIMATORS = [10, 100, 1000]
 CV = 15

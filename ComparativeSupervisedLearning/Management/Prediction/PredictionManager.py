@@ -133,7 +133,7 @@ def train(model_type, train_x, test_x, y_train, y_test, iterator):
     # el
     if model_type == Rs.MODEL_TYPE_SVM:
         Svm.create_train_save_model(train_x, test_x, y_train, y_test,iterator)
-    # elif model_type == Rs.MODEL_TYPE_RF:
+    # if model_type == Rs.MODEL_TYPE_RF:
     #     Rf.create_train_save_model(train_x, test_x, y_train, y_test, iterator)
 
 

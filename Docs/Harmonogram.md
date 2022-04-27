@@ -1,27 +1,42 @@
 
-#overfit - dopisac klasyfikacje
 
-rf parametry 
-svm parametry
-VERBOSE
+lasy lowoe , ekstremale drzewa -> dla 4 stopniowej skali 
+__________________________________________________nie pamietam o co chodziło 
 
-#praca nadrobić wszystko 
-#nadgodziny
 
-###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
--OCENA SZYBKOŚCI WYKONANIA
--OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
--OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
- - które parametry mają i wpływ i dlaczego:
-   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
 
-    
- 
- - wyczyścić projekt do zera 
-#instrukcje instalacji napisac w readme
-#uproszczona dokumantacje
-#ewentualnie testy jednostkowe
-#nagrać film działania aplikacj
+- uczenie przeprowadzić -  CZEKAM SVN I RF
+- sprawdzić działanie strony - czekam 
+- wyczyścić projekt -czekam 
+- przygotować projekt w taki sposób że da się po wykonaniu intalacji go poprostu odpalić- czekam
+- nagrać film
+
+na data dodać zgodnie  z
+porównanie  z  lub 3 pulikacjami 
+
+opisać metoday 
+
+macież pomysłek -> wygenerować 
+
+wstęp teoretyczny opisac - > implementacja z sklearna - powoują sie na publikacje , opisac ogólnie 
+
+"DATAMINNING W SKLERA"
+
+ogólny zarys działania 
+impementacja z skleran która powstała w oparciu o dokumntacje sklearn 
+stratyfikacja 
+
+
+problem multiklasyfikacji - problem regresji kategrycznej - zwykła regresja , mierzyć będe 
+metoda prównania -  tzrea było wprowadzić reguły do float na int -> inne metody do liczenia błędów 
+na dzień dobry widzimy nie dokładność ze wględu na klasyfiakcję po przecinku 
+regresja kategoryczna -> rzutowanie przedziału wartości na wartość graniczną 
+
+porównanie z innymi pracami ktore robią klasyfikację 
+rozwiązują problem jakiej metody użytli i jaki jest wynik ewalacji 
+- > metody w porówananiu dają konukrencyjne wyniki 
+  hipotezy dlaczego tak się dzieje 
+
 
 
 ____________________________TEORETYCZNA CZĘŚĆ
@@ -31,22 +46,47 @@ ____________________________TEORETYCZNA CZĘŚĆ
 skalowanie  obrazów
  spis obrazków
 spiswykresów
- - -opis praktycznej części podrasować
+ - -opis praktycznej 
  - dopisać różnice między klasyfikacją a regresją 
  - dodać coś z matematycznego punktu widzenia 
  - -jsonpicle dopisać
-- rozdział pracy dotyczący prówniania algorytmów,
-- pisemne opracowanie i dodanie na stronie
-- praca pisemna
--  dane w Exelu i fotki do pracy
-- rozdział omawiający algorytm KNN.
-- rozdział pracy dotyczący lasów decyzyjnych.
-- rozdział omawiający lasy decyzyjne.
-- rozdział dotyczący SVM.
-- pozostałe rozdziały 
-- - poprawki do pisemnej części pracy.
- // rodził dotyczący hisorii sposobów opisywania algorytmów którtki briref na temat zmian oraz celów realizaowanych przez programy 
-// podejście naturalistyczne czerpani inspiracji do tworzenia nowych założeń i wykorzytstywanie czynników popychających postęp
-technlologiczny do powszechnego wykorztsania algorytmów uczenia maszynowego i ich kommercjalny potencjał oraz zagrożenia.
-
+ - rozdział pracy dotyczący prówniania algorytmów,
+ - pisemne opracowanie i dodanie na stronie
+ - praca pisemna
+ - (dane) w Exelu do pracy
+Poprawki
+ - rozdział omawiający algorytm KNN.
+ - rozdział pracy dotyczący lasów decyzyjnych.
+ - rozdział omawiający lasy decyzyjne.
+ - rozdział dotyczący SVM.
+ 
 dodać porównanie i wyższość w zastosowaniu dla modeli uczonych bez nadzoru 
+
+
+
+###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
+-OCENA SZYBKOŚCI WYKONANIA
+-OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
+-OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
+ - które parametry mają i wpływ i dlaczego:
+   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
+
+
+_____________ogołne
+- usunąć kod z pracy projektu
+- commit
+- - harmonogram pod rozdziały
+- poprawić rozdziały i uklłąd
+-cześć praktyczna 
+- commit
+[//]: # (- przerwa)
+- -nagrać film działania aplikacj
+- - poprawić obrazki z drawi.io
+- wygenerować wykresy dla porównań
+-tresć
+[//]: # (- przerwa)
+-przypisy
+-strona tytułowa
+-formatować zgodnie z tym co w dokuncie
+-wygenerować dokument
+-wniosek i mail do promotora
