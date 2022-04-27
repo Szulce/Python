@@ -1,5 +1,5 @@
 import ComparativeSupervisedLearning.Config.StaticResources as Rs
-import ComparativeSupervisedLearning.Management.Elaboration.PlotGeneration.PlotGeneration as Plot
+import ComparativeSupervisedLearning.Management.PlotGeneration.PlotGeneration as Plot
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
 from ComparativeSupervisedLearning.Data.Dto.Out.AlgotitmWebInfo import AlgorithmWebInfo
 from ComparativeSupervisedLearning.Data.Dto.Out.FullResultObject import FullResultObject

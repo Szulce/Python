@@ -3,7 +3,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.tree import DecisionTreeRegressor
 import time
 import ComparativeSupervisedLearning.Config.StaticResources as Rs
-import ComparativeSupervisedLearning.Management.Elaboration.PlotGeneration.PlotGeneration as Plot
+import ComparativeSupervisedLearning.Management.PlotGeneration.PlotGeneration as Plot
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
 

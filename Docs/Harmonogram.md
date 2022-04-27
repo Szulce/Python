@@ -5,11 +5,7 @@ __________________________________________________nie pamietam o co chodziło
 
 
 
-- uczenie przeprowadzić -  CZEKAM SVN I RF
-- sprawdzić działanie strony - czekam 
-- wyczyścić projekt -czekam 
-- przygotować projekt w taki sposób że da się po wykonaniu intalacji go poprostu odpalić- czekam
-- nagrać film
+
 
 na data dodać zgodnie  z
 porównanie  z  lub 3 pulikacjami 
@@ -73,17 +69,17 @@ dodać porównanie i wyższość w zastosowaniu dla modeli uczonych bez nadzoru
 
 
 _____________ogołne
-- usunąć kod z pracy projektu
+- uczenie przeprowadzić -  CZEKAM SVN I RF
+- sprawdzić działanie strony - czekam 
+- wyczyścić projekt -czekam 
+- przygotować projekt w taki sposób że da się po wykonaniu intalacji go poprostu odpalić- czekam
+- nagrać film-czekam
 - commit
-- - harmonogram pod rozdziały
+-tresć obróbka tego co jest 
+- treść nowe dane 
 - poprawić rozdziały i uklłąd
--cześć praktyczna 
-- commit
-[//]: # (- przerwa)
-- -nagrać film działania aplikacj
 - - poprawić obrazki z drawi.io
 - wygenerować wykresy dla porównań
--tresć
 [//]: # (- przerwa)
 -przypisy
 -strona tytułowa

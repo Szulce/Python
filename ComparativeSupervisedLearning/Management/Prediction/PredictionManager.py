@@ -3,14 +3,12 @@ from sklearn.model_selection import train_test_split
 
 import ComparativeSupervisedLearning.Config.StaticResources as Rs
 import ComparativeSupervisedLearning.Data.DataConversion as Dc
-import ComparativeSupervisedLearning.Management.Elaboration.PlotGeneration.PlotGeneration as Plot
+import ComparativeSupervisedLearning.Management.PlotGeneration.PlotGeneration as Plot
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
 from ComparativeSupervisedLearning.Data.Dto.Out.AlgotitmWebInfo import AlgorithmWebInfo
 from ComparativeSupervisedLearning.Data.Dto.Out.AllAlgorithmsResult import AllAlgorithmsResult
 from ComparativeSupervisedLearning.Data.Dto.Out.DataResultObject import DataResultObject
 from ComparativeSupervisedLearning.Data.Dto.Out.SingleAlgorithmResult import SingleAlgorithmResult
-from ComparativeSupervisedLearning.Management.Prediction.Knn import Knn
-from ComparativeSupervisedLearning.Management.Prediction.Rf import Rf
 from ComparativeSupervisedLearning.Management.Prediction.Svm import Svm
 
 
