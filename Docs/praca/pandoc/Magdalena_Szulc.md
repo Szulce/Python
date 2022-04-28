@@ -100,8 +100,15 @@ W pracy opisano następujące algorytmu uczenia nadzorowanego:
 ========
 
 **Uczenie maszynowe** (ang. _machine learning_, ML)  to dziedzina zajmująca się tworzeniem modeli  do analizy bardzo obszernych zasobów danch. 
-Modele utworzone za pomocą algorytmów uczenia maszynowego są w stanie z wysokim prawdopodobieństwem wystawić predyckję lub dokonać klasyfikacji na temat zadanego problemu. Sposób wykorzystania
-segreguje alorytmy uczenia maszynowego na dwie kategorie, jednak powszechnie stosowanym podziałem jest zależnie od
+Modele utworzone za pomocą algorytmów uczenia maszynowego są w stanie z wysokim prawdopodobieństwem wystawić predyckję lub dokonać klasyfikacji na temat zadanego problemu. 
+
+Model _klasyfikacjny_ służy do przewidzenia etykiety klasy poprzez mapowanie na już z góry ustalony jednowymiarowy pozdział, model _regresywny_ natomiast mapuje przestrzeń ustalając liczbę klas podziału oraz grupująć wartości. Istnieje możliwość przeksztaucenia problemu regresywnego na klasyfikacyje i na odwrót poprzez zamiane wartości oczekiwanego wyniku. Taką modyfikację zastosowano w praktycznej częsci projektu. Wyniki dla danych występowały w wartościach od 0 do 4 , dla wartości <1,4> przypadek testpwy uznawany był za sklasyfikowany pozytywny chory, dlatego przeksztaucenie z modelu regresywnego do modelu klasyfikacyjnego polega na konwersji wyników do wartości liczbowych 0 - brak stwierdzenia stanu choroboweo oraz 1 - stwierdzenie o chorobie układu krążenia. 
+
+[^clsvsreg]
+
+Warto również rozróżnić dwa główne modele nadzorowane:
+
+Sposób wykorzystania segreguje alorytmy uczenia maszynowego na dwie kategorie, jednak powszechnie stosowanym podziałem jest zależnie od
 sposobu _trenowania_ algorytmu. Algorytmy dzieli się na min.: uczenie nadzorowane, uczenie bez nadzoru oraz uczenie przez
 wzmacnianie [^3] .
 
@@ -135,6 +142,8 @@ rozwiązania za pomoca algorytmów uczenia maszynowego nadzorowanego i na nich s
 Python A Test-Driven Approach autor :Kirk Matthew r.1 str.8
 
 [^reinfor-learning]: An Overview of Machine Learning Methods Used in Sentiment Analysis. Justyna Laska
+
+[^clsvsreg]: An overview of the supervised machine learning methods Vladimir Nasteski Faculty of Information and Communication Technologies, Partizanska bb, 7000 Bitola, Macedonia
 
 ## Ścieżka działania algorytmów uczenia maszynowego nadzorowanego
 
@@ -394,15 +403,15 @@ który geometrycznie opisuje współrzędne hiperpłaszczyzny.
 operający swoje estymacje dla konkretnego przypadku danch na wartościach jego K najbliższych sąsiadów(punktów) liczonych
 min. dla przestrzeni Euklidesowej [^3] .Do wyznaczenia odległości w metryce Euklidesowej stosowany jest wzór :
 
-![Schemat 14 ](img/17euklides.png "Euklides") [^svmW0]
+![Schemat 14 ](img/17euklides.png "Euklides") [^manhattan]
 
 popularne są również przestrzenie Manhattan:
 
-![Schemat 15 ](img/18manhattan.png "Manhattan") [^mmanhattan]
+![Schemat 15 ](img/18manhattan.png "Manhattan") [^manhattan]
 
 oraz Mińkowskiego:
 
-![Schemat 16 ](img/19Minkowski.png "Minkowski") [^minkowski]
+![Schemat 16 ](img/19minkowski.png "Minkowski") [^minkowski]
 
 Atrybut który nastraja proces uczenia się modelu i ma na niego największy wpływ określany jest jako hiperparametr. Dla
 KNN jest to liczba sąsiadów, im większa ilość jednostek mających wpływ, tym wierniejsze będą wyniki. Potęguje się wtedy
@@ -418,42 +427,28 @@ Dla lekarza wartością dodatnią jest wykrycie zależności które decyzują o 
 Zastosowanie algorytmu KNN może nie tylko zakwalifikować osoby chorujące na serce, ale również ułatwić swoją graficzną
 reprezentacją wpływ cech na ostateczny osąd próbki.
 
+[^3]: Data Science from Scratch:First Principles with Python, Joel Grus, R.11,str140, Thoughtful Machine Learning with Python A Test-Driven Approach autor :Kirk Matthew r.1 str.8
 
- Z
-tego powodu nazywany jest również często algorytmem leniwym. Idea jego działania polega na przyporządkowaniu wszystkim
-danym wejściowym zestawu cech oraz umieszczeniu ich w wielowymiarowej przestrzeni w oparciu o miarę podobieństwa. W
-przypadku przekazania do algorytmu próby nieoznaczonej następuje wyszukanie k najbliższych obiektów przy pomocy
-określonej metody. Najczęściej wykorzystywane są do tego celu następujące miary odległości:
-• Euklidesowa:
-d = vuutXn i=1
-(xi − yi)
-2 3.5 Algorytm k najbliższych sąsiadów 29 • :
-d = Xn i=1 |xi − yi | • Minkowskiego:
-d = Xn i=1 |xi − yi | p
-!1 p – xi i yi - obserwacje służące do obliczania odległości, – P - parametr przyjmujący wartość 1 dla odległości
-Manhattan oraz wartość 2 w przypadku odległości Euklidesowej. W kolejnym kroku następuje zliczenie wystąpień wszystkich
-klas z wybranego zbioru najbliższych sąsiadów i przyporządkowanie etykiety najczęściej występującej grupy do zmiennej
-objaśnianej. Wykres przedstawiający przykładową predykcję modelu znajduje się na rysunku 3.4. Nowy obiekt Y X Rys. 3.4.
-Poglądowy wykres przedstawiający przykładową predykcję modelu algorytmu k najbliższych sąsiadów. W przypadku
-przewidywania notowań spółek na giełdzie papierów wartościowych algorytm k najbliższych sąsiadów mógłby znaleźć
-zastosowanie w predykcji przyszłych ruchów kursów akcji. Na podstawie danych wejściowych oznaczających historyczne
-wartości spółek przydzielałby on je do jednej z trzech grup oznaczających ruch cen instrumentów finansowych w kierunku
-wzrostowym, spadkowym lub horyzontalnym w czasie kolejnego dnia działania giełdy. ++++++++++++++++++++++++++++++++++
+[^manhattan]: Comparison of A*, Euclidean and Manhattan distance using Influence Map in Ms. Pac-Man aut.:Sudip Karki,Hari Sagar Ranjitkar,Faculty of Computing Blekinge Institute of Technology
 
-
-[^3]: Data Science from Scratch:First Principles with Python, Joel Grus, R.11,str140, Thoughtful Machine Learning with
-Python A Test-Driven Approach autor :Kirk Matthew r.1 str.8
-
+[^minkowski]: The Minkowski approach for choosing the distance metric in geographically weighted regression Binbin Lua , Martin Charltonb , Chris Brunsdon and Paul Harrisc , School of Remote Sensing and Information Engineering, Wuhan University, Wuhan, China; National Centre for Geocomputation, National University of Ireland Maynooth, Maynooth, Co. Kildare, Ireland; Sustainable Soils and Grassland Systems, Rothamsted Research, North Wyke, Okehampton, Devon, UK
 
 ## Komparacja działania modeli
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ W dalszej części bieżącej sekcji znajdują się wyniki
-przeprowadzonych eksperymentów. W badaniach zostało wykonanych 25 pełnych iteracji przy wykorzystaniu całego zbioru
-treningowego. Zgodnie z przyjętą metodyką ewaluacji opisaną we wcześniejszym fragmencie niniejszego rozdziału wszystkie
-iteracje zakończone były procesem weryfikacji skuteczności każdej z architektur na podstawie zbioru testowego. Niższa
-uzyskiwana wartość błędu oznaczała wyższą skuteczność generowanych predykcji. W oparciu o uzyskane wyniki powstały
-poniższe wykresy odzwierciedlające cały proces nauki każdej opracowanej na potrzeby przeprowadzenia eksperymentów
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podczas treningu i weryfikacji danych testowych, dla każdego algorytmu wykonano k-krotną walidację z wykorzystaniem :
+
+```Python
+
+GridSearchCV
+
+```
+
+do dostrojenia parametrów oraz znalezienia najlepszego modelu, dla każdego algorytmy zapróbkowano wszytkie dostępne dla danego modelu regresji parametry.
+
+
+#tod gridsearch
+## rodzaje gridsearch
+##todo liczenie błędów w grid search
 
 ### Resultaty wnioski: Losowe lasy decyzyjne
 ###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
