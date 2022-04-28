@@ -51,12 +51,7 @@ Poprawki
  - rozdział omawiający lasy decyzyjne.
  - rozdział dotyczący SVM.
  
-dodać porównanie i wyższość w zastosowaniu dla modeli uczonych bez nadzoru 
-
-
-
-
-
+dodać porównanie i wyższość w zastosowaniu dla modeli uczonych bez nadzoru
 
 _____________ogołne
 - uczenie przeprowadzić -  CZEKAM SVN I RF
@@ -65,13 +60,11 @@ _____________ogołne
 - przygotować projekt w taki sposób że da się po wykonaniu intalacji go poprostu odpalić- czekam
 - nagrać film-czekam
 - commit
+- - wygenerować wykresy dla porównań
 -tresć obróbka tego co jest 
-- treść nowe dane 
-- poprawić rozdziały i uklłąd
+- treść nowe dane
 - - poprawić obrazki z drawi.io
-- wygenerować wykresy dla porównań
 
-[//]: # (- przerwa)
 -przypisy
 -strona tytułowa
 -formatować zgodnie z tym co w dokuncie

@@ -1,8 +1,8 @@
 ---
 title: "Wykrywanie występowanie chorób serca,porównanie algorytów uczenia maszynowego nadzorowanego na podstawie zbioru danych dotyczących chorób układu krążenia z repozytorium  UCI"
 author: [Magdalena Szulc]
-date: "2022-02-11"
-geometry: "left=3cm,right=3cm,top=2cm,bottom=2cm"
+date: "2022-05-01"
+geometry: "left=1.5cm,right=1.5cm,top=2cm,bottom=2cm"
 output: pdf_document
 titlepage: true
 titlepage-background: "`titlepage1.pdf`{=latex}"
@@ -63,7 +63,7 @@ serca wyniosły ponad 15 miliardów polskich złotych.
 Zastosowanie uczenia maszynowego w medycynie, pozwala na przetwarzanie dużych zasobów historycznych wyników medycznych,
 głównie zależności przyczynowo skutkowych , które mogą zostać wykorzystane do diagnostyki lub leczenia [^2].
 
-Słowa kluczowe: uczenie maszynowe, uczenie nadzorowane
+Słowa kluczowe: uczenie maszynowe, uczenie nadzorowane, lasy losowe, maszyna wektorów nośnych, k-najbliższych sąsiadów
 
 [^KPMG]:  międzynarodowa sieć firm audytorsko-doradczych ze szczególnym uwzględnieniem branży dóbr konsumpcyjnych, usług
 finansowych, nieruchomości i budownictwa, technologii informacyjnych, mediów i komunikacji (TMT), transportowej (TSL),
@@ -102,11 +102,7 @@ W pracy opisano następujące algorytmu uczenia nadzorowanego:
 **Uczenie maszynowe** (ang. _machine learning_, ML)  to dziedzina zajmująca się tworzeniem modeli  do analizy bardzo obszernych zasobów danch. 
 Modele utworzone za pomocą algorytmów uczenia maszynowego są w stanie z wysokim prawdopodobieństwem wystawić predyckję lub dokonać klasyfikacji na temat zadanego problemu. 
 
-Model _klasyfikacjny_ służy do przewidzenia etykiety klasy poprzez mapowanie na już z góry ustalony jednowymiarowy pozdział, model _regresywny_ natomiast mapuje przestrzeń ustalając liczbę klas podziału oraz grupująć wartości. Istnieje możliwość przeksztaucenia problemu regresywnego na klasyfikacyje i na odwrót poprzez zamiane wartości oczekiwanego wyniku. Taką modyfikację zastosowano w praktycznej częsci projektu. Wyniki dla danych występowały w wartościach od 0 do 4 , dla wartości <1,4> przypadek testpwy uznawany był za sklasyfikowany pozytywny chory, dlatego przeksztaucenie z modelu regresywnego do modelu klasyfikacyjnego polega na konwersji wyników do wartości liczbowych 0 - brak stwierdzenia stanu choroboweo oraz 1 - stwierdzenie o chorobie układu krążenia. 
-
-[^clsvsreg]
-
-Warto również rozróżnić dwa główne modele nadzorowane:
+Model _klasyfikacjny_ służy do przewidzenia etykiety klasy poprzez mapowanie na już z góry ustalony jednowymiarowy pozdział, model _regresywny_ natomiast mapuje przestrzeń ustalając liczbę klas podziału oraz grupująć wartości. Istnieje możliwość przeksztaucenia problemu regresywnego na klasyfikacyje i na odwrót poprzez zamiane wartości oczekiwanego wyniku. Taką modyfikację zastosowano w praktycznej częsci projektu. Wyniki dla danych występowały w wartościach od 0 do 4 , dla wartości <1,4> przypadek testpwy uznawany był za sklasyfikowany pozytywny chory, dlatego przeksztaucenie z modelu regresywnego do modelu klasyfikacyjnego polega na konwersji wyników do wartości liczbowych 0 - brak stwierdzenia stanu choroboweo oraz 1 - stwierdzenie o chorobie układu krążenia. [^clsvsreg]
 
 Sposób wykorzystania segreguje alorytmy uczenia maszynowego na dwie kategorie, jednak powszechnie stosowanym podziałem jest zależnie od
 sposobu _trenowania_ algorytmu. Algorytmy dzieli się na min.: uczenie nadzorowane, uczenie bez nadzoru oraz uczenie przez
@@ -135,6 +131,9 @@ rozpoznawanie mowy czy obrazu [^3] .
 na danych wejściowych czy wyjściowych a rezultatach otrzymanych podczas testu nazywanych tzw. sygnałami wzmocnienia który może przyjmować wartość pozytwną lub negatywną.
 Algorytm generując dane wejściowe dostosowuje reguły by uzyskać zwrotnie sygnał pozytywny w jak największej liczbie przypadków. [^reinfor-learning] .
 
+
+**Uczenie częściowo nadzorowane** (ang. _semi-supervised_ _learning_) to klasa algorytmów uczenia maszynowego która wykorzystuje zbór danych w większości niepoetykietowany na podstawie których tworzony jest model [^semi-learning] .
+
 Podział osób na kategorie cierpiące na choroby sercowo-naczyniwe oraz zdrowe, to dylemat klasyfikayjny nadający się do
 rozwiązania za pomoca algorytmów uczenia maszynowego nadzorowanego i na nich skupia się dalsza część pracy.
 
@@ -144,6 +143,8 @@ Python A Test-Driven Approach autor :Kirk Matthew r.1 str.8
 [^reinfor-learning]: An Overview of Machine Learning Methods Used in Sentiment Analysis. Justyna Laska
 
 [^clsvsreg]: An overview of the supervised machine learning methods Vladimir Nasteski Faculty of Information and Communication Technologies, Partizanska bb, 7000 Bitola, Macedonia
+
+[^semi-learning]: van Engelen, J.E., Hoos, H.H. A survey on semi-supervised learning. Mach Learn 109, 373–440 (2020). https://doi.org/10.1007/s10994-019-05855-6
 
 ## Ścieżka działania algorytmów uczenia maszynowego nadzorowanego
 
@@ -219,7 +220,7 @@ Przeksztaucenie danych również bazujące na statystycznych założeniach i ró
 bibliotekach. Dąrzymy aby średnia wartoś wynosiła 0, a odchylenie standardowe 1 dla liczbowyh reprezentacji danych. Z
 matematyczne punktu widzenia wykonujemy działanie
 
-![Schemat 5](img/13wzor_1.png "wzór: podejmujemy średnią i dzielimy ją przez odchylenie standardowe")
+![Schemat 5](img/13wzor_1.png "wzór: podejmujemy średnią i dzielimy ją przez odchylenie standardowe"){ width=20% } [^standar]
 
 ### Obsługa zmiennych kategorialnych
 
@@ -239,6 +240,8 @@ Aby znaleść korelacje współliniowości należy szukać liniowej zależności
 wykresy z danych testowych dla każdej pary.
 
 [TODO] Wwykresy dla cech
+
+[^standar]: 
 
 # Opis praktycznej częsci projektu
 
@@ -288,12 +291,16 @@ w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzys
 obiektów o bardziej skomplikowanej budowie serializowano do formatu JSON są za pomocą biblioteki jsonpickle, a zapis
 modeli wykonano za pomocą joblib która zapewnia taką obsługę obiektów Pythona.
 
-Biblioteki w większości posiadają otwarty kod źródłowy , głównie napisany w języku Python.
+Biblioteki w większości posiadają otwarty kod źródłowy , głównie napisany w języku Python[^libpyth].
+
+[todo rzobudować]
 
 [^scikit]: @article{scikit-learn, title={Scikit-learn: Machine Learning in {P}ython}, author={Pedregosa, F. and
 Varoquaux, G. and Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P. and
 Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and
 Duchesnay, E.}, journal={Journal of Machine Learning Research}, volume={12}, pages={2825--2830}, year={2011}}
+
+[^libpyth]: Podejście porównawcze do algorytmów uczenia się maszynowego ,Samrudhi Rajendra Kaware , Vinod Subhasharao Wande
 
 ## Trening algorytmu
 
@@ -374,26 +381,12 @@ dla większej ilości stosowane jest przeksztaucenie do innego systemu współrz
  
 #### Wyszukiwanie podziału 
 
-Idea działania maszyny wektorów nośnych opiera się na wyznaczenia minimalnej wartości wektora wag oraz przesunięcia (ang. _bias_):
+Idea działania maszyny wektorów nośnych opiera się na wyznaczenia minimalnej wartości wektora wag oraz przesunięcia (ang. _bias_)  który geometrycznie opisuje współrzędne hiperpłaszczyzny. 
 
 ![Schemat 13](img/16svm_wzor2.png " W min ") [^svmW0]
 
-który geometrycznie opisuje współrzędne hiperpłaszczyzny. 
 
-[^hiper]: @article {HUANG41,
-	author = {HUANG, SHUJUN and CAI, NIANGUANG and PACHECO, PEDRO PENZUTI and NARRANDES, SHAVIRA and WANG, YANG and XU, WAYNE},
-	title = {Applications of Support Vector Machine (SVM) Learning in Cancer Genomics},
-	volume = {15},
-	number = {1},
-	pages = {41--51},
-	year = {2018},
-	publisher = {International Institute of Anticancer Research},
-	abstract = {Machine learning with maximization (support) of separating margin (vector), called support vector machine (SVM) learning, is a powerful classification tool that has been used for cancer genomic classification or subtyping. Today, as advancements in high-throughput technologies lead to production of large amounts of genomic and epigenomic data, the classification feature of SVMs is expanding its use in cancer genomics, leading to the discovery of new biomarkers, new drug targets, and a better understanding of cancer driver genes. Herein we reviewed the recent progress of SVMs in cancer genomic studies. We intend to comprehend the strength of the SVM learning and its future perspective in cancer genomic applications.},
-	issn = {1109-6535},
-	URL = {https://cgp.iiarjournals.org/content/15/1/41},
-	eprint = {https://cgp.iiarjournals.org/content/15/1/41.full.pdf},
-	journal = {Cancer Genomics \& Proteomics}
-}
+[^hiper]: @article {HUANG41,author = {HUANG, SHUJUN and CAI, NIANGUANG and PACHECO, PEDRO PENZUTI and NARRANDES, SHAVIRA and WANG, YANG and XU, WAYNE},	title = {Applications of Support Vector Machine (SVM) Learning in Cancer Genomics},	volume = {15},	number = {1},	pages = {41--51},	year = {2018},	publisher = {International Institute of Anticancer Research},	issn = {1109-6535},	URL = {https://cgp.iiarjournals.org/content/15/1/41},	eprint = {https://cgp.iiarjournals.org/content/15/1/41.full.pdf},	journal = {Cancer Genomics \& Proteomics}}
 
 [^svmW0]:Maszyna Wektorów Nośnych,Anna Pielowska
 
@@ -403,15 +396,15 @@ który geometrycznie opisuje współrzędne hiperpłaszczyzny.
 operający swoje estymacje dla konkretnego przypadku danch na wartościach jego K najbliższych sąsiadów(punktów) liczonych
 min. dla przestrzeni Euklidesowej [^3] .Do wyznaczenia odległości w metryce Euklidesowej stosowany jest wzór :
 
-![Schemat 14 ](img/17euklides.png "Euklides") [^manhattan]
+![Schemat 14 ](img/17euklides.png "Euklides"){ width=15% } [^manhattan]
 
 popularne są również przestrzenie Manhattan:
 
-![Schemat 15 ](img/18manhattan.png "Manhattan") [^manhattan]
+![Schemat 15 ](img/18manhattan.png "Manhattan"){ width=15% } [^manhattan]
 
 oraz Mińkowskiego:
 
-![Schemat 16 ](img/19minkowski.png "Minkowski") [^minkowski]
+![Schemat 16 ](img/19minkowski.png "Minkowski"){ width=15% } [^minkowski]
 
 Atrybut który nastraja proces uczenia się modelu i ma na niego największy wpływ określany jest jako hiperparametr. Dla
 KNN jest to liczba sąsiadów, im większa ilość jednostek mających wpływ, tym wierniejsze będą wyniki. Potęguje się wtedy
@@ -435,7 +428,7 @@ reprezentacją wpływ cech na ostateczny osąd próbki.
 
 ## Komparacja działania modeli
 
-W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podczas treningu i weryfikacji danych testowych, dla każdego algorytmu wykonano k-krotną walidację z wykorzystaniem :
+W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podczas treningu i weryfikacji danych testowych, dla każdego algorytmu wykonano k-krotną walidację z wykorzystaniem:
 
 ```Python
 
