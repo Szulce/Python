@@ -1,12 +1,7 @@
 
 
 lasy lowoe , ekstremale drzewa -> dla 4 stopniowej skali 
-__________________________________________________nie pamietam o co chodziło 
-
-
-
-
-
+_
 na data dodać zgodnie  z
 porównanie  z  lub 3 pulikacjami 
 

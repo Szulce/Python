@@ -230,8 +230,6 @@ wykresy z danych testowych dla każdej pary.
 
 [TODO] Wwykresy dla cech
 
-Przy zastosowaniu reprezentacji wektorowej dla cech mocno od siebie uzależnionych zalecane jest zastosowanie :
-
 # Opis praktycznej częsci projektu
 
 Moduły projektu:
@@ -260,6 +258,7 @@ Poniżej przedstawiono plan działania:
 
 ![Schemat 6](img/14Architektura.png "Architektura")
 
+
 ## Narzędzia i biblioteki zastosowane w pojekcie
 
 Praktyczna część pracy napisana została w języku Python z wykorzystaniem scikit-learn, obsługującym wiele algorytmów
@@ -270,6 +269,7 @@ części pracy.
 
 Biblioteka opiera się o Numpy oraz Scipy, zestaw narzędzi do obliczeń na macierzach, wektorach oraz umożliwiający metody
 numeryczne takie jak całkowanie, różniczkowanie itp [^scikit].  
+
 Do przygotowania danych wykorzystano zestaw narzędzi Pandas, ułatwiający tworzenie struktur danych i ich analizę. W celu
 wizualizacji wyników w postaci wykresów zastosowano Matplotlib. Część prezentacyjna czyli możliwość wprowadzenia danych
 w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzystuje bibliotkę Flask. Przekazywanie

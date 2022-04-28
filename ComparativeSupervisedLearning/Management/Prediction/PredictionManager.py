@@ -9,6 +9,8 @@ from ComparativeSupervisedLearning.Data.Dto.Out.AlgotitmWebInfo import Algorithm
 from ComparativeSupervisedLearning.Data.Dto.Out.AllAlgorithmsResult import AllAlgorithmsResult
 from ComparativeSupervisedLearning.Data.Dto.Out.DataResultObject import DataResultObject
 from ComparativeSupervisedLearning.Data.Dto.Out.SingleAlgorithmResult import SingleAlgorithmResult
+from ComparativeSupervisedLearning.Management.Prediction.Knn import Knn
+from ComparativeSupervisedLearning.Management.Prediction.Rf import Rf
 from ComparativeSupervisedLearning.Management.Prediction.Svm import Svm
 
 
@@ -40,28 +42,9 @@ def render_algorithms_info():
     Ms.save_plots(AlgorithmWebInfo(data).to_json(), Rs.ALGORITHM_INFO_PLOTS)
 
 
-def prepare_data_presentation(result, prediction_model, model_type):
+def prepare_data_presentation(result, prediction_model):
     accuracy_score = Ms.load_accuracy_score(prediction_model)
-    # plot1 = Plot.plot_knn(model_type, prediction_model, result)
-    plot1 = []  # Plot.plot(model_type, prediction_model)#tod
-    # plot1 = Plot.plotx()
-    # cv_results_
-    # score_samples(X)
-    # coef_ = clf.best_estimator_.steps[-1][1].coef_
-    # coef_ = clf.best_estimator_.steps[0][1].inverse_transform(coef_)
-    # plt.close("all")
-    # plt.figure(figsize=(7.3, 2.7))
-    # plt.subplot(1, 3, 1)
-    # plt.imshow(coef, interpolation="nearest", cmap=plt.cm.RdBu_r)
-    # plt.title("True weights")
-    # plt.subplot(1, 3, 2)
-    # plt.imshow(coef_selection_, interpolation="nearest", cmap=plt.cm.RdBu_r)
-    # plt.title("Feature Selection")
-    # plt.subplot(1, 3, 3)
-    # plt.imshow(coef_agglomeration_, interpolation="nearest", cmap=plt.cm.RdBu_r)
-    # plt.title("Feature Agglomeration")
-    # plt.subplots_adjust(0.04, 0.0, 0.98, 0.94, 0.16, 0.26)
-    # plt.show()
+    plot1 = []
     return SingleAlgorithmResult(plot1, accuracy_score, prediction_model, result)
 
 
@@ -74,9 +57,9 @@ def simple_predict(model, data):
     return prediction, model
 
 
-def predict_based_on_model(model, data, model_type):
+def predict_based_on_model(model, data):
     result, prediction_model = simple_predict(model, data)
-    return prepare_data_presentation(result, prediction_model, model_type)
+    return prepare_data_presentation(result, prediction_model)
 
 
 def compare_multiple_results(results):
@@ -99,23 +82,9 @@ def compare_multiple_results(results):
     return comparison
 
 
-# model = pandas.DataFrame({'PRED': result_package}, index=['Original', 'Normalized', 'Standardized'])
-# scores = [score_lr, score_nb, score_svm, score_knn, score_dt, score_rf, score_xgb, score_nn]
-# algorithms = ["Logistic Regression", "Naive Bayes", "Support Vector Machine", "K-Nearest Neighbors",
-#               "Decision Tree", "Random Forest", "XGBoost", "Neural Network"]
-#
-# for i in range(len(algorithms)):
-#     print("The accuracy score achieved using " + algorithms[i] + " is: " + str(scores[i]) + " %")
-# sns.set(rc={'figure.figsize': (15, 8)})
-# plt.xlabel("Algorithms")
-# plt.ylabel("Accuracy score")
-#
-# sns.barplot(algorithms, scores)
-
-
 def run(model_type, data):
     model = Ms.load_all_models_for_type(model_type)[0]
-    return predict_based_on_model(model, data, model_type)
+    return predict_based_on_model(model, data)
 
 
 def split_data_for_learning_process(data_sample):
@@ -126,13 +95,12 @@ def split_data_for_learning_process(data_sample):
 
 
 def train(model_type, train_x, test_x, y_train, y_test, iterator):
-    # if model_type == Rs.MODEL_TYPE_KNN:
-    #     Knn.create_train_save_model(train_x, test_x, y_train, y_test, iterator)
-    # el
-    if model_type == Rs.MODEL_TYPE_SVM:
+    if model_type == Rs.MODEL_TYPE_KNN:
+        Knn.create_train_save_model(train_x, test_x, y_train, y_test, iterator)
+    elif model_type == Rs.MODEL_TYPE_SVM:
         Svm.create_train_save_model(train_x, test_x, y_train, y_test,iterator)
-    # if model_type == Rs.MODEL_TYPE_RF:
-    #     Rf.create_train_save_model(train_x, test_x, y_train, y_test, iterator)
+    elif model_type == Rs.MODEL_TYPE_RF:
+        Rf.create_train_save_model(train_x, test_x, y_train, y_test, iterator)
 
 
 def get_data_info():
