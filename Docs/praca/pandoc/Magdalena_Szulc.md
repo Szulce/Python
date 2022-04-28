@@ -46,7 +46,7 @@ Do tego przeznaczenia istnieje możliwość zastosowania uczenia nadzorowanego (
 uczenia maszynowego zakładający istnienie zbioru danych testowych zawierających odpowiedzi, na ich podstawie wyszukiwane
 są zależności znaczące oraz budowany jest model do przewidywania wartości.
 
-W przypadku danych dotyczących chorówb zależności typujące występowanie choroby, bazują na podstawie konkretnych wyników
+W przypadku danych dotyczących chorób zależności typujące występowanie choroby, bazują na podstawie konkretnych wyników
 badań zgormadzonych w repozytorium UCI.
 
 W dzisiejszych czasach choroby sercowo-naczyniowe stanowią najczęstszą przyczynę zgonów,a liczba osób cierpiących na te
@@ -99,14 +99,13 @@ W pracy opisano następujące algorytmu uczenia nadzorowanego:
 **Wprowadzenie teorertyczne**
 ========
 
-**Uczenie maszynowe** (ang. _machine learning_, ML)  to dziedzina zajmująca się tworzeniem modeli danych wykorzystując
-algorytmy do analizy zbiorów dancyh (zazwyczaj bardzo obszernych). W ten sposób utworzone modele są w stanie z wysokim
-prawdopodobieństwem wystawić predyckję lub dokonać klasyfikacji na temat zadanego problemu. Sposób wykorzystania
-segreguje alorytmy uczenia maszynowego na dwie kategorie , jednak powszechnie stosowanym podziałem jest zależnie od
-sposobu _trenowania_ algorytmu. Algorytmy dzieli się na min. uczenie nadzorowane, uczenie bez nadzoru oraz uczenie przez
+**Uczenie maszynowe** (ang. _machine learning_, ML)  to dziedzina zajmująca się tworzeniem modeli  do analizy bardzo obszernych zasobów danch. 
+Modele utworzone za pomocą algorytmów uczenia maszynowego są w stanie z wysokim prawdopodobieństwem wystawić predyckję lub dokonać klasyfikacji na temat zadanego problemu. Sposób wykorzystania
+segreguje alorytmy uczenia maszynowego na dwie kategorie, jednak powszechnie stosowanym podziałem jest zależnie od
+sposobu _trenowania_ algorytmu. Algorytmy dzieli się na min.: uczenie nadzorowane, uczenie bez nadzoru oraz uczenie przez
 wzmacnianie [^3] .
 
-![Schemat 1](img/1_algorithms_category.png "Algorytmy z podziałem na kategorie")
+![Schemat 1](img/1_algorithms_category.png "Algorytmy z podziałem na kategorie"){ width=70% }
 
 Dobór typu uczenia oraz algorytmu uzależniony jest od danych wejściowych oraz oczekiwanego rezultatu. Dane wyjściowe
 mogą przyjmować format odpowiedzi TAK/NIE , klasyfikacji do danego zbioru czy np procentowej oceny ryzyka.
@@ -139,13 +138,13 @@ Python A Test-Driven Approach autor :Kirk Matthew r.1 str.8
 
 ## Ścieżka działania algorytmów uczenia maszynowego nadzorowanego
 
-![Schemat 2](img/7podstawowy_schemat_blokowy_uczenia_maszynowego.png "Podstawowy schemat blokowy uczenia maszynowego")
+![Schemat 2](img/7podstawowy_schemat_blokowy_uczenia_maszynowego.png "Podstawowy schemat blokowy uczenia maszynowego"){ width=70% }
 
 ## Model Danych
 
-### Repozytorium uczenia maszynowego UCI
+![Schemat 3](img/12UCI.png "UCI logo"){ width=50% } [^UCI]
 
-![Schemat 3](img/12UCI.png "UCI logo") [^UCI]
+### Repozytorium uczenia maszynowego UCI
 
 Sensem wykorzystania uczenia maszynowego jest prognoza lub klasyfikacja rzeczywistych wartości z dużego zbioru danych
 które mogą znaleść zastosowanie w praktycznych dziedzinach. Im bardziej dokładne i rzeczywiste dane do testowania i
@@ -178,14 +177,16 @@ W przypadku danych testowych z repozytorium UCI, fakt iż dane pochodziły z ró
 od placówki medycznej zależy jakim badaniom poddani zostali pacjęci a co za tym idzie w jakich kolumnach tabelarycznego
 przedstawienia będą mieć uzupełnione bądź puste wartości. Scalenie ze sobą dataset'ów dostarcza większej różnorodności
 również dzięki temu że dane pochodzą z róźnych krajów. Jeżeli zestaw wejściowy zostałby ograniczony do jednej
-lokalizacji to cecha dla której nie uzupełniono wartości zostałaby z autoatu pominięta jako znacząca ze względu na brak
-danych. Po złączeniu można przeprowadzić szereg działań w celu sztucznego uzupełnienia pustych wartości bazując na
-wartościach które już istnieją.
+lokalizacji to cecha dla której nie uzupełniono wartości zostałaby pominięta podczas treningu ze względu na brak
+danych.
 
 Proces przetwarzania danych może skladać sie z wielu róźnych kroków zależenie od typu, w uczeniu nadzorowanym operującym
 na danych tekstowo-liczbowych poprawnym będzie zastosowanie schematu przedstawionego poniżej:
 
-![Schemat 4](img/2_data_preprocessing.png "Wstępna obróbka danych")
+![Schemat 4](img/2_data_preprocessing.png "Wstępna obróbka danych"){ width=60% }
+
+ Po złączeniu można przeprowadzić szereg działań w celu sztucznego uzupełnienia pustych wartości bazując na
+wartościach które już istnieją.
 
 ### Obsługa brakujących wartości
 
@@ -225,14 +226,14 @@ tylu kolumn ile jest unikalnych wartości dla kategorii i wpisanie 0 lub 1 dla k
 
 ##### Współliniowość cech
 
-Aby znaleść kolrelacje współliniowości należy szukać liniowej zależności pomiędzy danymi, najłatwiej zauważyć to tworząc
+Aby znaleść korelacje współliniowości należy szukać liniowej zależności pomiędzy danymi, najłatwiej zauważyć to tworząc
 wykresy z danych testowych dla każdej pary.
 
 [TODO] Wwykresy dla cech
 
 # Opis praktycznej częsci projektu
 
-Moduły projektu:
+## Moduły projektu:
 
 - Config - zawiera statyczne zasoby oraz konfigurację logowania projektu
 - Data - moduł odpowiada za wczytywanie i obróbkę danych testowych, oraz objety danych wykorzystywanych przy uczeniu
@@ -256,7 +257,9 @@ Projekt posiada dwa tryby pracy :
 
 Poniżej przedstawiono plan działania:
 
-![Schemat 6](img/14Architektura.png "Architektura")
+
+![Schemat 6](img/14Architektura.png "Architektura"){ height=70% }
+
 
 
 ## Narzędzia i biblioteki zastosowane w pojekcie
@@ -265,7 +268,7 @@ Praktyczna część pracy napisana została w języku Python z wykorzystaniem sc
 maszynowego uczenia się w tym uczenia nadzorowanego i docelowo wybranych algorytmów przedstawionych w teoretycznej
 części pracy.
 
-![Schemat 7](img/15scikit-learn-logo.png "scikit-learn logo")
+![Schemat 7](img/15scikit-learn-logo.png "scikit-learn logo"){ height=10% }
 
 Biblioteka opiera się o Numpy oraz Scipy, zestaw narzędzi do obliczeń na macierzach, wektorach oraz umożliwiający metody
 numeryczne takie jak całkowanie, różniczkowanie itp [^scikit].  
@@ -285,12 +288,14 @@ Duchesnay, E.}, journal={Journal of Machine Learning Research}, volume={12}, pag
 
 ## Trening algorytmu
 
-![Schemat 8](img/6Nauczanie_maszynowe_rozszerzone.png "Szczegółowy schemat machine learning flow")
-
-Zgodnie z powyższym schematem po przeprocesowaniu wejściowego dataset'u, dane należy podzielić na dane treingowe oraz
+Zgodnie z poniższym schematem po przeprocesowaniu wejściowego dataset'u, dane należy podzielić na dane treingowe oraz
 ewaluacyjne. Powszechnie stosowana K krzyżowa walidacja umożliwia maksymalne wykorzystanie dostarczonego wejścia do
 dostrajania parametrów modelu, ponieważ optymalizacja hiperparametrów połączone z ciągłą weryfikacją poprawności to
 sedno treningu.
+
+
+![Schemat 8](img/6Nauczanie_maszynowe_rozszerzone.png "Szczegółowy schemat machine learning flow"){ width=80% }
+
 
 **K-krotna walidacja krzyżowa** (ang. _K-fold Cross Validation_ ,KCV ) - metoda weryfikacji działająca poprzez podział
 zbioru danych na k podzbiorów z których każdy przynajmniej raz jest zbiorem oceniającym wydajność , zaznaczając że K
@@ -304,12 +309,14 @@ znalezienie najlepszego modelu można go wykorzystać do weryfikacji na danych s
 
 ## Wybrane algorytmy uczenia maszynowego nadzorowanego
 
+####  Losowe lasy decyzyjne
+
 **Drzewa decyzyjne** (ang. _decisions trees_ ) są uznawane za najprostyszy i najbliższy ludzkiemu zrozumieniu algorytm
 uczenia, który swoją nazwę zawdzięcza graficznej reprezentacji w postaci drzewa. Każdy węzeł oznacza atrybut, na
 podstawie którego następuje rozróżnienie. W modelu kluczowa jest kolejnośc cech, które wystęują po sobie ponieważ
 determinuje to otrzymany rezultat [^3] .
 
-![Schemat 9](img/3drzewo_decyzyjne_schemat.png "Schmat Drzewa decyzyjnego")
+![Schemat 9](img/3drzewo_decyzyjne_schemat.png "Schmat Drzewa decyzyjnego"){ width=50% }
 
 Prawie każdy algorytm uczenia maszynowego nadzorowanego można podzielić na dwa etapy. W pierwszym opracowywany jest
 wzorzec, na którym bazuję późniejsza predykcja. Etap nauki dla drzewa decyzyjnego polega na typowaniu atrybutów,które
@@ -334,23 +341,68 @@ znajdują zastosowanie dla realnych danych, których zasadniczym problemem jest 
 Dane medyczne posiadają szeroką wariację zmiennych z dużym prawdopodobieństwem wybrakownia, zastosowanie do nich lasów
 decyzyjnych ma potencjał na pozytywne rezulataty.
 
-**Metoda wektorów nośnych** (ang._support vector machines_, skr. **_SVM_**) to algorytm uczenia maszynowego
+
+#### Maszyna wektorów nośnych
+
+**Metoda wektorów nośnych** (ang. _support_ _vector_ _machines_ , skr. **_SVM_**) to algorytm uczenia maszynowego
 nadzorowanego, który każdy parametr z dostępnych cech dla danych wejściowych, traktuje jako punkt w przestrzeni. Na
 podstawie ułożenia punktów dzieli się je na 2 klasy. Graficznie jest to reprezentowane przez prostą dla której odległość
-między najbliższymi dwoma punktami dla wektorów jest możliwie największa.Taka prosta nazywana jest  _prostą marginalną_
-i powstaje ona poprzez generowanie i selekcję tych prostych które rzetelnie szufladkują klasy danych [^3].
+między najbliższymi dwoma punktami dla wektorów jest możliwie największa.
 
-![Schemat 10 ][^schemat_wzorowany](img/10svm_schemat.png "Schmat SVM")
+![Schemat 10 ](img/10svm_schemat.png "Schmat SVM"){ width=50% } [^schemat_wzorowany]
+
+Taka prosta nazywana jest  _prostą marginalną_
+i powstaje ona poprzez generowanie i selekcję tych prostych które rzetelnie szufladkują klasy danych [^3].
 
 Techinka ta gwarantuje precyzyjniejsze rezulatay niż drzewa decyzyjne, niestety dla dużych zbiorów danych czas trwania
 szkolenia znacznie się wydłuża oraz istnieją przypadki dla których podział jedną prostą jest niewykonalny, taki
 przypadek reprezentuje rozkład na schemacie nr. 2.
 
-![Schemat 11] [^schemat_wzorowany](img/9svm_niemozliwy_podzial_schemat.png "Schmat SVM niemożliwy podział")
+![Schemat 11](img/9svm_niemozliwy_podzial_schemat.png "Schmat SVM niemożliwy podział"){ width=50% } [^schemat_wzorowany]
+
+Z powyższego schematu widać że prosta marginalna ma zastosowanie w przypadku dwóch wymiarów, 
+dla większej ilości stosowane jest przeksztaucenie do innego systemu współrzędnych i szukanie hiperpłaszczyzna brzegowej dzielącej tak samo jak prosta punkty w przestrzeni na dwa zbiory.[^hiper] 
+ 
+#### Wyszukiwanie podziału 
+
+Idea działania maszyny wektorów nośnych opiera się na wyznaczenia minimalnej wartości wektora wag oraz przesunięcia (ang. _bias_):
+
+![Schemat 13](img/16svm_wzor2.png " W min ") [^svmW0]
+
+który geometrycznie opisuje współrzędne hiperpłaszczyzny. 
+
+[^hiper]: @article {HUANG41,
+	author = {HUANG, SHUJUN and CAI, NIANGUANG and PACHECO, PEDRO PENZUTI and NARRANDES, SHAVIRA and WANG, YANG and XU, WAYNE},
+	title = {Applications of Support Vector Machine (SVM) Learning in Cancer Genomics},
+	volume = {15},
+	number = {1},
+	pages = {41--51},
+	year = {2018},
+	publisher = {International Institute of Anticancer Research},
+	abstract = {Machine learning with maximization (support) of separating margin (vector), called support vector machine (SVM) learning, is a powerful classification tool that has been used for cancer genomic classification or subtyping. Today, as advancements in high-throughput technologies lead to production of large amounts of genomic and epigenomic data, the classification feature of SVMs is expanding its use in cancer genomics, leading to the discovery of new biomarkers, new drug targets, and a better understanding of cancer driver genes. Herein we reviewed the recent progress of SVMs in cancer genomic studies. We intend to comprehend the strength of the SVM learning and its future perspective in cancer genomic applications.},
+	issn = {1109-6535},
+	URL = {https://cgp.iiarjournals.org/content/15/1/41},
+	eprint = {https://cgp.iiarjournals.org/content/15/1/41.full.pdf},
+	journal = {Cancer Genomics \& Proteomics}
+}
+
+[^svmW0]:Maszyna Wektorów Nośnych,Anna Pielowska
+
+#### K najbliższych sąsiadów
 
 **K najbliższych sąsiadów** (ang. _k nearest neighbours_, skr. **_KNN_**) to algorytm uczenia maszynowego nadzorowanego
 operający swoje estymacje dla konkretnego przypadku danch na wartościach jego K najbliższych sąsiadów(punktów) liczonych
-min. dla przestrzeni Euklidesowej [^3] .
+min. dla przestrzeni Euklidesowej [^3] .Do wyznaczenia odległości w metryce Euklidesowej stosowany jest wzór :
+
+![Schemat 14 ](img/17euklides.png "Euklides") [^svmW0]
+
+popularne są również przestrzenie Manhattan:
+
+![Schemat 15 ](img/18manhattan.png "Manhattan") [^mmanhattan]
+
+oraz Mińkowskiego:
+
+![Schemat 16 ](img/19Minkowski.png "Minkowski") [^minkowski]
 
 Atrybut który nastraja proces uczenia się modelu i ma na niego największy wpływ określany jest jako hiperparametr. Dla
 KNN jest to liczba sąsiadów, im większa ilość jednostek mających wpływ, tym wierniejsze będą wyniki. Potęguje się wtedy
@@ -358,200 +410,16 @@ niestety złożoność czasowa algorytmu, znacząco już większa od przedstawio
 
 W celu przewidzenia wartości dla nowych danych, należy odnaleść K najbliższych punktów wyliczając odległości, a
 następnie przpisać odpowiedź implikowaną przez większość sąsiadów. Dla wartości K równej jeden, metoda ta nazywana jest
-algorytmem najbliższego sąsiada.
+algorytmem najbliższego sąsiada. K może przyjmować maksymalnie wartości do rozmiaru zbioru cech, jednak im bardziej są to zbliżone wartości tym bardziej wzrasta ryzyko nadmiernego dopasowania do modelu testowanego. 
 
-![Schemat 12][^schemat_wzorowany](img/5knn_schemat.png "Schmat KNN")
+![Schemat 12](img/5knn_schemat.png "Schmat KNN"){ width=50% } [^schemat_wzorowany]
 
 Dla lekarza wartością dodatnią jest wykrycie zależności które decyzują o uznaniu lub zaprzeczeniu występowania choroby.
 Zastosowanie algorytmu KNN może nie tylko zakwalifikować osoby chorujące na serce, ale również ułatwić swoją graficzną
 reprezentacją wpływ cech na ostateczny osąd próbki.
 
-[^3]: Data Science from Scratch:First Principles with Python, Joel Grus, R.11,str140, Thoughtful Machine Learning with
-Python A Test-Driven Approach autor :Kirk Matthew r.1 str.8
 
-### Budowa modelu
-
-Budowanie zbiorów danych
-
-Ta faza obejmuje podział przetworzonych danych na trzy zestawy danych — szkolenie, walidację i testowanie:
-
-Zestaw uczący — służy do wstępnego uczenia algorytmu i uczenia go, jak przetwarzać informacje. Ten zestaw definiuje
-klasyfikacje modeli za pomocą parametrów. Zestaw walidacyjny — używany do oszacowania dokładności modelu. Ten zestaw
-danych służy do dostrajania parametrów modelu. Zestaw testowy — służy do oceny dokładności i wydajności modeli. Ten
-zestaw ma na celu ujawnienie wszelkich problemów lub błędów w modelu. Szkolenie i doskonalenie
-
-Gdy masz już zestawy danych, możesz rozpocząć trenowanie modelu. Wiąże się to z wprowadzeniem zestawu treningowego do
-algorytmu, aby mógł nauczyć się odpowiednich parametrów i cech używanych w klasyfikacji.
-
-Po zakończeniu szkolenia możesz udoskonalić model, korzystając ze swojego zestawu danych do walidacji. Może to obejmować
-modyfikację lub odrzucenie zmiennych i obejmuje proces dostrajania ustawień specyficznych dla modelu (hiperparametrów)
-aż do osiągnięcia akceptowalnego poziomu dokładności.
-
-Ocena uczenia maszynowego
-
-Wreszcie, po znalezieniu akceptowalnego zestawu hiperparametrów i zoptymalizowaniu dokładności modelu, możesz
-przetestować swój model. Testowanie wykorzystuje Twój testowy zestaw danych i ma na celu sprawdzenie, czy Twoje modele
-używają dokładnych funkcji. Na podstawie otrzymanej opinii możesz wrócić do trenowania modelu, aby poprawić dokładność,
-dostosować ustawienia wyjściowe lub wdrożyć model w razie potrzeby.
-
-Jakie są najlepsze praktyki uczenia maszynowego dla wydajnych przepływów pracy? Podczas definiowania przepływu pracy dla
-projektu uczenia maszynowego można zastosować kilka najlepszych praktyk. Poniżej kilka na początek.
-
-Zdefiniuj projekt
-
-Dokładnie zdefiniuj cele projektu przed rozpoczęciem, aby upewnić się, że modele dodają wartość do procesu, a nie
-redundancję. Definiując swój projekt, weź pod uwagę następujące aspekty:
-
-Jaki jest Twój obecny proces — zazwyczaj modele są zaprojektowane w celu zastąpienia istniejącego procesu. Ważne jest
-zrozumienie, jak działa istniejący proces, jakie są jego cele, kto go wykonuje i co liczy się jako sukces. Zrozumienie
-tych aspektów pozwala wiedzieć, jakie role musi pełnić Twój model, jakie ograniczenia mogą istnieć w implementacji oraz
-jakie kryteria musi spełniać lub przekraczać model. Co chcesz przewidzieć — dokładne zdefiniowanie tego, co chcesz
-przewidzieć, jest kluczem do zrozumienia, jakie dane należy zbierać i jak należy trenować modele. Chcesz być jak
-najbardziej szczegółowy na tym etapie i upewnić się, że wyniki zostały określone ilościowo. Jeśli twoje cele nie są
-mierzalne, będziesz miał trudności z zapewnieniem, że każdy z nich zostanie osiągnięty. Jakie są Twoje źródła danych —
-oceń, na jakich danych opiera się Twój bieżący proces, w jaki sposób są gromadzone i w jakiej objętości. Z tych źródeł
-należy określić, jakie konkretne typy danych i punkty są potrzebne do tworzenia prognoz. Znajdź podejście, które działa
-
-Celem wdrożenia przepływów pracy uczenia maszynowego jest poprawa wydajności i/lub dokładności bieżącego procesu. Aby
-znaleźć podejście, które pozwoli osiągnąć ten cel, musisz:
-
-Badania — przed wdrożeniem podejścia należy poświęcić czas na badanie, w jaki sposób inne zespoły wdrożyły podobne
-projekty. Możesz być w stanie pożyczyć metody, których używali lub uczyć się na ich błędach, oszczędzając czas i
-pieniądze. Eksperyment — niezależnie od tego, czy znalazłeś istniejące podejście, aby zacząć od lub stworzyłeś własne,
-musisz z nim poeksperymentować. Jest to zasadniczo faza uczenia i testowania Twojego modelu. Zbuduj rozwiązanie na pełną
-skalę
-
-Opracowując swoje podejście, końcowy rezultat jest zazwyczaj dowodem koncepcji. Musisz jednak umieć przełożyć ten dowód
-na funkcjonalny produkt, aby osiągnąć swój cel końcowy. Aby przejść z rozwiązania testowego do rozwiązania wdrażalnego,
-potrzebne są:
-
-Testy A/B — umożliwiają porównanie bieżącego modelu z istniejącym procesem. Może to potwierdzić lub zaprzeczyć, czy Twój
-model jest skuteczny i może stanowić wartość dodaną dla Twoich zespołów i użytkowników. API uczenia maszynowego —
-tworzenie interfejsu API do implementacji modelu umożliwia komunikację ze źródłami danych i usługami. Ta dostępność jest
-szczególnie ważna, jeśli planujesz oferować swój model jako usługę uczenia maszynowego. Dokumentacja przyjazna dla
-użytkownika — obejmuje dokumentację kodu, metod i sposobu korzystania z modelu. Jeśli chcesz stworzyć produkt rynkowy,
-musi być jasne dla użytkowników, w jaki sposób mogą wykorzystać model, jak uzyskać dostęp do jego wyników i jakich
-wyników mogą się spodziewać. Automatyzacja przepływów pracy uczenia maszynowego Automatyzacja przepływów pracy uczenia
-maszynowego umożliwia zespołom wydajniejsze wykonywanie niektórych powtarzalnych zadań związanych z tworzeniem modeli.
-Istnieje wiele modułów i coraz więcej platform do tego celu, czasami określanych jako autoML.
-
-Co to jest zautomatyzowane uczenie maszynowe? AutoML zasadniczo stosuje istniejące algorytmy uczenia maszynowego do
-opracowywania nowych modeli. Jego celem nie jest automatyzacja całego procesu tworzenia modelu. Zamiast tego ma
-zmniejszyć liczbę interwencji, które ludzie muszą wykonać, aby zapewnić pomyślny rozwój.
-
-AutoML pomaga programistom znacznie szybciej rozpocząć i ukończyć projekty. Może również usprawnić procesy uczenia
-głębokiego i nienadzorowanego uczenia maszynowego, potencjalnie umożliwiając samokorektę w opracowanych modelach.
-
-Train Test Split train/test splitting techniques, exploiting three different Python libraries:
-
-Zwykle proces uczenia/podziału testów jest jednym z zadań uczenia maszynowego, które są uznawane za oczywiste . W
-rzeczywistości naukowcy zajmujący się danymi koncentrują się bardziej na wstępnym przetwarzaniu danych lub inżynierii
-funkcji, delegując proces dzielenia zestawu danych na wiersz kodu. W tym krótkim artykule opiszę trzy techniki dzielenia
-uczenia/testowania, wykorzystujące trzy różne biblioteki Pythona:
-nauka-scikit pandy NumPy W tym samouczku zakładam, że cały zestaw danych jest dostępny jako plik CSV, który jest
-ładowany jako Pandas Dataframe. Rozważam heart.csvzbiór danych, który ma 303 wiersze i 14 kolumn:
-importuj pandy jako PD df = pd.read_csv('źródło/serce.csv')
-Ramka danych Pandy Obraz autora Kolumna wyjściowa odpowiada kolumnie docelowej, a wszystkie pozostałe odpowiadają cechom
-wejściowym:
-Y_col = „wyjście” X_cols = df. loc [:, df.columns != Y_col].columns 1 Nauka scikitu Scikit-learn udostępnia funkcję o
-nazwie train_test_split(), która automatycznie dzieli zbiór danych na zbiór uczący i testowy. Jako parametry wejściowe
-funkcji można przekazać listy lub ramki danych Pandas. ze sklearn.model_selection importuj train_test_split X_train,
-X_test, y_train, y_test = train_test_split (df[X_cols], df[Y_col],test_size=0.2, random_state=42)
-Inne parametry wejściowe obejmują:
-test_size: część zbioru danych, która ma zostać uwzględniona w zbiorze danych testowych. random_state: liczba nasion,
-która ma zostać przekazana do operacji tasowania, dzięki czemu eksperyment będzie powtarzalny. Oryginalny zbiór danych
-zawiera 303 rekordy, train_test_split()funkcja test_size=0.20przypisuje 242 rekordy do zestawu uczącego i 61 do zestawu
-testowego. 2 pandy Pandas udostępnia funkcję Dataframe o nazwie sample(), która może być używana do dzielenia Dataframe
-na zestawy pociągowe i testowe. Funkcja otrzymuje jako dane wejściowe fracparametr, który odpowiada proporcji zbioru
-danych, który ma zostać uwzględniony w wyniku. Podobnie jak scikit-learn train_test_split(), również sample()funkcja
-dostarcza random_stateparametr wejściowy. Funkcji sample()można użyć do wyodrębnienia zestawu treningowego:
-df_pociąg = df. próbka (frac=0.8, random_state=1)
-natomiast zestaw testowy można wyodrębnić, upuszczając zestaw uczący z oryginalnego zestawu danych:
-df_test=df.upuszczać(df_train.index)
-Zmienne X i Y można wyodrębnić, wybierając odpowiednie kolumny ze zbiorów uczących i testowych:
-X_train = df_train[X_cols]
-X_test = df_test[X_cols]
-y_train = df_train[Y_col]
-y_test = df_test[Y_col]3 np.random.rand()
-Podobnie do train_test_split()funkcji, funkcja sample() z frac=0.8przypisuje 242 rekordy do zbioru uczącego i 61 do
-zbioru testowego. Oczywiście rekordy zawarte w zbiorach danych tworzonych przez sample()różnią się od tych tworzonych
-przez train_test_split(). 3 Nudny W pakiecie Numpy możemy wykorzystać tę rand()funkcję do wygenerowania listy losowych
-elementów od 0 do 1. Dokładniej, możemy wygenerować listę o tej samej długości co Dataframe. Następnie możemy stworzyć
-maskę o wartościach <0,8, a następnie użyć tej maski do zbudowania zbiorów uczących i testowych:
-importuj numer jako np maska ​​= np.losowy.rand(len(df)) <0,8 df_train = df[maska]
-df_test = df[~maska]
-W przeciwieństwie do train_test_split()i sample(), ta strategia nie generuje stałej liczby próbek dla zbiorów uczących i
-testowych. W tym konkretnym przykładzie liczba próbek w zbiorze uczącym wynosi 256 (w porównaniu z 242 innymi
-strategiami) i 47 dla zbioru testowego. Streszczenie W tym krótkim artykule zilustrowałem trzy strategie dzielenia
-zbioru danych, dostarczonego jako Ramka danych Pandas, na zbiory pociągowe i testowe.
-
-Feature Scaling Why Should we Use Feature Scaling? The first question we need to address – why do we need to scale the
-variables in our dataset? Some machine learning algorithms are sensitive to feature scaling while others are virtually
-invariant to it. Let me explain that in more detail. Training and Predictions Evaluating the Algorithm
-
-#### Implementacja algorytmu 1: Losowe lasy decyzyjne
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++ Drzewa decyzyjne to metody wykorzystujące szereg zasad decyzyjnych
-do wytrenowania modelu w oparciu o zbiór uczący w celu generowania przyszłych predykcji na podstawie zmiennych
-objaśniających. Poniżej znajduje się schemat przedstawiający przykładową strukturę drzewa decyzyjnego (patrz rysunek
-3.6) oraz opis jego najważniejszych składowych. Rys. 3.6. Poglądowy schemat przedstawiający przykładową strukturę modelu
-drzewa decyzyjnego. 32 Metody uczenia maszynowego • Gałąź - krawędź łącząca pozostałe elementy drzewa • Węzeł -
-wierzchołek łączący co najmniej jedną gałąź • Korzeń - główny węzeł drzewa • Liść - węzeł z którego nie wychodzi żadna
-gałąź Głównym problemem w efektywnym korzystaniu z drzew decyzyjnych jest dobór odpowiedniej struktury dla rozważanego
-zagadnienia. W tym celu stosuje się algorytmy rekurencyjne umożliwiające maksymalizację zdobywania najistotniejszych
-informacji z punktu widzenia rozwiązywanego problemu podczas dokonywania decyzji oraz podziału w każdym węźle. W
-przypadku przewidywania cen na giełdzie papierów wartościowych wyznacznikiem dla reguły decyzyjnej mogłaby być wartość
-błędu średniokwadratowego postaci:
-MSE = 1 n Xn i=1
-(yi − yˆi)
-2 • yi - rzeczywista wartość wyniku • yˆi - przewidziana wartość Algorytm rekurencyjny po znalezieniu
-najskuteczniejszych reguł decyzyjnych wykrytych na podstawie minimalizacji wartości błędu średniokwadratowego oraz
-zmiennych objaśniających mógłby generować przewidywania notowań spółek zamknięcia kolejnego dnia działa giełdy dla
-nieoznaczonych danych wejściowych. W celu przewidywania jeszcze dokładniejszych wyników mógłby zostać wykorzystany
-algorytm lasów losowych. Metoda ta polega na wykorzystaniu wielu drzew decyzyjnych w celu wygenerowania predykcji, a
-następnie wybrania z nich najczęściej występującego rezultatu. +++++++++++++++++++++++++++++++++++++++++++++++++++
-
-#### Implementacja algorytmu 2: Metoda wektorów nośnych
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++++ Maszyna wektorów nośnych jest techniką wykorzystującą
-wielowymiarową przestrzeń w celu znalezienia maksymalnej hiperpłaszczyzny brzegowej umożliwiającej najbardziej
-precyzyjny sposób podziału danych na klasy. Wykres przedstawiający przykładową predykcję modelu znajduje się na rysunku
-3.5. Nowy obiekt Y X Rys. 3.5. Poglądowy wykres przedstawiający przykładową predykcję modelu maszyny wektorów nośnych.
-Idea działania maszyny wektorów nośnych opiera się na wyszukiwaniu maksymalnych odległości pomiędzy najbliższymi
-punktami nazywanymi marginesami zgodnie ze wzorem:
-f(x) = β0 + X i∈S αiK(xi , xi
-
-0)
-
-• β0 - wyraz wolny • S - zbiór wszystkich obserwacji wektora nośnego • α - parametry modelu przeznaczone do nauki • (xi
-, xi
-
-0)
-    - pary obserwacji wektora nośnego • K - funkcja nazywana kernelem porównująca podobieństwo pomiędzy xi i xi 0 3.7
-      Drzewa decyzyjne i lasy losowe 31 W przypadku przewidywania notowań spółek na giełdzie papierów wartościowych
-      maszyna wektorów nośnych mogłaby zostać wykorzystana podobnie jak w przypadku regresji logistycznej oraz algorytmu
-      k najbliższych sąsiadów w celu predykcji przyszłych ruchów kursów akcji. Algorytm na podstawie danych wejściowych
-      oznaczających historyczne wartości spółek przewidywałby ruch wzrostowy, spadkowy lub horyzontalny na zakończenie
-      kolejnego dnia działania giełdy względem poprzedniego. Oczywiście predykcje odbywałyby się przy wykorzystaniu
-      wytrenowanego wcześniej modelu sekwencyjnie minimalizującego wybraną funkcję błędu w oparciu o próby uczące
-      +++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-#### Implementacj algorytmu 3: K najbliższych sąsiadów
-
-Algorytm ten służy do rozwiązywania problemów modelu klasyfikacyjnego. K-najbliższy sąsiad lub algorytm K-NN w zasadzie
-tworzy wyimaginowaną granicę do klasyfikacji danych. Gdy pojawią się nowe punkty danych, algorytm spróbuje przewidzieć
-to z dokładnością do najbliższej linii granicznej.
-
-Dlatego większa wartość k oznacza gładsze krzywe separacji, co skutkuje mniej złożonymi modelami. Natomiast mniejsza
-wartość k powoduje przepełnienie danych i prowadzi do złożonych modeli.
-
-Uwaga:  Bardzo ważne jest, aby podczas analizowania zestawu danych mieć odpowiednią wartość k, aby uniknąć nadmiernego i
-niedopasowanego zestawu danych.
-
-Używając algorytmu k-najbliższego sąsiada dopasowujemy dane historyczne (lub trenujemy model) i przewidujemy przyszłość.
-
-+++++++++++++++++++++++++++++++++++++ Algorytm k najbliższych sąsiadów Algorytm k najbliższych sąsiadów, w odróżnieniu
-od omówionych powyżej metod, nie opiera się na trenowaniu modelu w celu generowania predykcji zmiennych objaśnianych. Z
+ Z
 tego powodu nazywany jest również często algorytmem leniwym. Idea jego działania polega na przyporządkowaniu wszystkim
 danym wejściowym zestawu cech oraz umieszczeniu ich w wielowymiarowej przestrzeni w oparciu o miarę podobieństwa. W
 przypadku przekazania do algorytmu próby nieoznaczonej następuje wyszukanie k najbliższych obiektów przy pomocy
@@ -559,7 +427,7 @@ określonej metody. Najczęściej wykorzystywane są do tego celu następujące 
 • Euklidesowa:
 d = vuutXn i=1
 (xi − yi)
-2 3.5 Algorytm k najbliższych sąsiadów 29 • Manhattan:
+2 3.5 Algorytm k najbliższych sąsiadów 29 • :
 d = Xn i=1 |xi − yi | • Minkowskiego:
 d = Xn i=1 |xi − yi | p
 !1 p – xi i yi - obserwacje służące do obliczania odległości, – P - parametr przyjmujący wartość 1 dla odległości
@@ -572,7 +440,12 @@ zastosowanie w predykcji przyszłych ruchów kursów akcji. Na podstawie danych 
 wartości spółek przydzielałby on je do jednej z trzech grup oznaczających ruch cen instrumentów finansowych w kierunku
 wzrostowym, spadkowym lub horyzontalnym w czasie kolejnego dnia działania giełdy. ++++++++++++++++++++++++++++++++++
 
-## Wnioski i walidacja rozwiązania
+
+[^3]: Data Science from Scratch:First Principles with Python, Joel Grus, R.11,str140, Thoughtful Machine Learning with
+Python A Test-Driven Approach autor :Kirk Matthew r.1 str.8
+
+
+## Komparacja działania modeli
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ W dalszej części bieżącej sekcji znajdują się wyniki
 przeprowadzonych eksperymentów. W badaniach zostało wykonanych 25 pełnych iteracji przy wykorzystaniu całego zbioru
@@ -582,11 +455,31 @@ uzyskiwana wartość błędu oznaczała wyższą skuteczność generowanych pred
 poniższe wykresy odzwierciedlające cały proces nauki każdej opracowanej na potrzeby przeprowadzenia eksperymentów
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-### Algorytm 1:Resultaty wnioski: Losowe lasy decyzyjne
+### Resultaty wnioski: Losowe lasy decyzyjne
+###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
+-OCENA SZYBKOŚCI WYKONANIA
+-OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
+-OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
+ - które parametry mają i wpływ i dlaczego:
+   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
 
-### Algorytm 2: Rezultaty wnioski: Metoda wektorów nośnych
+### Rezultaty wnioski: Metoda wektorów nośnych
 
-### Algorytm 3 : Rezultaty wnioski: K najbliższych sąsiadów
+###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
+-OCENA SZYBKOŚCI WYKONANIA
+-OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
+-OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
+ - które parametry mają i wpływ i dlaczego:
+   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
+
+### Rezultaty wnioski: K najbliższych sąsiadów
+
+###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
+-OCENA SZYBKOŚCI WYKONANIA
+-OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
+-OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
+ - które parametry mają i wpływ i dlaczego:
+   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
 
 Plusy Faza uczenia klasyfikacji K-najbliższego sąsiada jest znacznie szybsza w porównaniu z innymi algorytmami
 klasyfikacji. Nie ma potrzeby uczenia modelu do uogólniania, dlatego KNN jest znany jako prosty algorytm uczenia oparty
@@ -604,7 +497,7 @@ rzecz biorąc, rozważany zakres normalizacji między 0 a 1. KNN nie jest odpowi
 przypadkach wymiar musi się zmniejszyć, aby poprawić wydajność. Również obsługa brakujących wartości pomoże nam poprawić
 wyniki.
 
-### Porównianie algorytmów : złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu
+### Porównianie całościowe algorytmów : złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu
 
 ### Podsumowanie i opisanie wpływu danych na model
 

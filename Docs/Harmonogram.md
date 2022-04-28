@@ -55,12 +55,7 @@ dodać porównanie i wyższość w zastosowaniu dla modeli uczonych bez nadzoru
 
 
 
-###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
--OCENA SZYBKOŚCI WYKONANIA
--OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
--OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
- - które parametry mają i wpływ i dlaczego:
-   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
+
 
 
 _____________ogołne
