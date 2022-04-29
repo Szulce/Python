@@ -1,8 +1,6 @@
 
 
- -przypisy
- -strona tytułowa
--formatować zgodnie z tym co w dokuncie
+
  
 - uczenie przeprowadzić SVM, RF  CZEKAM
 - (dane) w Exelu do pracy
@@ -15,7 +13,7 @@ ________________________________________do 14
 _____________
 
 - obrazków biliografia,
-- bibilografie poprawić
+
  -spiswykresów
 - spis używanej terminologii
 - spis formuł mateatycznych
@@ -28,6 +26,10 @@ _____________
 -wniosek i mail do promotora
 - 
 - ________________________________potem
+- - bibilografie poprawić
+-  -przypisy
+ -strona tytułowa
+-formatować zgodnie z tym co w dokuncie
 - dopisać do stratyfikacji 
 - nagrać film-czekam
 - do poprawy prezentacja wyników

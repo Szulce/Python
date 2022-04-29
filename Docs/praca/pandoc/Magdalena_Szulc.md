@@ -1,7 +1,9 @@
 ---
 title: "Wykrywanie występowanie chorób serca,porównanie algorytów uczenia maszynowego nadzorowanego na podstawie zbioru danych dotyczących chorób układu krążenia z repozytorium  UCI"
 author: [Magdalena Szulc]
-date: "2022-05-01"
+header: UNIWERSYSTET MIKOŁAJA KOPERNIKA WYDZIAŁ MATEMATYKI I INFORMATYKI
+date: "Toruń,2022-05-01"
+footer: Praca inż. napisana pod kierunkiem dr Piotr Przymus
 geometry: "left=1.5cm,right=1.5cm,top=2cm,bottom=2cm"
 output: pdf_document
 titlepage: true
@@ -576,14 +578,15 @@ na dzień dobry widzimy nie dokładność ze wględu na klasyfiakcję po przecin
 regresja kategoryczna -> rzutowanie przedziału wartości na wartość graniczną 
 
 
-
- **Bibliografia**{.unnumbered}
-========
 Spis ilustracji{.unnumbered}
 ========
 [^schemat_wzorowany]:Na podstwie materiałów opublikowanych na [https://www.datacamp.com](http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1526288453/index3_souoaz.png)
 
 Spis tabel{.unnumbered}
 ========
+
+ **Bibliografia**{.unnumbered}
+========
+
 
 
