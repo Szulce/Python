@@ -1,4 +1,4 @@
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$if(sides)$$sides$,$endif$]{$documentclass$}
+\documentclass[12]{$documentclass$}
 \usepackage[T1]{fontenc}
 \usepackage{ae}
 \usepackage{lmodern}
@@ -265,13 +265,8 @@ $endif$
 
 $endif$
 $endif$
-$if(biblatex)$
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-%in the preamble
-%--------------------------------
-  \usepackage{natbib}
-  \bibliographystyle{ksfh_nat}
-%--------------------------------
+
 
 %Where the bibliography will be printed
   \bibliography{bibfile}

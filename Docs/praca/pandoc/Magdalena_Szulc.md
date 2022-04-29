@@ -52,14 +52,14 @@ badań zgormadzonych w repozytorium UCI.
 W dzisiejszych czasach choroby sercowo-naczyniowe stanowią najczęstszą przyczynę zgonów, a liczba osób cierpiących na te
 dolegliwości stale rośnie. Głównymi przyczynami zachorowalności diagnozowanymi przez specjalistów są niski poziom
 świadomości i profilaktyki chorób serca.Dlatego prowadzone są intensywne prace nad zwiększeniem dostępności badań, które wspomogą diagnostykę kardiologiczną na
-jak najwcześniejszym etapie [^1].
+jak najwcześniejszym etapie [@1].
 
 Powodem szukania dokładniejszych sposobów diagnozowania są również wysokie koszty leczenia generowane przez choroby
-układu krwionośnego. Według analityków firmy konsultingowej KPMG [^KPMG] w 2011 r. koszty diagnostyki i terapii chorób
+układu krwionośnego. Według analityków firmy konsultingowej KPMG [@KPMG] w 2011 r. koszty diagnostyki i terapii chorób
 serca wyniosły ponad 15 miliardów polskich złotych.
 
 Uczenie maszynowe poprzez przetwarzanie dużych zasobów klinicznych danych historycznych pod kątem zależności przyczynowo skutkowych, 
- może zostać wykorzystane do wczesnej diagnostyki lub wspomagania leczenia pacjentów [^2].
+ może zostać wykorzystane do wczesnej diagnostyki lub wspomagania leczenia pacjentów [@2].
 
 Słowa kluczowe: uczenie maszynowe, uczenie nadzorowane, lasy losowe, maszyna wektorów nośnych, k-najbliższych sąsiadów
 
@@ -90,11 +90,11 @@ W pracy opisano następujące algorytmu uczenia nadzorowanego:
 
 **Uczenie maszynowe** (ang. _machine learning_, ML) to dziedzina zajmująca się tworzeniem modeli do analizy bardzo obszernych zasobów danch. Modele utworzone za pomocą algorytmów uczenia maszynowego są w stanie z wysokim prawdopodobieństwem wystawić predyckję lub dokonać klasyfikacji na temat zadanego problemu. 
 
-Model _klasyfikacjny_ służy do przewidzenia etykiety klasy poprzez mapowanie na już z góry ustalony jednowymiarowy pozdział, model _regresywny_ natomiast mapuje przestrzeń ustalając liczbę klas podziału oraz grupując wartości. [^clsvsreg] Istnieje możliwość przeksztaucenia problemu regresywnego na klasyfikacyje i na odwrót poprzez zamiane wartości oczekiwanego wyniku. Taką modyfikację zastosowano w praktycznej częsci projektu. Wyniki dla danych występowały w wartościach od 0 do 4 , dla wartości <1,4> przypadek testowy uznawany był za sklasyfikowany pozytywny (chory), dlatego przeksztaucenie z modelu regresywnego do modelu klasyfikacyjnego polega na konwersji wyników do wartości liczbowych 0 - brak stwierdzenia stanu choroboweo oraz 1 - stwierdzenie o chorobie układu krążenia. 
+Model _klasyfikacjny_ służy do przewidzenia etykiety klasy poprzez mapowanie na już z góry ustalony jednowymiarowy pozdział, model _regresywny_ natomiast mapuje przestrzeń ustalając liczbę klas podziału oraz grupując wartości. [@clsvsreg] Istnieje możliwość przeksztaucenia problemu regresywnego na klasyfikacyje i na odwrót poprzez zamiane wartości oczekiwanego wyniku. Taką modyfikację zastosowano w praktycznej częsci projektu. Wyniki dla danych występowały w wartościach od 0 do 4 , dla wartości <1,4> przypadek testowy uznawany był za sklasyfikowany pozytywny (chory), dlatego przeksztaucenie z modelu regresywnego do modelu klasyfikacyjnego polega na konwersji wyników do wartości liczbowych 0 - brak stwierdzenia stanu choroboweo oraz 1 - stwierdzenie o chorobie układu krążenia. 
 
 Sposób wykorzystania segreguje alorytmy uczenia maszynowego na dwie kategorie, jednak powszechnie stosowanym podziałem jest podział zależnie od
 sposobu _trenowania_ algorytmu. Algorytmy dzieli się na min.: uczenie nadzorowane, uczenie częściowo nadzorowane, uczenie bez nadzoru oraz uczenie przez
-wzmacnianie [^3] .
+wzmacnianie [@3] .
 
 ![Schemat 1](img/1algorithms_category.png "Algorytmy z podziałem na kategorie"){ width=100% }
 
@@ -103,24 +103,24 @@ mogą przyjmować format odpowiedzi TAK/NIE , klasyfikacji do danego zbioru czy 
 
 
 **Uczenie maszynowe nadzorowane** (ang. _supervised learning_) to klasa algorytmów uczenia maszynowego, która bazuje na
-poetykietowanych danych. Nadzór polega na porównaniu rezultatów działania modelu z wynikami które są zawarte w danych wejściowych ( _dane oznaczone_ ) [^learning].
+poetykietowanych danych. Nadzór polega na porównaniu rezultatów działania modelu z wynikami które są zawarte w danych wejściowych ( _dane oznaczone_ ) [@learning].
 Algorytm po osiągnięciu żądanej efektywnosci jest w stanie dokonać klasyfikacji przykładu dla którego nie posiada
 odpowiedzi. Sprawdza się to obecnie w rekomendacji produktów oraz diagnozie chorób. Z matematycznego puntu widzenia
-dopasowanie danych oznaczonych nazywane jest aproksymacją funkcji [^3] .
+dopasowanie danych oznaczonych nazywane jest aproksymacją funkcji [@3] .
 
 **Uczenie maszynowe bez nadzoru** (ang. _unsupervised learning_) to klasa algroytmów uczenia maszynowego która wiodąco
 rozwiązuje problemy grupowania. Dane dostarczane do modelu nie zawierają _oznaczeń_, zatem nauczanie polega na
 wyciąganiu konkluzji z poprzednio wykonanych iteracji. Na skuteczność modeli budownych w oparciu o uczenie bez nadzoru
 wpływ ma rozmiar dostarczonego do nauki zbioru danch, im jest on większy tym bardziej wzrasta effektywność. Takie zbiory
 można uzyskać rejestrując dane na bierząco dlatego do najczęstrzych zastosowań tej klasy algorytmów, można zaliczyć
-rozpoznawanie mowy czy obrazu [^3] .
+rozpoznawanie mowy czy obrazu [@3] .
 
 **Uczenie maszynowe przez wzmacnianie** (ang. _reinforcement learning_) to klasa algorytmów uczenia maszynowego której nauczanie nie opiera się
 na danych wejściowych czy wyjściowych a rezultatach otrzymanych podczas testu nazywanych tzw. sygnałami wzmocnienia który może przyjmować wartość pozytwną lub negatywną.
-Algorytm generując dane wejściowe dostosowuje reguły by uzyskać zwrotnie sygnał pozytywny w jak największej liczbie przypadków. [^reinfor-learning] .
+Algorytm generując dane wejściowe dostosowuje reguły by uzyskać zwrotnie sygnał pozytywny w jak największej liczbie przypadków. [@reinfor-learning] .
 
 
-**Uczenie częściowo nadzorowane** (ang. _semi-supervised_ _learning_) to klasa algorytmów uczenia maszynowego która wykorzystuje zbór danych w większości niepoetykietowany na podstawie których tworzony jest model [^semi-learning] .
+**Uczenie częściowo nadzorowane** (ang. _semi-supervised_ _learning_) to klasa algorytmów uczenia maszynowego która wykorzystuje zbór danych w większości niepoetykietowany na podstawie których tworzony jest model [@semi-learning] .
 
 Podział osób na kategorie cierpiące na choroby sercowo-naczyniwe oraz zdrowe, to dylemat klasyfikayjny nadający się do
 rozwiązania za pomoca algorytmów uczenia maszynowego nadzorowanego i na nich skupia się dalsza część pracy.
@@ -131,7 +131,7 @@ rozwiązania za pomoca algorytmów uczenia maszynowego nadzorowanego i na nich s
 
 ## Model Danych
 
-![Schemat 3](img/12UCI.png "UCI logo"){ width=50% } [^UCI]
+![Schemat 3](img/12UCI.png "UCI logo"){ width=50% } [@UCI]
 
 ### Repozytorium uczenia maszynowego UCI
 
@@ -142,17 +142,17 @@ gromadzenia miarodajnej bazy dostępnych zbiorów danych testowych powstało rep
 strona informacyjna :
 
 > ... było ono cytowane ponad 1000 razy, co czyni je
-> jednym ze 100 najczęściej cytowanych „artykułów” w całej informatyce ... [^UCI]
+> jednym ze 100 najczęściej cytowanych „artykułów” w całej informatyce ... [@UCI]
 
 Repozytorium gromadzi dane z wielu rozbieżnych dziedzin , dane medyczne umieszczone w repozytorium nie zawierają
 wrażliwych danych pacjentów , a niektóre zbiory są poddane już wstępnej obróbce tak jak zbiór danych
 "Heart Disease Databases" wykorzystany w tym dokumencie, który powstał na podstawie realnych danych medycznych zebrany z
 lokalizacji
 
-1. Fundacja Cleveland Clinic [^5]
-2. Węgierski Instytut Kardiologii, Budapeszt  [^hungary]
-3. V.A. Centrum medyczne, Long Beach, Kalifornia  [^5]
-4. Szpital Uniwersytecki, Zurych, Szwajcaria  [^switzerland].
+1. Fundacja Cleveland Clinic [@5]
+2. Węgierski Instytut Kardiologii, Budapeszt  [@hungary]
+3. V.A. Centrum medyczne, Long Beach, Kalifornia  [@5]
+4. Szpital Uniwersytecki, Zurych, Szwajcaria  [@switzerland].
 
 #### Stratyfikacja
 
@@ -161,7 +161,7 @@ wartośi liczbowe.
 
 Rozkład chorób serca w danych testowych to 44.67% chorych czyli 509 prób pozytywnych oraz  411 negatywnych.
 W danych testowych znajduje się 726 przypadków osób płci męskiej oraz 194 żeńskiej. Dla zachorowań widać nierówność ale jest ona spowodowana rzeczywistą statystyką.
-Tylko u 25.77% badanych kobiet stwierdzono występowanie chorób wieńcowych, natomiast wśród badanych mężczyzn jest to aż 63.22%. [^UCI]
+Tylko u 25.77% badanych kobiet stwierdzono występowanie chorób wieńcowych, natomiast wśród badanych mężczyzn jest to aż 63.22%. [@UCI]
 
 
 W przypadku danych testowych z repozytorium UCI, fakt iż dane pochodziły z róźnych lokalizacji ma duże znaczenie ,gdyż
@@ -203,7 +203,7 @@ Przeksztaucenie danych również bazujące na statystycznych założeniach i ró
 bibliotekach. Dąrzymy aby średnia wartoś wynosiła 0, a odchylenie standardowe 1 dla liczbowyh reprezentacji danych. Z
 matematyczne punktu widzenia wykonujemy działanie
 
-![Schemat 5](img/13wzor_1.png "wzór: podejmujemy średnią i dzielimy ją przez odchylenie standardowe"){ width=20% } [^standar]
+![Schemat 5](img/13wzor_1.png "wzór: podejmujemy średnią i dzielimy ją przez odchylenie standardowe"){ width=20% } [@standar]
 
 *Obsługa zmiennych kategorialnych*
 
@@ -215,12 +215,12 @@ kategoryczne staja się wartosciami liczbowymi.
 
 Obsługa danych kategorialnych pozwoliła zmapować/zakodować je w postaci liczbowej, ale można pójść o krok dalej i te
 same dane mieć w postaci 0 lub 1 na odpowiedniej kolumnie. Rozwiązanie reprezentacji wektorowej polega na utworzeniu
-tylu kolumn ile jest unikalnych wartości dla kategorii i wpisanie 0 lub 1 dla każdego rekordu danych [^wektor] .
+tylu kolumn ile jest unikalnych wartości dla kategorii i wpisanie 0 lub 1 dla każdego rekordu danych [@wektor] .
 
 *Współliniowość cech*
 
 Aby znaleść korelacje współliniowości należy szukać liniowej zależności pomiędzy danymi, najłatwiej zauważyć to tworząc
-wykresy z danych testowych dla każdej pary [^wektor].
+wykresy z danych testowych dla każdej pary [@wektor].
 
 ![Schemat 21](img/21corealtion.png "Powiazanie cech")
  
@@ -234,13 +234,12 @@ Zgodnie z poniższym schematem po przeprocesowaniu wejściowego zbioru danych, n
 
 **K-krotna walidacja krzyżowa** (ang. _K-fold Cross Validation_, KCV ) - metoda weryfikacji działająca poprzez podział
 zbioru danych na k podzbiorów z których każdy przynajmniej raz jest zbiorem oceniającym wydajność , zaznaczając że K
-musi być równe lub mniejsze niż liczba elementów w zbiorze [^kfold] .
+musi być równe lub mniejsze niż liczba elementów w zbiorze [@kfold;@kfold2] .
 
 Kluczowym elementem jest ewaluacja która odbywa się na końcu każdej z k-1 iteracji w celu dostosowania parametrów, po
 osiągnięciu wymaganych lub ustalonych wartości dokładności modelu lub weryfikacji wszystkich możliwych opcji i
 znalezienie najlepszego modelu można go wykorzystać do weryfikacji na danych spoza zestawu testowego.
 
-[^kfold]: The ‘K’ in K-fold Cross Validation Authors: D. Anguita,L. Ghelardoni,A. Ghio,ONETO, LUCA,S. Ridella oraz Mastering Machine Learning Algorithms: Expert techniques to implement popular machine learning algorithms and fine-tune your models Giuseppe Bonaccorso
 
 ## Wybrane algorytmy uczenia maszynowego nadzorowanego
 
@@ -249,7 +248,7 @@ znalezienie najlepszego modelu można go wykorzystać do weryfikacji na danych s
 **Drzewa decyzyjne** (ang. _decisions trees_ ) są uznawane za najprostyszy i najbliższy ludzkiemu zrozumieniu algorytm
 uczenia, który swoją nazwę zawdzięcza graficznej reprezentacji w postaci drzewa. Każdy węzeł oznacza atrybut, na
 podstawie którego następuje rozróżnienie. W modelu kluczowa jest kolejnośc cech, które wystęują po sobie ponieważ
-determinuje to otrzymany rezultat [^3] .
+determinuje to otrzymany rezultat [@3;@32] .
 
 ![Schemat 9](img/3drzewo_decyzyjne_schemat.png "Schmat Drzewa decyzyjnego"){ width=50% }
 
@@ -261,18 +260,17 @@ Na metodologie drzew decyzyjnych oparta jest dokładniejsza forma nauczania nadz
 w celu uniknięcia problemu z _nadmiernym dopasowaniem_ do treningowego zestawu danych na którym został przeszkolony.
 
 Utworzony szablon aby poprawnie działać na danych testowych i służacych weryfikacji, nie może stać się
-charakterystycznym przypadkiem rozwiązującym przypadek testowy [^3]. W tym celu dla loswoych lasów decyzyjnych najpierw stosuję się **agregację bootstrap'ową**.
+charakterystycznym przypadkiem rozwiązującym przypadek testowy [@3;@32]. W tym celu dla loswoych lasów decyzyjnych najpierw stosuję się **agregację bootstrap'ową**.
 Z treningowego zestawu danch losuję się, z możliwymi powtorzeniami, wiersze danych dla których trenowany będzie
 model. Jako rezutat brana jest większość lub średnia wartości uzyskanych wyników dla poszczególnych drzew dezycyjnch.
 Dodatkowo dla drzew decyzyjnych w lasach losowych, atrybuty odpowiadające za kategoryzację są wybierane z wylosowanego
-podzbioru.[^forest]
+podzbioru.[@forest]
 
 Wśrod zalet lasów losowych nalezy wyróżnić iż potrafią one trafnie wykalkulować brakujace wartości cech. Idealnie
 znajdują zastosowanie dla realnych danych, których zasadniczym problemem jest ich niekompletność.  
 Dane medyczne posiadają szeroką wariację zmiennych z dużym prawdopodobieństwem wybrakownia, zastosowanie do nich lasów
 decyzyjnych ma potencjał na pozytywne rezulataty.
 
-[^forest]:  Breiman, L. (2001), Random forests, Machine Learning 45: 5–32, FROM SINGLE TREES TO A RANDOM FOREST Tomasz Demski, StatSoft Polska Sp. z o. o
 
 ### Maszyna wektorów nośnych
 
@@ -284,7 +282,7 @@ między najbliższymi dwoma punktami dla wektorów jest możliwie największa.
 ![Schemat 10 ](img/10svm_schemat.png "Schmat SVM"){ height=20% } [^schemat_wzorowany]
 
 Taka prosta nazywana jest  _prostą marginalną_
-i powstaje ona poprzez generowanie i selekcję tych prostych które rzetelnie szufladkują klasy danych [^3].
+i powstaje ona poprzez generowanie i selekcję tych prostych które rzetelnie szufladkują klasy danych [@3;@32].
 
 Techinka ta gwarantuje precyzyjniejsze rezulatay niż drzewa decyzyjne, niestety dla dużych zbiorów danych czas trwania
 szkolenia znacznie się wydłuża oraz istnieją przypadki dla których podział jedną prostą jest niewykonalny, taki
@@ -293,33 +291,33 @@ przypadek reprezentuje rozkład na schemacie nr. 2.
 ![Schemat 11](img/9svm_niemozliwy_podzial_schemat.png "Schmat SVM niemożliwy podział"){ height=20% } [^schemat_wzorowany]
 
 Z powyższego schematu widać że prosta marginalna ma zastosowanie w przypadku dwóch wymiarów, 
-dla większej ilości stosowane jest przeksztaucenie do innego systemu współrzędnych i szukanie hiperpłaszczyzny brzegowej dzielącej tak samo jak prosta punkty w przestrzeni na dwa zbiory.[^hiper] 
+dla większej ilości stosowane jest przeksztaucenie do innego systemu współrzędnych i szukanie hiperpłaszczyzny brzegowej dzielącej tak samo jak prosta punkty w przestrzeni na dwa zbiory.[@hiper] 
  
 #### Wyszukiwanie podziału 
 
 Idea działania maszyny wektorów nośnych opiera się na wyznaczenia minimalnej wartości wektora wag oraz przesunięcia (ang. _bias_) który geometrycznie opisuje współrzędne hiperpłaszczyzny. 
 
-![Schemat 13](img/16svm_wzor2.png "svm wzor"){ height=10% } [^svmW0]
+![Schemat 13](img/16svm_wzor2.png "svm wzor"){ height=10% } [@svmW0]
 
 
 ### K najbliższych sąsiadów
 
 **K najbliższych sąsiadów** (ang. _k nearest neighbours_, skr. **_KNN_**) to algorytm uczenia maszynowego nadzorowanego
 operający swoje estymacje dla konkretnego przypadku danch na wartościach jego K najbliższych sąsiadów(punktów) liczonych
-min. dla przestrzeni Euklidesowej [^3]. Do wyznaczenia odległości w metryce Euklidesowej stosowany jest wzór:
+min. dla przestrzeni Euklidesowej [@3]. Do wyznaczenia odległości w metryce Euklidesowej stosowany jest wzór:
 
-![Schemat 14 ](img/17euklides.png "Euklides"){ width=22% } [^manhattan]
+![Schemat 14 ](img/17euklides.png "Euklides"){ width=22% } [@manhattan]
 
 popularne są również przestrzenie Manhattan:
 
-![Schemat 15 ](img/18manhattan.png "Manhattan"){ width=22% } [^manhattan]
+![Schemat 15 ](img/18manhattan.png "Manhattan"){ width=22% } [@manhattan]
 
 oraz Mińkowskiego:
 
-![Schemat 16 ](img/19minkowski.png "Minkowski"){ width=22% } [^minkowski]
+![Schemat 16 ](img/19minkowski.png "Minkowski"){ width=22% } [@minkowski]
 
 Atrybut który nastraja proces uczenia się modelu i ma na niego największy wpływ określany jest jako hiperparametr. Dla
-KNN jest to liczba sąsiadów i może przyjmować maksymalnie wartości do rozmiaru zbioru cech. Im większa ilość jednostek mających wpływ, tym potęguje się niestety złożoność czasowa algorytmu, znacząco już większa od przedstawionych powyżej innych algoryrtmów,[^3] oraz tym bardziej wzrasta ryzyko nadmiernego dopasowania do modelu testowanego. 
+KNN jest to liczba sąsiadów i może przyjmować maksymalnie wartości do rozmiaru zbioru cech. Im większa ilość jednostek mających wpływ, tym potęguje się niestety złożoność czasowa algorytmu, znacząco już większa od przedstawionych powyżej innych algoryrtmów,[@3] oraz tym bardziej wzrasta ryzyko nadmiernego dopasowania do modelu testowanego. 
 
 W celu przewidzenia wartości dla nowych danych, należy odnaleść K najbliższych punktów wyliczając odległości, a
 następnie przpisać odpowiedź implikowaną przez większość sąsiadów. Dla wartości K równej jeden, metoda ta nazywana jest
@@ -329,12 +327,6 @@ algorytmem najbliższego sąsiada.
 Dla lekarza wartością dodatnią jest wykrycie zależności które decyzują o uznaniu lub zaprzeczeniu występowania choroby.
 Zastosowanie algorytmu KNN może nie tylko zakwalifikować osoby chorujące na serce, ale również ułatwić swoją graficzną
 reprezentacją wpływ cech na ostateczny osąd próbki.
-
-[^3]: Data Science from Scratch:First Principles with Python, Joel Grus, R.11,str140, Thoughtful Machine Learning with Python A Test-Driven Approach autor :Kirk Matthew r.1 str.8
-
-[^manhattan]: Comparison of A*, Euclidean and Manhattan distance using Influence Map in Ms. Pac-Man aut.:Sudip Karki,Hari Sagar Ranjitkar,Faculty of Computing Blekinge Institute of Technology
-
-[^minkowski]: The Minkowski approach for choosing the distance metric in geographically weighted regression Binbin Lua , Martin Charltonb , Chris Brunsdon and Paul Harrisc , School of Remote Sensing and Information Engineering, Wuhan University, Wuhan, China; National Centre for Geocomputation, National University of Ireland Maynooth, Maynooth, Co. Kildare, Ireland; Sustainable Soils and Grassland Systems, Rothamsted Research, North Wyke, Okehampton, Devon, UK
 
 
 # Opis praktycznej częsci projektu
@@ -354,7 +346,7 @@ Do przygotowania danych wykorzystano zestaw narzędzi *Pandas*, ułatwiający tw
 
 W celu wizualizacji wyników w postaci wykresów zastosowano, opartą na *Matplotlib*, bibliotekę *Seaborn* powszechnie stosowaną do rysowania estetycznej grfiki statystycznej.
 
-Część prezentacyjna czyli możliwość wprowadzenia danych w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzystuje bibliotkę *Flask*. Framework Flask ułatwia pisanie aplikacji internetowch i jest rozwiązaniem które daje duży zakres dowolności oraz możliwości. Flask sam z siebie nie definiuje warstwy bazy danych czy formularzy, pozwala za to na obsługę rozszerzeń które ubogacają aplikację o wybraną funkcjonalność. [^flask]
+Część prezentacyjna czyli możliwość wprowadzenia danych w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzystuje bibliotkę *Flask*. Framework Flask ułatwia pisanie aplikacji internetowch i jest rozwiązaniem które daje duży zakres dowolności oraz możliwości. Flask sam z siebie nie definiuje warstwy bazy danych czy formularzy, pozwala za to na obsługę rozszerzeń które ubogacają aplikację o wybraną funkcjonalność. [@flask]
 
 Przekazywanie obiektów o bardziej skomplikowanej budowie i ich _serializacja_ oraz _deserializacja_ do formatu JSON wykonane są za pomocą biblioteki *jsonpickle*, a zapis
 modeli wykonano za pomocą *joblib* która zapewnia obsługę obiektów Pythona i jest zoptymalizowana pod kątem pracy na dużych tablicach Numpy. [@libpyth] 
@@ -589,6 +581,7 @@ regresja kategoryczna -> rzutowanie przedziału wartości na wartość graniczn�
 ========
 Spis ilustracji{.unnumbered}
 ========
+[^schemat_wzorowany]:Na podstwie materiałów opublikowanych na [https://www.datacamp.com](http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1526288453/index3_souoaz.png)
 
 Spis tabel{.unnumbered}
 ========

@@ -1,28 +1,34 @@
 
 
-
+ -przypisy
+ -strona tytułowa
+-formatować zgodnie z tym co w dokuncie
+ 
 - uczenie przeprowadzić SVM, RF  CZEKAM
 - (dane) w Exelu do pracy
 - tresc wykresy pobrać ze strony 
 - tresc porownanie i analiza
 - treść  obróbka tego co jest
 
-________________________________________do 10
+________________________________________do 14
 
-_____________dopisać do stratyfikacji 
+_____________
 
 - obrazków biliografia,
 - bibilografie poprawić
  -spiswykresów
 - spis używanej terminologii
 - spis formuł mateatycznych
- -przypisy
--strona tytułowa
--formatować zgodnie z tym co w dokuncie
-- _______________________________________ do 11
+
+
+-_____________________________________________do 15
+
+- _______________________________________ po 15
 -wygenerować dokument
 -wniosek i mail do promotora
+- 
 - ________________________________potem
+- dopisać do stratyfikacji 
 - nagrać film-czekam
 - do poprawy prezentacja wyników
 - - wyczyścić projekt - usunąc doki 
