@@ -189,6 +189,8 @@ również dzięki temu że dane pochodzą z wielu krajów. Jeżeli zestaw wejśc
 lokalizacji to cecha dla której nie uzupełniono wartości zostałaby pominięta podczas treningu ze względu na brak
 danych, co skutowało by uboższym modelem i możliwe że pominięciem kluczowej cechy wpływającej na działanie.
 
+### Wstępna obróbka danych
+
 Proces przetwarzania danych może skladać sie z wielu róźnych kroków zależenie od typu, w uczeniu nadzorowanym operującym
 na danych tekstowo-liczbowych poprawnym będzie zastosowanie schematu przedstawionego poniżej:
 
@@ -198,7 +200,7 @@ na danych tekstowo-liczbowych poprawnym będzie zastosowanie schematu przedstawi
  Po złączeniu można przeprowadzić szereg działań w celu sztucznego uzupełnienia pustych wartości bazując na
 wartościach które już istnieją.
 
-### Obsługa brakujących wartości
+*Obsługa brakujących wartości*
 
 Możliwościami obsługi brakujących wartości są : mniej polecana ze względu na utrate danych, redukcja zestawu danych lub uzupełnienie go zgodnie z wybrany przez siebie założeniem. Biblioteki do nauczania
 maszynowego dostarczają już gotowe rozwiązania do upuszczenie wierszy lub kolumn zawierających wartości
@@ -213,7 +215,7 @@ obliczenia takie jak :
 
 Do wyznaczenia wartości uzupełniających można również użyć regresji liniowej.
 
-### Standaryzacja
+*Standaryzacja*
 
 Przeksztaucenie danych również bazujące na statystycznych założeniach i również ustandaryzowane w popularnych
 bibliotekach. Dąrzymy aby średnia wartoś wynosiła 0, a odchylenie standardowe 1 dla liczbowyh reprezentacji danych. Z
@@ -221,13 +223,13 @@ matematyczne punktu widzenia wykonujemy działanie
 
 ![Schemat 5](img/13wzor_1.png "wzór: podejmujemy średnią i dzielimy ją przez odchylenie standardowe"){ width=20% } [^standar]
 
-### Obsługa zmiennych kategorialnych
+*Obsługa zmiennych kategorialnych*
 
 Cechy kategorialne dzielą się na dwie zasadnicze grupy ze względu na mozliwość uprorządkowania , dane takie jak
 wyksztaucenie , rozmiar podlegają mapowaniu , dane typu kolor lub płeć podlegaja kodowaniu. W ten sposób dane
 kategoryczne staja się wartosciami liczbowymi.
 
-#### Reporezentacja wektorowa
+*Reporezentacja wektorowa*
 
 Obsługa danych kategorialnych pozwoliła zmapować/zakodować je w postaci liczbowej, ale można pójść o krok dalej i te
 same dane mieć w postaci 0 lub 1 na odpowiedniej kolumnie. Rozwiązanie reprezentacji wektorowej polega na utworzeniu
@@ -310,7 +312,7 @@ Biblioteki w większości posiadają otwarty kod źródłowy,  napisany w język
 Zgodnie z poniższym schematem po przeprocesowaniu wejściowego zbioru danych, należy go podzielić na dane treingowe oraz ewaluacyjne. Powszechnie stosowana K krzyżowa walidacja umożliwia maksymalne wykorzystanie dostarczonego wejścia do dostrajania parametrów modelu, ponieważ optymalizacja hiperparametrów połączone z ciągłą weryfikacją poprawności to sedno treningu.
 
 
-![Schemat 8](img/6Nauczanie_maszynowe_rozszerzone.png "Szczegółowy schemat machine learning flow"){ height=60% }
+![Schemat 8](img/6Nauczanie_maszynowe_rozszerzone.png "Szczegółowy schemat machine learning flow"){ height=40% }
 
 
 **K-krotna walidacja krzyżowa** (ang. _K-fold Cross Validation_, KCV ) - metoda weryfikacji działająca poprzez podział
@@ -325,7 +327,7 @@ znalezienie najlepszego modelu można go wykorzystać do weryfikacji na danych s
 
 ## Wybrane algorytmy uczenia maszynowego nadzorowanego
 
-####  Losowe lasy decyzyjne
+### Losowe lasy decyzyjne
 
 **Drzewa decyzyjne** (ang. _decisions trees_ ) są uznawane za najprostyszy i najbliższy ludzkiemu zrozumieniu algorytm
 uczenia, który swoją nazwę zawdzięcza graficznej reprezentacji w postaci drzewa. Każdy węzeł oznacza atrybut, na
@@ -355,14 +357,14 @@ decyzyjnych ma potencjał na pozytywne rezulataty.
 
 [^forest]:  Breiman, L. (2001), Random forests, Machine Learning 45: 5–32, FROM SINGLE TREES TO A RANDOM FOREST Tomasz Demski, StatSoft Polska Sp. z o. o
 
-#### Maszyna wektorów nośnych
+### Maszyna wektorów nośnych
 
 **Metoda wektorów nośnych** (ang. _support_ _vector_ _machines_ , skr. **_SVM_**) to algorytm uczenia maszynowego
 nadzorowanego, który każdy parametr z dostępnych cech dla danych wejściowych, traktuje jako punkt w przestrzeni. Na
 podstawie ułożenia punktów dzieli się je na 2 klasy. Graficznie jest to reprezentowane przez prostą dla której odległość
 między najbliższymi dwoma punktami dla wektorów jest możliwie największa.
 
-![Schemat 10 ](img/10svm_schemat.png "Schmat SVM"){ height=40% } [^schemat_wzorowany]
+![Schemat 10 ](img/10svm_schemat.png "Schmat SVM"){ height=20% } [^schemat_wzorowany]
 
 Taka prosta nazywana jest  _prostą marginalną_
 i powstaje ona poprzez generowanie i selekcję tych prostych które rzetelnie szufladkują klasy danych [^3].
@@ -371,7 +373,7 @@ Techinka ta gwarantuje precyzyjniejsze rezulatay niż drzewa decyzyjne, niestety
 szkolenia znacznie się wydłuża oraz istnieją przypadki dla których podział jedną prostą jest niewykonalny, taki
 przypadek reprezentuje rozkład na schemacie nr. 2.
 
-![Schemat 11](img/9svm_niemozliwy_podzial_schemat.png "Schmat SVM niemożliwy podział"){ height=40% } [^schemat_wzorowany]
+![Schemat 11](img/9svm_niemozliwy_podzial_schemat.png "Schmat SVM niemożliwy podział"){ height=20% } [^schemat_wzorowany]
 
 Z powyższego schematu widać że prosta marginalna ma zastosowanie w przypadku dwóch wymiarów, 
 dla większej ilości stosowane jest przeksztaucenie do innego systemu współrzędnych i szukanie hiperpłaszczyzny brzegowej dzielącej tak samo jak prosta punkty w przestrzeni na dwa zbiory.[^hiper] 
@@ -380,28 +382,28 @@ dla większej ilości stosowane jest przeksztaucenie do innego systemu współrz
 
 Idea działania maszyny wektorów nośnych opiera się na wyznaczenia minimalnej wartości wektora wag oraz przesunięcia (ang. _bias_) który geometrycznie opisuje współrzędne hiperpłaszczyzny. 
 
-![Schemat 13](img/16svm_wzor2.png "svm wzor") [^svmW0]
+![Schemat 13](img/16svm_wzor2.png "svm wzor"){ height=20% } [^svmW0]
 
 
 [^hiper]: @article {HUANG41,author = {HUANG, SHUJUN and CAI, NIANGUANG and PACHECO, PEDRO PENZUTI and NARRANDES, SHAVIRA and WANG, YANG and XU, WAYNE},	title = {Applications of Support Vector Machine (SVM) Learning in Cancer Genomics},	volume = {15},	number = {1},	pages = {41--51},	year = {2018},	publisher = {International Institute of Anticancer Research},	issn = {1109-6535},	URL = {https://cgp.iiarjournals.org/content/15/1/41},	eprint = {https://cgp.iiarjournals.org/content/15/1/41.full.pdf},	journal = {Cancer Genomics \& Proteomics}}
 
 [^svmW0]:Maszyna Wektorów Nośnych,Anna Pielowska
 
-#### K najbliższych sąsiadów
+### K najbliższych sąsiadów
 
 **K najbliższych sąsiadów** (ang. _k nearest neighbours_, skr. **_KNN_**) to algorytm uczenia maszynowego nadzorowanego
 operający swoje estymacje dla konkretnego przypadku danch na wartościach jego K najbliższych sąsiadów(punktów) liczonych
 min. dla przestrzeni Euklidesowej [^3]. Do wyznaczenia odległości w metryce Euklidesowej stosowany jest wzór:
 
-![Schemat 14 ](img/17euklides.png "Euklides"){ width=20% } [^manhattan]
+![Schemat 14 ](img/17euklides.png "Euklides"){ width=22% } [^manhattan]
 
 popularne są również przestrzenie Manhattan:
 
-![Schemat 15 ](img/18manhattan.png "Manhattan"){ width=20% } [^manhattan]
+![Schemat 15 ](img/18manhattan.png "Manhattan"){ width=22% } [^manhattan]
 
 oraz Mińkowskiego:
 
-![Schemat 16 ](img/19minkowski.png "Minkowski"){ width=20% } [^minkowski]
+![Schemat 16 ](img/19minkowski.png "Minkowski"){ width=22% } [^minkowski]
 
 Atrybut który nastraja proces uczenia się modelu i ma na niego największy wpływ określany jest jako hiperparametr. Dla
 KNN jest to liczba sąsiadów i może przyjmować maksymalnie wartości do rozmiaru zbioru cech. Im większa ilość jednostek mających wpływ, tym potęguje się niestety złożoność czasowa algorytmu, znacząco już większa od przedstawionych powyżej innych algoryrtmów,[^3] oraz tym bardziej wzrasta ryzyko nadmiernego dopasowania do modelu testowanego. 
@@ -671,7 +673,8 @@ regresja kategoryczna -> rzutowanie przedziału wartości na wartość graniczn�
 
 
 
-## **Bibliografia**
+ **Bibliografia**{.unnumbered}
+========
 
 @article{scikit-learn, title={Scikit-learn: Machine Learning in {P}ython}, author={Pedregosa, F. and Varoquaux, G. and
 Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P. and Weiss, R. and
@@ -679,6 +682,8 @@ Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M.
 journal={Journal of Machine Learning Research}, volume={12}, pages={2825--2830}, year={2011} }
 
 
-## Spis ilustracji
+Spis ilustracji{.unnumbered}
+========
 
-## Spis tabel
+Spis tabel{.unnumbered}
+========

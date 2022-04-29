@@ -2,7 +2,7 @@
 - spis treści
 
 - poprawić obrazki z drawi.io
-- tresc dalsze teoretyczne rozważania
+- tresc dalsze teoretyczne rozważania todo plus obróbka tego co jest
 - spis używanej terminologii
 - spis formuł mateatycznych
  -przypisy
