@@ -23,7 +23,7 @@ data, which diagnoses the presence or absence of cardiovascular disorders.
 Medical data is distinguished by the fact that it is difficult to access it, most often it is not information that is
 made available for public use, therefore, a key step is to choose the features taken into account when creating the
 model. The data obtained from the UCI repository has already undergone preliminary processing, the dataset itself, due
-to its small size, allows you to check the operation of algorithms without getting rid of redundant and insignificant
+to its small size, allows checking effects of algorithms without getting rid of redundant and insignificant
 features.
 
 The main motive is to answer the question of how data deficiency strongly influences the outcome and whether there is a
@@ -43,25 +43,23 @@ złożonych danych medycznych, w celu przewidzenia wystąpienia choroby u konkre
 od stony specjalisty.
 
 Do tego przeznaczenia istnieje możliwość zastosowania uczenia nadzorowanego (ang. _supervised learning_) tj. rodzaj
-uczenia maszynowego zakładający istnienie zbioru danych testowych zawierających odpowiedzi, na ich podstawie wyszukiwane
-są zależności znaczące oraz budowany jest model do przewidywania wartości.
+uczenia maszynowego zakładający istnienie zbioru danych testowych zawierających odpowiedzi, na których podstawie wyszukiwane
+są zależności, cechy znaczące oraz budowany jest w ten sposób model służący przykładowo do przewidywania przyszłych wartości.
 
 W przypadku danych dotyczących chorób zależności typujące występowanie choroby, bazują na podstawie konkretnych wyników
 badań zgormadzonych w repozytorium UCI.
 
-W dzisiejszych czasach choroby sercowo-naczyniowe stanowią najczęstszą przyczynę zgonów,a liczba osób cierpiących na te
+W dzisiejszych czasach choroby sercowo-naczyniowe stanowią najczęstszą przyczynę zgonów, a liczba osób cierpiących na te
 dolegliwości stale rośnie. Głównymi przyczynami zachorowalności diagnozowanymi przez specjalistów są niski poziom
-świadomości i profilaktyki chorób serca. Objawy są tym silniejsze im gorszy jest stan chorobowy pacjenta.
-
-Dlatego prowadzone są intensywne prace nad zwiększeniem dostępności badań, które wspomogą diagnostykę kardiologiczną na
+świadomości i profilaktyki chorób serca.Dlatego prowadzone są intensywne prace nad zwiększeniem dostępności badań, które wspomogą diagnostykę kardiologiczną na
 jak najwcześniejszym etapie [^1].
 
 Powodem szukania dokładniejszych sposobów diagnozowania są również wysokie koszty leczenia generowane przez choroby
 układu krwionośnego. Według analityków firmy konsultingowej KPMG [^KPMG] w 2011 r. koszty diagnostyki i terapii chorób
 serca wyniosły ponad 15 miliardów polskich złotych.
 
-Zastosowanie uczenia maszynowego w medycynie, pozwala na przetwarzanie dużych zasobów historycznych wyników medycznych,
-głównie zależności przyczynowo skutkowych , które mogą zostać wykorzystane do diagnostyki lub leczenia [^2].
+Uczenie maszynowe poprzez przetwarzanie dużych zasobów klinicznych danych historycznych pod kątem zależności przyczynowo skutkowych, 
+ może zostać wykorzystane do wczesnej diagnostyki lub wspomagania leczenia pacjentów [^2].
 
 Słowa kluczowe: uczenie maszynowe, uczenie nadzorowane, lasy losowe, maszyna wektorów nośnych, k-najbliższych sąsiadów
 
@@ -92,20 +90,19 @@ złożoności oraz czasu uzyskania odpowiedzi.
 
 W pracy opisano następujące algorytmu uczenia nadzorowanego:
 
-- lasy decyzyjne (ang. _decisions-forests_)
-- metoda wektorów nośnych (ang. _support vector machines_, SVM)
+- losowe lasy decyzyjne (ang. _random_ _decision_ _forests_)
+- maszyna wektorów nośnych (ang. _support vector machines_, SVM)
 - k-najbliższych sąsiadów (ang. _k-neares neighbours_, KNN)
 
 **Wprowadzenie teorertyczne**
 ========
 
-**Uczenie maszynowe** (ang. _machine learning_, ML)  to dziedzina zajmująca się tworzeniem modeli  do analizy bardzo obszernych zasobów danch. 
-Modele utworzone za pomocą algorytmów uczenia maszynowego są w stanie z wysokim prawdopodobieństwem wystawić predyckję lub dokonać klasyfikacji na temat zadanego problemu. 
+**Uczenie maszynowe** (ang. _machine learning_, ML) to dziedzina zajmująca się tworzeniem modeli do analizy bardzo obszernych zasobów danch. Modele utworzone za pomocą algorytmów uczenia maszynowego są w stanie z wysokim prawdopodobieństwem wystawić predyckję lub dokonać klasyfikacji na temat zadanego problemu. 
 
-Model _klasyfikacjny_ służy do przewidzenia etykiety klasy poprzez mapowanie na już z góry ustalony jednowymiarowy pozdział, model _regresywny_ natomiast mapuje przestrzeń ustalając liczbę klas podziału oraz grupująć wartości. Istnieje możliwość przeksztaucenia problemu regresywnego na klasyfikacyje i na odwrót poprzez zamiane wartości oczekiwanego wyniku. Taką modyfikację zastosowano w praktycznej częsci projektu. Wyniki dla danych występowały w wartościach od 0 do 4 , dla wartości <1,4> przypadek testpwy uznawany był za sklasyfikowany pozytywny chory, dlatego przeksztaucenie z modelu regresywnego do modelu klasyfikacyjnego polega na konwersji wyników do wartości liczbowych 0 - brak stwierdzenia stanu choroboweo oraz 1 - stwierdzenie o chorobie układu krążenia. [^clsvsreg]
+Model _klasyfikacjny_ służy do przewidzenia etykiety klasy poprzez mapowanie na już z góry ustalony jednowymiarowy pozdział, model _regresywny_ natomiast mapuje przestrzeń ustalając liczbę klas podziału oraz grupując wartości. [^clsvsreg] Istnieje możliwość przeksztaucenia problemu regresywnego na klasyfikacyje i na odwrót poprzez zamiane wartości oczekiwanego wyniku. Taką modyfikację zastosowano w praktycznej częsci projektu. Wyniki dla danych występowały w wartościach od 0 do 4 , dla wartości <1,4> przypadek testowy uznawany był za sklasyfikowany pozytywny (chory), dlatego przeksztaucenie z modelu regresywnego do modelu klasyfikacyjnego polega na konwersji wyników do wartości liczbowych 0 - brak stwierdzenia stanu choroboweo oraz 1 - stwierdzenie o chorobie układu krążenia. 
 
-Sposób wykorzystania segreguje alorytmy uczenia maszynowego na dwie kategorie, jednak powszechnie stosowanym podziałem jest zależnie od
-sposobu _trenowania_ algorytmu. Algorytmy dzieli się na min.: uczenie nadzorowane, uczenie bez nadzoru oraz uczenie przez
+Sposób wykorzystania segreguje alorytmy uczenia maszynowego na dwie kategorie, jednak powszechnie stosowanym podziałem jest podział zależnie od
+sposobu _trenowania_ algorytmu. Algorytmy dzieli się na min.: uczenie nadzorowane, uczenie częściowo nadzorowane, uczenie bez nadzoru oraz uczenie przez
 wzmacnianie [^3] .
 
 ![Schemat 1](img/1_algorithms_category.png "Algorytmy z podziałem na kategorie"){ width=70% }
@@ -113,14 +110,14 @@ wzmacnianie [^3] .
 Dobór typu uczenia oraz algorytmu uzależniony jest od danych wejściowych oraz oczekiwanego rezultatu. Dane wyjściowe
 mogą przyjmować format odpowiedzi TAK/NIE , klasyfikacji do danego zbioru czy np procentowej oceny ryzyka.
 
+
 **Uczenie maszynowe nadzorowane** (ang. _supervised learning_) to klasa algorytmów uczenia maszynowego, która bazuje na
-poetykietowanych danych. Ten typ uczenia świetnie nadaje się do rozwiązywania problemów z zakresu klasyfikacji. Nadzór
-polega na porównaniu rezultatów działania modelu z wynikami które są zawarte w danych wejściowych(_dane oznaczone_).
+poetykietowanych danych. Nadzór polega na porównaniu rezultatów działania modelu z wynikami które są zawarte w danych wejściowych ( _dane oznaczone_ ) [^learning].
 Algorytm po osiągnięciu żądanej efektywnosci jest w stanie dokonać klasyfikacji przykładu dla którego nie posiada
 odpowiedzi. Sprawdza się to obecnie w rekomendacji produktów oraz diagnozie chorób. Z matematycznego puntu widzenia
 dopasowanie danych oznaczonych nazywane jest aproksymacją funkcji [^3] .
 
-**Uczenie maszynowe bez nadzoru** (ang. _unsupervised learning_) to klasa algroytmów uczenia maszynowego która głownie
+**Uczenie maszynowe bez nadzoru** (ang. _unsupervised learning_) to klasa algroytmów uczenia maszynowego która wiodąco
 rozwiązuje problemy grupowania. Dane dostarczane do modelu nie zawierają _oznaczeń_, zatem nauczanie polega na
 wyciąganiu konkluzji z poprzednio wykonanych iteracji. Na skuteczność modeli budownych w oparciu o uczenie bez nadzoru
 wpływ ma rozmiar dostarczonego do nauki zbioru danch, im jest on większy tym bardziej wzrasta effektywność. Takie zbiory
@@ -137,8 +134,7 @@ Algorytm generując dane wejściowe dostosowuje reguły by uzyskać zwrotnie syg
 Podział osób na kategorie cierpiące na choroby sercowo-naczyniwe oraz zdrowe, to dylemat klasyfikayjny nadający się do
 rozwiązania za pomoca algorytmów uczenia maszynowego nadzorowanego i na nich skupia się dalsza część pracy.
 
-[^3]: Data Science from Scratch:First Principles with Python, Joel Grus, R.11,str140, Thoughtful Machine Learning with
-Python A Test-Driven Approach autor :Kirk Matthew r.1 str.8
+[^learning]: The use of machine learning methods in predicting stock prices on the stock exchange. Autor: Tomasz Łysiak
 
 [^reinfor-learning]: An Overview of Machine Learning Methods Used in Sentiment Analysis. Justyna Laska
 
@@ -159,7 +155,7 @@ Python A Test-Driven Approach autor :Kirk Matthew r.1 str.8
 Sensem wykorzystania uczenia maszynowego jest prognoza lub klasyfikacja rzeczywistych wartości z dużego zbioru danych
 które mogą znaleść zastosowanie w praktycznych dziedzinach. Im bardziej dokładne i rzeczywiste dane do testowania i
 tworzenia modelu tym większe prawdopodobieństwo otrzymania realnych wyników na końcu ścieżki uczenia. W celu
-gromadzenia zaufanej bazy dostępnych zbiorów danych testowych powstało repozytorium uczenia maszynowego UCI. Jak podaje
+gromadzenia miarodajnej bazy dostępnych zbiorów danych testowych powstało repozytorium uczenia maszynowego UCI. Jak podaje
 strona informacyjna :
 
 > ... było ono cytowane ponad 1000 razy, co czyni je
@@ -172,8 +168,8 @@ lokalizacji
 
 1. Fundacja Cleveland Clinic [^5]
 2. Węgierski Instytut Kardiologii, Budapeszt  [^hungary]
-3. V.A. Centrum medyczne, Long Beach, Kalifornia (long-beach-va.data) [^5]
-4. Szpital Uniwersytecki, Zurych, Szwajcaria (switzerland.data) [^switzerland].
+3. V.A. Centrum medyczne, Long Beach, Kalifornia  [^5]
+4. Szpital Uniwersytecki, Zurych, Szwajcaria  [^switzerland].
 
 Wyróżniono 14 atrybutów spośród 76 zebrancyh do wykorzystania w algorytmach uczenia maszynowego, wszystkie z nich mają
 wartośi liczbowe.
@@ -185,25 +181,25 @@ wartośi liczbowe.
 
 W przypadku danych testowych z repozytorium UCI, fakt iż dane pochodziły z róźnych lokalizacji ma duże znaczenie ,gdyż
 od placówki medycznej zależy jakim badaniom poddani zostali pacjęci a co za tym idzie w jakich kolumnach tabelarycznego
-przedstawienia będą mieć uzupełnione bądź puste wartości. Scalenie ze sobą dataset'ów dostarcza większej różnorodności
-również dzięki temu że dane pochodzą z róźnych krajów. Jeżeli zestaw wejściowy zostałby ograniczony do jednej
+przedstawienia będą mieć uzupełnione bądź puste wartości. Scalenie ze sobą wyników badań dostarcza większej różnorodności
+również dzięki temu że dane pochodzą z wielu krajów. Jeżeli zestaw wejściowy zostałby ograniczony do jednej
 lokalizacji to cecha dla której nie uzupełniono wartości zostałaby pominięta podczas treningu ze względu na brak
-danych.
+danych, co skutowało by uboższym modelem i możliwe że pominięciem kluczowej cechy wpływającej na działanie.
 
 Proces przetwarzania danych może skladać sie z wielu róźnych kroków zależenie od typu, w uczeniu nadzorowanym operującym
 na danych tekstowo-liczbowych poprawnym będzie zastosowanie schematu przedstawionego poniżej:
 
-![Schemat 4](img/2_data_preprocessing.png "Wstępna obróbka danych"){ width=60% }
+![Schemat 4](img/2_data_preprocessing.png "Wstępna obróbka danych"){ width=40% }
+
 
  Po złączeniu można przeprowadzić szereg działań w celu sztucznego uzupełnienia pustych wartości bazując na
 wartościach które już istnieją.
 
 ### Obsługa brakujących wartości
 
-Możliwości obsługi brakujących wartości są jak już przedstawiono powyżej sa 2 : mniej polecana ze względu na utrate
-danych, redukcja dataset'u lub uzupełnienie go zgodnie z wybrany przez siebie założeniem. Biblioteki do nauczania
+Możliwościami obsługi brakujących wartości są : mniej polecana ze względu na utrate danych, redukcja zestawu danych lub uzupełnienie go zgodnie z wybrany przez siebie założeniem. Biblioteki do nauczania
 maszynowego dostarczają już gotowe rozwiązania do upuszczenie wierszy lub kolumn zawierających wartości
-null.Uzupełnienie danych inaczej imputacja, rozwiązuje problem w mniej stratny sposób i tak samo jak do redukcji są już
+_null_. Uzupełnienie danych inaczej _imputacja_, rozwiązuje problem w mniej stratny sposób i tak samo jak do redukcji są już
 gotowe rozwiązania w bibliotece sklearn. Istnieją 4 różne strategie uzupełniania wykorzystujące proste matematyczne
 obliczenia takie jak :
 
@@ -230,26 +226,27 @@ kategoryczne staja się wartosciami liczbowymi.
 
 #### Reporezentacja wektorowa
 
-Obsługa danych kategorialnych pozwoliła zmapować/zakodować je w postaci liczbowej ,ale można pójść o krok dalej i te
+Obsługa danych kategorialnych pozwoliła zmapować/zakodować je w postaci liczbowej, ale można pójść o krok dalej i te
 same dane mieć w postaci 0 lub 1 na odpowiedniej kolumnie. Rozwiązanie reprezentacji wektorowej polega na utworzeniu
-tylu kolumn ile jest unikalnych wartości dla kategorii i wpisanie 0 lub 1 dla każdego rekordu danych.
+tylu kolumn ile jest unikalnych wartości dla kategorii i wpisanie 0 lub 1 dla każdego rekordu danych [^wektor] .
 
 ##### Współliniowość cech
 
 Aby znaleść korelacje współliniowości należy szukać liniowej zależności pomiędzy danymi, najłatwiej zauważyć to tworząc
-wykresy z danych testowych dla każdej pary.
+wykresy z danych testowych dla każdej pary [^wektor] .
 
 [TODO] Wwykresy dla cech
 
-[^standar]: 
+[^standar]: Peshawa J. Muhammad Ali, Rezhna H. Faraj; “Data Normalization and Standardization: A Technical Report”, Machine Learning Technical Reports, 2014, 1(1), pp 1-6.
+
+[^wektor]: Introduction to Data Preprocessing in Machine Learning Beginners Guide for Data Preprocessing Dhairya Kumar
 
 # Opis praktycznej częsci projektu
 
 ## Moduły projektu:
 
 - Config - zawiera statyczne zasoby oraz konfigurację logowania projektu
-- Data - moduł odpowiada za wczytywanie i obróbkę danych testowych, oraz objety danych wykorzystywanych przy uczeniu
-  oraz zapisie modelu
+- Data - moduł odpowiada za wczytywanie i obróbkę danych testowych, oraz zawiera definicje objektów wykorzystywanych przy uczeniu oraz zapisu modelu
 - Management:
 
     - PlotGeneration - moduł odpowiedzialny za prezentację wyników w postaci wykresów porównujących algorytmy oraz
@@ -259,13 +256,13 @@ wykresy z danych testowych dla każdej pary.
         - RF - implepmentacja treningu algorytmu Lasów losowych
         - KNN - implepmentacja treningu algorytmu K-najbliższych sąsiadów
         - SVM - implepmentacja treningu algorytmu Maszyny wektorów nośnych
-- Static - forlder z obrazkami , plikami stylów oraz javascript i jQuerry wykorzystywanych przez Flask
-- Templates - folder z stronami html
+- Static - forlder z grafikami, plikami stylów, skryptami javascript i jQuerry 
+- Templates - folder z stronami html wykorzystującymi dyrektywy Flask
 
 Projekt posiada dwa tryby pracy :
 
-- tryb nauczania na podstawie danych testowych - machine learning z wykorzystaniem 3 algorytmów
-- tryb aplikacji web - wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli
+- tryb nauczania na podstawie danych testowych - machine learning z wykorzystaniem 3 algorytmów (_Run_Learning_Proces.xml_)
+- tryb aplikacji web - wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli (_Run_Web_Application.xml_)
 
 Poniżej przedstawiono plan działania:
 
@@ -276,38 +273,36 @@ Poniżej przedstawiono plan działania:
 
 ## Narzędzia i biblioteki zastosowane w pojekcie
 
-Praktyczna część pracy napisana została w języku Python z wykorzystaniem scikit-learn, obsługującym wiele algorytmów
+Praktyczna część pracy napisana została w języku Python z wykorzystaniem *scikit-learn*, obsługującym wiele algorytmów
 maszynowego uczenia się w tym uczenia nadzorowanego i docelowo wybranych algorytmów przedstawionych w teoretycznej
 części pracy.
 
 ![Schemat 7](img/15scikit-learn-logo.png "scikit-learn logo"){ height=10% }
 
-Biblioteka opiera się o Numpy oraz Scipy, zestaw narzędzi do obliczeń na macierzach, wektorach oraz umożliwiający metody
-numeryczne takie jak całkowanie, różniczkowanie itp [^scikit].  
+Biblioteka opiera się o *Numpy* oraz *Scipy*, daje zestaw narzędzi do obliczeń na macierzach, wektorach oraz umożliwiający metody
+numeryczne takie jak całkowanie, różniczkowanie i temu podobne [^scikit]. W rezultacie można za jej pomoca wykonać elementy procesu nauczania algorytmu, takie jak: przetwarzanie wstępne, redukcja wymiarowości, klasyfikacja, regresja. [^libpyth] 
 
-Do przygotowania danych wykorzystano zestaw narzędzi Pandas, ułatwiający tworzenie struktur danych i ich analizę. W celu
-wizualizacji wyników w postaci wykresów zastosowano Matplotlib. Część prezentacyjna czyli możliwość wprowadzenia danych
-w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzystuje bibliotkę Flask. Przekazywanie
-obiektów o bardziej skomplikowanej budowie serializowano do formatu JSON są za pomocą biblioteki jsonpickle, a zapis
-modeli wykonano za pomocą joblib która zapewnia taką obsługę obiektów Pythona.
+Do przygotowania danych wykorzystano zestaw narzędzi *Pandas*, ułatwiający tworzenie struktur danych i ich analizę. 
 
-Biblioteki w większości posiadają otwarty kod źródłowy , głównie napisany w języku Python[^libpyth].
+W celu wizualizacji wyników w postaci wykresów zastosowano, opartą na *Matplotlib*, bibliotekę *Seaborn* powszechnie stosowaną do rysowania estetycznej grfiki statystycznej.
 
-[todo rzobudować]
+Część prezentacyjna czyli możliwość wprowadzenia danych w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzystuje bibliotkę *Flask*. Framework Flask ułatwia pisanie aplikacji internetowch ponieważ jest rozwiązaniem które daje duży zakres dowolności oraz możliwości. Flask sam z siebie nie definiuje warstwy bazy danych czy formularzy, pozwala za to na obsługę rozszerzeń które ubogacają aplikację o wybraną funkcjonalność. [^flask]
 
-[^scikit]: @article{scikit-learn, title={Scikit-learn: Machine Learning in {P}ython}, author={Pedregosa, F. and
-Varoquaux, G. and Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P. and
-Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and
-Duchesnay, E.}, journal={Journal of Machine Learning Research}, volume={12}, pages={2825--2830}, year={2011}}
+Przekazywanie obiektów o bardziej skomplikowanej budowie i ich _serializacja_ oraz _deserializacja_ do formatu JSON wykonane są za pomocą biblioteki *jsonpickle*, a zapis
+modeli wykonano za pomocą *joblib* która zapewnia obsługę obiektów Pythona i jest zoptymalizowana pod kątem pracy na dużych tablicach Numpy. [^libpyth] 
+
+Biblioteki w większości posiadają otwarty kod źródłowy , głównie napisany w języku Python [^libpyth].
+
+
+[^scikit]: @article{scikit-learn, title={Scikit-learn: Machine Learning in {P}ython}, author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P. and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.}, journal={Journal of Machine Learning Research}, volume={12}, pages={2825--2830}, year={2011}}
 
 [^libpyth]: Podejście porównawcze do algorytmów uczenia się maszynowego ,Samrudhi Rajendra Kaware , Vinod Subhasharao Wande
 
+[^flask]: @book{grinberg2018flask,  title={Flask web development: developing web applications with python},  author={Grinberg, Miguel},  year={2018},  publisher={" O'Reilly Media, Inc."}}
+
 ## Trening algorytmu
 
-Zgodnie z poniższym schematem po przeprocesowaniu wejściowego dataset'u, dane należy podzielić na dane treingowe oraz
-ewaluacyjne. Powszechnie stosowana K krzyżowa walidacja umożliwia maksymalne wykorzystanie dostarczonego wejścia do
-dostrajania parametrów modelu, ponieważ optymalizacja hiperparametrów połączone z ciągłą weryfikacją poprawności to
-sedno treningu.
+Zgodnie z poniższym schematem po przeprocesowaniu wejściowego zbioru danych, należy go podzielić na dane treingowe oraz ewaluacyjne. Powszechnie stosowana K krzyżowa walidacja umożliwia maksymalne wykorzystanie dostarczonego wejścia do dostrajania parametrów modelu, ponieważ optymalizacja hiperparametrów połączone z ciągłą weryfikacją poprawności to sedno treningu.
 
 
 ![Schemat 8](img/6Nauczanie_maszynowe_rozszerzone.png "Szczegółowy schemat machine learning flow"){ width=80% }
@@ -321,7 +316,7 @@ Kluczowym elementem jest ewaluacja która odbywa się na końcu każdej z k-1 it
 osiągnięciu wymaganych lub ustalonych wartości dokładności modelu lub weryfikacji wszystkich możliwych opcji i
 znalezienie najlepszego modelu można go wykorzystać do weryfikacji na danych spoza zestawu testowego.
 
-[^kfold]: The ‘K’ in K-fold Cross Validation Authors: D. Anguita,L. Ghelardoni,A. Ghio,ONETO, LUCA,S. Ridella
+[^kfold]: The ‘K’ in K-fold Cross Validation Authors: D. Anguita,L. Ghelardoni,A. Ghio,ONETO, LUCA,S. Ridella oraz Mastering Machine Learning Algorithms: Expert techniques to implement popular machine learning algorithms and fine-tune your models Giuseppe Bonaccorso
 
 ## Wybrane algorytmy uczenia maszynowego nadzorowanego
 
@@ -334,29 +329,26 @@ determinuje to otrzymany rezultat [^3] .
 
 ![Schemat 9](img/3drzewo_decyzyjne_schemat.png "Schmat Drzewa decyzyjnego"){ width=50% }
 
-Prawie każdy algorytm uczenia maszynowego nadzorowanego można podzielić na dwa etapy. W pierwszym opracowywany jest
-wzorzec, na którym bazuję późniejsza predykcja. Etap nauki dla drzewa decyzyjnego polega na typowaniu atrybutów,które
-staja się węzłami decyzyjnymi, dzielącymi rekordy na dwa mniejsze zestawy i tak aż nie ma możliwości dalszego podziału.
+Prawie każdy algorytm uczenia maszynowego nadzorowanego można podzielić na dwa etapy. W pierwszym opracowywany jest wzorzec, na którym bazuję późniejsza predykcja. Etap nauki dla drzewa decyzyjnego polega na typowaniu atrybutów, które staja się węzłami decyzyjnymi, dzielącymi rekordy na dwa mniejsze zestawy i tak aż nie ma możliwości dalszego podziału.
 
 Na metodologie drzew decyzyjnych oparta jest dokładniejsza forma nauczania nadzorowanego:  _losowe lasy decyzyjne._
 
 **Losowe lasy decyzyjne** (ang. _random decision forests_) to technika polegająca na połączeniu wielu drzew decyzyjnych
 w celu uniknięcia problemu z _nadmiernym dopasowaniem_ do treningowego zestawu danych na którym został przeszkolony.
+
 Utworzony szablon aby poprawnie działać na danych testowych i służacych weryfikacji, nie może stać się
-charakterystycznym przypadkiem rozwiązującym przypadek testowy [^3].
-
-W tym celu dla loswoych lasów decyzyjnych najpierw stosuję się **agregację bootstrap'ową**.
-
-Z treningowego zestawu danch losuję się, co ważne z możliwymi powtorzeniami, wiersze danych dla których trenowany będzie
+charakterystycznym przypadkiem rozwiązującym przypadek testowy [^3]. W tym celu dla loswoych lasów decyzyjnych najpierw stosuję się **agregację bootstrap'ową**.
+Z treningowego zestawu danch losuję się, z możliwymi powtorzeniami, wiersze danych dla których trenowany będzie
 model. Jako rezutat brana jest większość lub średnia wartości uzyskanych wyników dla poszczególnych drzew dezycyjnch.
 Dodatkowo dla drzew decyzyjnych w lasach losowych, atrybuty odpowiadające za kategoryzację są wybierane z wylosowanego
-podzbioru.
+podzbioru.[^forest]
 
 Wśrod zalet lasów losowych nalezy wyróżnić iż potrafią one trafnie wykalkulować brakujace wartości cech. Idealnie
 znajdują zastosowanie dla realnych danych, których zasadniczym problemem jest ich niekompletność.  
 Dane medyczne posiadają szeroką wariację zmiennych z dużym prawdopodobieństwem wybrakownia, zastosowanie do nich lasów
 decyzyjnych ma potencjał na pozytywne rezulataty.
 
+[^forest]:  Breiman, L. (2001), Random forests, Machine Learning 45: 5–32, FROM SINGLE TREES TO A RANDOM FOREST Tomasz Demski, StatSoft Polska Sp. z o. o
 
 #### Maszyna wektorów nośnych
 
@@ -377,13 +369,14 @@ przypadek reprezentuje rozkład na schemacie nr. 2.
 ![Schemat 11](img/9svm_niemozliwy_podzial_schemat.png "Schmat SVM niemożliwy podział"){ width=50% } [^schemat_wzorowany]
 
 Z powyższego schematu widać że prosta marginalna ma zastosowanie w przypadku dwóch wymiarów, 
-dla większej ilości stosowane jest przeksztaucenie do innego systemu współrzędnych i szukanie hiperpłaszczyzna brzegowej dzielącej tak samo jak prosta punkty w przestrzeni na dwa zbiory.[^hiper] 
+dla większej ilości stosowane jest przeksztaucenie do innego systemu współrzędnych i szukanie hiperpłaszczyzny brzegowej dzielącej tak samo jak prosta punkty w przestrzeni na dwa zbiory.[^hiper] 
  
 #### Wyszukiwanie podziału 
 
-Idea działania maszyny wektorów nośnych opiera się na wyznaczenia minimalnej wartości wektora wag oraz przesunięcia (ang. _bias_)  który geometrycznie opisuje współrzędne hiperpłaszczyzny. 
+Idea działania maszyny wektorów nośnych opiera się na wyznaczenia minimalnej wartości wektora wag oraz przesunięcia (ang. _bias_) który geometrycznie opisuje współrzędne hiperpłaszczyzny. 
 
-![Schemat 13](img/16svm_wzor2.png " W min ") [^svmW0]
+
+![Schemat 13](img/16svm_wzor2.png " svm wzor ") [^svmW0]
 
 
 [^hiper]: @article {HUANG41,author = {HUANG, SHUJUN and CAI, NIANGUANG and PACHECO, PEDRO PENZUTI and NARRANDES, SHAVIRA and WANG, YANG and XU, WAYNE},	title = {Applications of Support Vector Machine (SVM) Learning in Cancer Genomics},	volume = {15},	number = {1},	pages = {41--51},	year = {2018},	publisher = {International Institute of Anticancer Research},	issn = {1109-6535},	URL = {https://cgp.iiarjournals.org/content/15/1/41},	eprint = {https://cgp.iiarjournals.org/content/15/1/41.full.pdf},	journal = {Cancer Genomics \& Proteomics}}
@@ -394,21 +387,21 @@ Idea działania maszyny wektorów nośnych opiera się na wyznaczenia minimalnej
 
 **K najbliższych sąsiadów** (ang. _k nearest neighbours_, skr. **_KNN_**) to algorytm uczenia maszynowego nadzorowanego
 operający swoje estymacje dla konkretnego przypadku danch na wartościach jego K najbliższych sąsiadów(punktów) liczonych
-min. dla przestrzeni Euklidesowej [^3] .Do wyznaczenia odległości w metryce Euklidesowej stosowany jest wzór :
+min. dla przestrzeni Euklidesowej [^3]. Do wyznaczenia odległości w metryce Euklidesowej stosowany jest wzór:
 
-![Schemat 14 ](img/17euklides.png "Euklides"){ width=15% } [^manhattan]
+![Schemat 14 ](img/17euklides.png "Euklides"){ width=20% } [^manhattan]
 
 popularne są również przestrzenie Manhattan:
 
-![Schemat 15 ](img/18manhattan.png "Manhattan"){ width=15% } [^manhattan]
+![Schemat 15 ](img/18manhattan.png "Manhattan"){ width=20% } [^manhattan]
 
 oraz Mińkowskiego:
 
-![Schemat 16 ](img/19minkowski.png "Minkowski"){ width=15% } [^minkowski]
+![Schemat 16 ](img/19minkowski.png "Minkowski"){ width=20% } [^minkowski]
 
 Atrybut który nastraja proces uczenia się modelu i ma na niego największy wpływ określany jest jako hiperparametr. Dla
 KNN jest to liczba sąsiadów, im większa ilość jednostek mających wpływ, tym wierniejsze będą wyniki. Potęguje się wtedy
-niestety złożoność czasowa algorytmu, znacząco już większa od przedstawionych powyżej innych algoryrtmów.
+niestety złożoność czasowa algorytmu, znacząco już większa od przedstawionych powyżej innych algoryrtmów.[^3]
 
 W celu przewidzenia wartości dla nowych danych, należy odnaleść K najbliższych punktów wyliczając odległości, a
 następnie przpisać odpowiedź implikowaną przez większość sąsiadów. Dla wartości K równej jeden, metoda ta nazywana jest
@@ -425,6 +418,7 @@ reprezentacją wpływ cech na ostateczny osąd próbki.
 [^manhattan]: Comparison of A*, Euclidean and Manhattan distance using Influence Map in Ms. Pac-Man aut.:Sudip Karki,Hari Sagar Ranjitkar,Faculty of Computing Blekinge Institute of Technology
 
 [^minkowski]: The Minkowski approach for choosing the distance metric in geographically weighted regression Binbin Lua , Martin Charltonb , Chris Brunsdon and Paul Harrisc , School of Remote Sensing and Information Engineering, Wuhan University, Wuhan, China; National Centre for Geocomputation, National University of Ireland Maynooth, Maynooth, Co. Kildare, Ireland; Sustainable Soils and Grassland Systems, Rothamsted Research, North Wyke, Okehampton, Devon, UK
+
 
 ## Komparacja działania modeli
 
@@ -540,17 +534,12 @@ Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and P
 Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.},
 journal={Journal of Machine Learning Research}, volume={12}, pages={2825--2830}, year={2011} }
 
-- @article{https://ichi.pro/pl/uczenie-maszynowe-proste-wprowadzenie-96150019624312}
-- @article{https://zpjn.wmi.amu.edu.pl/wp-content/uploads/2019/10/praca_magisterska.pdf t}
-- @article{https://pdf.helion.pl/alguma/alguma.pdf}
-- @article{https://towardsdatascience.com/introduction-to-data-preprocessing-in-machine-learning-a9fa83a5dc9d}
 - @article{http://www.mif.pg.gda.pl/homepages/kdz/BIGDATA/AniaPielowska.pdf}
 - @article{https://www.analyticsvidhya.com/blog/2017/09/common-machine-learning-algorithms/}
 - @article{https://myservername.com/what-is-support-vector-machine-machine-learning}
 - @article{https://scikit-learn.org/stable/modules/svm.html}
 - @article{https://www.hackerearth.com/practice/machine-learning/machine-learning-algorithms/ml-decision-tree/tutorial/}
 - @article{https://scikit-learn.org/stable/modules/neighbors.html}
-- @article{file:///C:/Users/User/Downloads/od_pojedynczych_drzew_do_losowego_lasu.pdf}
 - @article{https://scikit-learn.org/stable/modules/naive_bayes.html}
 - @article{https://scikit-learn.org/stable/modules/tree.html}
 - @article{https://scikit-learn.org/stable/modules/feature_selection.html}
@@ -651,12 +640,9 @@ journal={Journal of Machine Learning Research}, volume={12}, pages={2825--2830},
 -
 @article{https://towardsdatascience.com/what-are-supervised-and-unsupervised-learning-in-machine-learning-dc76bd67795d}
 
-- @article{https://www.geeksforgeeks.org/ml-types-learning-supervised-learning/}
 - @article{http://www.cs.ucr.edu/~mwile001/papers/thesis.pdf}
-- @article{https://pl.wikipedia.org/wiki/Las_losowy}
 - @article{https://python-graph-gallery.com/111-custom-correlogram/}
 - @article{https://python-graph-gallery.com/242-area-chart-and-faceting/}
-- @article{https://en.wikipedia.org/wiki/Random_forest}
 - @article{https://web.stanford.edu/~hastie/Papers/ESLII.pdf}
 - @article{https://www.sciencedirect.com/topics/computer-science/random-decision-forest}
 - @article{https://flask.palletsprojects.com/en/1.1.x/tutorial/install/}
@@ -665,19 +651,17 @@ journal={Journal of Machine Learning Research}, volume={12}, pages={2825--2830},
 - @article{https://stackabuse.com/k-nearest-neighbors-algorithm-in-python-and-scikit-learn/}
 - @article{https://dev.to/alod83/3-different-approaches-for-traintest-splitting-of-a-pandas-dataframe-31p0}
 - @article{https://pub.towardsai.net/3-different-approaches-for-train-test-splitting-of-a-pandas-dataframe-d5e544a5316}
-- @article{https://www.analyticsvidhya.com/blog/2020/04/feature-scaling-machine-learning-normalization-standardization/}
 - @article{https://docs.python.org/3/library/itertools.html#itertools.zip_longest}
 - @article{https://realpython.com/train-test-split-python-data/}
 - @article{https://towardsdatascience.com/flask-and-chart-js-tutorial-i-d33e05fba845}
 - @article{https://www.sciencedirect.com/science/article/pii/S2352914820300125 - pobrane jako pdfy}
-- @article{https://en.wikipedia.org/wiki/Ejection_fraction}
 - @article{https://docs.python.org/3/library/zipfile.html}
 - @article{https://flask.palletsprojects.com/en/2.0.x/quickstart/}
 - @article{https://machinelearningmastery.com/save-load-machine-learning-models-python-scikit-learn/}
 - @article{https://joblib.readthedocs.io/en/latest/}
 - @article{https://www.kaggle.com/prmohanty/python-how-to-save-and-load-ml-models}
 - @article{https://machinelearningmastery.com/machine-learning-in-python-step-by-step/}
--
+- 
 
 @article{https://dobrebadania.pl/zmienna-dyskretna-ang-discrete-variable/#:~:text=Zmienna%20dyskretna%20to%20ka%C5%BCda%20cecha,zaw%C3%B3d%2C%20miejsce%20zamieszkania%2C%20wykszta%C5%82cenie.}
 

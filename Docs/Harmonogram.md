@@ -34,24 +34,16 @@ ____________________________TEORETYCZNA CZĘŚĆ
 #w pracy nie umieszczać kodu źrodłowego
  - spis treści abstrakt , linki do obrazków biliografia, spis używanej terminologii
  - bibilografie poprawić
-skalowanie  obrazów
  spis obrazków
 spiswykresów
  - -opis praktycznej 
- - dopisać różnice między klasyfikacją a regresją 
- - dodać coś z matematycznego punktu widzenia 
+
+
  - -jsonpicle dopisać
  - rozdział pracy dotyczący prówniania algorytmów,
  - pisemne opracowanie i dodanie na stronie
  - praca pisemna
  - (dane) w Exelu do pracy
-Poprawki
- - rozdział omawiający algorytm KNN.
- - rozdział pracy dotyczący lasów decyzyjnych.
- - rozdział omawiający lasy decyzyjne.
- - rozdział dotyczący SVM.
- 
-dodać porównanie i wyższość w zastosowaniu dla modeli uczonych bez nadzoru
 
 _____________ogołne
 - uczenie przeprowadzić -  CZEKAM SVN I RF
@@ -61,12 +53,14 @@ _____________ogołne
 - nagrać film-czekam
 - commit
 - - wygenerować wykresy dla porównań
--tresć obróbka tego co jest 
-- treść nowe dane
-- - poprawić obrazki z drawi.io
 
+- treść nowe dane
+- _____________________do 4
+- - poprawić obrazki z drawi.io
 -przypisy
 -strona tytułowa
 -formatować zgodnie z tym co w dokuncie
 -wygenerować dokument
+-spakować projekt
 -wniosek i mail do promotora
+- ________________________________do 7
