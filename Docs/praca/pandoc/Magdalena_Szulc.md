@@ -248,69 +248,6 @@ wykresy z danych testowych dla każdej pary [^wektor] .
 [^wektor]: Introduction to Data Preprocessing in Machine Learning Beginners Guide for Data Preprocessing Dhairya Kumar
 
 
-# Opis praktycznej częsci projektu
-
-## Moduły projektu:
-
-- Config - zawiera statyczne zasoby oraz konfigurację logowania projektu
-- Data - moduł odpowiada za wczytywanie i obróbkę danych testowych, oraz zawiera definicje objektów wykorzystywanych przy uczeniu oraz zapisu modelu
-- Management:
-
-    - PlotGeneration - moduł odpowiedzialny za prezentację wyników w postaci wykresów porównujących algorytmy oraz
-      odpowiedzi na zadany problem
-    - Prediction :
-
-        - RF - implepmentacja treningu algorytmu Lasów losowych
-        - KNN - implepmentacja treningu algorytmu K-najbliższych sąsiadów
-        - SVM - implepmentacja treningu algorytmu Maszyny wektorów nośnych
-- Static - forlder z grafikami, plikami stylów, skryptami javascript i jQuerry 
-- Templates - folder z stronami html wykorzystującymi dyrektywy Flask
-
-Projekt posiada dwa tryby pracy :
-
-- tryb nauczania na podstawie danych testowych
-  machine learning z wykorzystaniem 3 algorytmów (_Run_Learning_Proces.xml_)
-- tryb aplikacji web 
-  wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli (_Run_Web_Application.xml_)
-
-[todo ] opisać  główne metody
-
-Poniżej przedstawiono plan działania:
-
-
-![Schemat 6](img/14Architektura.png "Architektura"){ height=70% }
-
-
-## Narzędzia i biblioteki zastosowane w pojekcie
-
-Praktyczna część pracy napisana została w języku Python z wykorzystaniem *scikit-learn*, obsługującym wiele algorytmów
-maszynowego uczenia się w tym uczenia nadzorowanego i docelowo wybranych algorytmów przedstawionych w teoretycznej
-części pracy.
-
-![Schemat 7](img/15scikit-learn-logo.png "scikit-learn logo"){ height=10% }
-
-Biblioteka opiera się o *Numpy* oraz *Scipy*, daje zestaw narzędzi do obliczeń na macierzach, wektorach oraz umożliwiający metody
-numeryczne takie jak całkowanie, różniczkowanie i temu podobne [^scikit]. W rezultacie można za jej pomoca wykonać elementy procesu nauczania algorytmu, takie jak: przetwarzanie wstępne, redukcja wymiarowości, klasyfikacja, regresja. [^libpyth] 
-
-Do przygotowania danych wykorzystano zestaw narzędzi *Pandas*, ułatwiający tworzenie struktur danych i ich analizę. 
-
-W celu wizualizacji wyników w postaci wykresów zastosowano, opartą na *Matplotlib*, bibliotekę *Seaborn* powszechnie stosowaną do rysowania estetycznej grfiki statystycznej.
-
-Część prezentacyjna czyli możliwość wprowadzenia danych w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzystuje bibliotkę *Flask*. Framework Flask ułatwia pisanie aplikacji internetowch i jest rozwiązaniem które daje duży zakres dowolności oraz możliwości. Flask sam z siebie nie definiuje warstwy bazy danych czy formularzy, pozwala za to na obsługę rozszerzeń które ubogacają aplikację o wybraną funkcjonalność. [^flask]
-
-Przekazywanie obiektów o bardziej skomplikowanej budowie i ich _serializacja_ oraz _deserializacja_ do formatu JSON wykonane są za pomocą biblioteki *jsonpickle*, a zapis
-modeli wykonano za pomocą *joblib* która zapewnia obsługę obiektów Pythona i jest zoptymalizowana pod kątem pracy na dużych tablicach Numpy. [^libpyth] 
-
-Biblioteki w większości posiadają otwarty kod źródłowy,  napisany w języku Python [^libpyth].
-
-
-[^scikit]: @article{scikit-learn, title={Scikit-learn: Machine Learning in {P}ython}, author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P. and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.}, journal={Journal of Machine Learning Research}, volume={12}, pages={2825--2830}, year={2011}}
-
-[^libpyth]: Podejście porównawcze do algorytmów uczenia się maszynowego ,Samrudhi Rajendra Kaware , Vinod Subhasharao Wande
-
-[^flask]: @book{grinberg2018flask,  title={Flask web development: developing web applications with python},  author={Grinberg, Miguel},  year={2018},  publisher={" O'Reilly Media, Inc."}}
-
-## Trening algorytmu
 
 Zgodnie z poniższym schematem po przeprocesowaniu wejściowego zbioru danych, należy go podzielić na dane treingowe oraz ewaluacyjne. Powszechnie stosowana K krzyżowa walidacja umożliwia maksymalne wykorzystanie dostarczonego wejścia do dostrajania parametrów modelu, ponieważ optymalizacja hiperparametrów połączone z ciągłą weryfikacją poprawności to sedno treningu.
 
@@ -427,12 +364,45 @@ reprezentacją wpływ cech na ostateczny osąd próbki.
 [^minkowski]: The Minkowski approach for choosing the distance metric in geographically weighted regression Binbin Lua , Martin Charltonb , Chris Brunsdon and Paul Harrisc , School of Remote Sensing and Information Engineering, Wuhan University, Wuhan, China; National Centre for Geocomputation, National University of Ireland Maynooth, Maynooth, Co. Kildare, Ireland; Sustainable Soils and Grassland Systems, Rothamsted Research, North Wyke, Okehampton, Devon, UK
 
 
-## Porównanie działania modeli
 
-impementacja z skleran która powstała w oparciu o dokumntacje sklearn 
- 
+# Opis praktycznej częsci projektu
 
-W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podczas treningu i weryfikacji danych testowych, dla każdego algorytmu wykonano k-krotną walidację z wykorzystaniem:
+## Moduły projektu:
+
+- Config - zawiera statyczne zasoby oraz konfigurację logowania projektu
+- Data - moduł odpowiada za wczytywanie i obróbkę danych testowych, oraz zawiera definicje objektów wykorzystywanych przy uczeniu oraz zapisu modelu
+- Management:
+
+    - PlotGeneration - moduł odpowiedzialny za prezentację wyników w postaci wykresów porównujących algorytmy oraz
+      odpowiedzi na zadany problem
+    - Prediction :
+
+        - RF - implepmentacja treningu algorytmu Lasów losowych
+        - KNN - implepmentacja treningu algorytmu K-najbliższych sąsiadów
+        - SVM - implepmentacja treningu algorytmu Maszyny wektorów nośnych
+- Static - forlder z grafikami, plikami stylów, skryptami javascript i jQuerry 
+- Templates - folder z stronami html wykorzystującymi dyrektywy Flask
+
+
+Projekt posiada dwa tryby pracy :
+
+- tryb nauczania na podstawie danych testowych
+  machine learning z wykorzystaniem 3 algorytmów (_Run_Learning_Proces.xml_)
+- tryb aplikacji web 
+  wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli (_Run_Web_Application.xml_)
+
+## Trening algorytmu
+
+Głównym zadaniem trybu nauczania jest utworzenie i wytrenowanie modeli dla 3 algorytmów nauczania nienazdorowanego, w tym celu wykonywany jest preprocesing danych czyli kolejno:
+
+2. Załadowanie i konkatenacja dataset'u
+3. Uzupełnienie pustych wartości - dla późniejszego porównania tworzone są imputery dla 4 różnych form uzupełnienia
+4. Standaryzacja
+5. Konwersja danych dla kategorii
+6. Normalizacja z wykorzystaniem MinMaxScaler.
+
+Następnie wykonywany jest podział na dane treningowe i testowe z wykorzystaniem zdefiniowanej w bibliotece sklearn predefiniowanej metody. Tak spreparowany zestaw danych poddawany jest treningowi modelu kolejno dla kążdego z algorytmów. 
+
 
 ```Python
 
@@ -575,6 +545,54 @@ Jeśli False, atrybut cv_results_ nie będzie zawierał wyników szkolenia. Obli
 
 Nowość w wersji 0.19.
 []
+
+
+## Opis działania aplikacji webowej
+
+[todo]
+
+Poniżej przedstawiono architektówe działania:
+
+
+![Schemat 6](img/14Architektura.png "Architektura"){ height=70% }
+
+
+## Narzędzia i biblioteki zastosowane w pojekcie
+
+Praktyczna część pracy napisana została w języku Python z wykorzystaniem *scikit-learn*, obsługującym wiele algorytmów
+maszynowego uczenia się w tym uczenia nadzorowanego i docelowo wybranych algorytmów przedstawionych w teoretycznej
+części pracy.
+
+![Schemat 7](img/15scikit-learn-logo.png "scikit-learn logo"){ height=10% }
+
+Biblioteka opiera się o *Numpy* oraz *Scipy*, daje zestaw narzędzi do obliczeń na macierzach, wektorach oraz umożliwiający metody
+numeryczne takie jak całkowanie, różniczkowanie i temu podobne [^scikit]. W rezultacie można za jej pomoca wykonać elementy procesu nauczania algorytmu, takie jak: przetwarzanie wstępne, redukcja wymiarowości, klasyfikacja, regresja. [^libpyth] 
+
+Do przygotowania danych wykorzystano zestaw narzędzi *Pandas*, ułatwiający tworzenie struktur danych i ich analizę. 
+
+W celu wizualizacji wyników w postaci wykresów zastosowano, opartą na *Matplotlib*, bibliotekę *Seaborn* powszechnie stosowaną do rysowania estetycznej grfiki statystycznej.
+
+Część prezentacyjna czyli możliwość wprowadzenia danych w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzystuje bibliotkę *Flask*. Framework Flask ułatwia pisanie aplikacji internetowch i jest rozwiązaniem które daje duży zakres dowolności oraz możliwości. Flask sam z siebie nie definiuje warstwy bazy danych czy formularzy, pozwala za to na obsługę rozszerzeń które ubogacają aplikację o wybraną funkcjonalność. [^flask]
+
+Przekazywanie obiektów o bardziej skomplikowanej budowie i ich _serializacja_ oraz _deserializacja_ do formatu JSON wykonane są za pomocą biblioteki *jsonpickle*, a zapis
+modeli wykonano za pomocą *joblib* która zapewnia obsługę obiektów Pythona i jest zoptymalizowana pod kątem pracy na dużych tablicach Numpy. [^libpyth] 
+
+Biblioteki w większości posiadają otwarty kod źródłowy,  napisany w języku Python [^libpyth].
+
+
+[^scikit]: @article{scikit-learn, title={Scikit-learn: Machine Learning in {P}ython}, author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P. and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.}, journal={Journal of Machine Learning Research}, volume={12}, pages={2825--2830}, year={2011}}
+
+[^libpyth]: Podejście porównawcze do algorytmów uczenia się maszynowego ,Samrudhi Rajendra Kaware , Vinod Subhasharao Wande
+
+[^flask]: @book{grinberg2018flask,  title={Flask web development: developing web applications with python},  author={Grinberg, Miguel},  year={2018},  publisher={" O'Reilly Media, Inc."}}
+
+
+## Porównanie działania modeli
+
+impementacja z skleran która powstała w oparciu o dokumntacje sklearn 
+ 
+
+W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podczas treningu i weryfikacji danych testowych, dla każdego algorytmu wykonano k-krotną walidację z wykorzystaniem:
 
 ##todo liczenie błędów 
 macież pomysłek
