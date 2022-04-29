@@ -176,6 +176,21 @@ Wyróżniono 14 atrybutów spośród 76 zebrancyh do wykorzystania w algorytmach
 wartośi liczbowe.
 
 [Todo dodać jak dzielą się dane na kobiety mężczyżni]
+Wykaz chorób serca
+Rozkład chorób serca w danych testowych
+
+44.67%
+chory 509 zdrowy 411
+
+Rozkład płci w danych testowych
+78.91%
+Mężczyźni 726 Kobiety 194
+
+Rozkład chorób serca według płci
+Kobiety
+25.77%
+Mężczyźni
+63.22%
 
 [^UCI]: Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA:University of California, School of Information and Computer Science.
 [^5]: V.A. Fundacja Centrum Medyczne, Long Beach i Cleveland Clinic:dr n. med. Robert Detrano
@@ -364,198 +379,7 @@ reprezentacją wpływ cech na ostateczny osąd próbki.
 [^minkowski]: The Minkowski approach for choosing the distance metric in geographically weighted regression Binbin Lua , Martin Charltonb , Chris Brunsdon and Paul Harrisc , School of Remote Sensing and Information Engineering, Wuhan University, Wuhan, China; National Centre for Geocomputation, National University of Ireland Maynooth, Maynooth, Co. Kildare, Ireland; Sustainable Soils and Grassland Systems, Rothamsted Research, North Wyke, Okehampton, Devon, UK
 
 
-
 # Opis praktycznej częsci projektu
-
-## Moduły projektu:
-
-- Config - zawiera statyczne zasoby oraz konfigurację logowania projektu
-- Data - moduł odpowiada za wczytywanie i obróbkę danych testowych, oraz zawiera definicje objektów wykorzystywanych przy uczeniu oraz zapisu modelu
-- Management:
-
-    - PlotGeneration - moduł odpowiedzialny za prezentację wyników w postaci wykresów porównujących algorytmy oraz
-      odpowiedzi na zadany problem
-    - Prediction :
-
-        - RF - implepmentacja treningu algorytmu Lasów losowych
-        - KNN - implepmentacja treningu algorytmu K-najbliższych sąsiadów
-        - SVM - implepmentacja treningu algorytmu Maszyny wektorów nośnych
-- Static - forlder z grafikami, plikami stylów, skryptami javascript i jQuerry 
-- Templates - folder z stronami html wykorzystującymi dyrektywy Flask
-
-
-Projekt posiada dwa tryby pracy :
-
-- tryb nauczania na podstawie danych testowych
-  machine learning z wykorzystaniem 3 algorytmów (_Run_Learning_Proces.xml_)
-- tryb aplikacji web 
-  wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli (_Run_Web_Application.xml_)
-
-## Trening algorytmu
-
-Głównym zadaniem trybu nauczania jest utworzenie i wytrenowanie modeli dla 3 algorytmów nauczania nienazdorowanego, w tym celu wykonywany jest preprocesing danych czyli kolejno:
-
-2. Załadowanie i konkatenacja dataset'u
-3. Uzupełnienie pustych wartości - dla późniejszego porównania tworzone są imputery dla 4 różnych form uzupełnienia
-4. Standaryzacja
-5. Konwersja danych dla kategorii
-6. Normalizacja z wykorzystaniem MinMaxScaler.
-
-Następnie wykonywany jest podział na dane treningowe i testowe z wykorzystaniem zdefiniowanej w bibliotece sklearn predefiniowanej metody. Tak spreparowany zestaw danych poddawany jest treningowi modelu kolejno dla kążdego z algorytmów. 
-
-
-```Python
-
-GridSearchCV
-
-```
-
-do dostrojenia parametrów oraz znalezienia najlepszego modelu, dla każdego algorytmy zapróbkowano wszytkie dostępne dla danego modelu regresji parametry.
-
-
-Wyczerpujące wyszukiwanie określonych wartości parametrów dla estymatora.
-
-Ważni członkowie są sprawni, przewiduj.
-
-GridSearchCV implementuje metodę „dopasowania” i „punktacji”. Implementuje również „score_samples”, „predict”, „predict_proba”, „decision_function”, „transform” i „inverse_transform”, jeśli są zaimplementowane w używanym estymatorze.
-
-Parametry estymatora używanego do zastosowania tych metod są optymalizowane przez krzyżowo zweryfikowane wyszukiwanie w siatce parametrów.
-
-Hiperparametry to parametry, których nie można nauczyć się bezpośrednio w estymatorach. W scikit-learn są one przekazywane jako argumenty do konstruktora klas estymatorów. Typowe przykłady to C, kernel i gamma dla Support Vector Classifier, alfa dla Lasso itp.
-
-Możliwe i zalecane jest przeszukanie przestrzeni hiperparametrów w celu uzyskania najlepszego wyniku walidacji krzyżowej.
-
-W ten sposób można zoptymalizować dowolny parametr podany podczas konstruowania estymatora. W szczególności, aby znaleźć nazwy i aktualne wartości wszystkich parametrów dla danego estymatora, użyj:
-
-estymator.get_params()
-Wyszukiwanie składa się z:
-
-estymator (regresor lub klasyfikator, taki jak sklearn.svm.SVC());
-
-przestrzeń parametrów;
-
-metoda wyszukiwania lub próbkowania kandydatów;
-
-schemat walidacji krzyżowej; oraz
-
-funkcja punktacji.
-
-W scikit-learn dostępne są dwa ogólne podejścia do wyszukiwania parametrów: dla podanych wartości GridSearchCV w sposób wyczerpujący uwzględnia wszystkie kombinacje parametrów, podczas gdy RandomizedSearchCV może próbkować określoną liczbę kandydatów z przestrzeni parametrów o określonym rozkładzie. Oba te narzędzia mają kolejne odpowiedniki HalvingGridSearchCV i HalvingRandomSearchCV, które mogą znacznie szybciej znaleźć dobrą kombinację parametrów.
-
-Po opisaniu tych narzędzi szczegółowo opisujemy najlepsze praktyki mające zastosowanie do tych podejść. Niektóre modele pozwalają na wyspecjalizowane, wydajne strategie wyszukiwania parametrów, opisane w Alternatywach do wyszukiwania parametrów metodą brute force.
-
-Należy zauważyć, że często mały podzbiór tych parametrów może mieć duży wpływ na wydajność predykcyjną lub obliczeniową modelu, podczas gdy inne można pozostawić z wartościami domyślnymi. Zaleca się zapoznanie się z dokumentacją klasy estymatora, aby lepiej zrozumieć ich oczekiwane zachowanie, prawdopodobnie poprzez przeczytanie załączonych odnośników do literatury.
-
-3.2.1. Wyczerpujące wyszukiwanie w siatce
-Wyszukiwanie siatki zapewniane przez GridSearchCV w sposób wyczerpujący generuje kandydatów z siatki wartości parametrów określonych za pomocą parametru param_grid. Na przykład następujący param_grid:
-
-param_grid = [
-  {'C': [1, 10, 100, 1000], 'kernel': ['linear']},
-  {'C': [1, 10, 100, 1000], 'gamma': [0.001, 0.0001], 'jądro': ['rbf']},
- ]
-określa, że ​​należy zbadać dwie siatki: jedną z jądrem liniowym i wartościami C w [1, 10, 100, 1000], a drugą z jądrem RBF i iloczynem krzyżowym wartości C w zakresie [1, 10 , 100, 1000] i wartości gamma w [0,001, 0,0001].
-
-Instancja GridSearchCV implementuje zwykły interfejs API estymatora: podczas „dopasowywania” go do zbioru danych oceniane są wszystkie możliwe kombinacje wartości parametrów i zachowywana jest najlepsza kombinacja.
-
-##estymator obiekt estymatora
-Zakłada się, że jest to implementacja interfejsu estymatora scikit-learn. Albo estymator musi podać funkcję punktacji, albo punktacja musi zostać przekazana.
-
-param_griddict lub lista słowników
-Słownik z nazwami parametrów (str) jako kluczami i listami ustawień parametrów do wypróbowania jako wartości lub listą takich słowników, w którym to przypadku eksplorowane są siatki zawarte w każdym słowniku na liście. Umożliwia to przeszukiwanie dowolnej sekwencji ustawień parametrów.
-
-scoringstr, wywoływalne, lista, krotka lub dyktowanie, domyślnie=Brak
-Strategia oceny wydajności modelu poddanego walidacji krzyżowej na zbiorze testowym.
-
-Jeżeli punktacja reprezentuje pojedynczą punktację, można użyć:
-
-pojedynczy ciąg (patrz Parametr scoringowy: definiowanie reguł oceny modelu);
-
-wywoływalna (zobacz Definiowanie strategii scoringowej na podstawie funkcji metryki), która zwraca pojedynczą wartość.
-
-Jeśli punktacja reprezentuje wiele punktów, można użyć:
-
-lista lub krotka unikalnych ciągów;
-
-wywoływalny zwracający słownik, w którym klucze są nazwami metryk, a wartości są wynikami metryk;
-
-słownik z nazwami metryk jako kluczami i wywoływalnymi wartościami.
-
-Zobacz na przykład Określanie wielu metryk do oceny.
-
-n_jobsint, domyślnie=Brak
-Liczba zadań do równoległego uruchomienia. Brak oznacza 1, chyba że w kontekście joblib.parallel_backend. -1 oznacza użycie wszystkich procesorów. Zobacz Słowniczek po więcej szczegółów.
-
-Zmieniono w wersji v0.20: domyślna wartość n_jobs zmieniona z 1 na Brak
-
-refitbool, str lub callable, default=True
-Dopasuj estymator, korzystając z najlepszych znalezionych parametrów w całym zbiorze danych.
-
-W przypadku oceny wielu metryk musi to być str oznaczający punktację, który zostałby użyty do znalezienia najlepszych parametrów do ponownego dopasowania estymatora na końcu.
-
-Tam, gdzie przy wyborze najlepszego estymatora istnieją względy inne niż maksymalny wynik, refit można ustawić na funkcję, która zwraca wybrany najlepszy_indeks_ podany cv_results_. W takim przypadku best_estimator_ i best_params_ zostaną ustawione zgodnie ze zwróconym best_index_, podczas gdy atrybut best_score_ nie będzie dostępny.
-
-Dopasowany estymator jest udostępniany w atrybucie best_estimator_ i umożliwia użycie predykcji bezpośrednio w tym wystąpieniu GridSearchCV.
-
-Również w przypadku oceny wielu metryk atrybuty best_index_, best_score_ i best_params_ będą dostępne tylko wtedy, gdy ustawiony jest remont, a wszystkie z nich zostaną określone z uwzględnieniem tego konkretnego scoringowca.
-
-Zobacz parametr scoring, aby dowiedzieć się więcej o ocenie wielu metryk.
-
-Zmieniono w wersji 0.20: Dodano obsługę callable.
-
-cvint, generator walidacji krzyżowej lub iterowalny, domyślnie=Brak
-Określa strategię podziału z walidacją krzyżową. Możliwe dane wejściowe dla CV to:
-
-Brak, aby użyć domyślnej pięciokrotnej weryfikacji krzyżowej,
-
-liczba całkowita, aby określić liczbę fałd w (Stratified)KFold,
-
-rozdzielacz CV,
-
-Iterowalny plon (pociąg, test) dzieli się na tablice indeksów.
-
-W przypadku danych wejściowych typu liczba całkowita/brak, jeśli estymator jest klasyfikatorem, a y jest binarne lub wieloklasowe, używany jest StratifiedKFold. We wszystkich innych przypadkach używany jest KFold. Te splittery są tworzone z shuffle=False, więc podziały będą takie same we wszystkich wywołaniach.
-
-Zapoznaj się z podręcznikiem użytkownika, aby zapoznać się z różnymi strategiami walidacji krzyżowej, których można tu użyć.
-
-Zmieniono w wersji 0.22: domyślna wartość cv, jeśli Brak zmieniła się z 3-krotnej na 5-krotną.
-
-verboseint
-Kontroluje szczegółowość: im wyższa, tym więcej wiadomości.
-
->1 : wyświetlany jest czas obliczeń dla każdego fałdu i potencjalnego parametru;
-
->2 : wyświetlany jest również wynik;
-
->3 : indeksy parametrów fałd i kandydatów są również wyświetlane wraz z czasem rozpoczęcia obliczeń.
-
-pre_dispatchint lub str, default=’2*n_jobs’
-Kontroluje liczbę zadań, które są wysyłane podczas wykonywania równoległego. Zmniejszenie tej liczby może być przydatne, aby uniknąć eksplozji zużycia pamięci, gdy wysyłanych jest więcej zadań, niż może przetworzyć procesor. Ten parametr może być:
-
-Brak, w takim przypadku wszystkie miejsca pracy są natychmiast tworzone i odradzane. Użyj tego do lekkich i szybko działających zadań, aby uniknąć opóźnień spowodowanych pojawianiem się zadań na żądanie
-
-Int, podający dokładną liczbę wszystkich miejsc pracy, które się odradzają
-
-A str, dające wyrażenie w funkcji n_jobs, jak w „2*n_jobs”
-
-error_score'podniesienie' lub numeryczne, domyślnie=np.nan
-Wartość do przypisania do wyniku, jeśli wystąpi błąd w dopasowaniu estymatora. Jeśli ustawione na „podnieś”, błąd jest zgłaszany. Jeśli zostanie podana wartość liczbowa, zostanie zgłoszone FitFailedWarning. Ten parametr nie ma wpływu na etap naprawy, który zawsze spowoduje zwiększenie błędu.
-
-return_train_scorebool, domyślnie = Fałsz
-Jeśli False, atrybut cv_results_ nie będzie zawierał wyników szkolenia. Obliczanie wyników treningowych służy do uzyskiwania wglądu w to, jak różne ustawienia parametrów wpływają na kompromis polegający na przesunięciu/niedopasowaniu. Jednak obliczanie wyników na zbiorze uczącym może być kosztowne obliczeniowo i nie jest ściśle wymagane do wyboru parametrów, które zapewniają najlepszą wydajność uogólniania.
-
-Nowość w wersji 0.19.
-[]
-
-
-## Opis działania aplikacji webowej
-
-[todo]
-
-Poniżej przedstawiono architektówe działania:
-
-
-![Schemat 6](img/14Architektura.png "Architektura"){ height=70% }
-
 
 ## Narzędzia i biblioteki zastosowane w pojekcie
 
@@ -587,10 +411,92 @@ Biblioteki w większości posiadają otwarty kod źródłowy,  napisany w język
 [^flask]: @book{grinberg2018flask,  title={Flask web development: developing web applications with python},  author={Grinberg, Miguel},  year={2018},  publisher={" O'Reilly Media, Inc."}}
 
 
-## Porównanie działania modeli
+## Moduły projektu:
 
-impementacja z skleran która powstała w oparciu o dokumntacje sklearn 
+- Config - zawiera statyczne zasoby oraz konfigurację logowania projektu
+- Data - moduł odpowiada za wczytywanie i obróbkę danych testowych, oraz zawiera definicje objektów wykorzystywanych przy uczeniu oraz zapisu modelu
+- Management:
+
+    - PlotGeneration - moduł odpowiedzialny za prezentację wyników w postaci wykresów porównujących algorytmy oraz
+      odpowiedzi na zadany problem
+    - Prediction :
+
+        - RF - implepmentacja treningu algorytmu Lasów losowych
+        - KNN - implepmentacja treningu algorytmu K-najbliższych sąsiadów
+        - SVM - implepmentacja treningu algorytmu Maszyny wektorów nośnych
+- Static - forlder z grafikami, plikami stylów, skryptami javascript i jQuerry 
+- Templates - folder z stronami html wykorzystującymi dyrektywy Flask
+
+Projekt posiada dwa tryby pracy :
+
+- tryb nauczania na podstawie danych testowych\
+machine learning z wykorzystaniem 3 algorytmów (_Run_Learning_Proces.xml_)
+- tryb aplikacji web\
+wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli (_Run_Web_Application.xml_)
+
+## Trening algorytmu
+
+Głównym zadaniem trybu nauczania jest utworzenie i wytrenowanie modeli dla 3 algorytmów nauczania nienazdorowanego, w tym celu wykonywany jest preprocesing danych czyli kolejno:
+
+2. Załadowanie i konkatenacja dataset'u
+3. Uzupełnienie pustych wartości - dla późniejszego porównania tworzone są imputery dla 4 różnych form uzupełnienia
+4. Standaryzacja
+5. Konwersja danych dla kategorii
+6. Normalizacja z wykorzystaniem MinMaxScaler.
+
+Następnie wykonywany jest podział na dane treningowe i testowe z wykorzystaniem zdefiniowanej w bibliotece sklearn predefiniowanej metody. Tak spreparowany zestaw danych poddawany jest treningowi modelu kolejno dla każdego z algorytmów. 
+Do dostrojenia parametrów oraz znalezienia najlepszego modelu wykorzystuwany jest:
+```Python
+
+GridSearchCV
+
+```
+W projekcie dla każdego algorytmy zapróbkowano wszytkie dostępne dla danego modelu klasyfikacji hiperparametry przekazywane w param_grid.
+
+Wykorzystane parametry wykonania GridSearchCv [^scikit]:
+
+- estimator: implementacja interfejsu obiekt estymatora scikit-learn,
+- param_grid: słownik parametrów które są potem testowane w dowolnej sekwencji ustawień,
+- refit: dopasowanie best_estimator_ ,best_index_, best_score_ i best_params_ dla najlepszej sekwencji ustawień parametrów
+- cv: parametr k dla KFold walidacji krzyżowej,
+- verbose: obszerność logowanych informacji 
+
+Estymatory to impementacja z skleran która powstała w oparciu o dokumntacje sklearn oraz dostępną dla nich parametryzacje.
+
+**
+
+**
+
+**
  
+
+ 
+
+
+Po odnalezieniu najlepszego estymatora model jest zapisywany oraz generowane sa wykresy dla trybu aplikacji webowej:
+
+- wykresy modeli datasetu wejściowego i rozłożenia cech
+- wykresy prezentujące zestawienia danych zebranych na temat algorytmu podczas wykonywania treningu.
+
+## Opis działania aplikacji webowej
+
+Poniżej przedstawiono architektówe działania:
+
+![Schemat 6](img/14Architektura.png "Architektura"){ height=70% }
+
+Aplikacja posiada 4 widoki :
+
+- widok głowny strony 
+- widok prezentacji danych wejściowych 
+- widok omówienia treningu algorytmów
+- widok formularza pozwalającego na wykonanie predycji na wyuczonych modelach na podstawie własnych danych wejściowych
+
+Zatwierdzenie formularza wyzwala odczytanie zapisanych modeli , iteracje i wykonanie predykcji na każdym z nich , następnie prezentowane są wyniki dla najlepszych estymatorów oraz wykresy wskazujące na umiejscowienie nowych danych na tle zbior testowego.
+
+[todo obrazek ]
+![Schemat 20](img/20form.png "form"){ width=60% }
+
+## Porównanie działania modeli
 
 W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podczas treningu i weryfikacji danych testowych, dla każdego algorytmu wykonano k-krotną walidację z wykorzystaniem:
 

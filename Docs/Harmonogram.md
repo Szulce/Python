@@ -1,33 +1,37 @@
 
+- uczenie przeprowadzić -  CZEKAM 
 
-- tresc dalsze teoretyczne rozważania todo plus obróbka tego co jest
-- _______________________________ do 7
-- spis używanej terminologii
-- spis formuł mateatycznych
- -przypisy
--strona tytułowa
--formatować zgodnie z tym co w dokuncie
--wygenerować dokument
--(dane) w Exelu do pracy
-
-- ______ do 9
-
-- uczenie przeprowadzić -  CZEKAM SVN I RF
-- sprawdzić działanie strony - czekam 
-- wyczyścić projekt -czekam 
 - przygotować projekt w taki sposób że da się po wykonaniu intalacji go poprostu odpalić- czekam
 - nagrać film-czekam
-- commit
-- wygenerować wykresy dla porównań
-________________________________________do 10
+
+
+- ______ do 7
+
+- tresc dalsze teoretyczne rozważania todo plus obróbka tego co jest
 - treść obrazki 
+- (dane) w Exelu do pracy
 - tresc wykresy
 - tresc porownanie i analiza
+- wygenerować wykresy dla porównań
+________________________________________do 9
+
 
 - obrazków biliografia,
 - bibilografie poprawić
  -spiswykresów
 
+- wyczyścić projekt - usunąc doki 
 -spakować projekt
+-przenies na komputer
+- spis używanej terminologii
+- spis formuł mateatycznych
+ -przypisy
+-strona tytułowa
+-formatować zgodnie z tym co w dokuncie
+- 
+-wygenerować dokument
 -wniosek i mail do promotora
-- ________________________________do 12
+- ________________________________do 13
+kąpiel 
+- sprzątać _
+- _____________________14

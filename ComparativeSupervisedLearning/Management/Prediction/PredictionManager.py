@@ -62,26 +62,6 @@ def predict_based_on_model(model, data):
     return prepare_data_presentation(result, prediction_model)
 
 
-def compare_multiple_results(results):
-    comparison = [
-        # KNN SVM
-        Plot.create_figure_two_models_text(results[0][0], results[1][0], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_SVM),
-        Plot.create_figure_two_models(results[0][0], results[1][0], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_SVM),
-        # KNN RF
-        Plot.create_figure_two_models_text(results[0][0], results[2], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_RF),
-        Plot.create_figure_two_models(results[0], results[2], Rs.MODEL_TYPE_KNN, Rs.MODEL_TYPE_RF),
-        # SVM RF
-        Plot.create_figure_two_models_text(results[1], results[2], Rs.MODEL_TYPE_SVM, Rs.MODEL_TYPE_RF),
-        Plot.create_figure_two_models(results[1], results[2], Rs.MODEL_TYPE_SVM, Rs.MODEL_TYPE_RF)]
-    plot_1, plot_2, ploy_3, ploy_4, ploy_5, tabledata = Plot.create_comparison_plots(results)
-    comparison.append(plot_1)
-    comparison.append(plot_2)
-    comparison.append(ploy_3)
-    comparison.append(ploy_4)
-    comparison.append(ploy_5)
-    return comparison
-
-
 def run(model_type, data):
     model = Ms.load_all_models_for_type(model_type)[0]
     return predict_based_on_model(model, data)
@@ -98,7 +78,7 @@ def train(model_type, train_x, test_x, y_train, y_test, iterator):
     if model_type == Rs.MODEL_TYPE_KNN:
         Knn.create_train_save_model(train_x, test_x, y_train, y_test, iterator)
     elif model_type == Rs.MODEL_TYPE_SVM:
-        Svm.create_train_save_model(train_x, test_x, y_train, y_test,iterator)
+        Svm.create_train_save_model(train_x, test_x, y_train, y_test, iterator)
     elif model_type == Rs.MODEL_TYPE_RF:
         Rf.create_train_save_model(train_x, test_x, y_train, y_test, iterator)
 
@@ -131,7 +111,6 @@ def get_algorithm_info():
             for loaded_measures in Ms.read_prediction(model_type, iterator):
                 model_result.append(loaded_measures)
             final_results.append(model_result)
-    # final_results.append(compare_multiple_results(final_results))
     estimators, best_params = Plot.best_estimator_compare(iterator)
     final_results.append(estimators)
     final_results.append(best_params)

@@ -1,10 +1,10 @@
+import sys
+
 import ComparativeSupervisedLearning.Config.StaticResources as Rs
 import ComparativeSupervisedLearning.Management.PlotGeneration.PlotGeneration as Plot
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
-from ComparativeSupervisedLearning.Data.Dto.Out.AlgotitmWebInfo import AlgorithmWebInfo
 from ComparativeSupervisedLearning.Data.Dto.Out.FullResultObject import FullResultObject
 from ComparativeSupervisedLearning.Management.Prediction import PredictionManager
-import sys
 
 """" Manages main functions  """
 
@@ -20,15 +20,12 @@ def get_data_info_object():
 
 
 def get_algorithms_info_object():
-    data = PredictionManager.get_algorithm_info()
-    return AlgorithmWebInfo(data).to_json()
-    # return Ms.load_plot_object(Rs.ALGORITHM_INFO_PLOTS)
+    return Ms.load_plot_object(Rs.ALGORITHM_INFO_PLOTS)
 
 
 if __name__ == '__main__':
     sys.stdout = open(Rs.LOG_FILES_DIRECTORY + "/" + Rs.LOG_FILE_NAME, 'w')
     PredictionManager.train_algorithms()
-    # use once no more need
-    # PredictionManager.render_data_info()
+    PredictionManager.render_data_info()
     PredictionManager.render_algorithms_info()
     sys.stdout.close()

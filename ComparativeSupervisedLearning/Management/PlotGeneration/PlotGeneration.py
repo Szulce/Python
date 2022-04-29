@@ -13,31 +13,6 @@ import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
 """" Generation plots for data and algorithms comparison"""
 
 
-# def plotx():
-#     fig = Figure()
-#     ax = fig.subplots()
-#     ax.plot([1, 2])
-#     return convert_plot_to_html(fig)
-
-
-#
-# def ploty(prediction_model):
-#     # plot 30 examples of dependency between cv fold and AUC scores
-#     fig, ax = plt.subplots()
-#     sns.lineplot(
-#         data=prediction_model.transpose().iloc[:30],
-#         dashes=False,
-#         palette="Set1",
-#         marker="o",
-#         alpha=0.5,
-#         ax=ax,
-#     )
-#     ax.set_xlabel("CV test fold", size=12, labelpad=10)
-#     ax.set_ylabel("Model AUC", size=12)
-#     ax.tick_params(bottom=True, labelbottom=False)
-#     plt.show()
-
-
 def set_name_based_on_model_type(model_type):
     if model_type == Rs.MODEL_TYPE_KNN:
         return 'K najbliższych sąsiadów'
@@ -55,98 +30,6 @@ def plot(model_type, prediction_model):
     return convert_plot_to_html(plot)
 
 
-def plot_knn(model_type, prediction_model, result):
-    print("Training K-Nearest Neighbors")
-    print(prediction_model.cv_results_)
-    # plt.plot([i for i in range(1, )], knn)
-    # for i in range(1, 21):
-    #     plt.text(i, knn[i - 1], (i, round(knn[i - 1] * 100, 2)))
-    # plt.xticks([i for i in range(1, 21)])
-    # plt.xlabel('K')
-    # plt.ylabel('Wynik')
-    # plt.title(set_name_based_on_model_type(model_type))
-
-
-# def plotSvm():
-# svc = []
-# activators = ['poly', 'sigmoid', 'linear', 'rbf']
-# for i in range(len(activators)):
-#     SVclassifier = SVC(kernel=activators[i])
-#     SVclassifier.fit(X_train, Y_train)
-#     svc.append(SVclassifier.score(X_test, Y_test))
-# C:\Users\Raghav\Anaconda3\lib\site - packages\sklearn\svm\base.py: 196: FutureWarning: The
-# default
-# value
-# of
-# gamma
-# will
-# change
-# from
-# 'auto'
-# to
-# 'scale' in version
-# 0.22
-# to
-# account
-# better
-# for unscaled features.Set gamma explicitly to 'auto' or 'scale' to avoid this warning.
-# "avoid this warning.", FutureWarning)
-# C:\Users\Raghav\Anaconda3\lib\site - packages\sklearn\svm\base.py: 196: FutureWarning: The
-# default
-# value
-# of
-# gamma
-# will
-# change
-# from
-# 'auto'
-# to
-# 'scale' in version
-# 0.22
-# to
-# account
-# better
-# for unscaled features.Set gamma explicitly to 'auto' or 'scale' to avoid this warning.
-# "avoid this warning.", FutureWarning)
-# C:\
-#     Users\Raghav\Anaconda3\lib\site - packages\sklearn\svm\base.py: 196: FutureWarning: The
-# default
-# value
-# of
-# gamma
-# will
-# change
-# from
-# 'auto'
-# to
-# 'scale' in version
-# 0.22
-# to
-# account
-# better
-# for unscaled features.Set gamma explicitly to 'auto' or 'scale' to avoid this warning.
-# "avoid this warning.", FutureWarning)
-# plt.bar(activators, svc)
-# for i in range(len(activators)):
-#     plt.text(i, round(svc[i], 2), round(svc[i] * 100, 2))
-# plt.xlabel('Activators')
-# plt.ylabel('Score')
-# plt.title('Support Vector Classifier')
-
-# def plotDf():
-#     dt = []
-#     for i in range(1, len(X.columns) + 1):
-#         dtc = DecisionTreeClassifier(max_features=i)
-#         dtc.fit(X_train, Y_train)
-#         dt.append(dtc.score(X_test, Y_test))
-#     plt.plot([i for i in range(1, len(X.columns) + 1)], dt, color='red')
-#     for i in range(1, len(X.columns) + 1):
-#         plt.text(i, dt[i - 1], (i, round(dt[i - 1] * 100, 2)))
-#     plt.xticks([i for i in range(1, len(X.columns) + 1)])
-#     plt.xlabel('Features')
-#     plt.ylabel('Scores')
-
-
 def convert_plot_to_html(figure):
     buf = BytesIO()
     figure.set_size_inches(9.8, 8.8)
@@ -157,7 +40,6 @@ def convert_plot_to_html(figure):
 
 def plot_true_values(y_test, y_predict):
     df = y_predict.flatten()
-    # a = plt.axes()
     plt.rcParams["figure.figsize"] = (8, 5)
     plt.scatter(y_test, y_predict.flatten())
     plt.xlabel('Wartości rzeczywiste ')
@@ -269,63 +151,6 @@ def create_measure_table(score, y_predict, y_test, y_train, exec_time):
     measures_table.append(str(mse))
     measures_table.append(str(exec_time))
     return measures_table
-
-
-def create_figure_two_models_text(param, param1, MODEL_TYPE_1, MODEL_TYPE_2):
-    return None
-
-
-def create_comparison_plots(results):
-    columns = []
-    compare = pandas.DataFrame(columns=columns)
-    grids = [results[0], results[1], results[2]]
-    row_index = 0
-    for model in Rs.MODELS:
-        # fp, tp, th = roc_curve(y_test, predicted)
-        compare.loc[row_index, 'Algorytmy'] = model
-        compare.loc[row_index, 'Precyzja'] = round(abs(numpy.array(grids[row_index][3]).astype(numpy.float)), 2) * 100
-        compare.loc[row_index, 'Współczynnik determinacji'] = round(abs(
-            numpy.array(grids[row_index][4]).astype(numpy.float)), 2) * 100
-        compare.loc[row_index, 'Funkcja wyniku regresji wariancji'] = round(abs(numpy.array(grids[row_index][5]).astype(
-            numpy.float)), 2) * 100
-        compare.loc[row_index, 'Średnia utrata regresji błędu bezwzględnego'] = round(abs(
-            numpy.array(grids[row_index][6]).astype(numpy.float)), 2) * 100
-        compare.loc[row_index, 'Utrata regresji błędu średniokwadratowego'] = round(
-            abs(numpy.array(grids[row_index][7]).astype(
-                numpy.float)), 2) * 100
-
-        # compare.loc[row_index, 'Dokładność na danych testowych'] = model.score
-        # compare.loc[row_index, 'Precyzja'] = precision_score(y_test, predicted)
-        # compare.loc[row_index, 'Błąd'] = recall_score(y_test, predicted)
-        # MLA_compare.loc[row_index, 'AUC'] = auc(fp, tp)
-        row_index += 1
-
-    organised_data = compare.sort_values(by=['Precyzja'], ascending=False, inplace=True)
-
-    plt.subplots(figsize=(80, 50))
-    sns.barplot(x="Algorytmy", y="Precyzja", data=compare, palette='hot',
-                edgecolor=sns.color_palette('dark', 7))
-    plt.xticks(rotation=90)
-    plt.title('Porównanie precyzji algorytmów')
-    plot_1 = convert_plot_to_html(plt.figure())
-
-    sns.barplot(x="Algorytmy", y="Współczynnik determinacji", data=compare, palette='hot',
-                edgecolor=sns.color_palette('dark', 7))
-    plot_2 = convert_plot_to_html(plt.figure())
-
-    sns.barplot(x="Algorytmy", y="Funkcja wyniku regresji wariancji", data=compare, palette='hot',
-                edgecolor=sns.color_palette('dark', 7))
-    plot_3 = convert_plot_to_html(plt.figure())
-
-    sns.barplot(x="Algorytmy", y="Średnia utrata regresji błędu bezwzględnego", data=compare, palette='hot',
-                edgecolor=sns.color_palette('dark', 7))
-    plot_4 = convert_plot_to_html(plt.figure())
-
-    sns.barplot(x="Algorytmy", y="Utrata regresji błędu średniokwadratowego", data=compare, palette='hot',
-                edgecolor=sns.color_palette('dark', 7))
-    plot_5 = convert_plot_to_html(plt.figure())
-
-    return plot_1, plot_2, plot_3, plot_4, plot_5, organised_data
 
 
 def generate_user_data_plot(base_data):

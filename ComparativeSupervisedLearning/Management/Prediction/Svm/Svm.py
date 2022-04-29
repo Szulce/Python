@@ -10,8 +10,7 @@ import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
 
 
 def create_train_save_model(x_train, x_test, y_train, y_test, iterator):
-    # grid, y_train, y_test = prepare_grid_classification(y_train, y_test)
-    grid = prepare_grid_regression()
+    grid, y_train, y_test = prepare_grid_classification(y_train, y_test)
     start_time = time.time()
     grid.fit(x_train, y_train)
     end_time = time.time()

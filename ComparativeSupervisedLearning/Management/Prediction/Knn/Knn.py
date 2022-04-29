@@ -13,8 +13,7 @@ import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
 
 
 def create_train_save_model(train_x, test_x, y_train, y_test, iterator):
-    grid = prepare_grid_regresion(train_x)
-    # grid, y_train, y_test = prepare_grid_classification(y_train, y_test)
+    grid, y_train, y_test = prepare_grid_classification(y_train, y_test)
     start_time = time.time()
     grid.fit(train_x, y_train)
     end_time = time.time()
@@ -27,7 +26,7 @@ def create_train_save_model(train_x, test_x, y_train, y_test, iterator):
         Rs.MODEL_TYPE_KNN, iterator)
 
 
-def prepare_grid_regresion(train_x):
+def prepare_grid_regression(train_x):
     Rs.KNN_METRIC_PARAMS.pop('V', numpy.array(numpy.cov(train_x)))
     param_grid = dict(n_neighbors=list(range(1, Rs.N_NEIGHBORS_SIZE)), weights=Rs.KNN_WEIGHTS,
                       algorithm=Rs.KNN_ALGORITHM, leaf_size=Rs.KNN_LEAF_SIZE, p=Rs.KNN_P_PARAM, metric=Rs.KNN_METRIC
