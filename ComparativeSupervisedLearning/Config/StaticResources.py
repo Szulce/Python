@@ -12,7 +12,7 @@ K_FOLD = "K-fold"
 SCIKIT_LEARN = "Scikit-learn"
 ARCH_FILE_NAME = 'Arch.zip'
 LOG_FILES_DIRECTORY = 'Config/LogFiles'
-LOG_FILE_NAME = "UMNWWCHS.log"
+LOG_FILE_NAME = "UMNWWCHS_fr_cls.log"
 
 # Model Storage
 RF___SAV = "Rf1.sav"

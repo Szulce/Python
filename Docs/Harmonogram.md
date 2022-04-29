@@ -1,8 +1,7 @@
 
 
 
- 
-- uczenie przeprowadzić SVM, RF  CZEKAM
+
 - (dane) w Exelu do pracy
 - tresc wykresy pobrać ze strony 
 - tresc porownanie i analiza
@@ -27,7 +26,8 @@ _____________
 - 
 - ________________________________potem
 - - bibilografie poprawić
--  -przypisy
+- spis obrazków
+- -przypisy
  -strona tytułowa
 -formatować zgodnie z tym co w dokuncie
 - dopisać do stratyfikacji 

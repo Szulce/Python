@@ -413,13 +413,13 @@ Zestawienie najlepszych osiągniętych estymatorów przedstawia się następują
 
 *KNeighborsClassifier* [@scikit] :
  
-- n_neighbors: 8 - liczba sąsiadów z których wnioskowany jest jednostkowy resultat
-- weights: distance - wagi na podsatwie których wyliczana jest predykcja , można zastosować wagę 1:1 lub nałożyć wagi zgodnie z dystansem.
-- algorithm: auto - algorytm zastosowany do znalezienia najbliższych sąsiadów, w projekcie wykorzystano : brute-force oraz auto
-- leaf_size: 1 - rozmiar liścia dla algorytmów BallTree or KDTree
-- p: 1 - wykorzystanie miar odległości dla manhattan
-- metric: canberra -metryka odległości
-
+- n_neighbors: [todo] - liczba sąsiadów z których wnioskowany jest jednostkowy resultat
+- weights: [todo] - wagi na podsatwie których wyliczana jest predykcja , można zastosować wagę 1:1 lub nałożyć wagi zgodnie z dystansem.
+- algorithm: [todo] - algorytm zastosowany do znalezienia najbliższych sąsiadów, w projekcie wykorzystano : brute-force oraz auto.[todo komentarz na to jaki został wybrany przez auto a jaki brut]
+- leaf_size: [todo] - rozmiar liścia dla algorytmów BallTree or KDTree
+- p: [todo] - When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used.
+- metric: [todo] -metryka odległości
+- metric_params: [todo]  - dodatkowe parametry dla fukcji mierzenia odległości
 
 *RandomForestClassifier* [@scikit] :
 
@@ -485,32 +485,84 @@ Zatwierdzenie formularza wyzwala odczytanie zapisanych modeli , iteracje i wykon
 
 ## Porównanie działania modeli
 
-W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podczas treningu i weryfikacji danych testowych.
+W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podczas treningu i weryfikacji danych testowych, dla każdego algorytmu wykonano k-krotną walidację z wykorzystaniem:
 
-|   | Algorytm                 | Dokładność w % |
-|---|--------------------------|----------------|
-|   | Losowe lasy decyzyjne    | 98.2           |
-|   | Maszyna wektorów nośnych | 98.2           |
-|   | K-najbliższych sąsiadów  | 97.8           | 
+##todo liczenie błędów 
+macież pomysłek
+
+###  Losowe lasy decyzyjne
+###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
+-OCENA SZYBKOŚCI WYKONANIA
+-OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
+-OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
+ - które parametry mają i wpływ i dlaczego:
+   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
+
+###  Maszyna wektorów nośnych
+
+###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
+-OCENA SZYBKOŚCI WYKONANIA
+-OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
+-OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
+ - które parametry mają i wpływ i dlaczego:
+   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
+
+###  K-najbliższych sąsiadów
+
+###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
+-OCENA SZYBKOŚCI WYKONANIA
+-OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
+-OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
+ - które parametry mają i wpływ i dlaczego:
+   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
+
+Plusy Faza uczenia klasyfikacji K-najbliższego sąsiada jest znacznie szybsza w porównaniu z innymi algorytmami
+klasyfikacji. KNN może być przydatny w przypadku danych nieliniowych. Może być używany z problemem regresji. Wartość
+wyjściowa obiektu jest obliczana przez średnią k wartości najbliższych sąsiadów.
+
+Cons Faza testowania klasyfikacji najbliższych sąsiadów K jest wolniejsza i bardziej kosztowna pod względem czasu i
+pamięci. Wymaga dużej pamięci do przechowywania całego zestawu danych treningowych do przewidywania. KNN wymaga
+skalowania danych, ponieważ KNN wykorzystuje odległość  między dwoma punktami danych, aby znaleźć
+najbliższych sąsiadów. Odległość euklidesowa jest wrażliwa na wielkości. Obiekty o dużych jasnościach będą miały większą
+wagę niż obiekty o niskich jasnościach. KNN nie nadaje się również do dużych danych wymiarowych.
 
 
-#### Zestawienie efektywności działania algorytmów
+
+#### Podsumowanie i opisanie wpływu danych na model
+
+porównanie do dnych statystycznych
+
+
+
+*Porównianie całościowe algorytmów : złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu*
+
+porównanie z innymi pracami ktore robią klasyfikację 
+rozwiązują problem jakiej metody użytli i jaki jest wynik ewalacji 
+- > metody w porówananiu dają konukrencyjne wyniki 
+  hipotezy dlaczego tak się dzieje 
+
+*todo variants of user data preparatrio*-> przygotowanie danych średnie i tak dalej
+
+            ## preparation all -> all test
+            ## preparation best for best 
+            ## best from other to best in another  -> result and reasons for data anlayse
+            ## fast not best - why is it faster 
+            ## 
+
+#### Zestawienie efektywności działania algorytmów###
 
 Konfrontacja technik ucznia maszynowego zaleznie od zestawu danch będzie dawała odmienne wyniki ze względu na ich
 predyspozycje do zajmowania się odpowiednimi zbiorami danych.
 
-*Potencjał algorytmów dla niewielkiego kompletu danych zawierającego wartości* 
+Potencjał algorytmów dla niewielkiego kompletu danych zawierającego wartości wybrakowane zostanie omówony w późniejszych
+rozdziałach pracy.
 
-Zczynając od drzew decyzyjnych,można od razu stwierdzić ich niski potencjał. Istnieje zbyt duże prawdopodobieństwo
+Zczynając od drzew decyzyjnych, można od razu stwierdzić ich niski potencjał. Istnieje zbyt duże prawdopodobieństwo
 dopasowania się do modelu treningowego, gdyż wspomniany zbiór dancyh wejściowych nie jest wystarczająco liczny. Dlatego
-w pracy omówione zostały lasy decyzyjne.
+w dalszej części pracy omówione zostaną lasy decyzyjne.
 
 Większej dokładności można się spodziewać po metodzie wektorów nośnych, ale jego złożoność czasowa oraz pamięciowa mogą
 zaniżyc jego ogólną klasyfikację.
-
-K-najbliższego sąsiada może być przydatny w przypadku danych nieliniowych oraz łatwo wykorzystany w problemach regresji. Wartość
-wyjściowa obiektu jest obliczana przez średnią k wartości najbliższych sąsiadów. Niestety tak samo jak w przypadku maszyny wektorów nośnych jest wolniejsza i bardziej kosztowna pod względem czasu i
-pamięci. Wymaga dużej pamięci do przechowywania całego zestawu danych treningowych do przewidywania oraz nie nadaje się również do dużych danych wymiarowych. 
 
 **Wskaźniki wydajności**
 
@@ -520,61 +572,16 @@ określenie głownym miernikiem _dokładność_. W takim scenariuszu klasyfikacj
 niewiele odbiegającą od perfekcji dokładność, a jednocześnie błędnie osądzać każde wystąpienie choroby.
 
 
-###  Losowe lasy decyzyjne
-
-
-*Porównianie całościowe algorytmów : złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu*
-
-![Schemat 20](img/22rf_params.png "form"){ width=60% }
-
-![Schemat 20](img/23rf_params_time.png "form"){ width=60% }
-
-
-Wybrane najlepsze modele klasyfikacji:
-
-[CV 5/15] END C=0.1, cache_size=200, coef0=0.0, degree=1, gamma=scale, kernel=linear, shrinking=False;, score=0.982 total time=   0.0s
-[CV 4/15] END C=0.1, cache_size=200, coef0=0.0, degree=1, gamma=scale, kernel=poly, shrinking=True;, score=0.982 total time=   0.0s
-[CV 4/15] END C=0.1, cache_size=200, coef0=0.0, degree=1, gamma=scale, kernel=poly, shrinking=False;, score=0.982 total time=   0.0s
-[CV 4/15] END C=10, cache_size=500, coef0=0.3, degree=5, gamma=scale, kernel=linear, shrinking=True;, score=0.982 total time=   0.0s
-[CV 4/15] END C=10, cache_size=200, coef0=0.3, degree=5, gamma=auto, kernel=rbf, shrinking=True;, score=0.982 total time=   0.0s
-
-Wybrane najgorsze modele klasyfikacji :
-
-[CV 10/15] END C=100, cache_size=200, coef0=0.3, degree=5, gamma=scale, kernel=poly, shrinking=True;, score=0.800 total time=   0.0s
-[CV 10/15] END C=100, cache_size=500, coef0=0.3, degree=5, gamma=scale, kernel=poly, shrinking=False;, score=0.800 total time=   0.0s
-[CV 10/15] END C=100, cache_size=200, coef0=0.3, degree=5, gamma=scale, kernel=poly, shrinking=False;, score=0.800 total time=   0.0s
-
-Najlepsze modele i wartości dla regresji :
-
-Najgorsze modele i wartości dla regresji :
-
-###  Maszyna wektorów nośnych
-
-![Schemat 20](img/22cv_params.png "form"){ width=60% }
-
-![Schemat 20](img/23cv_params_time.png "form"){ width=60% }
-
-
- ![Schemat 20](img/24cvexel.png "form"){ width=60% }
-
-###  K-najbliższych sąsiadów
-
-###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
-
-![Schemat 20](img/22knn_params.png "form"){ width=60% }
-
-![Schemat 20](img/23knn_params_time.png "form"){ width=60% }
-
- ![Schemat 20](img/24knnexel.png "form"){ width=60% }
-
+problem multiklasyfikacji - problem regresji kategrycznej - zwykła regresja , mierzyć będe 
+metoda prównania -  tzrea było wprowadzić reguły do float na int -> inne metody do liczenia błędów 
+na dzień dobry widzimy nie dokładność ze wględu na klasyfiakcję po przecinku 
+regresja kategoryczna -> rzutowanie przedziału wartości na wartość graniczną 
 
 
 Spis ilustracji{.unnumbered}
 ========
 [^schemat_wzorowany]:Na podstwie materiałów opublikowanych na [https://www.datacamp.com](http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1526288453/index3_souoaz.png)
 
-Spis tabel{.unnumbered}
-========
 
  **Bibliografia**{.unnumbered}
 ========
