@@ -20,14 +20,14 @@ toc-own-page: true
 The aim of the work is to compare selected algorithms of supervised machine learning and build a model based on medical
 data, which diagnoses the presence or absence of cardiovascular disorders.
 
-Medical data is distinguished by the fact that it is difficult to access it, most often it is not information that is
-made available for public use, therefore, a key step is to choose the features taken into account when creating the
-model. The data obtained from the UCI repository has already undergone preliminary processing, the dataset itself, due
+Medical data is distinguished by the fact that it is difficult to access, in most cases it is restricted information not
+ available for public use. Therefore, a key step is to choose the features taken into account when creating the
+model. The data obtained from the UCI repository has already undergone pre-processing. The dataset itself, due
 to its small size, allows checking effects of algorithms without getting rid of redundant and insignificant
 features.
 
 The main motive is to answer the question of how data deficiency strongly influences the outcome and whether there is a
-difference between the use of selected supervised learning algorithms requires a comparison of the ease of creating a
+difference between the use of selected supervised learning algorithms requires a comparison of the difficulty level of creating a
 model, accuracy, complexity and time to obtain an answer.
 
 
@@ -171,8 +171,11 @@ lokalizacji
 3. V.A. Centrum medyczne, Long Beach, Kalifornia  [^5]
 4. Szpital Uniwersytecki, Zurych, Szwajcaria  [^switzerland].
 
+#### Stratyfikacja
 Wyróżniono 14 atrybutów spośród 76 zebrancyh do wykorzystania w algorytmach uczenia maszynowego, wszystkie z nich mają
 wartośi liczbowe.
+
+[Todo dodać jak dzielą się dane na kobiety mężczyżni]
 
 [^UCI]: Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA:University of California, School of Information and Computer Science.
 [^5]: V.A. Fundacja Centrum Medyczne, Long Beach i Cleveland Clinic:dr n. med. Robert Detrano
@@ -236,10 +239,12 @@ Aby znaleść korelacje współliniowości należy szukać liniowej zależności
 wykresy z danych testowych dla każdej pary [^wektor] .
 
 [TODO] Wwykresy dla cech
+ 
 
 [^standar]: Peshawa J. Muhammad Ali, Rezhna H. Faraj; “Data Normalization and Standardization: A Technical Report”, Machine Learning Technical Reports, 2014, 1(1), pp 1-6.
 
 [^wektor]: Introduction to Data Preprocessing in Machine Learning Beginners Guide for Data Preprocessing Dhairya Kumar
+
 
 # Opis praktycznej częsci projektu
 
@@ -261,15 +266,15 @@ wykresy z danych testowych dla każdej pary [^wektor] .
 
 Projekt posiada dwa tryby pracy :
 
-- tryb nauczania na podstawie danych testowych - machine learning z wykorzystaniem 3 algorytmów (_Run_Learning_Proces.xml_)
-- tryb aplikacji web - wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli (_Run_Web_Application.xml_)
+- tryb nauczania na podstawie danych testowych : machine learning z wykorzystaniem 3 algorytmów (_Run_Learning_Proces.xml_)
+- tryb aplikacji web : wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli (_Run_Web_Application.xml_)
 
 Poniżej przedstawiono plan działania:
 
 
 ![Schemat 6](img/14Architektura.png "Architektura"){ height=70% }
 
-
+[todo ] opisać  główne metody
 
 ## Narzędzia i biblioteki zastosowane w pojekcie
 
@@ -286,12 +291,12 @@ Do przygotowania danych wykorzystano zestaw narzędzi *Pandas*, ułatwiający tw
 
 W celu wizualizacji wyników w postaci wykresów zastosowano, opartą na *Matplotlib*, bibliotekę *Seaborn* powszechnie stosowaną do rysowania estetycznej grfiki statystycznej.
 
-Część prezentacyjna czyli możliwość wprowadzenia danych w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzystuje bibliotkę *Flask*. Framework Flask ułatwia pisanie aplikacji internetowch ponieważ jest rozwiązaniem które daje duży zakres dowolności oraz możliwości. Flask sam z siebie nie definiuje warstwy bazy danych czy formularzy, pozwala za to na obsługę rozszerzeń które ubogacają aplikację o wybraną funkcjonalność. [^flask]
+Część prezentacyjna czyli możliwość wprowadzenia danych w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzystuje bibliotkę *Flask*. Framework Flask ułatwia pisanie aplikacji internetowch i jest rozwiązaniem które daje duży zakres dowolności oraz możliwości. Flask sam z siebie nie definiuje warstwy bazy danych czy formularzy, pozwala za to na obsługę rozszerzeń które ubogacają aplikację o wybraną funkcjonalność. [^flask]
 
 Przekazywanie obiektów o bardziej skomplikowanej budowie i ich _serializacja_ oraz _deserializacja_ do formatu JSON wykonane są za pomocą biblioteki *jsonpickle*, a zapis
 modeli wykonano za pomocą *joblib* która zapewnia obsługę obiektów Pythona i jest zoptymalizowana pod kątem pracy na dużych tablicach Numpy. [^libpyth] 
 
-Biblioteki w większości posiadają otwarty kod źródłowy , głównie napisany w języku Python [^libpyth].
+Biblioteki w większości posiadają otwarty kod źródłowy,  napisany w języku Python [^libpyth].
 
 
 [^scikit]: @article{scikit-learn, title={Scikit-learn: Machine Learning in {P}ython}, author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P. and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.}, journal={Journal of Machine Learning Research}, volume={12}, pages={2825--2830}, year={2011}}
@@ -305,10 +310,10 @@ Biblioteki w większości posiadają otwarty kod źródłowy , głównie napisan
 Zgodnie z poniższym schematem po przeprocesowaniu wejściowego zbioru danych, należy go podzielić na dane treingowe oraz ewaluacyjne. Powszechnie stosowana K krzyżowa walidacja umożliwia maksymalne wykorzystanie dostarczonego wejścia do dostrajania parametrów modelu, ponieważ optymalizacja hiperparametrów połączone z ciągłą weryfikacją poprawności to sedno treningu.
 
 
-![Schemat 8](img/6Nauczanie_maszynowe_rozszerzone.png "Szczegółowy schemat machine learning flow"){ width=80% }
+![Schemat 8](img/6Nauczanie_maszynowe_rozszerzone.png "Szczegółowy schemat machine learning flow"){ height=60% }
 
 
-**K-krotna walidacja krzyżowa** (ang. _K-fold Cross Validation_ ,KCV ) - metoda weryfikacji działająca poprzez podział
+**K-krotna walidacja krzyżowa** (ang. _K-fold Cross Validation_, KCV ) - metoda weryfikacji działająca poprzez podział
 zbioru danych na k podzbiorów z których każdy przynajmniej raz jest zbiorem oceniającym wydajność , zaznaczając że K
 musi być równe lub mniejsze niż liczba elementów w zbiorze [^kfold] .
 
@@ -357,7 +362,7 @@ nadzorowanego, który każdy parametr z dostępnych cech dla danych wejściowych
 podstawie ułożenia punktów dzieli się je na 2 klasy. Graficznie jest to reprezentowane przez prostą dla której odległość
 między najbliższymi dwoma punktami dla wektorów jest możliwie największa.
 
-![Schemat 10 ](img/10svm_schemat.png "Schmat SVM"){ width=50% } [^schemat_wzorowany]
+![Schemat 10 ](img/10svm_schemat.png "Schmat SVM"){ height=40% } [^schemat_wzorowany]
 
 Taka prosta nazywana jest  _prostą marginalną_
 i powstaje ona poprzez generowanie i selekcję tych prostych które rzetelnie szufladkują klasy danych [^3].
@@ -366,7 +371,7 @@ Techinka ta gwarantuje precyzyjniejsze rezulatay niż drzewa decyzyjne, niestety
 szkolenia znacznie się wydłuża oraz istnieją przypadki dla których podział jedną prostą jest niewykonalny, taki
 przypadek reprezentuje rozkład na schemacie nr. 2.
 
-![Schemat 11](img/9svm_niemozliwy_podzial_schemat.png "Schmat SVM niemożliwy podział"){ width=50% } [^schemat_wzorowany]
+![Schemat 11](img/9svm_niemozliwy_podzial_schemat.png "Schmat SVM niemożliwy podział"){ height=40% } [^schemat_wzorowany]
 
 Z powyższego schematu widać że prosta marginalna ma zastosowanie w przypadku dwóch wymiarów, 
 dla większej ilości stosowane jest przeksztaucenie do innego systemu współrzędnych i szukanie hiperpłaszczyzny brzegowej dzielącej tak samo jak prosta punkty w przestrzeni na dwa zbiory.[^hiper] 
@@ -375,8 +380,7 @@ dla większej ilości stosowane jest przeksztaucenie do innego systemu współrz
 
 Idea działania maszyny wektorów nośnych opiera się na wyznaczenia minimalnej wartości wektora wag oraz przesunięcia (ang. _bias_) który geometrycznie opisuje współrzędne hiperpłaszczyzny. 
 
-
-![Schemat 13](img/16svm_wzor2.png " svm wzor ") [^svmW0]
+![Schemat 13](img/16svm_wzor2.png "svm wzor") [^svmW0]
 
 
 [^hiper]: @article {HUANG41,author = {HUANG, SHUJUN and CAI, NIANGUANG and PACHECO, PEDRO PENZUTI and NARRANDES, SHAVIRA and WANG, YANG and XU, WAYNE},	title = {Applications of Support Vector Machine (SVM) Learning in Cancer Genomics},	volume = {15},	number = {1},	pages = {41--51},	year = {2018},	publisher = {International Institute of Anticancer Research},	issn = {1109-6535},	URL = {https://cgp.iiarjournals.org/content/15/1/41},	eprint = {https://cgp.iiarjournals.org/content/15/1/41.full.pdf},	journal = {Cancer Genomics \& Proteomics}}
@@ -400,13 +404,11 @@ oraz Mińkowskiego:
 ![Schemat 16 ](img/19minkowski.png "Minkowski"){ width=20% } [^minkowski]
 
 Atrybut który nastraja proces uczenia się modelu i ma na niego największy wpływ określany jest jako hiperparametr. Dla
-KNN jest to liczba sąsiadów, im większa ilość jednostek mających wpływ, tym wierniejsze będą wyniki. Potęguje się wtedy
-niestety złożoność czasowa algorytmu, znacząco już większa od przedstawionych powyżej innych algoryrtmów.[^3]
+KNN jest to liczba sąsiadów i może przyjmować maksymalnie wartości do rozmiaru zbioru cech. Im większa ilość jednostek mających wpływ, tym potęguje się niestety złożoność czasowa algorytmu, znacząco już większa od przedstawionych powyżej innych algoryrtmów,[^3] oraz tym bardziej wzrasta ryzyko nadmiernego dopasowania do modelu testowanego. 
 
 W celu przewidzenia wartości dla nowych danych, należy odnaleść K najbliższych punktów wyliczając odległości, a
 następnie przpisać odpowiedź implikowaną przez większość sąsiadów. Dla wartości K równej jeden, metoda ta nazywana jest
-algorytmem najbliższego sąsiada. K może przyjmować maksymalnie wartości do rozmiaru zbioru cech, jednak im bardziej są to zbliżone wartości tym bardziej wzrasta ryzyko nadmiernego dopasowania do modelu testowanego. 
-
+algorytmem najbliższego sąsiada.
 ![Schemat 12](img/5knn_schemat.png "Schmat KNN"){ width=50% } [^schemat_wzorowany]
 
 Dla lekarza wartością dodatnią jest wykrycie zależności które decyzują o uznaniu lub zaprzeczeniu występowania choroby.
@@ -420,7 +422,10 @@ reprezentacją wpływ cech na ostateczny osąd próbki.
 [^minkowski]: The Minkowski approach for choosing the distance metric in geographically weighted regression Binbin Lua , Martin Charltonb , Chris Brunsdon and Paul Harrisc , School of Remote Sensing and Information Engineering, Wuhan University, Wuhan, China; National Centre for Geocomputation, National University of Ireland Maynooth, Maynooth, Co. Kildare, Ireland; Sustainable Soils and Grassland Systems, Rothamsted Research, North Wyke, Okehampton, Devon, UK
 
 
-## Komparacja działania modeli
+## Porównanie działania modeli
+
+impementacja z skleran która powstała w oparciu o dokumntacje sklearn 
+ 
 
 W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podczas treningu i weryfikacji danych testowych, dla każdego algorytmu wykonano k-krotną walidację z wykorzystaniem:
 
@@ -433,11 +438,143 @@ GridSearchCV
 do dostrojenia parametrów oraz znalezienia najlepszego modelu, dla każdego algorytmy zapróbkowano wszytkie dostępne dla danego modelu regresji parametry.
 
 
-#tod gridsearch
-## rodzaje gridsearch
-##todo liczenie błędów w grid search
+Wyczerpujące wyszukiwanie określonych wartości parametrów dla estymatora.
 
-### Resultaty wnioski: Losowe lasy decyzyjne
+Ważni członkowie są sprawni, przewiduj.
+
+GridSearchCV implementuje metodę „dopasowania” i „punktacji”. Implementuje również „score_samples”, „predict”, „predict_proba”, „decision_function”, „transform” i „inverse_transform”, jeśli są zaimplementowane w używanym estymatorze.
+
+Parametry estymatora używanego do zastosowania tych metod są optymalizowane przez krzyżowo zweryfikowane wyszukiwanie w siatce parametrów.
+
+Hiperparametry to parametry, których nie można nauczyć się bezpośrednio w estymatorach. W scikit-learn są one przekazywane jako argumenty do konstruktora klas estymatorów. Typowe przykłady to C, kernel i gamma dla Support Vector Classifier, alfa dla Lasso itp.
+
+Możliwe i zalecane jest przeszukanie przestrzeni hiperparametrów w celu uzyskania najlepszego wyniku walidacji krzyżowej.
+
+W ten sposób można zoptymalizować dowolny parametr podany podczas konstruowania estymatora. W szczególności, aby znaleźć nazwy i aktualne wartości wszystkich parametrów dla danego estymatora, użyj:
+
+estymator.get_params()
+Wyszukiwanie składa się z:
+
+estymator (regresor lub klasyfikator, taki jak sklearn.svm.SVC());
+
+przestrzeń parametrów;
+
+metoda wyszukiwania lub próbkowania kandydatów;
+
+schemat walidacji krzyżowej; oraz
+
+funkcja punktacji.
+
+W scikit-learn dostępne są dwa ogólne podejścia do wyszukiwania parametrów: dla podanych wartości GridSearchCV w sposób wyczerpujący uwzględnia wszystkie kombinacje parametrów, podczas gdy RandomizedSearchCV może próbkować określoną liczbę kandydatów z przestrzeni parametrów o określonym rozkładzie. Oba te narzędzia mają kolejne odpowiedniki HalvingGridSearchCV i HalvingRandomSearchCV, które mogą znacznie szybciej znaleźć dobrą kombinację parametrów.
+
+Po opisaniu tych narzędzi szczegółowo opisujemy najlepsze praktyki mające zastosowanie do tych podejść. Niektóre modele pozwalają na wyspecjalizowane, wydajne strategie wyszukiwania parametrów, opisane w Alternatywach do wyszukiwania parametrów metodą brute force.
+
+Należy zauważyć, że często mały podzbiór tych parametrów może mieć duży wpływ na wydajność predykcyjną lub obliczeniową modelu, podczas gdy inne można pozostawić z wartościami domyślnymi. Zaleca się zapoznanie się z dokumentacją klasy estymatora, aby lepiej zrozumieć ich oczekiwane zachowanie, prawdopodobnie poprzez przeczytanie załączonych odnośników do literatury.
+
+3.2.1. Wyczerpujące wyszukiwanie w siatce
+Wyszukiwanie siatki zapewniane przez GridSearchCV w sposób wyczerpujący generuje kandydatów z siatki wartości parametrów określonych za pomocą parametru param_grid. Na przykład następujący param_grid:
+
+param_grid = [
+  {'C': [1, 10, 100, 1000], 'kernel': ['linear']},
+  {'C': [1, 10, 100, 1000], 'gamma': [0.001, 0.0001], 'jądro': ['rbf']},
+ ]
+określa, że ​​należy zbadać dwie siatki: jedną z jądrem liniowym i wartościami C w [1, 10, 100, 1000], a drugą z jądrem RBF i iloczynem krzyżowym wartości C w zakresie [1, 10 , 100, 1000] i wartości gamma w [0,001, 0,0001].
+
+Instancja GridSearchCV implementuje zwykły interfejs API estymatora: podczas „dopasowywania” go do zbioru danych oceniane są wszystkie możliwe kombinacje wartości parametrów i zachowywana jest najlepsza kombinacja.
+
+##estymator obiekt estymatora
+Zakłada się, że jest to implementacja interfejsu estymatora scikit-learn. Albo estymator musi podać funkcję punktacji, albo punktacja musi zostać przekazana.
+
+param_griddict lub lista słowników
+Słownik z nazwami parametrów (str) jako kluczami i listami ustawień parametrów do wypróbowania jako wartości lub listą takich słowników, w którym to przypadku eksplorowane są siatki zawarte w każdym słowniku na liście. Umożliwia to przeszukiwanie dowolnej sekwencji ustawień parametrów.
+
+scoringstr, wywoływalne, lista, krotka lub dyktowanie, domyślnie=Brak
+Strategia oceny wydajności modelu poddanego walidacji krzyżowej na zbiorze testowym.
+
+Jeżeli punktacja reprezentuje pojedynczą punktację, można użyć:
+
+pojedynczy ciąg (patrz Parametr scoringowy: definiowanie reguł oceny modelu);
+
+wywoływalna (zobacz Definiowanie strategii scoringowej na podstawie funkcji metryki), która zwraca pojedynczą wartość.
+
+Jeśli punktacja reprezentuje wiele punktów, można użyć:
+
+lista lub krotka unikalnych ciągów;
+
+wywoływalny zwracający słownik, w którym klucze są nazwami metryk, a wartości są wynikami metryk;
+
+słownik z nazwami metryk jako kluczami i wywoływalnymi wartościami.
+
+Zobacz na przykład Określanie wielu metryk do oceny.
+
+n_jobsint, domyślnie=Brak
+Liczba zadań do równoległego uruchomienia. Brak oznacza 1, chyba że w kontekście joblib.parallel_backend. -1 oznacza użycie wszystkich procesorów. Zobacz Słowniczek po więcej szczegółów.
+
+Zmieniono w wersji v0.20: domyślna wartość n_jobs zmieniona z 1 na Brak
+
+refitbool, str lub callable, default=True
+Dopasuj estymator, korzystając z najlepszych znalezionych parametrów w całym zbiorze danych.
+
+W przypadku oceny wielu metryk musi to być str oznaczający punktację, który zostałby użyty do znalezienia najlepszych parametrów do ponownego dopasowania estymatora na końcu.
+
+Tam, gdzie przy wyborze najlepszego estymatora istnieją względy inne niż maksymalny wynik, refit można ustawić na funkcję, która zwraca wybrany najlepszy_indeks_ podany cv_results_. W takim przypadku best_estimator_ i best_params_ zostaną ustawione zgodnie ze zwróconym best_index_, podczas gdy atrybut best_score_ nie będzie dostępny.
+
+Dopasowany estymator jest udostępniany w atrybucie best_estimator_ i umożliwia użycie predykcji bezpośrednio w tym wystąpieniu GridSearchCV.
+
+Również w przypadku oceny wielu metryk atrybuty best_index_, best_score_ i best_params_ będą dostępne tylko wtedy, gdy ustawiony jest remont, a wszystkie z nich zostaną określone z uwzględnieniem tego konkretnego scoringowca.
+
+Zobacz parametr scoring, aby dowiedzieć się więcej o ocenie wielu metryk.
+
+Zmieniono w wersji 0.20: Dodano obsługę callable.
+
+cvint, generator walidacji krzyżowej lub iterowalny, domyślnie=Brak
+Określa strategię podziału z walidacją krzyżową. Możliwe dane wejściowe dla CV to:
+
+Brak, aby użyć domyślnej pięciokrotnej weryfikacji krzyżowej,
+
+liczba całkowita, aby określić liczbę fałd w (Stratified)KFold,
+
+rozdzielacz CV,
+
+Iterowalny plon (pociąg, test) dzieli się na tablice indeksów.
+
+W przypadku danych wejściowych typu liczba całkowita/brak, jeśli estymator jest klasyfikatorem, a y jest binarne lub wieloklasowe, używany jest StratifiedKFold. We wszystkich innych przypadkach używany jest KFold. Te splittery są tworzone z shuffle=False, więc podziały będą takie same we wszystkich wywołaniach.
+
+Zapoznaj się z podręcznikiem użytkownika, aby zapoznać się z różnymi strategiami walidacji krzyżowej, których można tu użyć.
+
+Zmieniono w wersji 0.22: domyślna wartość cv, jeśli Brak zmieniła się z 3-krotnej na 5-krotną.
+
+verboseint
+Kontroluje szczegółowość: im wyższa, tym więcej wiadomości.
+
+>1 : wyświetlany jest czas obliczeń dla każdego fałdu i potencjalnego parametru;
+
+>2 : wyświetlany jest również wynik;
+
+>3 : indeksy parametrów fałd i kandydatów są również wyświetlane wraz z czasem rozpoczęcia obliczeń.
+
+pre_dispatchint lub str, default=’2*n_jobs’
+Kontroluje liczbę zadań, które są wysyłane podczas wykonywania równoległego. Zmniejszenie tej liczby może być przydatne, aby uniknąć eksplozji zużycia pamięci, gdy wysyłanych jest więcej zadań, niż może przetworzyć procesor. Ten parametr może być:
+
+Brak, w takim przypadku wszystkie miejsca pracy są natychmiast tworzone i odradzane. Użyj tego do lekkich i szybko działających zadań, aby uniknąć opóźnień spowodowanych pojawianiem się zadań na żądanie
+
+Int, podający dokładną liczbę wszystkich miejsc pracy, które się odradzają
+
+A str, dające wyrażenie w funkcji n_jobs, jak w „2*n_jobs”
+
+error_score'podniesienie' lub numeryczne, domyślnie=np.nan
+Wartość do przypisania do wyniku, jeśli wystąpi błąd w dopasowaniu estymatora. Jeśli ustawione na „podnieś”, błąd jest zgłaszany. Jeśli zostanie podana wartość liczbowa, zostanie zgłoszone FitFailedWarning. Ten parametr nie ma wpływu na etap naprawy, który zawsze spowoduje zwiększenie błędu.
+
+return_train_scorebool, domyślnie = Fałsz
+Jeśli False, atrybut cv_results_ nie będzie zawierał wyników szkolenia. Obliczanie wyników treningowych służy do uzyskiwania wglądu w to, jak różne ustawienia parametrów wpływają na kompromis polegający na przesunięciu/niedopasowaniu. Jednak obliczanie wyników na zbiorze uczącym może być kosztowne obliczeniowo i nie jest ściśle wymagane do wyboru parametrów, które zapewniają najlepszą wydajność uogólniania.
+
+Nowość w wersji 0.19.
+[]
+
+##todo liczenie błędów 
+macież pomysłek
+
+###  Losowe lasy decyzyjne
 ###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
 -OCENA SZYBKOŚCI WYKONANIA
 -OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
@@ -445,7 +582,7 @@ do dostrojenia parametrów oraz znalezienia najlepszego modelu, dla każdego alg
  - które parametry mają i wpływ i dlaczego:
    - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
 
-### Rezultaty wnioski: Metoda wektorów nośnych
+###  Maszyna wektorów nośnych
 
 ###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
 -OCENA SZYBKOŚCI WYKONANIA
@@ -454,7 +591,7 @@ do dostrojenia parametrów oraz znalezienia najlepszego modelu, dla każdego alg
  - które parametry mają i wpływ i dlaczego:
    - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
 
-### Rezultaty wnioski: K najbliższych sąsiadów
+###  K-najbliższych sąsiadów
 
 ###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
 -OCENA SZYBKOŚCI WYKONANIA
@@ -479,26 +616,29 @@ rzecz biorąc, rozważany zakres normalizacji między 0 a 1. KNN nie jest odpowi
 przypadkach wymiar musi się zmniejszyć, aby poprawić wydajność. Również obsługa brakujących wartości pomoże nam poprawić
 wyniki.
 
-### Porównianie całościowe algorytmów : złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu
 
-### Podsumowanie i opisanie wpływu danych na model
+#### Podsumowanie i opisanie wpływu danych na model
 
 porównanie do dnych statystycznych
 
-# todo variants of user data preparatrio
+
+
+*Porównianie całościowe algorytmów : złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu*
+
+porównanie z innymi pracami ktore robią klasyfikację 
+rozwiązują problem jakiej metody użytli i jaki jest wynik ewalacji 
+- > metody w porówananiu dają konukrencyjne wyniki 
+  hipotezy dlaczego tak się dzieje 
+
+*todo variants of user data preparatrio*-> przygotowanie danych średnie i tak dalej
 
             ## preparation all -> all test
             ## preparation best for best 
             ## best from other to best in another  -> result and reasons for data anlayse
             ## fast not best - why is it faster 
             ## 
-    # todo prediction
-    # todo percentage na true false
 
-### porównanie wyników klasfikacji do regresji
-
-**Zestawienie efektywności działania algorytmów**
-========
+#### Zestawienie efektywności działania algorytmów###
 
 Konfrontacja technik ucznia maszynowego zaleznie od zestawu danch będzie dawała odmienne wyniki ze względu na ich
 predyspozycje do zajmowania się odpowiednimi zbiorami danych.
@@ -523,9 +663,13 @@ niewiele odbiegającą od perfekcji dokładność, a jednocześnie błędnie os�
 [^schemat_wzorowany]:Na podstwie materiałów opublikowanych
 na [https://www.datacamp.com](http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1526288453/index3_souoaz.png)
 
-## Spis ilustracji
 
-## Spis tabel
+problem multiklasyfikacji - problem regresji kategrycznej - zwykła regresja , mierzyć będe 
+metoda prównania -  tzrea było wprowadzić reguły do float na int -> inne metody do liczenia błędów 
+na dzień dobry widzimy nie dokładność ze wględu na klasyfiakcję po przecinku 
+regresja kategoryczna -> rzutowanie przedziału wartości na wartość graniczną 
+
+
 
 ## **Bibliografia**
 
@@ -534,141 +678,7 @@ Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and P
 Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.},
 journal={Journal of Machine Learning Research}, volume={12}, pages={2825--2830}, year={2011} }
 
-- @article{http://www.mif.pg.gda.pl/homepages/kdz/BIGDATA/AniaPielowska.pdf}
-- @article{https://www.analyticsvidhya.com/blog/2017/09/common-machine-learning-algorithms/}
-- @article{https://myservername.com/what-is-support-vector-machine-machine-learning}
-- @article{https://scikit-learn.org/stable/modules/svm.html}
-- @article{https://www.hackerearth.com/practice/machine-learning/machine-learning-algorithms/ml-decision-tree/tutorial/}
-- @article{https://scikit-learn.org/stable/modules/neighbors.html}
-- @article{https://scikit-learn.org/stable/modules/naive_bayes.html}
-- @article{https://scikit-learn.org/stable/modules/tree.html}
-- @article{https://scikit-learn.org/stable/modules/feature_selection.html}
-- @article{http://pages.cs.wisc.edu/~dpage/kuusisto.thesis.pdf}
-- @article{http://www.bme.teiath.gr/medisp/pdfs/PhD_Glotsos_Dimitrios.pdf}
-- @article{https://www.springboard.com/blog/how-to-become-a-machine-learning-engineer/}
-- @article{http://www.diva-portal.org/smash/get/diva2:920202/FULLTEXT01.pdf}
-- @article{https://www.techsparks.co.in/hot-topic-for-project-and-thesis-machine-learning/}
-- @article{https://machinelearningmastery.com/k-fold-cross-validation/}
-- @article{https://www.writemythesis.org/master-thesis-topics-in-machine-learning/}
-- @article{http://mediatum.ub.tum.de/doc/1368117/47614.pdf}
-- @article{https://pdfs.semanticscholar.org/0e06/561dbab0581feebe6638dc2671f94c9abf68.pdf}
-- @article{https://www.cir.meduniwien.ac.at/assets/Uploads/Masterthesis-SeeboeckPhilipp-Version28-03-2015.pdf}
-- @article{https://www.quora.com/Is-there-any-machine-learning-thesis-idea-in-health-care}
-- @article{https://digitalcommons.odu.edu/cgi/viewcontent.cgi?referer=-
-  @article{https://www.google.pl/&httpsredir=1&article=1015&context=computerscience_etds}
-- @article{https://www.mobt3ath.com/uplode/book/book-60163.pdf}
-- @article{https://www.ilovephd.com/thesis-bank-machine-learning-2/}
-- @article{https://www.digitalocean.com/community/tutorials/how-to-handle-plain-text-files-in-python-3}
-- @article{https://machinelearningmastery.com/naive-bayes-for-machine-learning/}
-- @article{https://machinelearningmastery.com/compare-machine-learning-algorithms-python-scikit-learn/}
-- @article{https://machinelearningmastery.com/compare-machine-learning-algorithms-python-scikit-learn/}
-- @article{https://elitedatascience.com/machine-learning-algorithms}
-- @article{https://www.dataschool.io/comparing-supervised-learning-algorithms/}
-- @article{https://medium.com/value-stream-design/online-machine-learning-515556ff72c5}
-- @article{https://hackernoon.com/choosing-the-right-machine-learning-algorithm-68126944ce1f}
-- @article{https://www.kaggle.com/aldemuro/comparing-ml-algorithms-train-accuracy-90}
-- @article{https://www.kaggle.com/aldemuro/comparing-ml-algorithms-train-accuracy-90}
-- @article{https://machinelearningmastery.com/start-here/}
-- @article{https://machinelearningmastery.com/a-tour-of-machine-learning-algorithms/}
-- @article{https://blog.statsbot.co/machine-learning-algorithms-183cc73197c}
-- @article{https://www.analyticsvidhya.com/blog/2016/01/complete-tutorial-ridge-lasso-regression-python/}
-- @article{https://scikit-learn.org/stable/modules/clustering.html}#overview-of-clustering-methods}
-- @article{https://towardsdatascience.com/predicting-presence-of-heart-diseases-using-machine-learning-36f00f3edb2c}
-- @article{https://towardsdatascience.com/predicting-presence-of-heart-diseases-using-machine-learning-36f00f3edb2c}
-- @article{https://www.kaggle.com/cdabakoglu/heart-disease-classifications-machine-learning}
-- @article{https://medium.com/@dskswu/machine-learning-with-a-heart-predicting-heart-disease-b2e9f24fee84}
-- @article{https://pdfs.semanticscholar.org/d0a5/d4b8e8da3ee2a6bf8ac5d44196fb0365cf1c.pdf}
-- @article{file:///home/szulce/Pobrane/Heart_Disease_Detection_by_Using_Machine_Learning_.p}df}
-- @article{file:///home/szulce/Pobrane/jcm-08-01050.pdf}
-- @article{http://www.cs.put.poznan.pl/alabijak/emd/12_Reprezentacja_wektorowa_slow.pdf}
-- @article{https://www.hindawi.com/journals/misy/2018/3860146/}
-- @article{https://pub.towardsai.net/3-different-approaches-for-train-test-splitting-of-a-pandas-dataframe-d5e544a5316}
--
 
-@article{https://www.run.ai/guides/machine-learning-engineer/machine-learning-workflow/#:~:text=Machine%20learning%20workflows%20define%20which,evaluation%2C%20and%20deployment%20to%20production.}
--
-@article{https://www.dovepress.com/ensemble-approach-for-developing-a-smart-heart-disease-prediction-syst-peer-reviewed-fulltext-article-RRCC}
+## Spis ilustracji
 
-- @article{https://machinelearningmastery.com/save-load-machine-learning-models-python-scikit-learn/}
--
-
-@article{https://www.datacamp.com/community/tutorials/k-nearest-neighbor-classification-scikit-learn?utm_source=adwords_ppc&utm_medium=cpc&utm_campaignid=1455363063&utm_adgroupid=65083631748&utm_device=c&utm_keyword=&utm_matchtype=&utm_network=g&utm_adpostion=&utm_creative=278443377095&utm_targetid=aud-392016246653:dsa-429603003980&utm_loc_interest_ms=&utm_loc_physical_ms=1011615&gclid=Cj0KCQiA0eOPBhCGARIsAFIwTs40_7xpl5j4oimjYTzVJ_h1AcL5tWAyqktjoXXujTgqCCQLbDOH8BwaAn0hEALw_wcB}
-
-- @article{https://www.geeksforgeeks.org/k-nearest-neighbor-algorithm-in-python/}
-- @article{https://m.scirp.org/papers/88650}
-- @article{https://link.springer.com/chapter/10.1007/978-3-540-24668-8_21}
-- @article{https://erogol.com/machine-learning-work-flow-part-1/}
-- @article{https://www.annualreviews.org/doi/pdf/10.1146/annurev-fluid-010719-060214}
-- @article{https://towardsdatascience.com/workflow-of-a-machine-learning-project-ec1dba419b94}
-- @article{https://cloud.google.com/ai-platform/docs/ml-solutions-overview}
-- @article{https://ai.ia.agh.edu.pl/_media/pl:dydaktyka:mbn:uczenie_maszynowe.pdf}
--
-
-@article{https://www.researchgate.net/profile/Krzysztof-Krawiec/publication/235352247_Sieci_neuronowe_i_uczenie_maszynowe/links/0a85e5365da2dd5560000000/Sieci-neuronowe-i-uczenie-maszynowe.pdf}
-
-- @article{https://iopscience.iop.org/article/10.1088/1742-6596/1142/1/012012/pdf}
--
-
-@article{https://www.statystyczny.pl/co-to-jest-machine-learning/#:~:text=Niekt%C3%B3rzy%20wspominaj%C4%85%20tu%20kolejn%C4%85%20metod%C4%99,tego%20nazwa%20ka%C5%BCdego%20z%20nich.}
-
-- @article{https://www.sciencedirect.com/science/article/pii/S1877050915024928}
-- @article{https://machinelearningmastery.com/types-of-classification-in-machine-learning/}
-- @article{https://data-flair.training/blogs/types-of-machine-learning-algorithms/}
-- @article{https://ichi.pro/pl/co-to-jest-kodowanie-one-hot-i-jak-uzywac-funkcji-pandas-get-dummies-160729382340976}
-- @article{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5640485/}
-- @article{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5863635/}
-- @article{https://towardsdatascience.com/heart-disease-prediction-73468d630cfc}
-- @article{https://www.sciencedirect.com/science/article/pii/S187705091630638X}
--
-
-@article{https://www.ices.on.ca/Publications/Journal-Articles/2014/January/Cardiovascular-Disease-Population-Risk-Tool-predictive-algorithm-for-assessing-CVD-risk}
--
-@article{https://www.ctvnews.ca/health/test-your-risk-of-heart-disease-with-a-new-online-lifestyle-calculator-1.4030088}
-
-- @article{https://nevonprojects.com/heart-disease-prediction-project/}
-- @article{https://scikit-learn.org/stable/modules/neighbors.html}
-- @article{https://searchenterpriseai.techtarget.com/definition/machine-learning-ML}
-- @article{https://www.forcepoint.com/cyber-edu/machine-learning}
-- @article{https://en.wikipedia.org/wiki/Supervised_learning}
-- @article{https://www.techopedia.com/definition/8181/machine-learning}
-- @article{https://machinelearningmastery.com/supervised-and-unsupervised-machine-learning-algorithms/}
-- @article{https://searchenterpriseai.techtarget.com/definition/supervised-learning}
-- @article{https://deepai.org/machine-learning-glossary-and-terms/supervised-learning}
--
-
-@article{https://towardsdatascience.com/what-are-supervised-and-unsupervised-learning-in-machine-learning-dc76bd67795d}
--
-@article{https://towardsdatascience.com/what-are-supervised-and-unsupervised-learning-in-machine-learning-dc76bd67795d}
-
-- @article{http://www.cs.ucr.edu/~mwile001/papers/thesis.pdf}
-- @article{https://python-graph-gallery.com/111-custom-correlogram/}
-- @article{https://python-graph-gallery.com/242-area-chart-and-faceting/}
-- @article{https://web.stanford.edu/~hastie/Papers/ESLII.pdf}
-- @article{https://www.sciencedirect.com/topics/computer-science/random-decision-forest}
-- @article{https://flask.palletsprojects.com/en/1.1.x/tutorial/install/}
-- @article{https://towardsdatascience.com/introduction-to-data-preprocessing-in-machine-learning-a9fa83a5dc9d}
-- @article{https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html}
-- @article{https://stackabuse.com/k-nearest-neighbors-algorithm-in-python-and-scikit-learn/}
-- @article{https://dev.to/alod83/3-different-approaches-for-traintest-splitting-of-a-pandas-dataframe-31p0}
-- @article{https://pub.towardsai.net/3-different-approaches-for-train-test-splitting-of-a-pandas-dataframe-d5e544a5316}
-- @article{https://docs.python.org/3/library/itertools.html#itertools.zip_longest}
-- @article{https://realpython.com/train-test-split-python-data/}
-- @article{https://towardsdatascience.com/flask-and-chart-js-tutorial-i-d33e05fba845}
-- @article{https://www.sciencedirect.com/science/article/pii/S2352914820300125 - pobrane jako pdfy}
-- @article{https://docs.python.org/3/library/zipfile.html}
-- @article{https://flask.palletsprojects.com/en/2.0.x/quickstart/}
-- @article{https://machinelearningmastery.com/save-load-machine-learning-models-python-scikit-learn/}
-- @article{https://joblib.readthedocs.io/en/latest/}
-- @article{https://www.kaggle.com/prmohanty/python-how-to-save-and-load-ml-models}
-- @article{https://machinelearningmastery.com/machine-learning-in-python-step-by-step/}
-- 
-
-@article{https://dobrebadania.pl/zmienna-dyskretna-ang-discrete-variable/#:~:text=Zmienna%20dyskretna%20to%20ka%C5%BCda%20cecha,zaw%C3%B3d%2C%20miejsce%20zamieszkania%2C%20wykszta%C5%82cenie.}
-
-- https://towardsdatascience.com/data-normalization-in-machine-learning-395fdec69d02
-- https://www.ritchieng.com/machine-learning-efficiently-search-tuning-param/
-- https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
-- https://www.vebuso.com/2020/03/svm-hyperparameter-tuning-using-gridsearchcv/
-- http://jsonpickle.github.io/#jsonpickle-usage
-- https://www.geeksforgeeks.org/svm-hyperparameter-tuning-using-gridsearchcv-ml/
-- https://ichi.pro/pl/jak-najlepiej-ocenic-model-klasyfikacji-51518447076743
+## Spis tabel
