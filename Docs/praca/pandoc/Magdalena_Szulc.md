@@ -302,10 +302,6 @@ Idea działania maszyny wektorów nośnych opiera się na wyznaczenia minimalnej
 ![Schemat 13](img/16svm_wzor2.png "svm wzor"){ height=10% } [^svmW0]
 
 
-[^hiper]: @article {HUANG41,author = {HUANG, SHUJUN and CAI, NIANGUANG and PACHECO, PEDRO PENZUTI and NARRANDES, SHAVIRA and WANG, YANG and XU, WAYNE},	title = {Applications of Support Vector Machine (SVM) Learning in Cancer Genomics},	volume = {15},	number = {1},	pages = {41--51},	year = {2018},	publisher = {International Institute of Anticancer Research},	issn = {1109-6535},	URL = {https://cgp.iiarjournals.org/content/15/1/41},	eprint = {https://cgp.iiarjournals.org/content/15/1/41.full.pdf},	journal = {Cancer Genomics \& Proteomics}}
-
-[^svmW0]:Maszyna Wektorów Nośnych,Anna Pielowska
-
 ### K najbliższych sąsiadów
 
 **K najbliższych sąsiadów** (ang. _k nearest neighbours_, skr. **_KNN_**) to algorytm uczenia maszynowego nadzorowanego
@@ -352,7 +348,7 @@ części pracy.
 ![Schemat 7](img/15scikit-learn-logo.png "scikit-learn logo"){ height=10% }
 
 Biblioteka opiera się o *Numpy* oraz *Scipy*, daje zestaw narzędzi do obliczeń na macierzach, wektorach oraz umożliwiający metody
-numeryczne takie jak całkowanie, różniczkowanie i temu podobne  [@scikit]. W rezultacie można za jej pomoca wykonać elementy procesu nauczania algorytmu, takie jak: przetwarzanie wstępne, redukcja wymiarowości, klasyfikacja, regresja. [^libpyth] 
+numeryczne takie jak całkowanie, różniczkowanie i temu podobne  [@scikit]. W rezultacie można za jej pomoca wykonać elementy procesu nauczania algorytmu, takie jak: przetwarzanie wstępne, redukcja wymiarowości, klasyfikacja, regresja. [@libpyth] 
 
 Do przygotowania danych wykorzystano zestaw narzędzi *Pandas*, ułatwiający tworzenie struktur danych i ich analizę. 
 
@@ -361,9 +357,9 @@ W celu wizualizacji wyników w postaci wykresów zastosowano, opartą na *Matplo
 Część prezentacyjna czyli możliwość wprowadzenia danych w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzystuje bibliotkę *Flask*. Framework Flask ułatwia pisanie aplikacji internetowch i jest rozwiązaniem które daje duży zakres dowolności oraz możliwości. Flask sam z siebie nie definiuje warstwy bazy danych czy formularzy, pozwala za to na obsługę rozszerzeń które ubogacają aplikację o wybraną funkcjonalność. [^flask]
 
 Przekazywanie obiektów o bardziej skomplikowanej budowie i ich _serializacja_ oraz _deserializacja_ do formatu JSON wykonane są za pomocą biblioteki *jsonpickle*, a zapis
-modeli wykonano za pomocą *joblib* która zapewnia obsługę obiektów Pythona i jest zoptymalizowana pod kątem pracy na dużych tablicach Numpy. [^libpyth] 
+modeli wykonano za pomocą *joblib* która zapewnia obsługę obiektów Pythona i jest zoptymalizowana pod kątem pracy na dużych tablicach Numpy. [@libpyth] 
 
-Biblioteki w większości posiadają otwarty kod źródłowy,  napisany w języku Python [^libpyth].
+Biblioteki w większości posiadają otwarty kod źródłowy,  napisany w języku Python [@libpyth].
 
 
 
@@ -574,7 +570,7 @@ w dalszej części pracy omówione zostaną lasy decyzyjne.
 Większej dokładności można się spodziewać po metodzie wektorów nośnych, ale jego złożoność czasowa oraz pamięciowa mogą
 zaniżyc jego ogólną klasyfikację.
 
-**Wskaźniki wydajności** [@einstein], [^einstein], {einstein}\citation
+**Wskaźniki wydajności**
 
 Określenie stopnia, w jakim skonstruowany model z powodzeniem realizuje wyznaczone zadanie należy do wskaźnika
 wydajności. Przykładem nieprawidłowego wyboru może być próba przewidzenia wystąpienia rzadkiej choroby u pacjenta i
@@ -587,30 +583,6 @@ metoda prównania -  tzrea było wprowadzić reguły do float na int -> inne met
 na dzień dobry widzimy nie dokładność ze wględu na klasyfiakcję po przecinku 
 regresja kategoryczna -> rzutowanie przedziału wartości na wartość graniczną 
 
-@Article{scikit,
- title={Scikit-learn: Machine Learning in {P}ython},
- author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P. and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.},
- journal={Journal of Machine Learning Research},
- volume={12}, pages={2825--2830},
- year={2011}
-  }
-
-[^libpyth]: Podejście porównawcze do algorytmów uczenia się maszynowego ,Samrudhi Rajendra Kaware , Vinod Subhasharao Wande
-[^flask]: @book{grinberg2018flask,  title={Flask web development: developing web applications with python},  author={Grinberg, Miguel},  year={2018},  publisher={" O'Reilly Media, Inc."}}
-[^KPMG]:  międzynarodowa sieć firm audytorsko-doradczych ze szczególnym uwzględnieniem branży dóbr konsumpcyjnych, usług finansowych, nieruchomości i budownictwa, technologii informacyjnych, mediów i komunikacji (TMT), transportowej (TSL), produkcji przemysłowej, a także sektora publicznego
-[^1]: Wojciech Modrzejewski and Włodzimierz J. Musiał tyt.:"Stare i nowe i czynniki ryzyka sercowo-naczyniowego - jak zahamować epidemię miażdżycy? Część I. Klasyczne czynniki ryzyka", Forum Zaburzeń Metabolicznych 2010;1(2):106-114.
-[^2]: Korczak, Karol. "Uczenie maszynowe w opiece zdrowotnej." Roczniki Kolegium Analiz Ekonomicznych/Szkoła Główna Handlowa 56 Technologie informatyczne w administracji publicznej i służbie zdrowia (2019): 305-316.
-[^learning]: The use of machine learning methods in predicting stock prices on the stock exchange. Autor: Tomasz Łysiak
-[^reinfor-learning]: An Overview of Machine Learning Methods Used in Sentiment Analysis. Justyna Laska
-[^clsvsreg]: An overview of the supervised machine learning methods Vladimir Nasteski Faculty of Information and Communication Technologies, Partizanska bb, 7000 Bitola, Macedonia
-[^semi-learning]: van Engelen, J.E., Hoos, H.H. A survey on semi-supervised learning. Mach Learn 109, 373–440 (2020). https://doi.org/10.1007/s10994-019-05855-6
-[^UCI]: Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA:University of California, School of Information and Computer Science.
-[^5]: V.A. Fundacja Centrum Medyczne, Long Beach i Cleveland Clinic:dr n. med. Robert Detrano
-[^hungary]: Węgierski Instytut Kardiologii. Budapeszt: Andras Janosi, MD
-[^switzerland]: Szpital Uniwersytecki, Zurych, Szwajcaria: William Steinbrunn, MD i Szpital Uniwersytecki, Bazylea,Szwajcaria: Matthias Pfisterer, MD
-[^standar]: Peshawa J. Muhammad Ali, Rezhna H. Faraj; “Data Normalization and Standardization: A Technical Report”, Machine Learning Technical Reports, 2014, 1(1), pp 1-6.
-[^wektor]: Introduction to Data Preprocessing in Machine Learning Beginners Guide for Data Preprocessing Dhairya Kumar
-[^schemat_wzorowany]:Na podstwie materiałów opublikowanych na [https://www.datacamp.com](http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1526288453/index3_souoaz.png)
 
 
  **Bibliografia**{.unnumbered}

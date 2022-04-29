@@ -25,41 +25,9 @@ class FullResultObject:
         self.user_data_plot5 = user_data_plot[4]
         self.user_data_plot6 = user_data_plot[5]
 
-        # czułość
-        # self.results_base_knn_result = str(abs(results_base.knn_results.score * 100)) + "%"
-        # self.results_base_svm_result = str(abs(results_base.knn_results.score * 100)) + "%"
-        # self.results_base_rf_result  = str(abs(results_base.knn_results.score * 100)) + "%"
-
     def to_json(self):
         return json.dumps(self, default=lambda o: o.__dict__, indent=4)
-        # return jsonpickle.encode(self)
 
-
-# self.base_result = results_base
-# if apply_full:
-#     self.full_result = full_result
-# else:
-#     self.full_result = None
-# knn
-#        self.results_base_knn_results_plot1 = results_base.knn_results.plot1
-#        self.results_base_knn_results_score = results_base.knn_results.score
-#        self.results_base_knn_results_result = results_base.knn_results.result
-#        self.results_base_knn_results_best_params = results_base.knn_results.best_params
-#        self.results_base_knn_results_accuracy_score = results_base.knn_results.accuracy_score
-#        # svm
-#        self.results_base_svm_results_plot1 = results_base.svm_results.plot1
-#        self.results_base_svm_results_score = results_base.svm_results.score
-#        self.results_base_svm_results_result = results_base.svm_results.result
-#        self.results_base_svm_results_best_params = results_base.svm_results.best_params
-#        self.results_base_svm_results_accuracy_score = results_base.svm_results.accuracy_score
-#        # rf
-#        self.results_base_rf_results_plot1 = results_base.rf_results.plot1
-#        self.results_base_rf_results_score = results_base.rf_results.score
-#        self.results_base_rf_results_result = results_base.rf_results.result
-#        self.results_base_rf_results_best_params = results_base.rf_results.best_params
-#        self.results_base_rf_results_accuracy_score = results_base.rf_results.accuracy_score
-#        # comparation
-#        self.base_result_comparison_results = results_base.comparison_results
 
 def get_final_answer(results_base):
     answer = False
