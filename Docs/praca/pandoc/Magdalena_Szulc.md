@@ -451,7 +451,7 @@ Do dostrojenia parametrów oraz znalezienia najlepszego modelu wykorzystuwany je
 GridSearchCV
 
 ```
-W projekcie dla każdego algorytmy zapróbkowano wszytkie dostępne dla danego modelu klasyfikacji hiperparametry przekazywane w param_grid.
+W projekcie dla każdego algorytmy zapróbkowano większość dostępnych dla danego modelu klasyfikacji hiperparametrów przekazywane w param_grid.
 
 Wykorzystane parametry wykonania GridSearchCv [^scikit]:
 
@@ -463,15 +463,57 @@ Wykorzystane parametry wykonania GridSearchCv [^scikit]:
 
 Estymatory to impementacja z skleran która powstała w oparciu o dokumntacje sklearn oraz dostępną dla nich parametryzacje.
 
-**
+Zestawienie najlepszych osiągniętych estymatorów przedstawia się następująco:
 
-**
-
-**
+*KNeighborsClassifier* [^scikit] :
  
+- n_neighbors: [todo] - liczba sąsiadów z których wnioskowany jest jednostkowy resultat
+- weights: [todo] - wagi na podsatwie których wyliczana jest predykcja , można zastosować wagę 1:1 lub nałożyć wagi zgodnie z dystansem.
+- algorithm: [todo] - algorytm zastosowany do znalezienia najbliższych sąsiadów, w projekcie wykorzystano : brute-force oraz auto.[todo komentarz na to jaki został wybrany przez auto a jaki brut]
+- leaf_size: [todo] - rozmiar liścia dla algorytmów BallTree or KDTree
+- p: [todo] - When p = 1, this is equivalent to using manhattan_distance (l1), and euclidean_distance (l2) for p = 2. For arbitrary p, minkowski_distance (l_p) is used.
+- metric: [todo] -metryka odległości
+- metric_params: [todo]  - dodatkowe parametry dla fukcji mierzenia odległości
 
+*RandomForestClassifier* [^scikit] :
+
+- criterion: [todo] - funkcja pomiaru dokładności rozgałęzienia
+- min_samples_leaf: [todo] -minimalna liczba probek wymagana na liściu.
+- min_weight_fraction_leaf: [todo] -minimalny ułamek sumy wag wymagany na liściu 
+- min_impurity_decrease: [todo] - większe lub równe zmniejszenie zanieczyszczenia powoduje podział danego węzła\
+Zmniejszenie zanieczyszczenia liczone jest zgodnie z wzorem:\
+```
+N_t / N * (impurity - N_t_R / N_t * right_impurity
+                    - N_t_L / N_t * left_impurity)
+```
+
+gdzie N to całkowita liczba próbek, N_t to liczba próbek w bieżącym węźle, N_t_L to liczba próbek w lewym liściu, a N_t_R to liczba próbek w prawym liściu.
+
+- max_features: [todo] - liczba funkcji  najlepszego podziału
+- random_state: [todo] - wykorzystywany przy próbkowaniu cech przy poszukiwaniu najlepszego podziału w węźle
+- cpp_aplha: [todo] - zastosowanie to przycinanie drzewa o największej złożoności mniejszej niż cpp_alpha
+
+
+*SVC* [^scikit] :
  
+- C: [todo]float, default=1.0
+Regularization parameter. The strength of the regularization is inversely proportional to C. Must be strictly positive. The penalty is a squared l2 penalty.
 
+- kernel: [todo]- jądro wykorzystane w algorytmie
+- degree: [todo] - stopień dla funkcji jądra _poly_
+- gamma: [todo] - współczynnik jądra dla wartości _scale_ parametr jądra ustawiany jest na wartość:\
+```text
+1 / (n * X.var())
+```
+dla wartości auto jest to :
+```text
+1 / n
+```
+gdzie n to liczba cech.
+
+- coef0: [todo] - niezależny parametr funkcji jądra , wykorzystywany tylko przy jądrach _poly_ i _sigmoid_.
+- shrinking: [todo] - heurystyka kurcząca
+- cache_size: [todo] - cache jądra (w MB).
 
 Po odnalezieniu najlepszego estymatora model jest zapisywany oraz generowane sa wykresy dla trybu aplikacji webowej:
 

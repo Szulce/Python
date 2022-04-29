@@ -35,7 +35,7 @@ def prepare_grid_classification(y_train, y_test):
     y_train = y_train.replace([2, 3, 4], 1).astype('int')
     y_test = y_test.replace([2, 3, 4], 1).astype('int')
     param_grid = {'C': Rs.SVM_C, 'gamma': Rs.SVM_GAMMA, 'kernel': Rs.SVM_KERNEL, 'degree': Rs.SVM_DEGREE,
-                  'coef0': Rs.SVM_COE0FLOAT, 'epsilon': Rs.SVM_EPSILON, 'shrinking': Rs.SVM_SHRINKING,
+                  'coef0': Rs.SVM_COE0FLOAT, 'shrinking': Rs.SVM_SHRINKING,
                   'cache_size': Rs.SVM_CACHE_SIZE}
     grid = GridSearchCV(SVC(), param_grid, verbose=3, refit=True, cv=Rs.CV)
     return grid, y_train, y_test

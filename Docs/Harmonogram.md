@@ -1,7 +1,6 @@
 
-- uczenie przeprowadzić -  CZEKAM 
+- uczenie przeprowadzić SVM, RF  CZEKAM
 
-- nagrać film-czekam
 
 - tresc dalsze teoretyczne rozważania todo plus obróbka tego co jest
 - treść obrazki 
@@ -26,4 +25,6 @@ ________________________________________do 9
 - _______________________________________ do 10
 -wygenerować dokument
 -wniosek i mail do promotora
-- ________________________________do 11
+- ________________________________potem
+- nagrać film-czekam
+- do poprawy prezentacja wyników
