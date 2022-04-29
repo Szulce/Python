@@ -63,15 +63,6 @@ Uczenie maszynowe poprzez przetwarzanie dużych zasobów klinicznych danych hist
 
 Słowa kluczowe: uczenie maszynowe, uczenie nadzorowane, lasy losowe, maszyna wektorów nośnych, k-najbliższych sąsiadów
 
-[^KPMG]:  międzynarodowa sieć firm audytorsko-doradczych ze szczególnym uwzględnieniem branży dóbr konsumpcyjnych, usług
-finansowych, nieruchomości i budownictwa, technologii informacyjnych, mediów i komunikacji (TMT), transportowej (TSL),
-produkcji przemysłowej, a także sektora publicznego
-
-[^1]: Wojciech Modrzejewski and Włodzimierz J. Musiał tyt.:"Stare i nowe i czynniki ryzyka sercowo-naczyniowego - jak
-zahamować epidemię miażdżycy? Część I. Klasyczne czynniki ryzyka", Forum Zaburzeń Metabolicznych 2010;1(2):106-114.
-[^2]: Korczak, Karol. "Uczenie maszynowe w opiece zdrowotnej." Roczniki Kolegium Analiz Ekonomicznych/Szkoła Główna
-Handlowa 56 Technologie informatyczne w administracji publicznej i służbie zdrowia (2019): 305-316.
-
 **Cel i zakres pracy**{.unnumbered}
 ========
 
@@ -134,14 +125,6 @@ Algorytm generując dane wejściowe dostosowuje reguły by uzyskać zwrotnie syg
 Podział osób na kategorie cierpiące na choroby sercowo-naczyniwe oraz zdrowe, to dylemat klasyfikayjny nadający się do
 rozwiązania za pomoca algorytmów uczenia maszynowego nadzorowanego i na nich skupia się dalsza część pracy.
 
-[^learning]: The use of machine learning methods in predicting stock prices on the stock exchange. Autor: Tomasz Łysiak
-
-[^reinfor-learning]: An Overview of Machine Learning Methods Used in Sentiment Analysis. Justyna Laska
-
-[^clsvsreg]: An overview of the supervised machine learning methods Vladimir Nasteski Faculty of Information and Communication Technologies, Partizanska bb, 7000 Bitola, Macedonia
-
-[^semi-learning]: van Engelen, J.E., Hoos, H.H. A survey on semi-supervised learning. Mach Learn 109, 373–440 (2020). https://doi.org/10.1007/s10994-019-05855-6
-
 ## Ścieżka działania algorytmów uczenia maszynowego nadzorowanego
 
 ![Schemat 2](img/7podstawowy_schemat_blokowy_uczenia_maszynowego.png "Podstawowy schemat blokowy uczenia maszynowego"){ width=70% }
@@ -172,30 +155,14 @@ lokalizacji
 4. Szpital Uniwersytecki, Zurych, Szwajcaria  [^switzerland].
 
 #### Stratyfikacja
+
 Wyróżniono 14 atrybutów spośród 76 zebrancyh do wykorzystania w algorytmach uczenia maszynowego, wszystkie z nich mają
 wartośi liczbowe.
 
-[Todo dodać jak dzielą się dane na kobiety mężczyżni]
-Wykaz chorób serca
-Rozkład chorób serca w danych testowych
+Rozkład chorób serca w danych testowych to 44.67% chorych czyli 509 prób pozytywnych oraz  411 negatywnych.
+W danych testowych znajduje się 726 przypadków osób płci męskiej oraz 194 żeńskiej. Dla zachorowań widać nierówność ale jest ona spowodowana rzeczywistą statystyką.
+Tylko u 25.77% badanych kobiet stwierdzono występowanie chorób wieńcowych, natomiast wśród badanych mężczyzn jest to aż 63.22%. [^UCI]
 
-44.67%
-chory 509 zdrowy 411
-
-Rozkład płci w danych testowych
-78.91%
-Mężczyźni 726 Kobiety 194
-
-Rozkład chorób serca według płci
-Kobiety
-25.77%
-Mężczyźni
-63.22%
-
-[^UCI]: Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA:University of California, School of Information and Computer Science.
-[^5]: V.A. Fundacja Centrum Medyczne, Long Beach i Cleveland Clinic:dr n. med. Robert Detrano
-[^hungary]: Węgierski Instytut Kardiologii. Budapeszt: Andras Janosi, MD
-[^switzerland]: Szpital Uniwersytecki, Zurych, Szwajcaria: William Steinbrunn, MD i Szpital Uniwersytecki, Bazylea,Szwajcaria: Matthias Pfisterer, MD
 
 W przypadku danych testowych z repozytorium UCI, fakt iż dane pochodziły z róźnych lokalizacji ma duże znaczenie ,gdyż
 od placówki medycznej zależy jakim badaniom poddani zostali pacjęci a co za tym idzie w jakich kolumnach tabelarycznego
@@ -250,18 +217,13 @@ Obsługa danych kategorialnych pozwoliła zmapować/zakodować je w postaci licz
 same dane mieć w postaci 0 lub 1 na odpowiedniej kolumnie. Rozwiązanie reprezentacji wektorowej polega na utworzeniu
 tylu kolumn ile jest unikalnych wartości dla kategorii i wpisanie 0 lub 1 dla każdego rekordu danych [^wektor] .
 
-##### Współliniowość cech
+*Współliniowość cech*
 
 Aby znaleść korelacje współliniowości należy szukać liniowej zależności pomiędzy danymi, najłatwiej zauważyć to tworząc
-wykresy z danych testowych dla każdej pary [^wektor] .
+wykresy z danych testowych dla każdej pary [^wektor].
 
-[TODO] Wwykresy dla cech
+![Schemat 21](img/21corealtion.png "Powiazanie cech")
  
-
-[^standar]: Peshawa J. Muhammad Ali, Rezhna H. Faraj; “Data Normalization and Standardization: A Technical Report”, Machine Learning Technical Reports, 2014, 1(1), pp 1-6.
-
-[^wektor]: Introduction to Data Preprocessing in Machine Learning Beginners Guide for Data Preprocessing Dhairya Kumar
-
 
 
 Zgodnie z poniższym schematem po przeprocesowaniu wejściowego zbioru danych, należy go podzielić na dane treingowe oraz ewaluacyjne. Powszechnie stosowana K krzyżowa walidacja umożliwia maksymalne wykorzystanie dostarczonego wejścia do dostrajania parametrów modelu, ponieważ optymalizacja hiperparametrów połączone z ciągłą weryfikacją poprawności to sedno treningu.
@@ -390,7 +352,7 @@ części pracy.
 ![Schemat 7](img/15scikit-learn-logo.png "scikit-learn logo"){ height=10% }
 
 Biblioteka opiera się o *Numpy* oraz *Scipy*, daje zestaw narzędzi do obliczeń na macierzach, wektorach oraz umożliwiający metody
-numeryczne takie jak całkowanie, różniczkowanie i temu podobne [^scikit]. W rezultacie można za jej pomoca wykonać elementy procesu nauczania algorytmu, takie jak: przetwarzanie wstępne, redukcja wymiarowości, klasyfikacja, regresja. [^libpyth] 
+numeryczne takie jak całkowanie, różniczkowanie i temu podobne  [@scikit]. W rezultacie można za jej pomoca wykonać elementy procesu nauczania algorytmu, takie jak: przetwarzanie wstępne, redukcja wymiarowości, klasyfikacja, regresja. [^libpyth] 
 
 Do przygotowania danych wykorzystano zestaw narzędzi *Pandas*, ułatwiający tworzenie struktur danych i ich analizę. 
 
@@ -403,12 +365,6 @@ modeli wykonano za pomocą *joblib* która zapewnia obsługę obiektów Pythona 
 
 Biblioteki w większości posiadają otwarty kod źródłowy,  napisany w języku Python [^libpyth].
 
-
-[^scikit]: @article{scikit-learn, title={Scikit-learn: Machine Learning in {P}ython}, author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P. and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.}, journal={Journal of Machine Learning Research}, volume={12}, pages={2825--2830}, year={2011}}
-
-[^libpyth]: Podejście porównawcze do algorytmów uczenia się maszynowego ,Samrudhi Rajendra Kaware , Vinod Subhasharao Wande
-
-[^flask]: @book{grinberg2018flask,  title={Flask web development: developing web applications with python},  author={Grinberg, Miguel},  year={2018},  publisher={" O'Reilly Media, Inc."}}
 
 
 ## Moduły projektu:
@@ -453,7 +409,7 @@ GridSearchCV
 ```
 W projekcie dla każdego algorytmy zapróbkowano większość dostępnych dla danego modelu klasyfikacji hiperparametrów przekazywane w param_grid.
 
-Wykorzystane parametry wykonania GridSearchCv [^scikit]:
+Wykorzystane parametry wykonania GridSearchCv [@scikit]:
 
 - estimator: implementacja interfejsu obiekt estymatora scikit-learn,
 - param_grid: słownik parametrów które są potem testowane w dowolnej sekwencji ustawień,
@@ -465,7 +421,7 @@ Estymatory to impementacja z skleran która powstała w oparciu o dokumntacje sk
 
 Zestawienie najlepszych osiągniętych estymatorów przedstawia się następująco:
 
-*KNeighborsClassifier* [^scikit] :
+*KNeighborsClassifier* [@scikit] :
  
 - n_neighbors: [todo] - liczba sąsiadów z których wnioskowany jest jednostkowy resultat
 - weights: [todo] - wagi na podsatwie których wyliczana jest predykcja , można zastosować wagę 1:1 lub nałożyć wagi zgodnie z dystansem.
@@ -475,7 +431,7 @@ Zestawienie najlepszych osiągniętych estymatorów przedstawia się następują
 - metric: [todo] -metryka odległości
 - metric_params: [todo]  - dodatkowe parametry dla fukcji mierzenia odległości
 
-*RandomForestClassifier* [^scikit] :
+*RandomForestClassifier* [@scikit] :
 
 - criterion: [todo] - funkcja pomiaru dokładności rozgałęzienia
 - min_samples_leaf: [todo] -minimalna liczba probek wymagana na liściu.
@@ -494,7 +450,7 @@ gdzie N to całkowita liczba próbek, N_t to liczba próbek w bieżącym węźle
 - cpp_aplha: [todo] - zastosowanie to przycinanie drzewa o największej złożoności mniejszej niż cpp_alpha
 
 
-*SVC* [^scikit] :
+*SVC* [@scikit] :
  
 - C: [todo]float, default=1.0
 Regularization parameter. The strength of the regularization is inversely proportional to C. Must be strictly positive. The penalty is a squared l2 penalty.
@@ -535,7 +491,6 @@ Aplikacja posiada 4 widoki :
 
 Zatwierdzenie formularza wyzwala odczytanie zapisanych modeli , iteracje i wykonanie predykcji na każdym z nich , następnie prezentowane są wyniki dla najlepszych estymatorów oraz wykresy wskazujące na umiejscowienie nowych danych na tle zbior testowego.
 
-[todo obrazek ]
 ![Schemat 20](img/20form.png "form"){ width=60% }
 
 ## Porównanie działania modeli
@@ -572,20 +527,15 @@ macież pomysłek
    - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
 
 Plusy Faza uczenia klasyfikacji K-najbliższego sąsiada jest znacznie szybsza w porównaniu z innymi algorytmami
-klasyfikacji. Nie ma potrzeby uczenia modelu do uogólniania, dlatego KNN jest znany jako prosty algorytm uczenia oparty
-na instancjach. KNN może być przydatny w przypadku danych nieliniowych. Może być używany z problemem regresji. Wartość
+klasyfikacji. KNN może być przydatny w przypadku danych nieliniowych. Może być używany z problemem regresji. Wartość
 wyjściowa obiektu jest obliczana przez średnią k wartości najbliższych sąsiadów.
 
 Cons Faza testowania klasyfikacji najbliższych sąsiadów K jest wolniejsza i bardziej kosztowna pod względem czasu i
 pamięci. Wymaga dużej pamięci do przechowywania całego zestawu danych treningowych do przewidywania. KNN wymaga
-skalowania danych, ponieważ KNN wykorzystuje odległość euklidesową między dwoma punktami danych, aby znaleźć
+skalowania danych, ponieważ KNN wykorzystuje odległość  między dwoma punktami danych, aby znaleźć
 najbliższych sąsiadów. Odległość euklidesowa jest wrażliwa na wielkości. Obiekty o dużych jasnościach będą miały większą
 wagę niż obiekty o niskich jasnościach. KNN nie nadaje się również do dużych danych wymiarowych.
 
-Jak ulepszyć KNN? Aby uzyskać lepsze wyniki, zdecydowanie zaleca się normalizację danych w tej samej skali. Ogólnie
-rzecz biorąc, rozważany zakres normalizacji między 0 a 1. KNN nie jest odpowiedni dla danych wielkowymiarowych. W takich
-przypadkach wymiar musi się zmniejszyć, aby poprawić wydajność. Również obsługa brakujących wartości pomoże nam poprawić
-wyniki.
 
 
 #### Podsumowanie i opisanie wpływu danych na model
@@ -624,15 +574,12 @@ w dalszej części pracy omówione zostaną lasy decyzyjne.
 Większej dokładności można się spodziewać po metodzie wektorów nośnych, ale jego złożoność czasowa oraz pamięciowa mogą
 zaniżyc jego ogólną klasyfikację.
 
-**Wskaźniki wydajności**
+**Wskaźniki wydajności** [@einstein], [^einstein], {einstein}\citation
 
 Określenie stopnia, w jakim skonstruowany model z powodzeniem realizuje wyznaczone zadanie należy do wskaźnika
 wydajności. Przykładem nieprawidłowego wyboru może być próba przewidzenia wystąpienia rzadkiej choroby u pacjenta i
 określenie głownym miernikiem _dokładność_. W takim scenariuszu klasyfikacja wszystkich pacjentów jako zdrowych , daje
 niewiele odbiegającą od perfekcji dokładność, a jednocześnie błędnie osądzać każde wystąpienie choroby.
-
-[^schemat_wzorowany]:Na podstwie materiałów opublikowanych
-na [https://www.datacamp.com](http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1526288453/index3_souoaz.png)
 
 
 problem multiklasyfikacji - problem regresji kategrycznej - zwykła regresja , mierzyć będe 
@@ -640,19 +587,38 @@ metoda prównania -  tzrea było wprowadzić reguły do float na int -> inne met
 na dzień dobry widzimy nie dokładność ze wględu na klasyfiakcję po przecinku 
 regresja kategoryczna -> rzutowanie przedziału wartości na wartość graniczną 
 
+@Article{scikit,
+ title={Scikit-learn: Machine Learning in {P}ython},
+ author={Pedregosa, F. and Varoquaux, G. and Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P. and Weiss, R. and Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.},
+ journal={Journal of Machine Learning Research},
+ volume={12}, pages={2825--2830},
+ year={2011}
+  }
+
+[^libpyth]: Podejście porównawcze do algorytmów uczenia się maszynowego ,Samrudhi Rajendra Kaware , Vinod Subhasharao Wande
+[^flask]: @book{grinberg2018flask,  title={Flask web development: developing web applications with python},  author={Grinberg, Miguel},  year={2018},  publisher={" O'Reilly Media, Inc."}}
+[^KPMG]:  międzynarodowa sieć firm audytorsko-doradczych ze szczególnym uwzględnieniem branży dóbr konsumpcyjnych, usług finansowych, nieruchomości i budownictwa, technologii informacyjnych, mediów i komunikacji (TMT), transportowej (TSL), produkcji przemysłowej, a także sektora publicznego
+[^1]: Wojciech Modrzejewski and Włodzimierz J. Musiał tyt.:"Stare i nowe i czynniki ryzyka sercowo-naczyniowego - jak zahamować epidemię miażdżycy? Część I. Klasyczne czynniki ryzyka", Forum Zaburzeń Metabolicznych 2010;1(2):106-114.
+[^2]: Korczak, Karol. "Uczenie maszynowe w opiece zdrowotnej." Roczniki Kolegium Analiz Ekonomicznych/Szkoła Główna Handlowa 56 Technologie informatyczne w administracji publicznej i służbie zdrowia (2019): 305-316.
+[^learning]: The use of machine learning methods in predicting stock prices on the stock exchange. Autor: Tomasz Łysiak
+[^reinfor-learning]: An Overview of Machine Learning Methods Used in Sentiment Analysis. Justyna Laska
+[^clsvsreg]: An overview of the supervised machine learning methods Vladimir Nasteski Faculty of Information and Communication Technologies, Partizanska bb, 7000 Bitola, Macedonia
+[^semi-learning]: van Engelen, J.E., Hoos, H.H. A survey on semi-supervised learning. Mach Learn 109, 373–440 (2020). https://doi.org/10.1007/s10994-019-05855-6
+[^UCI]: Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA:University of California, School of Information and Computer Science.
+[^5]: V.A. Fundacja Centrum Medyczne, Long Beach i Cleveland Clinic:dr n. med. Robert Detrano
+[^hungary]: Węgierski Instytut Kardiologii. Budapeszt: Andras Janosi, MD
+[^switzerland]: Szpital Uniwersytecki, Zurych, Szwajcaria: William Steinbrunn, MD i Szpital Uniwersytecki, Bazylea,Szwajcaria: Matthias Pfisterer, MD
+[^standar]: Peshawa J. Muhammad Ali, Rezhna H. Faraj; “Data Normalization and Standardization: A Technical Report”, Machine Learning Technical Reports, 2014, 1(1), pp 1-6.
+[^wektor]: Introduction to Data Preprocessing in Machine Learning Beginners Guide for Data Preprocessing Dhairya Kumar
+[^schemat_wzorowany]:Na podstwie materiałów opublikowanych na [https://www.datacamp.com](http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1526288453/index3_souoaz.png)
 
 
  **Bibliografia**{.unnumbered}
 ========
-
-@article{scikit-learn, title={Scikit-learn: Machine Learning in {P}ython}, author={Pedregosa, F. and Varoquaux, G. and
-Gramfort, A. and Michel, V. and Thirion, B. and Grisel, O. and Blondel, M. and Prettenhofer, P. and Weiss, R. and
-Dubourg, V. and Vanderplas, J. and Passos, A. and Cournapeau, D. and Brucher, M. and Perrot, M. and Duchesnay, E.},
-journal={Journal of Machine Learning Research}, volume={12}, pages={2825--2830}, year={2011} }
-
-
 Spis ilustracji{.unnumbered}
 ========
 
 Spis tabel{.unnumbered}
 ========
+
+

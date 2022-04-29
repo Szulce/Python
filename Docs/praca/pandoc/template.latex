@@ -267,6 +267,14 @@ $endif$
 $endif$
 $if(biblatex)$
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+%in the preamble
+%--------------------------------
+  \usepackage{natbib}
+  \bibliographystyle{ksfh_nat}
+%--------------------------------
+
+%Where the bibliography will be printed
+  \bibliography{bibfile}
 
 $endif$
 

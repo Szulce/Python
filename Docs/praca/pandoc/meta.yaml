@@ -1,0 +1,51 @@
+---
+template: 'mytemplate.tex'
+documentclass: acmart
+classoption: sigconf
+title: The impact of opt-in gamification on `\\`{=latex} students' grades in a software design course
+author:
+- name: Kiko Fernandez-Reyes
+  affiliation: Uppsala University
+  email: kiko.fernandez@it.uu.se
+- name: Dave Clarke
+  affiliation: Uppsala University
+  email: dave.clarke@it.uu.se
+- name: Janina Hornbach
+  affiliation: Uppsala University
+  email: janina.hornbach@fek.uu.se
+bibliography: biblio.bib
+abstract: |
+  An achievement-driven methodology strives to give students more control over their learning with enough flexibility to engage them in deeper learning. (more stuff continues)
+
+include-before: |
+  ```{=latex}
+  \copyrightyear{2018}
+  \acmYear{2018}
+  \setcopyright{acmlicensed}
+  \acmConference[MODELS '18 Companion]{ACM/IEEE 21th International Conference on Model Driven Engineering Languages and Systems}{October 14--19, 2018}{Copenhagen, Denmark}
+  \acmBooktitle{ACM/IEEE 21th International Conference on Model Driven Engineering Languages and Systems (MODELS '18 Companion), October 14--19, 2018, Copenhagen, Denmark}
+  \acmPrice{XX.XX}
+  \acmDOI{10.1145/3270112.3270118}
+  \acmISBN{978-1-4503-5965-8/18/10}
+
+  \begin{CCSXML}
+  <ccs2012>
+  <concept>
+  <concept_id>10010405.10010489</concept_id>
+  <concept_desc>Applied computing~Education</concept_desc>
+  <concept_significance>500</concept_significance>
+  </concept>
+  </ccs2012>
+  \end{CCSXML}
+
+  \ccsdesc[500]{Applied computing~Education}
+
+  \keywords{gamification, education, software design, UML}
+  ```
+figPrefix:
+  - "Fig."
+  - "Figs."
+secPrefix:
+  - "Section"
+  - "Sections"
+...

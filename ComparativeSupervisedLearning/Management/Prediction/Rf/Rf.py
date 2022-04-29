@@ -38,7 +38,7 @@ def prepare_grid_classification(y_train, y_test):
     y_train = y_train.replace([2, 3, 4], 1).astype('int')
     y_test = y_test.replace([2, 3, 4], 1).astype('int')
     param_grid = {'random_state': Rs.RF_RANDOM_STATE, 'max_features': Rs.RF_MAX_FEATURES,
-                  'criterion': Rs.RF_CRITERION, 'splitter': Rs.RF_SPLITTER,
+                  'criterion': Rs.RF_CRITERION,
                   'min_samples_leaf': Rs.RF_MIN_SAMPLES_LEAF,
                   'min_weight_fraction_leaf': Rs.RF_MIN_WEIGHT_FRACTION_LEAF,
                   'min_impurity_decrease': Rs.RF_MIN_IMPURITY_DECREASE, 'ccp_alpha': Rs.RF_CPP}

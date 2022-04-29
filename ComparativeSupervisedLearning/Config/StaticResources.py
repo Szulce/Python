@@ -5,7 +5,7 @@ from sklearn.impute import SimpleImputer
 
 # LogConfig
 PREDICTION_MANAGEMENT_ = '\Management\Prediction\\'
-PREDICTION_ELABORATION_ = '\Management\Elaboration\PlotGeneration\PlotsObjects\\'
+PREDICTION_ELABORATION_ = '\Management\PlotGeneration\PlotsObjects\\'
 NUMPY = "Numpy"
 PANDAS = "Pandas"
 K_FOLD = "K-fold"
@@ -144,7 +144,7 @@ SVM_CACHE_SIZE = [200, 500]
 RF_MAX_DEPTH = [7, 10, 13]
 RF_RANDOM_STATE = [0, 2, 13, 27]
 RF_MAX_FEATURES = [None, 'auto', 'sqrt', 'log2']
-RF_CRITERION = ['friedman_mse', 'poisson']
+RF_CRITERION = ['gini', 'entropy']
 RF_SPLITTER = ['best', 'random']
 RF_MIN_SAMPLES = [1.1, 2.0, 5.0]
 RF_MIN_SAMPLES_LEAF = [1, 2, 5]
