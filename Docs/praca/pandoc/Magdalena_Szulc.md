@@ -105,7 +105,7 @@ Sposób wykorzystania segreguje alorytmy uczenia maszynowego na dwie kategorie, 
 sposobu _trenowania_ algorytmu. Algorytmy dzieli się na min.: uczenie nadzorowane, uczenie częściowo nadzorowane, uczenie bez nadzoru oraz uczenie przez
 wzmacnianie [^3] .
 
-![Schemat 1](img/1_algorithms_category.png "Algorytmy z podziałem na kategorie"){ width=70% }
+![Schemat 1](img/1algorithms_category.png "Algorytmy z podziałem na kategorie"){ width=100% }
 
 Dobór typu uczenia oraz algorytmu uzależniony jest od danych wejściowych oraz oczekiwanego rezultatu. Dane wyjściowe
 mogą przyjmować format odpowiedzi TAK/NIE , klasyfikacji do danego zbioru czy np procentowej oceny ryzyka.
@@ -194,7 +194,7 @@ danych, co skutowało by uboższym modelem i możliwe że pominięciem kluczowej
 Proces przetwarzania danych może skladać sie z wielu róźnych kroków zależenie od typu, w uczeniu nadzorowanym operującym
 na danych tekstowo-liczbowych poprawnym będzie zastosowanie schematu przedstawionego poniżej:
 
-![Schemat 4](img/2_data_preprocessing.png "Wstępna obróbka danych"){ width=40% }
+![Schemat 4](img/2data_preprocessing.png "Wstępna obróbka danych"){ width=50% }
 
 
  Po złączeniu można przeprowadzić szereg działań w celu sztucznego uzupełnienia pustych wartości bazując na
@@ -268,15 +268,18 @@ wykresy z danych testowych dla każdej pary [^wektor] .
 
 Projekt posiada dwa tryby pracy :
 
-- tryb nauczania na podstawie danych testowych : machine learning z wykorzystaniem 3 algorytmów (_Run_Learning_Proces.xml_)
-- tryb aplikacji web : wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli (_Run_Web_Application.xml_)
+- tryb nauczania na podstawie danych testowych
+  machine learning z wykorzystaniem 3 algorytmów (_Run_Learning_Proces.xml_)
+- tryb aplikacji web 
+  wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli (_Run_Web_Application.xml_)
+
+[todo ] opisać  główne metody
 
 Poniżej przedstawiono plan działania:
 
 
 ![Schemat 6](img/14Architektura.png "Architektura"){ height=70% }
 
-[todo ] opisać  główne metody
 
 ## Narzędzia i biblioteki zastosowane w pojekcie
 
@@ -312,7 +315,7 @@ Biblioteki w większości posiadają otwarty kod źródłowy,  napisany w język
 Zgodnie z poniższym schematem po przeprocesowaniu wejściowego zbioru danych, należy go podzielić na dane treingowe oraz ewaluacyjne. Powszechnie stosowana K krzyżowa walidacja umożliwia maksymalne wykorzystanie dostarczonego wejścia do dostrajania parametrów modelu, ponieważ optymalizacja hiperparametrów połączone z ciągłą weryfikacją poprawności to sedno treningu.
 
 
-![Schemat 8](img/6Nauczanie_maszynowe_rozszerzone.png "Szczegółowy schemat machine learning flow"){ height=40% }
+![Schemat 8](img/6Nauczanie_maszynowe_rozszerzone.png "Szczegółowy schemat machine learning flow"){ height=45% }
 
 
 **K-krotna walidacja krzyżowa** (ang. _K-fold Cross Validation_, KCV ) - metoda weryfikacji działająca poprzez podział
@@ -382,7 +385,7 @@ dla większej ilości stosowane jest przeksztaucenie do innego systemu współrz
 
 Idea działania maszyny wektorów nośnych opiera się na wyznaczenia minimalnej wartości wektora wag oraz przesunięcia (ang. _bias_) który geometrycznie opisuje współrzędne hiperpłaszczyzny. 
 
-![Schemat 13](img/16svm_wzor2.png "svm wzor"){ height=20% } [^svmW0]
+![Schemat 13](img/16svm_wzor2.png "svm wzor"){ height=10% } [^svmW0]
 
 
 [^hiper]: @article {HUANG41,author = {HUANG, SHUJUN and CAI, NIANGUANG and PACHECO, PEDRO PENZUTI and NARRANDES, SHAVIRA and WANG, YANG and XU, WAYNE},	title = {Applications of Support Vector Machine (SVM) Learning in Cancer Genomics},	volume = {15},	number = {1},	pages = {41--51},	year = {2018},	publisher = {International Institute of Anticancer Research},	issn = {1109-6535},	URL = {https://cgp.iiarjournals.org/content/15/1/41},	eprint = {https://cgp.iiarjournals.org/content/15/1/41.full.pdf},	journal = {Cancer Genomics \& Proteomics}}

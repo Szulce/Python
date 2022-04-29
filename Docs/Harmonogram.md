@@ -1,8 +1,7 @@
 
-- spis treści
 
-- poprawić obrazki z drawi.io
 - tresc dalsze teoretyczne rozważania todo plus obróbka tego co jest
+- _______________________________ do 7
 - spis używanej terminologii
 - spis formuł mateatycznych
  -przypisy
@@ -11,7 +10,7 @@
 -wygenerować dokument
 -(dane) w Exelu do pracy
 
-- ______ do 7
+- ______ do 9
 
 - uczenie przeprowadzić -  CZEKAM SVN I RF
 - sprawdzić działanie strony - czekam 
@@ -20,10 +19,10 @@
 - nagrać film-czekam
 - commit
 - wygenerować wykresy dla porównań
-________________________________________do 9
+________________________________________do 10
 - treść obrazki 
 - tresc wykresy
-- tresc porownanie 
+- tresc porownanie i analiza
 
 - obrazków biliografia,
 - bibilografie poprawić
@@ -31,4 +30,4 @@ ________________________________________do 9
 
 -spakować projekt
 -wniosek i mail do promotora
-- ________________________________do 10
+- ________________________________do 12
