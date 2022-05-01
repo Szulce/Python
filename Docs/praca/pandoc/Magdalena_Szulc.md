@@ -166,6 +166,23 @@ W danych testowych znajduje się 726 przypadków osób płci męskiej oraz 194 �
 Tylko u 25.77% badanych kobiet stwierdzono występowanie chorób wieńcowych, natomiast wśród badanych mężczyzn jest to aż 63.22%. [@UCI]
 
 
+Lista atrybutów wykorzystanych w algorytmie:
+
+- wiek
+- płeć
+- rodzaj bólu w klatce piersiowej
+- spoczynkowe ciśnienie krwi
+- cholesterol w surowicy w mg/dl
+- poziom cukru we krwi na czczo > 120 mg/dl
+- spoczynkowe wyniki elektrokardiograficzne
+- osiągnięto maksymalne tętno
+- dławica piersiowa wywołana wysiłkiem fizycznym
+- obniżenie odcinka ST wywołane wysiłkiem fizycznym w stosunku do odpoczynku
+- nachylenie szczytowego odcinka ST ćwiczenia
+- liczba głównych naczyń pokolorowanych fluorozopią
+- skan serca z talem lub test wysiłkowy
+- stan (brak choroby serca/choroba serca)
+
 W przypadku danych testowych z repozytorium UCI, fakt iż dane pochodziły z róźnych lokalizacji ma duże znaczenie ,gdyż
 od placówki medycznej zależy jakim badaniom poddani zostali pacjęci a co za tym idzie w jakich kolumnach tabelarycznego
 przedstawienia będą mieć uzupełnione bądź puste wartości. Scalenie ze sobą wyników badań dostarcza większej różnorodności
