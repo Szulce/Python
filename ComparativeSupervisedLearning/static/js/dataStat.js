@@ -5,7 +5,7 @@ $(document).ready(function(){
 
             var parsedDataObject = JSON.parse(JSON.stringify(dataObject));
              $('#card_data').removeClass('hidden_div')
-              $("#loader").remove();
+             $("#loader").remove();
 
 			$('#exhibit-heart-disease').html(dataObject.exhibit_heart_disease);
 			$('#gender-heart-disease').html(dataObject.gender_heart_disease);
@@ -25,5 +25,5 @@ $(document).ready(function(){
             $('#health-state-plot10').html(dataObject.health_state_plot10);
             $('#health-state-plot11').html(dataObject.health_state_plot11);
 				});
-
-});
+    }
+);
