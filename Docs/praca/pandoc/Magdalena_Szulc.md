@@ -522,6 +522,35 @@ niewiele odbiegającą od perfekcji dokładność, a jednocześnie błędnie os�
 
 ###  Losowe lasy decyzyjne
 
+##todo liczenie błędów 
+macież pomysłek
+
+###  Losowe lasy decyzyjne
+###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
+-OCENA SZYBKOŚCI WYKONANIA
+-OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
+-OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
+ - które parametry mają i wpływ i dlaczego:
+   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
+
+###  Maszyna wektorów nośnych
+
+###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
+-OCENA SZYBKOŚCI WYKONANIA
+-OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
+-OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
+ - które parametry mają i wpływ i dlaczego:
+   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
+
+###  K-najbliższych sąsiadów
+
+###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
+-OCENA SZYBKOŚCI WYKONANIA
+-OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
+-OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
+ - które parametry mają i wpływ i dlaczego:
+   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
+
 
 *Porównianie całościowe algorytmów : złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu*
 
@@ -566,6 +595,13 @@ Najgorsze modele i wartości dla regresji :
 ![Schemat 20](img/23knn_params_time.png "form"){ width=60% }
 
  ![Schemat 20](img/24knnexel.png "form"){ width=60% }
+
+
+
+problem multiklasyfikacji - problem regresji kategrycznej - zwykła regresja , mierzyć będe 
+metoda prównania -  tzrea było wprowadzić reguły do float na int -> inne metody do liczenia błędów 
+na dzień dobry widzimy nie dokładność ze wględu na klasyfiakcję po przecinku 
+regresja kategoryczna -> rzutowanie przedziału wartości na wartość graniczną 
 
 
 

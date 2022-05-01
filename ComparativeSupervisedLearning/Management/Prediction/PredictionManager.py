@@ -87,8 +87,7 @@ def get_data_info():
     data_set = Dc.get_unprepared_data()
     print(data_set.head())
     data_set = data_set.rename(
-        columns={"age": "wiek", "sex": "plec", "cp": "bol_w_klatce_piersiowej", "trestbps": "cisnienie_krwi",
-                 "fbs": "cukier", "chol": "cholesterol", "num": "wynik"})
+        columns=Rs.COLUMNS)
     data_set['stan_zdrowia'] = ["zdrowy" if x == 0 else "chory" for x in data_set['wynik']]
     data_set['plec_tekst'] = ['Kobiety' if x == 0 else 'Mężczyźni' for x in data_set['plec']]
     grouped_by_state_for_gender = data_set.groupby(['plec', 'stan_zdrowia'])['plec']
@@ -96,6 +95,7 @@ def get_data_info():
     exhibit = [Plot.convert_counts_to_html(data_set['stan_zdrowia'].value_counts()),
                Plot.convert_counts_to_html(grouped_by_state_for_gender.count()).replace("plec stan_zdrowia", "")]
     print_hist = data_set.hist(figsize=(16, 20), bins=50, layout=(4, 4), color=['green'])
+    distribution = ""
     for subplot in print_hist:
         for plot in subplot:
             distribution = Plot.convert_plot_to_html(plot.figure)
@@ -111,7 +111,7 @@ def get_algorithm_info():
             for loaded_measures in Ms.read_prediction(model_type, iterator):
                 model_result.append(loaded_measures)
             final_results.append(model_result)
-    estimators, best_params = Plot.best_estimator_compare(iterator)
-    final_results.append(estimators)
-    final_results.append(best_params)
+        estimators, best_params = Plot.best_estimator_compare(iterator)
+        final_results.append(estimators)
+        final_results.append(best_params)
     return final_results

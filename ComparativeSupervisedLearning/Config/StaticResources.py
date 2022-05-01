@@ -153,3 +153,7 @@ RF_MIN_IMPURITY_DECREASE = [0.0, 0.25]
 RF_CPP = [0.0, 0.25]
 RF_N_ESTIMATORS = [10, 100, 1000]
 CV = 15
+
+
+COLUMNS = {"age": "wiek", "sex": "plec", "cp": "bol_w_klatce_piersiowej", "trestbps": "cisnienie_krwi",
+          "fbs": "cukier", "chol": "cholesterol", "num": "wynik"}

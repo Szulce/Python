@@ -78,7 +78,7 @@ def convert_counts_to_html(counts):
 
 
 def get_coleration(data):
-    f, ax = plt.subplots(figsize=(15, 10))
+    f, ax = plt.subplots(figsize=(4, 4))
     return convert_plot_to_html(sns.heatmap(data.corr(), annot=True, cmap='coolwarm', linewidths=.5).figure)
 
 
