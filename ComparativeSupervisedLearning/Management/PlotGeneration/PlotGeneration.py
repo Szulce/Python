@@ -134,9 +134,34 @@ def get_log_scale_countplot(data, param_1, param_2):
 
 def create_measure_table(score, y_predict, y_test, exec_time):
     measures_table = []
+    accuracy_score = metrics.accuracy_score(y_test, y_predict)
+    balanced_accuracy_score = metrics.balanced_accuracy_score(y_test, y_predict)
+    brier_score_loss = metrics.brier_score_loss(y_test, y_predict)
+    text1 = str('Precyzja : ') + \
+            str(score) + \
+            str('  |    Wynik klasyfikacji dokładności: ') + \
+            str(accuracy_score) + \
+            str('   |   Zrównoważoną dokładność: ') + \
+            str(balanced_accuracy_score) + str('  |   Utrata regresji błędu średniokwadratowego: ') + \
+            str(brier_score_loss)
+    measures_table.append(text1)
+    measures_table.append(plot_true_values(y_test, y_predict))
+    measures_table.append(plot_error_measures(y_test, y_predict))
+    measures_table.append(str(score))
+    measures_table.append(str(accuracy_score))
+    measures_table.append(str(explained_variance_score(y_test, y_predict)))
+    measures_table.append(str(balanced_accuracy_score))
+    measures_table.append(str(brier_score_loss))
+    measures_table.append(str(exec_time))
+    return measures_table
+
+
+def create_measure_table_regression(score, y_predict, y_test, exec_time):
+    measures_table = []
     r2_score = metrics.r2_score(y_test, y_predict)
     mae = metrics.r2_score(y_test, y_predict)
     mse = metrics.mean_squared_error(y_test, y_predict)
+
     text1 = str('Precyzja : ') + \
             str(score) + \
             str('  |     Współczynnik determinacji (r2): ') + \
@@ -185,7 +210,7 @@ def generate_user_data_plot(base_data):
     return [plot1, plot2, plot3, plot4, plot5, plot6]
 
 
-def best_estimator_compare(iterator, type_m, ):
+def best_estimator_compare(iterator, type_m ):
     ax = []
     bp = []
     plt.clf()
@@ -201,7 +226,6 @@ def best_estimator_compare(iterator, type_m, ):
 
 
 def get_algorithm_param_comp(grid, means_test_s, means_train_s, stds_test_s, stds_train_s):
-
     means_test = grid.cv_results_[str(means_test_s)]
     stds_test = grid.cv_results_[str(means_train_s)]
     means_train = grid.cv_results_[str(stds_test_s)]

@@ -8,17 +8,15 @@ do poprawy prezentacja wyników algorytmów
 inne wyniki 
 wykresy
 time na stronie
-+++++++++++++++++++++++++++++3
-
 
 część praktyczna dodać wykresy które potrzeuje:
 -macież błęów
 -sprawdzić wykresy z innych projektów github
-
+yest dla HalvingGridSearchCV
 zapisać wyniki bez parametrów
+zapisać wyniki z parametrami
+zapisać wyniki dla regresji z parametrami 
 
-
-____________________________________________________ 04
 
 
 część praktyczna puścić poprawione uczenie z werbose 0
@@ -31,8 +29,6 @@ puścić na dysku google
 
 
 
-- - wyczyścić projekt - usunąc doki 
-- -spakować projekt
 - nagrać film
 ____________________________________________________07
 
@@ -101,6 +97,7 @@ dać Agnieszce do przeczytania
 dać Oli do przeczytania 
 3.05
 ------------
-
+- - wyczyścić projekt - usunąc doki 
+- -spakować projekt
 -wniosek i mail do promotora
 

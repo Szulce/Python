@@ -430,6 +430,29 @@ Do dostrojenia parametrów oraz znalezienia najlepszego modelu wykorzystuwany je
 GridSearchCV
 
 ```
+
+
+
+Scikit-learn also provides the HalvingGridSearchCV and HalvingRandomSearchCV estimators that can be used to search a parameter space using successive halving 1 2. Successive halving (SH) is like a tournament among candidate parameter combinations. SH is an iterative selection process where all candidates (the parameter combinations) are evaluated with a small amount of resources at the first iteration. Only some of these candidates are selected for the next iteration, which will be allocated more resources. For parameter tuning, the resource is typically the number of training samples, but it can also be an arbitrary numeric parameter such as n_estimators in a random forest.
+
+As illustrated in the figure below, only a subset of candidates ‘survive’ until the last iteration. These are the candidates that have consistently ranked among the top-scoring candidates across all iterations. Each iteration is allocated an increasing amount of resources per candidate, here the number of samples.
+
+../_images/sphx_glr_plot_successive_halving_iterations_001.png
+We here briefly describe the main parameters, but each parameter and their interactions are described in more details in the sections below. The factor (> 1) parameter controls the rate at which the resources grow, and the rate at which the number of candidates decreases. In each iteration, the number of resources per candidate is multiplied by factor and the number of candidates is divided by the same factor. Along with resource and min_resources, factor is the most important parameter to control the search in our implementation, though a value of 3 usually works well. factor effectively controls the number of iterations in HalvingGridSearchCV and the number of candidates (by default) and iterations in HalvingRandomSearchCV. aggressive_elimination=True can also be used if the number of available resources is small. More control is available through tuning the min_resources parameter.
+
+These estimators are still experimental: their predictions and their API might change without any deprecation cycle. To use them, you need to explicitly import enable_halving_search_cv:
+
+>>>
+>>> # explicitly require this experimental feature
+>>> from sklearn.experimental import enable_halving_search_cv  # noqa
+>>> # now you can import normally from model_selection
+>>> from sklearn.model_selection import HalvingGridSearchCV
+>>> from sklearn.model_selection import HalvingRandomSearchCV
+> 
+> The heatmaps show the mean test score of the parameter combinations for an SVC instance. The HalvingGridSearchCV also shows the iteration at which the combinations where last used. The combinations marked as 0 were only evaluated at the first iteration, while the ones with 5 are the parameter combinations that are considered the best ones.
+
+We can see that the HalvingGridSearchCV class is able to find parameter combinations that are just as accurate as GridSearchCV, in much less time.
+
 W projekcie dla każdego algorytmy zapróbkowano większość dostępnych dla danego modelu klasyfikacji hiperparametrów przekazywane w param_grid.
 
 Wykorzystane parametry wykonania GridSearchCv [@scikit]:
@@ -636,6 +659,69 @@ metoda prównania -  tzrea było wprowadzić reguły do float na int -> inne met
 na dzień dobry widzimy nie dokładność ze wględu na klasyfiakcję po przecinku 
 regresja kategoryczna -> rzutowanie przedziału wartości na wartość graniczną 
 
+
+
+score method of classifiers
+Every estimator or model in Scikit-learn has a score method after being trained on the data, usually X_train, y_train.
+
+When you call score on classifiers like LogisticRegression, RandomForestClassifier, etc. the method computes the accuracy score by default (accuracy is #correct_preds / #all_preds). By default, the score method does not need the actual predictions. So, when you call:
+
+clf.score(X_test, y_test)
+it makes predictions using X_test under the hood and uses those predictions to calculate accuracy score. Think of score as a shorthand to calculate accuracy since it is such a common metric. It is also implemented to avoid calculating accuracy like this which involves more steps:
+
+from sklearn.metrics import accuracy score
+
+preds = clf.predict(X_test)
+
+accuracy_score(y_test, preds)
+When using accuracy_score you need ready predictions, i.e. the function does not generate prediction using the test set under the hood.
+
+For classifiers, accuracy_score and score are both the same - they are just different ways of calculating the same thing.
+
+score method of regressors
+When score is called on regressors, the coefficient of determination - R2 is calculated by default. As in classifiers, the score method is simply a shorthand to calculate R2 since it is commonly used to assess the performance of a regressor.
+
+reg.score(X_test, y_test)
+As you see, you have to pass just the test sets to score and it is done. However, there is another way of calculating R2 which is:
+
+from sklearn.metrics import r2_score
+
+preds = reg.predict(X_test)
+
+r2_score(y_test, preds)
+Unlike the simple score, r2_score requires ready predictions - it does not calculate them under the hood.
+
+So, again the takeaway is r2_score and score for regressors are the same - they are just different ways of calculating the coefficient of determination.score method of classifiers
+Every estimator or model in Scikit-learn has a score method after being trained on the data, usually X_train, y_train.
+
+When you call score on classifiers like LogisticRegression, RandomForestClassifier, etc. the method computes the accuracy score by default (accuracy is #correct_preds / #all_preds). By default, the score method does not need the actual predictions. So, when you call:
+
+clf.score(X_test, y_test)
+it makes predictions using X_test under the hood and uses those predictions to calculate accuracy score. Think of score as a shorthand to calculate accuracy since it is such a common metric. It is also implemented to avoid calculating accuracy like this which involves more steps:
+
+from sklearn.metrics import accuracy score
+
+preds = clf.predict(X_test)
+
+accuracy_score(y_test, preds)
+When using accuracy_score you need ready predictions, i.e. the function does not generate prediction using the test set under the hood.
+
+For classifiers, accuracy_score and score are both the same - they are just different ways of calculating the same thing.
+
+score method of regressors
+When score is called on regressors, the coefficient of determination - R2 is calculated by default. As in classifiers, the score method is simply a shorthand to calculate R2 since it is commonly used to assess the performance of a regressor.
+
+reg.score(X_test, y_test)
+As you see, you have to pass just the test sets to score and it is done. However, there is another way of calculating R2 which is:
+
+from sklearn.metrics import r2_score
+
+preds = reg.predict(X_test)
+
+r2_score(y_test, preds)
+Unlike the simple score, r2_score requires ready predictions - it does not calculate them under the hood.
+
+So, again the takeaway is r2_score and score for regressors are the same - they are just different ways of calculating the coefficient of determination.
 +++++++++++
 Is it possible that after running the optimization my score won't get better (and even worse?) ?
 

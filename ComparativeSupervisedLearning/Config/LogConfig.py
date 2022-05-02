@@ -2,16 +2,18 @@ import atexit
 import logging
 import os
 import sys
+import warnings
 from zipfile import ZipFile
 
 import ComparativeSupervisedLearning.Config.StaticResources as Rs
+
 
 logging.basicConfig(filename=Rs.LOG_FILES_DIRECTORY + "/" + Rs.LOG_FILE_NAME,
                     format='%(asctime)s - %(levelname)s - %(message)s',
                     filemode='w')
 mainLogger = logging.getLogger('MainLogger')
 mainLogger.setLevel(logging.DEBUG)
-
+# warnings.filterwarnings('ignore')
 
 
 @atexit.register
