@@ -132,13 +132,16 @@ def get_log_scale_countplot(data, param_1, param_2):
     return convert_plot_to_html(plot_tmp1.figure)
 
 
-def create_measure_table(score, y_predict, y_test, y_train, exec_time):
+def create_measure_table(score, y_predict, y_test, exec_time):
     measures_table = []
     r2_score = metrics.r2_score(y_test, y_predict)
     mae = metrics.r2_score(y_test, y_predict)
     mse = metrics.mean_squared_error(y_test, y_predict)
-    text1 = str('Precyzja : ') + str(score) + str('  |     Współczynnik determinacji (r2): ') \
-            + str(r2_score) + str('   |   Średnia utrata regresji błędu bezwzględneg: ') + \
+    text1 = str('Precyzja : ') + \
+            str(score) + \
+            str('  |     Współczynnik determinacji (r2): ') + \
+            str(r2_score) + \
+            str('   |   Średnia utrata regresji błędu bezwzględneg: ') + \
             str(mae) + str('  |   Utrata regresji błędu średniokwadratowego: ') + \
             str(mse)
     measures_table.append(text1)
@@ -182,42 +185,36 @@ def generate_user_data_plot(base_data):
     return [plot1, plot2, plot3, plot4, plot5, plot6]
 
 
-def best_estimator_compare(iterator):
+def best_estimator_compare(iterator, type_m, ):
     ax = []
     bp = []
     plt.clf()
-    for type_m in Rs.MODELS:
-        grid = Ms.load_grid_scores(type_m, iterator)
-        bp.append(grid.best_params_)
-        ax1 = get_algorithm_param_comp(grid, 'mean_test_score', 'std_test_score', 'rank_test_score',
-                                       'split0_test_score')
-        ax.append(ax1)
-        plt.clf()
-        ax2 = get_algorithm_param_comp(grid, 'mean_fit_time', 'std_fit_time', 'mean_score_time', 'std_score_time')
-        ax.append(ax2)
+    grid = Ms.load_grid_scores(type_m, iterator)
+    bp.append(grid.best_params_)
+    ax1 = get_algorithm_param_comp(grid, 'mean_test_score', 'std_test_score', 'rank_test_score', 'split0_test_score')
+    ax.append(ax1)
+    plt.clf()
+    ax2 = get_algorithm_param_comp(grid, 'mean_fit_time', 'std_fit_time', 'mean_score_time', 'std_score_time')
+    ax.append(ax2)
+    plt.cla()
     return ax, bp
 
 
 def get_algorithm_param_comp(grid, means_test_s, means_train_s, stds_test_s, stds_train_s):
-    masks = []
-    plt.rcParams.update({'font.size': 22})
+
     means_test = grid.cv_results_[str(means_test_s)]
     stds_test = grid.cv_results_[str(means_train_s)]
     means_train = grid.cv_results_[str(stds_test_s)]
     stds_train = grid.cv_results_[str(stds_train_s)]
 
     masks_names = list(grid.best_params_.keys())
-    for p_k, p_v in grid.best_params_.items():
-        masks.append(list(grid.cv_results_['param_' + p_k].data == p_v))
+    masks = mask_prepare(grid)
     params = grid.param_grid
-    fig, ax = plt.subplots(1, len(params), sharex='none', sharey='all', figsize=(80, 20))
-    fig.suptitle('Wynik dla parametru')
-    fig.text(0.04, 0.5, 'Średni wynik', va='center', rotation='vertical')
+    ax, fig = figure_prepare(params)
+
     for i, p in enumerate(masks_names):
         if len(masks) > 1:
-            m = numpy.stack(masks[:i] + masks[i + 1:])
-            best_parms_mask = m.all(axis=0)
-            best_index = numpy.where(best_parms_mask)[0]
+            best_index = get_best_index(i, masks)
             x = numpy.array(params[p])
             y_1 = numpy.array(means_test[best_index])
             e_1 = numpy.array(stds_test[best_index])
@@ -229,6 +226,33 @@ def get_algorithm_param_comp(grid, means_test_s, means_train_s, stds_test_s, std
 
     if len(fig.axes) > 3:
         fig.axes[2].xaxis.set_ticklabels([])
+    return specialized_figure(fig)
+
+
+def get_best_index(i, masks):
+    m = numpy.stack(masks[:i] + masks[i + 1:])
+    best_parms_mask = m.all(axis=0)
+    best_index = numpy.where(best_parms_mask)[0]
+    return best_index
+
+
+def mask_prepare(grid):
+    masks = []
+    for p_k, p_v in grid.best_params_.items():
+        masks.append(list(grid.cv_results_['param_' + p_k].data == p_v))
+    return masks
+
+
+def figure_prepare(params):
+    plt.cla()
+    plt.rcParams.update({'font.size': 22})
+    fig, ax = plt.subplots(1, len(params), sharex='none', sharey='all', figsize=(80, 20))
+    fig.suptitle('Wynik dla parametru')
+    fig.text(0.04, 0.5, 'Średni wynik', va='center', rotation='vertical')
+    return ax, fig
+
+
+def specialized_figure(fig):
     buf = BytesIO()
     fig.set_size_inches(20, 10)
     fig.savefig(buf, format="png", dpi=40)

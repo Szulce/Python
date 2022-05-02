@@ -6,81 +6,65 @@ $(document).ready(function(){
 
             var parsedDataObject = JSON.parse(JSON.stringify(dataObject));
 
-            $('#time_knn_1').html(dataObject.time_knn);
-            $('#time_svm_1').html(dataObject.time_svm);
-            $('#time_rf_1').html(dataObject.time_rf);
-            $('#time_knn_2').html(dataObject.time_knn);
-            $('#time_svm_2').html(dataObject.time_svm);
-            $('#time_rf_2').html(dataObject.time_rf);
-            $('#time_knn_3').html(dataObject.time_knn);
-            $('#time_svm_3').html(dataObject.time_svm);
-            $('#time_rf_3').html(dataObject.time_rf);
+            $('#knn_mean_desc').html(dataObject.knn_mean_desc);
+            $('#knn_mean_plot1').html(dataObject.knn_mean_plot1);
+            $('#knn_mean_plot2').html(dataObject.knn_mean_plot2);
+            $('#knn_mean_best_params').html(dataObject.knn_mean_best_params);
 
-            $('#best_estimator_plot_1_knn').html(dataObject.best_estimator_plot_1_knn).show();
-    		$('#best_estimator_plot_2_knn').html(dataObject.best_estimator_plot_2_knn).show();
-    		$('#best_estimator_plot_1_svm').html(dataObject.best_estimator_plot_1_svm).show();
-    		$('#best_estimator_plot_2_svm').html(dataObject.best_estimator_plot_2_svm).show();
-    		$('#best_estimator_plot_1_rf').html(dataObject.best_estimator_plot_1_rf).show();
-    		$('#best_estimator_plot_2_rf').html(dataObject.best_estimator_plot_2_rf).show();
+            $('#svm_mean_desc').html(dataObject.svm_mean_desc);
+            $('#svm_mean_plot1').html(dataObject.svm_mean_plot1);
+            $('#svm_mean_plot2').html(dataObject.svm_mean_plot2);
+            $('#svm_mean_best_params').html(dataObject.svm_mean_best_params);
 
-    		$('#best_estimator_plot_4').html(dataObject.best_estimator_plot_2).show();
+            $('#rf_mean_desc').html(dataObject.rf_mean_desc);
+            $('#rf_mean_plot1').html(dataObject.rf_mean_plot1);
+            $('#rf_mean_plot2').html(dataObject.rf_mean_plot2);
+            $('#rf_mean_best_params').html(dataObject.rf_mean_best_params);
 
+            $('#knn_median_desc').html(dataObject.knn_median_desc);
+            $('#knn_median_plot1').html(dataObject.knn_median_plot1);
+            $('#knn_median_plot2').html(dataObject.knn_median_plot2);
+            $('#knn_mean_best_params').html(dataObject.knn_median_best_params);
 
-			$('#card_text_knn_1').html(dataObject.card_text_knn_1);
-			$('#card_text_knn_1_1').html(dataObject.card_text_knn_1_1);
-			$('#card_text_knn_1_2').html(dataObject.card_text_knn_1_2);
-			$('#card_text_knn_2').html(dataObject.card_text_knn_svm_text);
-			$('#card_text_knn_3').html(dataObject.card_text_knn_rf_text);
-			$('#card_text_knn_4').html(dataObject.card_text_knn_svm_plot);
-			$('#card_text_knn_5').html(dataObject.card_text_knn_rf_plot);
+            $('#svm_median_desc').html(dataObject.svm_median_desc);
+            $('#svm_median_plot1').html(dataObject.svm_median_plot1);
+            $('#svm_median_plot2').html(dataObject.svm_median_plot2);
+            $('#svm_median_best_params').html(dataObject.svm_median_best_params);
 
-			$('#card_text_svm_1').html(dataObject.card_text_svm_1);
-			$('#card_text_svm_1_1').html(dataObject.card_text_svm_1_1);
-			$('#card_text_svm_1_2').html(dataObject.card_text_svm_1_2);
-			$('#card_text_svm_2').html(dataObject.card_text_knn_svm_text);
-			$('#card_text_svm_3').html(dataObject.card_text_knn_svm_plot);
-			$('#card_text_svm_4').html(dataObject.card_text_svm_rf_text);
-			$('#card_text_svm_5').html(dataObject.card_text_svm_rf_plot);
+            $('#rf_median_desc').html(dataObject.rf_median_desc);
+            $('#rf_median_plot1').html(dataObject.rf_median_plot1);
+            $('#rf_median_plot2').html(dataObject.rf_median_plot2);
+            $('#rf_median_best_params').html(dataObject.rf_median_best_params);
 
-			$('#card_text_rf_1').html(dataObject.card_text_rf_1);
-			$('#card_text_rf_1_1').html(dataObject.card_text_rf_1_1);
-			$('#card_text_rf_1_2').html(dataObject.card_text_rf_1_2);
-			$('#card_text_rf_2').html(dataObject.card_text_knn_rf_text);
-			$('#card_text_rf_3').html(dataObject.card_text_knn_rf_plot);
-			$('#card_text_rf_4').html(dataObject.card_text_svm_rf_text);
-			$('#card_text_rf_5').html(dataObject.card_text_svm_rf_plot);
+            $('#knn_freq_desc').html(dataObject.knn_freq_desc);
+            $('#knn_freq_plot1').html(dataObject.knn_freq_plot1);
+            $('#knn_freq_plot2').html(dataObject.knn_freq_plot2);
+            $('#knn_freq_best_params').html(dataObject.knn_freq_best_params);
 
-			$('#card_plot_all_1').html(dataObject.card_plot_all_1);
-			$('#card_plot_all_2').html(dataObject.card_plot_all_2);
-			$('#card_plot_all_3').html(dataObject.card_plot_all_3);
-			$('#card_plot_all_4').html(dataObject.card_plot_all_4);
-			$('#card_plot_all_5').html(dataObject.card_plot_all_5);
-			$('#card_plot_all_6').html(dataObject.card_plot_all_6);
-			$('#card_plot_all_7').html(dataObject.card_plot_all_7);
+            $('#svm_freq_desc').html(dataObject.svm_freq_desc);
+            $('#svm_freq_plot1').html(dataObject.svm_freq_plot1);
+            $('#svm_freq_plot2').html(dataObject.svm_freq_plot2);
+            $('#svm_freq_best_params').html(dataObject.svm_freq_best_params);
 
+            $('#rf_freq_desc').html(dataObject.rf_freq_desc);
+            $('#rf_freq_plot1').html(dataObject.rf_freq_plot1);
+            $('#rf_freq_plot2').html(dataObject.rf_freq_plot2);
+            $('#rf_freq_best_params').html(dataObject.rf_freq_best_params);
 
-			$('#accuracy-positive-imputed_mean_knn').html(dataObject.accuracy_imputed_mean_knn).show();
-    		$('#accuracy-positive-imputed_median_knn').html(dataObject.accuracy_imputed_median_knn).show();
-    		$('#accuracy-postive-imputed_most_constant_knn').html(dataObject.accuracy_imputed_most_constant_knn).show();
-    		$('#accuracy-positive-imputed_most_frequent_knn').html(dataObject.accuracy_imputed_most_frequent_knn).show();
-    		$('#accuracy-negative-imputed_mean_knn').html(dataObject.accuracy_imputed_mean_knn).show();
-    		$('#accuracy-negative-imputed_median_knn').html(dataObject.accuracy_imputed_median_knn).show();
-    		$('#accuracy-negaive-imputed_most_constant_knn').html(dataObject.accuracy_imputed_most_constant_knn).show();
-    		$('#accuracy-negative-imputed_most_frequent_knn').html(dataObject.accuracy_imputed_most_frequent_knn).show();
+            $('#knn_cont_desc').html(dataObject.knn_cont_desc);
+            $('#knn_cont_plot1').html(dataObject.knn_cont_plot1);
+            $('#knn_cont_plot2').html(dataObject.knn_cont_plot2);
+            $('#knn_cont_best_params').html(dataObject.knn_cont_best_params);
 
+            $('#svm_cont_desc').html(dataObject.svm_cont_desc);
+            $('#svm_cont_plot1').html(dataObject.svm_cont_plot1);
+            $('#svm_cont_plot2').html(dataObject.svm_cont_plot2);
+            $('#svm_cont_best_params').html(dataObject.svm_cont_best_params);
 
-            $('#result-positive-value-knn').html(dataObject.results_base_information_text_knn).show();
-			$('#result-negative-value-knn').html(dataObject.results_base_information_text_knn).show();
-    		$('#accuracy-negative-value-knn').html(dataObject.results_base_accuracy_text_knn).show();
-    		$('#accuracy-positive-value-knn').html(dataObject.results_base_accuracy_text_knn).show();
-    		$('#result-positive-value-svm').html(dataObject.results_base_information_text_svm).show();
-			$('#result-negative-value-svm').html(dataObject.results_base_information_text_svm).show();
-    		$('#accuracy-negative-value-svm').html(dataObject.results_base_accuracy_text_svm).show();
-    		$('#accuracy-positive-value-svm').html(dataObject.results_base_accuracy_text_svm).show();
-    		$('#result-positive-value-rf').html(dataObject.results_base_information_text_rf).show();
-			$('#result-negative-value-rf').html(dataObject.results_base_information_text_rf).show();
-    		$('#accuracy-negative-value-rf').html(dataObject.results_base_accuracy_text_rf).show();
-    		$('#accuracy-positive-value-rf').html(dataObject.results_base_accuracy_text_rf).show();
+            $('#rf_cont_desc').html(dataObject.rf_cont_desc);
+            $('#rf_cont_plot1').html(dataObject.rf_cont_plot1);
+            $('#rf_cont_plot2').html(dataObject.rf_cont_plot2);
+            $('#rf_cont_best_params').html(dataObject.rf_cont_best_params);
 
 				});
 

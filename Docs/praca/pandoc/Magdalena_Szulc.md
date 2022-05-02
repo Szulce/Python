@@ -161,6 +161,8 @@ lokalizacji
 Wyróżniono 14 atrybutów spośród 76 zebrancyh do wykorzystania w algorytmach uczenia maszynowego, wszystkie z nich mają
 wartośi liczbowe.
 
+![Schemat 22](img/22corelation1.png "corelation"){ width=50% } ![Schemat 23](img/23corelation2.png "corelation"){ width=50% } 
+
 Rozkład chorób serca w danych testowych to 44.67% chorych czyli 509 prób pozytywnych oraz  411 negatywnych.
 W danych testowych znajduje się 726 przypadków osób płci męskiej oraz 194 żeńskiej. Dla zachorowań widać nierówność ale jest ona spowodowana rzeczywistą statystyką.
 Tylko u 25.77% badanych kobiet stwierdzono występowanie chorób wieńcowych, natomiast wśród badanych mężczyzn jest to aż 63.22%. [@UCI]
@@ -189,6 +191,23 @@ przedstawienia będą mieć uzupełnione bądź puste wartości. Scalenie ze sob
 również dzięki temu że dane pochodzą z wielu krajów. Jeżeli zestaw wejściowy zostałby ograniczony do jednej
 lokalizacji to cecha dla której nie uzupełniono wartości zostałaby pominięta podczas treningu ze względu na brak
 danych, co skutowało by uboższym modelem i możliwe że pominięciem kluczowej cechy wpływającej na działanie.
+
+
+
+example: try DecisionTreeClassifier(random_state=0)
+
+Explaination:
+
+This occurs because, you are not using a random_state variable while declaring decision_tree_classifier = DecisionTreeClassifier() .
+
+So, each time a different Decision Tree is generated because:
+
+Decision trees can be unstable because small variations in the data might result in a completely different tree being generated. This problem is mitigated by using decision trees within an ensemble.
+
+This is also mentioned in interface Documentation:
+
+The problem of learning an optimal decision tree is known to be NP-complete under several aspects of optimality and even for simple concepts. Consequently, practical decision-tree learning algorithms are based on heuristic algorithms such as the greedy algorithm where locally optimal decisions are made at each node. Such algorithms cannot guarantee to return the globally optimal decision tree. This can be mitigated by training multiple trees in an ensemble learner, where the features and samples are randomly sampled with replacement.
+
 
 ### Wstępna obróbka danych
 
@@ -240,9 +259,6 @@ tylu kolumn ile jest unikalnych wartości dla kategorii i wpisanie 0 lub 1 dla k
 
 Aby znaleść korelacje współliniowości należy szukać liniowej zależności pomiędzy danymi, najłatwiej zauważyć to tworząc
 wykresy z danych testowych dla każdej pary [@wektor].
-
-![Schemat 21](img/21corealtion.png "Powiazanie cech"){ width=50% }
- 
 
 
 Zgodnie z poniższym schematem po przeprocesowaniu wejściowego zbioru danych, należy go podzielić na dane treingowe oraz ewaluacyjne. Powszechnie stosowana K krzyżowa walidacja umożliwia maksymalne wykorzystanie dostarczonego wejścia do dostrajania parametrów modelu, ponieważ optymalizacja hiperparametrów połączone z ciągłą weryfikacją poprawności to sedno treningu.
@@ -620,8 +636,93 @@ metoda prównania -  tzrea było wprowadzić reguły do float na int -> inne met
 na dzień dobry widzimy nie dokładność ze wględu na klasyfiakcję po przecinku 
 regresja kategoryczna -> rzutowanie przedziału wartości na wartość graniczną 
 
++++++++++++
+Is it possible that after running the optimization my score won't get better (and even worse?) ?
 
+Yes, theoretically, by pure luck, it is possible that your initial guess, before optimization of hyper-parameters, provides better results than the best of parameter combination found in the parameters grid. However, assuming you have enough data and your parameter grid is wide enough it is rather unlikely that the tuning of hyper-parameters would not be able to find better results. Such behavior rather indicates that something is wrong with your approach or your data.
 
+If understand correctly, the choice of the best parameters is based on the cv results on training data, while in your final run the performance is assessed based on test dataset. If the distribution of training and test data differ significantly it could lead to the situation when the parameters providing the best results on the training data perform poorly on test data.
+
+Where is my mistake?
+
+As already mentioned by others, the parameters you are testing after the tuning were not included in the parameter grid. In this case it is incorrect to talk about the model performance "after running the optimization".
+
+I suggest the following in order to investigate and fix the problem
+
+Instead of using the hard-coded parameters in the XGBClassifier  call, use the optimal parameters found by tuning process, i.e. grid_search.best_params_. Furthermore, if you think that subsample and cilsample_bytree (a typo?) are relevant parameters include them in the parameters grid.
+Increase the cv parameter to e.g. 5-10, the results with cv = 3 might be very unstable. You can assess the stability of your current results by using different random seeds and repeating the entire exercise.
+Make sure that you use the consistent parameters in tuning process and in the final evaluation, or just include these parameters in the parameters grid if possible. In particular, check early_stopping_rounds and eval_metric.
+Are there other parameters that could influence or improve my model?
+
+From your code it is unclear how many rounds you use. Either increase n_estimators or include it in the parameters grid.
+Given that you use AUCPR you might need to explicitly set the parameter maximize=True, otherwise in your final run you could minimize the AUCPR, which could explain poor results.
+Share
+Improve this answer
+Follow
+edited Sep 28, 2020 at 22:22
+answered Sep 28, 2020 at 21:34
+user avatar
+aivanov
+1,43077 silver badges1414 bronze badges
+Add a comment
+
+0
+
+This question is a little wrong-worded. You cannot get worse after optimization, otherwise it wouldn't be optimization! (At worst you are at the same performance like before, getting the exact same parameters you already had)
+
+As Grzegorz points out in a comment, first of all your parameter list isn't complete and doesn't contain the values you use later. For example the learning rate, but also max_depth. Secondly, a grid search where you don't really know where to look should contain a much larger variance for the parameters. You check [0.1, 0.01, 0.05] for the learning rate, but did you check [0.0001, 0.001, 1.]? The learning rate might be a bad example here but I hope it gets the point across, you might want to check magnitude/scale first, e.g. powers of ten, before checking small variations.
+
+Depending on your dataset, the difference between runs with the same values might also come from different seeds! Check that you either always set the same seed, or try it enough times with different seeds to get a comparable answer (for example with KFold).
+
+Is your model even converging for every training? Where do you make sure that you train long enough? You can plot the loss for the training and test sample and check if it's converging or not. This can be controlled with n_estimators in xgboost I believe.
+
+Share
+Improve this answer
+Follow
+answered Sep 24, 2020 at 10:24
+user avatar
+N. Kiefer
+55411 silver badge1313 bronze badges
+2
+@n-kiefer I find your first paragraph presumptuous. The question posed IS the question. How can one think the question is not valid because of wording. This commentary is not helpful to the investigator. I feel it stifles curiosity or expression. Smugness like this is disheartening to me. In limited cases it is possible to find poor testing values after optimization. One, the optimization was not complete but coded correctly, see above. Two, if the sample population is small then even after optimization it is possible to find poor results. – 
+mccurcio
+ Sep 24, 2020 at 15:39
+1
+The answer was not intented to be smug, presumptuous or anything like that. It was simply a short take on the question: is it possible to get worse after optimization? I never said it was invalid, and even attempted to give more pointers as to what could be done. I even (like you) thought of the problem of small datasets and recommended a KFold strategy. The question can indeed be read as: why is the performance worse on the test set compared to the training set? But I try to answer what i think the question is as in the title. – 
+N. Kiefer
+ Sep 24, 2020 at 16:34
+my apologies... – 
+mccurcio
+ Sep 24, 2020 at 16:48
+1
+The tone of @N.Kiefer answer is a bit off, but he is mostly right, optimization performed in the example given in the question is not broad enough to search the hyperparameter space: optimization done correctly can't give worst results than arbitrary choice of hyperparameters, it will at least give the same result (or slightly different given random effects if a random seed is not set). – 
+Pedro Henrique Monforte
+ Sep 25, 2020 at 1:20
+Add a comment
+
+0
+
+There is nothing wrong in your code or process. Often times in machine learning performance on the test dataset is lower than than performance on the training data set. Your model is not generalizing perfectly to the data it has not seen before (i.e., the test dataset).
+
+Share
+Improve this answer
+Follow
+answered Sep 24, 2020 at 15:08
+user avatar
+Brian Spiering
+16.1k11 gold badge2121 silver badges7979 bronze badges
+Add a comment
+
+-2
+
+When you do hyper-parameter tuning, you improve the regularization of the model. Before you did optimization, you could be overfitting. After optimization you regularized your model and now it performs just right.
+
+enter image description here
+
+Then your model score will be worse after optimization on training set. Your model score will also be bad for test set if your model heavily relies on one feature for classification.
+
+You can use learning curve to see how the curve changes when you use optimization vs when you don't. And you can use df.corr() to see the correlation matrix for the correlation between feature values and target values.
+++++++++++++++
 Spis ilustracji{.unnumbered}
 ========
 [^schemat_wzorowany]:Na podstwie materiałów opublikowanych na [https://www.datacamp.com](http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1526288453/index3_souoaz.png)

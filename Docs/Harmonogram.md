@@ -4,20 +4,42 @@
 
 1.05
 -------------
+do poprawy prezentacja wyników algorytmów 
+inne wyniki 
+wykresy
+time na stronie
++++++++++++++++++++++++++++++3
 
-wygenerować jeszczer raz wykres korelacji danych w większym rozmiarze
-część praktyczna sensowniejsze obiekty
-część praktyczna opisac obiekty 
-część praktyczna dodać wykresy które potrzeuje
-do poprawy prezentacja wyników
-część praktyczna puścić poprawione uczenie
+
+część praktyczna dodać wykresy które potrzeuje:
+-macież błęów
+-sprawdzić wykresy z innych projektów github
+
+zapisać wyniki bez parametrów
+
+
+____________________________________________________ 04
+
+
+część praktyczna puścić poprawione uczenie z werbose 0
 puścić na komputerze z pracy 
 puścić na dysku google
+
+część praktyczna puścić poprawione uczenie z werbose 4
+puścić na komputerze z pracy 
+puścić na dysku google
+
+
 
 - - wyczyścić projekt - usunąc doki 
 - -spakować projekt
 - nagrać film
-____________________________________________________10
+____________________________________________________07
+
+
+2.05
+------------
+
  opisać te sposoby których też nie wykorzystałam 
 część praktyczna wyniki
 dodać wstęp do każdego większego rozdziału
@@ -30,15 +52,15 @@ dodać opis tworzonych obiektów
 opis 2 innych publikacji wykonujących te same badania
 opis 2 innych projektów wykonujących podobną predykcje
 rozszerzyć uzasadnienie pisania- lekarze zwiekszenie zaudania gdy wiedzą co i jak
-
+wpłym uczenia maszynowego na statystyke
 dodać opis możliwości rozszerzenia projektu 
 dodać obszerniejszy opis dlaczego nie wykorzystano innego uczenia
-___________________________________________________________________________12
+___________________________________________________________________________05
 dodać nową część jak procesor wpływa na wykonanie algorytmów 
 
 rozważania na temat porówniania regresji oraz klasyfikacji 
 dodać rodział teoretyczny na temat sposóbu porównywania algorytmów i skal oml
-
+porównanie do wyników bez parametrów
 do maszyny wwektorów rozszerzyć o hiperplaszczyny 
 dla każdego algorytmu dodać prosty przykład wykonania
 
@@ -55,9 +77,7 @@ dodać fragment kodu odnoszący się do szkolenia algorytmu
 - (dane) w Exelu do pracy
 - tresc wykresy pobrać ze strony 
 - tresc porownanie i analiza
-- ________________________________________________________________22
-2.05
-------------
+- 
 - moodle zasady pracy uwzględnić:
 - formatowac zgodnie z przykładem
 - praca najlepiej 40-50 stron lub 17 042 slow jak na razie 4739

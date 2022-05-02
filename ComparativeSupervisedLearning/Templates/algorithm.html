@@ -53,21 +53,27 @@
                                 <span> Wynik dla danych utorzonych z modelu który puste wartości zastępuje</span>
                             <ul>
                                 <li> średnią wartością dla danej kolumny</li>
-                                <div id="accuracy-positive-imputed_mean_knn"></div>
+                                <div id="knn_mean_desc"></div>
                                 <li> medianą wartości dla danej kolumny</li>
-                                <div id="accuracy-positive-imputed_median_knn"></div>
+                                <div id="knn_median_desc"></div>
                                 <li> stałą wartością dla danej kolumny</li>
-                                <div id="accuracy-postive-imputed_most_constant_knn"></div>
+                                <div id="knn_freq_desc"></div>
                                 <li> najczęstrzą wartością dla danej kolumny</li>
-                                <div id="accuracy-positive-imputed_most_frequent_knn"></div>
+                                <div id="knn_cont_desc"></div>
                             </ul>
 
-                            <span> Parametry najwydajniejszego modelu </span>
-                            <div id="result-positive-value-knn"></div>
+                            <span> Parametry najwydajniejszego modelu dla danych utorzonych z modelu który puste wartości zastępuje</span>
+                            <ul>
+                                <li> średnią wartością dla danej kolumny</li>
+                                <div id="knn_mean_best_params"></div>
+                                <li> medianą wartości dla danej kolumny</li>
+                                <div id="knn_median_best_params"></div>
+                                <li> stałą wartością dla danej kolumny</li>
+                                <div id="knn_freq_best_params"></div>
+                                <li> najczęstrzą wartością dla danej kolumny</li>
+                                <div id="knn_cont_best_params"></div>
+                            </ul>
 
-                            <div id="card_text_knn_1"></div>
-                            <div id="card_text_knn_1_1"></div>
-                            <div id="card_text_knn_1_2"></div>
                             </p>
                         </div>
                         <div class="card-body">
@@ -81,33 +87,36 @@
                         <div class="card-body">
                             <h5 class="card-title">Porównanie najlepszych estymatorów</h5>
                             <h6 class="card-subtitle mb-2 text-muted"> per parametr</h6>
-                            <div id="best_estimator_plot_1_knn"></div>
+                            <div id="knn_mean_plot2"></div>
+                            <div id="knn_median_plot2"></div>
+                            <div id="knn_freq_plot2"></div>
+                            <div id="knn_cont_plot2"></div>
                             </br>
                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmSVM class="card-link">SVM</a>
                             <a href=algorithmRF class="card-link">Random Forest</a>
                         </div>
                     </div>
-                    <div class="card border-info mb-3 card-right-nav">
-                        <div class="card-header bg-transparent border-info"><h5 class="card-title">Porównanie czasów wykonania </h5> </div>
-                        <div class="card-body text-info">
-                            <h5 class="card-title">Algorytm K najbliższych sąsiadów</h5>
-                            <p class="card-text">
-                             <span>Czas uczenia w sekundach :</span>
-                            <div id="time_knn_1"></div>
-                            </p>
-                            <h5 class="card-title">Algorytm wektorów nośnych</h5>
-                            <p class="card-text">
-                             <span>Czas uczenia w sekundach:</span>
-                            <div id="time_svm_1"></div>
-                            </p>
-                            <h5 class="card-title">Algorytm lasów losowych</h5>
-                            <p class="card-text">
-                            <span>Czas uczenia w sekundach:</span>
-                            <div id="time_rf_1"></div>
-                            </p>
-                        </div>
-                    </div>
+<!--                    <div class="card border-info mb-3 card-right-nav">-->
+<!--                        <div class="card-header bg-transparent border-info"><h5 class="card-title">Porównanie czasów wykonania </h5> </div>-->
+<!--                        <div class="card-body text-info">-->
+<!--                            <h5 class="card-title">Algorytm K najbliższych sąsiadów</h5>-->
+<!--                            <p class="card-text">-->
+<!--                             <span>Czas uczenia w sekundach :</span>-->
+<!--                            <div id="time_knn_1"></div>-->
+<!--                            </p>-->
+<!--                            <h5 class="card-title">Algorytm wektorów nośnych</h5>-->
+<!--                            <p class="card-text">-->
+<!--                             <span>Czas uczenia w sekundach:</span>-->
+<!--                            <div id="time_svm_1"></div>-->
+<!--                            </p>-->
+<!--                            <h5 class="card-title">Algorytm lasów losowych</h5>-->
+<!--                            <p class="card-text">-->
+<!--                            <span>Czas uczenia w sekundach:</span>-->
+<!--                            <div id="time_rf_1"></div>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -120,23 +129,28 @@
                             <h5 class="card-title">Algorytm maszyny werktorów nośnch </h5>
                             <p class="card-text">
                                 <span> Wynik dla danych utorzonych z modelu który puste wartości zastępuje</span>
-                            <ul>
+                           <ul>
                                 <li> średnią wartością dla danej kolumny</li>
-                                <div id="accuracy-positive-imputed_mean_svm"></div>
+                                <div id="svm_mean_desc"></div>
                                 <li> medianą wartości dla danej kolumny</li>
-                                <div id="accuracy-positive-imputed_median_svm"></div>
+                                <div id="svm_median_desc"></div>
                                 <li> stałą wartością dla danej kolumny</li>
-                                <div id="accuracy-postive-imputed_most_constant_svm"></div>
+                                <div id="svm_freq_desc"></div>
                                 <li> najczęstrzą wartością dla danej kolumny</li>
-                                <div id="accuracy-positive-imputed_most_frequent_svm"></div>
+                                <div id="svm_cont_desc"></div>
                             </ul>
 
-                            <span> Parametry najwydajniejszego modelu </span>
-                            <div id="result-positive-value-svm"></div>
-
-                            <div id="card_text_svm_1"></div>
-                            <div id="card_text_svm_1_1"></div>
-                            <div id="card_text_svm_1_2"></div>
+                            <span> Parametry najwydajniejszego modelu dla danych utorzonych z modelu który puste wartości zastępuje</span>
+                            <ul>
+                                <li> średnią wartością dla danej kolumny</li>
+                                <div id="svm_mean_best_params"></div>
+                                <li> medianą wartości dla danej kolumny</li>
+                                <div id="svm_median_best_params"></div>
+                                <li> stałą wartością dla danej kolumny</li>
+                                <div id="svm_freq_best_params"></div>
+                                <li> najczęstrzą wartością dla danej kolumny</li>
+                                <div id="svm_cont_best_params"></div>
+                            </ul>
                             </p>
                         </div>
                         <div class="card-body">
@@ -150,34 +164,37 @@
                         <div class="card-body">
                             <h5 class="card-title">Porównanie najlepszych estymatorów</h5>
                             <h6 class="card-subtitle mb-2 text-muted">per parametr</h6>
-                            <div id="best_estimator_plot_1_svm"></div>
+                         <div id="svm_mean_plot2"></div>
+                            <div id="svm_median_plot2"></div>
+                            <div id="svm_freq_plot2"></div>
+                            <div id="svm_cont_plot2"></div>
                              </br>
                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmKNN class="card-link">KNN</a>
                             <a href=algorithmRF class="card-link">Random Forest</a>
                         </div>
                     </div>
-                    <div class="card border-info mb-3 card-right-nav">
-                        <div class="card-header bg-transparent border-info">
-                             <h5 class="card-title"><h5 class="card-title">Porównanie czasów wykonania </h5></div>
-                        <div class="card-body text-info">
-                            <h5 class="card-title">Algorytm K najbliższych sąsiadów</h5>
-                            <p class="card-text">
-                             <span>Czas uczenia w sekundach:</span>
-                            <div id="time_knn_2"></div>
-                            </p>
-                            <h5 class="card-title">Algorytm wektorów nośnych</h5>
-                            <p class="card-text">
-                             <span>Czas uczenia w sekundach:</span>
-                            <div id="time_svm_2"></div>
-                            </p>
-                            <h5 class="card-title">Algorytm lasów losowych</h5>
-                            <p class="card-text">
-                            <span>Czas uczenia w sekundach:</span>
-                            <div id="time_rf_2"></div>
-                            </p>
-                        </div>
-                    </div>
+<!--                    <div class="card border-info mb-3 card-right-nav">-->
+<!--                        <div class="card-header bg-transparent border-info">-->
+<!--                             <h5 class="card-title"><h5 class="card-title">Porównanie czasów wykonania </h5></div>-->
+<!--                        <div class="card-body text-info">-->
+<!--                            <h5 class="card-title">Algorytm K najbliższych sąsiadów</h5>-->
+<!--                            <p class="card-text">-->
+<!--                             <span>Czas uczenia w sekundach:</span>-->
+<!--                            <div id="time_knn_2"></div>-->
+<!--                            </p>-->
+<!--                            <h5 class="card-title">Algorytm wektorów nośnych</h5>-->
+<!--                            <p class="card-text">-->
+<!--                             <span>Czas uczenia w sekundach:</span>-->
+<!--                            <div id="time_svm_2"></div>-->
+<!--                            </p>-->
+<!--                            <h5 class="card-title">Algorytm lasów losowych</h5>-->
+<!--                            <p class="card-text">-->
+<!--                            <span>Czas uczenia w sekundach:</span>-->
+<!--                            <div id="time_rf_2"></div>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -192,21 +209,26 @@
                                 <span> Wynik dla danych utorzonych z modelu który puste wartości zastępuje</span>
                             <ul>
                                 <li> średnią wartością dla danej kolumny</li>
-                                <div id="accuracy-positive-imputed_mean_rf"></div>
+                                <div id="rf_mean_desc"></div>
                                 <li> medianą wartości dla danej kolumny</li>
-                                <div id="accuracy-positive-imputed_median_rf"></div>
+                                <div id="rf_median_desc"></div>
                                 <li> stałą wartością dla danej kolumny</li>
-                                <div id="accuracy-postive-imputed_most_constant_rf"></div>
+                                <div id="rf_freq_desc"></div>
                                 <li> najczęstrzą wartością dla danej kolumny</li>
-                                <div id="accuracy-positive-imputed_most_frequent_rf"></div>
+                                <div id="rf_cont_desc"></div>
                             </ul>
 
-                            <span> Parametry najwydajniejszego modelu </span>
-                            <div id="result-positive-value-rf"></div>
-
-                            <div id="card_text_rf_1"></div>
-                            <div id="card_text_rf_1_1"></div>
-                            <div id="card_text_rf_1_2"></div>
+                            <span> Parametry najwydajniejszego modelu dla danych utorzonych z modelu który puste wartości zastępuje</span>
+                            <ul>
+                                <li> średnią wartością dla danej kolumny</li>
+                                <div id="rf_mean_best_params"></div>
+                                <li> medianą wartości dla danej kolumny</li>
+                                <div id="rf_median_best_params"></div>
+                                <li> stałą wartością dla danej kolumny</li>
+                                <div id="rf_freq_best_params"></div>
+                                <li> najczęstrzą wartością dla danej kolumny</li>
+                                <div id="rf_cont_best_params"></div>
+                            </ul>
                             </p>
                         </div>
                         <div class="card-body">
@@ -220,33 +242,36 @@
                         <div class="card-body">
                             <h5 class="card-title">Porównanie najlepszych estymatorów</h5>
                             <h6 class="card-subtitle mb-2 text-muted">per parametr</h6>
-                            <div id="best_estimator_plot_1_rf"></div>
+                           <div id="rf_mean_plot2"></div>
+                            <div id="rf_median_plot2"></div>
+                            <div id="rf_freq_plot2"></div>
+                            <div id="rf_cont_plot2"></div>
                              </br>
                             <h6 class="card-subtitle mb-2 text-muted">Dowiedz się więcej o innych algorytmach</h6>
                             <a href=algorithmSVM class="card-link">SVM</a>
                             <a href=algorithmKNN class="card-link">KNN</a>
                         </div>
                     </div>
-                    <div class="card border-info mb-3 card-right-nav">
-                        <div class="card-header bg-transparent border-info">Porównanie czasów wykonania </div>
-                        <div class="card-body text-info">
-                            <h5 class="card-title">Algorytm K najbliższych sąsiadów</h5>
-                            <p class="card-text">
-                             <span>Czas uczenia w sekundach:</span>
-                            <div id="time_knn_3"></div>
-                            </p>
-                            <h5 class="card-title">Algorytm wektorów nośnych</h5>
-                            <p class="card-text">
-                             <span>Czas uczenia w sekundach:</span>
-                            <div id="time_svm_3"></div>
-                            </p>
-                            <h5 class="card-title">Algorytm lasów losowych</h5>
-                            <p class="card-text">
-                            <span>Czas uczenia w sekundach:</span>
-                            <div id="time_rf_3"></div>
-                            </p>
-                        </div>
-                    </div>
+<!--                    <div class="card border-info mb-3 card-right-nav">-->
+<!--                        <div class="card-header bg-transparent border-info">Porównanie czasów wykonania </div>-->
+<!--                        <div class="card-body text-info">-->
+<!--                            <h5 class="card-title">Algorytm K najbliższych sąsiadów</h5>-->
+<!--                            <p class="card-text">-->
+<!--                             <span>Czas uczenia w sekundach:</span>-->
+<!--                            <div id="time_knn_3"></div>-->
+<!--                            </p>-->
+<!--                            <h5 class="card-title">Algorytm wektorów nośnych</h5>-->
+<!--                            <p class="card-text">-->
+<!--                             <span>Czas uczenia w sekundach:</span>-->
+<!--                            <div id="time_svm_3"></div>-->
+<!--                            </p>-->
+<!--                            <h5 class="card-title">Algorytm lasów losowych</h5>-->
+<!--                            <p class="card-text">-->
+<!--                            <span>Czas uczenia w sekundach:</span>-->
+<!--                            <div id="time_rf_3"></div>-->
+<!--                            </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
 
             </div>
@@ -255,10 +280,23 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Porównanie całościowe</h5>
-                    <p class="card-text">
-                    <div id="best_estimator_plot_2_knn" class="plot_size_al"></div>
-                    <div id="best_estimator_plot_2_svm" class="plot_size_al"></div>
-                    <div id="best_estimator_plot_2_rf"  class="plot_size_al"></div>
+                    <p class="card-text"><h5>KNN</h5></p>
+                    <div id="knn_mean_plot1" class="plot_size_al"></div>
+                    <div id="knn_median_plot1" class="plot_size_al"></div>
+                    <div id="knn_freq_plot1"  class="plot_size_al"></div>
+                    <div id="knn_cont_plot1"  class="plot_size_al"></div>
+
+                     <p class="card-text"><h5>SVM</h5></p>
+                    <div id="svm_mean_plot1" class="plot_size_al"></div>
+                    <div id="svm_median_plot1" class="plot_size_al"></div>
+                    <div id="svm_freq_plot1"  class="plot_size_al"></div>
+                    <div id="svm_cont_plot1"  class="plot_size_al"></div>
+
+                     <p class="card-text"><h5>Random forest</h5></p>
+                    <div id="rf_mean_plot1" class="plot_size_al"></div>
+                    <div id="rf_median_plot1" class="plot_size_al"></div>
+                    <div id="rf_freq_plot1"  class="plot_size_al"></div>
+                    <div id="rf_cont_plot1"  class="plot_size_al"></div>
                 </div>
             </div>
         </div>
