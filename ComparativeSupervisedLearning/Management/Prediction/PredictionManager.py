@@ -74,14 +74,14 @@ def split_data_for_learning_process(data_sample):
     return train_test_split(x_col, y_col, test_size=Rs.SCIKIT_test_size, random_state=Rs.SCIKIT_random_state)
 
 
-def train(model_type, train_x_, test_x_, y_train_, y_test_, iterator):
-    test_x, train_x, y_test, y_train = copy_processing_dataset(test_x_, train_x_, y_test_, y_train_)
+def train(model_type, x_train_, x_test_, y_train_, y_test_, iterator):
+    x_train, x_test, y_train, y_test = copy_processing_dataset(x_train_, x_test_, y_train_, y_test_)
     if model_type == Rs.MODEL_TYPE_KNN:
-        Knn.create_train_save_model(train_x, test_x, y_train, y_test, iterator)
+        Knn.create_train_save_model(x_train, x_test, y_train, y_test, iterator)
     elif model_type == Rs.MODEL_TYPE_SVM:
-        Svm.create_train_save_model(train_x, test_x, y_train, y_test, iterator)
+        Svm.create_train_save_model(x_train, x_test, y_train, y_test, iterator)
     elif model_type == Rs.MODEL_TYPE_RF:
-        Rf.create_train_save_model(train_x, test_x, y_train, y_test, iterator)
+        Rf.create_train_save_model(x_train, x_test, y_train, y_test, iterator)
 
 
 def copy_processing_dataset(test_x_, train_x_, y_test_, y_train_):

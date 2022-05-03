@@ -183,6 +183,8 @@ def create_measure_table_regression(score, y_predict, y_test, exec_time):
 
 def generate_user_data_plot(base_data):
     sns.set_context(rc={"font.size": 20, "axes.titlesize": 20, "axes.labelsize": 15})
+    plt.clf()
+    plt.cla()
     test_data = Dc.get_unprepared_data()
     base_data_frame = base_data.to_data_frame()
     concatenated = pandas.concat(
@@ -190,38 +192,29 @@ def generate_user_data_plot(base_data):
     dots_size = 250
     plot1 = convert_plot_to_html(
         sns.scatterplot(x='age', y='chol', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    plt.clf()
     plot2 = convert_plot_to_html(
         sns.scatterplot(x='sex', y='restecg', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    plt.clf()
     plot3 = convert_plot_to_html(
         sns.scatterplot(x='cp', y='trestbps', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    plt.clf()
     plot4 = convert_plot_to_html(
         sns.scatterplot(x='fbs', y='exang', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    plt.clf()
     plot5 = convert_plot_to_html(
         sns.scatterplot(x='thalach', y='oldpeak', hue='dataset', data=concatenated, style='dataset',
                         s=dots_size).figure)
-    plt.clf()
     plot6 = convert_plot_to_html(
         sns.scatterplot(x='slope', y='ca', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    plt.clf()
     return [plot1, plot2, plot3, plot4, plot5, plot6]
 
 
-def best_estimator_compare(iterator, type_m ):
+def best_estimator_compare(iterator, type_m):
     ax = []
     bp = []
-    plt.clf()
     grid = Ms.load_grid_scores(type_m, iterator)
     bp.append(grid.best_params_)
     ax1 = get_algorithm_param_comp(grid, 'mean_test_score', 'std_test_score', 'rank_test_score', 'split0_test_score')
     ax.append(ax1)
-    plt.clf()
     ax2 = get_algorithm_param_comp(grid, 'mean_fit_time', 'std_fit_time', 'mean_score_time', 'std_score_time')
     ax.append(ax2)
-    plt.cla()
     return ax, bp
 
 
@@ -239,14 +232,15 @@ def get_algorithm_param_comp(grid, means_test_s, means_train_s, stds_test_s, std
     for i, p in enumerate(masks_names):
         if len(masks) > 1:
             best_index = get_best_index(i, masks)
-            x = numpy.array(params[p])
-            y_1 = numpy.array(means_test[best_index])
-            e_1 = numpy.array(stds_test[best_index])
-            y_2 = numpy.array(means_train[best_index])
-            e_2 = numpy.array(stds_train[best_index])
-            ax[i].errorbar(x, y_1, e_1, linestyle='--', marker='o', label='test')
-            ax[i].errorbar(x, y_2, e_2, linestyle='-', marker='^', label='trening')
-            ax[i].set_xlabel(p.upper())
+            if params[p] is not None and params[p][0] is not None:
+                x = numpy.array(params[p])
+                y_1 = numpy.array(means_test[best_index].astype(numpy.float64))
+                e_1 = numpy.array(stds_test[best_index].astype(numpy.float64))
+                y_2 = numpy.array(means_train[best_index].astype(numpy.float64))
+                e_2 = numpy.array(stds_train[best_index].astype(numpy.float64))
+                ax[i].errorbar(x, y_1, e_1, linestyle='--', marker='o', label='test')
+                ax[i].errorbar(x, y_2, e_2, linestyle='-', marker='^', label='trening')
+                ax[i].set_xlabel(p.upper())
 
     if len(fig.axes) > 3:
         fig.axes[2].xaxis.set_ticklabels([])
@@ -268,7 +262,7 @@ def mask_prepare(grid):
 
 
 def figure_prepare(params):
-    plt.cla()
+    plt.rcParams.update({'figure.max_open_warning': 0})
     plt.rcParams.update({'font.size': 22})
     fig, ax = plt.subplots(1, len(params), sharex='none', sharey='all', figsize=(80, 20))
     fig.suptitle('Wynik dla parametru')

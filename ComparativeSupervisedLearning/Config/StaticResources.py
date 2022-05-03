@@ -110,8 +110,8 @@ IMPUTERS_LIST = [
 
 # In Conversion split data
 SPLIT_METHODS = [SCIKIT_LEARN, NUMPY, K_FOLD]
-SCIKIT_test_size = 0.1
-SCIKIT_random_state = 53
+SCIKIT_test_size = 0.2
+SCIKIT_random_state = 52
 PANDAS_frac = 0.8
 PANDAS_random_state = 1
 NUMPY_mask = 0.8

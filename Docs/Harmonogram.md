@@ -2,13 +2,13 @@
 
 
 
-1.05
--------------
-do poprawy prezentacja wyników algorytmów 
+
+do poprawy prezentacja wyników algorytmów - uczenie
+do poprawy prezentacja wyników algorytmów - strona
 inne wyniki 
 wykresy
 time na stronie
-
+sprwadzić procenty
 część praktyczna dodać wykresy które potrzeuje:
 -macież błęów
 -sprawdzić wykresy z innych projektów github
@@ -33,8 +33,7 @@ puścić na dysku google
 ____________________________________________________07
 
 
-2.05
-------------
+
 
  opisać te sposoby których też nie wykorzystałam 
 część praktyczna wyniki
