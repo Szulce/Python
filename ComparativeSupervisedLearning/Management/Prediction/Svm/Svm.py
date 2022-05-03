@@ -38,6 +38,6 @@ def prepare_grid_classification(y_train, y_test):
     # param_grid = {'C': Rs.SVM_C, 'gamma': Rs.SVM_GAMMA, 'kernel': Rs.SVM_KERNEL, 'degree': Rs.SVM_DEGREE,
     #               'coef0': Rs.SVM_COE0FLOAT, 'shrinking': Rs.SVM_SHRINKING,
     #               'cache_size': Rs.SVM_CACHE_SIZE}
-    param_grid = {'C': list(range(1,2))}
+    param_grid = {'C': list(range(1, 2))}
     grid = GridSearchCV(SVC(), param_grid, verbose=4, refit=True, cv=Rs.CV)
     return grid, y_train, y_test

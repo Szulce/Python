@@ -24,7 +24,7 @@ $(document).ready(function(){
             $('#knn_median_desc').html(dataObject.knn_median_desc);
             $('#knn_median_plot1').html(dataObject.knn_median_plot1);
             $('#knn_median_plot2').html(dataObject.knn_median_plot2);
-            $('#knn_mean_best_params').html(dataObject.knn_median_best_params);
+            $('#knn_median_best_params').html(dataObject.knn_median_best_params);
 
             $('#svm_median_desc').html(dataObject.svm_median_desc);
             $('#svm_median_plot1').html(dataObject.svm_median_plot1);
@@ -76,6 +76,12 @@ $(document).ready(function(){
             $('#time_knn_3').html(dataObject.time_knn);
             $('#time_svm_3').html(dataObject.time_svm);
             $('#time_rf_3').html(dataObject.time_rf);
+
+            $('#confusion_1').html(dataObject.confusion);
+            $('#confusion_2').html(dataObject.confusion);
+            $('#confusion_3').html(dataObject.confusion);
+
+
 				});
 
 });

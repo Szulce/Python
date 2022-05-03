@@ -1,10 +1,8 @@
 import time
 
 import numpy
-from sklearn import metrics
-from sklearn.model_selection import GridSearchCV, StratifiedKFold
+from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsRegressor, KNeighborsClassifier
-from sklearn.metrics import classification_report, accuracy_score
 
 import ComparativeSupervisedLearning.Config.StaticResources as Rs
 import ComparativeSupervisedLearning.Management.PlotGeneration.PlotGeneration as Plot
@@ -32,12 +30,12 @@ def create_train_save_model(x_train, x_test, y_train, y_test, iterator):
 def create_train_save_regression_model(train_x, test_x, y_train, y_test, iterator):
     grid, y_train, y_test = prepare_grid_regression(y_train, y_test)
     start_time = time.time()
-    grid = grid.fit(train_x, y_train)
+    grid_fitted = grid.fit(train_x, y_train)
     end_time = time.time()
     exec_time = end_time - start_time
-    y_predict = grid.predict(test_x)
-    score = grid.best_estimator_.score(test_x, y_predict)
-    Ms.save_grid_scores(grid, Rs.MODEL_TYPE_KNN, iterator)
+    y_predict = grid_fitted.predict(test_x)
+    score = grid_fitted.best_estimator_.score(test_x, y_predict)
+    Ms.save_grid_scores(grid_fitted, Rs.MODEL_TYPE_KNN, iterator)
     ComparativeSupervisedLearning.Management.Prediction.ModelStorage.save_prediction_to_json(
         Plot.create_measure_table_regression(score, y_predict, y_test, exec_time),
         Rs.MODEL_TYPE_KNN, iterator)

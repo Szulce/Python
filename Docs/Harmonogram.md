@@ -1,17 +1,15 @@
 
 
 
-do poprawy prezentacja wyników algorytmów - strona
 
-sprwadzić procenty
 
 część praktyczna dodać wykresy które potrzeuje:
--macież błęów
+-macież błędów dla algorytmu
 
 zapisać wyniki bez parametrów
 zapisać wyniki z parametrami
 test dla HalvingGridSearchCV
-zapisać wyniki dla regresji z parametrami 
+zapisać wyniki dla regresji z parametrami tylko dla KNN-
 
 część praktyczna puścić poprawione uczenie z werbose 0
 puścić na komputerze z pracy 
@@ -20,6 +18,9 @@ puścić na dysku google
 część praktyczna puścić poprawione uczenie z werbose 4
 puścić na komputerze z pracy 
 puścić na dysku google
+
+do poprawy prezentacja wyników algorytmów - sprawdzić
+sprwadzić procenty
 - nagrać film
 
 ____________________________________________________22

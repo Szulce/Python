@@ -122,5 +122,7 @@ class AlgorithmWebInfo:
         self.time_svm = max(information_object[3][0][9], information_object[12][0][9], information_object[21][0][9], information_object[30][0][9])
         self.time_rf = max(information_object[6][0][9], information_object[15][0][9], information_object[24][0][9], information_object[33][0][9])
 
+        self.confusion = information_object[36]
+
     def to_json(self):
         return jsonpickle.encode(self)

@@ -132,4 +132,5 @@ def get_algorithm_info():
             estimators, best_params = Plot.best_estimator_compare(iterator, model_type)
             final_results.append(estimators)
             final_results.append(best_params)
+    final_results.append(Plot.get_confusion_matrix())
     return final_results

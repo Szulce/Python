@@ -13,7 +13,7 @@ logging.basicConfig(filename=Rs.LOG_FILES_DIRECTORY + "/" + Rs.LOG_FILE_NAME,
                     filemode='w')
 mainLogger = logging.getLogger('MainLogger')
 mainLogger.setLevel(logging.DEBUG)
-# warnings.filterwarnings('ignore')
+warnings.filterwarnings('ignore')
 
 
 @atexit.register
