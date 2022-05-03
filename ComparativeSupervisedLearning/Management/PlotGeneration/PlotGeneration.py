@@ -139,10 +139,10 @@ def create_measure_table(score, y_predict, y_test, exec_time):
     brier_score_loss = metrics.brier_score_loss(y_test, y_predict)
     text1 = str('Precyzja : ') + \
             str(score) + \
-            str('  |    Wynik klasyfikacji dokładności: ') + \
+            str('%            |                       Wynik klasyfikacji dokładności: ') + \
             str(accuracy_score) + \
-            str('   |   Zrównoważoną dokładność: ') + \
-            str(balanced_accuracy_score) + str('  |   Utrata regresji błędu średniokwadratowego: ') + \
+            str('             |                       Zrównoważoną dokładność: ') + \
+            str(balanced_accuracy_score) + str('  |                   Utrata regresji błędu średniokwadratowego: ') + \
             str(brier_score_loss)
     measures_table.append(text1)
     measures_table.append(plot_true_values(y_test, y_predict))
@@ -153,6 +153,7 @@ def create_measure_table(score, y_predict, y_test, exec_time):
     measures_table.append(str(balanced_accuracy_score))
     measures_table.append(str(brier_score_loss))
     measures_table.append(str(exec_time))
+    measures_table.append(exec_time)
     return measures_table
 
 
@@ -164,7 +165,7 @@ def create_measure_table_regression(score, y_predict, y_test, exec_time):
 
     text1 = str('Precyzja : ') + \
             str(score) + \
-            str('  |     Współczynnik determinacji (r2): ') + \
+            str('%  |     Współczynnik determinacji (r2): ') + \
             str(r2_score) + \
             str('   |   Średnia utrata regresji błędu bezwzględneg: ') + \
             str(mae) + str('  |   Utrata regresji błędu średniokwadratowego: ') + \

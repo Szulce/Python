@@ -1,23 +1,17 @@
 
 
 
-
-
-do poprawy prezentacja wyników algorytmów - uczenie
 do poprawy prezentacja wyników algorytmów - strona
-inne wyniki 
-wykresy
-time na stronie
+
 sprwadzić procenty
+
 część praktyczna dodać wykresy które potrzeuje:
 -macież błęów
--sprawdzić wykresy z innych projektów github
-yest dla HalvingGridSearchCV
+
 zapisać wyniki bez parametrów
 zapisać wyniki z parametrami
+test dla HalvingGridSearchCV
 zapisać wyniki dla regresji z parametrami 
-
-
 
 część praktyczna puścić poprawione uczenie z werbose 0
 puścić na komputerze z pracy 
@@ -26,16 +20,11 @@ puścić na dysku google
 część praktyczna puścić poprawione uczenie z werbose 4
 puścić na komputerze z pracy 
 puścić na dysku google
-
-
-
 - nagrać film
-____________________________________________________07
 
+____________________________________________________22
 
-
-
- opisać te sposoby których też nie wykorzystałam 
+opisać te sposoby których też nie wykorzystałam 
 część praktyczna wyniki
 dodać wstęp do każdego większego rozdziału
 rozszerzyć opis historyczny (wtęp numer 1)
@@ -50,7 +39,7 @@ rozszerzyć uzasadnienie pisania- lekarze zwiekszenie zaudania gdy wiedzą co i 
 wpłym uczenia maszynowego na statystyke
 dodać opis możliwości rozszerzenia projektu 
 dodać obszerniejszy opis dlaczego nie wykorzystano innego uczenia
-___________________________________________________________________________05
+___________________________________________________________________________01
 dodać nową część jak procesor wpływa na wykonanie algorytmów 
 
 rozważania na temat porówniania regresji oraz klasyfikacji 
@@ -76,6 +65,7 @@ dodać fragment kodu odnoszący się do szkolenia algorytmu
 - moodle zasady pracy uwzględnić:
 - formatowac zgodnie z przykładem
 - praca najlepiej 40-50 stron lub 17 042 slow jak na razie 4739
+- _________________________________________________________________05
 - zmienić kolory każdego obrazka na czarny
 - poprawić przypisy
 - obrazków biliografia,
@@ -95,7 +85,7 @@ spis  obrazków
 dać Agnieszce do przeczytania
 dać Oli do przeczytania 
 3.05
-------------
+------------_____________________________________________________10
 - - wyczyścić projekt - usunąc doki 
 - -spakować projekt
 -wniosek i mail do promotora

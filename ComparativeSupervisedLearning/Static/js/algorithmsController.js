@@ -66,6 +66,16 @@ $(document).ready(function(){
             $('#rf_cont_plot2').html(dataObject.rf_cont_plot2);
             $('#rf_cont_best_params').html(dataObject.rf_cont_best_params);
 
+
+            $('#time_knn_1').html(dataObject.time_knn);
+            $('#time_svm_1').html(dataObject.time_svm);
+            $('#time_rf_1').html(dataObject.time_rf);
+            $('#time_knn_2').html(dataObject.time_knn);
+            $('#time_svm_2').html(dataObject.time_svm);
+            $('#time_rf_2').html(dataObject.time_rf);
+            $('#time_knn_3').html(dataObject.time_knn);
+            $('#time_svm_3').html(dataObject.time_svm);
+            $('#time_rf_3').html(dataObject.time_rf);
 				});
 
 });
