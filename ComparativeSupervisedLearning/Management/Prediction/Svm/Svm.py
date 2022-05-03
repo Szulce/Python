@@ -18,7 +18,7 @@ def create_train_save_model(x_train, x_test, y_train, y_test, iterator):
     y_predict = grid_fitted.predict(x_test)
     score = grid_fitted.best_score_ * 100
     # print(classification_report(y_test, y_predict))
-    Ms.save_grid_scores(grid, Rs.MODEL_TYPE_SVM, iterator)
+    Ms.save_grid_scores(grid_fitted, Rs.MODEL_TYPE_SVM, iterator)
     ComparativeSupervisedLearning.Management.Prediction.ModelStorage.save_prediction_to_json(
         Plot.create_measure_table(score, y_predict, y_test, exec_time),
         Rs.MODEL_TYPE_SVM, iterator)
