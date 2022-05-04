@@ -4,7 +4,7 @@ author: [Magdalena Szulc]
 header: UNIWERSYSTET MIKOŁAJA KOPERNIKA WYDZIAŁ MATEMATYKI I INFORMATYKI
 date: "Toruń,2022-05-01"
 footer: Praca inż. napisana pod kierunkiem dr Piotr Przymus
-geometry: "left=1.5cm,right=1.5cm,top=2cm,bottom=2cm"
+geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
 output: pdf_document
 titlepage: true
 titlepage-background: "`titlepage1.pdf`{=latex}"
@@ -47,95 +47,9 @@ Wartą wpomnienia datą jest rok 2006 , w tym roku zaprezentowano opensource'owy
 Zmiejszenie kosztów pamięci RAM zaoowocowała powstaniem kolejnych algorytmów uczenia,a istniejące podejścia są sukcesywnie ulepszane.[@FRADKOV20201385]
 W całym ogromie powstałych już metod uczenia się, z których każda ma swoje zalety i niedogodności.[@introduction]
 
-
-1.4. Przykład systemów uczących się
-
-1.4.1. Predykcja kategorii: przykłady klasyfikacji
-Klasyfikatory to modele przyjmujące przykłady wsadowe i zwracające wynik będący
-jednym z niewielkiej liczby grup lub klas:
-4c2836bbe011706b10838f45bf5d766f
-34 Rozdział 1. Podyskutujmy o uczeniu się
-1. Klasyfikacja obrazu. Na podstawie obrazu wsadowego zwróć zwierzę (np. kot,
-pies, zebra) znajdujące się na obrazie lub informację, że na obrazie nie ma zwierzęcia.
-Tego typu analiza obrazów jest kombinacją uczenia maszynowego i widzenia
-komputerowego. W tym przypadku wsadem będzie wielka liczba zdjęć. Mogą
-być w różnych formatach (PNG, JPEG itp.). Obrazy mogą znacząco się od siebie
-różnić: (1) mogą być w różnej skali, (2) zwierzęta mogą być w centrum zdjęcia
-lub mogą być częściowo odcięte przez krawędź zdjęcia, (3) zwierzęta mogą być
-przysłaniane przez inne obiekty (np. drzewo). Te wszystkie różnice stanowią
-wyzwanie dla systemu uczenia — i dla ludzi zajmujących się uczeniem
-maszynowym! Są jednak dobre strony rozpoznawania obrazów. Nasza koncepcja
-kota i tego, jaki obraz reprezentuje kota, są ustalone. Tak, granice mogą się
-rozmywać w przypadku animowanych kotów — Hobbes, Garfield, Heathcliff,
-na was patrzę — jednak kot jest raczej statyczną koncepcją. Nie mamy ruchomego
-celu: relacje pomiędzy obrazami a naszą koncepcją tego, czym jest kot, są stałe
-w czasie.
-2. Akcje. Na podstawie historii ceny akcji, danych fundamentalnych firmy i innych
-istotnych danych finansowych i rynkowych podaj, czy powinniśmy kupić, czy
-sprzedać akcje. Problem ten powoduje kilka dodatkowych wyzwań. Dane finansowe
-mogą być dostępne jedynie w postaci tekstowej. Możemy być zainteresowani
-istotnymi wiadomościami, ale w jakiś sposób musimy zdecydować, co nimi jest
-— ręcznie lub (być może) z wykorzystaniem innego systemu uczącego się. Kiedy
-już ustaliliśmy istotny tekst, musimy go zinterpretować. W tym miejscu systemy
-uczące się krzyżują się z systemami przetwarzania języka naturalnego (ang. natural
-language processing — NLP). Wracając do naszego głównego zadania, mamy
-serię danych w czasie — pomiary powtarzające się w czasie. Nasze problemy się
-nawarstwiają. Na rynkach finansowych nasz cel jest prawdopodobnie ruchomy!
-To, co wczoraj było odpowiednie do wytypowania zwycięskich akcji, jutro
-prawie na pewno nie będzie działało w ten sam sposób. Możemy potrzebować
-jakiejś metody lub techniki zmieniania relacji pomiędzy danymi wejściowymi
-a wyjściowymi. Możemy też po prostu trzymać kciuki i użyć techniki, która
-zakłada, że nasz cel nie jest ruchomy. Uwaga: nie jestem doradcą finansowym
-ani nie oferuję porad inwestycyjnych.
-3. Diagnoza medyczna. Na podstawie danych medycznych pacjentów podaj, czy
-są chorzy, czy zdrowi. Tutaj zadanie jest jeszcze trudniejsze. Możemy mieć do
-czynienia z kombinacją tekstu i zdjęć: danych medycznych, notatek i obrazowania
-medycznego. Zależnie od kontekstu, który będzie lub nie będzie uchwycony
-w danych — na przykład podróż do terenów tropikalnych otwiera możliwość
-zarażenia pewnymi paskudnymi chorobami — różne sygnały i symptomy mogą
-prowadzić do bardzo różnych diagnoz. Równocześnie, z całą naszą wiedzą
-medyczną, dopiero zaczynamy rozumieć pewne obszary. Byłoby świetnie, gdyby
-nasz system był w stanie czytać i uczyć się jak lekarz lub badacz o najnowszych
-technikach diagnozowania pacjentów. Nauka uczenia się uczenia to metazadanie
-posunięte do ekstremum.
-4c2836bbe011706b10838f45bf5d766f
-1.5. Ocena systemów uczących się 35
-To bardzo ogólne przykłady systemów klasyfikujących. Od 2019 roku istnieją systemy
-uczące się obsługujące wiele aspektów tych zadań. Omówimy podstawowe klasyfikatory
-obrazów i językowe w rozdziale 14. O ile każdy z tych przykładów zawiera własne, specyficzne
-dla domeny wyzwania, mają one wspólną część polegającą na budowaniu modelu
-separującego kategorie docelowe w użyteczny i dokładny sposób.
-1.4.2. Predykcja wartości — przykłady regresorów
-We współczesnym życiu otaczają nas wartości liczbowe. Mierzymy, zapisujemy
-i przetwarzamy pomiary fizyczne (temperatura, odległość, masa), wartości liczbowe,
-procenty i oceny. Każde z nich może stać się cechą docelową stanowiącą odpowiedź na
-interesujące nas pytanie:
-1. Wyniki ucznia. Możemy spróbować przewidzieć wyniki ucznia na egzaminach.
-Taki system mógłby pozwolić nam skupić wysiłki nauczycielskie na uczniach
-mających problemy przed egzaminem. Moglibyśmy uwzględnić cechy takie jak
-procent wykonania zadań domowych, udział w zajęciach, miara codziennego
-zaangażowania i oceny z poprzednich kursów. Moglibyśmy nawet uwzględnić
-otwarte pisemne oceny i rekomendacje od poprzednich nauczycieli. Podobnie
-jak w przypadku wielu problemów regresji, moglibyśmy w miarę poprawnie
-przekonwertować problem regresyjny w problem klasyfikacji, przewidując, czy
-uczeń zda/obleje, lub ocenę literową zamiast wyniku numerycznego.
-2. Wycena akcji. Podobnie jak w przypadku klasyfikatora kupuj/sprzedawaj,
-moglibyśmy spróbować przewidzieć przyszłą cenę akcji — wartość w dolarach.
-Ten wariant wydaje się być trudniejszy. Zamiast ogólnej estymacji w górę lub
-w dół chcemy przewidzieć, że za dwa tygodnie cena akcji wyniesie 20,73 dolara.
-Niezależnie od trudności dane wsadowe mogłyby być dokładnie takie same:
-byłyby to różne informacje o obrocie akcjami i tyle informacji fundamentalnych
-— na przykład kwartalnych raportów finansowych — ile zechcemy wykorzystać.
-3. Zachowanie przeglądania stron internetowych. Na podstawie historii
-przeglądania stron i zakupów użytkownika przewidź (podaj wartość procentową),
-na ile prawdopodobne jest, że użytkownik kliknie reklamę lub zakupi przedmiot
-w sklepie internetowym. O ile cechy przeglądania i historii zakupów nie są
-numeryczne, o tyle nasz cel — wartość procentowa — jest. Mamy więc problem
-regresyjny. Tak jak w przypadku zadania z klasyfikacją obrazów, tak i tu mamy
-wiele niewielkich fragmentów informacji składających się na końcowy wynik.
-Te fragmenty potrzebują kontekstu — informacji, jak odnoszą się jeden do drugiego
-— aby stać się naprawdę wartościowe.[@confusion]
-
+Diagnnoza medycznej to rozległy temat i pod kątem uczenia maszynowego może być rozpatrywany na
+podstawie danych tekstowych czy obrazów. Zadanie postawienia diagnozy podlega to typowe zagadnienie klasyfikacji ,ale nie jedyny sposób wykorzystania.
+Przykładem systemu uczącego może być wycena akcji na giełdzie na podstawie danych z poprzedniego kwartału lub optymalizacja strony na podstawie historii odwiedzeń .[@confiusion]
 
 Sztuczna inteligencja wśród szerokiego zakresu swoich zastosowań może zostać wykorzytana do analizy bardziej lub mniej
 złożonych danych medycznych, w celu przewidzenia wystąpienia choroby u konkretnej osoby, bez udziału procesu myślowego
@@ -191,106 +105,10 @@ W pracy opisano następujące algorytmu uczenia nadzorowanego:
 **Wprowadzenie teorertyczne**
 ========
 
+Omówienie teoretyczne rozpoczynają defninicje podstawowych pojęć wykorzystywanych w dalszych częściach, zaczynając od Algorytmu.
 
-
-Algorytm
-Algorytm to sekwencja obliczeń i reguł używanych do rozwiązywania problemu lub analizowania zestawu danych. Jest to wykres blokowy z instrukcjami krok po kroku dotyczącymi zadawania pytań, ale napisanymi w kodzie matematycznym i programistycznym. Algorytm może opisać, jak określić, czy zwierzę jest kotem, psem, rybą, ptakem lub jaszczurką. Inny znacznie bardziej skomplikowany algorytm może opisywać sposób identyfikowania napisanego lub mówionego języka, analizowania słów, tłumaczenia ich na inny język, a następnie sprawdzania dokładności tłumaczenia.
-
-*Klasyfikacja* *a* *Regresja*
-
-Pod ogólnym pojęciem nadzorowanego uczenia się z przykładów rozróżnić można
-przewidywanie wartości i przewidywanie kategorii. Czy próbujemy (1) skorelować dane
-wejściowe do jednej z możliwych kategorii, określonej przez dyskretne symbole, czy (2)
-skorelować dane wejściowe do mniej lub bardziej ciągłego zakresu wartości numerycznych?
-W skrócie, czy cel jest kategoryczny, czy numeryczny? Jak już wspomniałem, predykcja
-kategorii nazywa się klasyfikacją. Predykcja wartości liczbowej nazywana jest regresją.
-Przyjrzymy się przykładom każdej z nich.
-
-1. Regresja
-Opiera się ona na podstawowych zasadach fizyki, które pomagają przewidywać przyszłość w oparciu o dane bieżące. Pomaga również znaleźć korelację między dwoma zmiennymi w celu określenia związku przyczynowo-skutkowego. Na podstawie tych zmiennych można wykreślić wykres i na podstawie zmiennej prognostycznej sporządzić prognozę jako wynik ciągły.
-
-Istnieją jednak różne formy regresji, począwszy od liniowego do złożonego, wielomianowego obliczania danych i reprezentacji. Zawsze powinieneś zacząć od podstaw, co oznacza opanowanie regresji liniowej, a następnie przejście do form złożonych.
-
-Typowymi przykładami regresji liniowej są:
-
-Prognoza pogody
-Przewidywanie trendów rynkowych
-Identyfikacja potencjalnego ryzyka
-
-2. Klasyfikacja
-Metoda definiuje wartość klasy na podstawie danych wejściowych. Daje ona ostateczne przewidywania dotyczące danej akcji. Na przykład, powie Ci, czy gość stanie się klientem czy nie.
-
-Jednak klasyfikacja nie opiera się tylko na dwóch kategoriach, ale na ich wielokrotności z powodu obliczeń prawdopodobieństwa. Na przykład, może pomóc Ci określić, czy dany obrazek zawiera kwiat lub liść; metoda klasyfikacji da Ci trzy prawdopodobne wyniki: 1) kwiat, 2) liść, 3) brak.
-
-Powyższy przykład opiera się na klasyfikacji logistycznej, która jest najprostsza ze wszystkich. Po osiągnięciu doskonałości, można doskonalić swoje umiejętności w nieliniowych klasyfikacjach.
-
-3. Grupowanie
-Jest to technika uczenia się maszynowego bez nadzoru, w której podobne cechy są wykorzystywane do przewidywania, a nie danych z przeszłości. Algorytm wykorzystuje wizualne wskazówki do zaprojektowania rozwiązania. K-Means jest najpopularniejszą metodą grupowania danych wejściowych, która pozwala na ustawienie wartości K i kategoryzację danych na podstawie wartości K.
-
-Weźmy pod uwagę omówiony powyżej przykład efektywnego energetycznie budynku. Teraz, aby utworzyć klaster podobny budynek, należy ustawić wartość K (którą zakładamy na 2) i wprowadzić zmienne, takie jak urządzenia wtyczkowe, agregaty chłodnicze, gaz użytkowy (piece) i gaz handlowy (urządzenia grzewcze).
-
-Ponieważ wartość K wynosi 2, będą dwa klastry: budynki efektywne i budynki nieefektywne oparte na ustalonych zmiennych.
-
-4. Redukcja wymiarowa
-Jest to proces redukcji zmiennych losowych podczas kategoryzacji danych. Im większa liczba zmiennych, tym bardziej złożone będą wyniki, co utrudnia ich konsolidację.
-
-Wybór cech i ekstrakcja są podstawą redukcji wymiarowości w procesie uczenia maszynowego. Pozwala to na rezygnację z nieistotnych zmiennych. Na przykład, jeśli chcesz przewidzieć ryzyko przyrostu wagi w grupie ludzi, nie chciałbyś mierzyć danych na podstawie ich ubioru; jednak styl życia jest czynnikiem szkodliwym, który można pominąć.
-
-Najczęstszym przykładem redukcji wymiarowej jest proces klasyfikacji poczty elektronicznej wykorzystywany do sortowania spamu. Zazwyczaj wykorzystuje on dużą liczbę zmiennych, takich jak tytuły wiadomości, treść i szablon wiadomości, między innymi. Istnieją jednak szanse, że algorytm może nakładać się na pewne czynniki, które mogą wpływać na wynik. Tak więc, aby dokonać dokładnych zgadywanek, oprogramowanie zawiera redukcję wymiarową, która zmniejsza szanse na powtórzenie i zapewnia dokładne wyniki.
-
-Uczenie maszynowe
-Uczenie maszynowe (ML) to technika sztucznej inteligencji, która używa algorytmów matematycznych do tworzenia modeli predykcyjnych. Algorytm służy do analizowania pól danych i "uczenia się" na podstawie tych danych przy użyciu wzorców znalezionych w nim do generowania modeli. Te modele są następnie używane do podejmowania świadomych przewidywań lub decyzji dotyczących nowych danych.
-
-Modele predykcyjne są weryfikowane pod kątem znanych danych, mierzone za pomocą metryk wydajności wybranych dla określonych scenariuszy biznesowych, a następnie dostosowywane zgodnie z potrzebami. Ten proces uczenia się i walidacji jest nazywany szkoleniem. Dzięki okresowemu ponownemu trenowaniu modele ML są ulepszane w czasie.
-
-W tradycyjnych problemach z uczeniem nadzorowanym otrzymujemy uporządkowaną kolekcję
-z l oznaczonych punktów danych DL = ((xi, yi))l
-i=1. Każdy punkt danych (xi, yi) składa się z obiektu
-xi ∈ X z danej przestrzeni wejściowej X i ma przypisaną etykietę yi , gdzie yi jest wartością rzeczywistą w
-problemy regresyjne i kategoryczne w klasyfikacji. Na podstawie zbioru tych
-punkty danych, zwykle nazywane danymi uczącymi, nadzorowane metody uczenia próbują wywnioskować
-funkcja, która może z powodzeniem określić etykietę y∗ jakiegoś wcześniej niewidzianego wejścia x∗.
-Jednak w wielu rzeczywistych problemach z klasyfikacją mamy również dostęp do kolekcji
-u punktów danych, DU = (xi)
-l+u i=l+1, których etykiety są nieznane. Na przykład punkty danych dla
-które chcemy przewidzieć, zwykle nazywane danymi testowymi, są z definicji nieoznaczone.
-Częściowo nadzorowane metody klasyfikacji próbują wykorzystać nieoznakowane punkty danych do skonstruowania
-osoba ucząca się, której wyniki przewyższają wyniki uczniów uzyskane przy użyciu wyłącznie
-oznakowane dane. W pozostałej części tej ankiety oznaczamy kolekcję XL i XU
-obiektów wejściowych odpowiednio dla oznaczonych i nieoznaczonych próbek.1
-Istnieje wiele przypadków, w których nieoznaczone dane mogą pomóc w konstruowaniu klasyfikatora. Rozważać,
-na przykład problem klasyfikacji dokumentów, gdzie chcemy przypisać tematy do a
-zbiór dokumentów tekstowych (takich jak artykuły z wiadomościami). Zakładając, że nasze dokumenty są reprezentowane
-dzięki zestawowi słów, które się w nim pojawiają, można by wytrenować prosty nadzorowany klasyfikator, który na przykład
-na przykład, uczy się rozpoznawać, że dokumenty zawierające słowo „neutron” zwykle dotyczą
-fizyka. Ten klasyfikator może dobrze działać w dokumentach zawierających terminy, które widział w
-dane szkoleniowe, ale z natury nie powiedzie się, gdy dokument nie zawiera słów predykcyjnych
-to również miało miejsce w zestawie szkoleniowym. Na przykład, jeśli napotkamy dokument dotyczący fizyki
-1 Zwracamy uwagę, że zbiory punktów danych, o których tutaj mowa, są listami technicznymi. Jednak po wspólnych
-użycia, w tej ankiecie nazywamy je „zbiorami” i, z lekkim nadużyciem notacji, stosujemy standardową teorię mnogości
-koncepcje do nich.
-123
-376 Uczenie maszynowe (2020) 109:373-440
-Rys. 1 Podstawowy przykład klasyfikacji binarnej w obecności danych nieoznakowanych. Nieoznakowane punkty danych
-są pokolorowane zgodnie z ich prawdziwą etykietą. Kolorowe, niewypełnione koła przedstawiają krzywe konturu wejścia
-rozkład danych odpowiadający odchyleniom standardowym 1, 2 i 3 (kolorowy rysunek online)
-o akceleratorach cząstek, które nie zawierają słowa „neutron”, klasyfikator nie jest w stanie
-uznać go za dokument dotyczący fizyki. To tutaj uczenie się częściowo nadzorowane
-wchodzi. Jeśli weźmiemy pod uwagę dane nieoznakowane, mogą istnieć dokumenty, które łączą słowo
-„neutron” na frazę „akcelerator cząstek”. Na przykład słowo „neutron” często
-występują w dokumencie, który zawiera również słowo „kwark”. Ponadto słowo „kwark”
-regularnie współwystępowałby ze zwrotem „akcelerator cząstek”, który kieruje klasyfikatorami
-w kierunku sklasyfikowania tych dokumentów jako obracających się również wokół fizyki, mimo że:
-nigdy nie widziałem wyrażenia „akcelerator cząstek” w oznaczonych danych.
-Rysunek 1 dostarcza dalszych intuicji dotyczących wykorzystania danych nieoznaczonych do klasyfikacji. Rozważamy problem sztucznej klasyfikacji z dwiema klasami. Dla obu klas
-100 próbek jest pobieranych z dwuwymiarowego rozkładu Gaussa z identyczną kowariancją
-macierze. Oznaczony zestaw danych jest następnie konstruowany poprzez pobranie jednej próbki z każdej klasy.
-Każdy nadzorowany algorytm uczenia się najprawdopodobniej przyjmie jako granicę decyzji stałą
-linia, która jest prostopadła do odcinka linii łączącego dwa oznaczone punkty danych i
-przecina go w środku. Jest to jednak dość daleko od optymalnej granicy decyzyjnej.
-Jak wynika z tego rysunku, mogą nam pomóc klastry, które możemy wywnioskować z danych nieoznaczonych
-znacznie w ustalaniu granicy decyzyjnej: zakładając, że dane pochodzą z dwóch rozkładów Gaussa, prosty częściowo nadzorowany algorytm uczenia się może wywnioskować bliski optymalnemu
-granica decyzji.
+*Algorytm* to pojęcie matematyczne odpowiadające za szereg działań prowadzących do uzyskania żądanego rozwiązania, bazując 
+na wynikach działań krokami opisujemy np problem znajdowania najktórszej drogi jak i zarówno tłumaczenie języka na podstawie analizy mowy.
 
 **Uczenie maszynowe** (ang. _machine learning_, ML) to dziedzina zajmująca się tworzeniem modeli do analizy bardzo obszernych zasobów danch. Modele utworzone za pomocą algorytmów uczenia maszynowego są w stanie z wysokim prawdopodobieństwem wystawić predyckję lub dokonać klasyfikacji na temat zadanego problemu. 
 
@@ -304,7 +122,6 @@ wzmacnianie [@3] .
 
 Dobór typu uczenia oraz algorytmu uzależniony jest od danych wejściowych oraz oczekiwanego rezultatu. Dane wyjściowe
 mogą przyjmować format odpowiedzi TAK/NIE , klasyfikacji do danego zbioru czy np procentowej oceny ryzyka.
-
 
 **Uczenie maszynowe nadzorowane** (ang. _supervised learning_) to klasa algorytmów uczenia maszynowego, która bazuje na
 poetykietowanych danych. Nadzór polega na porównaniu rezultatów działania modelu z wynikami które są zawarte w danych wejściowych ( _dane oznaczone_ ) [@learning].
@@ -323,62 +140,82 @@ rozpoznawanie mowy czy obrazu [@3] .
 na danych wejściowych czy wyjściowych a rezultatach otrzymanych podczas testu nazywanych tzw. sygnałami wzmocnienia który może przyjmować wartość pozytwną lub negatywną.
 Algorytm generując dane wejściowe dostosowuje reguły by uzyskać zwrotnie sygnał pozytywny w jak największej liczbie przypadków. [@reinfor-learning] .
 
-
 **Uczenie częściowo nadzorowane** (ang. _semi-supervised_ _learning_) to klasa algorytmów uczenia maszynowego która wykorzystuje zbór danych w większości niepoetykietowany na podstawie których tworzony jest model [@semi-learning] , w wykorzystywana głównie w przypadkach niewydajności zastosowania osobno modeli nadzorowanych i nienadzorowanych. Zastosowanie tej klasy algorytmów pozwala również na maksymalizację wykorzystania zebranych informacji [@introduction] .
+
+Uczenie nadzorowane przedstawiając oficjalną matematyczą definicje :
+```
+ DL = ((xi, yi))l
+ gdzie : i=1
+ ```
+(xi, yi) to punkt z zakresu xi ∈ X oznaczony etykietą yi dla danych wejściowych oznaczonych jako X. 
+
+Zbiór (xi,yi) to tgzw. dane uczące na podstawie których metody uczenia próbują wywnioskować funkcję która ustali y dla nieoznakowanego x.
+Większy zasób punktów sprawdzający działanie ,czyli dane testowe definiujemy następująco :
+
+```
+DU = (xi)l+u
+gdzie : i=l+1
+```
+[@scikit-learn-two]
+
+### Klasyfikacja a Regresja
+
+Oba przedstawione poniżej typy sysytematyzją w oparciu o dostarczone dane wejściowe i mają one wspólną część polegającą na budowaniu modelu
+separującego kategorie docelowe w użyteczny i dokładny sposób.[@introduction]
+
+Pod ogólnym pojęciem nadzorowanego uczenia się z przykładów rozróżnić można
+przewidywanie wartości i przewidywanie kategorii. Czy próbujemy (1) skorelować dane
+wejściowe do jednej z możliwych kategorii, określonej przez dyskretne symbole, czy (2)
+skorelować dane wejściowe do mniej lub bardziej ciągłego zakresu wartości numerycznych?
+W skrócie, czy cel jest kategoryczny, czy numeryczny? Jak już wspomniałem, predykcja
+kategorii nazywa się klasyfikacją. Predykcja wartości liczbowej nazywana jest regresją.
+Przyjrzymy się przykładom każdej z nich.
+
+
+
+
+*Klasyfikacja* -  decyduje o przynależności do zbioru grupy lub klasy.
+*Regresja* - daję ciągłą prognoze korelacji między zmiennymi, standardowym przykładem zastosowania jest prognoza pogody. 
+Realne pomiary temperatury, prędkości wiatru , ciśnienia wpływają na finalną odpowiedź. Sama regresja dzieli się równiez na kategorie ze względu na skomplikowania, najprostrzym przykładem jest oczywiście regresja liniowa.
+
+Analogiczne typy istanieją dla uczenia bez nadzoru jak na przykład *grupowanie*, które klasyfikuje dane  w zbiory. Rozbieżność z klasyfikacją polaga na wykorzystaniu do wykonania oceny korelacji podobnych cech, a nie wsad danych testowych. 
+
+*Redukcja wymiarowa* to jak nazwa wskazuje pozbycie się nieistotnych atrybutów i odrzuceniu duplikatów, a co za tym idzie wymiaru 
+data set'u. Dobrym przykładem byłoby tutaj analizy zawartości skrzynki pocztowej i szukanie spamu. 
+
 
 Podział osób na kategorie cierpiące na choroby sercowo-naczyniwe oraz zdrowe, to dylemat klasyfikayjny nadający się do
 rozwiązania za pomoca algorytmów uczenia maszynowego nadzorowanego i na nich skupia się dalsza część pracy.
 
 ## Ścieżka działania algorytmów uczenia maszynowego nadzorowanego
 
-![Schemat 2](img/7podstawowy_schemat_blokowy_uczenia_maszynowego.png "Podstawowy schemat blokowy uczenia maszynowego"){ width=70% }
+Bazowy schemat budowania i oceniania modeli uczenia nadzorowanego to kolejno:
 
-Powyższy bazowy schemat można zastosować do dowolnego modelu uczenia, wykonanie kolejnych bloków zadaniowych różnić się będzie specyfiką dla danego modelu: 
+1. Przygotowanie danych.
+2. Implementacja modelu.
+3. Trening oraz ocena precykcji.
+
+Wykorzystanie utworzonego modelu wymaga:
+
+1. Zbudowania modelu oraz jego wytrenowania
+2. Wykonania predykcji na danych które nie posiadają oznaczenia[@confiusion]
+
+Ten schemat można zastosować do dowolnego modelu uczenia, wykonanie kolejnych bloków zadaniowych różnić się będzie specyfiką dla danego modelu: 
 
 - przygotowanie danych dla algorytmów uczenia nadzorowanego musi zawierać również zebranie odpowiedzi/wyników dla danych testowych
 - implementacja modelu za każdym razem jest specyficzna dla zastosowanego algorytmu który równiez zależy od typu uczenia
 - ewaluacja  modeli regresywnych różni się od ewluacji modeli klasyfikacyjnych ze względu na wykorzystanie innych miar oceny dokładności
 - zastosowanie modeli może posiadać wielorakie formy realizacji.
  
-rozpiszmy uproszczony schemat budowania i oceniania modeli
-w sklearn:
-1. Zbuduj model.
-2. Dopasuj model, używając danych treningowych.
-3. Wykonaj predykcję, używając dopasowanego modelu na danych testowych.
-4. Oceń jakość predykcji.
-Możemy porównać ten proces z naszą koncepcją modelu jako maszyny. Odpowiednie
-kroki to:
-1. Skonstruuj maszynę, z pokrętłami włącznie.
-2. Poustawiaj pokrętła i wrzuć odpowiednie dane poprzez tackę, tak aby uchwycić
-dane wejściowe.
-3. Przepuść przez maszynę nowe przykłady, tak aby sprawdzić, jakie będą wyniki.
-4. Oceń jakość danych wyjściowych [@confiusion]
 
 ## Dane 
 
-### Wstęp 
+### Terminologia
 
-Nieszczęśliwym zbiegiem okoliczności w terminologii informatycznej przy opisywaniu
-procesu wywoływania funkcji pojęcia parametry i argumenty często stosuje się zamiennie.
-Jednak w ścisłym sensie oznaczają one co innego. Argumenty to rzeczywiste wartości
-przekazywane w wywołaniu, natomiast parametry to symbole zastępcze, w których
-w funkcji zapisywane są wartości. Aby doprecyzować te pojęcia, w dokumentacji czasem
-stosuje się nazwy rzeczywiste argumenty/parametry i formalne argumenty/parametry.
-Dlaczego jest to ważne? Ponieważ w kontekście dostrajania hiperparametrów zaraz
-zetkniesz się z tym, jak ludzie mówią o dostrajaniu parametrów. Wtedy pomyślisz sobie,
-że okłamywałem Cię co do różnicy między wewnętrznymi komponentami maszyny
-w fabryce konfigurowanymi za pomocą hiperparametrów a zewnętrznymi komponentami
-(pokrętłami) ustawianymi w wyniku optymalizacji parametrów.
-W tej książce nazwę argumenty stosuję wyłącznie jako pojęcie informatyczne. Robię
-to specjalnie, aby uniknąć konfliktów z określeniami parametry i hiperparametry z obszaru
-uczenia maszynowego. Nadal będę posługiwał się nazwami parametry (optymalizowane
-w czasie treningu) i hiperparametry (dostrajane za pomocą sprawdzianu krzyżowego).
-Pamiętaj, że w dokumentacji biblioteki sklearn i nazwach argumentów funkcji (1)
-hiperparametry są często skracane do zapisu param lub (2) nazwa param jest stosowana
-w sensie informatycznym. W obu tych scenariuszach w kodzie piszę o rzeczywistych
-argumentach konstruktora, na przykład o wartości k=3 w maszynie opartej na algorytmie
-k-NN. W terminologii z dziedziny uczenia maszynowego mówimy, że hiperparametr
-algorytmu k-NN ustawiamy na 3.
+Analiza uczenia maszynowego wymusza stosowanie rozróźnienia przy pojęciach parametru i argumentu.
+Cechy dla których szukamy optymalnych wartości , które stanowią podstawe modelu i ich dostrajanie wykonywane jest podczas treningu nazywane są parametrami i hiperparametrami.
+ Argumenty natomiast to liczby znajdujące się w wierszach zbioru danych które podlgają zmianie tylko podczas pre-procesingu
+Nazewnictwo hiperparametrów wykorzystywane jest w przypadku zastosoawnia dla nich walidacji krzyżowej.
 
 ![Schemat 3](img/12UCI.png "UCI logo"){ width=50% } [@UCI]
 
@@ -439,23 +276,6 @@ również dzięki temu że dane pochodzą z wielu krajów. Jeżeli zestaw wejśc
 lokalizacji to cecha dla której nie uzupełniono wartości zostałaby pominięta podczas treningu ze względu na brak
 danych, co skutowało by uboższym modelem i możliwe że pominięciem kluczowej cechy wpływającej na działanie.
 
-
-
-example: try DecisionTreeClassifier(random_state=0)
-
-Explaination:
-
-This occurs because, you are not using a random_state variable while declaring decision_tree_classifier = DecisionTreeClassifier() .
-
-So, each time a different Decision Tree is generated because:
-
-Decision trees can be unstable because small variations in the data might result in a completely different tree being generated. This problem is mitigated by using decision trees within an ensemble.
-
-This is also mentioned in interface Documentation:
-
-The problem of learning an optimal decision tree is known to be NP-complete under several aspects of optimality and even for simple concepts. Consequently, practical decision-tree learning algorithms are based on heuristic algorithms such as the greedy algorithm where locally optimal decisions are made at each node. Such algorithms cannot guarantee to return the globally optimal decision tree. This can be mitigated by training multiple trees in an ensemble learner, where the features and samples are randomly sampled with replacement.
-
-
 ### Wstępna obróbka danych
 
 Proces przetwarzania danych może skladać sie z wielu róźnych kroków zależenie od typu, w uczeniu nadzorowanym operującym
@@ -507,7 +327,6 @@ tylu kolumn ile jest unikalnych wartości dla kategorii i wpisanie 0 lub 1 dla k
 Aby znaleść korelacje współliniowości należy szukać liniowej zależności pomiędzy danymi, najłatwiej zauważyć to tworząc
 wykresy z danych testowych dla każdej pary [@wektor].
 
-
 Zgodnie z poniższym schematem po przeprocesowaniu wejściowego zbioru danych, należy go podzielić na dane treingowe oraz ewaluacyjne. Powszechnie stosowana K krzyżowa walidacja umożliwia maksymalne wykorzystanie dostarczonego wejścia do dostrajania parametrów modelu, ponieważ optymalizacja hiperparametrów połączone z ciągłą weryfikacją poprawności to sedno treningu.
 
 
@@ -526,6 +345,7 @@ znalezienie najlepszego modelu można go wykorzystać do weryfikacji na danych s
 ## Wybrane algorytmy uczenia maszynowego nadzorowanego
 
 ### Wstęp
+
 Nadzorowana klasyfikacja obrazów wymaga uczącego zestawu danych składającego się z pikseli o różnych sygnaturach widmowych oznaczonych w ramach jednej klasy lub więcej w przypadku
 klasyfikatory rozmyte. Etykietowanie może pochodzić z wizualnej interpretacji obrazów
 do sklasyfikowania lub z innych referencyjnych zbiorów danych pochodzących z bardziej czułych czujników
@@ -989,8 +809,6 @@ z rzeczywistym podobieństwem, które chcemy uchwycić pomiędzy przykładami.
 
 ## Narzędzia i biblioteki zastosowane w pojekcie
 
-### Wstęp
-
 Biblioteki w większości posiadają otwarty kod źródłowy,  napisany w języku Python [@libpyth].
 
 ### Python
@@ -1153,7 +971,7 @@ cech przydatnych w tym procesie. Wyodrębnianie cech jest przydatne, gdy używan
 specjalne formaty danych (na przykład grafika lub tekst), które trzeba przekształcić
 na tabelowy format wiersz-kolumna z przykładami i cechami. Wyodrębnianie
 cech i tworzenie cech różnią się poziomem złożoności przekształceń, ale koncepcyjnie
-polegają na tym samym} [@confusion]
+polegają na tym samym} [@confiusion]
 
 Proces przygotowania danych zastosowany w prajekcie składa się z następujących kroków:
 
@@ -1275,7 +1093,7 @@ HalvingGridSearchCV polega na zmniejszaniu o połowe (z ang. _half_) zbioru para
 Ta strategia wyszukiwania sukcesywnie zmniejsza ilość wymaganych iteracji dla danego zestawienia przez co wykonania jest szybsze niż w przypadku zwykłego GridSearchCv.
 Na poniższym wykresie  przedstawiającym średni wynik dla algorytmu SVC widać że czas wykonania zmniejszył się ponad 6 krotnie w stosunku do GridSearch.
 
-![Schemat 24](img/24halving.png "HalvingGridSearchCV")[@scikit]{ width=30% }
+![Schemat 24](img/24halving.png "HalvingGridSearchCV")[@scikit] { width=30% }
 
 Umieszczone oznaczenia od 0 do 5 informują o tym w której iteracji kombinacja parmaretów została oznaczona jako najlepsze zestawienie.
 Implementacja ta nie została wykorzystana ze względu na nadal pozycjonowanie jej jako eksperymentalnej.
@@ -1403,7 +1221,7 @@ który w taki sposób nie trafia z wynikami, bylibyśmy bardzo z niego niezadowo
 W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podczas treningu i weryfikacji danych testowych.
 
  - | Dokładność w %       |  |  | | | | | |
--------: |-:| -------: | -: | -: | -----: | -: | -: | -: | -:|
+------: |-:| -----: | -: | -: | ------: | -: | -: | -: | -:|
  |Parametryzacja           |    |  parametry domyślne |    |    | wyznaczanie parametrow|    |   |    |
  |Algorytm / Imputer       | średnia | mediana | stała | naj. wartość | średnia | mediana | stała | naj. wartość |
 |Losowe lasy decyzyjne    | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
