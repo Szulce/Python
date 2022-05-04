@@ -59,6 +59,6 @@ def prepare_grid_classification(y_train, y_test, scoring):
     param_grid = {'algorithm': ['auto'], 'leaf_size': [30], 'metric': ['minkowski'], 'metric_params': [None],
                   'n_jobs': [-1],
                   'n_neighbors': [25], 'p': [2], 'weights': ['distance']}
-    grid = GridSearchCV(KNeighborsClassifier(), param_grid, verbose=Rs.VERBOSE, refit=True,
+    grid = GridSearchCV(KNeighborsClassifier(), param_grid_p, verbose=Rs.VERBOSE, refit=True,
                         scoring=scoring)
     return grid, y_train, y_test

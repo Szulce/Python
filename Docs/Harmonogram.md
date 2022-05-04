@@ -3,32 +3,16 @@
 
 
 zapisać wyniki z parametrami
--screenshoty wykresów 
+-screenshoty wykresów
 zapisać wyniki dla regresji z parametrami tylko dla KNN-
-część praktyczna puścić poprawione uczenie z werbose 4
 
 
-usunąć ze strony porównianie całościowe
- nagrać film
-____________________________________________________7
-
-
-część praktyczna wyniki poprawa obecnych tabel
-dodać opis da każdego katalogu
 dodać wstęp do każdego większego rozdziału
-___________________________________________________________8
 rozszerzyć opis historyczny (wtęp numer 1)
-dodać dokładniejszy opis matematyczny i logistyczny każdego z algorytmów
 dodać obszernijszy opis bibliotek
-_____________________________________________________________________9
-dodać opis tworzenia wykrsów
-dodać opis tworzonych obiektów
-opis 2 innych publikacji wykonujących te same badania
-opis 2 innych projektów wykonujących podobną predykcje
-rozszerzyć uzasadnienie pisania- lekarze zwiekszenie zaudania gdy wiedzą co i jak
-[]todo
-______________________________________________________________________________________10
 wpłym uczenia maszynowego na statystyke lub odwotnie
+_____________________________________________________________________13
+
 dodać opis możliwości rozszerzenia projektu 
 dodać obszerniejszy opis dlaczego nie wykorzystano innego uczenia
 rozważania na temat porówniania regresji oraz klasyfikacji 
@@ -39,27 +23,39 @@ wstęp dodać porówniania zaufania z branż medycznych i giełdy
 dodać możlwość komercyjengo wykorzystania
 - dopisać do stratyfikacji 
 dokładniejszy opis na podstawie sklearn dodać możliw wykorzystanie
-___________________________________________________________________________12
+- dodać dokładniejszy opis matematyczny i logistyczny każdego z algorytmów
+- ________________________________________________________________ 15
+
+dodać opis tworzenia wykrsów
+dodać opis tworzonych obiektów
+opis 2 innych publikacji wykonujących te same badania
+opis 2 innych projektów wykonujących podobną predykcje
+rozszerzyć uzasadnienie pisania- lekarze zwiekszenie zaudania gdy wiedzą co i jak
+metryka om
+[]todo
+______________________________________________________________________________________17
+
+_
 dodać nową część jak procesor wpływa na wykonanie algorytmów 
 
 porównanie do wyników bez parametrów
 
 wykonać tabele z exela
 opis obrazków
-
+porównać do innych prac
 wnioski dla wykresów
 dodać fragment kodu odnoszący się do szkolenia algorytmu 
 tresc wykresy pobrać ze strony 
 praktyczna wyniki dodaćnowe wyniki 
 
 - (dane) w Exelu do pracy
-
+-todo uzupełnic dane
 - tresc porownanie i analiza
 - 
 - moodle zasady pracy uwzględnić:
 
 - praca najlepiej 40-50 stron lub 17 042 slow jak na razie 4739
-- _________________________________________________________________14
+- _________________________________________________________________19
 - - formatowac zgodnie z przykładem
 - zmienić kolory każdego obrazka na czarny
 - poprawić przypisy
@@ -80,9 +76,10 @@ spis  obrazków
 dać Agnieszce do przeczytania
 dać Oli do przeczytania
 - 
-------------_____________________________________________________15
+------------_____________________________________________________21
 - - wyczyścić projekt - usunąc doki 
 - -spakować projekt
 -wniosek i mail do promotora
-
-_______________________________________________________________15.15
+usunąć ze strony porównianie całościowe
+ nagrać film
+_______________________________________________________________23

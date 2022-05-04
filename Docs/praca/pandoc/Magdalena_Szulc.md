@@ -1,4 +1,4 @@
-\usepackage{ulem}---
+---
 title: "Wykrywanie występowanie chorób serca,porównanie algorytów uczenia maszynowego nadzorowanego na podstawie zbioru danych dotyczących chorób układu krążenia z repozytorium  UCI"
 author: [Magdalena Szulc]
 header: UNIWERSYSTET MIKOŁAJA KOPERNIKA WYDZIAŁ MATEMATYKI I INFORMATYKI
@@ -33,12 +33,109 @@ difference between the use of selected supervised learning algorithms requires a
 model, accuracy, complexity and time to obtain an answer.
 
 
-**Wykrywanie występowanie chorób serca,porównanie algorytów uczenia maszynowego nadzorowanego na podstawie zbioru danych dotyczących chorób układu krążenia z repozytorium UCI**{.unnumbered}
-========
-
-
 **Wstęp**{.unnumbered}
 ========
+
+Uczenie maszynowe jako spopularyzowana dziedzna metod uczenia , zainteresowanie sobą w dużej mierze zawdzięcza rozwoju procesorów graficznych pozwalających na wykorzystanie algorytmów w optymalnym czasie.
+Ze względu na chodliwość tematu , powstało nowe oprogramowanie lub przystosowania ułatwiające wydajną pracę z obszernymi zasobami danych.
+Pojęcie sztucznej inteligencji pochodzi od próby odtowrzenia ludzkiego sposobu myślenia, jedną z bardziej znanych historycznie
+postacią z tym związaną jest psycholog Frank Rosenblatt z Cornell University. Badacz przyczynił się do powstania projektu zbudowania maszyny o nazwie "perceptron" mającej za zadnie 
+rozpoznawać litery jest prawzorem nowoczesnych sztucznych sieci neuronowych. To dzięki jego badaniach nad perceptronem rozpropagowany został koncept algorytmu uczenia skończonej liczbie wywołań.
+Z czasem liczba przetwarzanych informacji stopniowo się zwiększała dzięki zastosowaniu procesów równoległych oraz pamięci.
+Wartą wpomnienia datą jest rok 2006 , w tym roku zaprezentowano opensource'owy odpowiednik MapReduce od Google o który dał sposobnść do przenoszenia między procesorami obróbki Big Data. 
+ Rok ten jest również znaczący ze względu na wydanie przez Nividia procesora graficzngeo monopolizującego rynek uczenia maszynowego.
+Zmiejszenie kosztów pamięci RAM zaoowocowała powstaniem kolejnych algorytmów uczenia,a istniejące podejścia są sukcesywnie ulepszane.[@FRADKOV20201385]
+W całym ogromie powstałych już metod uczenia się, z których każda ma swoje zalety i niedogodności.[@introduction]
+
+
+1.4. Przykład systemów uczących się
+
+1.4.1. Predykcja kategorii: przykłady klasyfikacji
+Klasyfikatory to modele przyjmujące przykłady wsadowe i zwracające wynik będący
+jednym z niewielkiej liczby grup lub klas:
+4c2836bbe011706b10838f45bf5d766f
+34 Rozdział 1. Podyskutujmy o uczeniu się
+1. Klasyfikacja obrazu. Na podstawie obrazu wsadowego zwróć zwierzę (np. kot,
+pies, zebra) znajdujące się na obrazie lub informację, że na obrazie nie ma zwierzęcia.
+Tego typu analiza obrazów jest kombinacją uczenia maszynowego i widzenia
+komputerowego. W tym przypadku wsadem będzie wielka liczba zdjęć. Mogą
+być w różnych formatach (PNG, JPEG itp.). Obrazy mogą znacząco się od siebie
+różnić: (1) mogą być w różnej skali, (2) zwierzęta mogą być w centrum zdjęcia
+lub mogą być częściowo odcięte przez krawędź zdjęcia, (3) zwierzęta mogą być
+przysłaniane przez inne obiekty (np. drzewo). Te wszystkie różnice stanowią
+wyzwanie dla systemu uczenia — i dla ludzi zajmujących się uczeniem
+maszynowym! Są jednak dobre strony rozpoznawania obrazów. Nasza koncepcja
+kota i tego, jaki obraz reprezentuje kota, są ustalone. Tak, granice mogą się
+rozmywać w przypadku animowanych kotów — Hobbes, Garfield, Heathcliff,
+na was patrzę — jednak kot jest raczej statyczną koncepcją. Nie mamy ruchomego
+celu: relacje pomiędzy obrazami a naszą koncepcją tego, czym jest kot, są stałe
+w czasie.
+2. Akcje. Na podstawie historii ceny akcji, danych fundamentalnych firmy i innych
+istotnych danych finansowych i rynkowych podaj, czy powinniśmy kupić, czy
+sprzedać akcje. Problem ten powoduje kilka dodatkowych wyzwań. Dane finansowe
+mogą być dostępne jedynie w postaci tekstowej. Możemy być zainteresowani
+istotnymi wiadomościami, ale w jakiś sposób musimy zdecydować, co nimi jest
+— ręcznie lub (być może) z wykorzystaniem innego systemu uczącego się. Kiedy
+już ustaliliśmy istotny tekst, musimy go zinterpretować. W tym miejscu systemy
+uczące się krzyżują się z systemami przetwarzania języka naturalnego (ang. natural
+language processing — NLP). Wracając do naszego głównego zadania, mamy
+serię danych w czasie — pomiary powtarzające się w czasie. Nasze problemy się
+nawarstwiają. Na rynkach finansowych nasz cel jest prawdopodobnie ruchomy!
+To, co wczoraj było odpowiednie do wytypowania zwycięskich akcji, jutro
+prawie na pewno nie będzie działało w ten sam sposób. Możemy potrzebować
+jakiejś metody lub techniki zmieniania relacji pomiędzy danymi wejściowymi
+a wyjściowymi. Możemy też po prostu trzymać kciuki i użyć techniki, która
+zakłada, że nasz cel nie jest ruchomy. Uwaga: nie jestem doradcą finansowym
+ani nie oferuję porad inwestycyjnych.
+3. Diagnoza medyczna. Na podstawie danych medycznych pacjentów podaj, czy
+są chorzy, czy zdrowi. Tutaj zadanie jest jeszcze trudniejsze. Możemy mieć do
+czynienia z kombinacją tekstu i zdjęć: danych medycznych, notatek i obrazowania
+medycznego. Zależnie od kontekstu, który będzie lub nie będzie uchwycony
+w danych — na przykład podróż do terenów tropikalnych otwiera możliwość
+zarażenia pewnymi paskudnymi chorobami — różne sygnały i symptomy mogą
+prowadzić do bardzo różnych diagnoz. Równocześnie, z całą naszą wiedzą
+medyczną, dopiero zaczynamy rozumieć pewne obszary. Byłoby świetnie, gdyby
+nasz system był w stanie czytać i uczyć się jak lekarz lub badacz o najnowszych
+technikach diagnozowania pacjentów. Nauka uczenia się uczenia to metazadanie
+posunięte do ekstremum.
+4c2836bbe011706b10838f45bf5d766f
+1.5. Ocena systemów uczących się 35
+To bardzo ogólne przykłady systemów klasyfikujących. Od 2019 roku istnieją systemy
+uczące się obsługujące wiele aspektów tych zadań. Omówimy podstawowe klasyfikatory
+obrazów i językowe w rozdziale 14. O ile każdy z tych przykładów zawiera własne, specyficzne
+dla domeny wyzwania, mają one wspólną część polegającą na budowaniu modelu
+separującego kategorie docelowe w użyteczny i dokładny sposób.
+1.4.2. Predykcja wartości — przykłady regresorów
+We współczesnym życiu otaczają nas wartości liczbowe. Mierzymy, zapisujemy
+i przetwarzamy pomiary fizyczne (temperatura, odległość, masa), wartości liczbowe,
+procenty i oceny. Każde z nich może stać się cechą docelową stanowiącą odpowiedź na
+interesujące nas pytanie:
+1. Wyniki ucznia. Możemy spróbować przewidzieć wyniki ucznia na egzaminach.
+Taki system mógłby pozwolić nam skupić wysiłki nauczycielskie na uczniach
+mających problemy przed egzaminem. Moglibyśmy uwzględnić cechy takie jak
+procent wykonania zadań domowych, udział w zajęciach, miara codziennego
+zaangażowania i oceny z poprzednich kursów. Moglibyśmy nawet uwzględnić
+otwarte pisemne oceny i rekomendacje od poprzednich nauczycieli. Podobnie
+jak w przypadku wielu problemów regresji, moglibyśmy w miarę poprawnie
+przekonwertować problem regresyjny w problem klasyfikacji, przewidując, czy
+uczeń zda/obleje, lub ocenę literową zamiast wyniku numerycznego.
+2. Wycena akcji. Podobnie jak w przypadku klasyfikatora kupuj/sprzedawaj,
+moglibyśmy spróbować przewidzieć przyszłą cenę akcji — wartość w dolarach.
+Ten wariant wydaje się być trudniejszy. Zamiast ogólnej estymacji w górę lub
+w dół chcemy przewidzieć, że za dwa tygodnie cena akcji wyniesie 20,73 dolara.
+Niezależnie od trudności dane wsadowe mogłyby być dokładnie takie same:
+byłyby to różne informacje o obrocie akcjami i tyle informacji fundamentalnych
+— na przykład kwartalnych raportów finansowych — ile zechcemy wykorzystać.
+3. Zachowanie przeglądania stron internetowych. Na podstawie historii
+przeglądania stron i zakupów użytkownika przewidź (podaj wartość procentową),
+na ile prawdopodobne jest, że użytkownik kliknie reklamę lub zakupi przedmiot
+w sklepie internetowym. O ile cechy przeglądania i historii zakupów nie są
+numeryczne, o tyle nasz cel — wartość procentowa — jest. Mamy więc problem
+regresyjny. Tak jak w przypadku zadania z klasyfikacją obrazów, tak i tu mamy
+wiele niewielkich fragmentów informacji składających się na końcowy wynik.
+Te fragmenty potrzebują kontekstu — informacji, jak odnoszą się jeden do drugiego
+— aby stać się naprawdę wartościowe.[@confusion]
+
 
 Sztuczna inteligencja wśród szerokiego zakresu swoich zastosowań może zostać wykorzytana do analizy bardziej lub mniej
 złożonych danych medycznych, w celu przewidzenia wystąpienia choroby u konkretnej osoby, bez udziału procesu myślowego
@@ -74,7 +171,7 @@ zaburzeń sercowo-naczyniowych lub ich braku.
 
 Dane medyczne wyróżniają się tym, że trudno uzyskać do nich dostęp, najczęściej nie są to informacje, które się
 udostępnia do użytku publicznego, z tego powodu, kluczowym krokiem jest wybór cech branych pod uwagę przy tworzeniu
-modelu. Dane pozyskane z repozytorium UCI przeszły już wstepną obróbkę , sam dataset ze względu na swoje niewielkie
+modelu. Dane pozyskane z repozytorium UCI przeszły już wstępną obróbkę , sam dataset ze względu na swoje niewielkie
 rozmiary pozwala na sprawdzenie działań algorytmów bez pozbywania się nadmiarowych i mało znaczących cech.
 
 Zatem odpowiedź na pytanie jak wybrakowanie danych mocno wpływa na rezultat i czy istnieją róznicę między zastosowaniem
@@ -87,8 +184,113 @@ W pracy opisano następujące algorytmu uczenia nadzorowanego:
 - maszyna wektorów nośnych (ang. _support vector machines_, SVM)
 - k-najbliższych sąsiadów (ang. _k-neares neighbours_, KNN)
 
+**Wykrywanie występowanie chorób serca,porównanie algorytów uczenia maszynowego nadzorowanego na podstawie zbioru danych dotyczących chorób układu krążenia z repozytorium UCI**{.unnumbered}
+========
+
+
 **Wprowadzenie teorertyczne**
 ========
+
+
+
+Algorytm
+Algorytm to sekwencja obliczeń i reguł używanych do rozwiązywania problemu lub analizowania zestawu danych. Jest to wykres blokowy z instrukcjami krok po kroku dotyczącymi zadawania pytań, ale napisanymi w kodzie matematycznym i programistycznym. Algorytm może opisać, jak określić, czy zwierzę jest kotem, psem, rybą, ptakem lub jaszczurką. Inny znacznie bardziej skomplikowany algorytm może opisywać sposób identyfikowania napisanego lub mówionego języka, analizowania słów, tłumaczenia ich na inny język, a następnie sprawdzania dokładności tłumaczenia.
+
+*Klasyfikacja* *a* *Regresja*
+
+Pod ogólnym pojęciem nadzorowanego uczenia się z przykładów rozróżnić można
+przewidywanie wartości i przewidywanie kategorii. Czy próbujemy (1) skorelować dane
+wejściowe do jednej z możliwych kategorii, określonej przez dyskretne symbole, czy (2)
+skorelować dane wejściowe do mniej lub bardziej ciągłego zakresu wartości numerycznych?
+W skrócie, czy cel jest kategoryczny, czy numeryczny? Jak już wspomniałem, predykcja
+kategorii nazywa się klasyfikacją. Predykcja wartości liczbowej nazywana jest regresją.
+Przyjrzymy się przykładom każdej z nich.
+
+1. Regresja
+Opiera się ona na podstawowych zasadach fizyki, które pomagają przewidywać przyszłość w oparciu o dane bieżące. Pomaga również znaleźć korelację między dwoma zmiennymi w celu określenia związku przyczynowo-skutkowego. Na podstawie tych zmiennych można wykreślić wykres i na podstawie zmiennej prognostycznej sporządzić prognozę jako wynik ciągły.
+
+Istnieją jednak różne formy regresji, począwszy od liniowego do złożonego, wielomianowego obliczania danych i reprezentacji. Zawsze powinieneś zacząć od podstaw, co oznacza opanowanie regresji liniowej, a następnie przejście do form złożonych.
+
+Typowymi przykładami regresji liniowej są:
+
+Prognoza pogody
+Przewidywanie trendów rynkowych
+Identyfikacja potencjalnego ryzyka
+
+2. Klasyfikacja
+Metoda definiuje wartość klasy na podstawie danych wejściowych. Daje ona ostateczne przewidywania dotyczące danej akcji. Na przykład, powie Ci, czy gość stanie się klientem czy nie.
+
+Jednak klasyfikacja nie opiera się tylko na dwóch kategoriach, ale na ich wielokrotności z powodu obliczeń prawdopodobieństwa. Na przykład, może pomóc Ci określić, czy dany obrazek zawiera kwiat lub liść; metoda klasyfikacji da Ci trzy prawdopodobne wyniki: 1) kwiat, 2) liść, 3) brak.
+
+Powyższy przykład opiera się na klasyfikacji logistycznej, która jest najprostsza ze wszystkich. Po osiągnięciu doskonałości, można doskonalić swoje umiejętności w nieliniowych klasyfikacjach.
+
+3. Grupowanie
+Jest to technika uczenia się maszynowego bez nadzoru, w której podobne cechy są wykorzystywane do przewidywania, a nie danych z przeszłości. Algorytm wykorzystuje wizualne wskazówki do zaprojektowania rozwiązania. K-Means jest najpopularniejszą metodą grupowania danych wejściowych, która pozwala na ustawienie wartości K i kategoryzację danych na podstawie wartości K.
+
+Weźmy pod uwagę omówiony powyżej przykład efektywnego energetycznie budynku. Teraz, aby utworzyć klaster podobny budynek, należy ustawić wartość K (którą zakładamy na 2) i wprowadzić zmienne, takie jak urządzenia wtyczkowe, agregaty chłodnicze, gaz użytkowy (piece) i gaz handlowy (urządzenia grzewcze).
+
+Ponieważ wartość K wynosi 2, będą dwa klastry: budynki efektywne i budynki nieefektywne oparte na ustalonych zmiennych.
+
+4. Redukcja wymiarowa
+Jest to proces redukcji zmiennych losowych podczas kategoryzacji danych. Im większa liczba zmiennych, tym bardziej złożone będą wyniki, co utrudnia ich konsolidację.
+
+Wybór cech i ekstrakcja są podstawą redukcji wymiarowości w procesie uczenia maszynowego. Pozwala to na rezygnację z nieistotnych zmiennych. Na przykład, jeśli chcesz przewidzieć ryzyko przyrostu wagi w grupie ludzi, nie chciałbyś mierzyć danych na podstawie ich ubioru; jednak styl życia jest czynnikiem szkodliwym, który można pominąć.
+
+Najczęstszym przykładem redukcji wymiarowej jest proces klasyfikacji poczty elektronicznej wykorzystywany do sortowania spamu. Zazwyczaj wykorzystuje on dużą liczbę zmiennych, takich jak tytuły wiadomości, treść i szablon wiadomości, między innymi. Istnieją jednak szanse, że algorytm może nakładać się na pewne czynniki, które mogą wpływać na wynik. Tak więc, aby dokonać dokładnych zgadywanek, oprogramowanie zawiera redukcję wymiarową, która zmniejsza szanse na powtórzenie i zapewnia dokładne wyniki.
+
+Uczenie maszynowe
+Uczenie maszynowe (ML) to technika sztucznej inteligencji, która używa algorytmów matematycznych do tworzenia modeli predykcyjnych. Algorytm służy do analizowania pól danych i "uczenia się" na podstawie tych danych przy użyciu wzorców znalezionych w nim do generowania modeli. Te modele są następnie używane do podejmowania świadomych przewidywań lub decyzji dotyczących nowych danych.
+
+Modele predykcyjne są weryfikowane pod kątem znanych danych, mierzone za pomocą metryk wydajności wybranych dla określonych scenariuszy biznesowych, a następnie dostosowywane zgodnie z potrzebami. Ten proces uczenia się i walidacji jest nazywany szkoleniem. Dzięki okresowemu ponownemu trenowaniu modele ML są ulepszane w czasie.
+
+W tradycyjnych problemach z uczeniem nadzorowanym otrzymujemy uporządkowaną kolekcję
+z l oznaczonych punktów danych DL = ((xi, yi))l
+i=1. Każdy punkt danych (xi, yi) składa się z obiektu
+xi ∈ X z danej przestrzeni wejściowej X i ma przypisaną etykietę yi , gdzie yi jest wartością rzeczywistą w
+problemy regresyjne i kategoryczne w klasyfikacji. Na podstawie zbioru tych
+punkty danych, zwykle nazywane danymi uczącymi, nadzorowane metody uczenia próbują wywnioskować
+funkcja, która może z powodzeniem określić etykietę y∗ jakiegoś wcześniej niewidzianego wejścia x∗.
+Jednak w wielu rzeczywistych problemach z klasyfikacją mamy również dostęp do kolekcji
+u punktów danych, DU = (xi)
+l+u i=l+1, których etykiety są nieznane. Na przykład punkty danych dla
+które chcemy przewidzieć, zwykle nazywane danymi testowymi, są z definicji nieoznaczone.
+Częściowo nadzorowane metody klasyfikacji próbują wykorzystać nieoznakowane punkty danych do skonstruowania
+osoba ucząca się, której wyniki przewyższają wyniki uczniów uzyskane przy użyciu wyłącznie
+oznakowane dane. W pozostałej części tej ankiety oznaczamy kolekcję XL i XU
+obiektów wejściowych odpowiednio dla oznaczonych i nieoznaczonych próbek.1
+Istnieje wiele przypadków, w których nieoznaczone dane mogą pomóc w konstruowaniu klasyfikatora. Rozważać,
+na przykład problem klasyfikacji dokumentów, gdzie chcemy przypisać tematy do a
+zbiór dokumentów tekstowych (takich jak artykuły z wiadomościami). Zakładając, że nasze dokumenty są reprezentowane
+dzięki zestawowi słów, które się w nim pojawiają, można by wytrenować prosty nadzorowany klasyfikator, który na przykład
+na przykład, uczy się rozpoznawać, że dokumenty zawierające słowo „neutron” zwykle dotyczą
+fizyka. Ten klasyfikator może dobrze działać w dokumentach zawierających terminy, które widział w
+dane szkoleniowe, ale z natury nie powiedzie się, gdy dokument nie zawiera słów predykcyjnych
+to również miało miejsce w zestawie szkoleniowym. Na przykład, jeśli napotkamy dokument dotyczący fizyki
+1 Zwracamy uwagę, że zbiory punktów danych, o których tutaj mowa, są listami technicznymi. Jednak po wspólnych
+użycia, w tej ankiecie nazywamy je „zbiorami” i, z lekkim nadużyciem notacji, stosujemy standardową teorię mnogości
+koncepcje do nich.
+123
+376 Uczenie maszynowe (2020) 109:373-440
+Rys. 1 Podstawowy przykład klasyfikacji binarnej w obecności danych nieoznakowanych. Nieoznakowane punkty danych
+są pokolorowane zgodnie z ich prawdziwą etykietą. Kolorowe, niewypełnione koła przedstawiają krzywe konturu wejścia
+rozkład danych odpowiadający odchyleniom standardowym 1, 2 i 3 (kolorowy rysunek online)
+o akceleratorach cząstek, które nie zawierają słowa „neutron”, klasyfikator nie jest w stanie
+uznać go za dokument dotyczący fizyki. To tutaj uczenie się częściowo nadzorowane
+wchodzi. Jeśli weźmiemy pod uwagę dane nieoznakowane, mogą istnieć dokumenty, które łączą słowo
+„neutron” na frazę „akcelerator cząstek”. Na przykład słowo „neutron” często
+występują w dokumencie, który zawiera również słowo „kwark”. Ponadto słowo „kwark”
+regularnie współwystępowałby ze zwrotem „akcelerator cząstek”, który kieruje klasyfikatorami
+w kierunku sklasyfikowania tych dokumentów jako obracających się również wokół fizyki, mimo że:
+nigdy nie widziałem wyrażenia „akcelerator cząstek” w oznaczonych danych.
+Rysunek 1 dostarcza dalszych intuicji dotyczących wykorzystania danych nieoznaczonych do klasyfikacji. Rozważamy problem sztucznej klasyfikacji z dwiema klasami. Dla obu klas
+100 próbek jest pobieranych z dwuwymiarowego rozkładu Gaussa z identyczną kowariancją
+macierze. Oznaczony zestaw danych jest następnie konstruowany poprzez pobranie jednej próbki z każdej klasy.
+Każdy nadzorowany algorytm uczenia się najprawdopodobniej przyjmie jako granicę decyzji stałą
+linia, która jest prostopadła do odcinka linii łączącego dwa oznaczone punkty danych i
+przecina go w środku. Jest to jednak dość daleko od optymalnej granicy decyzyjnej.
+Jak wynika z tego rysunku, mogą nam pomóc klastry, które możemy wywnioskować z danych nieoznaczonych
+znacznie w ustalaniu granicy decyzyjnej: zakładając, że dane pochodzą z dwóch rozkładów Gaussa, prosty częściowo nadzorowany algorytm uczenia się może wywnioskować bliski optymalnemu
+granica decyzji.
 
 **Uczenie maszynowe** (ang. _machine learning_, ML) to dziedzina zajmująca się tworzeniem modeli do analizy bardzo obszernych zasobów danch. Modele utworzone za pomocą algorytmów uczenia maszynowego są w stanie z wysokim prawdopodobieństwem wystawić predyckję lub dokonać klasyfikacji na temat zadanego problemu. 
 
@@ -122,7 +324,7 @@ na danych wejściowych czy wyjściowych a rezultatach otrzymanych podczas testu 
 Algorytm generując dane wejściowe dostosowuje reguły by uzyskać zwrotnie sygnał pozytywny w jak największej liczbie przypadków. [@reinfor-learning] .
 
 
-**Uczenie częściowo nadzorowane** (ang. _semi-supervised_ _learning_) to klasa algorytmów uczenia maszynowego która wykorzystuje zbór danych w większości niepoetykietowany na podstawie których tworzony jest model [@semi-learning] .
+**Uczenie częściowo nadzorowane** (ang. _semi-supervised_ _learning_) to klasa algorytmów uczenia maszynowego która wykorzystuje zbór danych w większości niepoetykietowany na podstawie których tworzony jest model [@semi-learning] , w wykorzystywana głównie w przypadkach niewydajności zastosowania osobno modeli nadzorowanych i nienadzorowanych. Zastosowanie tej klasy algorytmów pozwala również na maksymalizację wykorzystania zebranych informacji [@introduction] .
 
 Podział osób na kategorie cierpiące na choroby sercowo-naczyniwe oraz zdrowe, to dylemat klasyfikayjny nadający się do
 rozwiązania za pomoca algorytmów uczenia maszynowego nadzorowanego i na nich skupia się dalsza część pracy.
@@ -131,7 +333,52 @@ rozwiązania za pomoca algorytmów uczenia maszynowego nadzorowanego i na nich s
 
 ![Schemat 2](img/7podstawowy_schemat_blokowy_uczenia_maszynowego.png "Podstawowy schemat blokowy uczenia maszynowego"){ width=70% }
 
-## Model Danych
+Powyższy bazowy schemat można zastosować do dowolnego modelu uczenia, wykonanie kolejnych bloków zadaniowych różnić się będzie specyfiką dla danego modelu: 
+
+- przygotowanie danych dla algorytmów uczenia nadzorowanego musi zawierać również zebranie odpowiedzi/wyników dla danych testowych
+- implementacja modelu za każdym razem jest specyficzna dla zastosowanego algorytmu który równiez zależy od typu uczenia
+- ewaluacja  modeli regresywnych różni się od ewluacji modeli klasyfikacyjnych ze względu na wykorzystanie innych miar oceny dokładności
+- zastosowanie modeli może posiadać wielorakie formy realizacji.
+ 
+rozpiszmy uproszczony schemat budowania i oceniania modeli
+w sklearn:
+1. Zbuduj model.
+2. Dopasuj model, używając danych treningowych.
+3. Wykonaj predykcję, używając dopasowanego modelu na danych testowych.
+4. Oceń jakość predykcji.
+Możemy porównać ten proces z naszą koncepcją modelu jako maszyny. Odpowiednie
+kroki to:
+1. Skonstruuj maszynę, z pokrętłami włącznie.
+2. Poustawiaj pokrętła i wrzuć odpowiednie dane poprzez tackę, tak aby uchwycić
+dane wejściowe.
+3. Przepuść przez maszynę nowe przykłady, tak aby sprawdzić, jakie będą wyniki.
+4. Oceń jakość danych wyjściowych [@confiusion]
+
+## Dane 
+
+### Wstęp 
+
+Nieszczęśliwym zbiegiem okoliczności w terminologii informatycznej przy opisywaniu
+procesu wywoływania funkcji pojęcia parametry i argumenty często stosuje się zamiennie.
+Jednak w ścisłym sensie oznaczają one co innego. Argumenty to rzeczywiste wartości
+przekazywane w wywołaniu, natomiast parametry to symbole zastępcze, w których
+w funkcji zapisywane są wartości. Aby doprecyzować te pojęcia, w dokumentacji czasem
+stosuje się nazwy rzeczywiste argumenty/parametry i formalne argumenty/parametry.
+Dlaczego jest to ważne? Ponieważ w kontekście dostrajania hiperparametrów zaraz
+zetkniesz się z tym, jak ludzie mówią o dostrajaniu parametrów. Wtedy pomyślisz sobie,
+że okłamywałem Cię co do różnicy między wewnętrznymi komponentami maszyny
+w fabryce konfigurowanymi za pomocą hiperparametrów a zewnętrznymi komponentami
+(pokrętłami) ustawianymi w wyniku optymalizacji parametrów.
+W tej książce nazwę argumenty stosuję wyłącznie jako pojęcie informatyczne. Robię
+to specjalnie, aby uniknąć konfliktów z określeniami parametry i hiperparametry z obszaru
+uczenia maszynowego. Nadal będę posługiwał się nazwami parametry (optymalizowane
+w czasie treningu) i hiperparametry (dostrajane za pomocą sprawdzianu krzyżowego).
+Pamiętaj, że w dokumentacji biblioteki sklearn i nazwach argumentów funkcji (1)
+hiperparametry są często skracane do zapisu param lub (2) nazwa param jest stosowana
+w sensie informatycznym. W obu tych scenariuszach w kodzie piszę o rzeczywistych
+argumentach konstruktora, na przykład o wartości k=3 w maszynie opartej na algorytmie
+k-NN. W terminologii z dziedziny uczenia maszynowego mówimy, że hiperparametr
+algorytmu k-NN ustawiamy na 3.
 
 ![Schemat 3](img/12UCI.png "UCI logo"){ width=50% } [@UCI]
 
@@ -278,6 +525,64 @@ znalezienie najlepszego modelu można go wykorzystać do weryfikacji na danych s
 
 ## Wybrane algorytmy uczenia maszynowego nadzorowanego
 
+### Wstęp
+Nadzorowana klasyfikacja obrazów wymaga uczącego zestawu danych składającego się z pikseli o różnych sygnaturach widmowych oznaczonych w ramach jednej klasy lub więcej w przypadku
+klasyfikatory rozmyte. Etykietowanie może pochodzić z wizualnej interpretacji obrazów
+do sklasyfikowania lub z innych referencyjnych zbiorów danych pochodzących z bardziej czułych czujników
+lub zaobserwowane/zmierzone in situ. Wizualna interpretacja obrazu jest zwykle wykonywana przez:
+oprogramowanie systemu informacji geograficznej (GIS) i obejmuje ręczne wyznaczanie i
+znakowanie wielokątów pokrywających obszary jednorodne. Korzystanie z innego pilota referencyjnego
+wykrywanie zbiorów danych często wymaga kolokacji przestrzenno-czasowej między dwoma czujnikami za pomocą środków
+interpolacji lub dopasowania najbliższego sąsiada. Należy zastosować oba podejścia do etykietowania
+wspólne zasady tworzenia optymalnego zestawu danych treningowych:
+1. Referencyjny zbiór danych powinien być wystarczająco duży, aby wypełnić przestrzeń funkcji informacjami wystarczającymi do prawidłowego wywnioskowania etykiet dla nowych przypadków testowych, które się nie pojawiły
+w uczącym zbiorze danych. Oznacza to, że nowe próbki powinny być bardzo podobne do
+te używane do treningu klasyfikatorów. Taka sytuacja zdarza się rzadko dla prostych
+zadania klasyfikacyjne oparte na kilku cechach. Wieloczasowy i wielospektralny
+obrazy teledetekcyjne składające się z heterogenicznych pikseli o mieszanych klasach wymagają ogromnego zestawu danych treningowych, aby przedstawić wszystkie potencjalne relacje
+między funkcjami. Na treningowe zbiory danych zwykle mają wpływ problemy z próbkowaniem
+związane z nierównomiernym rozkładem obserwacji in situ ze względu na ograniczoną dostępność
+(np. odległe obszary, bagna, wysokie góry), ograniczenia czasowe i przestrzenne, podczas gdy
+kolokacji różnych źródeł danych i subiektywnej selekcji poligonów uczących.
+W związku z tym treningowy zestaw danych może być rzadki i niedostatecznie reprezentowany. W związku z tym,
+solidny klasyfikator obrazu powinien być w stanie uogólnić dostępne informacje a priori
+do niewidzianych przypadków bez nadmiernego dopasowania zestawu danych uczących. Overfitting oznacza, że
+Remote Sens. 2022, 14, 378 4 z 36
+klasyfikator zbyt dobrze pasuje do zestawu danych treningowych (w tym hałaśliwe przypadki zamiast
+tylko „prawdziwy” sygnał). Wręcz przeciwnie, niedopasowanie oznacza, że ​​klasyfikator wykonuje:
+słabo na danych treningowych, prawdopodobnie z powodu prymitywnych założeń lub błędnie
+wybrane hiperparametry lub cechy klasyfikacyjne.
+2. Zbiór danych uczących powinien charakteryzować się niską autokorelacją przestrzenną i czasową, aby
+maksymalizować informacje w przestrzeni funkcji i obiektywnie oceniać jakość
+wygenerowanej klasyfikacji. Jeśli piksele są silnie skorelowane, to ich widmowe
+podpisy są w większości zbędne. W konsekwencji klasyfikator ma niewiele informacji, aby:
+uczyć się na podstawie nowych przypadków testowych i uogólniać je. Taka sytuacja często ma miejsce w
+przypadek wizualnej interpretacji obrazu, gdzie operator zaznacza kilka dużych wielokątów
+obejmujących tę samą klasę. Mimo zaznaczenia dużej liczby pikseli, bardzo
+ograniczone informacje spektralne są w rzeczywistości wykorzystywane do trenowania klasyfikatora. Co więcej, jeśli a
+podzbiór tych pikseli jest używany do oceny jakości klasyfikacji, a następnie
+statystyki pochodne są zawyżone i niewiarygodne. Tak więc, jak sugeruje [36], najbardziej
+solidnym rozwiązaniem tego problemu jest losowy dobór trenujących pikseli i
+zbiory danych walidacyjnych. Ponadto korzystne jest tymczasowe odłączenie obu
+zestawy danych, dzięki czemu treningowy zestaw danych jest pozyskiwany w innym czasie (np. inny
+rok) niż zbiór danych walidacyjnych.
+3. Referencyjny zbiór danych powinien odzwierciedlać taką samą proporcję klas, jak ta występująca
+na obrazie niejawnym. Jest to szczególnie ważne w przypadku klasyfikatorów bayesowskich, które polegają
+o prawdopodobieństwie wystąpienia klasy a priori [37]. Donoszono o podobnych wnioskach
+przez [36] w przypadku algorytmów drzew decyzyjnych.
+4. Dane referencyjne powinny być wysokiej jakości, z jak najmniejszą liczbą błędnie oznakowanych pikseli.
+To oczywiste stwierdzenie jest trudne do zrealizowania w rzeczywistości, gdzie dane referencyjne
+mogą pochodzić z: (1) innych produktów klasyfikacyjnych charakteryzujących się własną niepewnością;
+(2) obserwacje in situ zmienione przez niesprawność przyrządów lub błędy typograficzne;
+(3) dane crowdsourcingowe zawierające wiele subiektywnych obserwacji; oraz (4) słabo wytyczone wielokąty uczące. Ponadto w przypadku krycia obrazów o niskiej rozdzielczości
+niejednorodny krajobraz, piksele składają się zwykle z mieszanych klas, które
+ostatecznie muszą zostać zaklasyfikowane do jednej klasy. Alternatywnie, niektóre subpiksele
+techniki klasyfikacji [38–40] można zastosować do wywnioskowania ułamkowej proporcji
+klasy w takich pikselach. Niemniej jednak, z perspektywy klasyfikatora obrazu, błędnie oznakowane piksele wprowadzają szum, który należy oddzielić od prawdziwego
+sygnatura widmowa powiązana z określoną klasą. Ograniczona liczba badań ma
+omówiono wrażliwość klasyfikatorów obrazu na błędnie oznakowane dane wejściowe. W [34],
+okazuje się, że algorytm losowego lasu jest mniej czuły[@sensor]
+
 ### Losowe lasy decyzyjne
 
 **Drzewa decyzyjne** (ang. _decisions trees_ ) są uznawane za najprostyszy i najbliższy ludzkiemu zrozumieniu algorytm
@@ -288,6 +593,23 @@ determinuje to otrzymany rezultat [@3;@32] .
 ![Schemat 9](img/3drzewo_decyzyjne_schemat.png "Schmat Drzewa decyzyjnego"){ width=50% }
 
 Prawie każdy algorytm uczenia maszynowego nadzorowanego można podzielić na dwa etapy. W pierwszym opracowywany jest wzorzec, na którym bazuję późniejsza predykcja. Etap nauki dla drzewa decyzyjnego polega na typowaniu atrybutów, które staja się węzłami decyzyjnymi, dzielącymi rekordy na dwa mniejsze zestawy i tak aż nie ma możliwości dalszego podziału.
+
+Rozpoczęcie od otwartego drzewa bez ograniczenia głębokości daje bardzo elastyczny
+model, pozwalający uchwycić dowolny skończony wzór, który nie jest losowy na poziomie
+rzutów monetą. Choć może się to wydawać idealnym rozwiązaniem, wiesz już wystarczająco
+dużo, aby stwierdzić, że muszą tu występować kompromisy. Użycie drzew nieograniczonych
+zapewne doprowadzi do nadmiernego dopasowania, dlatego przy próbie uogólnienia
+rozwiązania wyniki dla danych testowych będą kiepskie. Jeśli chcesz przypomnieć sobie
+ten kompromis, zajrzyj do podrozdziału 5.6. Jak więc dodać obciążenie do drzew i dodać
+ograniczenia, aby zapobiec nadmiernemu dopasowaniu? Można tu wykonać kilka kroków.
+1. Można ograniczyć głębokość drzew. Wtedy dozwolonych jest mniej pytań przed
+określeniem klasy przykładu.
+2. Można wymagać większej liczby przykładów w liściach. To ograniczenie wymaga
+grupowania przykładów, które mogą różnić się między sobą. Ponieważ ich
+rozdzielanie jest niedozwolone, skutkuje to wygładzeniem niektórych granic.
+3. Można ograniczyć liczbę uwzględnianych cech przy zadawaniu pytań o przykłady.
+To ograniczenie ma dodatkową korzyść w postaci przyspieszenia procesu uczen
+4. [@confiusion]
 
 Na metodologie drzew decyzyjnych oparta jest dokładniejsza forma nauczania nadzorowanego:  _losowe lasy decyzyjne._
 
@@ -300,6 +622,129 @@ Z treningowego zestawu danch losuję się, z możliwymi powtorzeniami, wiersze d
 model. Jako rezutat brana jest większość lub średnia wartości uzyskanych wyników dla poszczególnych drzew dezycyjnch.
 Dodatkowo dla drzew decyzyjnych w lasach losowych, atrybuty odpowiadające za kategoryzację są wybierane z wylosowanego
 podzbioru.[@forest]
+
+Przejdźmy teraz to bardziej skomplikowanych sposobów łączenia modeli. Pierwszy z nich
+to lasy losowe. Metoda ta jest oparta na technice o nazwie bagging. Nazwa ta nie pochodzi
+od angielskiego bag, czyli torba. Jest to sztuczne słowo, zbitek dwóch wyrazów bootstrap
+aggregation (agregacja bootstrap). Agregacja oznacza łączenie, nadal jednak trzeba wyjaśnić,
+czym jest bootstrap. W tym celu opiszę, jak obliczyć prostą statystykę (średnią) za pomocą
+techniki bootstrap.
+12.3.1. Technika bootstrap
+Podstawowe zadanie techniki bootstrap polega na znalezieniu rozkładu (przedziału
+możliwości) na podstawie jednego zbioru danych. Jeśli myślisz teraz o sprawdzianie
+krzyżowym, gdzie też jeden zbiór danych jest dzielony w celu uzyskania wielu wyników,
+4c2836bbe011706b10838f45bf5d766f
+12.3. Bagging i lasy losowe 405
+jesteś blisko prawdy. Obie te metody to techniki wielokrotnego pobierania próbek. Więcej
+o powiązaniach między tymi metodami dowiesz się za chwilę.
+Wróćmy teraz do techniki bootstrap. Wyobraź sobie, że masz zbiór danych i chcesz
+obliczyć na jego podstawie statystykę. Dla wygody niech będzie to średnia. Oczywiście
+istnieje prosty, bezpośredni wzór na średnią. Wystarczy zsumować wartości i podzielić
+wynik przez ich liczbę. Matematycznie zapis wygląda tak: n
+x średnia(X )   . Po co bawić
+się w bardziej skomplikowane rozwiązania? Ponieważ średnia oszacowana za pomocą jednego
+punktu, jednej obliczonej wartości, może być myląca. Nie wiadomo, jak zmienne są
+szacunki średniej. W wielu sytuacjach chcemy wiedzieć, o ile możemy się mylić. Dlatego
+zamiast zadowalać się jedną wartością, możemy zażądać rozkładu średnich, jakie można
+obliczyć na podstawie danych podobnych do analizowanego zbioru. Istnieją teoretyczne
+techniki opisu rozkładu średnich. Znajdziesz je w każdym podręczniku z wprowadzeniem
+do statystyki. Jednak w przypadku innych statystyk, także czegoś tak wyrafinowanego jak
+wyuczone klasyfikatory, nie istnieją wygodne, gotowe odpowiedzi obliczane za pomocą
+prostych wzorów. Zamiast nich można zastosować wtedy technikę bootstrap. Aby ustalić,
+jak obliczyć wartość za pomocą tej techniki, przyjrzyj się kodowi i rysunkom obrazującym
+ten proces.
+Pobieranie próbek ze zwracaniem i bez zwracania. Przed omówieniem procesu
+bootstrap trzeba objaśnić jeszcze jedną kwestię. Istnieją dwa sposoby pobierania próbek
+wartości z kolekcji danych. Pierwsze podejście to pobieranie próbek bez zwracania. Wyobraź
+sobie, że umieszczasz wszystkie dane w worku i chcesz pobrać ze zbioru danych jedną
+próbkę z pięcioma przykładami. Możesz włożyć rękę do worka, wyciągnąć przykład,
+zapisać go i odłożyć na bok. W tej technice — bez zwracania — przykład nie wraca do
+worka. Następnie należy wziąć z worka drugi przykład, zapisać go i odłożyć. Także tego
+przykładu nie należy wrzucać z powrotem do worka. Proces wyciągania należy powtarzać
+do momentu zapisania pięciu przykładów. Jest tu oczywiste, że to, który przykład zostanie
+wyciągnięty za pierwszym razem, ma wpływ na drugą, trzecią i kolejne operacje pobierania.
+Jeśli dany przykład został zabrany z worka, nie można go ponownie wyciągnąć. Pobieranie
+próbek bez zwracania sprawia, że wybory są zależne od tego, co stało się wcześniej. Przykłady
+nie są niezależne od siebie. To z kolei wpływa na to, jak statystycy traktują daną próbkę.
+Inne podejście to pobieranie próbek ze zwracaniem. Należy wyciągnąć przykład z worka ze
+zbiorem danych, zapisać wartość i zwrócić przykład do worka. Następnie pobieranie
+przykładów jest powtarzane do momentu uzyskania potrzebnej ich liczby. Pobieranie
+próbek ze zwracaniem (zobacz rysunek 12.3) daje sekwencję niezależnych przykładów.
+Jak więc zastosować technikę bootstrap do obliczenia statystyki dla próbki bootstrap?
+Należy losowo pobierać przykłady ze zwracaniem ze źródłowego zbioru danych do
+momentu uzyskania nowej próbki o tej samej liczbie elementów co pierwotny zbiór.
+Następnie można obliczyć potrzebną statystykę dla próbki bootstrap. Proces ten jest
+powtarzany kilkakrotnie, po czym należy obliczyć średnią ze statystyk dla poszczególnych
+próbek. Na rysunku 12.4 zobaczysz wizualnie, jak wygląda proces obliczania średniej
+z użyciem techniki bootstrap.[@confiusion]
+
+Lasy losowe (LL) to specjalny typ mechanizmów uczących się opartych na baggingu.
+Wykorzystuje się tu specyficzną wersję drzew decyzyjnych. Standardowe drzewa decyzyjne
+do utworzenia węzła wykorzystują tę spośród wszystkich cech, która daje najlepsze wyniki.
+W LL wybierany jest podzbiór cech, po czym podejmowane są decyzje optymalne na
+podstawie tego podzbioru. Celem jest wymuszenie zróżnicowania drzew. Możliwe jest, że
+nawet przy losowym doborze przykładów jedna cecha będzie ściśle powiązana z wartościami
+docelowymi. Taka najważniejsza cecha zapewne zostanie wybrana jako pierwszy punkt
+podziału we wszystkich drzewach. Pora zakończyć hegemonię takich cech.
+Gdy stosowana jest technika bootstrap, pierwszy punkt podziału w drzewach zwykle
+nie jest oparty na jednej cesze. Zamiast tego selektywnie ignorowane są niektóre cechy
+i wprowadzana jest losowość, aby uzyskać różne drzewa. Ta losowość powoduje, że
+w różnych drzewach uwzględniane są różne cechy. Pierwotny algorytm drzew losowych
+wykorzystywał głosowanie większościowe podobne jak w baggingu. Jednak algorytm LL
+4c2836bbe011706b10838f45bf5d766f
+12.3. Bagging i lasy losowe 411
+w bibliotece sklearn oblicza prawdopodobieństwo wyboru danej klasy przez każde drzewo
+z lasu, a następnie uśrednia wyniki, aby uzyskać ostateczną odpowiedź. Klasa o najwyższym
+średnim prawdopodobieństwie jest „zwycięzcą”.
+Jeśli zaczniesz od kodu przedstawionej wcześniej funkcji bagged_learner, musisz jeszcze
+zmodyfikować kod tworzenia drzewa (etap budowania modelu składowego) z podrozdziału 8.2.
+Jest to prosta modyfikacja, którą wyróżniłem kursywą:
+0. Losowy wybór podzbioru cech uwzględnianych w danym drzewie.
+1. Analiza wybranych cech i podziałów oraz wybór najlepszej kombinacji cecha-podział.
+2. Dodanie do drzewa węzła reprezentującego tę kombinację cecha-podział.
+3. W każdym podwęźle należy uwzględnić powiązane z nim dane i:
+ jeśli wartości docelowe są wystarczająco podobne, zwrócić prognozowaną
+wartość;
+ w przeciwnym razie wrócić do kroku 1. i powtórzyć proces.
+Używając tego pseudokodu jako bazowego estymatora, można w połączeniu z kodem
+funkcji bagged_learner szybko zbudować prototyp systemu uczącego się
+wykorzystującego las losowy.
+Ekstremalne lasy losowe i podział cech. Następna wersja to ekstremalne drzewa
+losowe. Nie, nie chodzi tu o igrzyska sportów ekstremalnych dla drzew losowych. Słowo
+ekstremalne dotyczy tu dodatkowego poziomu losowości w procesie tworzenia modelu.
+Przedstaw informatykowi jakąś ideę (zastąpienie deterministycznej techniki losowością),
+a zacznie ją stosować wszędzie. W ekstremalnych lasach losowych w procesie budowania
+składowych drzew wprowadzana jest następująca zmiana:
+1. Losowe generowanie punktów podziału i wybór najlepszego z nich.
+Tak więc obok losowego wyboru uwzględnianych cech losowo ustalane są też punkty
+podziału. Zaskakujące jest, że ta technika się sprawdza — a może działać naprawdę dobrze.
+Do tej pory nie opisywałem szczegółowo procesu wyboru punktów podziału. Nie muszę
+go tu omawiać, ponieważ zrobili to inni autorzy. Ja cenię przede wszystkim podejście
+stosowane przez Fostera i Provosta w ich książce, którą podaję w końcowej części rozdziału.
+Proces wyboru dobrych punktów podziału przedstawię na przykładzie. Załóżmy,
+że chcę na podstawie prostych wskaźników biometrycznych przewidzieć, kto będzie
+dobrym koszykarzem. Wzrost — niestety dla osób takich jak ja — jest naprawdę dobrym
+prognostykiem sukcesów w koszykówce. Dlatego można zacząć od analizy tego, jak
+wzrost jest powiązany ze zbiorem danych opisującym dobrych i — tak jak w moim
+przypadku — słabych koszykarzy. Po uporządkowaniu danych według wzrostu może się
+okazać, że w koszykówkę próbowali grać ludzie o wzroście od 1,35 m do 2,10 m. Jeśli
+wprowadzę punkt podziału na poziomie 1,52 m, w zbiorze osób z niższym wzrostem
+zapewne znajdzie się wielu słabych koszykarzy. Jest to stosunkowo jednorodna grupa,
+jeśli chodzi o sukcesy w tym sporcie. Jednak zbiór osób wyższych niż 1,52 m prawdopodobnie
+będzie obejmował obie klasy. Występuje więc niska czystość (ang. purity) powyżej punktu
+podziału i wysoka czystość poniżej punktu podziału. Podobnie jeśli jako punkt podziału
+4c2836bbe011706b10838f45bf5d766f
+412 Rozdział 12. Łączenie mechanizmów uczących się
+wybiorę wartość 1,95 m, wśród wyższych osób większość zapewne będzie odnosić sukcesy,
+jednak wśród niższych graczy wyniki będą mieszane. Celem jest znalezienie odpowiedniego
+punktu podziału dla wzrostu, aby uzyskać możliwie dużo informacji na temat sukcesów
+— zarówno wśród niższych, jak i wśród wyższych osób. Wydzielenie graczy o niskim
+i wysokim wzroście daje dużo informacji. W środkowym segmencie ważne są inne
+czynniki, na przykład ilość czasu poświęcanego na grę.
+Tak więc w ekstremalnych lasach losowych nie uwzględnia się wszystkich możliwych
+punktów podziału. Zamiast tego wybierany jest losowy podzbiór analizowanych
+punktów. Następnie te punkty są oceniane i z tego ograniczonego zbioru wybierane są
+najlepsze punkty.
 
 Wśrod zalet lasów losowych nalezy wyróżnić iż potrafią one trafnie wykalkulować brakujace wartości cech. Idealnie
 znajdują zastosowanie dla realnych danych, których zasadniczym problemem jest ich niekompletność.  
@@ -334,12 +779,136 @@ Idea działania maszyny wektorów nośnych opiera się na wyznaczenia minimalnej
 
 ![Schemat 13](img/16svm_wzor2.png "svm wzor"){ height=10% } [@svmW0]
 
+Na szczęście sklearn zapewnia nam pewne wsparcie w tym względzie. Wykorzystamy
+narzędzie z biblioteki sklearn, aby uniknąć uczenia się do testu. Funkcja train_test_split
+podzieli zestaw danych znajdujący się w Pythonie pod zmienną iris. Pamiętaj, zestaw
+danych ma już dwie składowe: cechy i cel. Nasz nowy podział podzieli dane na dwa zbiory
+przykładów:
+1. Część danych, które zostaną wykorzystane do zbadania i zbudowania
+zrozumienia.
+2. Część danych, które wykorzystamy do sprawdzenia.
+Będziemy badać dane treningowe (czyli uczyć się na ich podstawie). Aby otrzymać
+miarodajną ocenę, do sprawdzenia wykorzystamy tylko dane testowe. Obiecujemy nie
+podglądać danych testowych. Zaczęliśmy od rozbicia danych na dwie części: cechy i cel.
+Teraz każdą z nich rozbijemy na dwie grupy:
+1. Cechy → cechy treningowe i cechy testowe.
+2. Cele → cele treningowe i cele testowe. [@confiusion]
+
+Można tu wygenerować nieskończoną liczbę linii, stopniowo rotując je od tej z górnym
+krańcem po lewej stronie do prawej kreski (z górnym krańcem po prawej stronie).
+Wszystkie te linie zapewniają idealny podział i doskonałe wyniki z użyciem różnych
+wskaźników (dla danych treningowych). Można też stopniowo przesuwać środkową linię
+nieco w lewo i nieco w prawo przy zachowaniu jej pionowego ustawienia — tak dużo linii,
+a tak mało czasu. Może istnieje inny standard (oprócz samej poprawności), który można
+wykorzystać do porównywania linii dzielących?
+4c2836bbe011706b10838f45bf5d766f
+270 Rozdział 8. Inne metody klasyfikacji
+Dla której linii można podać mocny argument na rzecz tego, że jest najlepsza? Włącz
+ścieżkę dźwiękową z filmu Karate Kid. Ja jestem wielkim zwolennikiem środkowej linii B.
+Dlaczego? Ponieważ jej odległość od danych jest największa. Pod niektórymi względami
+jest to „najbezpieczniejsza” linia — zawsze rozdziela przestrzeń między znakami X i O.
+Pusty obszar między klasami możesz traktować jak ziemię niczyją lub rzekę między dwoma
+państwami. W społeczności zainteresowanej uczeniem maszynowym ten pusty obszar ma
+specjalną nazwę. Jest to margines (ang. margin) między dwoma państwami, to znaczy klasami.
+Linia B też ma specjalną nazwę. Jest to separator o maksymalnym marginesie dzielący klasy,
+ponieważ obie klasy znajdują się od niego tak daleko, jak to możliwe.
+Oto powiązane zagadnienie. Po niewielkim zmodyfikowaniu problemu przez zachowanie
+tylko tych punktów, które znajdują się wzdłuż krawędzi obu klastrów, uzyskamy następujący
+Można stwierdzić, że nie utracono w ten sposób żadnych danych. Obrys klas (kadłub)
+pozostaje nietknięty. Dalej można tu redukować dane potrzebne do uzyskania linii podziału
+o maksymalnym marginesie. Nie jest tu potrzebna cała krawędź obu klas. Ważne są tylko
+punkty graniczne leżące naprzeciw punktów z innej klasy. Dlatego pozostałe punkty można
+usunąć. Pozostają wtedy dwie linie przeciwników stojących naprzeciw siebie przed grą
+Zadaniem klasyfikatorów SVC jest znalezienie kompromisu między dwoma konkurencyjnymi
+wymogami: uzyskaniem maksymalnego marginesu między klasami przykładów
+i zminimalizowaniem liczby błędów w czasie treningu. W pokazanych danych nie występują
+trudne przykłady treningowe — wszystkie punkty znajdują się po swoich stronach linii.
+Jednak niedługo zetkniesz się z bardziej skomplikowanymi scenariuszami.
+Oto dwie dodatkowe uwagi. Po pierwsze duże marginesy są pożądane, ponieważ —
+przy określonych założeniach — ułatwiają uogólnianie i zapewniają niewielki błąd dla
+zbioru danych testowych. Po drugie dwa czynniki związane są z potrzebą tworzenia
+dodatkowych wektorów nośnych: zwiększona złożoność granicy między klasami i przykłady,
+które nie wpasowują się w proponowane granice.
+Dotychczasowe omówienie jest koncepcyjnym wprowadzeniem do klasyfikatorów
+SVC i ich starszych braci, maszyn wektorów nośnych (ang. support vector machines —
+SVM). Więcej o maszynach SVM dowiesz się z punktu 13.2.4. Choć unikam szczegółów
+matematycznych w omówieniu klasyfikatorów SVC, klasyfikatory te mają kilka bardzo
+atrakcyjnych właściwości matematycznych i praktycznych:
+4c2836bbe011706b10838f45bf5d766f
+272 Rozdział 8. Inne metody klasyfikacji
+1. Działają dla podzbiorów danych — nacisk położony jest na trudne przykłady
+treningowe leżące blisko marginesów. W razie potrzeby klasyfikatory te
+dostosowują się do dodatkowych przykładów. Porównaj to z metodą k-NN,
+która zawsze wymaga zapisania wszystkich przykładów treningowych, aby mogła
+generować predykcje.
+2. Granice klasyfikacji w klasyfikatorach SVC są proste i mają postać linii. Można
+też w wygodny sposób przekształcić ją na bardziej skomplikowaną postać,
+co wyjaśniam przy omawianiu maszyn SVM.
+3. Klasyfikatory SVC zapewniają dobre uogólnianie i są skuteczne dla nowych
+danych testowych, ponieważ starają się zachowywać maksymalny odstęp między
+klasami. Pomocna jest tu zasada maksymalizacji marginesu.
+4. Podstawowy problem optymalizacji związany ze znalezieniem najlepszej linii
+prowadzi tu do znalezienia rzeczywiście najlepszej linii przy danych ograniczeniach.
+Metoda ta nie zwraca nieoptymalnych linii.
+8.3.1. Stosowanie klasyfikatorów SVC
+Oto kilka szczegółów praktycznych związanych z używaniem klasyfikatorów SVC:
+ Klasyfikatory SVC z natury nie są dostosowane do klasyfikacji z użyciem wielu
+klas. Przeważnie używa się ich w systemach typu OvO (ang. one-versus-one, czyli
+jedna lub druga) i OvR (ang. one-versus-rest, czyli jedna lub pozostałe). Więcej
+o różnicach między tymi podejściami dowiesz się z punktu 6.3.4 i podrozdziału 6.4.
+Warto zauważyć, że nie musisz sam dodawać tego mechanizmu do maszyn SVM.
+Odbywa się to na zapleczu. W scikit-learn w wersji 0.19 wszystkie metody
+standardowo używają odmiany OvR. Wcześniej stosowane było połączenie odmian
+OvO i OvR.
+ W sklearn dostępne są przynajmniej cztery sposoby na utworzenie klasyfikatora
+SVC: (1) użycie klasy LinearSVC, (2) użycie klasy SVC z jądrem liniowym, (3) użycie
+klasy SVC z jądrem wielomianowym stopnia 1 (jest to linia „w przebraniu”)
+i (4) użycie klasy NuSVC z jądrem liniowym. Te cztery sposoby nie zawsze dają
+identyczne rezultaty. Jest to spowodowane różnicami w obliczeniach
+matematycznych, implementacji i argumentach domyślnych. Pogodzenie tych
+różnic sprawia trudności. Na końcu rozdziału przedstawiam uwagi na ten temat.
+Ponadto na razie nie omówiłem jeszcze jąder. Ich opis znajduje się dopiero
+w punkcie 13.2.4. Na razie traktuj je jak szczegół implementacji, choć w rzeczywistości
+są czymś znacznie ważniejszym
+
 
 ### K najbliższych sąsiadów
 
 **K najbliższych sąsiadów** (ang. _k nearest neighbours_, skr. **_KNN_**) to algorytm uczenia maszynowego nadzorowanego
 operający swoje estymacje dla konkretnego przypadku danch na wartościach jego K najbliższych sąsiadów(punktów) liczonych
-min. dla przestrzeni Euklidesowej [@3]. Do wyznaczenia odległości w metryce Euklidesowej stosowany jest wzór:
+min. dla przestrzeni Euklidesowej [@3]. 
+
+3.5. Prosty klasyfikator nr 1: najbliżsi sąsiedzi,
+związki na odległość i założenia
+Oto jedna z najprostszych koncepcji budowania predykcji z oznaczonego zbioru danych:
+1. Znajdź sposób na opisanie podobieństw dwóch różnych próbek.
+2. Kiedy konieczne jest stworzenie predykcji dla nowego, nieznanego przykładu,
+po prostu weź wartość z najbardziej podobnej znanej próbki.
+Ten proces to skrócony opis algorytmu „najbliżsi sąsiedzi”. Znam ulubione przekąski
+moich trzech przyjaciół — Marcina, Barbary i Emila. Nowy przyjaciel, Andrzej, jest bardzo
+podobny do Marcina. Ulubiona przekąska Marcina to Cheetos. Myślę, że ulubiona
+przekąska Andrzeja będzie taka sama jak Marcina.
+Jest wiele sposobów na modyfikację tego podstawowego schematu. Możemy rozważyć
+więcej niż tylko jeden najbardziej podobny przykład:
+1. Opisz podobieństwa pomiędzy parami przykładów.
+2. Wybierz kilka najbardziej podobnych przykładów.
+3. Połącz wybrane przykłady, aby otrzymać jedną odpowiedź.3.5. Prosty klasyfikator nr 1: najbliżsi sąsiedzi,
+związki na odległość i założenia
+Oto jedna z najprostszych koncepcji budowania predykcji z oznaczonego zbioru danych:
+1. Znajdź sposób na opisanie podobieństw dwóch różnych próbek.
+2. Kiedy konieczne jest stworzenie predykcji dla nowego, nieznanego przykładu,
+po prostu weź wartość z najbardziej podobnej znanej próbki.
+Ten proces to skrócony opis algorytmu „najbliżsi sąsiedzi”. Znam ulubione przekąski
+moich trzech przyjaciół — Marcina, Barbary i Emila. Nowy przyjaciel, Andrzej, jest bardzo
+podobny do Marcina. Ulubiona przekąska Marcina to Cheetos. Myślę, że ulubiona
+przekąska Andrzeja będzie taka sama jak Marcina.
+Jest wiele sposobów na modyfikację tego podstawowego schematu. Możemy rozważyć
+więcej niż tylko jeden najbardziej podobny przykład:
+1. Opisz podobieństwa pomiędzy parami przykładów.
+2. Wybierz kilka najbardziej podobnych przykładów.
+3. Połącz wybrane przykłady, aby otrzymać jedną odpowiedź.[@confiusion]
+
+Do wyznaczenia odległości w metryce Euklidesowej stosowany jest wzór:
 
 ![Schemat 14 ](img/17euklides.png "Euklides"){ width=22% } [@manhattan]
 
@@ -363,16 +932,90 @@ Dla lekarza wartością dodatnią jest wykrycie zależności które decyzują o 
 Zastosowanie algorytmu KNN może nie tylko zakwalifikować osoby chorujące na serce, ale również ułatwić swoją graficzną
 reprezentacją wpływ cech na ostateczny osąd próbki.
 
+3.5.3. Kombinacja odpowiedzi
+Mamy jeszcze jeden problem do rozwiązania. Musimy zdecydować, jak połączymy znane
+wartości (głosy) pobliskich lub podobnych sąsiadów. Jeżeli nasz problem dotyczy klasyfikacji
+zwierząt, czterech naszych najbliższych sąsiadów może głosować na kota, kota, psa i zebrę.
+Jak zinterpretować przykład testowy? Rozsądne wydaje się wybranie najczęściej pojawiającej
+się odpowiedzi.
+Co ciekawe, możemy wykorzystać tę samą bazującą na sąsiedztwie technikę w regresji
+problemów, w których próbujemy przewidzieć wartość numeryczną. Jedyną rzeczą, którą
+musimy zmienić, jest sposób łączenia cech docelowych sąsiadów. Jeżeli trzech najbliższych
+sąsiadów daje numeryczne wartości 3,1, 2,2 i 7,1, to jak je połączyć? Możemy używać
+dowolnej statystyki, ale dwie powszechne i użyteczne alternatywy to średnia i mediana.
+Do k-NN dla regresji wrócimy w następnym rozdziale.
+3.5.4. k-NN, parametry i metody bezparametrowe
+Ponieważ k-NN jest pierwszym omawianym przez nas modelem, trudno będzie go porównać
+z jakąkolwiek inną metodą. Część tych porównań zostawimy na później, ale jest jedna
+znacząca różnica, której możemy przyjrzeć się już teraz. Mam nadzieję, że udało mi się
+przykuć Twoją uwagę.
+Przypomnij sobie porównanie modelu uczenia się do maszyny z pokrętłami i dźwigniami
+z boku. W przeciwieństwie do wielu innych modeli dane wyjściowe z k-NN — czyli predykcje
+— nie mogą być wyliczone na podstawie przykładu wejściowego i wartości niewielkiej, stałej
+liczby pokręteł, które można dostosowywać. Potrzebujemy wszystkich danych treningowych
+do znalezienia wartości wyjściowej. Naprawdę? Wyobraź sobie, że wyrzucamy tylko jeden
+4c2836bbe011706b10838f45bf5d766f
+3.5. Prosty klasyfikator nr 1: najbliżsi sąsiedzi, związki na odległość i założenia 91
+z przykładów treningowych. Ten przykład może być najbliższym sąsiadem nowego przykładu.
+Z pewnością brak tego przykładu będzie miał wpływ na dane wyjściowe. Są inne metody
+uczenia maszynowego posiadające podobne wymagania. Te inne metody potrzebują części,
+a nie wszystkich danych treningowych podczas testowania.
+Można twierdzić, że dla ustalonej liczby danych treningowych moglibyśmy mieć ustaloną
+liczbę pokręteł: powiedzmy, że 100 przykładów i 1 pokrętło na przykład, czyli 100 pokręteł.
+Być może. Wystarczy jednak, że dodam jeden przykład i potrzebujesz 101 pokręteł, a to
+już inna maszyna. W tym sensie liczba pokręteł maszyny k-NN zależna jest od liczby
+przykładów w danych treningowych. Jest lepszy sposób na opisanie tej zależności. Nasza
+maszyna miała z boku tackę pozwalającą przesyłać dodatkowe informacje. Możemy traktować
+dane treningowe jako te dodatkowe informacje. Niezależnie od tego, co wybierzemy, jeżeli
+potrzebujemy (1) rosnącej liczby pokręteł lub (2) bocznej tacki do dosyłania informacji,
+mówimy, że taka maszyna jest nieparametryczna. k-NN to nieparametryczna metoda
+uczenia się.
+Nieparametryczne metody uczenia się mogą mieć parametry. (Dzięki za nic, formalna
+definicjo). O co chodzi? Kiedy nazywamy metodę nieparametryczną, oznacza to, że dla tej
+metody relacja pomiędzy cechami a celami nie może być odzwierciedlona tylko za pomocą
+ustalonej liczby parametrów. Dla statystyków koncepcja ta jest powiązana z koncepcją
+parametrycznej i nieparametrycznej statystyki: statystyka nieparametryczna wykorzystuje
+mniej założeń odnośnie do koszyka danych. Przypomnij sobie jednak, że nie robimy
+żadnych założeń odnośnie do tego, jak nasza maszyna będąca czarną skrzynką ma się do
+rzeczywistości. Modele parametryczne (1) wykorzystują założenia odnośnie do klasy
+modelu, a następnie (2) wybierają konkretny model, ustawiając parametry. Ma to związek
+z dwoma pytaniami: jakie pokrętła znajdują się na maszynie i na jakie wartości są ustawione?
+W k-NN nie robimy takich założeń, jednakże k-NN buduje i polega na założeniach.
+Najważniejszym założeniem jest to, że nasze obliczenia podobieństwa są związane
+z rzeczywistym podobieństwem, które chcemy uchwycić pomiędzy przykładami.
+[@confiusion]
 
 # Opis praktycznej częsci projektu
 
 ## Narzędzia i biblioteki zastosowane w pojekcie
 
+### Wstęp
+
 Biblioteki w większości posiadają otwarty kod źródłowy,  napisany w języku Python [@libpyth].
 
 ### Python
 
-[todo]
+Python to łatwy do nauczenia, potężny język programowania. Posiada wydajne struktury danych wysokiego poziomu i prosty
+ale efektywne podejście do programowania obiektowego. Elegancka składnia Pythona i dynamiczne pisanie wraz z
+jego interpretowany charakter sprawia, że ​​jest to idealny język do pisania skryptów i szybkiego tworzenia aplikacji w wielu obszarach
+większość platform.
+Interpreter Pythona i obszerna biblioteka standardowa są bezpłatnie dostępne w postaci źródłowej lub binarnej dla wszystkich głównych
+platformy ze strony internetowej Pythona, https://www.python.org/ i mogą być swobodnie rozpowszechniane. Ta sama strona również
+zawiera dystrybucje i wskaźniki do wielu darmowych modułów Pythona, programów i narzędzi innych firm oraz dodatkowych
+dokumentacja.
+Interpreter Pythona można łatwo rozbudować o nowe funkcje i typy danych zaimplementowane w C lub C++ (lub w innych
+języki wywoływane z C). Python nadaje się również jako język rozszerzeń dla aplikacji, które można dostosowywać.
+Ten samouczek wprowadza czytelnika nieformalnie do podstawowych pojęć i funkcji języka i systemu Python. Ono
+pomaga mieć pod ręką interpreter Pythona do praktycznego doświadczenia, ale wszystkie przykłady są samowystarczalne, więc samouczek
+można czytać również w trybie offline.
+Aby uzyskać opis standardowych obiektów i modułów, zobacz indeks biblioteki. indeks referencyjny daje bardziej formalną definicję
+języka. Aby napisać rozszerzenia w C lub C++, przeczytaj extending-index i c-api-index. Jest też kilka książek
+omówienie Pythona dogłębnie.
+Ten samouczek nie stara się być wyczerpujący i obejmuje każdą pojedynczą funkcję, a nawet każdą powszechnie używaną
+funkcja. Zamiast tego wprowadza wiele najbardziej godnych uwagi funkcji Pythona i daje dobre pojęcie o
+smak i styl języka. Po jego przeczytaniu będziesz mógł czytać i pisać moduły i programy Pythona oraz
+będziesz gotowy, aby dowiedzieć się więcej o różnych modułach bibliotecznych Pythona opisanych w bibliotecznym indeksie.
+[@semi-learning]
 
 ### Scikit-learn
 
@@ -385,26 +1028,37 @@ części pracy.
 Biblioteka opiera się o *Numpy* oraz *Scipy*, daje zestaw narzędzi do obliczeń na macierzach, wektorach oraz umożliwiający metody
 numeryczne takie jak całkowanie, różniczkowanie i temu podobne  [@scikit]. W rezultacie można za jej pomoca wykonać elementy procesu nauczania algorytmu, takie jak: przetwarzanie wstępne, redukcja wymiarowości, klasyfikacja, regresja. [@libpyth] 
 
-[todo]
+The scikit-learn library is very well established within the machine learning community (developed for >10 years). However, it has to be emphasized that the numerical
+implementation of some classifiers might still be suboptimal or erroneous. Moreover, this
+library makes external calls to other libraries implemented in Python (i.e., Numpy version
+1.21.1) or C (i.e., BLAS version 3.7.1), which adds another source of potential software bugs.
+Nevertheless, debugging of the scikit-learn classification routines is beyond the scope of
+this work and the library was used as it was. Besides classifiers, the scikit-learn library
+comes with a set of routines used within this study for (1) generation of synthetic datasets,
+(2) computation of classification performance metrics, (3) data pre-processing and standardization, (4) hyper-parameter optimization, (5) feature selection and (6) visualization of
+classifiers’ performance (plot_classifier_comparison.py). In the following subsections, a
+short summary of each classifier is given in order to facilitate further understanding and
+interpretation of the results.
+[@sensor]
 
-### Pandas
+*Pandas*
 Do przygotowania danych wykorzystano zestaw narzędzi *Pandas*, ułatwiający tworzenie struktur danych i ich analizę. 
 [todo]
-### Matplotlib
+*Matplotlib*
 
 W celu wizualizacji wyników w postaci wykresów zastosowano, opartą na *Matplotlib*, bibliotekę *Seaborn* powszechnie stosowaną do rysowania estetycznej grfiki statystycznej.
 [todo]
-### Flask
+*Flask*
 
 Część prezentacyjna czyli możliwość wprowadzenia danych w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzystuje bibliotkę *Flask*. Framework Flask ułatwia pisanie aplikacji internetowch i jest rozwiązaniem które daje duży zakres dowolności oraz możliwości. Flask sam z siebie nie definiuje warstwy bazy danych czy formularzy, pozwala za to na obsługę rozszerzeń które ubogacają aplikację o wybraną funkcjonalność. [@flask]
 
 [todo]
-### JsonPickle
+*JsonPickle*
 Przekazywanie obiektów o bardziej skomplikowanej budowie i ich _serializacja_ oraz _deserializacja_ do formatu JSON wykonane są za pomocą biblioteki *jsonpickle*, a zapis
 modeli wykonano za pomocą *joblib* która zapewnia obsługę obiektów Pythona i jest zoptymalizowana pod kątem pracy na dużych tablicach Numpy. [@libpyth] 
 
 [todo]
-### JobLib
+*JobLib*
 
 [todo]
 
@@ -437,36 +1091,140 @@ Interpreter Python w wersji _3.9_.
 
 ## Moduły projektu:
 
+### Wstęp
+
 - Config - zawiera statyczne zasoby oraz konfigurację logowania projektu
-- Data - moduł odpowiada za wczytywanie i obróbkę danych testowych, oraz zawiera definicje objektów wykorzystywanych przy uczeniu oraz zapisu modelu
+- Data - moduł odpowiada za wczytywanie i obróbkę danych testowych,  zawiera definicje objektów wykorzystywanych przy uczeniu oraz zapisu modelu oraz przekazywaniu wyników prezentowanych na stronie
 - Management:
 
     - PlotGeneration - moduł odpowiedzialny za prezentację wyników w postaci wykresów porównujących algorytmy oraz
-      odpowiedzi na zadany problem
-    - Prediction :
+      odpowiedzi na zadany problem oraz przechowuje obiekty które przy wywoływaniu funkcji od strony www są jedynie formatowane i zwrcane
+    - Prediction - przygotowanie parametryzacji oraz implepmentacja treningu dla każdego z 3 algorytmów :
 
-        - RF - implepmentacja treningu algorytmu Lasów losowych
-        - KNN - implepmentacja treningu algorytmu K-najbliższych sąsiadów
-        - SVM - implepmentacja treningu algorytmu Maszyny wektorów nośnych
-- Static - forlder z grafikami, plikami stylów, skryptami javascript i jQuerry 
+        - RF   - przygotowanie, trening i zapis modelu sprecyzowany dla klasyfikatora lasów losowych 
+        - KNN - przygotowanie, trening i zapis modelu sprecyzowany dla klasyfikatora k-najbliższych sąsiadów 
+        - SVM - przygotowanie, trening i zapis modelu sprecyzowany dla maszyny wektorów nośnych
+      
+- Static - folder z grafikami, plikami stylów, skryptami javascript oraz jQuerry 
 - Templates - folder z stronami html wykorzystującymi dyrektywy Flask
 
 Projekt posiada dwa tryby pracy :
 
 - tryb nauczania na podstawie danych testowych\
-machine learning z wykorzystaniem 3 algorytmów (_Run_Learning_Proces.xml_)
+machine learning z wykorzystaniem 3 algorytmów (_Run_Learning_Proces.xml_) , musi być wykonany przynajmniej raz przed wykorzystaniem programu jako aplikacja  
 - tryb aplikacji web\
-wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli (_Run_Web_Application.xml_)
+wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli (_Run_Web_Application.xml_) , strona prezentuje analizę danych oraz uczenia algorytmów , przy czym głównym zadaniem jest wykonanie predykcji na podstawie danych wpisanych do formularza.
 
 ## Trening algorytmu
 
+### Wstęp
+
 Głównym zadaniem trybu nauczania jest utworzenie i wytrenowanie modeli dla 3 algorytmów nauczania nienazdorowanego, w tym celu wykonywany jest preprocesing danych czyli kolejno:
+
+### Przygotowanie danych
+
+{ Skalowanie i normalizacja polegają na dostosowywaniu przedziału i wartości
+centralnej danych, aby ułatwić uczenie i interpretację wyników. Może przypominasz
+sobie, że zbiór danych diabetes z biblioteki sklearn (podrozdział 4.1) jest wstępnie
+standaryzowany, co jest jedną z postaci skalowania.
+ Uzupełnianie brakujących wartości. W rzeczywistych zbiorach danych może
+brakować wartości. Przyczyny to trudności z rejestrowaniem kompletnych
+zbiorów danych i błędy w procesie zbierania danych. Brakujące wartości mogą
+zostać uzupełnione na podstawie wiedzy eksperckiej, heurystyk lub technik
+uczenia maszynowego.
+ Wybór cech polega na eliminowaniu cech, ponieważ są nieistotne, nadmiarowe
+lub nawet szkodliwe. Czasem cech jest zbyt dużo i trzeba ograniczyć ich listę.
+Przykładem szkodliwej cechy jest zmienna identyfikacyjna, która nie pomaga
+w uogólnianiu modelu. W podrozdziale 8.2 zobaczyłeś, że unikatowe identyfikatory
+mogą prowadzić do powstania drzewa decyzyjnego z unikatowymi liśćmi dla
+każdego przykładu treningowego. Problem polega na tym, że nowego unikatowego
+identyfikatora z przykładu testowego nie będzie w drzewie. No i mamy problem.
+ Kodowanie cech polega na doborze zbioru wartości symbolicznych reprezentujących
+różne kategorie. Opisałem to w rozdziale 1. Informację WZwiązku można zapisać
+za pomocą jednej kolumny przyjmującej wartości WZwiązku i Singel. Można też
+użyć dwóch kolumn, WZwiązku i Singel, z których jedna ma wartość Prawda,
+a druga — Fałsz. Jest to jeden ze sposobów tworzenia cech.
+ Tworzenie cech polega na tworzeniu nowych cech na podstawie innych. Na przykład
+na podstawie długości i szerokości płatków kwiatu można utworzyć cechę
+powierzchnia płatka.
+ Wyodrębnianie cech oznacza przechodzenie od niskopoziomowych cech, które nie
+są przydatne w uczeniu (dają słabe wyniki testów), do bardziej wysokopoziomowych
+cech przydatnych w tym procesie. Wyodrębnianie cech jest przydatne, gdy używane są
+specjalne formaty danych (na przykład grafika lub tekst), które trzeba przekształcić
+na tabelowy format wiersz-kolumna z przykładami i cechami. Wyodrębnianie
+cech i tworzenie cech różnią się poziomem złożoności przekształceń, ale koncepcyjnie
+polegają na tym samym} [@confusion]
+
+Proces przygotowania danych zastosowany w prajekcie składa się z następujących kroków:
 
 2. Załadowanie i konkatenacja dataset'u
 3. Uzupełnienie pustych wartości - dla późniejszego porównania tworzone są imputery dla 4 różnych form uzupełnienia
 4. Standaryzacja
 5. Konwersja danych dla kategorii
 6. Normalizacja z wykorzystaniem MinMaxScaler.
+
+Standardowo przed zebraniem danych należy zastanowić się na jaki problem chcemy uzyskać odpowiedź oraz zebrać jak najliczniejszą grupę cech i danych. Następnie należy wykonać wyeliminowanie cech nie wpływających na odpowiedź i dopiero po dokonaniu selecji przystapić do przetwarzania zebranych informacji.
+
+{
+10.3. Skalowanie cech
+Tu omawiam dwa sposoby zmiany skali i wartości centralnej cech bez uwzględniania
+relacji z innymi cechami lub wartościami docelowymi. Zmiana skali polega na
+przekształcaniu danych w taki sposób, aby zmienić wartości skrajne i przesunąć wartości
+pośrednie w spójny sposób. Zmiana wartości centralnej oznacza przekształcenie danych
+tak, że wartości skrajne się zmieniają, a wartości pośrednie są przesuwane w spójny
+sposób. Zmiana skali często skutkuje też zmianą wartości centralnej. Dwa podstawowe
+sposoby zmiany skali to stała zmiana skali i modyfikacja wartości według statystyk
+obliczonych na podstawie danych. Chwileczkę, czy Markowi coś się nie pomieszało?
+Wszystko w porządku. Zaraz to wyjaśnię.
+Oto przykład stałej zmiany skali. Jeśli przeliczasz temperaturę ze stopni Fahrenheita
+na stopnie Celsjusza, 220°F daje 100°C, a 32°F to 0°C. Temperatury pośrednie, na
+przykład 104°F równe 40°C, są przeliczane według stałej reguły. Jest to trochę bardziej
+konkretne wyjaśnienie, ale jaka stała wartość jest używana w tych przekształceniach?
+No cóż, wynika ona ze wzoru na przeliczanie temperatur: 9
+5(  32)  F C . Krótkie
+przekształcenia pozwalają uzyskać postać 17,7
+9
+5 C  F  , będącą naszym dawnym
+znajomym y = ax + b. Jeśli jeszcze nie zauważyłeś, przekształcanie wartości za pomocą
+wzoru liniowego po prostu rozciąga lub kompresuje wartości i przesuwa je; a odpowiada
+za rozciąganie lub kompresję, a b — za przesunięcie.
+}
+
+10.4. Dyskretyzacja
+Zetknąłeś się już z dyskretyzacją (jest to proces przekształcania ciągłego przedziału wartości
+na skończoną, czyli dyskretną, liczbę kubełków) w kontekście implementowania regresji
+segmentowej ze stałymi. Tam trzeba było wybrać wartość wyjściową (segment linii) na
+podstawie kubełka, do którego należy wartość wejściowa. Dyskretyzacja pojawia się też
+w ramach podziałów w drzewach decyzyjnych; równanie wzrost > 1,7 ma wartość prawda lub
+fałsz. Istnieją też różne automatyczne metody dyskretyzacji danych. Niektóre z nich szukają
+zależności między wartościami cech, idealnych punktów podziału lub punktów podziału
+prowadzących do skutecznej klasyfikacji. Bardzo ważne jest, aby stosować te metody w ramach
+sprawdzianu krzyżowego, by zapobiec nadmiernemu dopasowaniu modelu do danych
+treningowych. Możesz traktować zaawansowane strategie dyskretyzacji jak samodzielne
+mikromodele. Wyobraź sobie, że potrafiłyby one dzielić wartości na poprawne kubełki w ramach
+klasyfikacji! Jednak na razie rozważam ręczne sposoby dyskretyzacji zbioru danych iris.
+
+
+[@confiusion]
+### Trening algorytmu
+
+*Podział danych*
+
+[todo dlaczego ]
+W niniejszej pracy proponujemy procedurę walidacji krzyżowej uśredniania K-krotnego do wyboru modelu
+i estymacja parametrów. Ustalamy jego teoretyczną własność i pokazujemy jej obietnicę poprzez:
+badanie empiryczne. Ponieważ walidacja krzyżowa jest aktywnie wykorzystywana w wielu obszarach
+statystyki, ACV można również zastosować do szerokiego zakresu procedur modelowania. Na przykład,
+ACV może być łatwo stosowany z karną metodą wyboru modelu, dla której wybór
+interesujące są parametry kary. Zademonstrowane poprzez symulacje z wykorzystaniem LASSO,
+metoda ACV przewyższa metodę CV pod względem błędu średniokwadratowego i selekcji
+dokładność. Badamy również jego zastosowanie w wygładzaniu kwantylowym splajnów i demonstrujemy
+jego zdolność do zapewniania bardziej płynnego dopasowania danych niż tradycyjna metoda CV.
+Należy zwrócić uwagę na wielkość zestawu testowego i dobór K przy wdrażaniu
+ACV. Duża wartość K w połączeniu z małą wielkością próbki może powodować niewystarczające dopasowanie
+dane, ponieważ K-fold ACV dokonuje wyboru modelu na podstawie 1/K danych. Zalecamy uwzględnienie w zestawie testowym wystarczającej liczby obserwacji. Zwróć uwagę, że pożądany rozmiar
+zestaw testowy zależy również od złożoności bazowego prawdziwego modelu.
+[@kfold-recomend]
 
 Następnie wykonywany jest podział na dane treningowe i testowe z wykorzystaniem zdefiniowanej w bibliotece sklearn predefiniowanej metody. Tak spreparowany zestaw danych poddawany jest treningowi modelu kolejno dla każdego z algorytmów. 
 Do dostrojenia parametrów oraz znalezienia najlepszego modelu wykorzystuwany jest:
@@ -475,9 +1233,32 @@ Do dostrojenia parametrów oraz znalezienia najlepszego modelu wykorzystuwany je
 GridSearchCV
 
 ```
+{
+GridSearchCV jest alternatywą dla naiwnej metody, którą opisałem powyżej. Zamiast ręcznie modyfikować parametry i kilkakrotnie ponownie uruchamiać algorytm, możesz wyświetlić listę wszystkich wartości parametrów, które algorytm powinien wypróbować i przekazać do GridSeachCV.
+
+
+GridSearchCV wypróbuje wszystkie kombinacje tych parametrów, oceni wyniki za pomocą weryfikacji krzyżowej i podanej przez Ciebie metryki punktacji. W końcu wypluwa najlepsze parametry dla twojego zestawu danych.
+
+
+GridSearchCV może być używany z dowolnym algorytmem uczenia nadzorowanego uczenia maszynowego, który znajduje się w bibliotece nauki sci-kit. Będzie działać zarówno w przypadku regresji, jak i klasyfikacji, jeśli podasz odpowiednią metrykę.
+}
+ypowe modele, dla których wywołujemy funkcję fit, są w pełni zdefiniowane. Wybieramy
+model oraz jego hiperparametry, aby był konkretny. Co więc, do diabła, dzieje się po
+wywołaniu funkcji fit dla megamodelu z klasy GridSearchCV? Po wywołaniu funkcji fit
+dla modelu LinearRegression otrzymujemy zestaw wartości wag wewnętrznych parametrów.
+Są to preferowane, optymalne wartości dla treningowego zbioru danych. Po wywołaniu
+GridSearchCV z hiperparametrem n_neighbors dla algorytmu k-NN otrzymujemy wartość
+tego hiperparametru, która jest preferowanym jego ustawieniem dla danych treningowych.
+Te dwa podejścia robią to samo na różnych poziomach.
+Na rysunku 11.3 przedstawione jest graficzne ujęcie przeszukiwania siatki dla dwóch
+hiperparametrów z pokazanymi danymi wyjściowymi tej techniki: dopasowanym modelem
+ze skutecznymi hiperparametrami. Widoczny jest tu też sprawdzian krzyżowy będący
+wewnętrznym komponentem przeszukiwania siatki. Sprawdzian krzyżowy dla jednego
+hiperparametru pozwala ocenić połączenie tego hiperparametru i modelu. Następnie
+kilka takich ocen jest porównywanych, aby wybrać preferowany hiperparametr
+[@confusion]
 
 W projekcie dla każdego algorytmy zapróbkowano większość dostępnych dla danego modelu klasyfikacji hiperparametrów przekazywane w param_grid.
-
 Wykorzystane parametry wykonania GridSearchCv [@scikit]:
 
 - estimator: implementacja interfejsu obiekt estymatora scikit-learn,
@@ -494,16 +1275,12 @@ HalvingGridSearchCV polega na zmniejszaniu o połowe (z ang. _half_) zbioru para
 Ta strategia wyszukiwania sukcesywnie zmniejsza ilość wymaganych iteracji dla danego zestawienia przez co wykonania jest szybsze niż w przypadku zwykłego GridSearchCv.
 Na poniższym wykresie  przedstawiającym średni wynik dla algorytmu SVC widać że czas wykonania zmniejszył się ponad 6 krotnie w stosunku do GridSearch.
 
-![Schemat 24](img/24halving.png "HalvingGridSearchCV")[@scikit]{ width=60% }
+![Schemat 24](img/24halving.png "HalvingGridSearchCV")[@scikit]{ width=30% }
 
 Umieszczone oznaczenia od 0 do 5 informują o tym w której iteracji kombinacja parmaretów została oznaczona jako najlepsze zestawienie.
-
 Implementacja ta nie została wykorzystana ze względu na nadal pozycjonowanie jej jako eksperymentalnej.
 
-
-Estymatory to impementacja z skleran która powstała w oparciu o dokumntacje sklearn oraz dostępną dla nich parametryzacje.
-
-Zestawienie najlepszych osiągniętych estymatorów przedstawia się następująco:
+Estymatory to impementacja z skleran która powstała w oparciu o dokumntacje sklearn oraz dostępną dla nich parametryzacje. Zestawienie najlepszych osiągniętych estymatorów przedstawia się następująco:
 
 *KNeighborsClassifier* [@scikit] :
  
@@ -555,6 +1332,32 @@ gdzie n to liczba cech.
 - shrinking: [todo] - heurystyka kurcząca
 - cache_size: [todo] - cache jądra (w MB).
 
+SVC używa jednego podstawowego parametru, C, do kontrolowania kompromisu między
+obciążeniem a wariancją. Bezpośrednia interpretacja tego parametru jest trudna. Klasa NuSVC
+wykonuje to samo zadanie co SVC, ale za pomocą innych obliczeń. Zwracam na to uwagę,
+ponieważ podstawowy parametr klasy NuSVC, ν (ny, ang. nu), ma proste znaczenie: przynajmniej
+ν procent danych jest zachowywanych jako wektory nośne. Ma to wpływ na błędy, przy
+czym są one określonego rodzaju — są to błędy marginesu. Błędy marginesu to punkty,
+które albo (1) znajdują się po złej stronie separatora (jest to błąd klasyfikacji), albo (2)
+znajdują się po właściwej stronie (zostały poprawnie sklasyfikowane), ale na marginesie. Inne
+znaczenie parametru ν jest takie, że dla danych treningowych akceptowany jest maksymalnie
+ν procent błędów marginesu. W określonych warunkach procent błędów marginesu rośnie
+do ν, a procent danych w wektorach nośnych spada do ν. Wartości ν znajdują się w
+przedziale [0, 1] i są interpretowane jako wartość procentowa od 0% do 100%. Choć klasa
+SVC jest trudniejsza do interpretacji, ma lepszą charakterystykę działania niż NuSVC.
+Parametry klasyfikatorów SVC są nieco magiczne. Są jak tajniki znane tylko alchemikom.
+Aby zrozumieć ich znaczenie, trzeba zagłębić się w zaawansowaną matematykę. Można
+jednak analizować skutki używania tych parametrów na niewielkich przykładach (napisałem
+„niewielkich”, a nie „prostych”). Zobacz, jak zmiany wartości parametrów C i ν wpływają
+na granice między klasami.
+
+Z tego przykładu należy zapamiętać dwie rzeczy:
+1. Zwiększanie ν i zmniejszanie C dają mniej więcej ten sam efekt. Jednak skale dla
+obu tych parametrów są wyraźnie różne. C zmienia się o rzędy wielkości, natomiast
+ν zmieniane jest liniowo w krokach o wielkości 1/10.
+2. Duże ν i małe C mogą prowadzić do klasyfikatora SVC, który w pewnym zakresie
+ignoruje błędy klasyfikacj[@confusion]
+
 Po odnalezieniu najlepszego estymatora model jest zapisywany oraz generowane sa wykresy dla trybu aplikacji webowej:
 
 - wykresy modeli datasetu wejściowego i rozłożenia cech
@@ -579,16 +1382,104 @@ Zatwierdzenie formularza wyzwala odczytanie zapisanych modeli , iteracje i wykon
 
 ## Porównanie działania modeli
 
+### Wstęp
+
+Chodzi o to, że domyślna metoda oceny k-NN to średnia dokładność. Dokładność ma
+pewne fundamentalne ograniczenia i niebawem przejdziemy do tematu precision, recall,
+4c2836bbe011706b10838f45bf5d766f
+6.2. Więcej niż dokładność — wskaźniki dla klasyfikacji 187
+roc_auc i f1 z rozległej listy powyżej. Po co omawiać te wskaźniki i co jest nie tak
+z dokładnością? Czy nie jest dokładna? Cieszę się, że pytasz. Przejdźmy od razu do
+odpowiedzi na Twoje pytania.
+Oto szybki przykład tego, jaki jest problem z dokładnością. Pamiętaj: dokładność
+polega w zasadzie na zliczeniu, ile razy odpowiedź jest poprawna. Wyobraźmy sobie zestaw
+danych, wśród których mamy 100 pacjentów i rzadką chorobę. Cieszymy się, że choroba
+jest rzadka, niemniej jest bardzo niebezpieczna. W naszym zestawie danych mamy
+98 zdrowych pacjentów i 2 chore osoby. Weźmy prostą strategię bazową przepowiadającą,
+że wszyscy są zdrowi. Nasza dokładność wynosi 98%. To świetnie, prawda? Cóż, nie do
+końca. Znaleźliśmy dokładnie zero spośród ludzi, których mieliśmy znaleźć — tych, którzy
+wymagają leczenia. To poważny problem. Gdybyśmy mieli bardziej złożony system uczący się,
+który w taki sposób nie trafia z wynikami, bylibyśmy bardzo z niego niezadowoleni.
 W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podczas treningu i weryfikacji danych testowych.
 
-|     | Algorytm                   | <td colspan=2> Dokładność w %    |
-|-----|----------------------------|----------------------------------|
-| --- | -------------------------- | <td colspan=4>parametry domyślne |<td colspan=4> wyznaczanie parametrow|
-| --- | imputer                    | średnia                          |mediana|stała -1|najczęstrza wartość|średnia                          |mediana|stała -1|najczęstrza wartość|
-|     | Losowe lasy decyzyjne      | 98.2                             |98.2|100|100|98.2                             |98.2|100|100|
-|     | Maszyna wektorów nośnych   | 98.2                             |100|100|100|98.2                             |98.2|100|100|
-|     | K-najbliższych sąsiadów    | 97.8                             |100 |100|100|98.2                             |98.2|100|100|
-
+ - | Dokładność w %       |  |  | | | | | |
+-------: |-:| -------: | -: | -: | -----: | -: | -: | -: | -:|
+ |Parametryzacja           |    |  parametry domyślne |    |    | wyznaczanie parametrow|    |   |    |
+ |Algorytm / Imputer       | średnia | mediana | stała | naj. wartość | średnia | mediana | stała | naj. wartość |
+|Losowe lasy decyzyjne    | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
+ |Maszyna wektorów nośnych | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
+ |K-najbliższych sąsiadów  | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
+ 
+ *Możemy zadawać pytania i uzyskiwać odpowiedzi za pomocą macierzy błędu. Na przykład,
+jeżeli jesteśmy lekarzami, interesuje nas, jak dobrze jesteśmy w stanie identyfikować ludzi,
+którzy rzeczywiście są chorzy. Skoro zdefiniowaliśmy chorobę jako nasz wynik pozytywny,
+są to nasze osoby z pierwszego rzędu. Pytamy, jak dobrze nam poszło dla RzeczP: ile spośród
+rzeczywiście chorych osób wykryliśmy poprawnie: RzeczP
+TP
+TP FN
+TP   . Określamy to terminem
+czułość. Można to określić następująco: „Jak dobrze test jest dopasowany do znajdowania
+chorych ludzi” — nacisk kładziony jest na chorych ludzi. Jest to też nazywane skutecznością
+wyszukiwania przez ludzi zawodowo zajmujących się wyszukiwaniem informacji.
+Różne społeczności wymyśliły tę koncepcję niezależnie, dlatego nadały jej inne nazwy.
+Aby zrozumieć skuteczność wyszukiwania, pomyśl o ruchu wyszukiwarki internetowej.
+Spośród interesującego nas ruchu, RzeczP, ile zapytań odnaleźliśmy lub wyszukaliśmy
+poprawnie? Jeszcze raz dla czułości i skuteczności wyszukiwania interesuje nas
+poprawność w przypadku rzeczywistych pozytywnych lub interesujących nas przykładów.
+Czułość ma jeszcze jeden powszechnie używany synonim: współczynnik poprawnie
+pozytywnych (TPR — ang. true positive rate). Nie szukaj ołówka, aby to zapisać; za moment
+przedstawię Ci tabelę terminów. TPR jest współczynnikiem przypadków poprawnie
+pozytywnych w odniesieniu do rzeczywistości.
+Jest jeszcze kwestia związana z chorymi osobami, które odnaleźliśmy poprawnie:
+chore osoby, które oceniliśmy błędnie. Taki błąd nazywany jest błędnym negatywnym
+(ang. false negative — FN). Zgodnie ze wzorem chorzy ludzie, w przypadku których się
+pomyliliśmy, to TP FN
+FN
+ . Możemy dodać chorych ludzi, których oceniliśmy poprawnie,
+i chorych ludzi, których nie odnaleźliśmy, aby uzyskać liczbę wszystkich chorych ludzi.
+Matematycznie wygląda to tak:  1  100% 
+     TP FN
+TP FN
+TP FN
+FN
+TP FN
+TP . Te równania
+mówią, że mogę rozbić wszystkich chorych ludzi na (1) chorych, o których myślę, że są
+chorzy, i (2) chorych, o których myślę, że są zdrowi.
+Możemy również zapytać: „Jak dobrze idzie nam ze zdrowymi ludźmi?”. Nasza uwaga
+przenosi się teraz do drugiego rzędu RzeczN. Jeżeli jesteśmy lekarzami, chcemy wiedzieć,
+jaka jest wartość naszego testu, kiedy ludzie są zdrowi. O ile ryzyko jest inne, wciąż występuje
+ryzyko błędnej diagnozy zdrowej osoby. My — bawiący się przez chwilę w lekarzy — nie
+chcemy mówić ludziom, że są chorzy, kiedy są zdrowi. Nie tylko straszymy ich i dajemy powód
+do zmartwienia, ale możemy przepisać im zabiegi i lekarstwa, których nie potrzebują! Taki
+przypadek nazywany jest błędnym pozytywnym (ang. false positive — FP). Możemy go ocenić,
+patrząc na to, jak dobrze poszło nam ze zdrowymi osobami: RzeczN
+TN
+FP TN
+TN   .Terminem
+diagnostycznym jest tutaj specyficzność testu: czy test zgłasza alert tylko w specyficznych
+4c2836bbe011706b10838f45bf5d766f
+190 Rozdział 6. Ocena klasyfikatorów
+przypadkach, o które nam chodzi. Specyficzność jest także nazywana współczynnikiem
+poprawnie negatywnych (ang. true negative rate — TNR). W istocie jest to częstotliwość
+występowania przypadków prawdziwie negatywnych w odniesieniu do rzeczywistości.
+Ostatnia kombinacja macierzy błędu bierze predykcje jako część główną, a rzeczywistość
+jako drugorzędną. Ja widzę to jako odpowiedź na pytanie: „Jaka jest wartość naszego testu,
+kiedy wynik jest pozytywny?” lub bardziej zwięźle: „Jaka jest wartość trafienia?”. Cóż, trafienia to
+PredP. W ramach PredP obliczymy liczbę poprawnych: TP. Wtedy otrzymamy TP FP
+TP
+PredP
+TP
+  ,
+nazywane dokładnością. Spróbuj dziesięć razy szybko powiedzieć: „Jak dokładne są nasze
+predykcje pozytywne?”.
+Rysunek 6.1 przedstawia macierz błędu wraz ze wskaźnikami jej oceny.
+Rysunek 6.1. Macierz błędu poprawnych i niepoprawnych predykcji
+Jeszcze jeden komentarz odnośnie do macierzy błędu. Podczas czytania o niej możesz
+zauważyć, że niektórzy autorzy zamieniają osie: ustawiają rzeczywistość w kolumnach,
+a predykcje w wierszach. Wtedy TP i TN będą tymi samymi komórkami, ale FP i FN będą
+zamienione. Nieświadomy czytelnik może być bardzo, bardzo skonsternowany. Uznaj się
+za ostrzeżonego i bądź uważny, czytając inne omówienia macierzy błędu.*[@confusion]
 
 #### Zestawienie efektywności działania algorytmów
 
@@ -650,10 +1541,6 @@ macież pomysłek
 
 *Porównianie całościowe algorytmów : złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu*
 
-![Schemat 20](img/22rf_params.png "form"){ width=60% }
-
-![Schemat 20](img/23rf_params_time.png "form"){ width=60% }
-
 
 Wybrane najlepsze modele klasyfikacji:
 
@@ -675,22 +1562,9 @@ Najgorsze modele i wartości dla regresji :
 
 ###  Maszyna wektorów nośnych
 
-![Schemat 20](img/22cv_params.png "form"){ width=60% }
-
-![Schemat 20](img/23cv_params_time.png "form"){ width=60% }
-
-
- ![Schemat 20](img/24cvexel.png "form"){ width=60% }
-
 ###  K-najbliższych sąsiadów
 
 ###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
-
-![Schemat 20](img/22knn_params.png "form"){ width=60% }
-
-![Schemat 20](img/23knn_params_time.png "form"){ width=60% }
-
- ![Schemat 20](img/24knnexel.png "form"){ width=60% }
 
 
 
@@ -802,42 +1676,7 @@ Depending on your dataset, the difference between runs with the same values migh
 
 Is your model even converging for every training? Where do you make sure that you train long enough? You can plot the loss for the training and test sample and check if it's converging or not. This can be controlled with n_estimators in xgboost I believe.
 
-Share
-Improve this answer
-Follow
-answered Sep 24, 2020 at 10:24
-user avatar
-N. Kiefer
-55411 silver badge1313 bronze badges
-2
-@n-kiefer I find your first paragraph presumptuous. The question posed IS the question. How can one think the question is not valid because of wording. This commentary is not helpful to the investigator. I feel it stifles curiosity or expression. Smugness like this is disheartening to me. In limited cases it is possible to find poor testing values after optimization. One, the optimization was not complete but coded correctly, see above. Two, if the sample population is small then even after optimization it is possible to find poor results. – 
-mccurcio
- Sep 24, 2020 at 15:39
-1
-The answer was not intented to be smug, presumptuous or anything like that. It was simply a short take on the question: is it possible to get worse after optimization? I never said it was invalid, and even attempted to give more pointers as to what could be done. I even (like you) thought of the problem of small datasets and recommended a KFold strategy. The question can indeed be read as: why is the performance worse on the test set compared to the training set? But I try to answer what i think the question is as in the title. – 
-N. Kiefer
- Sep 24, 2020 at 16:34
-my apologies... – 
-mccurcio
- Sep 24, 2020 at 16:48
-1
-The tone of @N.Kiefer answer is a bit off, but he is mostly right, optimization performed in the example given in the question is not broad enough to search the hyperparameter space: optimization done correctly can't give worst results than arbitrary choice of hyperparameters, it will at least give the same result (or slightly different given random effects if a random seed is not set). – 
-Pedro Henrique Monforte
- Sep 25, 2020 at 1:20
-Add a comment
-
-0
-
 There is nothing wrong in your code or process. Often times in machine learning performance on the test dataset is lower than than performance on the training data set. Your model is not generalizing perfectly to the data it has not seen before (i.e., the test dataset).
-
-Share
-Improve this answer
-Follow
-answered Sep 24, 2020 at 15:08
-user avatar
-Brian Spiering
-16.1k11 gold badge2121 silver badges7979 bronze badges
-Add a comment
 
 -2
 

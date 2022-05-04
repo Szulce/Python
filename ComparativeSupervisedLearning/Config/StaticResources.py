@@ -49,7 +49,7 @@ DATA_INFO_PLOTS = "data_info_plots"
 ALGORITHM_INFO_PLOTS = "algorithm_info_plots"
 SCORER_MODEL = "_scorer_model"
 
-VERBOSE = 4
+VERBOSE = 0
 
 RF_ = ' \nRF : \n'
 

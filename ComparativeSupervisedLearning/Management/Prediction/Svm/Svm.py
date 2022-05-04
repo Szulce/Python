@@ -40,5 +40,5 @@ def prepare_grid_classification(y_train, y_test, scoring):
                     'coef0': Rs.SVM_COE0FLOAT, 'shrinking': Rs.SVM_SHRINKING,
                     'cache_size': Rs.SVM_CACHE_SIZE}
     param_grid = {'C': list(range(1, 2))}
-    grid = GridSearchCV(SVC(), param_grid, verbose=Rs.VERBOSE, refit=True, cv=Rs.CV, scoring=scoring)
+    grid = GridSearchCV(SVC(), param_grid_p, verbose=Rs.VERBOSE, refit=True, cv=Rs.CV, scoring=scoring)
     return grid, y_train, y_test
