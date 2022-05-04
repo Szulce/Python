@@ -2,8 +2,6 @@
 
 
 
-część praktyczna puścić poprawione uczenie z werbose 0 i sprawdzić różnicę w czasie
-
 zapisać wyniki z parametrami
 -screenshoty wykresów 
 zapisać wyniki dla regresji z parametrami tylko dla KNN-
@@ -15,13 +13,14 @@ usunąć ze strony porównianie całościowe
 ____________________________________________________7
 
 
-opis  dla HalvingGridSearchCV
 część praktyczna wyniki poprawa obecnych tabel
 dodać opis da każdego katalogu
 dodać wstęp do każdego większego rozdziału
+___________________________________________________________8
 rozszerzyć opis historyczny (wtęp numer 1)
 dodać dokładniejszy opis matematyczny i logistyczny każdego z algorytmów
 dodać obszernijszy opis bibliotek
+_____________________________________________________________________9
 dodać opis tworzenia wykrsów
 dodać opis tworzonych obiektów
 opis 2 innych publikacji wykonujących te same badania

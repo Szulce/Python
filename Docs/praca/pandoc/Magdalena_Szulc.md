@@ -492,14 +492,13 @@ Wykorzystane parametry wykonania GridSearchCv [@scikit]:
 Sciikit-learn udostępnia również inne implmentacj zastosowania walidacy krzyżowej np.: _HalvingGridSearchCV_ lub _HalvingRandomSearchCV_.
 HalvingGridSearchCV polega na zmniejszaniu o połowe (z ang. _half_) zbioru parametrów po każdej iteracji algorytmu krzyżowego.
 Ta strategia wyszukiwania sukcesywnie zmniejsza ilość wymaganych iteracji dla danego zestawienia przez co wykonania jest szybsze niż w przypadku zwykłego GridSearchCv.
-Jak widać na poniższym wykresie przedstawiającym średni wynik dla algorytmu SVC.
+Na poniższym wykresie  przedstawiającym średni wynik dla algorytmu SVC widać że czas wykonania zmniejszył się ponad 6 krotnie w stosunku do GridSearch.
 
 ![Schemat 24](img/24halving.png "HalvingGridSearchCV")[@scikit]{ width=60% }
 
- Kombinacje oznaczone jako 0zostały ocenione dopiero w pierwszej iteracji, natomiast te z 5oznaczeniem to kombinacje parametrów, które są uważane za najlepsze.
+Umieszczone oznaczenia od 0 do 5 informują o tym w której iteracji kombinacja parmaretów została oznaczona jako najlepsze zestawienie.
 
-Widzimy, że HalvingGridSearchCV klasa jest w stanie znaleźć kombinacje parametrów, które są tak samo dokładne jak GridSearchCV, w znacznie krótszym czasie.
-
+Implementacja ta nie została wykorzystana ze względu na nadal pozycjonowanie jej jako eksperymentalnej.
 
 
 Estymatory to impementacja z skleran która powstała w oparciu o dokumntacje sklearn oraz dostępną dla nich parametryzacje.
@@ -582,11 +581,13 @@ Zatwierdzenie formularza wyzwala odczytanie zapisanych modeli , iteracje i wykon
 
 W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podczas treningu i weryfikacji danych testowych.
 
-|   | Algorytm                 | Dokładność w % |
-|---|--------------------------|----------------|
-|   | Losowe lasy decyzyjne    | 98.2           |
-|   | Maszyna wektorów nośnych | 98.2           |
-|   | K-najbliższych sąsiadów  | 97.8           | 
+|     | Algorytm                   | <td colspan=2> Dokładność w %    |
+|-----|----------------------------|----------------------------------|
+| --- | -------------------------- | <td colspan=4>parametry domyślne |<td colspan=4> wyznaczanie parametrow|
+| --- | imputer                    | średnia                          |mediana|stała -1|najczęstrza wartość|średnia                          |mediana|stała -1|najczęstrza wartość|
+|     | Losowe lasy decyzyjne      | 98.2                             |98.2|100|100|98.2                             |98.2|100|100|
+|     | Maszyna wektorów nośnych   | 98.2                             |100|100|100|98.2                             |98.2|100|100|
+|     | K-najbliższych sąsiadów    | 97.8                             |100 |100|100|98.2                             |98.2|100|100|
 
 
 #### Zestawienie efektywności działania algorytmów
