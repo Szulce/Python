@@ -9,31 +9,29 @@ zapisać wyniki dla regresji z parametrami tylko dla KNN-
 
 dodać wstęp do każdego większego rozdziału
 dodać obszernijszy opis bibliotek
-
-_____________________________________________________________________15
-
 dodać opis możliwości rozszerzenia projektu 
 dodać obszerniejszy opis dlaczego nie wykorzystano innego uczenia
 
 dodać rodział teoretyczny na temat sposóbu porównywania algorytmów i skal oml
-do maszyny wwektorów rozszerzyć o hiperplaszczyny 
-dla każdego algorytmu dodać prosty przykład wykonania
+
 wstęp dodać porówniania zaufania z branż medycznych i giełdy
 dodać możlwość komercyjengo wykorzystania
 - dopisać do stratyfikacji 
 dokładniejszy opis na podstawie sklearn dodać możliw wykorzystanie
 - dodać dokładniejszy opis matematyczny i logistyczny każdego z algorytmów
-- ________________________________________________________________ 17
+_____________________________________________________________________15
 
+  
 dodać opis tworzenia wykrsów
 dodać opis tworzonych obiektów
 opis 2 innych publikacji wykonujących te same badania
 opis 2 innych projektów wykonujących podobną predykcje
+stratyfikacja co można jeszcze dopisać
 rozszerzyć uzasadnienie pisania- lekarze zwiekszenie zaudania gdy wiedzą co i jak
 metryka om
 []todo
 dodać fragment kodu odnoszący się do szkolenia algorytmu 
-______________________________________________________________________________________19
+______________________________________________________________________________________17
 
 _
 
@@ -52,7 +50,7 @@ opis obrazków
 
 wnioski dla wykresów
 
-- _________________________________________________________________21
+- _________________________________________________________________19
 - - formatowac zgodnie z przykładem
 
 - poprawić przypisy
@@ -78,11 +76,13 @@ spis  obrazków
   -jeżeli będzie brakować 
 - zmienić kolory każdego obrazka na czarny
 - dodać nową część jak procesor wpływa na wykonanie algorytmów 
-------------_____________________________________________________23
+- do maszyny wwektorów rozszerzyć o hiperplaszczyny 
+dla każdego algorytmu dodać prosty przykład wykonania
+------------_____________________________________________________21
 - - wyczyścić projekt - usunąc doki 
 - -spakować projekt
 - -przeczytać
 -wniosek i mail do promotora
 usunąć ze strony porównianie całościowe
  nagrać film
-_______________________________________________________________1
+_______________________________________________________________23

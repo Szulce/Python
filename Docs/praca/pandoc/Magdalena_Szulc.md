@@ -171,9 +171,6 @@ W skrócie, czy cel jest kategoryczny, czy numeryczny? Jak już wspomniałem, pr
 kategorii nazywa się klasyfikacją. Predykcja wartości liczbowej nazywana jest regresją.
 Przyjrzymy się przykładom każdej z nich.
 
-
-
-
 *Klasyfikacja* -  decyduje o przynależności do zbioru grupy lub klasy.
 *Regresja* - daję ciągłą prognoze korelacji między zmiennymi, standardowym przykładem zastosowania jest prognoza pogody. 
 Realne pomiary temperatury, prędkości wiatru , ciśnienia wpływają na finalną odpowiedź. Sama regresja dzieli się równiez na kategorie ze względu na skomplikowania, najprostrzym przykładem jest oczywiście regresja liniowa.
@@ -217,9 +214,19 @@ Cechy dla których szukamy optymalnych wartości , które stanowią podstawe mod
  Argumenty natomiast to liczby znajdujące się w wierszach zbioru danych które podlgają zmianie tylko podczas pre-procesingu
 Nazewnictwo hiperparametrów wykorzystywane jest w przypadku zastosoawnia dla nich walidacji krzyżowej.
 
-![Schemat 3](img/12UCI.png "UCI logo"){ width=50% } [@UCI]
+
+*Nadmierne dopasowanie*
+
+Istnieje możliwość wytrenowania algorytmu tylko pod zadany zbiór testowy, wyniki dotyczące dokładności modelu pomimo iż
+będą wysokie nie będą świadczyły o rzeczywistej skuteczności gdyż będą uwzględniały tylko pojedyńczy przypadek zasymulowany daną próbką danych testowych.
+Przed wyborem cech do hiperparametryzacji warto sprawdzić macież korelacji cech aby nie wybrać tylko tych silnie ze sobą sprzężonych[@sensor].
+
+![Schemat 22](img/22corelation1.png "corelation"){ width=50% } ![Schemat 23](img/23corelation2.png "corelation"){ width=50% } 
+
 
 ### Repozytorium uczenia maszynowego UCI
+
+![Schemat 3](img/12UCI.png "UCI logo"){ width=50% } [@UCI]
 
 Sensem wykorzystania uczenia maszynowego jest prognoza lub klasyfikacja rzeczywistych wartości z dużego zbioru danych
 które mogą znaleść zastosowanie w praktycznych dziedzinach. Im bardziej dokładne i rzeczywiste dane do testowania i
@@ -243,16 +250,7 @@ lokalizacji
 #### Stratyfikacja
 
 Wyróżniono 14 atrybutów spośród 76 zebrancyh do wykorzystania w algorytmach uczenia maszynowego, wszystkie z nich mają
-wartośi liczbowe.
-
-![Schemat 22](img/22corelation1.png "corelation"){ width=50% } ![Schemat 23](img/23corelation2.png "corelation"){ width=50% } 
-
-Rozkład chorób serca w danych testowych to 44.67% chorych czyli 509 prób pozytywnych oraz  411 negatywnych.
-W danych testowych znajduje się 726 przypadków osób płci męskiej oraz 194 żeńskiej. Dla zachorowań widać nierówność ale jest ona spowodowana rzeczywistą statystyką.
-Tylko u 25.77% badanych kobiet stwierdzono występowanie chorób wieńcowych, natomiast wśród badanych mężczyzn jest to aż 63.22%. [@UCI]
-
-
-Lista atrybutów wykorzystanych w algorytmie:
+wartośi liczbowe. Lista atrybutów wykorzystanych w algorytmie:
 
 - wiek
 - płeć
@@ -268,6 +266,11 @@ Lista atrybutów wykorzystanych w algorytmie:
 - liczba głównych naczyń pokolorowanych fluorozopią
 - skan serca z talem lub test wysiłkowy
 - stan (brak choroby serca/choroba serca)
+
+Rozkład chorób serca w danych testowych to 44.67% chorych czyli 509 prób pozytywnych oraz  411 negatywnych.
+W danych testowych znajduje się 726 przypadków osób płci męskiej oraz 194 żeńskiej. Dla zachorowań widać nierówność ale jest ona spowodowana rzeczywistą statystyką.
+Tylko u 25.77% badanych kobiet stwierdzono występowanie chorób wieńcowych, natomiast wśród badanych mężczyzn jest to aż 63.22%. [@UCI]
+
 
 W przypadku danych testowych z repozytorium UCI, fakt iż dane pochodziły z róźnych lokalizacji ma duże znaczenie ,gdyż
 od placówki medycznej zależy jakim badaniom poddani zostali pacjęci a co za tym idzie w jakich kolumnach tabelarycznego
@@ -343,65 +346,6 @@ znalezienie najlepszego modelu można go wykorzystać do weryfikacji na danych s
 
 
 ## Wybrane algorytmy uczenia maszynowego nadzorowanego
-
-### Wstęp
-
-Nadzorowana klasyfikacja obrazów wymaga uczącego zestawu danych składającego się z pikseli o różnych sygnaturach widmowych oznaczonych w ramach jednej klasy lub więcej w przypadku
-klasyfikatory rozmyte. Etykietowanie może pochodzić z wizualnej interpretacji obrazów
-do sklasyfikowania lub z innych referencyjnych zbiorów danych pochodzących z bardziej czułych czujników
-lub zaobserwowane/zmierzone in situ. Wizualna interpretacja obrazu jest zwykle wykonywana przez:
-oprogramowanie systemu informacji geograficznej (GIS) i obejmuje ręczne wyznaczanie i
-znakowanie wielokątów pokrywających obszary jednorodne. Korzystanie z innego pilota referencyjnego
-wykrywanie zbiorów danych często wymaga kolokacji przestrzenno-czasowej między dwoma czujnikami za pomocą środków
-interpolacji lub dopasowania najbliższego sąsiada. Należy zastosować oba podejścia do etykietowania
-wspólne zasady tworzenia optymalnego zestawu danych treningowych:
-1. Referencyjny zbiór danych powinien być wystarczająco duży, aby wypełnić przestrzeń funkcji informacjami wystarczającymi do prawidłowego wywnioskowania etykiet dla nowych przypadków testowych, które się nie pojawiły
-w uczącym zbiorze danych. Oznacza to, że nowe próbki powinny być bardzo podobne do
-te używane do treningu klasyfikatorów. Taka sytuacja zdarza się rzadko dla prostych
-zadania klasyfikacyjne oparte na kilku cechach. Wieloczasowy i wielospektralny
-obrazy teledetekcyjne składające się z heterogenicznych pikseli o mieszanych klasach wymagają ogromnego zestawu danych treningowych, aby przedstawić wszystkie potencjalne relacje
-między funkcjami. Na treningowe zbiory danych zwykle mają wpływ problemy z próbkowaniem
-związane z nierównomiernym rozkładem obserwacji in situ ze względu na ograniczoną dostępność
-(np. odległe obszary, bagna, wysokie góry), ograniczenia czasowe i przestrzenne, podczas gdy
-kolokacji różnych źródeł danych i subiektywnej selekcji poligonów uczących.
-W związku z tym treningowy zestaw danych może być rzadki i niedostatecznie reprezentowany. W związku z tym,
-solidny klasyfikator obrazu powinien być w stanie uogólnić dostępne informacje a priori
-do niewidzianych przypadków bez nadmiernego dopasowania zestawu danych uczących. Overfitting oznacza, że
-Remote Sens. 2022, 14, 378 4 z 36
-klasyfikator zbyt dobrze pasuje do zestawu danych treningowych (w tym hałaśliwe przypadki zamiast
-tylko „prawdziwy” sygnał). Wręcz przeciwnie, niedopasowanie oznacza, że ​​klasyfikator wykonuje:
-słabo na danych treningowych, prawdopodobnie z powodu prymitywnych założeń lub błędnie
-wybrane hiperparametry lub cechy klasyfikacyjne.
-2. Zbiór danych uczących powinien charakteryzować się niską autokorelacją przestrzenną i czasową, aby
-maksymalizować informacje w przestrzeni funkcji i obiektywnie oceniać jakość
-wygenerowanej klasyfikacji. Jeśli piksele są silnie skorelowane, to ich widmowe
-podpisy są w większości zbędne. W konsekwencji klasyfikator ma niewiele informacji, aby:
-uczyć się na podstawie nowych przypadków testowych i uogólniać je. Taka sytuacja często ma miejsce w
-przypadek wizualnej interpretacji obrazu, gdzie operator zaznacza kilka dużych wielokątów
-obejmujących tę samą klasę. Mimo zaznaczenia dużej liczby pikseli, bardzo
-ograniczone informacje spektralne są w rzeczywistości wykorzystywane do trenowania klasyfikatora. Co więcej, jeśli a
-podzbiór tych pikseli jest używany do oceny jakości klasyfikacji, a następnie
-statystyki pochodne są zawyżone i niewiarygodne. Tak więc, jak sugeruje [36], najbardziej
-solidnym rozwiązaniem tego problemu jest losowy dobór trenujących pikseli i
-zbiory danych walidacyjnych. Ponadto korzystne jest tymczasowe odłączenie obu
-zestawy danych, dzięki czemu treningowy zestaw danych jest pozyskiwany w innym czasie (np. inny
-rok) niż zbiór danych walidacyjnych.
-3. Referencyjny zbiór danych powinien odzwierciedlać taką samą proporcję klas, jak ta występująca
-na obrazie niejawnym. Jest to szczególnie ważne w przypadku klasyfikatorów bayesowskich, które polegają
-o prawdopodobieństwie wystąpienia klasy a priori [37]. Donoszono o podobnych wnioskach
-przez [36] w przypadku algorytmów drzew decyzyjnych.
-4. Dane referencyjne powinny być wysokiej jakości, z jak najmniejszą liczbą błędnie oznakowanych pikseli.
-To oczywiste stwierdzenie jest trudne do zrealizowania w rzeczywistości, gdzie dane referencyjne
-mogą pochodzić z: (1) innych produktów klasyfikacyjnych charakteryzujących się własną niepewnością;
-(2) obserwacje in situ zmienione przez niesprawność przyrządów lub błędy typograficzne;
-(3) dane crowdsourcingowe zawierające wiele subiektywnych obserwacji; oraz (4) słabo wytyczone wielokąty uczące. Ponadto w przypadku krycia obrazów o niskiej rozdzielczości
-niejednorodny krajobraz, piksele składają się zwykle z mieszanych klas, które
-ostatecznie muszą zostać zaklasyfikowane do jednej klasy. Alternatywnie, niektóre subpiksele
-techniki klasyfikacji [38–40] można zastosować do wywnioskowania ułamkowej proporcji
-klasy w takich pikselach. Niemniej jednak, z perspektywy klasyfikatora obrazu, błędnie oznakowane piksele wprowadzają szum, który należy oddzielić od prawdziwego
-sygnatura widmowa powiązana z określoną klasą. Ograniczona liczba badań ma
-omówiono wrażliwość klasyfikatorów obrazu na błędnie oznakowane dane wejściowe. W [34],
-okazuje się, że algorytm losowego lasu jest mniej czuły[@sensor]
 
 ### Losowe lasy decyzyjne
 
@@ -1391,100 +1335,6 @@ metoda prównania -  tzrea było wprowadzić reguły do float na int -> inne met
 na dzień dobry widzimy nie dokładność ze wględu na klasyfiakcję po przecinku 
 regresja kategoryczna -> rzutowanie przedziału wartości na wartość graniczną 
 
-
-
-score method of classifiers
-Every estimator or model in Scikit-learn has a score method after being trained on the data, usually X_train, y_train.
-
-When you call score on classifiers like LogisticRegression, RandomForestClassifier, etc. the method computes the accuracy score by default (accuracy is #correct_preds / #all_preds). By default, the score method does not need the actual predictions. So, when you call:
-
-clf.score(X_test, y_test)
-it makes predictions using X_test under the hood and uses those predictions to calculate accuracy score. Think of score as a shorthand to calculate accuracy since it is such a common metric. It is also implemented to avoid calculating accuracy like this which involves more steps:
-
-from sklearn.metrics import accuracy score
-
-preds = clf.predict(X_test)
-
-accuracy_score(y_test, preds)
-When using accuracy_score you need ready predictions, i.e. the function does not generate prediction using the test set under the hood.
-
-For classifiers, accuracy_score and score are both the same - they are just different ways of calculating the same thing.
-
-score method of regressors
-When score is called on regressors, the coefficient of determination - R2 is calculated by default. As in classifiers, the score method is simply a shorthand to calculate R2 since it is commonly used to assess the performance of a regressor.
-
-reg.score(X_test, y_test)
-As you see, you have to pass just the test sets to score and it is done. However, there is another way of calculating R2 which is:
-
-from sklearn.metrics import r2_score
-
-preds = reg.predict(X_test)
-
-r2_score(y_test, preds)
-Unlike the simple score, r2_score requires ready predictions - it does not calculate them under the hood.
-
-So, again the takeaway is r2_score and score for regressors are the same - they are just different ways of calculating the coefficient of determination.score method of classifiers
-Every estimator or model in Scikit-learn has a score method after being trained on the data, usually X_train, y_train.
-
-When you call score on classifiers like LogisticRegression, RandomForestClassifier, etc. the method computes the accuracy score by default (accuracy is #correct_preds / #all_preds). By default, the score method does not need the actual predictions. So, when you call:
-
-clf.score(X_test, y_test)
-it makes predictions using X_test under the hood and uses those predictions to calculate accuracy score. Think of score as a shorthand to calculate accuracy since it is such a common metric. It is also implemented to avoid calculating accuracy like this which involves more steps:
-
-from sklearn.metrics import accuracy score
-
-preds = clf.predict(X_test)
-
-accuracy_score(y_test, preds)
-When using accuracy_score you need ready predictions, i.e. the function does not generate prediction using the test set under the hood.
-
-For classifiers, accuracy_score and score are both the same - they are just different ways of calculating the same thing.
-
-score method of regressors
-When score is called on regressors, the coefficient of determination - R2 is calculated by default. As in classifiers, the score method is simply a shorthand to calculate R2 since it is commonly used to assess the performance of a regressor.
-
-reg.score(X_test, y_test)
-As you see, you have to pass just the test sets to score and it is done. However, there is another way of calculating R2 which is:
-
-from sklearn.metrics import r2_score
-
-preds = reg.predict(X_test)
-
-r2_score(y_test, preds)
-Unlike the simple score, r2_score requires ready predictions - it does not calculate them under the hood.
-
-So, again the takeaway is r2_score and score for regressors are the same - they are just different ways of calculating the coefficient of determination.
-+++++++++++
-Is it possible that after running the optimization my score won't get better (and even worse?) ?
-
-Yes, theoretically, by pure luck, it is possible that your initial guess, before optimization of hyper-parameters, provides better results than the best of parameter combination found in the parameters grid. However, assuming you have enough data and your parameter grid is wide enough it is rather unlikely that the tuning of hyper-parameters would not be able to find better results. Such behavior rather indicates that something is wrong with your approach or your data.
-
-If understand correctly, the choice of the best parameters is based on the cv results on training data, while in your final run the performance is assessed based on test dataset. If the distribution of training and test data differ significantly it could lead to the situation when the parameters providing the best results on the training data perform poorly on test data.
-
-Where is my mistake?
-
-As already mentioned by others, the parameters you are testing after the tuning were not included in the parameter grid. In this case it is incorrect to talk about the model performance "after running the optimization".
-
-I suggest the following in order to investigate and fix the problem
-
-Instead of using the hard-coded parameters in the XGBClassifier  call, use the optimal parameters found by tuning process, i.e. grid_search.best_params_. Furthermore, if you think that subsample and cilsample_bytree (a typo?) are relevant parameters include them in the parameters grid.
-Increase the cv parameter to e.g. 5-10, the results with cv = 3 might be very unstable. You can assess the stability of your current results by using different random seeds and repeating the entire exercise.
-Make sure that you use the consistent parameters in tuning process and in the final evaluation, or just include these parameters in the parameters grid if possible. In particular, check early_stopping_rounds and eval_metric.
-Are there other parameters that could influence or improve my model?
-
-From your code it is unclear how many rounds you use. Either increase n_estimators or include it in the parameters grid.
-Given that you use AUCPR you might need to explicitly set the parameter maximize=True, otherwise in your final run you could minimize the AUCPR, which could explain poor results.
-Share
-Improve this answer
-Follow
-edited Sep 28, 2020 at 22:22
-answered Sep 28, 2020 at 21:34
-user avatar
-aivanov
-1,43077 silver badges1414 bronze badges
-Add a comment
-
-0
 
 This question is a little wrong-worded. You cannot get worse after optimization, otherwise it wouldn't be optimization! (At worst you are at the same performance like before, getting the exact same parameters you already had)
 
