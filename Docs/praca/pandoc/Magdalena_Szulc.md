@@ -4,7 +4,7 @@ author: [Magdalena Szulc]
 header: UNIWERSYSTET MIKOŁAJA KOPERNIKA WYDZIAŁ MATEMATYKI I INFORMATYKI
 date: "Toruń,2022-05-01"
 footer: Praca inż. napisana pod kierunkiem dr Piotr Przymus
-geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
+geometry: "left=3cm,right=3cm,top=2cm,bottom=2cm"
 output: pdf_document
 titlepage: true
 titlepage-background: "`titlepage1.pdf`{=latex}"
@@ -160,15 +160,7 @@ DU = (xi)l+u          gdzie : i=l+1
 Oba przedstawione poniżej typy sysytematyzją w oparciu o dostarczone dane wejściowe i mają one wspólną część polegającą na budowaniu modelu
 separującego kategorie docelowe w użyteczny i dokładny sposób.[@introduction]
 
-Pod ogólnym pojęciem nadzorowanego uczenia się z przykładów rozróżnić można
-przewidywanie wartości i przewidywanie kategorii. Czy próbujemy (1) skorelować dane
-wejściowe do jednej z możliwych kategorii, określonej przez dyskretne symbole, czy (2)
-skorelować dane wejściowe do mniej lub bardziej ciągłego zakresu wartości numerycznych?
-W skrócie, czy cel jest kategoryczny, czy numeryczny? Jak już wspomniałem, predykcja
-kategorii nazywa się klasyfikacją. Predykcja wartości liczbowej nazywana jest regresją.
-Przyjrzymy się przykładom każdej z nich.
-
-*Klasyfikacja* -  decyduje o przynależności do zbioru grupy lub klasy.
+*Klasyfikacja* -  decyduje o przynależności do zbioru,kategorii, grupy lub klasy.
 *Regresja* - daję ciągłą prognoze korelacji między zmiennymi, standardowym przykładem zastosowania jest prognoza pogody. 
 Realne pomiary temperatury, prędkości wiatru , ciśnienia wpływają na finalną odpowiedź. Sama regresja dzieli się równiez na kategorie ze względu na skomplikowania, najprostrzym przykładem jest oczywiście regresja liniowa.
 
@@ -462,7 +454,7 @@ Biblioteki w większości posiadają otwarty kod źródłowy,  napisany w język
 Język programowania wysokopoziomowego umożliwiający programowanie zorientowane obiektowo. Pozwala na tworzenie klas , dziedziczenie , polimorfizm odraz hermetyzacje atrybutów w klasie.
 Python wykorzystywany jest również do pisania skryptów . sam interpreter można rozbudowywać o nowe typy danych zaimplementowane w C lub C++.
 Na oficjalnej stronie _https://www.python.org/_ można zajrzeć do kodu źródłowego który jest udostepniony publicznie.
-Darmowa biblioteka ułatwia tworzenie szybkich aplikacji oraz integrację.[@semi-learning]
+Darmowa biblioteka ułatwia tworzenie szybkich aplikacji oraz integrację z zewnętrznymi projektami[@semi-learning].
 
 ### Scikit-learn
 
@@ -479,24 +471,16 @@ zwiększa ryzyko błędów samej biblioteki. Za jej pomocą można wygenerować 
 
 *Pandas*
 Do przygotowania danych wykorzystano zestaw narzędzi *Pandas*, ułatwiający tworzenie struktur danych i ich analizę. 
-[todo]
+
 *Matplotlib*
-
 W celu wizualizacji wyników w postaci wykresów zastosowano, opartą na *Matplotlib*, bibliotekę *Seaborn* powszechnie stosowaną do rysowania estetycznej grfiki statystycznej.
-[todo]
-*Flask*
 
+*Flask*
 Część prezentacyjna czyli możliwość wprowadzenia danych w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzystuje bibliotkę *Flask*. Framework Flask ułatwia pisanie aplikacji internetowch i jest rozwiązaniem które daje duży zakres dowolności oraz możliwości. Flask sam z siebie nie definiuje warstwy bazy danych czy formularzy, pozwala za to na obsługę rozszerzeń które ubogacają aplikację o wybraną funkcjonalność. [@flask]
 
-[todo]
-*JsonPickle*
+*JsonPickle* i *JobLib*
 Przekazywanie obiektów o bardziej skomplikowanej budowie i ich _serializacja_ oraz _deserializacja_ do formatu JSON wykonane są za pomocą biblioteki *jsonpickle*, a zapis
-modeli wykonano za pomocą *joblib* która zapewnia obsługę obiektów Pythona i jest zoptymalizowana pod kątem pracy na dużych tablicach Numpy. [@libpyth] 
-
-[todo]
-*JobLib*
-
-[todo]
+modeli wykonano za pomocą *joblib* która zapewnia obsługę obiektów Pythona i jest zoptymalizowana pod kątem pracy na dużych tablicach Numpy. [@libpyth]
 
 ### Środowisko wykonania
 
@@ -559,14 +543,17 @@ Głównym zadaniem trybu nauczania jest utworzenie i wytrenowanie modeli dla 3 a
 
 ### Przygotowanie danych
 
-
 Proces przygotowania danych zastosowany w prajekcie składa się z następujących kroków:
 
 1.Załadowanie i konkatenacja dataset'u , standardowo również wybranie cech znaczących głownie odbywające się poprzez odrzucenie nadmiarowych parametrów ,ale istnieje też możliwość dodania nowych np utowrzenie powierzchni na podstawie wymiarów zawartych w danych testowych.. Następnie należy wykonać wyeliminowanie cech nie wpływających na odpowiedź i dopiero po dokonaniu selecji przystapić do przetwarzania zebranych informacji.
+
 2.Uzupełnienie pustych wartości - dla późniejszego porównania w projekcie tworzone są imputery dla 4 różnych form uzupełnienia, 
 ale są to najbardziej podstawowe działania typu średnia wartość , najczęściej występująca wartość. Idealnym rozwiązaniem było by w przypadku posiadania eksperckiej wiedzy z danej dziedziny uzupełnienia brakujących wartości własnymi propozycjami. Innym sposobem może być wykorzystanie heurystyk specyficznych dla tworzonego modelu[@confiusion].
+
 3.Standaryzacja
+
 4.Konwersja danych dla kategorii
+
 5.Normalizacja z wykorzystaniem MinMaxScaler, zmiana skali w formie przykładu to na przykład przeliczenie temperatury z 
 stopni Celcjiusza do FahrenHeita. Wykonuje się ją by przesunąć wartości skrajne i pozbyć się nierówności w zbiorze[@confiusion].
 
@@ -579,29 +566,8 @@ Do dostrojenia parametrów oraz znalezienia najlepszego modelu wykorzystuwany je
 GridSearchCV
 
 ```
-{
-GridSearchCV jest alternatywą dla naiwnej metody, ręcznie modyfikować parametry i kilkakrotnie ponownie uruchamiać algorytm,
-możesz wyświetlić listę wszystkich wartości parametrów, które algorytm powinien wypróbować i przekazać do GridSeachCV.
-GridSearchCV wypróbuje wszystkie kombinacje tych parametrów, oceni wyniki za pomocą weryfikacji krzyżowej i podanej przez
-Ciebie metryki punktacji. W końcu wypluwa najlepsze parametry dla twojego zestawu danych.
-GridSearchCV może być używany z dowolnym algorytmem uczenia nadzorowanego uczenia maszynowego, który znajduje się w bibliotece nauki sci-kit. Będzie działać zarówno w przypadku regresji, jak i klasyfikacji, jeśli podasz odpowiednią metrykę.
-}
+Model trenowany jest na podstawie siatki parametrów i sprawdzana jest każda  kombinacja by uzyskać konfiguracje parametrów dla najlepszego estymatora.
 
-ypowe modele, dla których wywołujemy funkcję fit, są w pełni zdefiniowane. Wybieramy
-model oraz jego hiperparametry, aby był konkretny. Co więc, do diabła, dzieje się po
-wywołaniu funkcji fit dla megamodelu z klasy GridSearchCV? Po wywołaniu funkcji fit
-dla modelu LinearRegression otrzymujemy zestaw wartości wag wewnętrznych parametrów.
-Są to preferowane, optymalne wartości dla treningowego zbioru danych. Po wywołaniu
-GridSearchCV z hiperparametrem n_neighbors dla algorytmu k-NN otrzymujemy wartość
-tego hiperparametru, która jest preferowanym jego ustawieniem dla danych treningowych.
-Te dwa podejścia robią to samo na różnych poziomach.
-Na rysunku 11.3 przedstawione jest graficzne ujęcie przeszukiwania siatki dla dwóch
-hiperparametrów z pokazanymi danymi wyjściowymi tej techniki: dopasowanym modelem
-ze skutecznymi hiperparametrami. Widoczny jest tu też sprawdzian krzyżowy będący
-wewnętrznym komponentem przeszukiwania siatki. Sprawdzian krzyżowy dla jednego
-hiperparametru pozwala ocenić połączenie tego hiperparametru i modelu. Następnie
-kilka takich ocen jest porównywanych, aby wybrać preferowany hiperparametr
-[@confiusion]
 
 W projekcie dla każdego algorytmy zapróbkowano większość dostępnych dla danego modelu klasyfikacji hiperparametrów przekazywane w param_grid.
 Wykorzystane parametry wykonania GridSearchCv [@scikit]:
@@ -625,16 +591,19 @@ Na poniższym wykresie  przedstawiającym średni wynik dla algorytmu SVC widać
 Umieszczone oznaczenia od 0 do 5 informują o tym w której iteracji kombinacja parmaretów została oznaczona jako najlepsze zestawienie.
 Implementacja ta nie została wykorzystana ze względu na nadal pozycjonowanie jej jako eksperymentalnej.
 
-Estymatory to impementacja z skleran która powstała w oparciu o dokumntacje sklearn oraz dostępną dla nich parametryzacje. Zestawienie najlepszych osiągniętych estymatorów przedstawia się następująco:
+Podczas uczenia i wykonania funkcji _fit_ w resultacie otrzymujemy zadane wcześniej informację jakie 
+hiperparametry po przejciu sprawdzianu krzyżowego zostały uznane za wystarczająco precyzyjne do utworzenia modelu[@confiusion].
+
+Pierwszym z wymaganaych argumentów _GridSearchCV_ są estymatory. W projekcie ich impementacja pochodząca z bilioteki oraz dostępną dla nich parametryzacje daje w wyniku następujące zestawienie najlepszych osiągniętych estymatorów:
 
 *KNeighborsClassifier* [@scikit] :
  
-- n_neighbors: 8 - liczba sąsiadów z których wnioskowany jest jednostkowy resultat
-- weights: distance - wagi na podsatwie których wyliczana jest predykcja , można zastosować wagę 1:1 lub nałożyć wagi zgodnie z dystansem.
-- algorithm: auto - algorytm zastosowany do znalezienia najbliższych sąsiadów, w projekcie wykorzystano : brute-force oraz auto
-- leaf_size: 1 - rozmiar liścia dla algorytmów BallTree or KDTree
-- p: 1 - wykorzystanie miar odległości dla manhattan
-- metric: canberra -metryka odległości
+- n_neighbors: [todo] - liczba sąsiadów z których wnioskowany jest jednostkowy resultat
+- weights:  - wagi na podsatwie których wyliczana jest predykcja , można zastosować wagę 1:1 lub nałożyć wagi zgodnie z dystansem.
+- algorithm:  - algorytm zastosowany do znalezienia najbliższych sąsiadów, w projekcie wykorzystano : brute-force oraz auto
+- leaf_size:  - rozmiar liścia dla algorytmów BallTree or KDTree
+- p: - wykorzystanie miar odległości dla manhattan
+- metric:  -metryka odległości
 
 
 *RandomForestClassifier* [@scikit] :
@@ -676,32 +645,6 @@ gdzie n to liczba cech.
 - coef0: [todo] - niezależny parametr funkcji jądra , wykorzystywany tylko przy jądrach _poly_ i _sigmoid_.
 - shrinking: [todo] - heurystyka kurcząca
 - cache_size: [todo] - cache jądra (w MB).
-
-SVC używa jednego podstawowego parametru, C, do kontrolowania kompromisu między
-obciążeniem a wariancją. Bezpośrednia interpretacja tego parametru jest trudna. Klasa NuSVC
-wykonuje to samo zadanie co SVC, ale za pomocą innych obliczeń. Zwracam na to uwagę,
-ponieważ podstawowy parametr klasy NuSVC, ν (ny, ang. nu), ma proste znaczenie: przynajmniej
-ν procent danych jest zachowywanych jako wektory nośne. Ma to wpływ na błędy, przy
-czym są one określonego rodzaju — są to błędy marginesu. Błędy marginesu to punkty,
-które albo (1) znajdują się po złej stronie separatora (jest to błąd klasyfikacji), albo (2)
-znajdują się po właściwej stronie (zostały poprawnie sklasyfikowane), ale na marginesie. Inne
-znaczenie parametru ν jest takie, że dla danych treningowych akceptowany jest maksymalnie
-ν procent błędów marginesu. W określonych warunkach procent błędów marginesu rośnie
-do ν, a procent danych w wektorach nośnych spada do ν. Wartości ν znajdują się w
-przedziale [0, 1] i są interpretowane jako wartość procentowa od 0% do 100%. Choć klasa
-SVC jest trudniejsza do interpretacji, ma lepszą charakterystykę działania niż NuSVC.
-Parametry klasyfikatorów SVC są nieco magiczne. Są jak tajniki znane tylko alchemikom.
-Aby zrozumieć ich znaczenie, trzeba zagłębić się w zaawansowaną matematykę. Można
-jednak analizować skutki używania tych parametrów na niewielkich przykładach (napisałem
-„niewielkich”, a nie „prostych”). Zobacz, jak zmiany wartości parametrów C i ν wpływają
-na granice między klasami.
-
-Z tego przykładu należy zapamiętać dwie rzeczy:
-1. Zwiększanie ν i zmniejszanie C dają mniej więcej ten sam efekt. Jednak skale dla
-obu tych parametrów są wyraźnie różne. C zmienia się o rzędy wielkości, natomiast
-ν zmieniane jest liniowo w krokach o wielkości 1/10.
-2. Duże ν i małe C mogą prowadzić do klasyfikatora SVC, który w pewnym zakresie
-ignoruje błędy klasyfikacj[@confiusion]
 
 Po odnalezieniu najlepszego estymatora model jest zapisywany oraz generowane sa wykresy dla trybu aplikacji webowej:
 
@@ -866,6 +809,22 @@ macież pomysłek
    - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
 
 ###  Maszyna wektorów nośnych
+SVC używa jednego podstawowego parametru, C, do kontrolowania kompromisu między
+obciążeniem a wariancją. Bezpośrednia interpretacja tego parametru jest trudna. K. Błędy marginesu to punkty,
+które albo (1) znajdują się po złej stronie separatora (jest to błąd klasyfikacji), albo (2)
+znajdują się po właściwej stronie (zostały poprawnie sklasyfikowane), ale na marginesie. Inne
+znaczenie parametru ν jest takie, że dla danych treningowych akceptowany jest maksymalnie
+ν procent błędów marginesu. W określonych warunkach procent błędów marginesu rośnie
+do ν, a procent danych w wektorach nośnych spada do ν. Wartości ν znajdują się w
+przedziale [0, 1] i są interpretowane jako wartość procentowa od 0% do 100%. Choć klasa
+
+
+Z tego przykładu należy zapamiętać dwie rzeczy:
+1. Zwiększanie ν i zmniejszanie C dają mniej więcej ten sam efekt. Jednak skale dla
+obu tych parametrów są wyraźnie różne. C zmienia się o rzędy wielkości, natomiast
+ν zmieniane jest liniowo w krokach o wielkości 1/10.
+2. Duże ν i małe C mogą prowadzić do klasyfikatora SVC, który w pewnym zakresie
+ignoruje błędy klasyfikacj[@confiusion]
 
 ###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
 -OCENA SZYBKOŚCI WYKONANIA
@@ -919,25 +878,25 @@ na dzień dobry widzimy nie dokładność ze wględu na klasyfiakcję po przecin
 regresja kategoryczna -> rzutowanie przedziału wartości na wartość graniczną 
 
 
-This question is a little wrong-worded. You cannot get worse after optimization, otherwise it wouldn't be optimization! (At worst you are at the same performance like before, getting the exact same parameters you already had)
+To pytanie jest trochę źle sformułowane. Po optymalizacji nie może być gorzej, inaczej nie byłaby to optymalizacja! (W najgorszym przypadku masz taką samą wydajność jak poprzednio, uzyskując dokładnie te same parametry, które już miałeś)
 
-As Grzegorz points out in a comment, first of all your parameter list isn't complete and doesn't contain the values you use later. For example the learning rate, but also max_depth. Secondly, a grid search where you don't really know where to look should contain a much larger variance for the parameters. You check [0.1, 0.01, 0.05] for the learning rate, but did you check [0.0001, 0.001, 1.]? The learning rate might be a bad example here but I hope it gets the point across, you might want to check magnitude/scale first, e.g. powers of ten, before checking small variations.
+Jak wskazuje Grzegorz w komentarzu, po pierwsze Twoja lista parametrów nie jest kompletna i nie zawiera wartości, których użyjesz później. Na przykład szybkość uczenia się, ale także max_depth. Po drugie, wyszukiwanie siatkowe, w którym tak naprawdę nie wiesz, gdzie szukać, powinno zawierać znacznie większą rozbieżność parametrów. Sprawdzałeś [0,1, 0,01, 0,05] dla szybkości uczenia się, ale czy sprawdziłeś [0,0001, 0,001, 1,]? Szybkość uczenia się może być tutaj złym przykładem, ale mam nadzieję, że to przekonuje, możesz najpierw sprawdzić wielkość/skalę, np. potęgi dziesięciu, przed sprawdzeniem małych zmian.
 
-Depending on your dataset, the difference between runs with the same values might also come from different seeds! Check that you either always set the same seed, or try it enough times with different seeds to get a comparable answer (for example with KFold).
+W zależności od zestawu danych, różnica między przebiegami z tymi samymi wartościami może również pochodzić z różnych nasion! Sprawdź, czy zawsze ustawiasz to samo ziarno lub wypróbuj to wystarczająco wiele razy z różnymi ziarnem, aby uzyskać porównywalną odpowiedź (na przykład z KFold).
 
-Is your model even converging for every training? Where do you make sure that you train long enough? You can plot the loss for the training and test sample and check if it's converging or not. This can be controlled with n_estimators in xgboost I believe.
+Czy Twój model jest zbieżny przy każdym treningu? Gdzie upewniasz się, że trenujesz wystarczająco długo? Możesz wykreślić stratę dla próbki uczącej i testowej i sprawdzić, czy jest zbieżna, czy nie. Można to kontrolować za pomocą n_estimators w xgboost, jak sądzę.
 
-There is nothing wrong in your code or process. Often times in machine learning performance on the test dataset is lower than than performance on the training data set. Your model is not generalizing perfectly to the data it has not seen before (i.e., the test dataset).
+Nie ma nic złego w Twoim kodzie lub procesie. Często wydajność uczenia maszynowego w testowym zestawie danych jest niższa niż wydajność w zestawie danych szkoleniowych. Twój model nie uogólnia idealnie do danych, których wcześniej nie widział (tj. zestawu danych testowych).
 
 -2
 
-When you do hyper-parameter tuning, you improve the regularization of the model. Before you did optimization, you could be overfitting. After optimization you regularized your model and now it performs just right.
+Dostrajanie hiperparametrów poprawia regularyzację modelu. Zanim zrobiłeś optymalizację, możesz być przeciążony. Po optymalizacji uregulowałeś swój model i teraz działa on dobrze.
 
-enter image description here
+wprowadź opis obrazu tutaj
 
-Then your model score will be worse after optimization on training set. Your model score will also be bad for test set if your model heavily relies on one feature for classification.
+Wtedy wynik Twojego modelu będzie gorszy po optymalizacji na zestawie treningowym. Wynik Twojego modelu będzie również zły dla zestawu testowego, jeśli Twój model w dużym stopniu opiera się na jednej funkcji do klasyfikacji.
 
-You can use learning curve to see how the curve changes when you use optimization vs when you don't. And you can use df.corr() to see the correlation matrix for the correlation between feature values and target values.
+Możesz użyć krzywej uczenia się, aby zobaczyć, jak zmienia się krzywa, gdy używasz optymalizacji, a kiedy jej nie używasz. Możesz też użyć df.corr(), aby zobaczyć macierz korelacji dla korelacji między wartościami cech a wartościami docelowymi.
 ++++++++++++++
 Spis ilustracji{.unnumbered}
 ========

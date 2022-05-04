@@ -7,17 +7,24 @@ zapisać wyniki z parametrami
 zapisać wyniki dla regresji z parametrami tylko dla KNN-
 
 
-dodać wstęp do każdego większego rozdziału
+dodać wstęp do każdego większego rozdziału 1/2/3/4
+przerwa 20 minut
+
 dodać opis możliwości rozszerzenia projektu 
 dodać obszerniejszy opis dlaczego nie wykorzystano innego uczenia
 dodać rodział teoretyczny na temat sposóbu porównywania algorytmów i skal oml
 wstęp dodać porówniania zaufania z branż medycznych i giełdy
 dodać możlwość komercyjengo wykorzystania
+
+przerwa 15m
 dodać opis tworzenia wykrsów
 dodać opis tworzonych obiektów
 opis 2 innych publikacji wykonujących te same badania
 opis 2 innych projektów wykonujących podobną predykcje
-rozszerzyć uzasadnienie pisania- lekarze zwiekszenie zaudania gdy wiedzą co i jak
+
+przerwa 15m
+
+
 metryka om
 []todo
 dodać fragment kodu odnoszący się do szkolenia algorytmu
@@ -32,7 +39,7 @@ wykonać tabele z exela
 opis obrazków
 wnioski dla wykresów
 
-- _________________________________________________________________20
+- _________________________________________________________________22
 - - formatowac zgodnie z przykładem
 
 - poprawić przypisy
@@ -47,17 +54,16 @@ wnioski dla wykresów
 - -przypisy
  -strona tytułowa
 -formatować zgodnie z tym co w dokuncie
-przypisy konwertować w zetero
 spis  obrazków
 -wygenerować dokument
 - moodle zasady pracy uwzględnić:
 - - - wyczyścić projekt - usunąc doki 
 - -spakować projekt
-- -przeczytać
+- -przeczytać!!!!!!!!!!!!!!!!!!
 -wniosek i mail do promotora
 usunąć ze strony porównianie całościowe
  nagrać film
-_______________________________________________________________22
+_______________________________________________________________24
 
 - praca najlepiej 40-50 stron lub 17 042 slow jak na razie 4739
 - ______________________________________________________________________
@@ -71,4 +77,5 @@ dla każdego algorytmu dodać prosty przykład wykonania
 - dodać dokładniejszy opis matematyczny i logistyczny każdego z algorytmów
 - dodać obszernijszy opis bibliotek
 - stratyfikacj
+- rozszerzyć uzasadnienie pisania- lekarze zwiekszenie zaudania gdy wiedzą co i jak
 ------------_____________________________________________________21
