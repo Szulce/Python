@@ -1,4 +1,4 @@
----
+\usepackage{ulem}---
 title: "Wykrywanie występowanie chorób serca,porównanie algorytów uczenia maszynowego nadzorowanego na podstawie zbioru danych dotyczących chorób układu krążenia z repozytorium  UCI"
 author: [Magdalena Szulc]
 header: UNIWERSYSTET MIKOŁAJA KOPERNIKA WYDZIAŁ MATEMATYKI I INFORMATYKI
@@ -368,6 +368,14 @@ reprezentacją wpływ cech na ostateczny osąd próbki.
 
 ## Narzędzia i biblioteki zastosowane w pojekcie
 
+Biblioteki w większości posiadają otwarty kod źródłowy,  napisany w języku Python [@libpyth].
+
+### Python
+
+[todo]
+
+### Scikit-learn
+
 Praktyczna część pracy napisana została w języku Python z wykorzystaniem *scikit-learn*, obsługującym wiele algorytmów
 maszynowego uczenia się w tym uczenia nadzorowanego i docelowo wybranych algorytmów przedstawionych w teoretycznej
 części pracy.
@@ -377,18 +385,55 @@ części pracy.
 Biblioteka opiera się o *Numpy* oraz *Scipy*, daje zestaw narzędzi do obliczeń na macierzach, wektorach oraz umożliwiający metody
 numeryczne takie jak całkowanie, różniczkowanie i temu podobne  [@scikit]. W rezultacie można za jej pomoca wykonać elementy procesu nauczania algorytmu, takie jak: przetwarzanie wstępne, redukcja wymiarowości, klasyfikacja, regresja. [@libpyth] 
 
+[todo]
+
+### Pandas
 Do przygotowania danych wykorzystano zestaw narzędzi *Pandas*, ułatwiający tworzenie struktur danych i ich analizę. 
+[todo]
+### Matplotlib
 
 W celu wizualizacji wyników w postaci wykresów zastosowano, opartą na *Matplotlib*, bibliotekę *Seaborn* powszechnie stosowaną do rysowania estetycznej grfiki statystycznej.
+[todo]
+### Flask
 
 Część prezentacyjna czyli możliwość wprowadzenia danych w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzystuje bibliotkę *Flask*. Framework Flask ułatwia pisanie aplikacji internetowch i jest rozwiązaniem które daje duży zakres dowolności oraz możliwości. Flask sam z siebie nie definiuje warstwy bazy danych czy formularzy, pozwala za to na obsługę rozszerzeń które ubogacają aplikację o wybraną funkcjonalność. [@flask]
 
+[todo]
+### JsonPickle
 Przekazywanie obiektów o bardziej skomplikowanej budowie i ich _serializacja_ oraz _deserializacja_ do formatu JSON wykonane są za pomocą biblioteki *jsonpickle*, a zapis
 modeli wykonano za pomocą *joblib* która zapewnia obsługę obiektów Pythona i jest zoptymalizowana pod kątem pracy na dużych tablicach Numpy. [@libpyth] 
 
-Biblioteki w większości posiadają otwarty kod źródłowy,  napisany w języku Python [@libpyth].
+[todo]
+### JobLib
 
+[todo]
 
+### Środowisko wykonania
+
+Wykonanie programu i analizę danych testowych wykonano na maszynie o parametrach :
+```doctest
+Procesor	Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz   2.50 GHz
+Zainstalowana pamięć RAM	8,00 GB (dostępne: 7,82 GB)
+Typ systemu	64-bitowy system operacyjny, procesor x64
+```
+
+Wersjie bibliotek wykorzystanych w projekcie:
+
+```doctest
+setuptools~=49.2.1
+Flask~=2.0.1
+matplotlib~=3.4.2
+numpy~=1.20.3
+pandas~=1.2.4
+scikit-learn~=0.24.2
+pytest~=6.2.5
+joblib~=1.0.1
+scipy~=1.6.3
+seaborn~=0.11.2
+jsonpickle~=2.1
+```
+
+Interpreter Python w wersji _3.9_.
 
 ## Moduły projektu:
 
@@ -431,43 +476,6 @@ GridSearchCV
 
 ```
 
-
-
-Scikit-learn also provides the HalvingGridSearchCV and HalvingRandomSearchCV estimators that can be used to search a parameter space using successive halving 1 2. Successive halving (SH) is like a tournament among candidate parameter combinations. SH is an iterative selection process where all candidates (the parameter combinations) are evaluated with a small amount of resources at the first iteration. Only some of these candidates are selected for the next iteration, which will be allocated more resources. For parameter tuning, the resource is typically the number of training samples, but it can also be an arbitrary numeric parameter such as n_estimators in a random forest.
-
-As illustrated in the figure below, only a subset of candidates ‘survive’ until the last iteration. These are the candidates that have consistently ranked among the top-scoring candidates across all iterations. Each iteration is allocated an increasing amount of resources per candidate, here the number of samples.
-
-../_images/sphx_glr_plot_successive_halving_iterations_001.png
-We here briefly describe the main parameters, but each parameter and their interactions are described in more details in the sections below. The factor (> 1) parameter controls the rate at which the resources grow, and the rate at which the number of candidates decreases. In each iteration, the number of resources per candidate is multiplied by factor and the number of candidates is divided by the same factor. Along with resource and min_resources, factor is the most important parameter to control the search in our implementation, though a value of 3 usually works well. factor effectively controls the number of iterations in HalvingGridSearchCV and the number of candidates (by default) and iterations in HalvingRandomSearchCV. aggressive_elimination=True can also be used if the number of available resources is small. More control is available through tuning the min_resources parameter.
-
-These estimators are still experimental: their predictions and their API might change without any deprecation cycle. To use them, you need to explicitly import enable_halving_search_cv:
-
->>>
->>> # explicitly require this experimental feature
->>> from sklearn.experimental import enable_halving_search_cv  # noqa
->>> # now you can import normally from model_selection
->>> from sklearn.model_selection import HalvingGridSearchCV
->>> from sklearn.model_selection import HalvingRandomSearchCV
-> 
-> The heatmaps show the mean test score of the parameter combinations for an SVC instance. The HalvingGridSearchCV also shows the iteration at which the combinations where last used. The combinations marked as 0 were only evaluated at the first iteration, while the ones with 5 are the parameter combinations that are considered the best ones.
-
-We can see that the HalvingGridSearchCV class is able to find parameter combinations that are just as accurate as GridSearchCV, in much less time.
-
-![Schemat 24](img/24halving.png "HalvingGridSearchCV")[@scikit]{ width=60% }
-
-Przeszukuj określone wartości parametrów z sukcesywnym zmniejszaniem o połowę.
-
-Strategia wyszukiwania zaczyna oceniać wszystkich kandydatów przy niewielkiej ilości zasobów i iteracyjnie wybiera najlepszych kandydatów, wykorzystując coraz więcej zasobów.
-
-Mapy cieplne pokazują średni wynik testu kombinacji parametrów dla SVCinstancji. Pokazuje HalvingGridSearchCVrównież iterację, w której kombinacje były ostatnio używane. Kombinacje oznaczone jako 0zostały ocenione dopiero w pierwszej iteracji, natomiast te z 5oznaczeniem to kombinacje parametrów, które są uważane za najlepsze.
-
-Widzimy, że HalvingGridSearchCV klasa jest w stanie znaleźć kombinacje parametrów, które są tak samo dokładne jak GridSearchCV, w znacznie krótszym czasie.
-
-
-ikit-learn udostępnia również estymatory HalvingGridSearchCV i HalvingRandomSearchCV, które mogą być użyte do przeszukiwania przestrzeni parametrów przy użyciu sukcesywnego halvingu 1 2. Kolejne halving (SH) jest jak turniej wśród możliwych kombinacji parametrów. SH to iteracyjny proces selekcji, w którym wszyscy kandydaci (kombinacje parametrów) są oceniane przy użyciu niewielkiej ilości zasobów w pierwszej iteracji. Tylko niektórzy z tych kandydatów są wybierani do następnej iteracji, która otrzyma więcej zasobów. W przypadku dostrajania parametrów zasób to zazwyczaj liczba próbek uczących, ale może to być również dowolny parametr liczbowy, taki jak n_estimators w losowym lesie.
-________________________
-
-
 W projekcie dla każdego algorytmy zapróbkowano większość dostępnych dla danego modelu klasyfikacji hiperparametrów przekazywane w param_grid.
 
 Wykorzystane parametry wykonania GridSearchCv [@scikit]:
@@ -477,6 +485,22 @@ Wykorzystane parametry wykonania GridSearchCv [@scikit]:
 - refit: dopasowanie best_estimator_ ,best_index_, best_score_ i best_params_ dla najlepszej sekwencji ustawień parametrów
 - cv: parametr k dla KFold walidacji krzyżowej,
 - verbose: obszerność logowanych informacji 
+
+
+*HalvingGridSearchCV*
+
+Sciikit-learn udostępnia również inne implmentacj zastosowania walidacy krzyżowej np.: _HalvingGridSearchCV_ lub _HalvingRandomSearchCV_.
+HalvingGridSearchCV polega na zmniejszaniu o połowe (z ang. _half_) zbioru parametrów po każdej iteracji algorytmu krzyżowego.
+Ta strategia wyszukiwania sukcesywnie zmniejsza ilość wymaganych iteracji dla danego zestawienia przez co wykonania jest szybsze niż w przypadku zwykłego GridSearchCv.
+Jak widać na poniższym wykresie przedstawiającym średni wynik dla algorytmu SVC.
+
+![Schemat 24](img/24halving.png "HalvingGridSearchCV")[@scikit]{ width=60% }
+
+ Kombinacje oznaczone jako 0zostały ocenione dopiero w pierwszej iteracji, natomiast te z 5oznaczeniem to kombinacje parametrów, które są uważane za najlepsze.
+
+Widzimy, że HalvingGridSearchCV klasa jest w stanie znaleźć kombinacje parametrów, które są tak samo dokładne jak GridSearchCV, w znacznie krótszym czasie.
+
+
 
 Estymatory to impementacja z skleran która powstała w oparciu o dokumntacje sklearn oraz dostępną dla nich parametryzacje.
 

@@ -49,7 +49,7 @@ DATA_INFO_PLOTS = "data_info_plots"
 ALGORITHM_INFO_PLOTS = "algorithm_info_plots"
 SCORER_MODEL = "_scorer_model"
 
-VERBOSE = 0
+VERBOSE = 4
 
 RF_ = ' \nRF : \n'
 
@@ -163,13 +163,13 @@ COLUMNS = {"age": "wiek", "sex": "plec", "cp": "bol_w_klatce_piersiowej", "trest
 
 macro_precision = metrics.make_scorer(metrics.precision_score, average='macro')
 macro_average_precision = metrics.make_scorer(metrics.average_precision_score, average='macro')
-accuracy_scorer = metrics.make_scorer(metrics.accuracy_score, average='macro')
-balanced_accuracy_scorer = metrics.make_scorer(metrics.balanced_accuracy_score, average='macro')
-r2_score = metrics.make_scorer(metrics.r2_score, average='macro')
+accuracy_scorer = metrics.make_scorer(metrics.accuracy_score)
+balanced_accuracy_scorer = metrics.make_scorer(metrics.balanced_accuracy_score)
+r2_score = metrics.make_scorer(metrics.r2_score)
 macro_recall = metrics.make_scorer(metrics.recall_score, average='macro')
 SCORER_DICTIONARY = dict(precision=macro_precision,
                          average_precision=macro_average_precision,
                          recall=macro_recall,
-                         accuracy=accuracy_scorer,
                          balanced_accuracy=balanced_accuracy_scorer,
-                         r2=r2_score)
+                         r2=r2_score,
+                         accuracy=accuracy_scorer)

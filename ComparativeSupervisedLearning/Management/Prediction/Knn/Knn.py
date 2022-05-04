@@ -8,16 +8,17 @@ import ComparativeSupervisedLearning.Management.PlotGeneration.PlotGeneration as
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
 import ComparativeSupervisedLearning.Management.Prediction.TrainingManager as Tm
-
+import ComparativeSupervisedLearning.Management.Prediction.PredictionManager as Pr
 """" K nearest neighbours algorithm performance """
 
 
-def create_train_save_model(x_train, x_test, y_train, y_test, iterator):
+def create_train_save_model(x_train_, x_test_, y_train_, y_test_, iterator):
     scorer_r_table = dict()
     for scorer, scorer_macro in Rs.SCORER_DICTIONARY.items():
+        x_train, x_test, y_train, y_test = Pr.copy_processing_dataset(x_train_, x_test_, y_train_, y_test_)
         grid, y_train, y_test = prepare_grid_classification(y_train, y_test, scoring=scorer_macro)
         measure_table, grid_fitted = Tm.train_model(grid, x_train, x_test, y_train, y_test)
-        if scorer == 'accuracy':
+        if scorer == "accuracy":
             Tm.save_model(grid_fitted, Rs.MODEL_TYPE_KNN, iterator, measure_table)
         scorer_r_table.update({scorer: [grid_fitted.cv_results_['split0_test_score'],
                                         grid_fitted.cv_results_['split1_test_score'],
@@ -52,7 +53,6 @@ def prepare_grid_regression(train_x):
 def prepare_grid_classification(y_train, y_test, scoring):
     y_train = y_train.replace([0.25, 0.5, 0.75], 1).astype('int')
     y_test = y_test.replace([0.25, 0.5, 0.75], 1).astype('int')
-    # todo
     param_grid_p = dict(n_neighbors=list(range(1, Rs.N_NEIGHBORS_SIZE)), weights=Rs.KNN_WEIGHTS,
                         algorithm=Rs.KNN_ALGORITHM, leaf_size=Rs.KNN_LEAF_SIZE, p=Rs.KNN_P_PARAM, metric=Rs.KNN_METRIC
                         )
@@ -60,5 +60,5 @@ def prepare_grid_classification(y_train, y_test, scoring):
                   'n_jobs': [-1],
                   'n_neighbors': [25], 'p': [2], 'weights': ['distance']}
     grid = GridSearchCV(KNeighborsClassifier(), param_grid, verbose=Rs.VERBOSE, refit=True,
-                        scoring=scoring, error_score=0)
+                        scoring=scoring)
     return grid, y_train, y_test

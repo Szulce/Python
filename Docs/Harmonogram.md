@@ -1,26 +1,20 @@
 
 
 
-sprwadzić procenty
--
-- 
-zapisać wyniki bez parametrów
-
 
 część praktyczna puścić poprawione uczenie z werbose 0 i sprawdzić różnicę w czasie
 
 zapisać wyniki z parametrami
-zapisać wyniki dla regresji z parametrami tylko dla KNN-
-
-
-część praktyczna puścić poprawione uczenie z werbose 4
-puścić na komputerze z pracy 
 -screenshoty wykresów 
+zapisać wyniki dla regresji z parametrami tylko dla KNN-
+część praktyczna puścić poprawione uczenie z werbose 4
+
+
 usunąć ze strony porównianie całościowe
  nagrać film
-____________________________________________________4
+____________________________________________________7
 
-opis środowiska
+
 opis  dla HalvingGridSearchCV
 część praktyczna wyniki poprawa obecnych tabel
 dodać opis da każdego katalogu
@@ -33,7 +27,8 @@ dodać opis tworzonych obiektów
 opis 2 innych publikacji wykonujących te same badania
 opis 2 innych projektów wykonujących podobną predykcje
 rozszerzyć uzasadnienie pisania- lekarze zwiekszenie zaudania gdy wiedzą co i jak
-______________________________________________________________________________________7
+[]todo
+______________________________________________________________________________________10
 wpłym uczenia maszynowego na statystyke lub odwotnie
 dodać opis możliwości rozszerzenia projektu 
 dodać obszerniejszy opis dlaczego nie wykorzystano innego uczenia
@@ -45,7 +40,7 @@ wstęp dodać porówniania zaufania z branż medycznych i giełdy
 dodać możlwość komercyjengo wykorzystania
 - dopisać do stratyfikacji 
 dokładniejszy opis na podstawie sklearn dodać możliw wykorzystanie
-___________________________________________________________________________10
+___________________________________________________________________________12
 dodać nową część jak procesor wpływa na wykonanie algorytmów 
 
 porównanie do wyników bez parametrów
@@ -65,7 +60,7 @@ praktyczna wyniki dodaćnowe wyniki
 - moodle zasady pracy uwzględnić:
 
 - praca najlepiej 40-50 stron lub 17 042 slow jak na razie 4739
-- _________________________________________________________________12
+- _________________________________________________________________14
 - - formatowac zgodnie z przykładem
 - zmienić kolory każdego obrazka na czarny
 - poprawić przypisy
@@ -86,9 +81,9 @@ spis  obrazków
 dać Agnieszce do przeczytania
 dać Oli do przeczytania
 - 
-------------_____________________________________________________14
+------------_____________________________________________________15
 - - wyczyścić projekt - usunąc doki 
 - -spakować projekt
 -wniosek i mail do promotora
 
-_______________________________________________________________15
+_______________________________________________________________15.15
