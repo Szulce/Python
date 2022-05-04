@@ -215,7 +215,7 @@ Cechy dla których szukamy optymalnych wartości , które stanowią podstawe mod
 Nazewnictwo hiperparametrów wykorzystywane jest w przypadku zastosoawnia dla nich walidacji krzyżowej.
 
 
-*Nadmierne dopasowanie*
+*Nadmierne dopasowanie(ang. _overfitting_ )*
 
 Istnieje możliwość wytrenowania algorytmu tylko pod zadany zbiór testowy, wyniki dotyczące dokładności modelu pomimo iż
 będą wysokie nie będą świadczyły o rzeczywistej skuteczności gdyż będą uwzględniały tylko pojedyńczy przypadek zasymulowany daną próbką danych testowych.
@@ -356,24 +356,8 @@ determinuje to otrzymany rezultat [@3;@32] .
 
 ![Schemat 9](img/3drzewo_decyzyjne_schemat.png "Schmat Drzewa decyzyjnego"){ width=50% }
 
-Prawie każdy algorytm uczenia maszynowego nadzorowanego można podzielić na dwa etapy. W pierwszym opracowywany jest wzorzec, na którym bazuję późniejsza predykcja. Etap nauki dla drzewa decyzyjnego polega na typowaniu atrybutów, które staja się węzłami decyzyjnymi, dzielącymi rekordy na dwa mniejsze zestawy i tak aż nie ma możliwości dalszego podziału.
-
-Rozpoczęcie od otwartego drzewa bez ograniczenia głębokości daje bardzo elastyczny
-model, pozwalający uchwycić dowolny skończony wzór, który nie jest losowy na poziomie
-rzutów monetą. Choć może się to wydawać idealnym rozwiązaniem, wiesz już wystarczająco
-dużo, aby stwierdzić, że muszą tu występować kompromisy. Użycie drzew nieograniczonych
-zapewne doprowadzi do nadmiernego dopasowania, dlatego przy próbie uogólnienia
-rozwiązania wyniki dla danych testowych będą kiepskie. Jeśli chcesz przypomnieć sobie
-ten kompromis, zajrzyj do podrozdziału 5.6. Jak więc dodać obciążenie do drzew i dodać
-ograniczenia, aby zapobiec nadmiernemu dopasowaniu? Można tu wykonać kilka kroków.
-1. Można ograniczyć głębokość drzew. Wtedy dozwolonych jest mniej pytań przed
-określeniem klasy przykładu.
-2. Można wymagać większej liczby przykładów w liściach. To ograniczenie wymaga
-grupowania przykładów, które mogą różnić się między sobą. Ponieważ ich
-rozdzielanie jest niedozwolone, skutkuje to wygładzeniem niektórych granic.
-3. Można ograniczyć liczbę uwzględnianych cech przy zadawaniu pytań o przykłady.
-To ograniczenie ma dodatkową korzyść w postaci przyspieszenia procesu uczen
-4. [@confiusion]
+Prawie każdy algorytm uczenia maszynowego nadzorowanego można podzielić na dwa etapy. W pierwszym opracowywany jest wzorzec, na którym bazuję późniejsza predykcja. Uczenie składa się z dwóch części w wariancie drzew decyzyjnych uczenie to tworzenie rozgałęzień reprezentujących atrybuty dzielące zwstaw testowy aż dalszy podział jest niemożliwy.Takie drzewo może mieć dowlnie długą droge po węzłach,
+niestety taki sposób rozwiązania jest przyczyną powstawnia przyapdku _overfitting'u. Ograniczenie głebokości drzewa lub minimalna liczba wartości w liściu zminiejsza ale nie niweluje ryzyka. [@confiusion]
 
 Na metodologie drzew decyzyjnych oparta jest dokładniejsza forma nauczania nadzorowanego:  _losowe lasy decyzyjne._
 
@@ -387,128 +371,54 @@ model. Jako rezutat brana jest większość lub średnia wartości uzyskanych wy
 Dodatkowo dla drzew decyzyjnych w lasach losowych, atrybuty odpowiadające za kategoryzację są wybierane z wylosowanego
 podzbioru.[@forest]
 
-Przejdźmy teraz to bardziej skomplikowanych sposobów łączenia modeli. Pierwszy z nich
-to lasy losowe. Metoda ta jest oparta na technice o nazwie bagging. Nazwa ta nie pochodzi
-od angielskiego bag, czyli torba. Jest to sztuczne słowo, zbitek dwóch wyrazów bootstrap
-aggregation (agregacja bootstrap). Agregacja oznacza łączenie, nadal jednak trzeba wyjaśnić,
-czym jest bootstrap. W tym celu opiszę, jak obliczyć prostą statystykę (średnią) za pomocą
-techniki bootstrap.
-12.3.1. Technika bootstrap
-Podstawowe zadanie techniki bootstrap polega na znalezieniu rozkładu (przedziału
-możliwości) na podstawie jednego zbioru danych. Jeśli myślisz teraz o sprawdzianie
-krzyżowym, gdzie też jeden zbiór danych jest dzielony w celu uzyskania wielu wyników,
-4c2836bbe011706b10838f45bf5d766f
-12.3. Bagging i lasy losowe 405
-jesteś blisko prawdy. Obie te metody to techniki wielokrotnego pobierania próbek. Więcej
-o powiązaniach między tymi metodami dowiesz się za chwilę.
-Wróćmy teraz do techniki bootstrap. Wyobraź sobie, że masz zbiór danych i chcesz
-obliczyć na jego podstawie statystykę. Dla wygody niech będzie to średnia. Oczywiście
-istnieje prosty, bezpośredni wzór na średnią. Wystarczy zsumować wartości i podzielić
-wynik przez ich liczbę. Matematycznie zapis wygląda tak: n
-x średnia(X )   . Po co bawić
-się w bardziej skomplikowane rozwiązania? Ponieważ średnia oszacowana za pomocą jednego
-punktu, jednej obliczonej wartości, może być myląca. Nie wiadomo, jak zmienne są
-szacunki średniej. W wielu sytuacjach chcemy wiedzieć, o ile możemy się mylić. Dlatego
-zamiast zadowalać się jedną wartością, możemy zażądać rozkładu średnich, jakie można
-obliczyć na podstawie danych podobnych do analizowanego zbioru. Istnieją teoretyczne
-techniki opisu rozkładu średnich. Znajdziesz je w każdym podręczniku z wprowadzeniem
-do statystyki. Jednak w przypadku innych statystyk, także czegoś tak wyrafinowanego jak
-wyuczone klasyfikatory, nie istnieją wygodne, gotowe odpowiedzi obliczane za pomocą
-prostych wzorów. Zamiast nich można zastosować wtedy technikę bootstrap. Aby ustalić,
-jak obliczyć wartość za pomocą tej techniki, przyjrzyj się kodowi i rysunkom obrazującym
-ten proces.
-Pobieranie próbek ze zwracaniem i bez zwracania. Przed omówieniem procesu
-bootstrap trzeba objaśnić jeszcze jedną kwestię. Istnieją dwa sposoby pobierania próbek
-wartości z kolekcji danych. Pierwsze podejście to pobieranie próbek bez zwracania. Wyobraź
-sobie, że umieszczasz wszystkie dane w worku i chcesz pobrać ze zbioru danych jedną
-próbkę z pięcioma przykładami. Możesz włożyć rękę do worka, wyciągnąć przykład,
-zapisać go i odłożyć na bok. W tej technice — bez zwracania — przykład nie wraca do
-worka. Następnie należy wziąć z worka drugi przykład, zapisać go i odłożyć. Także tego
-przykładu nie należy wrzucać z powrotem do worka. Proces wyciągania należy powtarzać
-do momentu zapisania pięciu przykładów. Jest tu oczywiste, że to, który przykład zostanie
-wyciągnięty za pierwszym razem, ma wpływ na drugą, trzecią i kolejne operacje pobierania.
-Jeśli dany przykład został zabrany z worka, nie można go ponownie wyciągnąć. Pobieranie
-próbek bez zwracania sprawia, że wybory są zależne od tego, co stało się wcześniej. Przykłady
-nie są niezależne od siebie. To z kolei wpływa na to, jak statystycy traktują daną próbkę.
-Inne podejście to pobieranie próbek ze zwracaniem. Należy wyciągnąć przykład z worka ze
-zbiorem danych, zapisać wartość i zwrócić przykład do worka. Następnie pobieranie
-przykładów jest powtarzane do momentu uzyskania potrzebnej ich liczby. Pobieranie
-próbek ze zwracaniem (zobacz rysunek 12.3) daje sekwencję niezależnych przykładów.
-Jak więc zastosować technikę bootstrap do obliczenia statystyki dla próbki bootstrap?
-Należy losowo pobierać przykłady ze zwracaniem ze źródłowego zbioru danych do
-momentu uzyskania nowej próbki o tej samej liczbie elementów co pierwotny zbiór.
-Następnie można obliczyć potrzebną statystykę dla próbki bootstrap. Proces ten jest
-powtarzany kilkakrotnie, po czym należy obliczyć średnią ze statystyk dla poszczególnych
-próbek. Na rysunku 12.4 zobaczysz wizualnie, jak wygląda proces obliczania średniej
-z użyciem techniki bootstrap.[@confiusion]
+Działanie biblioteki sklearn dla lasoów losowych wygląda następująco :
+0. Wylosowanie podzbioru cech włączanych w dane drzewo.
+1. Typowanie kombinacji podziału obliczając prawdopodobieństwo wyboru i uśredniając wyniki. Wybierany jest podział na klase o najwyższym
+średnim prawdopodobieństwie .
+2. Utworzenie nowego węzła .
+3. W każdym podwęźle należy uwzględnić powiązane z nim dane i:
+ jeśli wartości docelowe są wystarczająco podobne, zwrócić prognozowaną
+wartość;
+ w przeciwnym razie wrócić do kroku 1. i powtórzyć proces.
 
-Lasy losowe (LL) to specjalny typ mechanizmów uczących się opartych na baggingu.
-Wykorzystuje się tu specyficzną wersję drzew decyzyjnych. Standardowe drzewa decyzyjne
-do utworzenia węzła wykorzystują tę spośród wszystkich cech, która daje najlepsze wyniki.
-W LL wybierany jest podzbiór cech, po czym podejmowane są decyzje optymalne na
-podstawie tego podzbioru. Celem jest wymuszenie zróżnicowania drzew. Możliwe jest, że
-nawet przy losowym doborze przykładów jedna cecha będzie ściśle powiązana z wartościami
-docelowymi. Taka najważniejsza cecha zapewne zostanie wybrana jako pierwszy punkt
-podziału we wszystkich drzewach. Pora zakończyć hegemonię takich cech.
+
+*Technika bootstrap*
+
+
 Gdy stosowana jest technika bootstrap, pierwszy punkt podziału w drzewach zwykle
 nie jest oparty na jednej cesze. Zamiast tego selektywnie ignorowane są niektóre cechy
 i wprowadzana jest losowość, aby uzyskać różne drzewa. Ta losowość powoduje, że
 w różnych drzewach uwzględniane są różne cechy. Pierwotny algorytm drzew losowych
 wykorzystywał głosowanie większościowe podobne jak w baggingu. Jednak algorytm LL
-4c2836bbe011706b10838f45bf5d766f
-12.3. Bagging i lasy losowe 411
-w bibliotece sklearn oblicza prawdopodobieństwo wyboru danej klasy przez każde drzewo
-z lasu, a następnie uśrednia wyniki, aby uzyskać ostateczną odpowiedź. Klasa o najwyższym
-średnim prawdopodobieństwie jest „zwycięzcą”.
-Jeśli zaczniesz od kodu przedstawionej wcześniej funkcji bagged_learner, musisz jeszcze
-zmodyfikować kod tworzenia drzewa (etap budowania modelu składowego) z podrozdziału 8.2.
-Jest to prosta modyfikacja, którą wyróżniłem kursywą:
-0. Losowy wybór podzbioru cech uwzględnianych w danym drzewie.
-1. Analiza wybranych cech i podziałów oraz wybór najlepszej kombinacji cecha-podział.
-2. Dodanie do drzewa węzła reprezentującego tę kombinację cecha-podział.
-3. W każdym podwęźle należy uwzględnić powiązane z nim dane i:
- jeśli wartości docelowe są wystarczająco podobne, zwrócić prognozowaną
-wartość;
- w przeciwnym razie wrócić do kroku 1. i powtórzyć proces.
-Używając tego pseudokodu jako bazowego estymatora, można w połączeniu z kodem
-funkcji bagged_learner szybko zbudować prototyp systemu uczącego się
-wykorzystującego las losowy.
-Ekstremalne lasy losowe i podział cech. Następna wersja to ekstremalne drzewa
-losowe. Nie, nie chodzi tu o igrzyska sportów ekstremalnych dla drzew losowych. Słowo
-ekstremalne dotyczy tu dodatkowego poziomu losowości w procesie tworzenia modelu.
-Przedstaw informatykowi jakąś ideę (zastąpienie deterministycznej techniki losowością),
-a zacznie ją stosować wszędzie. W ekstremalnych lasach losowych w procesie budowania
+
+ Istnieją dwa sposoby pobierania próbek
+wartości z kolekcji danych. Pierwsze podejście to pobieranie próbek bez zwracania. Proces wyciągania należy powtarzać
+do momentu zapisania pięciu przykładów. 
+Pobieranie
+próbek bez zwracania sprawia, że wybory są zależne od tego, co stało się wcześniej. Przykłady
+nie są niezależne od siebie. To z kolei wpływa na to, jak statystycy traktują daną próbkę.
+Inne podejście to pobieranie próbek ze zwracaniem. Następnie pobieranie
+przykładów jest powtarzane do momentu uzyskania potrzebnej ich liczby. 
+Należy losowo pobierać przykłady ze zwracaniem ze źródłowego zbioru danych do
+momentu uzyskania nowej próbki o tej samej liczbie elementów co pierwotny zbiór.
+Następnie można obliczyć potrzebną statystykę dla próbki bootstrap. Proces ten jest
+powtarzany kilkakrotnie, po czym należy obliczyć średnią ze statystyk dla poszczególnych
+próbek. [@confiusion]
+
+
+*Ekstremalne lasy losowe*
+
+4. . W ekstremalnych lasach losowych w procesie budowania
 składowych drzew wprowadzana jest następująca zmiana:
-1. Losowe generowanie punktów podziału i wybór najlepszego z nich.
+5. Losowe generowanie punktów podziału i wybór najlepszego z nich.
 Tak więc obok losowego wyboru uwzględnianych cech losowo ustalane są też punkty
-podziału. Zaskakujące jest, że ta technika się sprawdza — a może działać naprawdę dobrze.
-Do tej pory nie opisywałem szczegółowo procesu wyboru punktów podziału. Nie muszę
-go tu omawiać, ponieważ zrobili to inni autorzy. Ja cenię przede wszystkim podejście
-stosowane przez Fostera i Provosta w ich książce, którą podaję w końcowej części rozdziału.
-Proces wyboru dobrych punktów podziału przedstawię na przykładzie. Załóżmy,
-że chcę na podstawie prostych wskaźników biometrycznych przewidzieć, kto będzie
-dobrym koszykarzem. Wzrost — niestety dla osób takich jak ja — jest naprawdę dobrym
-prognostykiem sukcesów w koszykówce. Dlatego można zacząć od analizy tego, jak
-wzrost jest powiązany ze zbiorem danych opisującym dobrych i — tak jak w moim
-przypadku — słabych koszykarzy. Po uporządkowaniu danych według wzrostu może się
-okazać, że w koszykówkę próbowali grać ludzie o wzroście od 1,35 m do 2,10 m. Jeśli
-wprowadzę punkt podziału na poziomie 1,52 m, w zbiorze osób z niższym wzrostem
-zapewne znajdzie się wielu słabych koszykarzy. Jest to stosunkowo jednorodna grupa,
-jeśli chodzi o sukcesy w tym sporcie. Jednak zbiór osób wyższych niż 1,52 m prawdopodobnie
-będzie obejmował obie klasy. Występuje więc niska czystość (ang. purity) powyżej punktu
-podziału i wysoka czystość poniżej punktu podziału. Podobnie jeśli jako punkt podziału
-4c2836bbe011706b10838f45bf5d766f
-412 Rozdział 12. Łączenie mechanizmów uczących się
-wybiorę wartość 1,95 m, wśród wyższych osób większość zapewne będzie odnosić sukcesy,
-jednak wśród niższych graczy wyniki będą mieszane. Celem jest znalezienie odpowiedniego
-punktu podziału dla wzrostu, aby uzyskać możliwie dużo informacji na temat sukcesów
-— zarówno wśród niższych, jak i wśród wyższych osób. Wydzielenie graczy o niskim
-i wysokim wzroście daje dużo informacji. W środkowym segmencie ważne są inne
-czynniki, na przykład ilość czasu poświęcanego na grę.
+podziału. 
+6. 
 Tak więc w ekstremalnych lasach losowych nie uwzględnia się wszystkich możliwych
 punktów podziału. Zamiast tego wybierany jest losowy podzbiór analizowanych
 punktów. Następnie te punkty są oceniane i z tego ograniczonego zbioru wybierane są
 najlepsze punkty.
+
 
 Wśrod zalet lasów losowych nalezy wyróżnić iż potrafią one trafnie wykalkulować brakujace wartości cech. Idealnie
 znajdują zastosowanie dla realnych danych, których zasadniczym problemem jest ich niekompletność.  
