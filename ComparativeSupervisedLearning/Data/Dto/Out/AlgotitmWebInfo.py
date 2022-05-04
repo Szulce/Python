@@ -60,7 +60,7 @@ class AlgorithmWebInfo:
         self.knn_median_desc = information_object[9][0][0]
         self.knn_median_plot1 = information_object[10][0]
         self.knn_median_plot2 = information_object[10][1]
-        self.knn_median_beast_params = str(information_object[11][0])
+        self.knn_median_best_params = str(information_object[11][0])
 
         # SVM median
 

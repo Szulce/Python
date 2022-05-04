@@ -280,23 +280,12 @@ def specialized_figure(fig):
 
 
 def get_confusion_matrix():
-    macro_precision = metrics.make_scorer(metrics.precision_score, average='macro')
-    macro_average_precision = metrics.make_scorer(metrics.average_precision_score, average='macro')
-    accuracy_scorer = metrics.make_scorer(metrics.accuracy_score, average='macro')
-    balanced_accuracy_scorer = metrics.make_scorer(metrics.balanced_accuracy_score, average='macro')
-    r2_score = metrics.make_scorer(metrics.r2_score, average='macro')
-    macro_recall = metrics.make_scorer(metrics.recall_score, average='macro')
-    m_table = [macro_precision, macro_average_precision, macro_recall, accuracy_scorer,
-               balanced_accuracy_scorer, r2_score]
-    fig, axes = plt.subplots(len(m_table), 1, figsize=(6, 2 * len(m_table)))
+    fig, axes = plt.subplots(len(Rs.SCORER_DICTIONARY), 1, figsize=(6, 2 * len(Rs.SCORER_DICTIONARY)))
     fig.tight_layout()
     for type_m in Rs.MODELS:
-        cv_results_per_imp = []
-        for iter_grid in list(range(1, 3)):
-            grid = Ms.load_grid_scores(type_m, iter_grid)
-            cv_results_per_imp.append(grid.cv_results_)
-        for ax, msr in zip(axes, m_table):
-            msr_results = cv_results_per_imp[msr]
-            ax.plot(msr_results, 'o--')
-            ax.set_title(msr)
+        scorer_m = Ms.load_scorer_models(type_m)
+        for ax, i in zip(axes, Rs.SCORER_DICTIONARY.keys()):
+            results = scorer_m[i]
+            ax.plot(results, 'o--')
+            ax.set_title(i)
     return convert_plot_to_html(fig)

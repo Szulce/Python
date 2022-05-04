@@ -453,6 +453,21 @@ These estimators are still experimental: their predictions and their API might c
 
 We can see that the HalvingGridSearchCV class is able to find parameter combinations that are just as accurate as GridSearchCV, in much less time.
 
+![Schemat 24](img/24halving.png "HalvingGridSearchCV")[@scikit]{ width=60% }
+
+Przeszukuj określone wartości parametrów z sukcesywnym zmniejszaniem o połowę.
+
+Strategia wyszukiwania zaczyna oceniać wszystkich kandydatów przy niewielkiej ilości zasobów i iteracyjnie wybiera najlepszych kandydatów, wykorzystując coraz więcej zasobów.
+
+Mapy cieplne pokazują średni wynik testu kombinacji parametrów dla SVCinstancji. Pokazuje HalvingGridSearchCVrównież iterację, w której kombinacje były ostatnio używane. Kombinacje oznaczone jako 0zostały ocenione dopiero w pierwszej iteracji, natomiast te z 5oznaczeniem to kombinacje parametrów, które są uważane za najlepsze.
+
+Widzimy, że HalvingGridSearchCV klasa jest w stanie znaleźć kombinacje parametrów, które są tak samo dokładne jak GridSearchCV, w znacznie krótszym czasie.
+
+
+ikit-learn udostępnia również estymatory HalvingGridSearchCV i HalvingRandomSearchCV, które mogą być użyte do przeszukiwania przestrzeni parametrów przy użyciu sukcesywnego halvingu 1 2. Kolejne halving (SH) jest jak turniej wśród możliwych kombinacji parametrów. SH to iteracyjny proces selekcji, w którym wszyscy kandydaci (kombinacje parametrów) są oceniane przy użyciu niewielkiej ilości zasobów w pierwszej iteracji. Tylko niektórzy z tych kandydatów są wybierani do następnej iteracji, która otrzyma więcej zasobów. W przypadku dostrajania parametrów zasób to zazwyczaj liczba próbek uczących, ale może to być również dowolny parametr liczbowy, taki jak n_estimators w losowym lesie.
+________________________
+
+
 W projekcie dla każdego algorytmy zapróbkowano większość dostępnych dla danego modelu klasyfikacji hiperparametrów przekazywane w param_grid.
 
 Wykorzystane parametry wykonania GridSearchCv [@scikit]:

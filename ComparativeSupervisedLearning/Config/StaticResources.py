@@ -1,4 +1,5 @@
 import numpy
+from sklearn import metrics
 from sklearn.impute import SimpleImputer
 
 """" Store Static resources for example: paths, names of files, names of types   """
@@ -46,6 +47,9 @@ SLASH = "\\"
 
 DATA_INFO_PLOTS = "data_info_plots"
 ALGORITHM_INFO_PLOTS = "algorithm_info_plots"
+SCORER_MODEL = "_scorer_model"
+
+VERBOSE = 0
 
 RF_ = ' \nRF : \n'
 
@@ -122,7 +126,7 @@ N_NEIGHBORS = "n_neighbors"
 KNN_GRID_SPLITER = 7
 KNN_WEIGHTS = ['uniform', 'distance']
 KNN_ALGORITHM = ['auto', 'brute']
-                 # , 'kd_tree'
+# , 'kd_tree'
 
 KNN_LEAF_SIZE = [1, 15, 17, 30, 40, 50, 70, 81, 100]  # leaf_size <= n_points <= 2 * leaf_size
 KNN_P_PARAM = [1, 1.5, 2, 2.5]
@@ -154,6 +158,18 @@ RF_CPP = [0.0, 0.25]
 RF_N_ESTIMATORS = [10, 100, 1000]
 CV = 15
 
-
 COLUMNS = {"age": "wiek", "sex": "plec", "cp": "bol_w_klatce_piersiowej", "trestbps": "cisnienie_krwi",
-          "fbs": "cukier", "chol": "cholesterol", "num": "wynik"}
+           "fbs": "cukier", "chol": "cholesterol", "num": "wynik"}
+
+macro_precision = metrics.make_scorer(metrics.precision_score, average='macro')
+macro_average_precision = metrics.make_scorer(metrics.average_precision_score, average='macro')
+accuracy_scorer = metrics.make_scorer(metrics.accuracy_score, average='macro')
+balanced_accuracy_scorer = metrics.make_scorer(metrics.balanced_accuracy_score, average='macro')
+r2_score = metrics.make_scorer(metrics.r2_score, average='macro')
+macro_recall = metrics.make_scorer(metrics.recall_score, average='macro')
+SCORER_DICTIONARY = dict(precision=macro_precision,
+                         average_precision=macro_average_precision,
+                         recall=macro_recall,
+                         accuracy=accuracy_scorer,
+                         balanced_accuracy=balanced_accuracy_scorer,
+                         r2=r2_score)

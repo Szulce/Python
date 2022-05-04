@@ -93,3 +93,14 @@ def read_prediction(algorithm, iterator):
             all_predictions.append(prediction)
         json_f.close()
     return all_predictions
+
+
+def load_scorer_models(type_m):
+    filename = os.getcwd() + Rs.PREDICTION_ELABORATION_ + type_m + Rs.SCORER_MODEL + '.sav'
+    loaded_object = joblib.load(filename)
+    return loaded_object
+
+
+def save_scorer_models(type_m, model_object):
+    filename = os.getcwd() + Rs.PREDICTION_ELABORATION_ + type_m + Rs.SCORER_MODEL + '.sav'
+    joblib.dump(model_object, filename)
