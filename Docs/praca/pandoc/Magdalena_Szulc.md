@@ -4,7 +4,7 @@ author: [Magdalena Szulc]
 header: UNIWERSYSTET MIKOŁAJA KOPERNIKA WYDZIAŁ MATEMATYKI I INFORMATYKI
 date: "Toruń,2022-05-01"
 footer: Praca inż. napisana pod kierunkiem dr Piotr Przymus
-geometry: "left=3cm,right=3cm,top=2cm,bottom=2cm"
+geometry: "left=2.5cm,right=2.5cm,top=2cm,bottom=2cm"
 output: pdf_document
 titlepage: true
 titlepage-background: "`titlepage1.pdf`{=latex}"
@@ -545,14 +545,14 @@ Głównym zadaniem trybu nauczania jest utworzenie i wytrenowanie modeli dla 3 a
 
 Proces przygotowania danych zastosowany w prajekcie składa się z następujących kroków:
 
-1.Załadowanie i konkatenacja dataset'u , standardowo również wybranie cech znaczących głownie odbywające się poprzez odrzucenie nadmiarowych parametrów ,ale istnieje też możliwość dodania nowych np utowrzenie powierzchni na podstawie wymiarów zawartych w danych testowych.. Następnie należy wykonać wyeliminowanie cech nie wpływających na odpowiedź i dopiero po dokonaniu selecji przystapić do przetwarzania zebranych informacji.
+1. Załadowanie i konkatenacja dataset'u , standardowo również wybranie cech znaczących głównie odbywające się poprzez odrzucenie nadmiarowych parametrów ,ale istnieje też możliwość dodania nowych np utowrzenie powierzchni na podstawie wymiarów zawartych w danych testowych.. Następnie należy wykonać wyeliminowanie cech nie wpływających na odpowiedź i dopiero po dokonaniu selecji przystapić do przetwarzania zebranych informacji.
 
-2.Uzupełnienie pustych wartości - dla późniejszego porównania w projekcie tworzone są imputery dla 4 różnych form uzupełnienia, 
+2. Uzupełnienie pustych wartości dla późniejszego porównania w projekcie tworzone są imputery dla 4 różnych form uzupełnienia, 
 ale są to najbardziej podstawowe działania typu średnia wartość , najczęściej występująca wartość. Idealnym rozwiązaniem było by w przypadku posiadania eksperckiej wiedzy z danej dziedziny uzupełnienia brakujących wartości własnymi propozycjami. Innym sposobem może być wykorzystanie heurystyk specyficznych dla tworzonego modelu[@confiusion].
 
-3.Standaryzacja
+3. Standaryzacja
 
-4.Konwersja danych dla kategorii
+4. Konwersja danych dla kategorii
 
 5.Normalizacja z wykorzystaniem MinMaxScaler, zmiana skali w formie przykładu to na przykład przeliczenie temperatury z 
 stopni Celcjiusza do FahrenHeita. Wykonuje się ją by przesunąć wartości skrajne i pozbyć się nierówności w zbiorze[@confiusion].
@@ -560,7 +560,7 @@ stopni Celcjiusza do FahrenHeita. Wykonuje się ją by przesunąć wartości skr
 ### Trening algorytmu
 
 *Podział danych* na dane treningowe i testowe wykorzystuje zdefiniowane w bibliotece sklearn predefiniową funkcje train_test_split zwracającą cztery obiekty tablic dla x_testowych , y_testowch , x_treingowych oraz y_treningowych[@confiusion]. Tak spreparowany zestaw danych poddawany jest treningowi modelu kolejno dla każdego z algorytmów. 
-Do dostrojenia parametrów oraz znalezienia najlepszego modelu wykorzystuwany jest:
+Do dostrojenia parametrów oraz znalezienia najlepszego modelu wykorzystywany jest:
 ```Python
 
 GridSearchCV
@@ -606,7 +606,7 @@ Pierwszym z wymaganaych argumentów _GridSearchCV_ są estymatory. W projekcie i
 - metric:  -metryka odległości
 
 
-*RandomForestClassifier* [@scikit] :
+*RandomForestClassifier*  :
 
 - criterion: [todo] - funkcja pomiaru dokładności rozgałęzienia
 - min_samples_leaf: [todo] -minimalna liczba probek wymagana na liściu.
@@ -614,8 +614,7 @@ Pierwszym z wymaganaych argumentów _GridSearchCV_ są estymatory. W projekcie i
 - min_impurity_decrease: [todo] - większe lub równe zmniejszenie zanieczyszczenia powoduje podział danego węzła\
 Zmniejszenie zanieczyszczenia liczone jest zgodnie z wzorem:\
 ```
-N_t / N * (impurity - N_t_R / N_t * right_impurity
-                    - N_t_L / N_t * left_impurity)
+    N_t / N * (impurity - N_t_R / N_t * right_impurity  - N_t_L / N_t * left_impurity)
 ```
 
 gdzie N to całkowita liczba próbek, N_t to liczba próbek w bieżącym węźle, N_t_L to liczba próbek w lewym liściu, a N_t_R to liczba próbek w prawym liściu.
@@ -625,7 +624,7 @@ gdzie N to całkowita liczba próbek, N_t to liczba próbek w bieżącym węźle
 - cpp_aplha: [todo] - zastosowanie to przycinanie drzewa o największej złożoności mniejszej niż cpp_alpha
 
 
-*SVC* [@scikit] :
+*SVC*  :
  
 - C: [todo]float, default=1.0
 Regularization parameter. The strength of the regularization is inversely proportional to C. Must be strictly positive. The penalty is a squared l2 penalty.
@@ -644,7 +643,7 @@ gdzie n to liczba cech.
 
 - coef0: [todo] - niezależny parametr funkcji jądra , wykorzystywany tylko przy jądrach _poly_ i _sigmoid_.
 - shrinking: [todo] - heurystyka kurcząca
-- cache_size: [todo] - cache jądra (w MB).
+- cache_size: [todo] - cache jądra (w MB)[@scikit].
 
 Po odnalezieniu najlepszego estymatora model jest zapisywany oraz generowane sa wykresy dla trybu aplikacji webowej:
 
@@ -670,26 +669,26 @@ Zatwierdzenie formularza wyzwala odczytanie zapisanych modeli , iteracje i wykon
 
 ## Porównanie działania modeli
 
-### Wstęp
-
-Chodzi o to, że domyślna metoda oceny k-NN to średnia dokładność. Dokładność ma
-pewne fundamentalne ograniczenia i niebawem przejdziemy do tematu precision, recall,
-4c2836bbe011706b10838f45bf5d766f
-6.2. Więcej niż dokładność — wskaźniki dla klasyfikacji 187
-roc_auc i f1 z rozległej listy powyżej. Po co omawiać te wskaźniki i co jest nie tak
-z dokładnością? Czy nie jest dokładna? Cieszę się, że pytasz. Przejdźmy od razu do
-odpowiedzi na Twoje pytania.
-Oto szybki przykład tego, jaki jest problem z dokładnością. Pamiętaj: dokładność
-polega w zasadzie na zliczeniu, ile razy odpowiedź jest poprawna. Wyobraźmy sobie zestaw
-danych, wśród których mamy 100 pacjentów i rzadką chorobę. Cieszymy się, że choroba
-jest rzadka, niemniej jest bardzo niebezpieczna. W naszym zestawie danych mamy
-98 zdrowych pacjentów i 2 chore osoby. Weźmy prostą strategię bazową przepowiadającą,
-że wszyscy są zdrowi. Nasza dokładność wynosi 98%. To świetnie, prawda? Cóż, nie do
-końca. Znaleźliśmy dokładnie zero spośród ludzi, których mieliśmy znaleźć — tych, którzy
-wymagają leczenia. To poważny problem. Gdybyśmy mieli bardziej złożony system uczący się,
-który w taki sposób nie trafia z wynikami, bylibyśmy bardzo z niego niezadowoleni.
 W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podczas treningu i weryfikacji danych testowych.
 
+### Wskaźniki wydajności
+
+**Dokładność**
+
+Określenie stopnia, w jakim skonstruowany model z powodzeniem realizuje wyznaczone zadanie należy do wskaźnika
+wydajności. Przykładem nieprawidłowego wyboru może być próba przewidzenia wystąpienia rzadkiej choroby u pacjenta i
+określenie głownym miernikiem _dokładność_. W takim scenariuszu klasyfikacja wszystkich pacjentów jako zdrowych , daje
+niewiele odbiegającą od perfekcji dokładność, a jednocześnie błędnie osądzać każde wystąpienie choroby.
+ 
+Wynika to z definicji dokładności :
+```doctest
+Ilość poprawnych odpowiedzi
+---------------------------
+Ilość prób testowych
+```
+dla takiego działania przy sporadycznych przypadkach zachorowania uznawianie że wszsytkie przypadki są zdrowe (negatywne) uzystkujemy wysoki współczynnik dokładności pomimo że zadanie zlokalizowania niezdrowych pacjentów zakończyło się niepowowdzeniem.
+Informacją która powinna wynikać z oceny algorytmu to ile pozytywnych (cierpiących na choroby wieńcowe) zlokalizowano poprawnie, taki rodzaj oceny nazywany jest czułością.
+ 
  - | Dokładność w %       |  |  | | | | | |
 ------: |-:| -----: | -: | -: | ------: | -: | -: | -: | -:|
  |Parametryzacja           |    |  parametry domyślne |    |    | wyznaczanie parametrow|    |   |    |
@@ -697,79 +696,26 @@ W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podcza
 |Losowe lasy decyzyjne    | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
  |Maszyna wektorów nośnych | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
  |K-najbliższych sąsiadów  | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
- 
- *Możemy zadawać pytania i uzyskiwać odpowiedzi za pomocą macierzy błędu. Na przykład,
-jeżeli jesteśmy lekarzami, interesuje nas, jak dobrze jesteśmy w stanie identyfikować ludzi,
-którzy rzeczywiście są chorzy. Skoro zdefiniowaliśmy chorobę jako nasz wynik pozytywny,
-są to nasze osoby z pierwszego rzędu. Pytamy, jak dobrze nam poszło dla RzeczP: ile spośród
-rzeczywiście chorych osób wykryliśmy poprawnie: RzeczP
-TP
-TP FN
-TP   . Określamy to terminem
-czułość. Można to określić następująco: „Jak dobrze test jest dopasowany do znajdowania
-chorych ludzi” — nacisk kładziony jest na chorych ludzi. Jest to też nazywane skutecznością
-wyszukiwania przez ludzi zawodowo zajmujących się wyszukiwaniem informacji.
-Różne społeczności wymyśliły tę koncepcję niezależnie, dlatego nadały jej inne nazwy.
-Aby zrozumieć skuteczność wyszukiwania, pomyśl o ruchu wyszukiwarki internetowej.
-Spośród interesującego nas ruchu, RzeczP, ile zapytań odnaleźliśmy lub wyszukaliśmy
-poprawnie? Jeszcze raz dla czułości i skuteczności wyszukiwania interesuje nas
-poprawność w przypadku rzeczywistych pozytywnych lub interesujących nas przykładów.
-Czułość ma jeszcze jeden powszechnie używany synonim: współczynnik poprawnie
-pozytywnych (TPR — ang. true positive rate). Nie szukaj ołówka, aby to zapisać; za moment
-przedstawię Ci tabelę terminów. TPR jest współczynnikiem przypadków poprawnie
-pozytywnych w odniesieniu do rzeczywistości.
+
+
+Utarło się że wśród problemów machine learning'owych dotyczących danych medycznych najbardziej powszechnie stosowanym parametrem oceny jest 
+*czułość* (ang. _true_ _positive_ _rate). 
 Jest jeszcze kwestia związana z chorymi osobami, które odnaleźliśmy poprawnie:
 chore osoby, które oceniliśmy błędnie. Taki błąd nazywany jest błędnym negatywnym
-(ang. false negative — FN). Zgodnie ze wzorem chorzy ludzie, w przypadku których się
-pomyliliśmy, to TP FN
-FN
- . Możemy dodać chorych ludzi, których oceniliśmy poprawnie,
-i chorych ludzi, których nie odnaleźliśmy, aby uzyskać liczbę wszystkich chorych ludzi.
-Matematycznie wygląda to tak:  1  100% 
-     TP FN
-TP FN
-TP FN
-FN
-TP FN
-TP . Te równania
-mówią, że mogę rozbić wszystkich chorych ludzi na (1) chorych, o których myślę, że są
-chorzy, i (2) chorych, o których myślę, że są zdrowi.
-Możemy również zapytać: „Jak dobrze idzie nam ze zdrowymi ludźmi?”. Nasza uwaga
-przenosi się teraz do drugiego rzędu RzeczN. Jeżeli jesteśmy lekarzami, chcemy wiedzieć,
-jaka jest wartość naszego testu, kiedy ludzie są zdrowi. O ile ryzyko jest inne, wciąż występuje
-ryzyko błędnej diagnozy zdrowej osoby. My — bawiący się przez chwilę w lekarzy — nie
+(ang. false negative — FN). 
+My — bawiący się przez chwilę w lekarzy — nie
 chcemy mówić ludziom, że są chorzy, kiedy są zdrowi. Nie tylko straszymy ich i dajemy powód
 do zmartwienia, ale możemy przepisać im zabiegi i lekarstwa, których nie potrzebują! Taki
 przypadek nazywany jest błędnym pozytywnym (ang. false positive — FP). Możemy go ocenić,
-patrząc na to, jak dobrze poszło nam ze zdrowymi osobami: RzeczN
-TN
-FP TN
-TN   .Terminem
+patrząc na to, jak dobrze poszło nam ze zdrowymi osobami:
+.Terminem
 diagnostycznym jest tutaj specyficzność testu: czy test zgłasza alert tylko w specyficznych
-4c2836bbe011706b10838f45bf5d766f
-190 Rozdział 6. Ocena klasyfikatorów
+
 przypadkach, o które nam chodzi. Specyficzność jest także nazywana współczynnikiem
 poprawnie negatywnych (ang. true negative rate — TNR). W istocie jest to częstotliwość
-występowania przypadków prawdziwie negatywnych w odniesieniu do rzeczywistości.
-Ostatnia kombinacja macierzy błędu bierze predykcje jako część główną, a rzeczywistość
-jako drugorzędną. Ja widzę to jako odpowiedź na pytanie: „Jaka jest wartość naszego testu,
-kiedy wynik jest pozytywny?” lub bardziej zwięźle: „Jaka jest wartość trafienia?”. Cóż, trafienia to
-PredP. W ramach PredP obliczymy liczbę poprawnych: TP. Wtedy otrzymamy TP FP
-TP
-PredP
-TP
-  ,
-nazywane dokładnością. Spróbuj dziesięć razy szybko powiedzieć: „Jak dokładne są nasze
-predykcje pozytywne?”.
-Rysunek 6.1 przedstawia macierz błędu wraz ze wskaźnikami jej oceny.
-Rysunek 6.1. Macierz błędu poprawnych i niepoprawnych predykcji
-Jeszcze jeden komentarz odnośnie do macierzy błędu. Podczas czytania o niej możesz
-zauważyć, że niektórzy autorzy zamieniają osie: ustawiają rzeczywistość w kolumnach,
-a predykcje w wierszach. Wtedy TP i TN będą tymi samymi komórkami, ale FP i FN będą
-zamienione. Nieświadomy czytelnik może być bardzo, bardzo skonsternowany. Uznaj się
-za ostrzeżonego i bądź uważny, czytając inne omówienia macierzy błędu.*[@confiusion]
+występowania przypadków prawdziwie negatywnych w odniesieniu do rzeczywistości. [@confiusion]
 
-#### Zestawienie efektywności działania algorytmów
+### Zestawienie efektywności działania algorytmów
 
 Konfrontacja technik ucznia maszynowego zaleznie od zestawu danch będzie dawała odmienne wyniki ze względu na ich
 predyspozycje do zajmowania się odpowiednimi zbiorami danych.
@@ -787,12 +733,6 @@ K-najbliższego sąsiada może być przydatny w przypadku danych nieliniowych or
 wyjściowa obiektu jest obliczana przez średnią k wartości najbliższych sąsiadów. Niestety tak samo jak w przypadku maszyny wektorów nośnych jest wolniejsza i bardziej kosztowna pod względem czasu i
 pamięci. Wymaga dużej pamięci do przechowywania całego zestawu danych treningowych do przewidywania oraz nie nadaje się również do dużych danych wymiarowych. 
 
-**Wskaźniki wydajności**
-
-Określenie stopnia, w jakim skonstruowany model z powodzeniem realizuje wyznaczone zadanie należy do wskaźnika
-wydajności. Przykładem nieprawidłowego wyboru może być próba przewidzenia wystąpienia rzadkiej choroby u pacjenta i
-określenie głownym miernikiem _dokładność_. W takim scenariuszu klasyfikacja wszystkich pacjentów jako zdrowych , daje
-niewiele odbiegającą od perfekcji dokładność, a jednocześnie błędnie osądzać każde wystąpienie choroby.
 
 
 ###  Losowe lasy decyzyjne
@@ -897,6 +837,9 @@ wprowadź opis obrazu tutaj
 Wtedy wynik Twojego modelu będzie gorszy po optymalizacji na zestawie treningowym. Wynik Twojego modelu będzie również zły dla zestawu testowego, jeśli Twój model w dużym stopniu opiera się na jednej funkcji do klasyfikacji.
 
 Możesz użyć krzywej uczenia się, aby zobaczyć, jak zmienia się krzywa, gdy używasz optymalizacji, a kiedy jej nie używasz. Możesz też użyć df.corr(), aby zobaczyć macierz korelacji dla korelacji między wartościami cech a wartościami docelowymi.
+
+
+
 ++++++++++++++
 Spis ilustracji{.unnumbered}
 ========

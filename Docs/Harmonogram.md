@@ -7,8 +7,8 @@ zapisać wyniki z parametrami
 zapisać wyniki dla regresji z parametrami tylko dla KNN-
 
 
-dodać wstęp do każdego większego rozdziału 1/2/3/4
-przerwa 20 minut
+dodać wstęp do każdego większego rozdziału 2/3/4
+przerwa 10 minut
 
 dodać opis możliwości rozszerzenia projektu 
 dodać obszerniejszy opis dlaczego nie wykorzystano innego uczenia
