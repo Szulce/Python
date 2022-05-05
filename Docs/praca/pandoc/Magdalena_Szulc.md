@@ -104,8 +104,8 @@ W pracy opisano następujące algorytmu uczenia nadzorowanego:
 
 Omówienie teoretyczne rozpoczynają defninicje podstawowych pojęć wykorzystywanych w dalszych częściach, zaczynając od Algorytmu.
 
-*Algorytm* to pojęcie matematyczne odpowiadające za szereg działań prowadzących do uzyskania żądanego rozwiązania, bazując 
-na wynikach działań krokami opisujemy np problem znajdowania najktórszej drogi jak i zarówno tłumaczenie języka na podstawie analizy mowy.
+*Algorytm* to pojęcie matematyczne odpowiadające za szereg działań prowadzących do uzyskania żądanego rozwiązania. Bazując 
+na wynikach działań, krokami opisujemy np.: problem znajdowania najkrótszej drogi lub tłumaczenie języka na podstawie analizy mowy.
 
 **Uczenie maszynowe** (ang. _machine learning_, ML) to dziedzina zajmująca się tworzeniem modeli do analizy bardzo obszernych zasobów danch. Modele utworzone za pomocą algorytmów uczenia maszynowego są w stanie z wysokim prawdopodobieństwem wystawić predyckję lub dokonać klasyfikacji na temat zadanego problemu. 
 
@@ -115,16 +115,18 @@ Sposób wykorzystania segreguje algorytmy uczenia maszynowego na dwie kategorie,
 sposobu _trenowania_ algorytmu. Algorytmy dzieli się na m.in.: uczenie nadzorowane, uczenie częściowo nadzorowane, uczenie bez nadzoru oraz uczenie przez
 wzmacnianie[@3].
 
-![Schemat 1](img/1algorithms_category.png "Algorytmy z podziałem na kategorie"){ height=100% }
-
 Dobór typu uczenia oraz algorytmu uzależniony jest od danych wejściowych, oraz oczekiwanego rezultatu. Dane wyjściowe
-mogą przyjmować format odpowiedzi TAK/NIE, klasyfikacji do danego zbioru czy np procentowej oceny ryzyka.
+mogą przyjmować format odpowiedzi TAK/NIE, klasyfikacji do danego zbioru czy np.: procentowej oceny ryzyka.
 
 **Uczenie maszynowe nadzorowane** (ang. _supervised learning_) to klasa algorytmów uczenia maszynowego, która bazuje na
 po etykietowanych danych. Nadzór polega na porównaniu rezultatów działania modelu z wynikami, które są zawarte w danych wejściowych ( _dane oznaczone_ ) [@learning].
 Algorytm po osiągnięciu żądanej efektywności jest w stanie dokonać klasyfikacji przykładu, dla którego nie posiada
 odpowiedzi. Sprawdza się to obecnie w rekomendacji produktów oraz diagnozie chorób. Z matematycznego puntu widzenia
 dopasowanie danych oznaczonych nazywane jest aproksymacją funkcji[@3].
+
+
+![Schemat 1](img/1algorithms_category.png "Algorytmy z podziałem na kategorie"){ height=100% }
+
 
 **Uczenie maszynowe bez nadzoru** (ang. _unsupervised learning_) to klasa algorytmów uczenia maszynowego, która wiodąco rozwiązuje problemy grupowania. Dane dostarczane do modelu nie zawierają _oznaczeń_, zatem nauczanie polega na wyciąganiu konkluzji z poprzednio wykonanych iteracji. Na skuteczność modeli budowanych w oparciu o uczenie bez nadzoru
 wpływ ma rozmiar dostarczonego do nauki zbioru danych, im jest on większy, tym bardziej wzrasta efektywność. Takie zbiory można uzyskać rejestrując dane na bierząco dlatego do najczęstrzych zastosowań tej klasy algorytmów zaliczamy rozpoznawanie mowy czy obrazu[@3].
@@ -142,6 +144,7 @@ Uczenie nadzorowane przedstawiając oficjalną matematyczną definicję:
 (xi, yi) to punkt z zakresu xi ∈ X oznaczony etykietą yi dla danych wejściowych oznaczonych jako X. 
 
 Zbiór (xi,yi) to tgzw. dane uczące, na podstawie których metody uczenia próbują wywnioskować funkcję, która ustali y dla nieoznakowanego x.
+
 Większy zasób punktów sprawdzający działanie, czyli dane testowe definiujemy następująco[@scikit-learn-two]:
 
 ```
@@ -153,14 +156,15 @@ DU = (xi)l+u          gdzie : i=l+1
 Oba przedstawione poniżej typy sysytematyzją w oparciu o dostarczone dane wejściowe i mają one wspólną część polegającą na budowaniu modelu
 separującego kategorie docelowe w użyteczny i dokładny sposób.[@introduction]
 
-*Klasyfikacja* - decyduje o przynależności do zbioru,kategorii, grupy lub klasy.
-*Regresja* - daję ciągłą prognozę korelacji między zmiennymi, standardowym przykładem zastosowania jest prognoza pogody. 
-Realne pomiary temperatury, prędkości wiatru, ciśnienia wpływają na finalną odpowiedź. Sama regresja dzieli się również na kategorie ze względu na skomplikowanie, najprostszym przykładem jest oczywiście regresja liniowa.
+*Klasyfikacja* - decyduje o przynależności do zbioru, kategorii, grupy lub klasy.
 
-Analogiczne typy i stanieją dla uczenia bez nadzoru jak na przykład *grupowanie*, które klasyfikuje dane w zbiory. Rozbieżność z klasyfikacją polega na wykorzystaniu do wykonania oceny korelacji podobnych cech, a nie wsad danych testowych. 
+*Regresja* - daję ciągłą prognozę korelacji między zmiennymi, standardowym przykładem zastosowania jest prognoza pogody. 
+Realne pomiary temperatury, prędkości wiatru, ciśnienia wpływają na finalną odpowiedź. Sama regresja dzieli się również na kategorie ze względu na skomplikowanie, najprostszym przykładem jest regresja liniowa.
+
+Analogiczne typy i stanieją dla uczenia bez nadzoru jak na przykład *grupowanie*, które klasyfikuje dane w zbiory. Rozbieżność z klasyfikacją polega na wykorzystaniu do wykonania oceny korelacji podobnych cech, a nie wsadu danych testowych. 
 
 *Redukcja wymiarowa* to jak nazwa wskazuje pozbycie się nieistotnych atrybutów i odrzuceniu duplikatów, a co za tym idzie wymiaru 
-data set'u. Dobrym przykładem byłoby tutaj analizy zawartości skrzynki pocztowej i szukanie spamu. 
+data set'u. Dobrym przykładem byłoby tutaj analiza zawartości skrzynki pocztowej i szukanie spamu. 
 
 Podział osób na kategorie cierpiące na choroby sercowo-naczyniwe oraz zdrowe to dylemat klasyfikacyjny nadający się do
 rozwiązania za pomoc algorytmów uczenia maszynowego nadzorowanego i na nich skupia się dalsza część pracy.
@@ -193,8 +197,6 @@ Analiza uczenia maszynowego wymusza stosowanie rozróżnienia przy pojęciach pa
 Cechy, dla których szukamy optymalnych wartości, które stanowią podstawe modelu i ich dostrajanie wykonywane jest podczas treningu nazywane są parametrami i hiperparametrami.
  Argumenty natomiast to liczby znajdujące się w wierszach zbioru danych, które podlgają zmianie tylko podczas preprocesingu.
 Nazewnictwo hiperparametrów wykorzystywane jest w przypadku zastosoawnia dla nich walidacji krzyżowej.
-
-![Schemat 22](img/22corelation1.png "corelation"){ width=50% } ![Schemat 23](img/23corelation2.png "corelation"){ width=50% } 
 
 *Nadmierne dopasowanie(ang. _overfitting_ )*
 
@@ -244,6 +246,7 @@ Rozkład chorób serca w danych testowych to 44.67% chorych, czyli 509 prób poz
 W danych testowych znajduje się 726 przypadków osób płci męskiej oraz 194 żeńskiej. Dla zachorowań widać nierówność, ale jest ona spowodowana rzeczywistą statystyką.
 Tylko u 25.77% badanych kobiet stwierdzono występowanie chorób wieńcowych, natomiast wśród badanych mężczyzn jest to aż 63.22%. [@UCI]
 
+
 W przypadku danych testowych z repozytorium UCI fakt, iż dane pochodziły z róźnych lokalizacji ma duże znaczenie, gdyż
 od placówki medycznej zależy jakim badaniom poddani zostali pacjęci a co za tym idzie, w jakich kolumnach tabelarycznego
 przedstawienia będą mieć uzupełnione bądź puste wartości. Scalenie ze sobą wyników badań dostarcza większej różnorodności
@@ -258,7 +261,6 @@ na danych tekstowo-liczbowych poprawne będzie zastosowanie schematu przedstawio
 
 ![Schemat 4](img/2data_preprocessing.png "Wstępna obróbka danych"){ width=50% }
 
-
  Po złączeniu można przeprowadzić szereg działań w celu sztucznego uzupełnienia pustych wartości bazując na wartościach, które już istnieją.
 
 *Obsługa brakujących wartości*
@@ -266,8 +268,9 @@ na danych tekstowo-liczbowych poprawne będzie zastosowanie schematu przedstawio
 Możliwościami obsługi brakujących wartości są: mniej polecana ze względu na utratę danych, redukcja zestawu danych lub uzupełnienie go zgodnie z wybrany przez siebie założeniem. Biblioteki do nauczania
 maszynowego dostarczają już gotowe rozwiązania do upuszczenie wierszy lub kolumn zawierających wartości
 _null_. Uzupełnienie danych inaczej _imputacja_ rozwiązuje problem w mniej stratny sposób i tak samo, jak do redukcji są już
-gotowe rozwiązania w bibliotece sklearn. Istnieją 4 różne strategie uzupełniania wykorzystujące proste matematyczne
-obliczenia takie jak:
+gotowe rozwiązania w bibliotece sklearn. 
+
+Istnieją 4 różne strategie uzupełniania wykorzystujące proste matematyczne obliczenia takie jak:
 
 - średnia,
 - mediana,
@@ -282,7 +285,7 @@ Przekształcenie danych również bazujące na statystycznych założeniach i r�
 bibliotekach. Dąrzymy, aby średnia wartoś wynosiła 0, a odchylenie standardowe 1 dla liczbowych reprezentacji danych. Z
 matematyczne punktu widzenia wykonujemy działanie
 
-![Schemat 5](img/13wzor_1.png "wzór: podejmujemy średnią i dzielimy ją przez odchylenie standardowe"){ width=20% } [@standar]
+![Schemat 5](img/13wzor_1.png "wzór: podejmujemy średnią i dzielimy ją przez odchylenie standardowe"){ width=30% } [@standar]
 
 *Obsługa zmiennych kategorialnych*
 
@@ -297,10 +300,10 @@ Obsługa danych kategorialnych pozwoliła zmapować/zakodować je w postaci licz
 
 Znalezienie korelacji współliniowości polega na szukaniu liniowej zależności pomiędzy danymi, najłatwiej zauważyć to tworząc wykresy z danych testowych dla każdej pary[@wektor].
 
-Zgodnie z poniższym schematem po przeprocesowaniu wejściowego zbioru danych, należy go podzielić na dane treningowe oraz ewaluacyjne. Powszechnie stosowana K krzyżowa walidacja umożliwia maksymalne wykorzystanie dostarczonego wejścia do dostrajania parametrów modelu, ponieważ optymalizacja hiperparametrów połączone z ciągłą weryfikacją poprawności to sedno treningu.
+![Schemat 22](img/22corelation1.png "corelation"){ width=50% } ![Schemat 23](img/23corelation2.png "corelation"){ width=50% } 
 
 
-![Schemat 8](img/6Nauczanie_maszynowe_rozszerzone.png "Szczegółowy schemat machine learning flow"){ height=45% }
+Zgodnie z schematem po przeprocesowaniu wejściowego zbioru danych, należy go podzielić na dane treningowe oraz ewaluacyjne. Powszechnie stosowana K krzyżowa walidacja umożliwia maksymalne wykorzystanie dostarczonego wejścia do dostrajania parametrów modelu, ponieważ optymalizacja hiperparametrów połączone z ciągłą weryfikacją poprawności to sedno treningu.
 
 
 **K-krotna walidacja krzyżowa** (ang. _K-fold Cross Validation_) - metoda weryfikacji działająca poprzez podział
@@ -310,6 +313,10 @@ musi być równe lub mniejsze niż liczba elementów w zbiorze[@kfold;@kfold2].
 Kluczowym elementem jest ewaluacja, która odbywa się na końcu każdej z k-1 iteracji w celu dostosowania parametrów, po
 osiągnięciu wymaganych lub ustalonych wartości dokładności modelu, lub weryfikacji wszystkich możliwych opcji i
 znalezienie najlepszego modelu można go wykorzystać do weryfikacji na danych spoza zestawu testowego.
+
+
+![Schemat 8](img/6Nauczanie_maszynowe_rozszerzone.png "Szczegółowy schemat machine learning flow"){ height=45% }
+
 
 
 ## Wybrane algorytmy uczenia maszynowego nadzorowanego
@@ -359,7 +366,8 @@ W związku z tym do kroków procesu oprócz losowania cech dodatkowo losowo okre
 
 
 Wśród zalet lasów losowych należy wyróżnić, iż potrafią one trafnie wykalkulować brakujące wartości cech. Idealnie
-znajdują zastosowanie dla realnych danych, których zasadniczym problemem jest ich niekompletność.  
+znajdują zastosowanie dla realnych danych, których zasadniczym problemem jest ich niekompletność. 
+
 Dane medyczne posiadają szeroką wariację zmiennych z dużym prawdopodobieństwem wybrakowania, zastosowanie do nich lasów
 decyzyjnych ma potencjał na pozytywne rezultaty.
 
@@ -371,16 +379,15 @@ nadzorowanego, który każdy parametr z dostępnych cech dla danych wejściowych
 podstawie ułożenia punktów dzieli się je na 2 klasy. Graficznie jest to reprezentowane przez prostą, dla której odległość
 między najbliższymi dwoma punktami dla wektorów jest możliwie największa.
 
-![Schemat 10 ](img/10svm_schemat.png "Schmat SVM"){ height=20% } [^schemat_wzorowany]
+![Schemat 10 ](img/10svm_schemat.png "Schmat SVM"){ height=20% } [@schemat] ![Schemat 11](img/9svm_niemozliwy_podzial_schemat.png "Schemat SVM niemożliwy podział"){ height=20% } [@schemat]
+
 
 Taka prosta nazywana jest _prostą marginalną_
 i powstaje ona poprzez generowanie i selekcję tych prostych, które rzetelnie szufladkują klasy danych[@3;@32].
 
 Technika ta gwarantuje precyzyjniejsze regulatory niż drzewa decyzyjne, niestety dla dużych zbiorów danych czas trwania
 szkolenia znacznie się wydłuża oraz istnieją przypadki, dla których podział jedną prostą jest niewykonalny, taki
-przypadek reprezentuje rozkład na schemacie nr 2.
-
-![Schemat 11](img/9svm_niemozliwy_podzial_schemat.png "Schemat SVM niemożliwy podział"){ height=20% } [^schemat_wzorowany]
+przypadek reprezentuje rozkład na drugim schemacie.
 
 Z powyższego schematu widać, że prosta marginalna ma zastosowanie w przypadku dwóch wymiarów, 
 dla większej ilości stosowane jest przekształcenie do innego systemu współrzędnych i szukanie hiperpłaszczyzny brzegowej dzielącej tak samo, jak prosta punkty w przestrzeni na dwa zbiory.[@hiper] 
@@ -391,7 +398,7 @@ Idea działania maszyny wektorów nośnych opiera się na wyznaczenia minimalnej
 
 ![Schemat 13](img/16svm_wzor2.png "svm wzór"){ height=10% } [@svmW0]
 
-W przypadku prostej wersji podziału poprzez prostą optymalizacja polega na redukcji danych potrzebnych do uzyskania rozbicia. Margines między kategoriami powinien być maksymalny, żeby zminimalizować błąd dla próby testowej oraz proste uogólnianie. Nawet w przypadku zastosowania
+W przypadku prostej wersji podziału poprzez prostą optymalizacja polega na redukcji danych potrzebnych do uzyskania rozbicia. Margines między kategoriami powinien być maksymalny, żeby zminimalizować błąd dla próby testowej. Nawet w przypadku zastosowania
 hiperpłaszczyzny punkty dzielone są na 2 klasy dlatego nie stosuje się go do grupowania i klasyfikacji dla większej ilości. W bibliotece sklearn konwencja przyjmuje stosowanie zasady podziału ang. _one-versus-rest_ i oferuje ponad trzy podejścia formułowania estymatora klasyfikacji:
 _SVC_, _LinearSVC_, _NuSVC_ itd.
 
@@ -421,7 +428,7 @@ KNN jest to liczba sąsiadów i może przyjmować maksymalnie wartości do rozmi
 W celu przewidzenia wartości dla nowych danych należy odnaleźć K najbliższych punktów wyliczając odległości, a
 następnie przepisać odpowiedź implikowaną przez większość sąsiadów. Dla wartości K równej jeden, metoda ta nazywana jest
 algorytmem najbliższego sąsiada.
-![Schemat 12](img/5knn_schemat.png "Schmat KNN"){ width=50% } [^schemat_wzorowany]
+![Schemat 12](img/5knn_schemat.png "Schmat KNN"){ width=50% } [@schemat]
 
 Dla lekarza wartością dodatnią jest wykrycie zależności, które decydują o uznaniu lub zaprzeczeniu występowania choroby.
 Zastosowanie algorytmu KNN może nie tylko zakwalifikować osoby chorujące na serce, ale również ułatwić swoją graficzną
@@ -595,7 +602,10 @@ Pierwszym z wymaganych argumentów _GridSearchCV_ są estymatory. W projekcie ic
 - min_impurity_decrease: 0.0 - większe lub równe zmniejszenie zanieczyszczenia powoduje podział danego węzła\
 Zmniejszenie zanieczyszczenia liczone jest zgodnie ze wzorem:\
 ```
-    N_t / N * (impurity - N_t_R / N_t * right_impurity  - N_t_L / N_t * left_impurity)
+    N_t / N * 
+    (impurity -
+     N_t_R /N_t * right_impurity  
+     - N_t_L / N_t * left_impurity)
 ```
 
 gdzie N to całkowita liczba próbek, N_t to liczba próbek w bieżącym węźle, N_t_L to liczba próbek w lewym liściu, a N_t_R to liczba próbek w prawym liściu.
@@ -650,7 +660,9 @@ Analiz algorytmów w postaci wykresów przedstawia osoby wykres dla każdego zde
 - recall,
 - r2
 
-ale sam model jest zapisywany i analizowany tylko dla wartości scorer = 'accuracy'. Tworzone są 3 typy wykresów:
+ale sam model jest zapisywany i analizowany tylko dla wartości scorer = 'accuracy'.
+
+Tworzone są 3 typy wykresów:
 
 - porównanie oparte na danych dla *wyniku*: 'mean_test_score', 'std_test_score', 'rank_test_score', 'split0_test_score'
 - porównanie oparte na danych dla *czasu*: 'mean_fit_time', 'std_fit_time', 'mean_score_time', 'std_score_time'                      
@@ -694,7 +706,7 @@ Dla takiego działania przy sporadycznych przypadkach zachorowania uznawianie, �
 Informacją, która powinna wynikać z oceny algorytmu to ile pozytywnych (cierpiących na choroby wieńcowe) pzrykładów zlokalizowano poprawnie, taki rodzaj oceny nazywany jest czułością.
  
  - | Dokładność w %       |  |  | | | | | |
-------: |-:| -----: | -: | -: | ------: | -: | -: | -: | -:|
+------: |-:| -----: | -: | -: | ------: | ---: | -: | -: | -:|
  |Parametryzacja           |    | wyznaczanie parametrow |    |    |  parametry domyślne |    |   |    |
  |Algorytm / Imputer       | średnia | mediana | stała | naj. wartość | średnia | mediana | stała | naj. wartość |
 |Losowe lasy decyzyjne    | 83.9% | 81.4% | 81.2% | 81.1% | 81.6% | 81.3% | 81.2% | 81.1% |
@@ -715,7 +727,8 @@ Kolejnym rozpowszechnionym parametrem oceny jest specyficzność inaczej współ
 Konfrontacja technik ucznia maszynowego zależnie od zestawu danych będzie dawała odmienne wyniki ze względu na ich
 predyspozycje do zajmowania się odpowiednimi zbiorami danych.
 
-*Potencjał algorytmów dla niewielkiego kompletu danych zawierającego wartości* 
+
+**Potencjał algorytmów dla niewielkiego kompletu danych zawierającego wartości**
 
 Zaczynając od drzew decyzyjnych, można od razu stwierdzić ich niski potencjał. Istnieje zbyt duże prawdopodobieństwo
 dopasowania się do modelu treningowego, gdyż wspomniany zbiór mordancy wejściowych nie jest wystarczająco liczny. Dlatego
@@ -759,7 +772,7 @@ Wynik dla danych utworzonych z modelu, który puste wartości zastępuje:
     - zrównoważoną dokładność: 0.749017199017199, 
     - utrata regresji błędu średniokwadratowego: 0.24456521739130435.
   
-![Schemat 33](img/33knn_acc.png "Knn acc"){ height=40% }
+![Schemat 33](img/33knn_acc.png "Knn acc"){ height=30% }
   
 Parametry najwydajniejszego modelu dla danych utworzonych z modelu, który puste wartości zastępuje:
 
@@ -828,7 +841,7 @@ Wynik dla danych utworzonych z modelu, który puste wartości zastępuje:
     - zrównoważoną dokładność: 0.8122850122850123 
     - utrata regresji błędu średniokwadratowego: 0.18478260869565216
     
-![Schemat 34](img/34rf_acc.png "Rf acc"){ height=40% }
+![Schemat 34](img/34rf_acc.png "Rf acc"){ height=30% }
 
 Tak samo jak w przypadku algorytmu k-najbliższych sąsiadów nalepszy wynik uzyskany dla imputera w postaci średniej. 
 
@@ -839,7 +852,7 @@ Algorytm w porównaniu do Knn zwraca mniejszą dokładność, ale wartości taka
 
 ###  Maszyna wektorów nośnych
 
-![Schemat 34](img/35svm_acc.png "Svm acc"){ height=40% }
+![Schemat 34](img/35svm_acc.png "Svm acc"){ height=30% }
 
 Algorytm maszyny wektorów nośnych uzyskuje następujące wyniki przy uwzględnieniu, że puste wartości są zastępowanie:
 
@@ -900,24 +913,26 @@ Czas uczenia w sekundach dla jednego imputera dla listy spreparowanych parametr�
 - algorytm wektorów nośnych: 0.6093
 - algorytm lasów losowych: 6.302
 
-W obu przypadkach trening danych dla lasów losowych jest dłuższy niż w przypadku algorytmów KNN i SVM.
+W obu przypadkach trening danych dla lasów losowych jest dłuższy niż w przypadku algorytmów KNN i SVM. Wszystkie pomiary wykonano na tej samej maszynie dlatego można wykonać porównanie nie biorące pod uwagę szybkości procesora lub wielkości zasobów pamięciowych.
 
 Czas uczenia zależnie od wartości parametru przedstawiono poniżej:
 
 _K- najbliższych sąsiadów_
-![Schemat 28](img/28knn_timez.png "Knn time"){ height=70% }
+
+![Schemat 28](img/28knn_timez.png "Knn time"){ height=50% }
 
 _Lasy losowe_
-![Schemat 32](img/30rf_timez.png "Rf time"){ height=70% }
+
+![Schemat 32](img/30rf_timez.png "Rf time"){ height=50% }
 
 _Maszyna wektorów nośnych_
-![Schemat 30](img/32svm_timez.png "Svm time"){ height=70% }
 
-*porównanie implementacji*
+![Schemat 30](img/32svm_timez.png "Svm time"){ height=50% }
 
-Implemenatcja każdego z algorytmów z wykorzystaniem biblioteki sklearn jest łatwa w utworzeniu, pisząć
-porówniania łatwości tworzenia modelu, dokładności, złożoności oraz czasu uzyskania odpowiedzi.
+*Porównanie implementacji*
 
+Implemenatcja każdego z algorytmów z wykorzystaniem biblioteki sklearn jest analogiczna i łatwa w utworzeniu.
+Do każdego z modeli można zastosować te same metody oceny dokładności. 
 # Podsumowanie
 
 W pracy utworzony został model dla 3 algorytmów maszynowego nadzorowanego, które są w stanie zdiagnozować występowanie choroby serca z dokładnością do ponad 70%.

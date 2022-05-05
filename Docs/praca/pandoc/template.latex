@@ -1,4 +1,4 @@
-\documentclass[16]{$documentclass$}
+\documentclass[22]{$documentclass$}
 \usepackage[T1]{fontenc}
 \usepackage{ae}
 \usepackage{lmodern}
