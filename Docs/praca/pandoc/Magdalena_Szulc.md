@@ -342,12 +342,11 @@ Dodatkowo dla drzew decyzyjnych w lasach losowych, atrybuty odpowiadające za ka
 podzbioru.[@forest]
 
 Działanie biblioteki sklearn dla lasów losowych wygląda następująco:
+
 0. Wylosowanie podzbioru cech włączanych w dane drzewo.
-1. Typowanie kombinacji podziału poprzez obliczanie prawdopodobieństwa wyboru i uśrednianie wyników. Wybierany jest podział na klase o najwyższym
-średnim prawdopodobieństwie.
+1. Typowanie kombinacji podziału poprzez obliczanie prawdopodobieństwa wyboru i uśrednianie wyników. Wybierany jest podział na klasy o najwyższym średnim prawdopodobieństwie.
 2. Utworzenie nowego węzła.
-3. W każdym podwęźle należy zweryfikować powiązania i jeżeli spełniony jest warunek wartości docelowych, co oznacza, że w węźle dane są wystarczająco podobne, 
-zwracana jest prognozowana wartość. W przeciwnym razie należy powtórzyć od kroku 1.
+3. W każdym podwęźle należy zweryfikować powiązania i jeżeli spełniony jest warunek wartości docelowych, co oznacza, że w węźle dane są wystarczająco podobne, zwracana jest prognozowana wartość. W przeciwnym razie należy powtórzyć od kroku 1.
 
 
 *Technika bootstrap*
@@ -595,10 +594,10 @@ Pierwszym z wymaganych argumentów _GridSearchCV_ są estymatory. W projekcie ic
 
 *RandomForestClassifier*  :
 
-- criterion: [todo] - funkcja pomiaru dokładności rozgałęzienia
-- min_samples_leaf: [todo] -minimalna liczba próbek wymagana na liściu.
-- min_weight_fraction_leaf: [todo] -minimalny ułamek sumy wag wymagany na liściu 
-- min_impurity_decrease: [todo] - większe lub równe zmniejszenie zanieczyszczenia powoduje podział danego węzła\
+- criterion: poisson - funkcja pomiaru dokładności rozgałęzienia
+- min_samples_leaf: 1 -minimalna liczba próbek wymagana na liściu.
+- min_weight_fraction_leaf: 0.0 -minimalny ułamek sumy wag wymagany na liściu 
+- min_impurity_decrease: 0.0 - większe lub równe zmniejszenie zanieczyszczenia powoduje podział danego węzła\
 Zmniejszenie zanieczyszczenia liczone jest zgodnie ze wzorem:\
 ```
     N_t / N * (impurity - N_t_R / N_t * right_impurity  - N_t_L / N_t * left_impurity)
@@ -606,31 +605,29 @@ Zmniejszenie zanieczyszczenia liczone jest zgodnie ze wzorem:\
 
 gdzie N to całkowita liczba próbek, N_t to liczba próbek w bieżącym węźle, N_t_L to liczba próbek w lewym liściu, a N_t_R to liczba próbek w prawym liściu.
 
-- max_features: [todo] - liczba funkcji najlepszego podziału
-- random_state: [todo] - wykorzystywany przy próbkowaniu cech przy poszukiwaniu najlepszego podziału w węźle
-- cpp_aplha: [todo] - zastosowanie to przycinanie drzewa o największej złożoności mniejszej niż cpp_alpha
+- max_features: None - liczba funkcji najlepszego podziału
+- random_state: 1 - wykorzystywany przy próbkowaniu cech przy poszukiwaniu najlepszego podziału w węźle
+- cpp_aplha: 0.0 - zastosowanie to przycinanie drzewa o największej złożoności mniejszej niż cpp_alpha
 
 
 *SVC*  :
  
-- C: [todo]float, default=1.0
-Regularization parameter. The strength of the regularization is inversely proportional to C. Must be strictly positive. The penalty is a squared l2 penalty.
-
-- kernel: [todo]- jądro wykorzystane w algorytmie
-- degree: [todo] - stopień dla funkcji jądra _poly_
+- C: 1 - czyli domyślna wartość dla parametru regularyzacji,
+- kernel: [todo]- jądro wykorzystane w algorytmie,
+- degree: [todo] - stopień dla funkcji jądra _poly_,
 - gamma: [todo] - współczynnik jądra dla wartości _scale_ parametr jądra ustawiany jest na wartość:\
 ```text
-1 / (n * X.var())
+    1 / (n * X.var())
 ```
 dla wartości auto jest to:
 ```text
-1 / n
+    1 / n
 ```
 gdzie n to liczba cech.
 
-- coef0: [todo] - niezależny parametr funkcji jądra, wykorzystywany tylko przy jądrach _poly_ i _sigmoid_.
-- shrinking: [todo] - heurystyka kurcząca
-- cache_size: [todo] - cache jądra (w MB)[@scikit].
+- coef0: 0.3 - niezależny parametr funkcji jądra, wykorzystywany tylko przy jądrach _poly_ i _sigmoid_.
+- shrinking: True - heurystyka kurcząca
+- cache_size: 500 - cache jądra (w MB)[@scikit].
 
 ### Wizualizacja wyników
 
@@ -643,13 +640,11 @@ Podczas dokonywania finalnej predykcji tworzone są jeszcze wykresy rozmieszczen
 
 Wykresy dla danych testowych wykonywane są na niepoddanych wstępnej obróbce (normalizacja,standaryzacja,itp.) danych.
 Zestawienie zawiera wykres rozłożenia przypadków chorobowych oraz to samo z uwzględnieniem podziału na płcie, wykres zależności danych między sobą oraz rozkład wartości dla każdego parametru.
-    
-![Schemat 25](img/25rozklad_danych.png "rozklad danych"){ width=50% }
 
 Interesujące rezulaty widać już z samej analizy danych testowych, poniżej przedstawiono wykres dla cechy _maksymalnego osiągniętego tętna_ widać na nim dużą zależność stwierdzenia choroby układu krążenia.
 Na niebiesko zaznaczono przypadki osób zdrowych, na pomarańczowo chorych. Na pierwszy rzut oka widać, że grupa chorych osiąga wyższe wartości dla tego parametru.
 
-![Schemat 25](img/26tetno.png "tętno"){ width=50% }
+![Schemat 25](img/25rozklad_danych.png "rozklad danych"){ width=50% } ![Schemat 25](img/26tetno.png "tętno"){ width=50% }
 
 Analiz algorytmów w postaci wykresów przedstawia osoby wykres dla każdego zdefiniowanego imputer'a per parametr. Podczas treningu przechodzi jeszcze pętla po metodach ewaluacji wartości:
 
@@ -693,12 +688,12 @@ W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podcza
 **Dokładność**
 
 Określenie stopnia, w jakim skonstruowany model z powodzeniem realizuje wyznaczone zadanie, należy do wskaźnika wydajności. Przykładem nieprawidłowego wyboru może być próba przewidzenia wystąpienia rzadkiej choroby u pacjenta wykorzystując do oceny pomiar _dokładności_ dla przykładu z rzadkimi wystąpieniami osób chorych. W takim scenariuszu klasyfikacja wszystkich pacjentów jako zdrowych daje
-niewiele odbiegającą od perfekcji dokładność, a jednocześnie błędnie osądzać każde wystąpienie choroby.Wynika to z definicji dokładności :
+niewiele odbiegającą od perfekcji dokładność, a jednocześnie błędnie osądzać każde wystąpienie choroby. Wynika to z definicji dokładności :
 ```doctest
 
-        Ilość poprawnych odpowiedzi
+         poprawne odpowiedzi
     ----------------------------------
-          Ilość prób testowych
+           próby testowe
 ```
 Dla takiego działania przy sporadycznych przypadkach zachorowania uznawianie, że wszystkie przypadki są zdrowe (negatywne) uzyskujemy wysoki współczynnik dokładności, pomimo że zadanie zlokalizowania niezdrowych pacjentów zakończyło się niepowodzeniem.
 Informacją, która powinna wynikać z oceny algorytmu to ile pozytywnych (cierpiących na choroby wieńcowe) pzrykładów zlokalizowano poprawnie, taki rodzaj oceny nazywany jest czułością.
@@ -707,8 +702,8 @@ Informacją, która powinna wynikać z oceny algorytmu to ile pozytywnych (cierp
 ------: |-:| -----: | -: | -: | ------: | -: | -: | -: | -:|
  |Parametryzacja           |    | wyznaczanie parametrow |    |    |  parametry domyślne |    |   |    |
  |Algorytm / Imputer       | średnia | mediana | stała | naj. wartość | średnia | mediana | stała | naj. wartość |
-|Losowe lasy decyzyjne    | 100 | 100 | 100 | 100 | 81.6% | 81.3% | 81.2% | 81.1% |
- |Maszyna wektorów nośnych | 100 | 100 | 100 | 100 | 81.8% | 80.5% | 82.8% | 81.1% |
+|Losowe lasy decyzyjne    | 81.6% | 81.4% | 81.2% | 81.1% | 81.6% | 81.3% | 81.2% | 81.1% |
+ |Maszyna wektorów nośnych | 81.7% | 80.6% | 82.9% | 81.1%| 81.8% | 80.5% | 82.8% | 81.1% |
  |K-najbliższych sąsiadów  | 83.6% | 79.0% | 79.0% | 78.4% | 78.5% | 79.4% | 79% | 78.4% |
  
 
@@ -737,11 +732,87 @@ wyjściowa obiektu jest obliczana przez średnią k wartości najbliższych sąs
 pamięci. Wymaga dużej pamięci do przechowywania całego zestawu danych treningowych do przewidywania oraz nie nadaje się również do dużych danych wymiarowych. 
 
 
-###  Losowe lasy decyzyjne
+###  K-najbliższych sąsiadów
+
+Wynik dla danych utworzonych z modelu, który puste wartości zastępuje:
+
+- średnią wartością dla danej kolumny:
+    
+   - precyzja: 83.56131641845927%,
+   - wynik klasyfikacji dokładności: 0.7880434782608695, 
+   - zrównoważoną dokładność: 0.7917690417690417, 
+   - utrata regresji błędu średniokwadratowego: 0.21195652173913043,
+
+- medianą wartości dla danej kolumny:
+
+    - precyzja: 79.48887663173377%, 
+    - wynik klasyfikacji dokładności: 0.7880434782608695, 
+    - zrównoważoną dokładność: 0.7873464373464374, 
+    - utrata regresji błędu średniokwadratowego: 0.21195652173913043,
+
+- stałą wartością dla danej kolumny:
+  - precyzja: 79.08071336642764%,
+  - wynik klasyfikacji dokładności: 0.7989130434782609,
+  - zrównoważoną dokładność: 0.8030712530712532,
+  - utrata regresji błędu średniokwadratowego: 0.20108695652173914,
+
+- najczęstszą wartością dla danej kolumny:
+    - precyzja: 78.40319911748483%, 
+    - wynik klasyfikacji dokładności: 0.7554347826086957, 
+    - zrównoważoną dokładność: 0.749017199017199, 
+    - utrata regresji błędu średniokwadratowego: 0.24456521739130435.
+  
+![Schemat 33](img/33knn_acc.png "Knn acc"){ height=70% }
+  
+Parametry najwydajniejszego modelu dla danych utworzonych z modelu, który puste wartości zastępuje:
+
+- średnią wartością dla danej kolumny: 
+```doctest
+'algorithm': 'auto', 'leaf_size': 1, 'metric': 'canberra', 'n_neighbors': 6, 'p': 1, 'weights': 'distance'
+```
+- medianą wartości dla danej kolumny
+```doctest
+'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': -1, 'n_neighbors': 6, 'p': 2, 'weights': 'distance'
+```
+- stałą wartością dla danej kolumny
+```doctest
+'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': -1, 'n_neighbors': 6, 'p': 2, 'weights': 'distance'
+```
+- najczęstrzą wartością dla danej kolumny
+```doctest
+'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': -1, 'n_neighbors': 6, 'p': 2, 'weights': 'distance'
+```
+
+Jak widać z powyższego zestawienia tylko średnia wyznacza inne parametry, to dla niej uzyskujemy najwyższy wynik zatem do poniższego porównania wykorzystany zostanie model dla uzupełnienia brakujących danych śrenią wartością.
+Przyglądając się można zauważyć że uzupełnienie danych dowolną stałą wartością oraz najczęściej występującą wartością dla estymatora generują te same hiperparametry, natomiast wynik dla stałej wartości równej -1 jest wyższy niż da wartości najczęstrzej.
+Nie jest to oczywiste i ludzkie postrzeganie mogło by podpowiadać że wartość specjalnie wybrana i zależna od zbioru będzie dawać lepsze rezultaty niż dowolna wartość. 
+Ważnym do przeanalizowania parametrem dla algorytmy k-najbliższych sąsiadów jest N = 6 . Maksymalnie N mogłlo równać się liczie zależności czyli 13, najwięskszy procent został osiągnięty w mniej więcej połowie wartości, co ciekawe każdy imputer wybiera tę samą wartość.
 
 ![Schemat 27](img/27knn_params.png "Knn params"){ height=70% }
-![Schemat 28](img/28knn_timez.png "Knn time"){ height=70% }
-![Schemat 33](img/33knn_acc.png "Knn acc"){ height=70% }
+
+Zestawienie przedstawione powyżej podpowiada, że do cechą znaczącą jest również metryka, ta cecha jednak jest oczywista ze względu na specyfikę działania algorytmu.
+Zastosownie wyszukiwania gridSearch wykazuję,że skupiając się na parametrach: metryki, wagach oraz liczbie sąsiadów jesteśmy w stanie uzyskać optymalne wartości dla modelu algorytmu, pozostałe nie posiadają zyt dużego wpływu przy braku specyficznych danych testowych.
+
+
+###  Losowe lasy decyzyjne
+
+Wynik dla danych utorzonych z modelu który puste wartości zastępuje
+
+średnią wartością dla danej kolumny
+Precyzja : 81.65986394557824% | Wynik klasyfikacji dokładności: 0.7934782608695652 | Zrównoważoną dokładność: 0.7941031941031941 | Utrata regresji błędu średniokwadratowego: 0.20652173913043478
+medianą wartości dla danej kolumny
+Precyzja : 81.3904761904762% | Wynik klasyfikacji dokładności: 0.8043478260869565 | Zrównoważoną dokładność: 0.8076167076167076 | Utrata regresji błędu średniokwadratowego: 0.1956521739130435
+stałą wartością dla danej kolumny
+Precyzja : 81.25170068027212% | Wynik klasyfikacji dokładności: 0.8043478260869565 | Zrównoważoną dokładność: 0.8031941031941032 | Utrata regresji błędu średniokwadratowego: 0.1956521739130435
+najczęstrzą wartością dla danej kolumny
+Precyzja : 81.1156462585034% | Wynik klasyfikacji dokładności: 0.8152173913043478 | Zrównoważoną dokładność: 0.8122850122850123 | Utrata regresji błędu średniokwadratowego: 0.18478260869565216
+
+
+![Schemat 34](img/34rf_acc.png "Rf acc"){ height=70% }
+
+![Schemat 31](img/29rf_params.png "Rf params"){ height=70% }
+
+![Schemat 32](img/30rf_timez.png "Rf time"){ height=70% }
 
 ###  Maszyna wektorów nośnych
 
@@ -812,75 +883,14 @@ Algorytm maszyny wektorów nośnych uzyskuje następujące wyniki przy uwzględn
 
 [//]: # (ignoruje błędy klasyfikacj[@confiusion])
 
-###  K-najbliższych sąsiadów
 
-Wynik dla danych utworzonych z modelu, który puste wartości zastępuje:
-
-- średnią wartością dla danej kolumny:
-    
-   - precyzja: 83.56131641845927%,
-   - wynik klasyfikacji dokładności: 0.7880434782608695, 
-   - zrównoważoną dokładność: 0.7917690417690417, 
-   - utrata regresji błędu średniokwadratowego: 0.21195652173913043,
-
-- medianą wartości dla danej kolumny:
-
-    - precyzja: 79.48887663173377%, 
-    - wynik klasyfikacji dokładności: 0.7880434782608695, 
-    - zrównoważoną dokładność: 0.7873464373464374, 
-    - utrata regresji błędu średniokwadratowego: 0.21195652173913043,
-
-- stałą wartością dla danej kolumny:
-  - precyzja: 79.08071336642764%,
-  - wynik klasyfikacji dokładności: 0.7989130434782609,
-  - zrównoważoną dokładność: 0.8030712530712532,
-  - utrata regresji błędu średniokwadratowego: 0.20108695652173914,
-
-- najczęstszą wartością dla danej kolumny:
-    - precyzja: 78.40319911748483%, 
-    - wynik klasyfikacji dokładności: 0.7554347826086957, 
-    - zrównoważoną dokładność: 0.749017199017199, 
-    - utrata regresji błędu średniokwadratowego: 0.24456521739130435.
-  
-![Schemat 34](img/34rf_acc.png "Rf acc"){ height=70% }
-  
-Parametry najwydajniejszego modelu dla danych utworzonych z modelu, który puste wartości zastępuje:
-
-- średnią wartością dla danej kolumny: 
-```doctest
-'algorithm': 'auto', 'leaf_size': 1, 'metric': 'canberra', 'n_neighbors': 6, 'p': 1, 'weights': 'distance'
-```
-- medianą wartości dla danej kolumny
-```doctest
-'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': -1, 'n_neighbors': 25, 'p': 2, 'weights': 'distance'
-```
-- stałą wartością dla danej kolumny
-```doctest
-'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': -1, 'n_neighbors': 25, 'p': 2, 'weights': 'distance'
-```
-- najczęstrzą wartością dla danej kolumny
-```doctest
-'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': -1, 'n_neighbors': 25, 'p': 2, 'weights': 'distance'
-```
-
-
-![Schemat 31](img/29rf_params.png "Rf params"){ height=70% }
-
-
-
-![Schemat 32](img/30rf_timez.png "Rf time"){ height=70% }
 
 
 *Po równianie całościowe algorytmów: złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu*
 
+![Schemat 28](img/28knn_timez.png "Knn time"){ height=70% }
 
-++++++++++++++
-Spis ilustracji{.unnumbered}
-========
-[^schemat_wzorowany]:Na podstwie materiałów opublikowanych na [https://www.datacamp.com](http://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1526288453/index3_souoaz.png)
 
-Spis tabel{.unnumbered}
-========
 
  **Bibliografia**{.unnumbered}
 ========

@@ -1,19 +1,12 @@
 
 
-puścić rainforest bo nie mam parametrów
-zapisać wyniki z parametrami
-zapisać wyniki dla regresji z parametrami tylko dla KNN-
 
 
--todo uzupełnic dane
-uzupełnić tabele poprawnie4
-praktyczna wyniki dodaćnowe wyniki
 - tresc porownanie i analiza
 porównanie do wyników bez parametrów
 porównać do innych prac
 wnioski dla wykresów
-- opis 2 innych publikacji wykonujących te same badania
-opis 2 innych projektów wykonujących podobną predykcje
+
 
 ###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
 -OCENA SZYBKOŚCI WYKONANIA
@@ -22,17 +15,9 @@ opis 2 innych projektów wykonujących podobną predykcje
  - które parametry mają i wpływ i dlaczego:
    - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
 
-
-
-opis obrazków
-
+    
 -formatowac zgodnie z przykładem
-- poprawić przypisy
-- obrazków biliografia,
- -spiswykresów
-- - bibilografie poprawić
-- spis obrazków
-- -przypisy
+
  -strona tytułowa
 -formatować zgodnie z tym co w dokuncie
 -wygenerować dokument
@@ -72,4 +57,14 @@ metryka om
 - dodać opis tworzenia wykrsów
 - dodać opis tworzonych obiektów
 - - (dane) w Exelu do pracy
+- opis obrazków
+- - opis 2 innych publikacji wykonujących te same badania
+opis 2 innych projektów wykonujących podobną predykcje
+- zapisać wyniki dla regresji z parametrami tylko dla KNN-
+- - poprawić przypisy
+- obrazków biliografia,
+ -spiswykresów
+- - bibilografie poprawić
+- spis obrazków
+- -przypisy
 ------------_____________________________________________________21
