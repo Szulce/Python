@@ -664,12 +664,20 @@ Na niebiesko zaznaczono przypadki osób zdrowych, na pomarańczowo chorych. Na p
 
 ![Schemat 25](img/26tetno.png "tętno"){ width=50% }
 
-precision=macro_precision,
-                         average_precision=macro_average_precision,
-                         recall=macro_recall,
-                         balanced_accuracy=balanced_accuracy_scorer,
-                         r2=r2_score,
-                         accuracy=accuracy_scorer
+Analiz algorytmów w postaci wykresów przedstawia osoby wykres dla każdego zdefiniowanego imputer'a per parametr.Podczas treningu przechodzi jeszcze pętla po metodach ewaluacji wartości:
+
+- precyzja,
+- dokładność,
+- uśredniona dokładność,
+- zrównoważona dokładność,
+- recall,
+- r2
+
+ale sam model jest zapisywany i analizowany tylko dla wartości scorer='accuracy'. Tworzone są 3 typy wykresów:
+
+- porównanie oparte na danych dla *wyniku*: 'mean_test_score', 'std_test_score', 'rank_test_score', 'split0_test_score'
+- porównanie oparte na danych dla *czasu*: 'mean_fit_time', 'std_fit_time', 'mean_score_time', 'std_score_time'                      
+- porównanie oparte na *metodach oceny*, które zostały przedstawione powyżej jako metody ewaluacji.
 
 
 ## Opis działania aplikacji webowej
@@ -749,15 +757,7 @@ pamięci. Wymaga dużej pamięci do przechowywania całego zestawu danych trenin
 
 ###  Losowe lasy decyzyjne
 
-##todo liczenie błędów 
-macież pomysłek
 
-###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
--OCENA SZYBKOŚCI WYKONANIA
--OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
--OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
- - które parametry mają i wpływ i dlaczego:
-   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
 
 ###  Maszyna wektorów nośnych
 
@@ -791,21 +791,7 @@ macież pomysłek
 
 [//]: # (ignoruje błędy klasyfikacj[@confiusion])
 
-###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
--OCENA SZYBKOŚCI WYKONANIA
--OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
--OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
- - które parametry mają i wpływ i dlaczego:
-   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
-
 ###  K-najbliższych sąsiadów
-
-###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
--OCENA SZYBKOŚCI WYKONANIA
--OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
--OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
- - które parametry mają i wpływ i dlaczego:
-   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
 
 
 *Porównianie całościowe algorytmów : złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu*
@@ -828,13 +814,6 @@ Wybrane najgorsze modele klasyfikacji :
 Najlepsze modele i wartości dla regresji :
 
 Najgorsze modele i wartości dla regresji :
-
-###  Maszyna wektorów nośnych
-
-###  K-najbliższych sąsiadów
-
-###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
-
 
 
 ++++++++++++++
