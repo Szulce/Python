@@ -49,7 +49,7 @@ DATA_INFO_PLOTS = "data_info_plots"
 ALGORITHM_INFO_PLOTS = "algorithm_info_plots"
 SCORER_MODEL = "_scorer_model"
 
-VERBOSE = 0
+VERBOSE = 1
 
 RF_ = ' \nRF : \n'
 
@@ -129,7 +129,7 @@ KNN_ALGORITHM = ['auto', 'brute']
 # , 'kd_tree'
 
 KNN_LEAF_SIZE = [1, 15, 17, 30, 40, 50, 70, 81, 100]  # leaf_size <= n_points <= 2 * leaf_size
-KNN_P_PARAM = [1, 1.5, 2, 2.5]
+KNN_P_PARAM = [1, 1.5, 2]
 KNN_METRIC = ['minkowski', 'chebyshev', 'manhattan',
               'hamming', 'canberra', 'braycurtis', 'jaccard', 'matching', 'dice', 'kulsinski', 'sokalmichener']
 KNN_METRIC_PARAMS = {'w': [numpy.array([2.0] * N_NEIGHBORS_SIZE)], 'p': KNN_P_PARAM}
@@ -145,7 +145,7 @@ SVM_SHRINKING = [True, False]
 SVM_CACHE_SIZE = [200, 500]
 
 # rf
-RF_MAX_DEPTH = [7, 10, 13]
+RF_MAX_DEPTH = [5, 7, 10, 13]
 RF_RANDOM_STATE = [0, 2, 13, 27]
 RF_MAX_FEATURES = [None, 'auto', 'sqrt', 'log2']
 RF_CRITERION = ['gini', 'entropy']
@@ -155,7 +155,7 @@ RF_MIN_SAMPLES_LEAF = [1, 2, 5]
 RF_MIN_WEIGHT_FRACTION_LEAF = [0.0, 0.1, 0.25]
 RF_MIN_IMPURITY_DECREASE = [0.0, 0.25]
 RF_CPP = [0.0, 0.25]
-RF_N_ESTIMATORS = [10, 100, 1000]
+RF_N_ESTIMATORS = [10, 50 ,100]
 CV = 15
 
 COLUMNS = {"age": "wiek", "sex": "plec", "cp": "bol_w_klatce_piersiowej", "trestbps": "cisnienie_krwi",

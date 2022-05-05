@@ -30,8 +30,8 @@ def get_algorithms_info_object():
 
 
 if __name__ == '__main__':
-    sys.stdout = open(Rs.LOG_FILES_DIRECTORY + "/" + Rs.LOG_FILE_NAME, 'w')
+    # sys.stdout = open(Rs.LOG_FILES_DIRECTORY + "/" + Rs.LOG_FILE_NAME, 'w')
     PredictionManager.train_algorithms()
     # PredictionManager.render_data_info()
     PredictionManager.render_algorithms_info()
-    sys.stdout.close()
+    # sys.stdout.close()

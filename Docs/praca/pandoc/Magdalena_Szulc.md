@@ -1,8 +1,8 @@
 ---
-title: "Wykrywanie występowanie chorób serca,porównanie algorytów uczenia maszynowego nadzorowanego na podstawie zbioru danych dotyczących chorób układu krążenia z repozytorium  UCI"
+title: "Wykrywanie występowanie chorób serca, porównanie algorytmów uczenia maszynowego nadzorowanego na podstawie zbioru danych dotyczących chorób układu krążenia z repozytorium  UCI"
 author: [Magdalena Szulc]
 header: UNIWERSYSTET MIKOŁAJA KOPERNIKA WYDZIAŁ MATEMATYKI I INFORMATYKI
-date: "Toruń,2022-05-01"
+date: "Toruń, 2022-05-01"
 footer: Praca inż. napisana pod kierunkiem dr Piotr Przymus
 geometry: "left=2.5cm,right=2.5cm,top=2cm,bottom=2cm"
 output: pdf_document
@@ -14,6 +14,7 @@ logo-width: 30mm
 bibliography: true
 disable-header-and-footer: true
 toc-own-page: true
+toc-title: Spis Treści
 ...
 
 **Abstrakt**{.unnumbered}
@@ -40,20 +41,17 @@ Uczenie maszynowe jako spopularyzowana dziedzna metod uczenia, zainteresowanie s
 Ze względu na chodliwość tematu, powstało nowe oprogramowanie, jak i przystosowania ułatwiające wydajną pracę z obszernymi zasobami danych.
 Pojęcie sztucznej inteligencji pochodzi od próby odtworzenia ludzkiego sposobu myślenia, jedną z bardziej znanych historycznie
 postacią z tym związaną jest psycholog Frank Rosenblatt z Cornell University. Badacz przyczynił się do powstania projektu zbudowania maszyny o nazwie "perceptron" mającej za zadnie 
-rozpoznawać litery i jest prawzorem nowoczesnych sztucznych sieci neuronowych. To dzięki jego badaniach nad perceptronem rozpropagowany został koncept algorytmu uczenia skończonej liczbie wywołań.
-Z czasem liczba przetwarzanych informacji stopniowo się zwiększała dzięki zastosowaniu procesów równoległych oraz pamięci.
+rozpoznawać litery i jest prawzorem nowoczesnych sztucznych sieci neuronowych. To dzięki jego badanią nad perceptronem rozpropagowany został koncept algorytmu uczenia skończonej liczbie wywołań.
+Z czasem liczba przetwarzanych informacji stopniowo się zwiększała dzięki zastosowaniu procesów równoległych oraz wydajności pamięci.
 Wartą wspomnienia datą jest rok 2006, w tym roku zaprezentowano opensource'owy odpowiednik MapReduce od Google, o który dał sposobnść do przenoszenia między procesorami obróbki Big Data. 
  Rok ten jest również znaczący ze względu na wydanie przez Nividia procesora graffitiing monopolizującego rynek uczenia maszynowego.
-Zmniejszenie kosztów pamięci RAM zaowocowała powstaniem kolejnych algorytmów uczenia, a istniejące podejścia są sukcesywnie ulepszane.[@FRADKOV20201385]
-W całym ogromie powstałych już metod uczenia się, z których każda ma swoje zalety i niedogodności.[@introduction]
-
-Diagnosis medycznej to rozległy temat i pod kątem uczenia maszynowego może być rozpatrywany na
-podstawie danych tekstowych czy obrazów. Zadanie postawienia diagnozy podlega to typowe zagadnienie klasyfikacji ,ale nie jedyny sposób wykorzystania.
-Przykładem systemu uczącego może być wycena akcji na giełdzie na podstawie danych z poprzedniego kwartału lub optymalizacja strony na podstawie historii odwiedzeń .[@confiusion]
+Zmniejszenie kosztów pamięci RAM zaowocowało powstaniem kolejnych algorytmów uczenia, a istniejące podejścia są sukcesywnie ulepszane.[@FRADKOV20201385,@introduction
 
 Sztuczna inteligencja wśród szerokiego zakresu swoich zastosowań może zostać wykorzystana do analizy bardziej lub mniej
 złożonych danych medycznych, w celu przewidzenia wystąpienia choroby u konkretnej osoby, bez udziału procesu myślowego
-od stony specjalisty.
+od stony specjalisty. Diagnoza medyczna to rozległa dziedzina, z której zasoby pod postacią danych tekstowych czy obrazów idealnie nadają się do analizy przez uczenie maszynowe. Zadanie postawienia diagnozy podlega to typowe zagadnienie klasyfikacji, ale nie jedyny sposób wykorzystania.
+Przykładem systemu uczącego może być wycena akcji na giełdzie na podstawie danych z poprzedniego kwartału lub optymalizacja strony na podstawie historii odwiedzeń .[@confiusion]
+
 
 Do tego przeznaczenia istnieje możliwość zastosowania uczenia nadzorowanego (ang. _supervised learning_) tj. rodzaj
 uczenia maszynowego zakładający istnienie zbioru danych testowych zawierających odpowiedzi, na których podstawie wyszukiwane
@@ -64,15 +62,14 @@ badań zgromadzonych w repozytorium UCI.
 
 W dzisiejszych czasach choroby sercowo-naczyniowe stanowią najczęstszą przyczynę zgonów, a liczba osób cierpiących na te
 dolegliwości stale rośnie. Głównymi przyczynami zachorowalności diagnozowanymi przez specjalistów są niski poziom
-świadomości i profilaktyki chorób serca.Dlatego prowadzone są intensywne prace nad zwiększeniem dostępności badań, które wspomogą diagnostykę kardiologiczną na
+świadomości i profilaktyki chorób serca. Dlatego prowadzone są intensywne prace nad zwiększeniem dostępności badań, które wspomogą diagnostykę kardiologiczną na
 jak najwcześniejszym etapie [@1].
 
 Powodem szukania dokładniejszych sposobów diagnozowania są również wysokie koszty leczenia generowane przez choroby
 układu krwionośnego. Według analityków firmy konsultingowej KPMG [@KPMG] w 2011 r. koszty diagnostyki i terapii chorób
 serca wyniosły ponad 15 miliardów polskich złotych.
 
-Uczenie maszynowe poprzez przetwarzanie dużych zasobów klinicznych danych historycznych pod kątem zależności przyczynowo skutkowych, 
- może zostać wykorzystane do wczesnej diagnostyki lub wspomagania leczenia pacjentów [@2].
+Uczenie maszynowe poprzez przetwarzanie dużych zasobów klinicznych danych historycznych pod kątem zależności przyczynowo skutkowych, może zostać wykorzystane do wczesnej diagnostyki lub wspomagania leczenia pacjentów [@2].
 
 Słowa kluczowe: uczenie maszynowe, uczenie nadzorowane, lasy losowe, maszyna wektorów nośnych, k-najbliższych sąsiadów
 
@@ -497,8 +494,6 @@ Interpreter Python w wersji _3.9_.
 
 ## Moduły projektu:
 
-### Wstęp
-
 - Config-zawiera statyczne zasoby oraz konfigurację logowania projektu
 - Data-moduł odpowiada za wczytywanie i obróbkę danych testowych, zawiera definicje obiektów wykorzystywanych przy uczeniu oraz zapisu modelu oraz przekazywaniu wyników prezentowanych na stronie
 - Management:
@@ -613,9 +608,9 @@ gdzie N to całkowita liczba próbek, N_t to liczba próbek w bieżącym węźle
 *SVC*  :
  
 - C: 1 - czyli domyślna wartość dla parametru regularyzacji,
-- kernel: [todo]- jądro wykorzystane w algorytmie,
-- degree: [todo] - stopień dla funkcji jądra _poly_,
-- gamma: [todo] - współczynnik jądra dla wartości _scale_ parametr jądra ustawiany jest na wartość:\
+- kernel: poly - jądro wykorzystane w algorytmie,
+- degree: 5 - stopień dla funkcji jądra _poly_,
+- gamma: scale - współczynnik jądra dla wartości _scale_ parametr jądra ustawiany jest na wartość:\
 ```text
     1 / (n * X.var())
 ```
@@ -702,10 +697,12 @@ Informacją, która powinna wynikać z oceny algorytmu to ile pozytywnych (cierp
 ------: |-:| -----: | -: | -: | ------: | -: | -: | -: | -:|
  |Parametryzacja           |    | wyznaczanie parametrow |    |    |  parametry domyślne |    |   |    |
  |Algorytm / Imputer       | średnia | mediana | stała | naj. wartość | średnia | mediana | stała | naj. wartość |
-|Losowe lasy decyzyjne    | 81.6% | 81.4% | 81.2% | 81.1% | 81.6% | 81.3% | 81.2% | 81.1% |
+|Losowe lasy decyzyjne    | 83.9% | 81.4% | 81.2% | 81.1% | 81.6% | 81.3% | 81.2% | 81.1% |
  |Maszyna wektorów nośnych | 81.7% | 80.6% | 82.9% | 81.1%| 81.8% | 80.5% | 82.8% | 81.1% |
- |K-najbliższych sąsiadów  | 83.6% | 79.0% | 79.0% | 78.4% | 78.5% | 79.4% | 79% | 78.4% |
- 
+ |K-najbliższych sąsiadów  | 83.6% | 79.0% | 79.0% | 78.4% | 78.5% | 79.4% | 79.0% | 78.4% |
+
+Parametry domyślne dla zbioru testowego zwracają bardzo wysokie rezultaty jednak zastowowanie dodatkowej paramtryzacji jest widoczne w zwięszeniu wartości dokładności na każdym z algorytmów.
+Dla lasów losowych poprawie uległa estymacja dla mediany i średniej, przy maszynie wektorów nośnych poprawa to 0.1% na co drugim imputerze, a dla k-najbliższych sąsiadów wynik dla średniej zwiększył się o ponad 5%.
 
 Utarło się, że wśród problemów machine learning'owych dotyczących danych medycznych najbardziej powszechnie stosowanym parametrem oceny jest *czułość* (ang. _true_ _positive_ _rate), czyli ocena ile przypadków pozytywnych zostało tak sklasyfikowanych. 
 Do problemu można również podejść z drugiej strony, czyli skupiając się na błędnie sklasyfikowanych przykładach.
@@ -762,33 +759,40 @@ Wynik dla danych utworzonych z modelu, który puste wartości zastępuje:
     - zrównoważoną dokładność: 0.749017199017199, 
     - utrata regresji błędu średniokwadratowego: 0.24456521739130435.
   
-![Schemat 33](img/33knn_acc.png "Knn acc"){ height=70% }
+![Schemat 33](img/33knn_acc.png "Knn acc"){ height=40% }
   
 Parametry najwydajniejszego modelu dla danych utworzonych z modelu, który puste wartości zastępuje:
 
 - średnią wartością dla danej kolumny: 
 ```doctest
-'algorithm': 'auto', 'leaf_size': 1, 'metric': 'canberra', 'n_neighbors': 6, 'p': 1, 'weights': 'distance'
+'algorithm': 'auto', 'leaf_size': 1, 'metric': 'canberra',
+ 'n_neighbors': 6, 'p': 1, 'weights': 'distance'
 ```
 - medianą wartości dla danej kolumny
 ```doctest
-'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': -1, 'n_neighbors': 6, 'p': 2, 'weights': 'distance'
+'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 
+'metric_params': None, 'n_jobs': -1, 'n_neighbors': 6,
+ 'p': 2, 'weights': 'distance'
 ```
 - stałą wartością dla danej kolumny
 ```doctest
-'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': -1, 'n_neighbors': 6, 'p': 2, 'weights': 'distance'
+'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 
+'metric_params': None, 'n_jobs': -1, 'n_neighbors': 6, 
+'p': 2, 'weights': 'distance'
 ```
 - najczęstrzą wartością dla danej kolumny
 ```doctest
-'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': -1, 'n_neighbors': 6, 'p': 2, 'weights': 'distance'
+'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 
+'metric_params': None, 'n_jobs': -1, 'n_neighbors': 6, 
+'p': 2, 'weights': 'distance'
 ```
 
-Jak widać z powyższego zestawienia tylko średnia wyznacza inne parametry, to dla niej uzyskujemy najwyższy wynik zatem do poniższego porównania wykorzystany zostanie model dla uzupełnienia brakujących danych śrenią wartością.
+Z powyższego zestawienia tylko średnia wyznacza inne parametry, to dla niej uzyskujemy najwyższy wynik zatem do poniższego porównania wykorzystany zostanie model dla uzupełnienia brakujących danych śrenią wartością.
 Przyglądając się można zauważyć że uzupełnienie danych dowolną stałą wartością oraz najczęściej występującą wartością dla estymatora generują te same hiperparametry, natomiast wynik dla stałej wartości równej -1 jest wyższy niż da wartości najczęstrzej.
 Nie jest to oczywiste i ludzkie postrzeganie mogło by podpowiadać że wartość specjalnie wybrana i zależna od zbioru będzie dawać lepsze rezultaty niż dowolna wartość. 
 Ważnym do przeanalizowania parametrem dla algorytmy k-najbliższych sąsiadów jest N = 6 . Maksymalnie N mogłlo równać się liczie zależności czyli 13, najwięskszy procent został osiągnięty w mniej więcej połowie wartości, co ciekawe każdy imputer wybiera tę samą wartość.
 
-![Schemat 27](img/27knn_params.png "Knn params"){ height=70% }
+![Schemat 27](img/27knn_params.png "Knn params"){ height=30% }
 
 Zestawienie przedstawione powyżej podpowiada, że do cechą znaczącą jest również metryka, ta cecha jednak jest oczywista ze względu na specyfikę działania algorytmu.
 Zastosownie wyszukiwania gridSearch wykazuję,że skupiając się na parametrach: metryki, wagach oraz liczbie sąsiadów jesteśmy w stanie uzyskać optymalne wartości dla modelu algorytmu, pozostałe nie posiadają zyt dużego wpływu przy braku specyficznych danych testowych.
@@ -796,25 +800,46 @@ Zastosownie wyszukiwania gridSearch wykazuję,że skupiając się na parametrach
 
 ###  Losowe lasy decyzyjne
 
-Wynik dla danych utorzonych z modelu który puste wartości zastępuje
+Wynik dla danych utworzonych z modelu, który puste wartości zastępuje:
 
-średnią wartością dla danej kolumny
-Precyzja : 81.65986394557824% | Wynik klasyfikacji dokładności: 0.7934782608695652 | Zrównoważoną dokładność: 0.7941031941031941 | Utrata regresji błędu średniokwadratowego: 0.20652173913043478
-medianą wartości dla danej kolumny
-Precyzja : 81.3904761904762% | Wynik klasyfikacji dokładności: 0.8043478260869565 | Zrównoważoną dokładność: 0.8076167076167076 | Utrata regresji błędu średniokwadratowego: 0.1956521739130435
-stałą wartością dla danej kolumny
-Precyzja : 81.25170068027212% | Wynik klasyfikacji dokładności: 0.8043478260869565 | Zrównoważoną dokładność: 0.8031941031941032 | Utrata regresji błędu średniokwadratowego: 0.1956521739130435
-najczęstrzą wartością dla danej kolumny
-Precyzja : 81.1156462585034% | Wynik klasyfikacji dokładności: 0.8152173913043478 | Zrównoważoną dokładność: 0.8122850122850123 | Utrata regresji błędu średniokwadratowego: 0.18478260869565216
+ - średnią wartością dla danej kolumny:
 
+   - precyzja: 81.65986394557824% 
+   - wynik klasyfikacji dokładności: 0.7934782608695652 
+   - zrównoważoną dokładność: 0.7941031941031941 
+   - utrata regresji błędu średniokwadratowego: 0.20652173913043478
+ - medianą wartości dla danej kolumny:
+    
+    - precyzja: 81.3904761904762% 
+    - wynik klasyfikacji dokładności: 0.8043478260869565 
+    - zrównoważoną dokładność: 0.8076167076167076 
+    - utrata regresji błędu średniokwadratowego: 0.1956521739130435
+   
+ - stałą wartością dla danej kolumny:
+    
+   - precyzja: 81.25170068027212% 
+   - wynik klasyfikacji dokładności: 0.8043478260869565 
+   - zrównoważoną dokładność: 0.8031941031941032 
+   - utrata regresji błędu średniokwadratowego: 0.1956521739130435
+ - najczęstszą wartością dla danej kolumny:
+    
+    - precyzja: 81.1156462585034% 
+    - wynik klasyfikacji dokładności: 0.8152173913043478 
+    - zrównoważoną dokładność: 0.8122850122850123 
+    - utrata regresji błędu średniokwadratowego: 0.18478260869565216
+    
+![Schemat 34](img/34rf_acc.png "Rf acc"){ height=40% }
 
-![Schemat 34](img/34rf_acc.png "Rf acc"){ height=70% }
+Tak samo jak w przypadku algorytmu k-najbliższych sąsiadów nalepszy wynik uzyskany dla imputera w postaci średniej. 
 
-![Schemat 31](img/29rf_params.png "Rf params"){ height=70% }
+![Schemat 31](img/29rf_params.png "Rf params"){ height=30% }
 
-![Schemat 32](img/30rf_timez.png "Rf time"){ height=70% }
+Każdy parametr ma wpływ na wydajność modelu, ale ccp_alpha oraz min_impurity_decrease mają największy udział w zwiększaniu dokładności.
+Algorytm w porównaniu do Knn zwraca mniejszą dokładność, ale wartości taka była spodziewana ze względu na to, iż jest to jeden z najprostszych algorytmów.
 
 ###  Maszyna wektorów nośnych
+
+![Schemat 34](img/35svm_acc.png "Svm acc"){ height=40% }
 
 Algorytm maszyny wektorów nośnych uzyskuje następujące wyniki przy uwzględnieniu, że puste wartości są zastępowanie:
 
@@ -846,51 +871,59 @@ Algorytm maszyny wektorów nośnych uzyskuje następujące wyniki przy uwzględn
   - zrównoważoną dokładność: 0.7987714987714988 
   - utrata regresji błędu średniokwadratowego: 0.1956521739130435
   
-![Schemat 34](img/35svm_acc.png "Svm acc"){ height=70% }
-
 
 ![Schemat 29](img/31svm_params.png "Svm params"){ height=70% }
-![Schemat 30](img/32svm_timez.png "Svm time"){ height=70% }
+
+Dla wykorzystania funkcji SVC wymaganym parametrem jest C, jak już wcześniej wspomniano jest to własność odpowiadająca 
+za wyznaczenie złotego środka między obciążeniem a wariancją.
 
 
-[//]: # (SVC używa jednego podstawowego parametru, C, do kontrolowania kompromisu między)
+*Wpływ parametrów na model uczący się*
 
-[//]: # (obciążeniem a wariancją. Bezpośrednia interpretacja tego parametru jest trudna. K. Błędy marginesu to punkty,)
-
-[//]: # (które albo &#40;1&#41; znajdują się po złej stronie separatora &#40;jest to błąd klasyfikacji&#41;, albo &#40;2&#41;)
-
-[//]: # (znajdują się po właściwej stronie &#40;zostały poprawnie sklasyfikowane&#41;, ale na marginesie. Inne)
-
-[//]: # (znaczenie parametru ν jest takie, że dla danych treningowych akceptowany jest maksymalnie)
-
-[//]: # (ν procent błędów marginesu. W określonych warunkach procent błędów marginesu rośnie)
-
-[//]: # (do ν, a procent danych w wektorach nośnych spada do ν. Wartości ν znajdują się w)
-
-[//]: # (przedziale [0, 1] i są interpretowane jako wartość procentowa od 0% do 100%. Choć klasa)
-
-[//]: # ()
-[//]: # ()
-[//]: # (Z tego przykładu należy zapamiętać dwie rzeczy:)
-
-[//]: # (1. Zwiększanie ν i zmniejszanie C dają mniej więcej ten sam efekt. Jednak skale dla)
-
-[//]: # (obu tych parametrów są wyraźnie różne. C zmienia się o rzędy wielkości, natomiast)
-
-[//]: # (ν zmieniane jest liniowo w krokach o wielkości 1/10.)
-
-[//]: # (2. Duże ν i małe C mogą prowadzić do klasyfikatora SVC, który w pewnym zakresie)
-
-[//]: # (ignoruje błędy klasyfikacj[@confiusion])
+Wykorzystanie parametrów przy tworzeniu modelu uczącego się wpływa negatywnie na czas wykonania, przez zwiększenie ilości wariantów do weryfikacji.
+Konfiguracja parametrów im bardziej sprecyzowana, tym większe prawdopodobieństwo wyższej dokładności.
+Nie wszystkie parametry wykorzystane powinny być dostrajane jako hiperparametry ze względu na mały wpływ na model, jednak samo ich ustawienie wpływa pozytywnie lub neutralnie na wyniki.
 
 
+*Porównanie czasu wykonania* 
+
+Czas uczenia w sekundach dla jednego imputera dla domyślnych parametrów prezentuje się następująco: 
+
+- algorytm K najbliższych sąsiadów: 0.2740
+- algorytm wektorów nośnych: 0.8999
+- algorytm lasów losowych: 7.6909
 
 
-*Po równianie całościowe algorytmów: złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu*
+Czas uczenia w sekundach dla jednego imputera dla listy spreparowanych parametrów to: 
 
+- algorytm K najbliższych sąsiadów: 0.1718
+- algorytm wektorów nośnych: 0.6093
+- algorytm lasów losowych: 6.302
+
+W obu przypadkach trening danych dla lasów losowych jest dłuższy niż w przypadku algorytmów KNN i SVM.
+
+Czas uczenia zależnie od wartości parametru przedstawiono poniżej:
+
+_K- najbliższych sąsiadów_
 ![Schemat 28](img/28knn_timez.png "Knn time"){ height=70% }
 
+_Lasy losowe_
+![Schemat 32](img/30rf_timez.png "Rf time"){ height=70% }
 
+_Maszyna wektorów nośnych_
+![Schemat 30](img/32svm_timez.png "Svm time"){ height=70% }
+
+*porównanie implementacji*
+
+Implemenatcja każdego z algorytmów z wykorzystaniem biblioteki sklearn jest łatwa w utworzeniu, pisząć
+porówniania łatwości tworzenia modelu, dokładności, złożoności oraz czasu uzyskania odpowiedzi.
+
+# Podsumowanie
+
+W pracy utworzony został model dla 3 algorytmów maszynowego nadzorowanego, które są w stanie zdiagnozować występowanie choroby serca z dokładnością do ponad 70%.
+Projekt nadaje się do rozszerzenia o kolejne algorytmy uczenia maszynowego nadzorowanego tj.: Regresja Logistyczna, Naiwny Bayers. W tym cleu wystarczy zaimplementować i klasę realizująca zadania z TrainingManager.py
+W projekcie wykorzystano uczenie maszynowe nadzorowane, ponieważ dane testowe zawierały odpowiedzi dla każdego przypadku testowego, nie było potrzeby wykorzystywać uczenia nienadzorowanego.
+Strona realizuje zadanie analityczne i może być wykorzystana w praktyce, a zawarte na niej informację dotyczące wyników działania algorytmów mogą zwiększyć zaufanie do wykorzystywania uczenia maszynowego do zastosowań medycznych.
 
  **Bibliografia**{.unnumbered}
 ========

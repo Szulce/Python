@@ -3,17 +3,8 @@
 
 
 - tresc porownanie i analiza
-porównanie do wyników bez parametrów
-porównać do innych prac
-wnioski dla wykresów
 
 
-###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
--OCENA SZYBKOŚCI WYKONANIA
--OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
--OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
- - które parametry mają i wpływ i dlaczego:
-   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
 
     
 -formatowac zgodnie z przykładem
@@ -31,10 +22,12 @@ usunąć ze strony porównianie całościowe
  nagrać film
 _______________________________________________________________9
 
-- praca najlepiej 40-50 stron lub 17 042 slow jak na razie 4739
-- ______________________________________________________________________
+- praca najlepiej 40-50 stron lub 17 042 slow jak na razie 7739
+
+
+______________________________________________________________________
 - print(classification_report(y_test, y_predicted))
-  -jeżeli będzie brakować 
+
 - zmienić kolory każdego obrazka na czarny
 - dodać nową część jak procesor wpływa na wykonanie algorytmów 
 - do maszyny wwektorów rozszerzyć o hiperplaszczyny 
@@ -67,4 +60,21 @@ opis 2 innych projektów wykonujących podobną predykcje
 - - bibilografie poprawić
 - spis obrazków
 - -przypisy
+- porównanie do wyników bez parametrów
+- wnioski dla wykresów
+- dodać czas dla predict a nie fit
+###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
+-OCENA SZYBKOŚCI WYKONANIA
+-OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
+-OCENA ZALEŻNIE OD DOBRANEJ PARAMERYZACJI :
+ - które parametry mają i wpływ i dlaczego:
+   - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
+
+
+from sklearn.metrics import confusion_matrix
+print(confusion_matrix(y_test,y_pred))
+sns.heatmap(confusion_matrix(y_test,y_pred),annot=True)
+
+sklearn.metrics.roc_auc_score(y_test,y_pred)
+
 ------------_____________________________________________________21

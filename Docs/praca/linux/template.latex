@@ -216,7 +216,7 @@ $endfor$
 
 \hypersetup{linkcolor=black}
 \setcounter{tocdepth}{$toc-depth$}
-\tableofcontents
+\tableofcontents{title={Spis treści}
 
 \vfill
 \clearpage

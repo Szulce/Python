@@ -1,4 +1,4 @@
-\documentclass[12]{$documentclass$}
+\documentclass[16]{$documentclass$}
 \usepackage[T1]{fontenc}
 \usepackage{ae}
 \usepackage{lmodern}
@@ -265,6 +265,11 @@ $endif$
 
 $endif$
 $endif$
+\addto\captionsUSEnglish{%
+  \renewcommand{\contentsname}%
+    {Spis treści}%
+}
+
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
 
 
