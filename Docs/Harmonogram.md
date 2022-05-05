@@ -1,17 +1,13 @@
 
 
 puścić rainforest bo nie mam parametrów
-puścić jeszcze raz wykres danych na bez parametrów -dla ładnych wykresow accuracy
 zapisać wyniki z parametrami
 zapisać wyniki dla regresji z parametrami tylko dla KNN-
 
 
 -todo uzupełnic dane
-- (dane) w Exelu do pracy
 uzupełnić tabele poprawnie4
-[]todo
 praktyczna wyniki dodaćnowe wyniki
-_____________________________________________________06.30
 - tresc porownanie i analiza
 porównanie do wyników bez parametrów
 porównać do innych prac
@@ -26,7 +22,7 @@ opis 2 innych projektów wykonujących podobną predykcje
  - które parametry mają i wpływ i dlaczego:
    - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
 
-______________________________________8.30
+
 
 opis obrazków
 
@@ -44,6 +40,7 @@ opis obrazków
 - - - wyczyścić projekt - usunąc doki 
 - -spakować projekt
 - -przeczytać!!!!!!!!!!!!!!!!!!
+- _____________________________________8.00
 -wniosek i mail do promotora
 usunąć ze strony porównianie całościowe
  nagrać film
@@ -74,4 +71,5 @@ dodać fragment kodu odnoszący się do szkolenia algorytmu
 metryka om
 - dodać opis tworzenia wykrsów
 - dodać opis tworzonych obiektów
+- - (dane) w Exelu do pracy
 ------------_____________________________________________________21
