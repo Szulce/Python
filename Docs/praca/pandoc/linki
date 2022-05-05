@@ -82,8 +82,6 @@
 -
 
 @article{https://www.ices.on.ca/Publications/Journal-Articles/2014/January/Cardiovascular-Disease-Population-Risk-Tool-predictive-algorithm-for-assessing-CVD-risk}
--
-@article{https://www.ctvnews.ca/health/test-your-risk-of-heart-disease-with-a-new-online-lifestyle-calculator-1.4030088}
 
 - @article{https://scikit-learn.org/stable/modules/neighbors.html}
 - @article{https://searchenterpriseai.techtarget.com/definition/machine-learning-ML}
@@ -111,7 +109,7 @@
 - @article{https://dev.to/alod83/3-different-approaches-for-traintest-splitting-of-a-pandas-dataframe-31p0}
 - @article{https://pub.towardsai.net/3-different-approaches-for-train-test-splitting-of-a-pandas-dataframe-d5e544a5316}
 - @article{https://docs.python.org/3/library/itertools.html#itertools.zip_longest}
-- @article{https://realpython.com/train-test-split-python-data/}
+
 - @article{https://towardsdatascience.com/flask-and-chart-js-tutorial-i-d33e05fba845}
 - @article{https://www.sciencedirect.com/science/article/pii/S2352914820300125 - pobrane jako pdfy}
 - @article{https://docs.python.org/3/library/zipfile.html}

@@ -645,10 +645,32 @@ gdzie n to liczba cech.
 - shrinking: [todo] - heurystyka kurcząca
 - cache_size: [todo] - cache jądra (w MB)[@scikit].
 
+### Wizualizacja wyników
+
 Po odnalezieniu najlepszego estymatora model jest zapisywany oraz generowane sa wykresy dla trybu aplikacji webowej:
 
 - wykresy modeli datasetu wejściowego i rozłożenia cech
 - wykresy prezentujące zestawienia danych zebranych na temat algorytmu podczas wykonywania treningu.
+
+Podczas dokonywania finalnej predykcji tworzone są jeszcze wykresy rozmieszczenia danych z zaznaczeniem umiejscowienia nowych danych testowych .
+
+Wykresy dla danych testowych wykonywane są na niepoddanych wstępnej obróbce (normalizacja,standaryzacja,itp.) danych.
+Zestawienie zawiera wykres rozłożenia przypadków chorobowych oraz to samo z uwzględnieniem podziału na płcie, wykres zależności danych między sobą oraz rozkład wartości dla każdego parametru.
+    
+![Schemat 25](img/25rozklad_danych.png "rozklad danych"){ width=50% }
+
+Interesujące rezulaty widać już z samej analizy danych testowych, poniżej przedstawiono wykres dla cechy _maksymalnego osiągniętego tętna_ widać na nim dużą zależność stwierdzenia chorby układu krążenia.
+Na niebiesko zaznaczono przypadki osób zdrowych, na pomarańczowo chorych. Na pierwszy rzut oka widać że grupa chorych osiąga wyższe wartości dla tego parametru.
+
+![Schemat 25](img/26tetno.png "tętno"){ width=50% }
+
+precision=macro_precision,
+                         average_precision=macro_average_precision,
+                         recall=macro_recall,
+                         balanced_accuracy=balanced_accuracy_scorer,
+                         r2=r2_score,
+                         accuracy=accuracy_scorer
+
 
 ## Opis działania aplikacji webowej
 
@@ -663,7 +685,7 @@ Aplikacja posiada 4 widoki :
 - widok omówienia treningu algorytmów
 - widok formularza pozwalającego na wykonanie predycji na wyuczonych modelach na podstawie własnych danych wejściowych
 
-Zatwierdzenie formularza wyzwala odczytanie zapisanych modeli , iteracje i wykonanie predykcji na każdym z nich , następnie prezentowane są wyniki dla najlepszych estymatorów oraz wykresy wskazujące na umiejscowienie nowych danych na tle zbior testowego.
+Zatwierdzenie formularza wyzwala odczytanie zapisanych modeli, iteracje i wykonanie predykcji na każdym z nich , następnie prezentowane są wyniki dla najlepszych estymatorów oraz wykresy wskazujące na umiejscowienie nowych danych na tle zbior testowego.
 
 ![Schemat 20](img/20form.png "form"){ width=60% }
 
@@ -682,9 +704,10 @@ niewiele odbiegającą od perfekcji dokładność, a jednocześnie błędnie os�
  
 Wynika to z definicji dokładności :
 ```doctest
-Ilość poprawnych odpowiedzi
----------------------------
-Ilość prób testowych
+
+    Ilość poprawnych odpowiedzi
+----------------------------------
+    Ilość prób testowych
 ```
 dla takiego działania przy sporadycznych przypadkach zachorowania uznawianie że wszsytkie przypadki są zdrowe (negatywne) uzystkujemy wysoki współczynnik dokładności pomimo że zadanie zlokalizowania niezdrowych pacjentów zakończyło się niepowowdzeniem.
 Informacją która powinna wynikać z oceny algorytmu to ile pozytywnych (cierpiących na choroby wieńcowe) zlokalizowano poprawnie, taki rodzaj oceny nazywany jest czułością.
@@ -699,21 +722,11 @@ Informacją która powinna wynikać z oceny algorytmu to ile pozytywnych (cierpi
 
 
 Utarło się że wśród problemów machine learning'owych dotyczących danych medycznych najbardziej powszechnie stosowanym parametrem oceny jest 
-*czułość* (ang. _true_ _positive_ _rate). 
-Jest jeszcze kwestia związana z chorymi osobami, które odnaleźliśmy poprawnie:
-chore osoby, które oceniliśmy błędnie. Taki błąd nazywany jest błędnym negatywnym
-(ang. false negative — FN). 
-My — bawiący się przez chwilę w lekarzy — nie
-chcemy mówić ludziom, że są chorzy, kiedy są zdrowi. Nie tylko straszymy ich i dajemy powód
-do zmartwienia, ale możemy przepisać im zabiegi i lekarstwa, których nie potrzebują! Taki
-przypadek nazywany jest błędnym pozytywnym (ang. false positive — FP). Możemy go ocenić,
-patrząc na to, jak dobrze poszło nam ze zdrowymi osobami:
-.Terminem
-diagnostycznym jest tutaj specyficzność testu: czy test zgłasza alert tylko w specyficznych
+*czułość* (ang. _true_ _positive_ _rate), czyli ocena ile przypadków pozytywnych zostało tak sklasyfikowanych. 
+Do problemu można również podejść z drugiej strony, czyli skupiając się na błędnie sklasyfikowanych przykładach.
+Rozróźniamy błąd negatywny(ang. _false_ _negative_) oraz błędnym pozytywnym (ang. _false_ _positive_ ) czyli błędnie sklasyfikane osoby chore oraz , niepoprawnie unane jako chore przypadki osób zdrowych.
 
-przypadkach, o które nam chodzi. Specyficzność jest także nazywana współczynnikiem
-poprawnie negatywnych (ang. true negative rate — TNR). W istocie jest to częstotliwość
-występowania przypadków prawdziwie negatywnych w odniesieniu do rzeczywistości. [@confiusion]
+Kolejnym rozpowszechnionym parametrem oceny jest specyficzność inaczej współczynnik poprawnie negatywnych (ang. _true_ _negative_ _rate_), wyznaczającą  częstotliwość występowania przypadków negatywnych. [@confiusion]
 
 ### Zestawienie efektywności działania algorytmów
 
@@ -734,13 +747,11 @@ wyjściowa obiektu jest obliczana przez średnią k wartości najbliższych sąs
 pamięci. Wymaga dużej pamięci do przechowywania całego zestawu danych treningowych do przewidywania oraz nie nadaje się również do dużych danych wymiarowych. 
 
 
-
 ###  Losowe lasy decyzyjne
 
 ##todo liczenie błędów 
 macież pomysłek
 
-###  Losowe lasy decyzyjne
 ###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
 -OCENA SZYBKOŚCI WYKONANIA
 -OCENA ZALEŻNIE OD UZUPELNIANIA DANYCH
@@ -749,22 +760,36 @@ macież pomysłek
    - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
 
 ###  Maszyna wektorów nośnych
-SVC używa jednego podstawowego parametru, C, do kontrolowania kompromisu między
-obciążeniem a wariancją. Bezpośrednia interpretacja tego parametru jest trudna. K. Błędy marginesu to punkty,
-które albo (1) znajdują się po złej stronie separatora (jest to błąd klasyfikacji), albo (2)
-znajdują się po właściwej stronie (zostały poprawnie sklasyfikowane), ale na marginesie. Inne
-znaczenie parametru ν jest takie, że dla danych treningowych akceptowany jest maksymalnie
-ν procent błędów marginesu. W określonych warunkach procent błędów marginesu rośnie
-do ν, a procent danych w wektorach nośnych spada do ν. Wartości ν znajdują się w
-przedziale [0, 1] i są interpretowane jako wartość procentowa od 0% do 100%. Choć klasa
 
+[//]: # (SVC używa jednego podstawowego parametru, C, do kontrolowania kompromisu między)
 
-Z tego przykładu należy zapamiętać dwie rzeczy:
-1. Zwiększanie ν i zmniejszanie C dają mniej więcej ten sam efekt. Jednak skale dla
-obu tych parametrów są wyraźnie różne. C zmienia się o rzędy wielkości, natomiast
-ν zmieniane jest liniowo w krokach o wielkości 1/10.
-2. Duże ν i małe C mogą prowadzić do klasyfikatora SVC, który w pewnym zakresie
-ignoruje błędy klasyfikacj[@confiusion]
+[//]: # (obciążeniem a wariancją. Bezpośrednia interpretacja tego parametru jest trudna. K. Błędy marginesu to punkty,)
+
+[//]: # (które albo &#40;1&#41; znajdują się po złej stronie separatora &#40;jest to błąd klasyfikacji&#41;, albo &#40;2&#41;)
+
+[//]: # (znajdują się po właściwej stronie &#40;zostały poprawnie sklasyfikowane&#41;, ale na marginesie. Inne)
+
+[//]: # (znaczenie parametru ν jest takie, że dla danych treningowych akceptowany jest maksymalnie)
+
+[//]: # (ν procent błędów marginesu. W określonych warunkach procent błędów marginesu rośnie)
+
+[//]: # (do ν, a procent danych w wektorach nośnych spada do ν. Wartości ν znajdują się w)
+
+[//]: # (przedziale [0, 1] i są interpretowane jako wartość procentowa od 0% do 100%. Choć klasa)
+
+[//]: # ()
+[//]: # ()
+[//]: # (Z tego przykładu należy zapamiętać dwie rzeczy:)
+
+[//]: # (1. Zwiększanie ν i zmniejszanie C dają mniej więcej ten sam efekt. Jednak skale dla)
+
+[//]: # (obu tych parametrów są wyraźnie różne. C zmienia się o rzędy wielkości, natomiast)
+
+[//]: # (ν zmieniane jest liniowo w krokach o wielkości 1/10.)
+
+[//]: # (2. Duże ν i małe C mogą prowadzić do klasyfikatora SVC, który w pewnym zakresie)
+
+[//]: # (ignoruje błędy klasyfikacj[@confiusion])
 
 ###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
 -OCENA SZYBKOŚCI WYKONANIA
@@ -809,34 +834,6 @@ Najgorsze modele i wartości dla regresji :
 ###  K-najbliższych sąsiadów
 
 ###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
-
-
-
-problem multiklasyfikacji - problem regresji kategrycznej - zwykła regresja , mierzyć będe 
-metoda prównania -  tzrea było wprowadzić reguły do float na int -> inne metody do liczenia błędów 
-na dzień dobry widzimy nie dokładność ze wględu na klasyfiakcję po przecinku 
-regresja kategoryczna -> rzutowanie przedziału wartości na wartość graniczną 
-
-
-To pytanie jest trochę źle sformułowane. Po optymalizacji nie może być gorzej, inaczej nie byłaby to optymalizacja! (W najgorszym przypadku masz taką samą wydajność jak poprzednio, uzyskując dokładnie te same parametry, które już miałeś)
-
-Jak wskazuje Grzegorz w komentarzu, po pierwsze Twoja lista parametrów nie jest kompletna i nie zawiera wartości, których użyjesz później. Na przykład szybkość uczenia się, ale także max_depth. Po drugie, wyszukiwanie siatkowe, w którym tak naprawdę nie wiesz, gdzie szukać, powinno zawierać znacznie większą rozbieżność parametrów. Sprawdzałeś [0,1, 0,01, 0,05] dla szybkości uczenia się, ale czy sprawdziłeś [0,0001, 0,001, 1,]? Szybkość uczenia się może być tutaj złym przykładem, ale mam nadzieję, że to przekonuje, możesz najpierw sprawdzić wielkość/skalę, np. potęgi dziesięciu, przed sprawdzeniem małych zmian.
-
-W zależności od zestawu danych, różnica między przebiegami z tymi samymi wartościami może również pochodzić z różnych nasion! Sprawdź, czy zawsze ustawiasz to samo ziarno lub wypróbuj to wystarczająco wiele razy z różnymi ziarnem, aby uzyskać porównywalną odpowiedź (na przykład z KFold).
-
-Czy Twój model jest zbieżny przy każdym treningu? Gdzie upewniasz się, że trenujesz wystarczająco długo? Możesz wykreślić stratę dla próbki uczącej i testowej i sprawdzić, czy jest zbieżna, czy nie. Można to kontrolować za pomocą n_estimators w xgboost, jak sądzę.
-
-Nie ma nic złego w Twoim kodzie lub procesie. Często wydajność uczenia maszynowego w testowym zestawie danych jest niższa niż wydajność w zestawie danych szkoleniowych. Twój model nie uogólnia idealnie do danych, których wcześniej nie widział (tj. zestawu danych testowych).
-
--2
-
-Dostrajanie hiperparametrów poprawia regularyzację modelu. Zanim zrobiłeś optymalizację, możesz być przeciążony. Po optymalizacji uregulowałeś swój model i teraz działa on dobrze.
-
-wprowadź opis obrazu tutaj
-
-Wtedy wynik Twojego modelu będzie gorszy po optymalizacji na zestawie treningowym. Wynik Twojego modelu będzie również zły dla zestawu testowego, jeśli Twój model w dużym stopniu opiera się na jednej funkcji do klasyfikacji.
-
-Możesz użyć krzywej uczenia się, aby zobaczyć, jak zmienia się krzywa, gdy używasz optymalizacji, a kiedy jej nie używasz. Możesz też użyć df.corr(), aby zobaczyć macierz korelacji dla korelacji między wartościami cech a wartościami docelowymi.
 
 
 
