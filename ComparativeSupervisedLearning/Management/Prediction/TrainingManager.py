@@ -1,15 +1,10 @@
 import time
 
-import numpy
-from sklearn.model_selection import GridSearchCV
-from sklearn.neighbors import KNeighborsRegressor, KNeighborsClassifier
-
-import ComparativeSupervisedLearning.Config.StaticResources as Rs
 import ComparativeSupervisedLearning.Management.PlotGeneration.PlotGeneration as Plot
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
 
-"""" K nearest neighbours algorithm performance """
+"""" Training algorithm performance """
 
 
 def train_model(grid, x_train, x_test, y_train, y_test):

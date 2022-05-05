@@ -41,7 +41,7 @@ MODEL_TYPE_SVM = "Svm"
 MODEL_TYPE_RF = "Rf"
 MODEL_TYPE_AUTO = "Auto"
 
-MODELS = [MODEL_TYPE_KNN, MODEL_TYPE_SVM, MODEL_TYPE_RF]  # , MODEL_TYPE_AUTO]
+MODELS = [MODEL_TYPE_KNN, MODEL_TYPE_SVM, MODEL_TYPE_RF]
 
 SLASH = "\\"
 
@@ -137,7 +137,7 @@ KNN_METRIC_PARAMS = {'w': [numpy.array([2.0] * N_NEIGHBORS_SIZE)], 'p': KNN_P_PA
 # svm
 SVM_C = [0.1, 1, 10, 100]
 SVM_GAMMA = ['scale', 'auto']
-SVM_KERNEL = ['linear', 'poly', 'rbf', 'sigmoid']  # kernels = ['Polynomial', 'RBF', 'Sigmoid','Linear','precomputed']
+SVM_KERNEL = ['linear', 'poly', 'rbf', 'sigmoid']
 SVM_DEGREE = [1, 3, 5]
 SVM_COE0FLOAT = [0.0, 0.1, 0.3]
 SVM_EPSILON = [0.1, 0.25, 0.3]
