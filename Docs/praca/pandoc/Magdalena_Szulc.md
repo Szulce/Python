@@ -598,12 +598,12 @@ Pierwszym z wymaganaych argumentów _GridSearchCV_ są estymatory. W projekcie i
 
 *KNeighborsClassifier* [@scikit] :
  
-- n_neighbors: [todo] - liczba sąsiadów z których wnioskowany jest jednostkowy resultat
-- weights:  - wagi na podsatwie których wyliczana jest predykcja , można zastosować wagę 1:1 lub nałożyć wagi zgodnie z dystansem.
-- algorithm:  - algorytm zastosowany do znalezienia najbliższych sąsiadów, w projekcie wykorzystano : brute-force oraz auto
-- leaf_size:  - rozmiar liścia dla algorytmów BallTree or KDTree
-- p: - wykorzystanie miar odległości dla manhattan
-- metric:  -metryka odległości
+- n_neighbors: 6 - liczba sąsiadów z których wnioskowany jest jednostkowy resultat
+- weights: 'distance' - wagi na podsatwie których wyliczana jest predykcja , można zastosować wagę 1:1 lub nałożyć wagi zgodnie z dystansem.
+- algorithm: auto - algorytm zastosowany do znalezienia najbliższych sąsiadów, w projekcie wykorzystano : brute-force oraz auto
+- leaf_size: 1 - rozmiar liścia dla algorytmów BallTree or KDTree
+- p:1 - wykorzystanie miar odległości dla manhattan
+- metric: 'canberra' -metryka odległości
 
 
 *RandomForestClassifier*  :
@@ -713,9 +713,9 @@ niewiele odbiegającą od perfekcji dokładność, a jednocześnie błędnie os�
 Wynika to z definicji dokładności :
 ```doctest
 
-    Ilość poprawnych odpowiedzi
-----------------------------------
-    Ilość prób testowych
+        Ilość poprawnych odpowiedzi
+    ----------------------------------
+          Ilość prób testowych
 ```
 dla takiego działania przy sporadycznych przypadkach zachorowania uznawianie że wszsytkie przypadki są zdrowe (negatywne) uzystkujemy wysoki współczynnik dokładności pomimo że zadanie zlokalizowania niezdrowych pacjentów zakończyło się niepowowdzeniem.
 Informacją która powinna wynikać z oceny algorytmu to ile pozytywnych (cierpiących na choroby wieńcowe) zlokalizowano poprawnie, taki rodzaj oceny nazywany jest czułością.
@@ -727,7 +727,6 @@ Informacją która powinna wynikać z oceny algorytmu to ile pozytywnych (cierpi
 |Losowe lasy decyzyjne    | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
  |Maszyna wektorów nośnych | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
  |K-najbliższych sąsiadów  | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
-
 
 Utarło się że wśród problemów machine learning'owych dotyczących danych medycznych najbardziej powszechnie stosowanym parametrem oceny jest 
 *czułość* (ang. _true_ _positive_ _rate), czyli ocena ile przypadków pozytywnych zostało tak sklasyfikowanych. 
@@ -743,8 +742,8 @@ predyspozycje do zajmowania się odpowiednimi zbiorami danych.
 
 *Potencjał algorytmów dla niewielkiego kompletu danych zawierającego wartości* 
 
-Zczynając od drzew decyzyjnych,można od razu stwierdzić ich niski potencjał. Istnieje zbyt duże prawdopodobieństwo
-dopasowania się do modelu treningowego, gdyż wspomniany zbiór dancyh wejściowych nie jest wystarczająco liczny. Dlatego
+Zaczynając od drzew decyzyjnych, można od razu stwierdzić ich niski potencjał. Istnieje zbyt duże prawdopodobieństwo
+dopasowania się do modelu treningowego, gdyż wspomniany zbiór mordancy wejściowych nie jest wystarczająco liczny. Dlatego
 w pracy omówione zostały lasy decyzyjne.
 
 Większej dokładności można się spodziewać po metodzie wektorów nośnych, ale jego złożoność czasowa oraz pamięciowa mogą
@@ -757,9 +756,15 @@ pamięci. Wymaga dużej pamięci do przechowywania całego zestawu danych trenin
 
 ###  Losowe lasy decyzyjne
 
-
+![Schemat 27](img/27knn_params.png "Knn params"){ height=70% }
+![Schemat 28](img/28knn_timez.png "Knn time"){ height=70% }
+![Schemat 33](img/33_knn_acc.png "Knn acc"){ height=70% }
 
 ###  Maszyna wektorów nośnych
+
+![Schemat 29](img/31svm_params.png "Svm params"){ height=70% }
+![Schemat 30](img/32svm_timez.png "Svm time"){ height=70% }
+![Schemat 34](img/35svm_acc.png "Svm acc"){ height=70% }
 
 [//]: # (SVC używa jednego podstawowego parametru, C, do kontrolowania kompromisu między)
 
@@ -793,6 +798,50 @@ pamięci. Wymaga dużej pamięci do przechowywania całego zestawu danych trenin
 
 ###  K-najbliższych sąsiadów
 
+Wynik dla danych utorzonych z modelu który puste wartości zastępuje:
+
+- średnią wartością dla danej kolumny:
+    
+   - Precyzja : 83.56131641845927% 
+   - Wynik klasyfikacji dokładności: 0.7880434782608695 
+   - Zrównoważoną dokładność: 0.7917690417690417 
+   - Utrata regresji błędu średniokwadratowego: 0.21195652173913043
+
+- medianą wartości dla danej kolumny:
+
+    - Precyzja : 79.48887663173377% 
+    - Wynik klasyfikacji dokładności: 0.7880434782608695 
+    - Zrównoważoną dokładność: 0.7873464373464374 
+    - Utrata regresji błędu średniokwadratowego: 0.21195652173913043
+
+- stałą wartością dla danej kolumny:
+  - Precyzja : 79.08071336642764% 
+  - Wynik klasyfikacji dokładności: 0.7989130434782609 
+  - Zrównoważoną dokładność: 0.8030712530712532 
+  - Utrata regresji błędu średniokwadratowego: 0.20108695652173914
+
+- najczęstrzą wartością dla danej kolumny:
+    - Precyzja : 78.40319911748483% 
+    - Wynik klasyfikacji dokładności: 0.7554347826086957 
+    - Zrównoważoną dokładność: 0.749017199017199 
+    - Utrata regresji błędu średniokwadratowego: 0.24456521739130435
+  
+Parametry najwydajniejszego modelu dla danych utorzonych z modelu który puste wartości zastępuje:
+
+- średnią wartością dla danej kolumny: 
+
+'algorithm': 'auto', 'leaf_size': 1, 'metric': , 'n_neighbors': 6, 'p': 1, 'weights': 'distance'
+medianą wartości dla danej kolumny
+{'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': -1, 'n_neighbors': 25, 'p': 2, 'weights': 'distance'}
+stałą wartością dla danej kolumny
+{'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': -1, 'n_neighbors': 25, 'p': 2, 'weights': 'distance'}
+najczęstrzą wartością dla danej kolumny
+{'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'metric_params': None, 'n_jobs': -1, 'n_neighbors': 25, 'p': 2, 'weights': 'distance'}
+
+
+![Schemat 31](img/29rf_params.png "Rf params"){ height=70% }
+![Schemat 32](img/30rf_timez.png "Rf time"){ height=70% }
+![Schemat 34](img/34rf_acc.png "Rf acc"){ height=70% }
 
 *Porównianie całościowe algorytmów : złożoność czasowa , dokładność , złożoność implementacyjna , wpływ danych wykorzytywanych w modelu*
 

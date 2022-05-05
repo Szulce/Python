@@ -5,11 +5,18 @@ puścić jeszcze raz wykres danych na bez parametrów -dla ładnych wykresow acc
 zapisać wyniki z parametrami
 zapisać wyniki dla regresji z parametrami tylko dla KNN-
 
-wstawić wykresy 
+
+-todo uzupełnic dane
+- (dane) w Exelu do pracy
 uzupełnić tabele poprawnie4
 []todo
-__________________________________________________________06
-opis 2 innych publikacji wykonujących te same badania
+praktyczna wyniki dodaćnowe wyniki
+_____________________________________________________06.30
+- tresc porownanie i analiza
+porównanie do wyników bez parametrów
+porównać do innych prac
+wnioski dla wykresów
+- opis 2 innych publikacji wykonujących te same badania
 opis 2 innych projektów wykonujących podobną predykcje
 
 ###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
@@ -19,17 +26,10 @@ opis 2 innych projektów wykonujących podobną predykcje
  - które parametry mają i wpływ i dlaczego:
    - ZALEŻNIE OD METRYKI(SHORT OPIS METRYK)
 
-______________________________________8
-tresc wykresy pobrać ze strony 
-praktyczna wyniki dodaćnowe wyniki
-- (dane) w Exelu do pracy
--todo uzupełnic dane
-- tresc porownanie i analiza
-porównanie do wyników bez parametrów
-porównać do innych prac
-wykonać tabele z exela
+______________________________________8.30
+
 opis obrazków
-wnioski dla wykresów
+
 -formatowac zgodnie z przykładem
 - poprawić przypisy
 - obrazków biliografia,
@@ -51,6 +51,7 @@ _______________________________________________________________9
 
 - praca najlepiej 40-50 stron lub 17 042 slow jak na razie 4739
 - ______________________________________________________________________
+- print(classification_report(y_test, y_predicted))
   -jeżeli będzie brakować 
 - zmienić kolory każdego obrazka na czarny
 - dodać nową część jak procesor wpływa na wykonanie algorytmów 

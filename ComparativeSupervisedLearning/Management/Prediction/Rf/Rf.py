@@ -43,5 +43,5 @@ def prepare_grid_classification(y_train, y_test, scoring):
                     'min_weight_fraction_leaf': Rs.RF_MIN_WEIGHT_FRACTION_LEAF,
                     'min_impurity_decrease': Rs.RF_MIN_IMPURITY_DECREASE, 'ccp_alpha': Rs.RF_CPP}
     param_grid = {'random_state': list(range(1, 2))}
-    grid = GridSearchCV(RandomForestClassifier(), param_grid_p, verbose=4, refit=True, cv=Rs.CV, scoring=scoring)
+    grid = GridSearchCV(RandomForestClassifier(), param_grid_p, verbose=Rs.VERBOSE, refit=True, cv=Rs.CV, scoring=scoring)
     return grid, y_train, y_test
