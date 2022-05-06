@@ -67,15 +67,25 @@ $(document).ready(function(){
             $('#rf_cont_best_params').html(dataObject.rf_cont_best_params);
 
 
-            $('#time_knn_1').html(dataObject.time_knn);
-            $('#time_svm_1').html(dataObject.time_svm);
-            $('#time_rf_1').html(dataObject.time_rf);
-            $('#time_knn_2').html(dataObject.time_knn);
-            $('#time_svm_2').html(dataObject.time_svm);
-            $('#time_rf_2').html(dataObject.time_rf);
-            $('#time_knn_3').html(dataObject.time_knn);
-            $('#time_svm_3').html(dataObject.time_svm);
-            $('#time_rf_3').html(dataObject.time_rf);
+            $('#time_knn_1').html(dataObject.time_knn_train);
+            $('#time_svm_1').html(dataObject.time_svm_train);
+            $('#time_rf_1').html(dataObject.time_rf_train);
+            $('#time_knn_2').html(dataObject.time_knn_train);
+            $('#time_svm_2').html(dataObject.time_svm_train);
+            $('#time_rf_2').html(dataObject.time_rf_train);
+            $('#time_knn_3').html(dataObject.time_knn_train);
+            $('#time_svm_3').html(dataObject.time_svm_train);
+            $('#time_rf_3').html(dataObject.time_rf_train);
+
+            $('#time_knn_4').html(dataObject.time_knn_predict);
+            $('#time_svm_4').html(dataObject.time_svm_predict);
+            $('#time_rf_4').html(dataObject.time_rf_predict);
+            $('#time_knn_5').html(dataObject.time_knn_predict);
+            $('#time_svm_5').html(dataObject.time_svm_predict);
+            $('#time_rf_5').html(dataObject.time_rf_predict);
+            $('#time_knn_6').html(dataObject.time_knn_predict);
+            $('#time_svm_6').html(dataObject.time_svm_predict);
+            $('#time_rf_6').html(dataObject.time_rf_predict);
 
             $('#confusion_1').html(dataObject.confusion);
             $('#confusion_2').html(dataObject.confusion);

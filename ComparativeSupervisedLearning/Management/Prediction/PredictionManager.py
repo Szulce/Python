@@ -76,12 +76,11 @@ def split_data_for_learning_process(data_sample):
 
 def train(model_type, x_train_, x_test_, y_train_, y_test_, iterator):
     x_train, x_test, y_train, y_test = copy_processing_dataset(x_train_, x_test_, y_train_, y_test_)
-    # if model_type == Rs.MODEL_TYPE_KNN:
-    #     Knn.create_train_save_model(x_train, x_test, y_train, y_test, iterator)
-    # elif model_type == Rs.MODEL_TYPE_SVM:
-    #     Svm.create_train_save_model(x_train, x_test, y_train, y_test, iterator)
-    # el
-    if model_type == Rs.MODEL_TYPE_RF:
+    if model_type == Rs.MODEL_TYPE_KNN:
+        Knn.create_train_save_model(x_train, x_test, y_train, y_test, iterator)
+    elif model_type == Rs.MODEL_TYPE_SVM:
+        Svm.create_train_save_model(x_train, x_test, y_train, y_test, iterator)
+    elif model_type == Rs.MODEL_TYPE_RF:
         Rf.create_train_save_model(x_train, x_test, y_train, y_test, iterator)
 
 

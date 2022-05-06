@@ -1,8 +1,6 @@
 import jsonpickle
 
 
-
-
 class AlgorithmWebInfo:
     """"Class defines of object to return results in json
      format for page with information about all algorithms   """
@@ -118,11 +116,27 @@ class AlgorithmWebInfo:
         self.rf_cont_plot2 = information_object[34][1]
         self.rf_cont_best_params = str(information_object[35][0])
 
-        self.time_knn = max(information_object[0][0][9], information_object[9][0][9], information_object[18][0][9], information_object[27][0][9])
-        self.time_svm = max(information_object[3][0][9], information_object[12][0][9], information_object[21][0][9], information_object[30][0][9])
-        self.time_rf = max(information_object[6][0][9], information_object[15][0][9], information_object[24][0][9], information_object[33][0][9])
+        self.time_knn_train = max(information_object[0][0][9], information_object[9][0][9],
+                                  information_object[18][0][9],
+                                  information_object[27][0][9])
+        self.time_svm_train = max(information_object[3][0][9], information_object[12][0][9],
+                                  information_object[21][0][9],
+                                  information_object[30][0][9])
+        self.time_rf_train = max(information_object[6][0][9], information_object[15][0][9],
+                                 information_object[24][0][9],
+                                 information_object[33][0][9])
+
+        self.time_knn_predict = max(information_object[0][0][10], information_object[9][0][10],
+                                    information_object[18][0][10],
+                                    information_object[27][0][10])
+        self.time_svm_predict = max(information_object[3][0][10], information_object[12][0][10],
+                                    information_object[21][0][10],
+                                    information_object[30][0][10])
+        self.time_predict = max(information_object[6][0][10], information_object[15][0][10], information_object[24][0][10],
+                                information_object[33][0][10])
 
         self.confusion = information_object[36]
+        self.
 
     def to_json(self):
         return jsonpickle.encode(self)

@@ -155,7 +155,7 @@ RF_MIN_SAMPLES_LEAF = [1, 2, 5]
 RF_MIN_WEIGHT_FRACTION_LEAF = [0.0, 0.1, 0.25]
 RF_MIN_IMPURITY_DECREASE = [0.0, 0.25]
 RF_CPP = [0.0, 0.25]
-RF_N_ESTIMATORS = [10, 50 ,100]
+RF_N_ESTIMATORS = [10, 50, 100]
 CV = 15
 
 COLUMNS = {"age": "wiek", "sex": "plec", "cp": "bol_w_klatce_piersiowej", "trestbps": "cisnienie_krwi",
@@ -167,9 +167,10 @@ accuracy_scorer = metrics.make_scorer(metrics.accuracy_score)
 balanced_accuracy_scorer = metrics.make_scorer(metrics.balanced_accuracy_score)
 r2_score = metrics.make_scorer(metrics.r2_score)
 macro_recall = metrics.make_scorer(metrics.recall_score, average='macro')
-SCORER_DICTIONARY = dict(precision=macro_precision,
-                         average_precision=macro_average_precision,
-                         recall=macro_recall,
-                         balanced_accuracy=balanced_accuracy_scorer,
-                         r2=r2_score,
-                         accuracy=accuracy_scorer)
+SCORER_DICTIONARY = dict(
+    # precision=macro_precision,
+    # average_precision=macro_average_precision,
+    # recall=macro_recall,
+    # balanced_accuracy=balanced_accuracy_scorer,
+    # r2=r2_score,
+    accuracy=accuracy_scorer)

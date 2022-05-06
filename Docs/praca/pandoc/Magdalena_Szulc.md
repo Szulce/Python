@@ -63,7 +63,7 @@ badań zgromadzonych w repozytorium UCI.
 W dzisiejszych czasach choroby sercowo-naczyniowe stanowią najczęstszą przyczynę zgonów, a liczba osób cierpiących na te
 dolegliwości stale rośnie. Głównymi przyczynami zachorowalności diagnozowanymi przez specjalistów są niski poziom
 świadomości i profilaktyki chorób serca. Dlatego prowadzone są intensywne prace nad zwiększeniem dostępności badań, które wspomogą diagnostykę kardiologiczną na
-jak najwcześniejszym etapie [@1].
+jak najwcześniejszym etapie[@1].
 
 Powodem szukania dokładniejszych sposobów diagnozowania są również wysokie koszty leczenia generowane przez choroby
 układu krwionośnego. Według analityków firmy konsultingowej KPMG [@KPMG] w 2011 r. koszty diagnostyki i terapii chorób
@@ -933,6 +933,7 @@ _Maszyna wektorów nośnych_
 
 Implemenatcja każdego z algorytmów z wykorzystaniem biblioteki sklearn jest analogiczna i łatwa w utworzeniu.
 Do każdego z modeli można zastosować te same metody oceny dokładności. 
+
 # Podsumowanie
 
 W pracy utworzony został model dla 3 algorytmów maszynowego nadzorowanego, które są w stanie zdiagnozować występowanie choroby serca z dokładnością do ponad 70%.

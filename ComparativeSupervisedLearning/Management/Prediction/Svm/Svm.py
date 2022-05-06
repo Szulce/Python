@@ -1,3 +1,4 @@
+from sklearn.metrics import classification_report
 from sklearn.model_selection import GridSearchCV
 from sklearn.svm import SVR, SVC
 

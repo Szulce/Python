@@ -132,7 +132,7 @@ def get_log_scale_countplot(data, param_1, param_2):
     return convert_plot_to_html(plot_tmp1.figure)
 
 
-def create_measure_table(score, y_predict, y_test, exec_time):
+def create_measure_table(score, y_predict, y_test, fit_time, predict_time, classificatio_report):
     measures_table = []
     accuracy_score = metrics.accuracy_score(y_test, y_predict)
     balanced_accuracy_score = metrics.balanced_accuracy_score(y_test, y_predict)
@@ -152,8 +152,9 @@ def create_measure_table(score, y_predict, y_test, exec_time):
     measures_table.append(str(explained_variance_score(y_test, y_predict)))
     measures_table.append(str(balanced_accuracy_score))
     measures_table.append(str(brier_score_loss))
-    measures_table.append(str(exec_time))
-    measures_table.append(exec_time)
+    measures_table.append(str(fit_time))
+    measures_table.append(str(predict_time))
+    measures_table.append(str(classificatio_report))
     return measures_table
 
 
