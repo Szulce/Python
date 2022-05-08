@@ -128,14 +128,14 @@ KNN_WEIGHTS = ['uniform', 'distance']
 KNN_ALGORITHM = ['auto', 'brute']
 # , 'kd_tree'
 
-KNN_LEAF_SIZE = [1, 15, 17, 30, 40, 50, 70, 81, 100]  # leaf_size <= n_points <= 2 * leaf_size
+KNN_LEAF_SIZE = [1, 5, 100]  # leaf_size <= n_points <= 2 * leaf_size
 KNN_P_PARAM = [1, 1.5, 2]
 KNN_METRIC = ['minkowski', 'chebyshev', 'manhattan',
               'hamming', 'canberra', 'braycurtis', 'jaccard', 'matching', 'dice', 'kulsinski', 'sokalmichener']
 KNN_METRIC_PARAMS = {'w': [numpy.array([2.0] * N_NEIGHBORS_SIZE)], 'p': KNN_P_PARAM}
 
 # svm
-SVM_C = [0.1, 1, 10, 100]
+SVM_C = [0.1, 0.05, 1, 100]
 SVM_GAMMA = ['scale', 'auto']
 SVM_KERNEL = ['linear', 'poly', 'rbf', 'sigmoid']  # kernels = ['Polynomial', 'RBF', 'Sigmoid','Linear','precomputed']
 SVM_DEGREE = [1, 3, 5]
@@ -143,10 +143,10 @@ SVM_COE0FLOAT = [0.0, 0.1, 0.3]
 SVM_EPSILON = [0.1, 0.25, 0.3]
 SVM_SHRINKING = [True, False]
 SVM_CACHE_SIZE = [200, 500]
-
+CLASS_WEIGHT=[None,'balanced']
 # rf
-RF_MAX_DEPTH = [5, 7, 10, 13]
-RF_RANDOM_STATE = [0, 2, 13, 27]
+RF_MAX_DEPTH = [5, 7, 13]
+RF_RANDOM_STATE = [0, 2, 27]
 RF_MAX_FEATURES = [None, 'auto', 'sqrt', 'log2']
 RF_CRITERION = ['gini', 'entropy']
 RF_SPLITTER = ['best', 'random']
@@ -156,7 +156,7 @@ RF_MIN_WEIGHT_FRACTION_LEAF = [0.0, 0.1, 0.25]
 RF_MIN_IMPURITY_DECREASE = [0.0, 0.25]
 RF_CPP = [0.0, 0.25]
 RF_N_ESTIMATORS = [10, 50, 100]
-CV = 15
+CV = 10
 
 COLUMNS = {"age": "wiek", "sex": "plec", "cp": "bol_w_klatce_piersiowej", "trestbps": "cisnienie_krwi",
            "fbs": "cukier", "chol": "cholesterol", "num": "wynik"}
@@ -168,9 +168,9 @@ balanced_accuracy_scorer = metrics.make_scorer(metrics.balanced_accuracy_score)
 r2_score = metrics.make_scorer(metrics.r2_score)
 macro_recall = metrics.make_scorer(metrics.recall_score, average='macro')
 SCORER_DICTIONARY = dict(
-    # precision=macro_precision,
-    # average_precision=macro_average_precision,
-    # recall=macro_recall,
-    # balanced_accuracy=balanced_accuracy_scorer,
-    # r2=r2_score,
+    precision=macro_precision,
+    average_precision=macro_average_precision,
+    recall=macro_recall,
+    balanced_accuracy=balanced_accuracy_scorer,
+    r2=r2_score,
     accuracy=accuracy_scorer)

@@ -1,4 +1,7 @@
 
+-różnica pomiędzy training accuracy a test accuracy :
+print("Training Accuracy :", model.score(x_train, y_train))
+print("Testing Accuracy :", model.score(x_test, y_test))
 
 ]###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
 -OCENA SZYBKOŚCI WYKONANIA
@@ -13,31 +16,40 @@ print(confusion_matrix(y_test,y_pred))
 sns.heatmap(confusion_matrix(y_test,y_pred),annot=True)
 sklearn.metrics.roc_auc_score(y_test,y_pred)
 - print(classification_report(y_test, y_predicted))
-- 
+- zapisać wyniki dla regresji z parametrami tylko dla KNN-
+
+
 - dokładniejszy opis na podstawie sklearn dodać możliw wykorzystanie
 - dodać dokładniejszy opis matematyczny i logistyczny każdego z algorytmów
 -dodać rodział teoretyczny na temat sposóbu porównywania algorytmów i skal oml
 - opis 2 innych publikacji wykonujących te same badania
 opis 2 innych projektów wykonujących podobną predykcje
-- zapisać wyniki dla regresji z parametrami tylko dla KNN-
+
 - - poprawić przypisy
 - obrazków biliografia,
- -spiswykresów
+- spiswykresów
 - - bibilografie poprawić
 - spis obrazków
-- -przypisy
+
 - porównanie do wyników bez parametrów
 - wnioski dla wykresów
+ -tresc porownanie i analiza
+
+
 - dodać czas dla predict a nie fit
- tresc porownanie i analiza
--formatowac zgodnie z przykładem
+
+-formatowac zgodnie z prz`yk`ładem
  -strona tytułowa
 -formatować zgodnie z tym co w dokuncie
 -wygenerować dokument
 - moodle zasady pracy uwzględnić:
-- - - wyczyścić projekt - usunąc doki 
-- -spakować projekt
 - -przeczytać!!!!!!!!!!!!!!!!!!
+
+
+
+-zmergować zmiany do mater
+- -wyczyścić master
+- -spakować projekt
 usunąć ze strony porównianie całościowe
  nagrać film
 ______________________________________________

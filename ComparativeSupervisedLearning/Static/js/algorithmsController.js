@@ -91,6 +91,20 @@ $(document).ready(function(){
             $('#confusion_2').html(dataObject.confusion);
             $('#confusion_3').html(dataObject.confusion);
 
+            $('#classification_report_knn_1').html(dataObject.classification_report_knn_1);
+            $('#classification_report_knn_2').html(dataObject.classification_report_knn_2);
+            $('#classification_report_knn_3').html(dataObject.classification_report_knn_3);
+            $('#classification_report_knn_4').html(dataObject.classification_report_knn_4);
+
+            $('#classification_report_svm_1').html(dataObject.classification_report_svm_1);
+            $('#classification_report_svm_2').html(dataObject.classification_report_svm_2);
+            $('#classification_report_svm_3').html(dataObject.classification_report_svm_3);
+            $('#classification_report_svm_4').html(dataObject.classification_report_svm_4);
+
+            $('#classification_report_rf_1').html(dataObject.classification_report_rf_1);
+            $('#classification_report_rf_2').html(dataObject.classification_report_rf_2);
+            $('#classification_report_rf_3').html(dataObject.classification_report_rf_3);
+            $('#classification_report_rf_4').html(dataObject.classification_report_rf_4);
 
 				});
 

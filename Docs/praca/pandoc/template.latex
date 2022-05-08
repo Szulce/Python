@@ -23,6 +23,7 @@
 \usepackage{todonotes}
 \usepackage{adjustbox}
 \usepackage{minibox}
+\usepackage[polish]{babel}
 \usepackage{pdfpages}
 \usepackage{tikz}
 % fix for pandoc 1.14

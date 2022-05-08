@@ -132,14 +132,19 @@ def get_log_scale_countplot(data, param_1, param_2):
     return convert_plot_to_html(plot_tmp1.figure)
 
 
-def create_measure_table(score, y_predict, y_test, fit_time, predict_time, classificatio_report):
+def create_measure_table(score, y_predict, y_test, fit_time, predict_time, classificatio_report, train_score,
+                         test_score):
     measures_table = []
     accuracy_score = metrics.accuracy_score(y_test, y_predict)
     balanced_accuracy_score = metrics.balanced_accuracy_score(y_test, y_predict)
     brier_score_loss = metrics.brier_score_loss(y_test, y_predict)
     text1 = str('Precyzja : ') + \
             str(score) + \
-            str('%            |                       Wynik klasyfikacji dokładności: ') + \
+            str('%   Precyzja treningu:') + \
+            str(train_score) + \
+            str('%   Precyzja testu:') + \
+            str(test_score) + \
+            str('%         |                       Wynik klasyfikacji dokładności: ') + \
             str(accuracy_score) + \
             str('             |                       Zrównoważoną dokładność: ') + \
             str(balanced_accuracy_score) + str('  |                   Utrata regresji błędu średniokwadratowego: ') + \
@@ -281,12 +286,13 @@ def specialized_figure(fig):
 
 
 def get_confusion_matrix():
-    fig, axes = plt.subplots(len(Rs.SCORER_DICTIONARY), 1, figsize=(6, 2 * len(Rs.SCORER_DICTIONARY)))
+    fig, axes = plt.subplots(len(Rs.SCORER_DICTIONARY.keys()), 1, figsize=(6, 2 * len(Rs.SCORER_DICTIONARY.keys())))
     fig.tight_layout()
     for type_m in Rs.MODELS:
         scorer_m = Ms.load_scorer_models(type_m)
         for ax, i in zip(axes, Rs.SCORER_DICTIONARY.keys()):
-            results = scorer_m[i]
-            ax.plot(results, 'o--')
-            ax.set_title(i)
+            if i == 'accuracy': #todo del
+                results = scorer_m[i]
+                ax.plot(results, 'o--')
+                ax.set_title(i)
     return convert_plot_to_html(fig)
