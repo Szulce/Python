@@ -51,7 +51,7 @@ class AlgorithmWebInfo:
         self.rf_mean_desc = information_object[6][0][0]
         self.rf_mean_plot1 = information_object[7][0]
         self.rf_mean_plot2 = information_object[7][1]
-        self.rf_mean_beast_params = str(information_object[8][0])
+        self.rf_mean_best_params = str(information_object[8][0])
 
         # KNN median
 

@@ -1,7 +1,17 @@
 
+
+
+-praktyczna część usunąć całósciowe porównanie
+-praktyczna część nagrać film
+-wstawić obrazki i dane do pracy 
+-poprawki od agnieszki 
+-poprawki od promotora
+
+- zapisać wyniki dla regresji z parametrami tylko dla KNN-
+
+
 -różnica pomiędzy training accuracy a test accuracy :
-print("Training Accuracy :", model.score(x_train, y_train))
-print("Testing Accuracy :", model.score(x_test, y_test))
+
 
 ]###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
 -OCENA SZYBKOŚCI WYKONANIA
@@ -10,15 +20,7 @@ print("Testing Accuracy :", model.score(x_test, y_test))
  - które parametry mają i wpływ i dlaczego:
    - ZALEŻNIE OD METRYKI(SHORT OPIS METRYKa
 
-
-from sklearn.metrics import confusion_matrix
-print(confusion_matrix(y_test,y_pred))
-sns.heatmap(confusion_matrix(y_test,y_pred),annot=True)
-sklearn.metrics.roc_auc_score(y_test,y_pred)
-- print(classification_report(y_test, y_predicted))
-- zapisać wyniki dla regresji z parametrami tylko dla KNN-
-
-
+    
 - dokładniejszy opis na podstawie sklearn dodać możliw wykorzystanie
 - dodać dokładniejszy opis matematyczny i logistyczny każdego z algorytmów
 -dodać rodział teoretyczny na temat sposóbu porównywania algorytmów i skal oml
@@ -50,11 +52,14 @@ opis 2 innych projektów wykonujących podobną predykcje
 -zmergować zmiany do mater
 - -wyczyścić master
 - -spakować projekt
-usunąć ze strony porównianie całościowe
- nagrać film
 ______________________________________________
 
 
+from sklearn.metrics import confusion_matrix
+print(confusion_matrix(y_test,y_pred))
+sns.heatmap(confusion_matrix(y_test,y_pred),annot=True)
+sklearn.metrics.roc_auc_score(y_test,y_pred)
+- print(classification_report(y_test, y_predicted))
 
 - dodać nową część jak procesor wpływa na wykonanie algorytmów 
 - do maszyny wwektorów rozszerzyć o hiperplaszczyny 
