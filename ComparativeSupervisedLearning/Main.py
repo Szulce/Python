@@ -24,9 +24,9 @@ def get_data_info_object():
 
 
 def get_algorithms_info_object():
-    # data = PredictionManager.get_algorithm_info()
-    # return AlgorithmWebInfo(data).to_json()
-    return Ms.load_plot_object(Rs.ALGORITHM_INFO_PLOTS)
+    data = PredictionManager.get_algorithm_info()
+    return AlgorithmWebInfo(data).to_json()
+    # return Ms.load_plot_object(Rs.ALGORITHM_INFO_PLOTS)
 
 
 if __name__ == '__main__':

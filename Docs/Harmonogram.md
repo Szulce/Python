@@ -1,10 +1,7 @@
 
 
--praktyczna część nagrać film
-- zapisać wyniki dla regresji z parametrami tylko dla KNN-
 
--wstawić obrazki i dane do pracy 
-_____________________________________5
+-wstawić obrazki i dane do pracy - czasy -wykresy, czas,parametry wykresy,parametry najlepszy,parametry ze strony 
 -poprawki od agnieszki
 -poprawki od promotora
 ________________________________6.30
@@ -53,6 +50,8 @@ opis 2 innych projektów wykonujących podobną predykcje
 - -wyczyścić master
 - -spakować projekt
 ______________________________________________
+
+- zapisać wyniki dla regresji z parametrami tylko dla KNN-
 
 
 from sklearn.metrics import confusion_matrix

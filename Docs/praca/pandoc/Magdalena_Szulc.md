@@ -797,13 +797,13 @@ Parametry najwydajniejszego modelu dla danych utworzonych z modelu, który puste
 
 Z powyższego zestawienia tylko średnia wyznacza inne parametry, to dla niej uzyskujemy najwyższy wynik zatem do poniższego porównania wykorzystany zostanie model dla uzupełnienia brakujących danych śrenią wartością.
 Przyglądając się można zauważyć że uzupełnienie danych dowolną stałą wartością oraz najczęściej występującą wartością dla estymatora generują te same hiperparametry, natomiast wynik dla stałej wartości równej -1 jest wyższy niż dla wartości najczęstszej.
-Nie jest to oczywiste i ludzkie postrzeganie mogłoby podpowiadać że wartość specjalnie wybrana i zależna od zbioru będzie dawać lepsze rezultaty niż dowolna wartość. 
-Ważnym do przeanalizowania parametrem dla algorytmy k-najbliższych sąsiadów jest N = 6. Maksymalnie N mogłlo równać się liczie zależności czyli 13, najwięskszy procent został osiągnięty w mniej więcej połowie wartości, co ciekawe każdy imputer wybiera tę samą wartość.
+Nie jest to oczywiste i ludzkie postrzeganie mogłoby podpowiadać, że wartość specjalnie wybrana i zależna od zbioru będzie dawać lepsze rezultaty niż dowolna wartość. 
+Ważnym do przeanalizowania parametrem dla algorytmu k-najbliższych sąsiadów jest N = 6. Maksymalnie N mogło równać się liczbie zależności, czyli 13, największy procent został osiągnięty w mniej więcej połowie wartości, co ciekawe każdy imputer wybiera tę samą wartość.
 
 ![Schemat 27](img/27knn_params.png "Knn params"){ height=30% }
 
-Zestawienie przedstawione powyżej podpowiada, że do cechą znaczącą jest również metryka, ta cecha jednak jest oczywista ze względu na specyfikę działania algorytmu.
-Zastosownie wyszukiwania gridSearch wykazuję,że skupiając się na parametrach: metryki, wagach oraz liczbie sąsiadów jesteśmy w stanie uzyskać optymalne wartości dla modelu algorytmu, pozostałe nie posiadają zyt dużego wpływu przy braku specyficznych danych testowych.
+Zestawienie przedstawione powyżej podpowiada, że cechą znaczącą jest również parametr _metric_. ta cecha jednak jest oczywista ze względu na specyfikę działania algorytmu.
+Zastosownie wyszukiwania gridSearch wykazuję, że skupiając się na parametrach: metryki, wagach oraz liczbie sąsiadów jesteśmy w stanie uzyskać optymalne wartości dla modelu algorytmu, pozostałe nie posiadają zyt dużego wpływu przy braku specyficznych danych testowych.
 
 
 ###  Losowe lasy decyzyjne
@@ -929,7 +929,7 @@ _Maszyna wektorów nośnych_
 Implemenatcja każdego z algorytmów z wykorzystaniem biblioteki sklearn jest analogiczna i łatwa w utworzeniu.
 Do każdego z modeli można zastosować te same metody oceny dokładności. 
 
-# Podsumowanie
+## Podsumowanie
 
 W pracy utworzony został model dla 3 algorytmów maszynowego nadzorowanego, które są w stanie zdiagnozować występowanie choroby serca z dokładnością do ponad 70%.
 Projekt nadaje się do rozszerzenia o kolejne algorytmy uczenia maszynowego nadzorowanego tj.: Regresja Logistyczna, Naiwny Bayers. W tym cleu wystarczy zaimplementować i klasę realizująca zadania z TrainingManager.py

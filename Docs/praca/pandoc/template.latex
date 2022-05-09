@@ -269,7 +269,7 @@ $endif$
 \addto\captionsUSEnglish{%
   \renewcommand{\contentsname}%
     {Spis treści}%
-}
+    }
 
 \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
 
