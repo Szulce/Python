@@ -1,13 +1,13 @@
 
 
-
--praktyczna część usunąć całósciowe porównanie
 -praktyczna część nagrać film
--wstawić obrazki i dane do pracy 
--poprawki od agnieszki 
--poprawki od promotora
-
 - zapisać wyniki dla regresji z parametrami tylko dla KNN-
+
+-wstawić obrazki i dane do pracy 
+_____________________________________5
+-poprawki od agnieszki
+-poprawki od promotora
+________________________________6.30
 
 
 -różnica pomiędzy training accuracy a test accuracy :

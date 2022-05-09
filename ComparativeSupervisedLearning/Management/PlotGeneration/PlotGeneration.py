@@ -197,20 +197,20 @@ def generate_user_data_plot(base_data):
     concatenated = pandas.concat(
         [test_data.assign(dataset='dane testowe'), base_data_frame.assign(dataset='wprowadzone dane')])
     dots_size = 250
-    plot1 = convert_plot_to_html(
-        sns.scatterplot(x='age', y='chol', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    plot2 = convert_plot_to_html(
-        sns.scatterplot(x='sex', y='restecg', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    plot3 = convert_plot_to_html(
-        sns.scatterplot(x='cp', y='trestbps', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    plot4 = convert_plot_to_html(
-        sns.scatterplot(x='fbs', y='exang', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    plot5 = convert_plot_to_html(
-        sns.scatterplot(x='thalach', y='oldpeak', hue='dataset', data=concatenated, style='dataset',
-                        s=dots_size).figure)
-    plot6 = convert_plot_to_html(
-        sns.scatterplot(x='slope', y='ca', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    return [plot1, plot2, plot3, plot4, plot5, plot6]
+    return [generate_dotted_plot(concatenated, dots_size, 'age', 'chol')
+        , generate_dotted_plot(concatenated, dots_size, 'sex', 'restecg')
+        , generate_dotted_plot(concatenated, dots_size, 'cp', 'trestbps')
+        , generate_dotted_plot(concatenated, dots_size, 'fbs', 'exang')
+        , generate_dotted_plot(concatenated, dots_size, 'thalach', 'oldpeak')
+        , generate_dotted_plot(concatenated, dots_size, 'slope', 'ca')]
+
+
+def generate_dotted_plot(concatenated, dots_size, x_param_name, y_param_name):
+    ax = sns.scatterplot(x=x_param_name, y=y_param_name, hue='dataset', data=concatenated, style='dataset', s=dots_size,
+                         legend='brief')
+    handles, labels = ax.get_legend_handles_labels()
+    ax.legend(handles[:2], labels[:2])
+    return convert_plot_to_html(ax.figure)
 
 
 def best_estimator_compare(iterator, type_m):
