@@ -2,7 +2,6 @@
 
  
 -tekst poprawić zgodnie z pomiarem
-poprawić obrazki
 - nagrać film
 - spakować i wysłać
 

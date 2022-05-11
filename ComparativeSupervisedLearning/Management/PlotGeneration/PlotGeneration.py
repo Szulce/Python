@@ -291,7 +291,8 @@ def get_confusion_matrix():
     for type_m in Rs.MODELS:
         scorer_m = Ms.load_scorer_models(type_m)
         for ax, i in zip(axes, Rs.SCORER_DICTIONARY.keys()):
-            results = scorer_m[i][0][0:20]
-            ax.plot(results, 'o--')
-            ax.set_title(i)
+            if i == 'accuracy':
+                results = scorer_m[i][0][0:20]
+                ax.plot(results, 'o--')
+                ax.set_title(i)
     return convert_plot_to_html(fig)

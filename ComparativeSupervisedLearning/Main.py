@@ -18,9 +18,9 @@ def predict_based_on_user_input(base_data):
 
 
 def get_data_info_object():
-    exhibit, gender, distribution, coleration, data_info = PredictionManager.get_data_info()
-    return DataResultObject(data_info, exhibit, gender, distribution, coleration).to_json()
-    # return Ms.load_plot_object(Rs.DATA_INFO_PLOTS)
+    # exhibit, gender, distribution, coleration, data_info = PredictionManager.get_data_info()
+    # return DataResultObject(data_info, exhibit, gender, distribution, coleration).to_json()
+    return Ms.load_plot_object(Rs.DATA_INFO_PLOTS)
 
 
 def get_algorithms_info_object():
