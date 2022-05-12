@@ -714,7 +714,7 @@ niewiele odbiegającą od perfekcji dokładność, a jednocześnie błędnie os�
            próby testowe
 ```
 Dla takiego działania przy sporadycznych przypadkach zachorowania uznawanie, że wszystkie przypadki są przypadkami negatywnymi (osoby zdrowe), uzyskujemy wysoki współczynnik dokładności, pomimo że zadanie zlokalizowania niezdrowych pacjentów zakończyło się niepowodzeniem.
-Informacją, która powinna wynikać z oceny algorytmu to ile pozytywnych (cierpiących na choroby wieńcowe) przykładów zlokalizowano poprawnie, taki rodzaj oceny nazywany jest czułością.
+Informacją, która powinna wynikać z oceny algorytmu, to ile pozytywnych (cierpiących na choroby wieńcowe) przykładów zlokalizowano poprawnie, taki rodzaj oceny nazywany jest czułością.
  
  |- | Dokładność w %       |  |  | | | | | |
 ------: |-:| -----: | -: | -: | ------: | ---: | -: | -: | -:|
@@ -728,7 +728,10 @@ Parametry domyślne dla zbioru testowego zwracają bardzo wysokie rezultaty, jed
 Dla lasów losowych znacznej poprawie uległa estymacja dla mediany i średniej dla domyślnych parametrów oscylująca w okolicach 81% z zastosowaniem macierzy parametrów daje wyniki bliżej 83%.
 Przy maszynie wektorów nośnych poprawa to średnio 1.5% na każdym imputerze, a dla k-najbliższych sąsiadów wynik dla średniej zwiększył się o ponad 5%. 
 Największą zmianę widać dla algorytmu k-najbliższych sąsiadów i osiąga on najwyższy wynik. 
+
 W innych źródłach i badaniach to algorytm SVM osiąga najwyższe wyniki, z precyzją na poziomie 92%, przy wykorzystaniu jądra *RBF* oraz C równym 100[@anoyher_sources].
+
+![Wyniki algorytmów dla różnych miar oceny](img/33knn_acc.png "Knn acc"){ height=30% }
 
 Utarło się, że wśród problemów machine learningowych dotyczących danych medycznych najbardziej powszechnie stosowanym parametrem oceny jest *czułość* (ang. _true_ _positive_ _rate), czyli ocena ile przypadków pozytywnych zostało tak sklasyfikowanych. 
 Do problemu można również podejść z drugiej strony, czyli skupiając się na błędnie sklasyfikowanych przykładach.
@@ -765,9 +768,7 @@ Wynik dla danych utworzonych z modelu, który puste wartości zastępuje:
    - wynik klasyfikacji dokładności: 0.7880434782608695, 
    - zrównoważoną dokładność: 0.7917690417690417, 
    - utrata regresji błędu średniokwadratowego: 0.21195652173913043,
-
-![Knn wykres dla parametrów z imputerem: średnia](img/27knn_params.png "Knn parametry średnia"){ height=30% }
-
+   
 
 - medianą wartości dla danej kolumny:
 
@@ -775,27 +776,19 @@ Wynik dla danych utworzonych z modelu, który puste wartości zastępuje:
     - wynik klasyfikacji dokładności: 0.7880434782608695, 
     - zrównoważoną dokładność: 0.7873464373464374, 
     - utrata regresji błędu średniokwadratowego: 0.21195652173913043,
-
-![Knn wykres dla parametrów z imputerem: mediana](img/275knn_params.png "Knn parametry mediana"){ height=30% }
-
+    
 - stałą wartością dla danej kolumny:
   - precyzja: 83.42618128332415%,
   - wynik klasyfikacji dokładności: 0.7989130434782609,
   - zrównoważoną dokładność: 0.8030712530712532,
   - utrata regresji błędu średniokwadratowego: 0.20108695652173914,
-
-![Knn wykres dla parametrów z imputerem: stała wartość](img/2755knn_params.png "Knn parametry stała wartość"){ height=30% }
-
-
+  
 - najczęstszą wartością dla danej kolumny:
     - precyzja: 83.01801801801801%, 
     - wynik klasyfikacji dokładności: 0.7554347826086957, 
     - zrównoważoną dokładność: 0.749017199017199, 
     - utrata regresji błędu średniokwadratowego: 0.24456521739130435.
-  
-![Knn wykres dla parametrów z imputerem: najczęstsza wartość](img/27555knn_params.png "Knn parametry najczęstsza wartość"){ height=30% }
-
-
+    
 Parametry najwydajniejszego modelu dla danych utworzonych z modelu, który puste wartości zastępuje:
 
 - średnią wartością dla danej kolumny: 
@@ -825,10 +818,8 @@ Nie jest to oczywiste, ludzkie postrzeganie mogłoby podpowiadać, że wartość
 Ważnym do przeanalizowania parametrem dla algorytmu k-najbliższych sąsiadów jest N = 6. Maksymalnie N mogło równać się liczbie zależności, czyli 13, największy procent został osiągnięty w mniej więcej połowie wartości, co ciekawe każdy imputer wybiera tę samą wartość.
 
 
-
 Zestawienie przedstawione powyżej podpowiada, że cechą znaczącą jest również parametr _metric_. Ta cecha wydaję się oczywista ze względu na specyfikę działania algorytmu.
 Zastosowanie wyszukiwania gridSearch wykazuję, że skupiając się na parametrach: metryki, wagach oraz liczbie sąsiadów jesteśmy w stanie uzyskać optymalne wartości dla modelu algorytmu, pozostałe nie posiadają zyt dużego wpływu przy braku specyficznych danych testowych.
-
 
 **Losowe lasy decyzyjne**
 
@@ -840,8 +831,6 @@ Wynik dla danych utworzonych z modelu, który puste wartości zastępuje:
    - wynik klasyfikacji dokładności: 0.7934782608695652 
    - zrównoważoną dokładność: 0.7941031941031941 
    - utrata regresji błędu średniokwadratowego: 0.20652173913043478
-   
-![Lasy losowe wykres dla parametrów z imputerem: średnia](img/29rf_params.png "Rf parametry średnia"){ height=30% }
 
 
  - medianą wartości dla danej kolumny:
@@ -851,8 +840,7 @@ Wynik dla danych utworzonych z modelu, który puste wartości zastępuje:
     - zrównoważoną dokładność: 0.8076167076167076 
     - utrata regresji błędu średniokwadratowego: 0.1956521739130435
 
-![Lasy losowe wykres dla parametrów z imputerem: mediana](img/295rf_params.png "Rf parametry mediana"){ height=30% }
-    
+  
  - stałą wartością dla danej kolumny:
     
    - precyzja: 82.75453535727509% 
@@ -860,7 +848,6 @@ Wynik dla danych utworzonych z modelu, który puste wartości zastępuje:
    - zrównoważoną dokładność: 0.8031941031941032 
    - utrata regresji błędu średniokwadratowego: 0.1956521739130435
 
-![Lasy losowe wykres dla parametrów z imputerem: stała wartość](img/2955rf_params.png "Rf parametry stała wartość"){ height=30% }
 
  - najczęstszą wartością dla danej kolumny:
     
@@ -869,7 +856,6 @@ Wynik dla danych utworzonych z modelu, który puste wartości zastępuje:
     - zrównoważoną dokładność: 0.8122850122850123 
     - utrata regresji błędu średniokwadratowego: 0.18478260869565216
     
-![Lasy losowe wykres dla parametrów z imputerem: najczęstsza wartość](img/29555rf_params.png "Rf parametry najczęstsza wartość"){ height=30% }
 
 Tak samo jak w przypadku algorytmu k-najbliższych sąsiadów nalepszy wynik uzyskany dla imputera w postaci średniej. 
 
@@ -877,25 +863,29 @@ Parametry najwydajniejszego modelu dla danych utworzonych z modelu, który puste
 
 - średnią wartością dla danej kolumny: 
 ```doctest
-'ccp_alpha': 0.0, 'criterion': 'gini', 'max_features': 'auto', 
+'ccp_alpha': 0.0, 'criterion': 'gini',
+ 'max_features': 'auto', 
 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1,
  'min_weight_fraction_leaf': 0.0, 'random_state': 0
 ```
 - medianą wartości dla danej kolumny
 ```doctest
-'ccp_alpha': 0.0, 'criterion': 'entropy', 'max_features': 'auto', 
+'ccp_alpha': 0.0, 'criterion': 'entropy',
+ 'max_features': 'auto', 
 'min_impurity_decrease': 0.0, 'min_samples_leaf': 5,
  'min_weight_fraction_leaf': 0.0, 'random_state': 0
 ```
 - stałą wartością dla danej kolumny
 ```doctest
-'ccp_alpha': 0.0, 'criterion': 'gini', 'max_features': 'auto', 
+'ccp_alpha': 0.0, 'criterion': 'gini', 
+'max_features': 'auto', 
 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 
 'min_weight_fraction_leaf': 0.0, 'random_state': 0
 ```
 - najczęstszą wartością dla danej kolumny
 ```doctest
-'ccp_alpha': 0.0, 'criterion': 'entropy', 'max_features': 'auto',
+'ccp_alpha': 0.0, 'criterion': 'entropy',
+ 'max_features': 'auto',
  'min_impurity_decrease': 0.0, 'min_samples_leaf': 1,
   'min_weight_fraction_leaf': 0.0, 'random_state': 0
 ```
@@ -916,8 +906,7 @@ Algorytm maszyny wektorów nośnych uzyskuje następujące wyniki przy uwzględn
     - zrównoważoną dokładność: 0.8122850122850123 
     - utrata regresji błędu średniokwadratowego: 0.18478260869565216
 
-![SVM wykres dla parametrów z imputerem: średnia](img/31svm_params.png "Svm parametry średnia"){ height=30% }
-  
+
 - medianą wartości dla danej kolumny:
 
   - precyzja: 82.61940022213994% 
@@ -926,8 +915,7 @@ Algorytm maszyny wektorów nośnych uzyskuje następujące wyniki przy uwzględn
   - zrównoważoną dokładność: 0.7986486486486486 
   - utrata regresji błędu średniokwadratowego: 0.20108695652173914
 
-![SVM wykres dla parametrów z imputerem: mediana](img/315svm_params.png "Svm parametry mediana"){ height=30% }
-  
+
 - stałą wartością dla danej kolumny:
 
   - precyzja: 83.42835986671602% 
@@ -935,9 +923,7 @@ Algorytm maszyny wektorów nośnych uzyskuje następujące wyniki przy uwzględn
   - wynik klasyfikacji dokładności: 0.8097826086956522 
   - zrównoważoną dokładność: 0.80995085995086 
   - utrata regresji błędu średniokwadratowego: 0.19021739130434784
-
-![SVM wykres dla parametrów z imputerem: stała wartość](img/3155svm_params.png "Svm parametry stała wartość"){ height=30% }
-
+  
   
 - najczęstszą wartością dla danej kolumny
   
@@ -947,39 +933,165 @@ Algorytm maszyny wektorów nośnych uzyskuje następujące wyniki przy uwzględn
   - zrównoważoną dokładność: 0.7987714987714988 
   - utrata regresji błędu średniokwadratowego: 0.1956521739130435
 
-
-![SVM wykres dla parametrów z imputerem: najczęstsza wartość](img/31555svm_params.png "Svm parametry najczęstsza wartość"){ height=30% }
-
+    
 Parametry najwydajniejszego modelu dla danych utworzonych z modelu, który puste wartości zastępuje:
 
 - średnią wartością dla danej kolumny: 
+
 ```doctest
 'C': 100, 'cache_size': 200, 'class_weight': None, 'coef0': 0.0, 
 'degree': 3, 'gamma': 'auto', 'kernel': 'poly', 
 'random_state': 1, 'shrinking': True
 ```
 - medianą wartości dla danej kolumny
+
 ```doctest
 'C': 100, 'cache_size': 200, 'class_weight': 'balanced','coef0': 0.3, 
 'degree': 3, 'gamma': 'auto', 'kernel': 'poly',
  'random_state': 1, 'shrinking': True
 ```
 - stałą wartością dla danej kolumny
+
 ```doctest
 'C': 0.1, 'cache_size': 200, 'class_weight': None, 'coef0': 0.1, 
 'degree': 3, 'gamma': 'scale', 'kernel': 'poly',
  'random_state': 1, 'shrinking': True
 ```
 - najczęstszą wartością dla danej kolumny
+
 ```doctest
 'C': 100, 'cache_size': 200, 'class_weight': None, 'coef0': 0.3, 
 'degree': 3, 'gamma': 'auto', 'kernel': 'poly',
  'random_state': 1, 'shrinking': True
 ```
 
+Dla wykorzystania funkcji SVC wymaganym parametrem jest C, jak już wcześniej wspomniano, jest to własność odpowiadająca za wyznaczenie złotego środka między obciążeniem a wariancją. Poniżej wstawiono zestawienie wykresów dla parametrów per wersja imputera zgodnie z legendą:
 
-Dla wykorzystania funkcji SVC wymaganym parametrem jest C, jak już wcześniej wspomniano, jest to własność odpowiadająca za wyznaczenie złotego środka między obciążeniem a wariancją.
+- kolor niebieski - imputer średnia,
+- kolor czerwony - imputer mediana,
+- kolor zielony - imputer wartość stała,
+- kolor czarny - imputer najczęstsza wartość.
 
+Na osi y skalą jest score, na osi x znajdują się zapróbkowane podczas uczenia wartości parametrów.
+
+
+_K- najbliższych sąsiadów_
+
+![Parametr algorithm](img/knn_algorithm_param.png ""){ width=33% }  ![Parametr leaf size](img/leaf_size_param.png ""){ width=33% } ![Parametr metric](img/knn_metric_params.png ""){ width=33% } 
+
+\begin{figure}[!h]
+\captionsetup[subfigure]{labelformat=empty}
+\begin{subfigure}[t]{0.30\textwidth}
+\caption{ Parametr algorithm}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.30\textwidth}
+\caption{Parametr leaf size}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.30\textwidth}
+\caption{Parametr metric}
+\end{subfigure}
+\caption{Wykres zależności wyniku od uzupełnienia imputera oraz parametru dla wyniku wykonania procesu uczenia algorytmu Knn cz.1}
+\end{figure}
+
+![Parametr N](img/knn_neighbours_params.png ""){ width=33% } ![Parametr WEIGHTS](img/knn_weights_params.png ""){ width=33% }  ![Parametr P](img/p_param.png ""){ width=33% } 
+
+\begin{figure}[!h]
+\captionsetup[subfigure]{labelformat=empty}
+\begin{subfigure}[t]{0.30\textwidth}
+\caption{ Parametr n}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.30\textwidth}
+\caption{Parametr weights}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.30\textwidth}
+\caption{Parametr p}
+\end{subfigure}
+\caption{Wykres zależności wyniku od uzupełnienia imputera oraz parametru dla wyniku wykonania procesu uczenia algorytmu Knn cz.2}
+\end{figure}
+
+![Parametr metric](img/metric_params.png ""){ width=33% }
+
+
+_Lasy losowe_
+
+
+![Parametr MIN IMPURITY DECREASE](img/min_impurity_descrease_param.png ""){ width=33% }  ![Parametr MIN WEIGHT FRACTION_LEAF](img/min_weight_fraction_leaf_param.png ""){ width=33% }  ![Parametr LEAF SIZE](img/leaf_size_param.png ""){ width=33% }
+
+\begin{figure}[!h]
+\captionsetup[subfigure]{labelformat=empty}
+\begin{subfigure}[t]{0.25\textwidth}
+\caption{ Parametr min impurity}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.25\textwidth}
+\caption{Parametr min weight franction leaf}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.25\textwidth}
+\caption{Parametr  leaf size}
+\end{subfigure}
+\caption{Wykres zależności wyniku od uzupełnienia imputera oraz parametru dla wyniku wykonania procesu uczenia algorytmu Lasów losowych cz.1}
+\end{figure}
+
+![Parametr CPP ALPHA](img/rf_cpp_alpha_result.png ""){ width=33% } ![Parametr CRITERION](img/rf_criterion_params.png ""){ width=33% }  ![Parametr RANDOM STATE](img/random_state_params.png ""){ width=33% } 
+
+\begin{figure}[!h]
+\captionsetup[subfigure]{labelformat=empty}
+\begin{subfigure}[t]{0.25\textwidth}
+\caption{ Parametr cpp alpha}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.25\textwidth}
+\caption{Parametr criterion}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.25\textwidth}
+\caption{Parametr random state}
+\end{subfigure}
+\caption{Wykres zależności wyniku od uzupełnienia imputera oraz parametru dla wyniku wykonania procesu uczenia algorytmu Lasów losowych cz.2}
+\end{figure}
+
+![Parametr min samples leaf](img/min_samples_leaf_param.png ""){ width=33% } 
+
+
+
+_Maszyna wektorów nośnych_
+
+
+![Parametr C](img/c_params.png ""){ width=33% } ![Parametr COEFO](img/cefo_params.png ""){ width=33% } ![Parametr DEGREE](img/degree_params.png ""){ width=33% }
+
+
+\begin{figure}[!h]
+\captionsetup[subfigure]{labelformat=empty}
+\begin{subfigure}[t]{0.30\textwidth}
+\caption{ Parametr c}
+\end{subfigure}
+\begin{subfigure}[t]{0.30\textwidth}
+\caption{Parametr coef0}
+\end{subfigure}
+\begin{subfigure}[t]{0.30\textwidth}
+\caption{Parametr degree}
+\end{subfigure}
+\caption{Wykres zależności wyniku od uzupełnienia imputera oraz parametru dla wyniku wykonania procesu uczenia algorytmu SVM cz.1 }
+\end{figure}
+
+![Parametr GAMMA](img/gamma_params.png ""){ width=33% } ![Parametr KERNEL](img/kernel_params.png ""){ width=33% } 
+
+\begin{figure}[!h]
+\captionsetup[subfigure]{labelformat=empty}
+\begin{subfigure}[t]{0.30\textwidth}
+\caption{ Parametr gamma}
+\end{subfigure}
+\begin{subfigure}[t]{0.25\textwidth}
+\caption{Parametr kernel}
+\end{subfigure}
+\hfill
+\caption{Wykres zależności wyniku od uzupełnienia imputera oraz parametru dla wyniku wykonania procesu uczenia algorytmu SVM cz.2}
+\end{figure}
 
 *Wpływ parametrów na model uczący się*
 
@@ -987,8 +1099,7 @@ Wykorzystanie parametrów przy tworzeniu modelu uczącego się wpływa negatywni
 Konfiguracja parametrów im bardziej sprecyzowana, tym większe prawdopodobieństwo wyższej dokładności.
 Nie wszystkie parametry wykorzystane powinny być dostrajane jako hiperparametry ze względu na mały wpływ na model, jednak samo ich ustawienie wpływa pozytywnie lub neutralnie na wyniki.
 
-![Wykres wyników algorytmów dla różnych miar oceny](img/33knn_acc.png "Knn acc"){ height=30% }
- 
+
 *Porównanie czasu wykonania* 
 
 Czas uczenia w sekundach dla jednego imputera dla domyślnych parametrów prezentuje się następująco: 
@@ -1025,91 +1136,38 @@ Czas uczenia zależnie od wartości parametru przedstawiono poniżej:
 
 _K- najbliższych sąsiadów_
 
-![KNN - Wykres wpływu parametrów na wynik dla imputera: średnia](img/28knn_timez.png "Knn czas średnia"){ width=50% } ![KNN - Wykres wpływu parametrów na wynik dla imputera: mediana](img/285knn_timez.png "Knn czas mediana"){ width=50% }
+![Parametr metric dla czasu wykonania](img/metric_time.png ""){ width=50% }
+
+![Parametr LEAF SIZE](img/knn_leaf_size_time.png ""){ width=50% } ![Parametr P](img/p_time.png ""){ width=50% } 
+
 
 \begin{figure}[!h]
 \captionsetup[subfigure]{labelformat=empty}
 \begin{subfigure}[t]{0.5\textwidth}
-\caption{Wykres dla imputera: średnia}
+\caption{ Parametr leaf size}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.5\textwidth}
-\caption{ Wykres dla imputera: mediana}
+\caption{Parametr p}
 \end{subfigure}
-\end{figure}
-
-![KNN - Wykres wpływu parametrów na wynik dla imputera: stała wartość](img/2855knn_timez.png "Knn czas stała wartość"){ width=50% } ![KNN - Wykres wpływu parametrów na wynik dla imputera: najczęstsza wartość](img/28555knn_timez.png "Knn czas najczęstsza wartość"){ width=50% }
-
-\begin{figure}[!h]
-\captionsetup[subfigure]{labelformat=empty}
-\begin{subfigure}[t]{0.5\textwidth}
-\caption{ Wykres dla imputera: stała wartość}
-\end{subfigure}
-\hfill
-\begin{subfigure}[t]{0.5\textwidth}
-\caption{Wykres dla imputera: najczęstsza wartość}
-\end{subfigure}
-\caption{KNN - Wykres wpływu parametrów na wynik}
-\end{figure}
-
-
-_Lasy losowe_
-
-![Lasy losowe - Wykres wpływu parametrów na wynik dla imputera: średnia](img/30rf_timez.png "Rf czas średnia"){ width=50% } ![Lasy losowe - Wykres wpływu parametrów na wynik dla imputera: mediana](img/305rf_timez.png "Rf czas mediana"){ width=50% }
-
-\begin{figure}[!h]
-\captionsetup[subfigure]{labelformat=empty}
-\begin{subfigure}[t]{0.5\textwidth}
-\caption{Wykres dla imputera: średnia}
-\end{subfigure}
-\hfill
-\begin{subfigure}[t]{0.5\textwidth}
-\caption{ Wykres dla imputera: mediana}
-\end{subfigure}
-\end{figure}
-
-![Lasy losowe - Wykres wpływu parametrów na wynik dla imputera: stała wartość](img/3055rf_timez.png "Rf czas stała wartość"){ width=50% } ![Lasy losowe - Wykres wpływu parametrów na wynik dla imputera: najczęstsza wartość](img/30555rf_timez.png "Rf czas najczęstsza wartość"){ width=50% }
-
-\begin{figure}[!h]
-\captionsetup[subfigure]{labelformat=empty}
-\begin{subfigure}[t]{0.5\textwidth}
-\caption{ Wykres dla imputera: stała wartość}
-\end{subfigure}
-\hfill
-\begin{subfigure}[t]{0.5\textwidth}
-\caption{Wykres dla imputera: najczęstsza wartość}
-\end{subfigure}
-\caption{KNN - Wykres wpływu parametrów na wynik}
+\caption{Wykres zależności wyniku od uzupełnienia imputera oraz parametru dla czasu wykonania procesu uczenia algorytmu Knn}
 \end{figure}
 
 
 _Maszyna wektorów nośnych_
 
-![SVM - Wykres wpływu parametrów na wynik dla imputera: średnia](img/32svm_timez.png "Svm czas średnia"){ width=50% } ![SVM - Wykres wpływu parametrów na wynik dla imputera: mediana](img/325svm_timez.png "Svm czas mediana"){ width=50% }
+![Parametr SHRINKING](img/shrinking_time.png ""){ width=50% } ![Parametr KERNEL](img/kernel_time.png ""){ width=50% }
 
 \begin{figure}[!h]
 \captionsetup[subfigure]{labelformat=empty}
 \begin{subfigure}[t]{0.5\textwidth}
-\caption{Wykres dla imputera: średnia}
+\caption{ Parametr shrinking}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.5\textwidth}
-\caption{ Wykres dla imputera: mediana}
+\caption{Parametr kernel}
 \end{subfigure}
-\end{figure}
-
-![SVM - Wykres wpływu parametrów na wynik dla imputera: stała wartość](img/3255svm_timez.png "Svm czas stała wartość"){ width=50% } ![SVM - Wykres wpływu parametrów na wynik dla imputera: najczęstsza wartość](img/32555svm_timez.png "Svm czas najczęstsza wartość"){ width=50% }
-
-\begin{figure}[!h]
-\captionsetup[subfigure]{labelformat=empty}
-\begin{subfigure}[t]{0.5\textwidth}
-\caption{ Wykres dla imputera: stała wartość}
-\end{subfigure}
-\hfill
-\begin{subfigure}[t]{0.5\textwidth}
-\caption{Wykres dla imputera: najczęstsza wartość}
-\end{subfigure}
-\caption{KNN - Wykres wpływu parametrów na wynik}
+\caption{Wykres zależności wyniku od uzupełnienia imputera oraz parametru dla czasu wykonania procesu uczenia algorytmu SVM}
 \end{figure}
 
 *Porównanie implementacji*

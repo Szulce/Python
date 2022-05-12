@@ -158,14 +158,8 @@ class AlgorithmWebInfo:
         self.another_1_svm_time = information_object[37][3]
         self.another_1_rf_param = information_object[37][4]
         self.another_1_rf_time = information_object[37][5]
-        self.another_1_6 = information_object[37][6]
-        self.another_1_7 = information_object[37][7]
-        self.another_1_8 = information_object[37][8]
-        self.another_1_9 = information_object[37][9]
-        self.another_1_10 = information_object[37][10]
-        self.another_1_11 = information_object[37][11]
-        self.another_1_12 = information_object[37][12]
-        self.another_1_13 = information_object[37][13]
+
+
 
 
     def to_json(self):

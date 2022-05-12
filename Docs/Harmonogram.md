@@ -1,42 +1,6 @@
 
 
 
-
-- wykresy skuteczności przerobić żeby były osobno dla każdej cechy i żeby były kropkowe
-- wykresy tylko dla zmieniających cech osobne w tabele lub opisać
-
-- ==SVM
-- -'C'
-- 'gamma': 
-- 'kernel': 
-- 'degree': 
-- 'coef0': 
-- 'shrinking':
-- 'cache_size': 
-- 'random_state': 
-- -'class_weight'
-- -==rf
-- *'random_state':
-- 'max_features': 
-- 'criterion': 
-- 'min_samples_leaf': 
-- 'min_weight_fraction_leaf':
-- 'min_impurity_decrease': 
-- 'ccp_alpha'**
-
--====knn
-
--algorithm': param i czas
-- 'leaf_size': 
-- 'metric': 
-- -'metric_params': 
-- 'n_jobs': 
--'n_neighbors':
-- 'p': 
-- -'weights'
-
-_________________________________________________________11.30
-
 - zmienić kolejność stron 
 - wysłąć
 ________________________________________________________ 12.00

@@ -257,7 +257,7 @@ def get_algorithm_param_comp(grid, means_test_s, means_train_s, stds_test_s, std
 def get_prams_plots():
     axs = []
     colors = ['blue', 'red', 'green', 'black']
-    for model_type in [Rs.MODEL_TYPE_SVM]:
+    for model_type in [Rs.MODEL_TYPE_RF]:
         grid = []
         masks = []
         means_test_param = []
@@ -273,24 +273,25 @@ def get_prams_plots():
         for i, p in enumerate(masks_names):
             plt.rcParams.update({'figure.max_open_warning': 0})
             plt.rcParams.update({'font.size': 16})
-            fig = plt.figure(figsize=(4, 12))
-            ax = fig.add_subplot(111)
-            fig.text(0.04, 0.5, '', va='center', rotation='horizontal')
-            for iterator in range(0, len(Rs.IMPUTERS_LIST)):
-                if len(masks) > 1 and params[iterator][p] is not None and params[iterator][p][0] is not None:
-                    x_p = numpy.array(params[iterator][p])
-                    best_index = get_best_index(i, masks[iterator])
-                    y_p = numpy.array(means_test_param[iterator][best_index].astype(numpy.float64))
-                    ax.grid(True)
-                    plt.ylim()
-                    ax.tick_params(axis='x', labelrotation=30)
-                    ax.scatter(x_p, y_p,
-                               label=str(Rs.IMPUTERS_LIST[iterator].strategy),
-                               color=colors[iterator],
-                               s=60, alpha=0.7)
-
-                    ax.set_xlabel(p.upper())
-            axs.append(convert_plot_to_html(fig))
+            # fig = plt.figure(figsize=(4, 12))
+            # ax = fig.add_subplot(111)
+            # fig.text(0.04, 0.5, '', va='center', rotation='horizontal')
+            # for iterator in range(0, len(Rs.IMPUTERS_LIST)):
+            #     if len(masks) > 1 and params[iterator][p] is not None and params[iterator][p][0] is not None:
+            #         x_p = numpy.array(params[iterator][p])
+            #
+            #         best_index = get_best_index(i, masks[iterator])
+            #         y_p = numpy.array(means_test_param[iterator][best_index].astype(numpy.float64))
+            #         ax.grid(True)
+            #         plt.ylim()
+            #         ax.tick_params(axis='x', labelrotation=90)
+            #         ax.scatter(x_p[:-1], y_p[:-1],
+            #                    label=str(Rs.IMPUTERS_LIST[iterator].strategy),
+            #                    color=colors[iterator],
+            #                    s=60, alpha=0.7)
+            #
+            #         ax.set_xlabel(p.upper())
+            # axs.append(convert_plot_to_html(fig))
             fig = plt.figure(figsize=(4, 12))
             ax = fig.add_subplot(111)
             for i, p in enumerate(masks_names):
@@ -301,8 +302,8 @@ def get_prams_plots():
                         y_p = numpy.array(means_test_time[iterator][best_index].astype(numpy.float64))
                         ax.grid(True)
                         plt.ylim()
-                        ax.tick_params(axis='x', labelrotation=30)
-                        ax.scatter(x_p, y_p, label=str(Rs.IMPUTERS_LIST[iterator].strategy), color=colors[iterator])
+                        ax.tick_params(axis='x', labelrotation=45)
+                        ax.scatter(x_p[:-1], y_p[:-1], label=str(Rs.IMPUTERS_LIST[iterator].strategy), color=colors[iterator])
                         ax.set_xlabel(p.upper())
             axs.append(convert_plot_to_html(fig))
     return axs
