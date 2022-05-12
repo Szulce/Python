@@ -1,9 +1,48 @@
 
 
- 
--tekst poprawić zgodnie z pomiarem
-- nagrać film
-- spakować i wysłać
+
+
+- wykresy skuteczności przerobić żeby były osobno dla każdej cechy i żeby były kropkowe
+- wykresy tylko dla zmieniających cech osobne w tabele lub opisać
+
+- ==SVM
+- -'C'
+- 'gamma': 
+- 'kernel': 
+- 'degree': 
+- 'coef0': 
+- 'shrinking':
+- 'cache_size': 
+- 'random_state': 
+- -'class_weight'
+- -==rf
+- *'random_state':
+- 'max_features': 
+- 'criterion': 
+- 'min_samples_leaf': 
+- 'min_weight_fraction_leaf':
+- 'min_impurity_decrease': 
+- 'ccp_alpha'**
+
+-====knn
+
+-algorithm': param i czas
+- 'leaf_size': 
+- 'metric': 
+- -'metric_params': 
+- 'n_jobs': 
+-'n_neighbors':
+- 'p': 
+- -'weights'
+
+_________________________________________________________11.30
+
+- zmienić kolejność stron 
+- wysłąć
+________________________________________________________ 12.00
+
+ -przeczytać
+- tekst poprawić zgodnie z pomiarem
 
 -różnica pomiędzy training accuracy a test accuracy :
 ]###OCENA PODELI ORAZ UŻYTYCH PARAMETRÓW
@@ -20,8 +59,6 @@
 opis 2 innych projektów wykonujących podobną predykcje
 - poprawić przypisy
 - obrazków biliografia,
-- spiswykresów
-- - bibilografie poprawić
 - spis obrazków
 - porównanie do wyników bez parametrów
 - wnioski dla wykresów

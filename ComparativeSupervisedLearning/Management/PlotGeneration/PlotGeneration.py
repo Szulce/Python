@@ -234,7 +234,7 @@ def get_algorithm_param_comp(grid, means_test_s, means_train_s, stds_test_s, std
     masks_names = list(grid.best_params_.keys())
     masks = mask_prepare(grid)
     params = grid.param_grid
-    ax, fig = figure_prepare(params)
+    ax, fig = figure_prepare(params, len(params))
 
     for i, p in enumerate(masks_names):
         if len(masks) > 1:
@@ -254,6 +254,60 @@ def get_algorithm_param_comp(grid, means_test_s, means_train_s, stds_test_s, std
     return specialized_figure(fig)
 
 
+def get_prams_plots():
+    axs = []
+    colors = ['blue', 'red', 'green', 'black']
+    for model_type in [Rs.MODEL_TYPE_SVM]:
+        grid = []
+        masks = []
+        means_test_param = []
+        means_test_time = []
+        params = []
+        for iterator in range(0, len(Rs.IMPUTERS_LIST)):
+            grid.append(Ms.load_grid_scores(model_type, iterator))
+            masks_names = list(grid[iterator].best_params_.keys())
+            masks.append(mask_prepare(grid[iterator]))
+            means_test_param.append(grid[iterator].cv_results_[str('mean_test_score')])
+            means_test_time.append(grid[iterator].cv_results_[str('mean_score_time')])
+            params.append(grid[iterator].param_grid)
+        for i, p in enumerate(masks_names):
+            plt.rcParams.update({'figure.max_open_warning': 0})
+            plt.rcParams.update({'font.size': 16})
+            fig = plt.figure(figsize=(4, 12))
+            ax = fig.add_subplot(111)
+            fig.text(0.04, 0.5, '', va='center', rotation='horizontal')
+            for iterator in range(0, len(Rs.IMPUTERS_LIST)):
+                if len(masks) > 1 and params[iterator][p] is not None and params[iterator][p][0] is not None:
+                    x_p = numpy.array(params[iterator][p])
+                    best_index = get_best_index(i, masks[iterator])
+                    y_p = numpy.array(means_test_param[iterator][best_index].astype(numpy.float64))
+                    ax.grid(True)
+                    plt.ylim()
+                    ax.tick_params(axis='x', labelrotation=30)
+                    ax.scatter(x_p, y_p,
+                               label=str(Rs.IMPUTERS_LIST[iterator].strategy),
+                               color=colors[iterator],
+                               s=60, alpha=0.7)
+
+                    ax.set_xlabel(p.upper())
+            axs.append(convert_plot_to_html(fig))
+            fig = plt.figure(figsize=(4, 12))
+            ax = fig.add_subplot(111)
+            for i, p in enumerate(masks_names):
+                for iterator in range(0, len(Rs.IMPUTERS_LIST)):
+                    if len(masks) > 1 and params[iterator][p] is not None and params[iterator][p][0] is not None:
+                        x_p = numpy.array(params[iterator][p])
+                        best_index = get_best_index(i, masks[iterator])
+                        y_p = numpy.array(means_test_time[iterator][best_index].astype(numpy.float64))
+                        ax.grid(True)
+                        plt.ylim()
+                        ax.tick_params(axis='x', labelrotation=30)
+                        ax.scatter(x_p, y_p, label=str(Rs.IMPUTERS_LIST[iterator].strategy), color=colors[iterator])
+                        ax.set_xlabel(p.upper())
+            axs.append(convert_plot_to_html(fig))
+    return axs
+
+
 def get_best_index(i, masks):
     m = numpy.stack(masks[:i] + masks[i + 1:])
     best_parms_mask = m.all(axis=0)
@@ -268,11 +322,10 @@ def mask_prepare(grid):
     return masks
 
 
-def figure_prepare(params):
+def figure_prepare(params, length):
     plt.rcParams.update({'figure.max_open_warning': 0})
     plt.rcParams.update({'font.size': 22})
-    fig, ax = plt.subplots(1, len(params), sharex='none', sharey='all', figsize=(80, 20))
-    fig.suptitle('Wynik dla parametru')
+    fig, ax = plt.subplots(1, length, sharex='none', sharey='all', figsize=(80, 20))
     fig.text(0.04, 0.5, 'Średni wynik', va='center', rotation='vertical')
     return ax, fig
 

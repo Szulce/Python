@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy
 import pandas
 from sklearn.model_selection import train_test_split
 
@@ -136,4 +137,6 @@ def get_algorithm_info():
             final_results.append(estimators)
             final_results.append(best_params)
     final_results.append(Plot.get_confusion_matrix())
+
+    final_results.append(Plot.get_prams_plots())
     return final_results

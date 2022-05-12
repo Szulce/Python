@@ -133,8 +133,8 @@ class AlgorithmWebInfo:
                                     information_object[21][0][9],
                                     information_object[30][0][9])
         self.time_rf_predict = max(information_object[6][0][9], information_object[15][0][9],
-                                information_object[24][0][9],
-                                information_object[33][0][9])
+                                   information_object[24][0][9],
+                                   information_object[33][0][9])
 
         self.classification_report_knn_1 = information_object[0][0][10]
         self.classification_report_knn_2 = information_object[9][0][10]
@@ -152,6 +152,21 @@ class AlgorithmWebInfo:
         self.classification_report_rf_4 = information_object[33][0][10]
 
         self.confusion = information_object[36]
+        self.another_1_knn_param = information_object[37][0]
+        self.another_1_knn_time = information_object[37][1]
+        self.another_1_svm_param = information_object[37][2]
+        self.another_1_svm_time = information_object[37][3]
+        self.another_1_rf_param = information_object[37][4]
+        self.another_1_rf_time = information_object[37][5]
+        self.another_1_6 = information_object[37][6]
+        self.another_1_7 = information_object[37][7]
+        self.another_1_8 = information_object[37][8]
+        self.another_1_9 = information_object[37][9]
+        self.another_1_10 = information_object[37][10]
+        self.another_1_11 = information_object[37][11]
+        self.another_1_12 = information_object[37][12]
+        self.another_1_13 = information_object[37][13]
+
 
     def to_json(self):
         return jsonpickle.encode(self)
