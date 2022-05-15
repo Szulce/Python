@@ -1,8 +1,6 @@
 
 
- - zmienić kolejność stron 
- - usunąć spis treśći z nagłówka
- - wysłąć pisemną
+
 ________________________________________________________ 23.00
  - merg częśći praktycznej 
  - spakować część praktyczą dodac część praktyczńę
