@@ -1,7 +1,0 @@
----
-include-before: |
- 
-  \usepackage{caption}
-  \usepackage{subcaption}  
-
-...

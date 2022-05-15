@@ -12,23 +12,6 @@ class AlgorithmWebInfo:
         -plots,
         -best params
         for every algorythm for every imputer.
-          explanation :
-          info[0][0] contains description for knn with imputer mean
-          info[1][0] contains params plot for knn with imputer mean
-          info[1][1] contains second plot for knn with imputer mean
-          info[2][0] contains  best estimator params for knn with imputer mean
-
-          info[3][0] contains description for svm with imputer mean
-          info[4][0] contains params plot for svm with imputer mean
-          info[4][1] contains second plot for svm with imputer mean
-          info[5][0] contains  best estimator params for svm with imputer mean
-
-          ...
-
-          info[33][0] contains description for random forest with constant imputer -1
-          info[34][0] contains params plot for random forest with  constant imputer -1
-          info[34][1] contains second plot for random forest with constant imputer -1
-          info[35][0] contains  best estimator params for random forest with  constant imputer -1
 
            """
 
