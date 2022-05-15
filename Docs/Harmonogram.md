@@ -1,11 +1,15 @@
 
 
+ - przeczytać
+ - grafiki poukładać
+ - zmienić kolejność stron 
+ - usunąć spis treśći z nagłówka
+ - wysłąć pisemną
+________________________________________________________ 22.00
+ - merg częśći praktycznej 
+ - spakować część praktyczą dodac część praktyczńę
 
-- zmienić kolejność stron 
-- wysłąć
-________________________________________________________ 12.00
 
- -przeczytać
 - tekst poprawić zgodnie z pomiarem
 
 -różnica pomiędzy training accuracy a test accuracy :
