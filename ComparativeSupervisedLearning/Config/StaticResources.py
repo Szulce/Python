@@ -12,7 +12,7 @@ PANDAS = "Pandas"
 K_FOLD = "K-fold"
 SCIKIT_LEARN = "Scikit-learn"
 ARCH_FILE_NAME = 'Arch.zip'
-LOG_FILES_DIRECTORY = 'Config/'
+LOG_FILES_DIRECTORY = 'Config'
 LOG_FILE_NAME = "LogFiles/UMNWWCHS.log"
 
 # Model Storage
@@ -49,7 +49,7 @@ DATA_INFO_PLOTS = "data_info_plots"
 ALGORITHM_INFO_PLOTS = "algorithm_info_plots"
 SCORER_MODEL = "_scorer_model"
 
-VERBOSE = 1
+VERBOSE = 3
 
 RF_ = ' \nRF : \n'
 
