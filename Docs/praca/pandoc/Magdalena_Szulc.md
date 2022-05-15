@@ -16,8 +16,8 @@ disable-header-and-footer: true
 toc-own-page: true
 toc-title: Spis Treści
 header-includes:
--  \usepackage{caption}
--  \usepackage{subcaption}  
+- \usepackage{caption}
+- \usepackage{subcaption}
 ...
 
 **Abstrakt**{.unnumbered}
@@ -45,10 +45,10 @@ Ze względu na chodliwość tematu, powstało nowe oprogramowanie, jak i przysto
 Pojęcie sztucznej inteligencji pochodzi od próby odtworzenia ludzkiego sposobu myślenia, jedną z bardziej znanych historycznie
 postacią z tym związaną jest psycholog _Frank Rosenblatt_ z Cornell University. Badacz przyczynił się do powstania projektu zbudowania maszyny o nazwie "perceptron" mającej za zadanie 
 rozpoznawać litery i jest prawzorem nowoczesnych sztucznych sieci neuronowych. To dzięki jego badaniom nad perceptronem rozpropagowany zostało pojęcie algorytmu uczenia w skończonej liczbie wywołań.
-Z czasem liczba przetwarzanych informacji stopniowo się zwiększała dzięki zastosowaniu procesów równoległych oraz wydajności pamięci.
+Z czasem liczba przetwarzanych informacji stopniowo się powiększała dzięki zastosowaniu procesów równoległych oraz zwiększeniu wydajności pamięci.
 Wartą wspomnienia datą jest rok 2006, w tym roku zaprezentowano opensource'owy odpowiednik MapReduce od _Google_, który dał sposobność do przenoszenia między procesorami obróbki Big Data. 
- Rok ten jest również znaczący ze względu na wydanie przez _Nividia_ procesora graffitiing monopolizującego rynek uczenia maszynowego.
-Zmniejszenie kosztów pamięci RAM zaowocowało powstaniem kolejnych algorytmów uczenia, a istniejące podejścia są sukcesywnie ulepszane[@FRADKOV20201385,@introduction].
+ Rok ten jest również znaczący ze względu na wydanie przez _Nividia_ procesora monopolizującego rynek uczenia maszynowego.
+Istniejące, wykorzystujące zmniejszenie kosztów pamięci, podejścia są sukcesywnie ulepszane, a wraz z rozwojem dziedziny powstają nowe algorytmy i rozwiązania[@FRADKOV20201385,@introduction].
 
 Sztuczna inteligencja wśród szerokiego zakresu swoich zastosowań może zostać wykorzystana do analizy bardziej lub mniej
 złożonych danych medycznych, w celu przewidzenia wystąpienia choroby u konkretnej osoby, bez udziału procesu myślowego
@@ -79,13 +79,14 @@ Słowa kluczowe: uczenie maszynowe, uczenie nadzorowane, lasy losowe, maszyna we
 **Cel i zakres pracy**{.unnumbered}
 ========
 
-Celem pracy jest porównanie wybranych algorytmów uczenia maszynowego nadzorowanego, przy założeniu, że dane wejściowe są
-wybrakowane, a w rezultacie zbudowanie modelu, który na podstawie danych medycznych wystawia diagnozę o występowaniu
-zaburzeń sercowo-naczyniowych lub ich braku.
+Cele pracy:
+
+- porównanie wybranych algorytmów uczenia maszynowego nadzorowanego zależnie od uzupełnienia brakujących wartości w zbiorze danych,
+- umożliwienie wykorzystania algorytmów poprzez wystawienie diagnozy o występowaniu zaburzeń sercowo-naczyniowych na podstawie nowego zestawu cech.
 
 Dane medyczne wyróżniają się tym, że trudno uzyskać do nich dostęp, najczęściej nie są to informacje, które się
 udostępnia do użytku publicznego, z tego powodu, kluczowym krokiem jest wybór cech branych pod uwagę przy tworzeniu
-modelu. Dane pozyskane z repozytorium UCI przeszły już wstępną obróbkę , sam dataset ze względu na swoje niewielkie
+modelu. Dane pozyskane z repozytorium UCI przeszły już wstępną obróbkę, sam zbiór danych ze względu na swoje niewielkie
 rozmiary pozwala na sprawdzenie działań algorytmów bez pozbywania się nadmiarowych i mało znaczących cech.
 
 Zatem odpowiedź na pytanie, jak wybrakowanie danych mocno wpływa na rezultat oraz czy istnieją różnice pomiędzy zastosowaniem
@@ -94,9 +95,9 @@ złożoności oraz czasu uzyskania odpowiedzi.
 
 W pracy opisano następujące algorytmy uczenia nadzorowanego:
 
-- losowe lasy decyzyjne (ang. _random_ _decision_ _forests_)
-- maszyna wektorów nośnych (ang. _support vector machines_, SVM)
-- k-najbliższych sąsiadów (ang. _k-nearest neighbours_, KNN)
+- losowe lasy decyzyjne (ang. _random_ _decision_ _forests_),
+- maszyna wektorów nośnych (ang. _support vector machines_, SVM),
+- k-najbliższych sąsiadów (ang. _k-nearest neighbours_, KNN).
 
 **Wprowadzenie teorertyczne**
 ========
@@ -108,7 +109,9 @@ na wynikach działań, krokami opisujemy np.: problem znajdowania najkrótszej d
 
 **Uczenie maszynowe** (ang. _machine learning_, ML) to dziedzina zajmująca się tworzeniem modeli do analizy obszernych zasobów danych. Modele utworzone za pomocą algorytmów uczenia maszynowego są w stanie z wysokim prawdopodobieństwem wystawić predyckję lub dokonać klasyfikacji na temat zadanego problemu. 
 
-Model _klasyfikacjny_ służy do przewidzenia etykiety klasy poprzez mapowanie na już z góry ustalony jednowymiarowy podział, model _regresywny_ natomiast mapuje przestrzeń, ustalając liczbę klas podziału oraz grupując wartości[@clsvsreg]. Istnieje możliwość przekształcenia problemu regresywnego na klasyfikacje i odwrotnie poprzez zamianę wartości oczekiwanego wyniku. Taką modyfikację zastosowano w praktycznej częsci projektu. Wyniki dla danych występowały w wartościach od 0 do 4 , dla wartości <1,4> przypadek testowy uznawany był za sklasyfikowany pozytywny (chory), dlatego przekształcenie z modelu regresywnego do modelu klasyfikacyjnego polega na konwersji wyników do wartości liczbowych 0 - brak stwierdzenia stanu chorobowego oraz 1 - stwierdzenie o chorobie układu krążenia. 
+Model _klasyfikacjny_ służy do przewidzenia etykiety klasy poprzez mapowanie na już z góry ustalony jednowymiarowy podział, model _regresywny_ natomiast mapuje przestrzeń, ustalając liczbę klas podziału oraz grupując wartości[@clsvsreg]. 
+
+W praktycznej częsci projektu wykorzystano istniejącą możliwość przekształcenia problemu regresywnego na klasyfikacyjny. Taka modyfikacja odbywa się poprzez zamianę wartości oczekiwanego wyniku. Wyniki dla danych występowały w wartościach od 0 do 4 , dla wartości <1,4> przypadek testowy uznawany był za sklasyfikowany pozytywny (chory), dlatego przekształcenie z modelu regresywnego do modelu klasyfikacyjnego polega na konwersji wyników do wartości liczbowych 0 - brak stwierdzenia stanu chorobowego oraz 1 - stwierdzenie o chorobie układu krążenia. 
 
 Sposób wykorzystania segreguje algorytmy uczenia maszynowego na dwie kategorie, jednak powszechnie stosowanym podziałem jest podział zależnie od
 sposobu _trenowania_ algorytmu. Algorytmy dzieli się na m.in.: uczenie nadzorowane, uczenie częściowo nadzorowane, uczenie bez nadzoru oraz uczenie przez
@@ -124,16 +127,17 @@ odpowiedzi. Sprawdza się to obecnie w rekomendacji produktów oraz diagnozie ch
 dopasowanie danych oznaczonych nazywane jest aproksymacją funkcji[@3].
 
 
-![Algorytmy uczenia z podziałem na kategorie](img/1algorithms_category.png "Algorytmy z podziałem na kategorie"){ height=100% }
+![Algorytmy uczenia z podziałem na kategorie [@link_diagram]](img/1algorithms_category.png "Algorytmy z podziałem na kategorie"){ height=100% }
 
-**Uczenie maszynowe bez nadzoru** (ang. _unsupervised learning_) to klasa algorytmów uczenia maszynowego, która rozwiązuje np. problemy grupowania. Dane dostarczane do modelu nie zawierają _oznaczeń_, zatem nauczanie polega na wyciąganiu konkluzji z poprzednio wykonanych iteracji. Na skuteczność modeli budowanych w oparciu o uczenie bez nadzoru
-wpływ ma rozmiar dostarczonego do nauki zbioru danych, im jest on większy, tym bardziej wzrasta efektywność. Takie zbiory uzyskuje się przykładowo rejestrując dane na bieżąco, dlatego do najczęstszych zastosowań tej klasy algorytmów zaliczamy rozpoznawanie mowy czy obrazu[@3].
+**Uczenie maszynowe bez nadzoru** (ang. _unsupervised learning_) to klasa algorytmów uczenia maszynowego, która rozwiązuje np. 
+problemy grupowania. Dane dostarczane do modelu nie zawierają _oznaczeń_, zatem nauczanie polega na wyciąganiu konkluzji z 
+poprzednio wykonanych iteracji. Ten typ uczenia odnalazł jedno ze swoich zastosowań w rozpoznawaniu mowy czy obrazu[@3].
 
 **Uczenie maszynowe przez wzmacnianie** (ang. _reinforcement learning_) to klasa algorytmów uczenia maszynowego, której nauczanie nie opiera się
 na danych wejściowych czy wyjściowych a rezultatach otrzymanych podczas testu nazywanych tzw. sygnałami wzmocnienia, które mogą przyjmować wartość pozytywną lub negatywną.
 Algorytm generując dane wejściowe dostosowuje reguły, by uzyskać zwrotnie sygnał pozytywny w jak największej liczbie przypadków[@reinfor-learning].
 
-**Uczenie częściowo nadzorowane** (ang. _semi-supervised_ _learning_) to klasa algorytmów uczenia maszynowego, która wykorzystuje zbór danych w większości niepoetykietowany, na podstawie których tworzony jest model[@semi-learning], wykorzystywany głównie w przypadkach niewydajności zastosowania osobno modeli nadzorowanych i nienadzorowanych.
+**Uczenie częściowo nadzorowane** (ang. _semi-supervised_ _learning_) to klasa algorytmów uczenia maszynowego, która wykorzystuje zbór danych w większości niepoetykietowany, na podstawie których tworzony jest model[@semi-learning]. Wykorzystywany jest głównie w sytuacjach gdy uzyskanie większej ilości etykiet jest problematycznew lub gdy zastosowanie osobno modeli nadzorowanych i nienadzorowanych wykazuje niewydajności.
 Zastosowanie tej klasy algorytmów pozwala również na maksymalizację wykorzystania zebranych informacji[@introduction].
 
 
@@ -170,9 +174,9 @@ Wykorzystanie utworzonego modelu wymaga:
 
 Ten schemat można zastosować do dowolnego modelu uczenia, wykonanie kolejnych bloków zadaniowych różnić się będzie specyfiką dla danego modelu: 
 
-- przygotowanie danych dla algorytmów uczenia nadzorowanego musi zawierać również zebranie odpowiedzi/wyników dla danych testowych
-- implementacja modelu za każdym razem jest specyficzna dla zastosowanego algorytmu, który również zależy od typu uczenia
-- ewaluacja modeli regresywnych różni się od ewaluacji modeli klasyfikacyjnych ze względu na wykorzystanie innych miar oceny dokładności
+- przygotowanie danych dla algorytmów uczenia nadzorowanego musi zawierać również zebranie odpowiedzi/wyników dla danych testowych,
+- implementacja modelu za każdym razem jest specyficzna dla zastosowanego algorytmu, który również zależy od typu uczenia,
+- ewaluacja modeli regresywnych różni się od ewaluacji modeli klasyfikacyjnych ze względu na wykorzystanie innych miar oceny dokładności,
 - zastosowanie modeli może posiadać wielorakie formy realizacji.
 
 ## Dane 
@@ -215,20 +219,20 @@ Repozytorium gromadzi dane z wielu rozbieżnych dziedzin, dane medyczne umieszcz
 Wyróżniono 14 atrybutów spośród 76 zebranych do wykorzystania w algorytmach uczenia maszynowego, wszystkie z nich mają
 wartości liczbowe. Lista atrybutów wykorzystanych w algorytmie:
 
-- wiek
-- płeć
-- rodzaj bólu w klatce piersiowej
-- spoczynkowe ciśnienie krwi
-- cholesterol w surowicy w mg/dl
-- poziom cukru we krwi na czczo > 120 mg/dl
-- spoczynkowe wyniki elektrokardiograficzne
-- osiągnięto maksymalne tętno
-- dławica piersiowa wywołana wysiłkiem fizycznym
-- obniżenie odcinka ST wywołane wysiłkiem fizycznym w stosunku do odpoczynku
-- nachylenie szczytowego odcinka ST ćwiczenia
-- liczba głównych naczyń pokolorowanych fluorozopią
-- skan serca z talem lub test wysiłkowy
-- stan (brak choroby serca/choroba serca)
+- wiek,
+- płeć,
+- rodzaj bólu w klatce piersiowej,
+- spoczynkowe ciśnienie krwi,
+- cholesterol w surowicy w mg/dl,
+- poziom cukru we krwi na czczo > 120 mg/dl,
+- spoczynkowe wyniki elektrokardiograficzne,
+- osiągnięto maksymalne tętno,
+- dławica piersiowa wywołana wysiłkiem fizycznym,
+- obniżenie odcinka ST wywołane wysiłkiem fizycznym w stosunku do odpoczynku,
+- nachylenie szczytowego odcinka ST ćwiczenia,
+- liczba głównych naczyń pokolorowanych fluorozopią,
+- skan serca z talem lub test wysiłkowy,
+- stan (brak choroby serca/choroba serca).
 
 Rozkład chorób serca w danych testowych to 44.67% chorych, czyli 509 prób pozytywnych oraz 411 negatywnych.
 W danych testowych znajduje się 726 przypadków osób płci męskiej oraz 194 żeńskiej. Dla zachorowań widać nierówność, ale jest ona spowodowana rzeczywistą statystyką.
@@ -271,14 +275,14 @@ Do wyznaczenia wartości uzupełniających można również użyć regresji lini
 *Standaryzacja*
 
 Przekształcenie danych również bazujące na statystycznych założeniach i również ustandaryzowane w popularnych
-bibliotekach. Dąrzy się, aby średnia wartość wynosiła 0, a odchylenie standardowe 1 dla liczbowych reprezentacji danych. Z
+bibliotekach. Dąży się, aby średnia wartość wynosiła 0, a odchylenie standardowe 1 dla liczbowej reprezentacji danych. Z
 matematycznego punktu widzenia wykonujemy działanie podziału średniej przez odchylenie standardowe:
 
 ![Wzór - Standaryzacja](img/13wzor_1.png "wzór: podejmujemy średnią i dzielimy ją przez odchylenie standardowe"){ width=30% }[@standar]
 
 *Obsługa zmiennych kategorialnych*
 
-Cechy kategorialne dzielą się na dwie zasadnicze grupy ze względu na możliwość uporządkowania, dane takie jak wykształcenie, rozmiar podlegają mapowaniu, dane typu kolor lub płeć podlegają kodowaniu. W ten sposób dane
+Spójne dane kategoryczne dzielą się na dwie zasadnicze grupy ze względu na możliwość uporządkowania, dane takie jak wykształcenie, rozmiar podlegają mapowaniu, dane typu kolor lub płeć podlegają kodowaniu. W ten sposób dane
 kategoryczne staja się wartościami liczbowymi.
 
 *Reprezentacja wektorowa*
@@ -389,7 +393,7 @@ między najbliższymi dwoma punktami dla wektorów jest możliwie największa.
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.5\textwidth}
-\caption{Schemat SVM - niemożliwy podział}
+\caption{Schemat SVM - niemożliwy kategoryzacja dla podziału liniowego}
 \end{subfigure}
 \caption{Wykresy algorytmu SVM}
 \end{figure}
@@ -472,7 +476,7 @@ części pracy.
 
 Biblioteka rozwijana przez ponad 10 lat opiera się o *Numpy* oraz *Scipy*, daje zestaw narzędzi do obliczeń na macierzach, wektorach oraz umożliwiający metody
 numeryczne takie jak całkowanie, różniczkowanie i temu podobne[@scikit]. W rezultacie można za jej pomocą wykonać elementy procesu nauczania algorytmu, takie jak: przetwarzanie wstępne, redukcja wymiarowości, klasyfikacja, regresja[@libpyth]. 
-Pomimo cieszenia się dużym zaufaniem, implementacja niekoniecznie musi być najoptymalniejszą. Dodatkowo korzystanie z Numpy zwiększa ryzyko błędów samej bibliotece. Za jej pomocą można wygenerować przykładowa dane, wyliczyć metryki wydajności oraz zinterpretować wyniki klasyfikacji[@sensor].
+Pomimo cieszenia się dużym zaufaniem, za jej pomocą można wygenerować przykładowa dane, wyliczyć metryki wydajności oraz zinterpretować wyniki klasyfikacji[@sensor].
 
 *Pandas*
 Do przygotowania danych wykorzystano zestaw narzędzi *Pandas*, ułatwiający tworzenie struktur danych i ich analizę. 
@@ -534,7 +538,7 @@ Interpreter Python w wersji _3.9_.
 Projekt posiada dwa tryby pracy:
 
 - tryb nauczania na podstawie danych testowych\
-machine learning z wykorzystaniem 3 algorytmów (_Run_Learning_Proces.xml_), musi być wykonany przynajmniej raz przed wykorzystaniem programu jako aplikacja  
+machine learning z wykorzystaniem 3 algorytmów (_Run_Learning_Proces.xml_), musi być wykonany przynajmniej raz przed wykorzystaniem programu jako aplikacja,  
 - tryb aplikacji web\
 wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli (_Run_Web_Application.xml_), strona prezentuje analizę danych oraz uczenia algorytmów, przy czym głównym zadaniem jest wykonanie predykcji na podstawie danych wpisanych do formularza.
 
@@ -546,7 +550,7 @@ Głównym zadaniem trybu nauczania jest utworzenie i wytrenowanie modeli dla 3 a
 
 Proces przygotowania danych zastosowany w projekcie składa się z następujących kroków:
 
-1. Załadowanie i konkatenacja datasetu, standardowo również wybranie cech znaczących głównie odbywające się poprzez odrzucenie nadmiarowych parametrów, ale istnieje też możliwość dodania nowych np. utworzenie powierzchni na podstawie wymiarów zawartych w danych testowych. Następnie należy wykonać wyeliminowanie cech niewpływających na odpowiedź i dopiero po dokonaniu selective przystapić do przetwarzania zebranych informacji.
+1. Załadowanie i konkatenacja datasetu, standardowo również wybranie cech znaczących głównie odbywające się poprzez odrzucenie nadmiarowych parametrów, ale istnieje też możliwość dodania nowych np. wyliczenie powierzchni w metrach kwadratowych na podstawie wymiarów w metrach zawartych w danych testowych. Następnie należy wykonać wyeliminowanie cech niewpływających na odpowiedź i dopiero po dokonaniu selekcji przystąpić do przetwarzania zebranych informacji.
 
 2. Uzupełnienie pustych wartości dla późniejszego porównania w projekcie tworzone są imputery dla 4 różnych form uzupełnienia, 
 ale są to najbardziej podstawowe działania typu średnia wartość, najczęściej występująca wartość. Idealnym rozwiązaniem byłoby w przypadku posiadania eksperckiej wiedzy z danej dziedziny uzupełnienia brakujących wartości własnymi propozycjami. Innym sposobem może być wykorzystanie heurystyk specyficznych dla tworzonego modelu[@confiusion].
@@ -572,7 +576,7 @@ Model trenowany jest na podstawie siatki parametrów i sprawdzana jest każda ko
 
 Wykorzystane parametry wykonania GridSearchCv[@scikit]:
 
-- estimator: implementacja interfejsu obiekt estymatora scikit-learn,
+- estimator: implementacja interfejsu obiektu estymatora scikit-learn,
 - param_grid: słownik parametrów, które są potem testowane w dowolnej sekwencji ustawień,
 - refit: dopasowanie best_estimator_, best_index_, best_score_ i best_params_ dla najlepszej sekwencji ustawień parametrów
 - cv: parametr k dla KFold walidacji krzyżowej,
@@ -703,6 +707,7 @@ Zatwierdzenie formularza wyzwala odczytanie zapisanych modeli, iteracje i wykona
 
 W tym podrozdziale zamieszczone zostały wyniki oraz wykresy wygenerowane podczas treningu i weryfikacji danych testowych.
 
+
 **Wskaźniki wydajności**
 
 Określenie stopnia, w jakim skonstruowany model z powodzeniem realizuje wyznaczone zadanie, należy do wskaźnika wydajności. Przykładem nieprawidłowego wyboru może być próba przewidzenia wystąpienia rzadkiej choroby u pacjenta wykorzystując do oceny pomiar _dokładności_ dla przykładu z rzadkimi wystąpieniami osób chorych. W takim scenariuszu klasyfikacja wszystkich pacjentów jako zdrowych daje
@@ -748,12 +753,12 @@ predyspozycje do zajmowania się odpowiednimi zbiorami danych.
 **Potencjał algorytmów dla niewielkiego kompletu danych zawierającego wartości**
 
 Zaczynając od drzew decyzyjnych, można od razu stwierdzić, że mają niższy potencjał niż pozostałe dwa algorytmy. Istnieje zbyt duże prawdopodobieństwo
-dopasowania się do modelu treningowego, gdyż wspomniany zbiór mordancy wejściowych nie jest wystarczająco liczny. Dlatego
-w pracy omówione zostały lasy decyzyjne.
+dopasowania się do modelu treningowego, gdyż wspomniany zbiór danych wejściowych nie jest wystarczająco liczny. Dlatego w pracy omówione zostały lasy decyzyjne.
 
 Większej dokładności można się spodziewać po metodzie wektorów nośnych, ale jego złożoność czasowa oraz pamięciowa mogą zaniżyć jego ogólną klasyfikację.
 
-K-najbliższego sąsiada może być przydatny w przypadku danych nieliniowych oraz łatwo wykorzystany w problemach regresji. Wartość
+
+Model zbudowany dla algorytmu K-najbliższego sąsiada, w celu wykonania predykcji musi przeszukać cały zestaw treningowy, aby odnaleźć najbliższych sąsiadów dla nowych danych[@why]. Wartość
 wyjściowa obiektu jest obliczana przez średnią k wartości najbliższych sąsiadów. Niestety tak samo, jak w przypadku maszyny wektorów nośnych jest wolniejsza i bardziej kosztowna pod względem czasu i
 pamięci. Wymaga dużej pamięci do przechowywania całego zestawu danych treningowych do przewidywania oraz nie nadaje się również do dużych danych wymiarowych. 
 
@@ -1175,7 +1180,19 @@ _Maszyna wektorów nośnych_
 Implemenatcja każdego z algorytmów z wykorzystaniem biblioteki sklearn jest analogiczna i łatwa w utworzeniu.
 Do każdego z modeli można zastosować te same metody oceny dokładności. 
 
+ |- | Stosowność        |  |  | | 
+ |Algorytm       | wydajność | przejrzystość | obsługa brakujących danych |
+ |Losowe lasy decyzyjne    | akceptowalna | wysoka | akceptowalna | 
+ |Maszyna wektorów nośnych | akceptowalna | słaba | dobra | 
+ |K-najbliższych sąsiadów  | akceptowalna | słaba | dobra | 
+
+Budowa algorytmu lasów losowych opiera się na drzewach decyzyjnych, które cechuje wysoka przejrzystość, natomiast algorytmy KNN oraz SVM nie przeprowadzają uogólnień, dlatego przejrzystość tych algorytmów została sklasyfikowana jako słaba. 
+Ocena może zostać podważona stwierdzeniem, iż przykładowo w przypadku algorytmu K - najbliższych sąsiadów decyzja przypisania podlega ocenie na podstawie k innych przypadków.  
+Wyjaśnienie działania algorytmu oceniona zostałaby jako akceptowalna, ponieważ ekspertyza bez wykorzystania uczenia maszynowego również opiera się między innymi na analizie znanych podobnych przypadków[@KONONENKO200189].
+
+
 ## Podsumowanie
+
 
 W pracy utworzony został model dla 3 algorytmów maszynowego nadzorowanego, które są w stanie zdiagnozować występowanie choroby serca z dokładnością do ponad 70%.
 Projekt nadaje się do rozszerzenia o kolejne algorytmy uczenia maszynowego nadzorowanego tj.: Regresja Logistyczna, Naiwny Bayers. W tym cleu wystarczy zaimplementować i klasę realizująca zadania z TrainingManager.py
