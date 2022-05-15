@@ -42,13 +42,13 @@ model, accuracy, complexity and time to obtain an answer.
 
 Uczenie maszynowe jako spopularyzowana dziedzina metod uczenia, zainteresowanie sobą w dużej mierze zawdzięcza rozwojowi procesorów graficznych pozwalających na wykorzystanie algorytmów w optymalnym czasie.
 Ze względu na chodliwość tematu, powstało nowe oprogramowanie, jak i przystosowania ułatwiające wydajną pracę z obszernymi zasobami danych.
-Pojęcie sztucznej inteligencji pochodzi od próby odtworzenia ludzkiego sposobu myślenia, jedną z bardziej znanych historycznie
-postacią z tym związaną jest psycholog _Frank Rosenblatt_ z Cornell University. Badacz przyczynił się do powstania projektu zbudowania maszyny o nazwie "perceptron" mającej za zadanie 
-rozpoznawać litery i jest prawzorem nowoczesnych sztucznych sieci neuronowych. To dzięki jego badaniom nad perceptronem rozpropagowany zostało pojęcie algorytmu uczenia w skończonej liczbie wywołań.
+
+Pojęcie sztucznej inteligencji pochodzi od próby odtworzenia ludzkiego sposobu myślenia. Osobą będącą jedną z bardziej znanych, związaną z tym pojęciem jest psycholog _Frank Rosenblatt_ z Cornell University. Badacz przyczynił się do powstania projektu zbudowania maszyny o nazwie "perceptron" mającej za zadanie 
+rozpoznawać litery, która jest prawzorem nowoczesnych sztucznych sieci neuronowych. To dzięki badaniom nad perceptronem rozpropagowany zostało pojęcie algorytmu uczenia w skończonej liczbie wywołań.
 Z czasem liczba przetwarzanych informacji stopniowo się powiększała dzięki zastosowaniu procesów równoległych oraz zwiększeniu wydajności pamięci.
 Wartą wspomnienia datą jest rok 2006, w tym roku zaprezentowano opensource'owy odpowiednik MapReduce od _Google_, który dał sposobność do przenoszenia między procesorami obróbki Big Data. 
- Rok ten jest również znaczący ze względu na wydanie przez _Nividia_ procesora monopolizującego rynek uczenia maszynowego.
-Istniejące, wykorzystujące zmniejszenie kosztów pamięci, podejścia są sukcesywnie ulepszane, a wraz z rozwojem dziedziny powstają nowe algorytmy i rozwiązania[@FRADKOV20201385,@introduction].
+ Rok ten jest również znaczący ze względu na wydanie przez _Nividia_ procesora monopolizującego rynek uczenia maszynowego[@FRADKOV20201385,@introduction].
+
 
 Sztuczna inteligencja wśród szerokiego zakresu swoich zastosowań może zostać wykorzystana do analizy bardziej lub mniej
 złożonych danych medycznych, w celu przewidzenia wystąpienia choroby u konkretnej osoby, bez udziału procesu myślowego
@@ -82,7 +82,7 @@ Słowa kluczowe: uczenie maszynowe, uczenie nadzorowane, lasy losowe, maszyna we
 Cele pracy:
 
 - porównanie wybranych algorytmów uczenia maszynowego nadzorowanego zależnie od uzupełnienia brakujących wartości w zbiorze danych,
-- umożliwienie wykorzystania algorytmów poprzez wystawienie diagnozy o występowaniu zaburzeń sercowo-naczyniowych na podstawie nowego zestawu cech.
+- umożliwienie wykorzystania algorytmów poprzez wystawienie diagnozy o występowaniu zaburzeń sercowo-naczyniowych na podstawie nowego przypadku.
 
 Dane medyczne wyróżniają się tym, że trudno uzyskać do nich dostęp, najczęściej nie są to informacje, które się
 udostępnia do użytku publicznego, z tego powodu, kluczowym krokiem jest wybór cech branych pod uwagę przy tworzeniu
@@ -125,7 +125,7 @@ mogą przyjmować format odpowiedzi TAK/NIE, klasyfikacji do danego zbioru czy n
 
 ![Algorytmy uczenia z podziałem na kategorie [@link_diagram]](img/1algorithms_category.png "Algorytmy z podziałem na kategorie"){ height=100% }
 
-**Uczenie maszynowe bez nadzoru** (ang. _unsupervised learning_) to klasa algorytmów uczenia maszynowego, która rozwiązuje np. problemy grupowania. Dane dostarczane do modelu nie zawierają _oznaczeń_, zatem nauczanie polega na wyciąganiu konkluzji z poprzednio wykonanych iteracji. Ten typ uczenia odnalazł jedno ze swoich zastosowań w rozpoznawaniu mowy czy obrazu[@3].
+**Uczenie maszynowe bez nadzoru** (ang. _unsupervised learning_) to klasa algorytmów uczenia maszynowego, która rozwiązuje np. problemy grupowania. Dane dostarczane do modelu nie zawierają _oznaczeń_, zatem nauczanie polega na wyciąganiu konkluzji z poprzednio wykonanych iteracji. Ten typ uczenia odnalazł jedno ze swoich zastosowań w rozpoznawaniu mowy oraz obrazu[@3].
 
 **Uczenie maszynowe przez wzmacnianie** (ang. _reinforcement learning_) to klasa algorytmów uczenia maszynowego, której nauczanie nie opiera się na danych wejściowych czy wyjściowych a rezultatach otrzymanych podczas testu nazywanych tzw. sygnałami wzmocnienia, które mogą przyjmować wartość pozytywną lub negatywną. Na podstawie danych dostosowywane są reguły, by uzyskać zwrotnie sygnał pozytywny w jak największej liczbie przypadków[@reinfor-learning].
 
@@ -141,9 +141,9 @@ separującego kategorie docelowe w użyteczny i dokładny sposób[@introduction]
 
 *Regresja* - daję ciągłą prognozę korelacji między zmiennymi, standardowym przykładem zastosowania jest prognoza pogody. Realne pomiary temperatury, prędkości wiatru, ciśnienia wpływają na finalną odpowiedź. Sama regresja dzieli się również na kategorie ze względu na skomplikowanie, najprostszym przykładem jest regresja liniowa.
 
-Analogiczne typy i stanieją dla uczenia bez nadzoru jak na przykład *grupowanie*, które klasyfikuje dane w zbiory. Rozbieżność z klasyfikacją polega na wykorzystaniu do wykonania oceny korelacji podobnych cech, a nie wsadu danych testowych. 
+Analogiczne typy istnieją dla uczenia bez nadzoru jak na przykład *grupowanie*, które klasyfikuje dane w zbiory. Rozbieżność z klasyfikacją polega na wykorzystaniu do wykonania oceny korelacji podobnych cech, a nie wsadu danych testowych. 
 
-*Redukcja wymiarowa* to jak nazwa wskazuje pozbycie się nieistotnych atrybutów i odrzuceniu duplikatów, a co za tym idzie wymiaru zbioru danych. Dobrym przykładem byłoby tutaj analiza zawartości skrzynki pocztowej i szukanie spamu. 
+*Redukcja wymiarowa* to jak nazwa wskazuje pozbycie się nieistotnych atrybutów i odrzuceniu duplikatów, a co za tym idzie wymiaru zbioru danych. Dobrym przykładem jest analiza zawartości skrzynki pocztowej i szukanie spamu. 
 
 Podział osób na kategorie cierpiące na choroby sercowo-naczyniowe oraz zdrowe to dylemat klasyfikacyjny nadający się do
 rozwiązania za pomoc algorytmów uczenia maszynowego nadzorowanego i na nich skupia się dalsza część pracy.
@@ -459,18 +459,22 @@ części pracy.
 
 Biblioteka rozwijana przez ponad 10 lat opiera się o *Numpy* oraz *Scipy*, daje zestaw narzędzi do obliczeń na macierzach, wektorach oraz umożliwiający metody
 numeryczne takie jak całkowanie, różniczkowanie i temu podobne[@scikit]. W rezultacie można za jej pomocą wykonać elementy procesu nauczania algorytmu, takie jak: przetwarzanie wstępne, redukcja wymiarowości, klasyfikacja, regresja[@libpyth]. 
-Pomimo cieszenia się dużym zaufaniem, za jej pomocą można wygenerować przykładowa dane, wyliczyć metryki wydajności oraz zinterpretować wyniki klasyfikacji[@sensor].
+Biblioteka cieszy się dużym zaufaniem, za jej pomocą można wygenerować przykładowa dane, wyliczyć metryki wydajności oraz zinterpretować wyniki klasyfikacji[@sensor].
 
 *Pandas*
+
 Do przygotowania danych wykorzystano zestaw narzędzi *Pandas*, ułatwiający tworzenie struktur danych i ich analizę. 
 
 *Matplotlib*
+
 W celu wizualizacji wyników w postaci wykresów zastosowano, opartą na *Matplotlib*, bibliotekę *Seaborn* powszechnie stosowaną do rysowania estetycznej grafiki statystycznej.
 
 *Flask*
+
 Część prezentacyjna, czyli możliwość wprowadzenia danych w formularzu na stronie i weryfikacja wyniku dla wyuczonych już modeli wykorzystuje bibliotekę *Flask*. Framework Flask ułatwia pisanie aplikacji internetowych i jest rozwiązaniem, które daje duży zakres dowolności oraz możliwości. Flask sam z siebie nie definiuje warstwy bazy danych czy formularzy, pozwala za to na obsługę rozszerzeń, które ubogacają aplikację o wybraną funkcjonalność[@flask].
 
 *JsonPickle* i *JobLib*
+
 Przekazywanie obiektów o bardziej skomplikowanej budowie i ich _serializacja_ oraz _deserializacja_ do formatu JSON wykonane są za pomocą biblioteki *jsonpickle*, a zapis
 modeli wykonano za pomocą *joblib* która zapewnia obsługę obiektów Pythona i jest zoptymalizowana pod kątem pracy na dużych tablicach Numpy[@libpyth].
 
@@ -521,11 +525,11 @@ Interpreter Python w wersji _3.9_.
 Projekt posiada dwa tryby pracy:
 
 - tryb nauczania na podstawie danych testowych\
-machine learning z wykorzystaniem 3 algorytmów (_Run_Learning_Proces.xml_), musi być wykonany przynajmniej raz przed wykorzystaniem programu jako aplikacja,  
+machine learning z wykorzystaniem 3 algorytmów(_Run_Learning_Proces.xml_), musi być wykonany przynajmniej raz przed wykorzystaniem programu jako aplikacja,  
 - tryb aplikacji web\
-wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli (_Run_Web_Application.xml_), strona prezentuje analizę danych oraz uczenia algorytmów, przy czym głównym zadaniem jest wykonanie predykcji na podstawie danych wpisanych do formularza.
+wykorzystanie Flask do prezentacji i wykorzystania utworzonych modeli(_Run_Web_Application.xml_), strona prezentuje analizę danych oraz uczenia algorytmów, przy czym głównym zadaniem jest wykonanie predykcji na podstawie danych wpisanych do formularza.
 
-## Trening algorytmu
+## Proces uczenia
 
 Głównym zadaniem trybu nauczania jest utworzenie i wytrenowanie modeli dla 3 algorytmów nauczania nienadzorowanego, w tym celu wykonywany jest preprocessing danych, czyli kolejno:
 
@@ -536,14 +540,13 @@ Proces przygotowania danych zastosowany w projekcie składa się z następujący
 1. Załadowanie i konkatenacja datasetu, standardowo również wybranie cech znaczących głównie odbywające się poprzez odrzucenie nadmiarowych parametrów, ale istnieje też możliwość dodania nowych np. wyliczenie powierzchni w metrach kwadratowych na podstawie wymiarów w metrach zawartych w danych testowych. Następnie należy wykonać wyeliminowanie cech niewpływających na odpowiedź i dopiero po dokonaniu selekcji przystąpić do przetwarzania zebranych informacji.
 
 2. Uzupełnienie pustych wartości dla późniejszego porównania w projekcie tworzone są imputery dla 4 różnych form uzupełnienia, 
-ale są to najbardziej podstawowe działania typu średnia wartość, najczęściej występująca wartość. Idealnym rozwiązaniem byłoby w przypadku posiadania eksperckiej wiedzy z danej dziedziny uzupełnienia brakujących wartości własnymi propozycjami. Innym sposobem może być wykorzystanie heurystyk specyficznych dla tworzonego modelu[@confiusion].
+ są to  podstawowe działania przykładowo: średnia wartość, najczęściej występująca wartość. Idealnym rozwiązaniem byłoby w przypadku posiadania eksperckiej wiedzy z danej dziedziny uzupełnienia brakujących wartości własnymi propozycjami. Innym sposobem może być wykorzystanie heurystyk specyficznych dla tworzonego modelu[@confiusion].
 
 3. Standaryzacja
 
 4. Konwersja danych dla kategorii
 
-5. Normalizacja z wykorzystaniem MinMaxScaler, zmiana skali w formie przykładu to na przykład przeliczenie temperatury ze
-stopni Celcjiusza do Fahrenheita. Wykonuje się ją, by przesunąć wartości skrajne i pozbyć się nierówności w zbiorze[@confiusion].
+5. Normalizacja z wykorzystaniem MinMaxScaler, zmiana skali (przykład: przeliczenie temperatury ze stopni Celcjiusza do Fahrenheita). Wykonuje się ją, by przesunąć wartości skrajne i pozbyć się nierówności w zbiorze[@confiusion].
 
 ### Trening algorytmu
 
@@ -601,10 +604,7 @@ Pierwszym z wymaganych argumentów _GridSearchCV_ są estymatory. W projekcie wy
 - criterion - funkcja pomiaru dokładności rozgałęzienia,
 - min_samples_leaf - minimalna liczba próbek wymagana na liściu,
 - min_weight_fraction_leaf - minimalny ułamek sumy wag wymagany na liściu ,
-- min_impurity_decrease - większe lub równe zmniejszenie zanieczyszczenia powoduje podział danego węzła\
-
-gdzie N to całkowita liczba próbek, N_t to liczba próbek w bieżącym węźle, N_t_L to liczba próbek w lewym liściu, a N_t_R to liczba próbek w prawym liściu,
-
+- min_impurity_decrease - większe lub równe zmniejszenie powoduje podział danego węzła\
 - max_features - liczba funkcji najlepszego podziału,
 - random_state - wykorzystywany przy próbkowaniu cech przy poszukiwaniu najlepszego podziału w węźle,
 - cpp_aplha - zastosowanie to przycinanie drzewa o największej złożoności mniejszej niż cpp_alpha.
@@ -615,10 +615,7 @@ gdzie N to całkowita liczba próbek, N_t to liczba próbek w bieżącym węźle
 - C - czyli domyślna wartość dla parametru regularyzacji,
 - kernel - jądro wykorzystane w algorytmie,
 - degree- stopień dla funkcji jądra _poly_,
-- gamma - współczynnik jądra dla wartości _scale_ parametr jądra ustawiany jest na wartość: $\frac{1}{(n * X.var())}$  ,dla wartości auto jest to: $\frac{1}{n}$
-
-gdzie n to liczba cech,,
-
+- gamma - współczynnik jądra dla wartości _scale_ parametr jądra ustawiany jest na wartość: $\frac{1}{(n * X.var())}$  ,dla wartości auto jest to: $\frac{1}{n}$ gdzie n to liczba cech,
 - coef0 - niezależny parametr funkcji jądra, wykorzystywany tylko przy jądrach _poly_ i _sigmoid_,
 - shrinking - heurystyka kurcząca,
 - cache_size - cache jądra (w MB)[@scikit].
@@ -633,7 +630,7 @@ Po odnalezieniu najlepszego estymatora model jest zapisywany oraz generowane są
 Podczas dokonywania finalnej predykcji tworzone są jeszcze wykresy rozmieszczenia danych z zaznaczeniem umiejscowienia nowych danych testowych.
 
 Wykresy dla danych testowych wykonywane są na niepoddanych wstępnej obróbce (normalizacja, standaryzacja itp.) danych.
-Zestawienie zawiera wykres rozłożenia przypadków chorobowych oraz to samo z uwzględnieniem podziału na płcie, wykres zależności danych między sobą oraz rozkład wartości dla każdego parametru.
+Zestawienie zawiera wykres rozłożenia przypadków chorobowych z uwzględnieniem podziału na płeć, wykres zależności danych między sobą oraz rozkład wartości dla każdego parametru.
 
 Interesujące rezultaty widać już z samej analizy danych testowych, poniżej przedstawiono wykres dla cechy _maksymalnego osiągniętego tętna_ widać na nim dużą zależność stwierdzenia choroby układu krążenia.
 Na niebiesko zaznaczono przypadki osób zdrowych, na pomarańczowo chorych. Na pierwszy rzut oka widać, że grupa chorych osiąga wyższe wartości dla tego parametru.
@@ -651,14 +648,14 @@ Na niebiesko zaznaczono przypadki osób zdrowych, na pomarańczowo chorych. Na p
 \caption{Wykresy dla danych testowych}
 \end{figure}
 
-Analiz algorytmów w postaci wykresów przedstawia osoby wykres dla każdego zdefiniowanego imputera per parametr. Podczas treningu przechodzi jeszcze pętla po metodach ewaluacji wartości:
+Analiza algorytmów w postaci wykresów przedstawia osobny wykres dla każdego zdefiniowanego imputera per parametr. Podczas treningu przechodzi zastosowanie sprawdzania ewaluacji po metodach:
 
 - precyzja,
 - dokładność,
 - uśredniona dokładność,
 - zrównoważona dokładność,
 - recall,
-- r2
+- r2,
 
 ale sam model jest zapisywany i analizowany tylko dla wartości scorer = 'accuracy'.
 
@@ -807,7 +804,7 @@ Ważnym do przeanalizowania parametrem dla algorytmu k-najbliższych sąsiadów 
 
 
 Zestawienie przedstawione powyżej podpowiada, że cechą znaczącą jest również parametr _metric_. Ta cecha wydaję się oczywista ze względu na specyfikę działania algorytmu.
-Zastosowanie wyszukiwania gridSearch wykazuję, że skupiając się na parametrach: metryki, wagach oraz liczbie sąsiadów jesteśmy w stanie uzyskać optymalne wartości dla modelu algorytmu, pozostałe nie posiadają zyt dużego wpływu przy braku specyficznych danych testowych.
+Zastosowanie wyszukiwania gridSearch wykazuję, że skupiając się na parametrach: metryki, wagach oraz liczbie sąsiadów jesteśmy w stanie uzyskać optymalne wartości dla modelu algorytmu, pozostałe nie posiadają zbyt dużego wpływu przy braku specyficznych danych testowych.
 
 **Losowe lasy decyzyjne**
 
@@ -953,7 +950,11 @@ Parametry najwydajniejszego modelu dla danych utworzonych z modelu, który puste
  'random_state': 1, 'shrinking': True
 ```
 
-Dla wykorzystania funkcji SVC wymaganym parametrem jest C, jak już wcześniej wspomniano, jest to własność odpowiadająca za wyznaczenie złotego środka między obciążeniem a wariancją. Poniżej wstawiono zestawienie wykresów dla parametrów per wersja imputera zgodnie z legendą:
+Dla wykorzystania funkcji SVC wymaganym parametrem jest C, jak już wcześniej wspomniano, jest to własność odpowiadająca za wyznaczenie złotego środka między obciążeniem a wariancją.
+
+**Graficzna prezentacja rezultatów**
+
+Poniżej wstawiono zestawienie wykresów dla parametrów per wersja imputera zgodnie z legendą:
 
 - kolor niebieski - imputer średnia,
 - kolor czerwony - imputer mediana,

@@ -1,13 +1,12 @@
 
 
- - przeczytać
- - grafiki poukładać
  - zmienić kolejność stron 
  - usunąć spis treśći z nagłówka
  - wysłąć pisemną
-________________________________________________________ 22.00
+________________________________________________________ 23.00
  - merg częśći praktycznej 
  - spakować część praktyczą dodac część praktyczńę
+ - ______________________________________________________23.30
 
 
 - tekst poprawić zgodnie z pomiarem
