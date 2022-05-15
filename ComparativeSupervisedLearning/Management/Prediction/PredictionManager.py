@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+import numpy
 import pandas
 from sklearn.model_selection import train_test_split
 
@@ -93,6 +95,8 @@ def copy_processing_dataset(test_x_, train_x_, y_test_, y_train_):
 
 
 def get_data_info():
+    plt.cla()
+    plt.clf()
     data_set = Dc.get_unprepared_data()
     data_set = rename_pl_dataset(data_set)
     grouped_by_state_for_gender = data_set.groupby(['plec', 'stan_zdrowia'])['plec']
@@ -133,4 +137,6 @@ def get_algorithm_info():
             final_results.append(estimators)
             final_results.append(best_params)
     final_results.append(Plot.get_confusion_matrix())
+
+    final_results.append(Plot.get_prams_plots())
     return final_results

@@ -54,8 +54,7 @@ def prepare_grid_classification(y_train, y_test, scoring):
     y_train = y_train.replace([0.25, 0.5, 0.75], 1).astype('int')
     y_test = y_test.replace([0.25, 0.5, 0.75], 1).astype('int')
     param_grid_p = dict(n_neighbors=list(range(1, Rs.N_NEIGHBORS_SIZE)), weights=Rs.KNN_WEIGHTS,
-                        algorithm=Rs.KNN_ALGORITHM, leaf_size=Rs.KNN_LEAF_SIZE, p=Rs.KNN_P_PARAM, metric=Rs.KNN_METRIC
-                        )
+                        algorithm=Rs.KNN_ALGORITHM, leaf_size=Rs.KNN_LEAF_SIZE, p=Rs.KNN_P_PARAM, metric=Rs.KNN_METRIC)
     param_grid = {'algorithm': ['auto'], 'leaf_size': [30], 'metric': ['minkowski'], 'metric_params': [None],
                   'n_jobs': [-1],
                   'n_neighbors': [25], 'p': [2], 'weights': ['distance']}

@@ -51,7 +51,7 @@ class AlgorithmWebInfo:
         self.rf_mean_desc = information_object[6][0][0]
         self.rf_mean_plot1 = information_object[7][0]
         self.rf_mean_plot2 = information_object[7][1]
-        self.rf_mean_beast_params = str(information_object[8][0])
+        self.rf_mean_best_params = str(information_object[8][0])
 
         # KNN median
 
@@ -116,14 +116,51 @@ class AlgorithmWebInfo:
         self.rf_cont_plot2 = information_object[34][1]
         self.rf_cont_best_params = str(information_object[35][0])
 
-        self.time_knn = max(information_object[0][0][9], information_object[9][0][9], information_object[18][0][9],
-                            information_object[27][0][9])
-        self.time_svm = max(information_object[3][0][9], information_object[12][0][9], information_object[21][0][9],
-                            information_object[30][0][9])
-        self.time_rf = max(information_object[6][0][9], information_object[15][0][9], information_object[24][0][9],
-                           information_object[33][0][9])
+        self.time_knn_train = max(information_object[0][0][8], information_object[9][0][8],
+                                  information_object[18][0][8],
+                                  information_object[27][0][8])
+        self.time_svm_train = max(information_object[3][0][8], information_object[12][0][8],
+                                  information_object[21][0][8],
+                                  information_object[30][0][8])
+        self.time_rf_train = max(information_object[6][0][8], information_object[15][0][8],
+                                 information_object[24][0][8],
+                                 information_object[33][0][8])
+
+        self.time_knn_predict = max(information_object[0][0][9], information_object[9][0][9],
+                                    information_object[18][0][9],
+                                    information_object[27][0][9])
+        self.time_svm_predict = max(information_object[3][0][9], information_object[12][0][9],
+                                    information_object[21][0][9],
+                                    information_object[30][0][9])
+        self.time_rf_predict = max(information_object[6][0][9], information_object[15][0][9],
+                                   information_object[24][0][9],
+                                   information_object[33][0][9])
+
+        self.classification_report_knn_1 = information_object[0][0][10]
+        self.classification_report_knn_2 = information_object[9][0][10]
+        self.classification_report_knn_3 = information_object[18][0][10]
+        self.classification_report_knn_4 = information_object[27][0][10]
+
+        self.classification_report_svm_1 = information_object[3][0][10]
+        self.classification_report_svm_2 = information_object[12][0][10]
+        self.classification_report_svm_3 = information_object[21][0][10]
+        self.classification_report_svm_4 = information_object[30][0][10]
+
+        self.classification_report_rf_1 = information_object[6][0][10]
+        self.classification_report_rf_2 = information_object[15][0][10]
+        self.classification_report_rf_3 = information_object[24][0][10]
+        self.classification_report_rf_4 = information_object[33][0][10]
 
         self.confusion = information_object[36]
+        self.another_1_knn_param = information_object[37][0]
+        self.another_1_knn_time = information_object[37][1]
+        self.another_1_svm_param = information_object[37][2]
+        self.another_1_svm_time = information_object[37][3]
+        self.another_1_rf_param = information_object[37][4]
+        self.another_1_rf_time = information_object[37][5]
+
+
+
 
     def to_json(self):
         return jsonpickle.encode(self)

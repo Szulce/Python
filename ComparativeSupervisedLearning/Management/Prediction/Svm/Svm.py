@@ -1,3 +1,4 @@
+from sklearn.metrics import classification_report
 from sklearn.model_selection import GridSearchCV
 from sklearn.svm import SVR, SVC
 
@@ -5,7 +6,6 @@ import ComparativeSupervisedLearning.Config.StaticResources as Rs
 import ComparativeSupervisedLearning.Management.Prediction.ModelStorage as Ms
 import ComparativeSupervisedLearning.Management.Prediction.TrainingManager as Tm
 import ComparativeSupervisedLearning.Management.Prediction.PredictionManager as Pr
-
 
 """" Support Vector Machines nearest neighbours algorithm performance """
 
@@ -38,7 +38,7 @@ def prepare_grid_classification(y_train, y_test, scoring):
     y_test = y_test.replace([0.25, 0.5, 0.75], 1).astype('int')
     param_grid_p = {'C': Rs.SVM_C, 'gamma': Rs.SVM_GAMMA, 'kernel': Rs.SVM_KERNEL, 'degree': Rs.SVM_DEGREE,
                     'coef0': Rs.SVM_COE0FLOAT, 'shrinking': Rs.SVM_SHRINKING,
-                    'cache_size': Rs.SVM_CACHE_SIZE,'random_state':1}
+                    'cache_size': Rs.SVM_CACHE_SIZE, 'random_state': [1], 'class_weight': Rs.CLASS_WEIGHT}
     param_grid = {'C': list(range(1, 2))}
     grid = GridSearchCV(SVC(), param_grid_p, verbose=Rs.VERBOSE, refit=True, cv=Rs.CV, scoring=scoring)
     return grid, y_train, y_test

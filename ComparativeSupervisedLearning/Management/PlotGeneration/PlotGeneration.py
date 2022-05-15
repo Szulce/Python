@@ -132,14 +132,19 @@ def get_log_scale_countplot(data, param_1, param_2):
     return convert_plot_to_html(plot_tmp1.figure)
 
 
-def create_measure_table(score, y_predict, y_test, exec_time):
+def create_measure_table(score, y_predict, y_test, fit_time, predict_time, classificatio_report, train_score,
+                         test_score):
     measures_table = []
     accuracy_score = metrics.accuracy_score(y_test, y_predict)
     balanced_accuracy_score = metrics.balanced_accuracy_score(y_test, y_predict)
     brier_score_loss = metrics.brier_score_loss(y_test, y_predict)
     text1 = str('Precyzja : ') + \
             str(score) + \
-            str('%            |                       Wynik klasyfikacji dokładności: ') + \
+            str('%   Precyzja treningu:') + \
+            str(train_score) + \
+            str('%   Precyzja testu:') + \
+            str(test_score) + \
+            str('%         |                       Wynik klasyfikacji dokładności: ') + \
             str(accuracy_score) + \
             str('             |                       Zrównoważoną dokładność: ') + \
             str(balanced_accuracy_score) + str('  |                   Utrata regresji błędu średniokwadratowego: ') + \
@@ -152,8 +157,9 @@ def create_measure_table(score, y_predict, y_test, exec_time):
     measures_table.append(str(explained_variance_score(y_test, y_predict)))
     measures_table.append(str(balanced_accuracy_score))
     measures_table.append(str(brier_score_loss))
-    measures_table.append(str(exec_time))
-    measures_table.append(exec_time)
+    measures_table.append(str(fit_time))
+    measures_table.append(str(predict_time))
+    measures_table.append(str(classificatio_report))
     return measures_table
 
 
@@ -191,20 +197,20 @@ def generate_user_data_plot(base_data):
     concatenated = pandas.concat(
         [test_data.assign(dataset='dane testowe'), base_data_frame.assign(dataset='wprowadzone dane')])
     dots_size = 250
-    plot1 = convert_plot_to_html(
-        sns.scatterplot(x='age', y='chol', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    plot2 = convert_plot_to_html(
-        sns.scatterplot(x='sex', y='restecg', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    plot3 = convert_plot_to_html(
-        sns.scatterplot(x='cp', y='trestbps', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    plot4 = convert_plot_to_html(
-        sns.scatterplot(x='fbs', y='exang', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    plot5 = convert_plot_to_html(
-        sns.scatterplot(x='thalach', y='oldpeak', hue='dataset', data=concatenated, style='dataset',
-                        s=dots_size).figure)
-    plot6 = convert_plot_to_html(
-        sns.scatterplot(x='slope', y='ca', hue='dataset', data=concatenated, style='dataset', s=dots_size).figure)
-    return [plot1, plot2, plot3, plot4, plot5, plot6]
+    return [generate_dotted_plot(concatenated, dots_size, 'age', 'chol')
+        , generate_dotted_plot(concatenated, dots_size, 'sex', 'restecg')
+        , generate_dotted_plot(concatenated, dots_size, 'cp', 'trestbps')
+        , generate_dotted_plot(concatenated, dots_size, 'fbs', 'exang')
+        , generate_dotted_plot(concatenated, dots_size, 'thalach', 'oldpeak')
+        , generate_dotted_plot(concatenated, dots_size, 'slope', 'ca')]
+
+
+def generate_dotted_plot(concatenated, dots_size, x_param_name, y_param_name):
+    ax = sns.scatterplot(x=x_param_name, y=y_param_name, hue='dataset', data=concatenated, style='dataset', s=dots_size,
+                         legend='brief')
+    handles, labels = ax.get_legend_handles_labels()
+    ax.legend(handles[:2], labels[:2])
+    return convert_plot_to_html(ax.figure)
 
 
 def best_estimator_compare(iterator, type_m):
@@ -228,7 +234,7 @@ def get_algorithm_param_comp(grid, means_test_s, means_train_s, stds_test_s, std
     masks_names = list(grid.best_params_.keys())
     masks = mask_prepare(grid)
     params = grid.param_grid
-    ax, fig = figure_prepare(params)
+    ax, fig = figure_prepare(params, len(params))
 
     for i, p in enumerate(masks_names):
         if len(masks) > 1:
@@ -248,6 +254,61 @@ def get_algorithm_param_comp(grid, means_test_s, means_train_s, stds_test_s, std
     return specialized_figure(fig)
 
 
+def get_prams_plots():
+    axs = []
+    colors = ['blue', 'red', 'green', 'black']
+    for model_type in [Rs.MODEL_TYPE_RF]:
+        grid = []
+        masks = []
+        means_test_param = []
+        means_test_time = []
+        params = []
+        for iterator in range(0, len(Rs.IMPUTERS_LIST)):
+            grid.append(Ms.load_grid_scores(model_type, iterator))
+            masks_names = list(grid[iterator].best_params_.keys())
+            masks.append(mask_prepare(grid[iterator]))
+            means_test_param.append(grid[iterator].cv_results_[str('mean_test_score')])
+            means_test_time.append(grid[iterator].cv_results_[str('mean_score_time')])
+            params.append(grid[iterator].param_grid)
+        for i, p in enumerate(masks_names):
+            plt.rcParams.update({'figure.max_open_warning': 0})
+            plt.rcParams.update({'font.size': 16})
+            # fig = plt.figure(figsize=(4, 12))
+            # ax = fig.add_subplot(111)
+            # fig.text(0.04, 0.5, '', va='center', rotation='horizontal')
+            # for iterator in range(0, len(Rs.IMPUTERS_LIST)):
+            #     if len(masks) > 1 and params[iterator][p] is not None and params[iterator][p][0] is not None:
+            #         x_p = numpy.array(params[iterator][p])
+            #
+            #         best_index = get_best_index(i, masks[iterator])
+            #         y_p = numpy.array(means_test_param[iterator][best_index].astype(numpy.float64))
+            #         ax.grid(True)
+            #         plt.ylim()
+            #         ax.tick_params(axis='x', labelrotation=90)
+            #         ax.scatter(x_p[:-1], y_p[:-1],
+            #                    label=str(Rs.IMPUTERS_LIST[iterator].strategy),
+            #                    color=colors[iterator],
+            #                    s=60, alpha=0.7)
+            #
+            #         ax.set_xlabel(p.upper())
+            # axs.append(convert_plot_to_html(fig))
+            fig = plt.figure(figsize=(4, 12))
+            ax = fig.add_subplot(111)
+            for i, p in enumerate(masks_names):
+                for iterator in range(0, len(Rs.IMPUTERS_LIST)):
+                    if len(masks) > 1 and params[iterator][p] is not None and params[iterator][p][0] is not None:
+                        x_p = numpy.array(params[iterator][p])
+                        best_index = get_best_index(i, masks[iterator])
+                        y_p = numpy.array(means_test_time[iterator][best_index].astype(numpy.float64))
+                        ax.grid(True)
+                        plt.ylim()
+                        ax.tick_params(axis='x', labelrotation=45)
+                        ax.scatter(x_p[:-1], y_p[:-1], label=str(Rs.IMPUTERS_LIST[iterator].strategy), color=colors[iterator])
+                        ax.set_xlabel(p.upper())
+            axs.append(convert_plot_to_html(fig))
+    return axs
+
+
 def get_best_index(i, masks):
     m = numpy.stack(masks[:i] + masks[i + 1:])
     best_parms_mask = m.all(axis=0)
@@ -262,11 +323,10 @@ def mask_prepare(grid):
     return masks
 
 
-def figure_prepare(params):
+def figure_prepare(params, length):
     plt.rcParams.update({'figure.max_open_warning': 0})
     plt.rcParams.update({'font.size': 22})
-    fig, ax = plt.subplots(1, len(params), sharex='none', sharey='all', figsize=(80, 20))
-    fig.suptitle('Wynik dla parametru')
+    fig, ax = plt.subplots(1, length, sharex='none', sharey='all', figsize=(80, 20))
     fig.text(0.04, 0.5, 'Średni wynik', va='center', rotation='vertical')
     return ax, fig
 
@@ -280,12 +340,13 @@ def specialized_figure(fig):
 
 
 def get_confusion_matrix():
-    fig, axes = plt.subplots(len(Rs.SCORER_DICTIONARY), 1, figsize=(6, 2 * len(Rs.SCORER_DICTIONARY)))
+    fig, axes = plt.subplots(len(Rs.SCORER_DICTIONARY.keys()), 1, figsize=(6, 2 * len(Rs.SCORER_DICTIONARY.keys())))
     fig.tight_layout()
     for type_m in Rs.MODELS:
         scorer_m = Ms.load_scorer_models(type_m)
         for ax, i in zip(axes, Rs.SCORER_DICTIONARY.keys()):
-            results = scorer_m[i]
-            ax.plot(results, 'o--')
-            ax.set_title(i)
+            if i == 'accuracy':
+                results = scorer_m[i][0][0:20]
+                ax.plot(results, 'o--')
+                ax.set_title(i)
     return convert_plot_to_html(fig)
